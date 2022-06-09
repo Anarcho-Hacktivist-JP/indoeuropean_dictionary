@@ -1,5 +1,6 @@
 1. https://qiita.com/rockinruuula1227/items/83f3f1406f339083ef3fを参考にファイルを用意
 2. 以下のコマンドを実行する docker-compose up -d
+3. 起動方法・参考サイトにある「janome.txt」を確認する。
 
 製作にあたり参考にしたサイト一覧：
 https://clsoc.jp/QA/2020/20200117.html　日本西洋古典学会(ラテン語造語法)

