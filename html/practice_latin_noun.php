@@ -1,0 +1,126 @@
+<?php
+session_start();
+
+header("Content-type: text/html; charset=utf-8");
+
+//読み込み
+include(dirname(__FILE__) . "/language_class/IndoEuropean_noun_class.php");
+include(dirname(__FILE__) . "/language_class/Database_session.php");
+include(dirname(__FILE__) . "/language_class/Commons.php");
+include(dirname(__FILE__) . "/language_class/Latin_Common.php");
+
+// 
+$question_word = Latin_Common::get_random_noun();
+// 読み込み
+$latin_noun = new Latin_Noun($question_word["dictionary_stem"]);
+// 問題集生成
+$question_data = $latin_noun->get_form_by_number_case();
+?>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>印欧語活用辞典：羅和辞書</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+  </head>
+  <?php //require_once("header.php"); ?>
+  <body>
+    <div class="container item">
+      <p><?php echo $question_data['question_sentence']; ?></p>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-answer">Button</button>
+        </div>       
+      </div>      
+      <?php echo Latin_Common::input_special_button(); ?>       
+    </div>
+  <footer class="">
+  </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        var question_data = '<?php echo json_encode($question_data, JSON_UNESCAPED_UNICODE); ?>';
+    </script>
+    <script>
+        $(function(){
+          // イベントを設定
+          setEvents();
+        });
+
+        function answer_the_question(){
+          var answer = $('#input-answer').val();
+
+          // JSON → 配列に書き換え
+          var json_question_data = JSON.parse(question_data);          
+
+          if(answer == json_question_data['answer']){
+            alert("正解");
+            location.reload();
+          } else {
+            alert("不正解");            
+          }
+        }
+
+        // 入力ボックスに文字の挿入
+        function add_chara(str, selIdx)
+        {
+          // テキストボックスの値を取得
+          var text_sentence = $('#input-answer').val();
+          $('#input-answer').val(strIns(text_sentence, selIdx, str));
+        }
+
+        // 文字列の挿入
+        function strIns(str, idx, val){
+          var res = str.slice(0, idx) + val + str.slice(idx);
+          return res;
+        };
+
+        //イベントを設定
+        function setEvents(){
+	        // セレクトボックス選択時
+	        $('#button-answer').click( function(){
+            answer_the_question();
+	        });
+	        // ボタン入力
+	        $('#button-a').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-i').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-u').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-e').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });                                      
+        }
+
+    </script>      
+    </script>
+  </body>
+</html>

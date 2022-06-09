@@ -1,0 +1,9 @@
+1.cdでディレクトリに移動する。
+2.以下のコマンドを上から順に実行する。
+docker ps
+docker exec -it html_php_1(←動作中のコンテナ) /bin/bash
+apt install python3
+apt install python-pip python3-pip
+python3 -m pip install janome
+3. 以下のサイトから、janomeで取得できるデータを確認できる。
+https://note.nkmk.me/python-janome-tutorial/

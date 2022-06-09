@@ -1,0 +1,48 @@
+ƒ‰ƒeƒ“Œê“®ŽŒ
+
+SELECT
+	*
+FROM
+	verb_latin t1
+WHERE
+	t1.`dictionary_stem` in (
+    SELECT
+        t2.`dictionary_stem`
+    FROM
+        verb_latin t2
+    GROUP BY
+        t2.`dictionary_stem`,
+        t2.`present_stem`,
+        t2.`infinitive_stem`,
+        t2.`perfect_stem`,
+        t2.`perfect_participle`
+    HAVING
+        COUNT(t2.`dictionary_stem`) > 1
+    )
+ORDER BY
+	t1.`dictionary_stem`,
+    t1.`verb_no`
+    
+ƒ‰ƒeƒ“Œê–¼ŽŒ
+
+SELECT
+	*
+FROM
+	noun_latin t1
+WHERE 
+	t1.`dictionary_stem` in (
+    SELECT
+        t2.`dictionary_stem`
+    FROM
+        noun_latin t2
+    GROUP BY
+        t2.`dictionary_stem`,
+        t2.`noun_type`,
+        t2.`gender`,
+        t2.`location_name`
+    HAVING
+        COUNT(t2.`dictionary_stem`) > 1
+    )
+ORDER BY
+	t1.`dictionary_stem`,
+    t1.`noun_no`

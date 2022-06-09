@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: ./php7.2
+      dockerfile: dockerfile
+    volumes:
+      - ./php7.2/php.ini:/usr/local/etc/php/php.ini
+      - ./html:/var/www/html
+    ports:
+      - 8000:80
+    links:
+      - mysql:mysql
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+    ports:
+      - 13306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=test
+      - PMA_PASSWORD=test
+    links:
+      - mysql
+    ports:
+      - 4000:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions

@@ -1,0 +1,12 @@
+1. https://qiita.com/rockinruuula1227/items/83f3f1406f339083ef3fを参考にファイルを用意
+2. 以下のコマンドを実行する docker-compose up -d
+
+製作にあたり参考にしたサイト一覧：
+https://clsoc.jp/QA/2020/20200117.html　日本西洋古典学会(ラテン語造語法)
+https://www.cactus2000.de/uk/　cactus2000(ドイツのラテン語・西洋語辞書および活用表ページ)
+https://dcc.dickinson.edu/grammar/latin/compound-words　ラテン語の造語方法
+https://dcc.dickinson.edu/latin-core-list1　ラテン語辞書(その1)
+http://latindictionary.wikidot.com/index-verbs　ラテン語辞書(その2)
+https://www.verbix.com/languages/latin　ラテン語辞書(その3)
+https://petscan.wmflabs.org/　Wiktionary項目抽出ページ
+https://sanskrit.inria.fr/DICO/grammar.fr.html　梵語の辞書・活用表頁
