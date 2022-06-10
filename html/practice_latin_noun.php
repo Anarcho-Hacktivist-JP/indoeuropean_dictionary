@@ -9,8 +9,14 @@ include(dirname(__FILE__) . "/language_class/Database_session.php");
 include(dirname(__FILE__) . "/language_class/Commons.php");
 include(dirname(__FILE__) . "/language_class/Latin_Common.php");
 
-// 
-$question_word = Latin_Common::get_random_noun();
+// 挿入データ－性別－
+$gender = trim(filter_input(INPUT_POST, 'gender'));
+// 挿入データ－活用種別－
+$declension = trim(filter_input(INPUT_POST, 'declension'));
+
+
+// 単語を検索
+$question_word = Latin_Common::get_random_noun($gender, $declension);
 // 読み込み
 $latin_noun = new Latin_Noun($question_word["dictionary_stem"]);
 // 問題集生成
@@ -28,10 +34,69 @@ $question_data = $latin_noun->get_form_by_number_case();
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>   
   </head>
   <?php require_once("header.php"); ?>
   <body>
     <div class="container item">
+      <form action="" method="post" class="mt-2" id="practice-condition" name="practice_condition">
+       <p>性別</p>
+       <section class="row">
+         <div class="col-md-3">
+           <input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+         </div>
+       </section>
+       <p>変化種別</p>
+       <section class="row">
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-2" autocomplete="off" value="2">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2">第二活用(男性)</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-2um" autocomplete="off" value="2um">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2um">第二活用(中性)</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-2r" autocomplete="off" value="2r">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2r">第二活用(r語幹)</label>
+         </div>
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-3" autocomplete="off" value="3">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3">第三活用(i語幹)</label>
+         </div>        
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-3i" autocomplete="off" value="3i">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3i">第三活用(i語幹)</label>
+         </div>         
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-3con" autocomplete="off" value="3con">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3con">第三活用(子音語幹)</label>
+         </div>              
+         <div class="col-md-3">
+           <input type="radio" name="declension" class="btn-check" id="btn-all-declension" autocomplete="off" value="" checked="checked">
+           <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-declension">すべて</label>
+         </div>
+       </section>      
+       <input type="submit" class="btn-check" id="btn-search">
+       <label class="btn btn-outline-secondary" for="btn-search">問題を生成</label>
+      </form>
       <p><?php echo $question_data['question_sentence']; ?></p>
       <div class="input-group mb-3">
         <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer">
@@ -52,21 +117,16 @@ $question_data = $latin_noun->get_form_by_number_case();
           // イベントを設定
           setEvents();
         });
-
         function answer_the_question(){
           var answer = $('#input-answer').val();
-
           // JSON → 配列に書き換え
-          var json_question_data = JSON.parse(question_data);          
-
+          var json_question_data = JSON.parse(question_data);
           if(answer == json_question_data['answer']){
             alert("正解");
-            location.reload();
           } else {
             alert("不正解");            
           }
         }
-
         // 入力ボックスに文字の挿入
         function add_chara(str, selIdx)
         {

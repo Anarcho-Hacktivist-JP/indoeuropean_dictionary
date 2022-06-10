@@ -118,6 +118,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
+      <?php echo Sanskrit_Common::input_special_button(); ?>         
       <details>
         <summary>一次動詞</summary>
         <table class="table-bordered text-nowrap" id="primary-conjugation-table">

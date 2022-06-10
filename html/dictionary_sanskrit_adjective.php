@@ -27,6 +27,10 @@ function get_adjective_declension_chart($word){
                                !strpos($word, "ṝ") &&
                                !strpos($word, "ḷ") && 
                                !strpos($word, "ḹ") &&
+                               !strpos($word, "ṅ") && 
+                               !strpos($word, "ñ") &&
+                               !strpos($word, "ṃ") && 
+                               !strpos($word, "ṇ") &&                               
                                !strpos($word, "ṭ") && 
                                !strpos($word, "ḍ") &&
                                !strpos($word, "ś") && 
@@ -41,6 +45,10 @@ function get_adjective_declension_chart($word){
                 !strpos($word, "ṝ") &&
                 !strpos($word, "ḷ") && 
                 !strpos($word, "ḹ") &&
+                !strpos($word, "ṅ") && 
+                !strpos($word, "ñ") &&
+                !strpos($word, "ṃ") && 
+                !strpos($word, "ṇ") &&                
                 !strpos($word, "ṭ") && 
                 !strpos($word, "ḍ") &&
                 !strpos($word, "ś") && 
@@ -117,6 +125,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
+      <?php echo Sanskrit_Common::input_special_button(); ?>         
       <table class="table-bordered" id="adjective-table">
         <?php echo Sanskrit_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>

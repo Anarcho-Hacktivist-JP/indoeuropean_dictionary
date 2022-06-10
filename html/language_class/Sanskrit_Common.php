@@ -1195,6 +1195,10 @@ class Sanskrit_Common {
         	<button class="btn btn-primary" type="button" id="button-R" value="ṝ">ṝ</button>
         	<button class="btn btn-primary" type="button" id="button-l" value="ḷ">ḷ</button>
         	<button class="btn btn-primary" type="button" id="button-L" value="ḹ">ḹ</button>
+        	<button class="btn btn-primary" type="button" id="button-G" value="ṅ">ṅ</button> 
+        	<button class="btn btn-primary" type="button" id="button-J" value="ñ">ñ</button>
+        	<button class="btn btn-primary" type="button" id="button-M" value="ṃ">ṃ</button>
+        	<button class="btn btn-primary" type="button" id="button-N" value="ṇ">ṇ</button>			
         	<button class="btn btn-primary" type="button" id="button-t" value="ṭ">ṭ</button>
         	<button class="btn btn-primary" type="button" id="button-d" value="ḍ">ḍ</button>
         	<button class="btn btn-primary" type="button" id="button-z" value="ś">ś</button>
