@@ -5093,8 +5093,6 @@ class Polish_Verb extends Verb_Common_IE {
 			"3pl" => "",	
 		],
 	];
-
-
 	
 	// 直接法
 	protected $ind = "";
@@ -5362,23 +5360,6 @@ class Polish_Verb extends Verb_Common_IE {
 		// 結果を返す。
 		return $verb_form;
 	}
-	
-	// 二次語尾
-	protected function get_secondary_infix($verb_stem, $voice, $person, $infix){	
-		// 接尾辞を追加
-		$verb_form = $verb_stem.$infix;
-		// 一人称複数、二人称単複数
-		if(preg_match('/(1pl|2pl|2sg)/', $person)){
-			// 最後の母音を切り取って、長音を付ける
-			$vovel = mb_substr($verb_form, -1, 1);
-			$verb_form  = mb_substr($verb_form, 0, -1);
-			$verb_form = $verb_form.Commons::vowel_short_to_long($vovel);
-		}
-		// 語尾を追加
-		$verb_form = $this->get_secondary_suffix($verb_form, $voice, $person);
-		// 結果を返す。
-		return $verb_form;
-	}
 
 	// 過去・仮定法語幹を作る
 	protected function get_past_conditional_stem($gender, $person){
@@ -5444,44 +5425,53 @@ class Polish_Verb extends Verb_Common_IE {
 	// 分詞の曲用表を返す。	
 	protected function get_participle($participle_stem){
 		// 読み込み
-		$adj_latin = new Polish_Adjective($participle_stem);
+		$adj_polish = new Polish_Adjective($participle_stem);
 		// 結果を返す。
-		return $adj_latin->get_chart();
+		return $adj_polish->get_chart();
 	}
+
+	// 動名詞の曲用表を返す。	
+	protected function get_verbal_noun($participle_stem){
+		// 読み込み
+		$noun_polish = new Polish_Noun($participle_stem);
+		// 結果を返す。
+		return $noun_polish->get_chart();
+	}	
 
 	// 通常変化部分の動詞の活用を作成する。
 	protected function make_common_standard_verb_conjugation($conjugation){
-
 		// 配列を作成
-		$voice_array = array(Commons::$ACTIVE_VOICE);						//態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, Commons::$FUTURE_TENSE, Commons::$PERFECT_ASPECT, Commons::$SUBJUNCTIVE, Commons::$IMPERATIVE);	//時制
-		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");								//人称
+		$gender_array = array(Commons::$MASCULINE_GENDER, Commons::$FEMINE_GENDER, Commons::$NEUTER_GENDER);	//性別
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, 
+								  Commons::$PAST_TENSE, 
+								  Commons::$AORIST_ASPECT, 
+								  Commons::$FUTURE_TENSE, 
+								  Commons::$PERFECT_ASPECT, 
+								  Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT,
+								  Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT,
+								  Commons::$SUBJUNCTIVE, 
+								  Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT,
+								  Commons::$IMPERATIVE);										//時制・法
+		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");	//人称
 
 		// 活用表を挿入(現在相)
-		// 全ての態
-		foreach ($voice_array as $voice){
+		// 全ての性別
+		foreach ($gender_array as $gender){
 			// 全ての時制と法			
-			foreach ($tense_mood_array as $tense){
+			foreach ($tense_mood_array as $tense_mood){
 				// 全ての人称			
 				foreach ($person_array as $person){
-					// 態・時制・法・人称に応じて多次元配列を作成		
-					//$conjugation[$voice][$tense_mood_array][$person] = $this->get_latin_verb($person, $voice, $mood, Commons::$PRESENT_ASPECT, $tense);						
+					// 態・時制・法・人称・性別に応じて多次元配列を作成		
+					$conjugation[Commons::$ACTIVE_VOICE][$tense_mood_array][$person] = $this->get_polish_verb($person, $tense_mood, $gender);						
 				}
 			}
 		}
 
-		// 活用表を挿入(完了相)
-		// 全ての態
-		foreach ($voice_array as $voice){
-			// 全ての時制と法			
-			foreach ($tense_mood_array as $tense){
-				// 全ての人称			
-				foreach ($person_array as $person){
-					// 態・時制・法・人称に応じて多次元配列を作成		
-					//$conjugation[$voice][$tense."_".Commons::$PERFECT_ASPECT][$tense_mood_array][$person] = $this->get_latin_verb($person, $voice, $mood, Commons::$PERFECT_ASPECT, $tense);						
-				}
-			}
-		}
+		// 分詞を挿入
+		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 能動分詞
+		$conjugation["present_passive"] = $this->get_participle($this->perfect_participle_passive);	// 受動分詞
+		$conjugation["supine"] = $this->get_participle($this->supine);								// 副分詞
+		$conjugation["present_passive"] = $this->get_verbal_noun($this->verbal_noun);				// 動名詞		
 
 		// 結果を返す。
 		return $conjugation;
@@ -5505,7 +5495,7 @@ class Polish_Verb extends Verb_Common_IE {
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
-		$conjugation["perfect_passive"] = $this->get_participle($this->perfect_participle_passive);	// 状態動詞受動分詞
+		$conjugation["present_passive"] = $this->get_participle($this->perfect_participle_passive);	// 状態動詞受動分詞
 		$conjugation["supine"] = $this->get_participle($this->supine);								// 目的分詞
 		
 		// 不定詞を挿入
@@ -5516,7 +5506,7 @@ class Polish_Verb extends Verb_Common_IE {
 	}
 
 	// 特定の活用を取得する(ない場合はランダム)。
-	public function get_conjugation_form_by_each_condition($person = "", $voice = "", $mood = "", $aspect = "", $tense = ""){
+	public function get_conjugation_form_by_each_condition($person = "", $tense_mood = "", $gender = ""){
 
 		// 人称と数がない場合は
 		if($person == ""){
@@ -5527,50 +5517,39 @@ class Polish_Verb extends Verb_Common_IE {
 			$person = $ary[$key];			
 		}
 
-		// 態がない場合
-		if($voice == ""){
-			// 能動態・受動態の中からランダムで選択
-			$ary = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE);			// 初期化
-			$key = array_rand($ary, 1);
-			// 選択したものを入れる。
-			$voice = $ary[$key];			
-		}
-
 		// 法がない場合
-		if($mood == ""){
+		if($tense_mood == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::$INDICATIVE, Commons::$SUBJUNCTIVE);			// 初期化
+			$ary = array(Commons::$PRESENT_TENSE, 
+						 Commons::$PAST_TENSE, 
+						 Commons::$AORIST_ASPECT, 
+						 Commons::$FUTURE_TENSE, 
+						 Commons::$PERFECT_ASPECT, 
+						 Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT,
+						 Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT,
+						 Commons::$SUBJUNCTIVE, 
+						 Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT,
+						 Commons::$IMPERATIVE);																				
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
-			$mood = $ary[$key];			
-		}	
-
-		// 相がない場合
-		if($aspect == ""){
-			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::$PRESENT_ASPECT, Commons::$PERFECT_ASPECT);			// 初期化
-			$key = array_rand($ary, 1);
-			// 選択したものを入れる。
-			$aspect = $ary[$key];			
+			$tense_mood = $ary[$key];			
 		}
 
-		// 時制がない場合
-		if($tense == ""){
+
+		// 性別がない場合
+		if($gender == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, Commons::$FUTURE_TENSE);	// 初期化
+			$ary = array(Commons::$MASCULINE_GENDER, Commons::$FEMINE_GENDER, Commons::$NEUTER_GENDER);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
-			$tense = $ary[$key];			
-		}		
+			$gender = $ary[$key];			
+		}
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_title($this->infinitive)."の".$aspect." ".$tense." ".$mood." ".$voice." ".$person."を答えよ";				
-		$question_data['answer'] = $this->get_polish_verb($person, $voice, $mood, $aspect, $tense);
-		$question_data['aspect'] = $aspect;
-		$question_data['tense'] = $tense;	
-		$question_data['mood'] = $mood;
-		$question_data['voice'] = $voice;
+		$question_data['question_sentence'] = $this->get_title($this->infinitive)."の".$tense_mood." ".$gender." ".$person."を答えよ";				
+		$question_data['answer'] = $this->get_polish_verb($person, $tense_mood, $gender);
+		$question_data['mood'] = $tense_mood;
 		$question_data['person'] = $person;			
 
 		// 結果を返す。
@@ -5609,12 +5588,14 @@ class Polish_Verb_Byc extends Polish_Verb {
 		],
 	];
 
-	
 	// 活用種別
-	protected $class = "5sum";
+	protected $class = "5byc";
 	
 	// 不定形
 	protected $infinitive = "być";
+
+	// 命令形語幹
+	private $imperative_stem = "bądź";
 	
 	// 追加語幹
 	protected $added_stem = "";
@@ -5665,17 +5646,21 @@ class Polish_Verb_Byc extends Polish_Verb {
 		} else if($tense_mood == Commons::$PERFECT_ASPECT){
 			// 過去形(完了)	
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->aorist_number[Commons::$ACTIVE_VOICE][$person];						
-		} else if($tense_mood == "pluperfect"){			
+		} else if($tense_mood == Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT){			
 			// 過去完了形
-		} else if($tense_mood == "future_perfect"){
+			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);			
+		} else if($tense_mood == Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT){
 			// 未来完了形
 			$verb_conjugation = $this->aorist_stem.$this->future_number[Commons::$ACTIVE_VOICE][$person];							
 		} else if($tense_mood == Commons::$SUBJUNCTIVE){
 			// 仮定法
-			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->aorist_number[Commons::$ACTIVE_VOICE][$person];				
+			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->aorist_number[Commons::$ACTIVE_VOICE][$person];
+		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+			// 仮定法過去形
+			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);									
 		} else if($tense_mood == Commons::$IMPERATIVE){
 			// 命令法
-			$verb_conjugation = $this->present_stem.$this->imper.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
+			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
 			// ハイフンを返す。
 			return "-";
