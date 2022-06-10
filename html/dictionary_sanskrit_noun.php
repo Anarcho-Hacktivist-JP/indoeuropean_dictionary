@@ -22,10 +22,33 @@ function get_noun_declension_chart($word){
       // 単語から直接取得する
       $noun_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::$DB_NOUN);
       // 取得できない場合は
-      if(!$noun_words && (!ctype_alpha($word) && !strpos($word, "ā") && !strpos($word, "ī") && !strpos($word, "ū"))){
+      if(!$noun_words && (!ctype_alpha($word) && 
+                          !strpos($word, "ā") && 
+                          !strpos($word, "ī") && 
+                          !strpos($word, "ū") && 
+                          !strpos($word, "ṛ") && 
+                          !strpos($word, "ṝ") &&
+                          !strpos($word, "ḷ") && 
+                          !strpos($word, "ḹ") &&
+                          !strpos($word, "ṭ") && 
+                          !strpos($word, "ḍ") &&
+                          !strpos($word, "ś") && 
+                          !strpos($word, "ṣ"))){
         // 空を返す。
         return array();
-      } else if(ctype_alpha($word) || strpos($word, "ā") || strpos($word, "ī") || strpos($word, "ū")){
+      } else if(ctype_alpha($word) || !ctype_alpha($word) && 
+                                      !strpos($word, "ā") && 
+                                      !strpos($word, "ī") && 
+                                      !strpos($word, "ū") && 
+                                      !strpos($word, "ṛ") && 
+                                      !strpos($word, "ṝ") &&
+                                      !strpos($word, "ḷ") && 
+                                      !strpos($word, "ḹ") &&
+                                      !strpos($word, "ṭ") && 
+                                      !strpos($word, "ḍ") &&
+                                      !strpos($word, "ś") && 
+                                      !strpos($word, "ṣ")){
+        // 単語を入れる。
         $noun_words[] = $word;
       }
     }

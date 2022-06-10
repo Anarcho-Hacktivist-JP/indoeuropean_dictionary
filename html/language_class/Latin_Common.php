@@ -89,11 +89,6 @@ class Latin_Common {
 
 	// 英語で名詞・形容詞の訳語を取得
 	public static function get_dictionary_stem_by_english($english_translation, $table, $gender = ""){
-		// 英数字以外は考慮しない
-		if(!ctype_alnum($english_translation)){
-			// 何も返さない。
-			return null;
-		}
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -346,13 +341,8 @@ class Latin_Common {
 
 	// 動詞の情報を取得する。
 	public static function get_verb_by_english($english_translation){
-		// 英数字以外は考慮しない
-		if(!ctype_alnum($english_translation)){
-			return null;
-		}
 		//DBに接続
 		$db_host = set_DB_session();
-
 		// SQLを作成 
 		$query = "SELECT * FROM `".Latin_Common::$DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は

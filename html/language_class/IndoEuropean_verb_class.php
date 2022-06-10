@@ -5605,7 +5605,7 @@ class Polish_Verb_Byc extends Polish_Verb {
     ======================================*/
     public function __construct() {
 		// 親の呼び出し
-    	parent::__construct("byc");
+    	parent::__construct($this->infinitive);
     }
 
 	// esseの派生動詞に対応

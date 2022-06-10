@@ -29,7 +29,7 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade();
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
-  <?php //require_once("header.php"); ?>
+  <?php require_once("header.php"); ?>
   <body>
     <div class="container item">
       <p><?php echo $question_data['question_sentence']; ?></p>
