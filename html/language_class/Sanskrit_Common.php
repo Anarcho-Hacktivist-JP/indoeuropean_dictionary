@@ -851,8 +851,8 @@ class Sanskrit_Common {
 
 		// 結合先なし、母音 + 子音の組み合わせ以外は
 		if($word2 != "" && 1 != 1 &&
-		   !(preg_match("/[aiueoṛāīūṝ]$/", $word1) && preg_match("/^[bpkghcjlrtdḍṭmnṅñṇśṣsyv]/", $word2)) &&
-		   !(preg_match("/[bpkghcjlrtdḍṭmnṅñṇśṣsyv]$/", $word1) && preg_match("/^[aiueoṛḷāīūṝḹ]/", $word2)) &&
+		   !(preg_match("/[aiueoṛāīūṝ]$/", $word1) && preg_match("/^[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]/", $word2)) &&
+		   !(preg_match("/[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]$/", $word1) && preg_match("/^[aiueoṛḷāīūṝḹ]/", $word2)) &&
 		   !(preg_match("/[bpkghcjlrtdḍṭśṣs]$/", $word1) && preg_match("/^[yv]/", $word2)) &&
 		   !(preg_match("/[aā]$/", $word1) && preg_match("/^[aā]/", $word2)) &&
 		   !(preg_match("/[iī]$/", $word1) && preg_match("/^[iī]/", $word2)) &&
@@ -940,14 +940,20 @@ class Sanskrit_Common {
 		$script = mb_ereg_replace("([ṅmn])([cj]|[cj]h)", "ñ\\2", $script);
 
 		// rl対応
-		$script = mb_ereg_replace("([[bpkghcjlrtdḍṭmnṅñṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṇśṣsyv]])", "\\1ṛ\\2", $script);
-		$script = mb_ereg_replace("([[bpkghcjlrtdḍṭmnṅñṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṇśṣsyv]])", "\\1ḷ\\2", $script);	
+		$script = mb_ereg_replace("([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])", "\\1ṛ\\2", $script);
+		$script = mb_ereg_replace("([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])", "\\1ḷ\\2", $script);	
 
 		// 最後の子音が連続する場合は
 		if($word_flag){		
-			$script = mb_ereg_replace("([bcdghjklmṃṅnprsṣt])([bcdghjklmnṃṅnprsṣt])\b", '\\1', $script);
-			$script = mb_ereg_replace("([bcdghjklmṃṅnprsṣt])([bcdghjklmnṃṅnprsṣt])\b", '\\1', $script);			
+			$script = mb_ereg_replace("([bpkghcjlrtdḍṭmnṅñṃṇśṣs])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);
+			$script = mb_ereg_replace("([bpkghcjlrtdḍṭmnṅñṃṇśṣs])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);			
 		}
+		
+		// n対応
+		$script = mb_ereg_replace("([bpkghcjlrtdḍṭv])n", "\\1ñ", $script);
+		$script = mb_ereg_replace("([bpkghcjlrtdḍṭv])m", "\\1n", $script);
+		$script = mb_ereg_replace("([śṣs])([mn])", "\\1n", $script);
+		$script = mb_ereg_replace("([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])", "n\\2", $script);
 
 		// 母音の統合
 		$script = mb_ereg_replace("([aā])([aā])", "ā", $script);
