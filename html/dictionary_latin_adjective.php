@@ -14,20 +14,21 @@ function get_adjective_declension_chart($word){
 	// 形容詞の情報を取得
 	$adjective_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::$DB_ADJECTIVE);
   // 取得できない場合は
-  if(!$adjective_words){
+  if(!$adjective_words && Latin_Common::is_alphabet_or_not($word)){
     // 英語で取得する。
     $adjective_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::$DB_ADJECTIVE);  
     if(!$adjective_words){
       // 単語から直接取得する
       $adjective_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::$DB_ADJECTIVE);
       // 取得できない場合は
-      if(!$adjective_words && (!ctype_alnum($word) && !preg_match('(ā|ī|ū|ē|ō)',$word))){
-        // 空を返す。
-        return array();
-      } else if(ctype_alpha($word)){
+      if(!$adjective_words){
+        // その単語を入れる
         $adjective_words[] = $word;
-      }
+      } 
     }
+  } else if(!Latin_Common::is_alphabet_or_not($word)){
+    // 空を返す。
+    return array();   
   }
 	// 配列を宣言
 	$declensions = array();  
@@ -124,7 +125,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
     <div class="container item table-striped">   
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_adjective" class="">
+        <input type="text" name="input_adjective" class="" id="input_adjective">
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn" for="btn-search">検索</label>
         <select class="" id="adjective-selection" aria-label="Default select example">

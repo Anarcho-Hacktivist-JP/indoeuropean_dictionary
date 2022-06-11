@@ -14,7 +14,7 @@ function get_noun_declension_chart($word){
 	// 名詞の情報を取得
 	$noun_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::$DB_NOUN);
   // 取得できない場合は
-  if(!$noun_words){
+  if(!$noun_words && Latin_Common::is_alphabet_or_not($word)){
     // 英語で取得する。
     $noun_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::$DB_NOUN);    
     // 取得できない場合は
@@ -22,13 +22,14 @@ function get_noun_declension_chart($word){
       // 単語から直接取得する
       $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::$DB_NOUN);
       // 取得できない場合は
-      if(!$noun_words && (!ctype_alnum($word) && !preg_match('(ā|ī|ū|ē|ō)',$word))){
-        // 空を返す。
-        return array();
-      } else if(ctype_alpha($word) || preg_match('(ā|ī|ū|ē|ō)',$word)){
+      if(!$noun_words){
+        // その単語を入れる        
         $noun_words[] = $word;
       }    
     }
+  } else if(!Latin_Common::is_alphabet_or_not($word)){
+    // 空を返す。
+    return array();   
   }
  	// 配列を宣言
   $declensions = array(); 

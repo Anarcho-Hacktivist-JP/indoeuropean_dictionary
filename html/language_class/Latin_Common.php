@@ -11,7 +11,7 @@ class Latin_Common {
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dic_stem, $table){
 		// 英文字以外は考慮しない
-		if(!ctype_alpha($dic_stem)){
+		if(!Latin_Common::is_alphabet_or_not($dic_stem)){
 			return null;
 		}
 		//DBに接続
@@ -89,6 +89,10 @@ class Latin_Common {
 
 	// 英語で名詞・形容詞の訳語を取得
 	public static function get_dictionary_stem_by_english($english_translation, $table, $gender = ""){
+		// 英文字以外は考慮しない
+		if(!Latin_Common::is_alphabet_or_not($english_translation)){
+			return null;
+		}		
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -134,9 +138,8 @@ class Latin_Common {
 	public static function get_latin_strong_stem($japanese_translation, $table, $gender = ""){
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation)){
-			$new_database_info = array();
-			array_push($new_database_info, $japanese_translation);
-			return $new_database_info;
+			// 何も返さない。
+			return null;
 		}
 		//DBに接続
 		$db_host = set_DB_session();
@@ -176,9 +179,8 @@ class Latin_Common {
 	public static function get_latin_adverb($japanese_translation){
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation)){
-			$new_database_info = array();
-			array_push($new_database_info, $japanese_translation);
-			return $new_database_info;
+			// 何も返さない。
+			return null;
 		}
 		// 形容詞の検索条件変更
 		$japanese_translation = mb_ereg_replace("く\b", 'い', $japanese_translation);
@@ -960,5 +962,99 @@ class Latin_Common {
       	</div> ';
 	}
 
+	// アルファベット判定をする。
+	public static function is_alphabet_or_not($word){
+		// アルファベットの場合はtrue
+		if(ctype_alnum($word) || preg_match('(ā|ī|ū|ē|ō)',$word)){
+			return true;		
+		}
+
+		// それ以外はfalse
+		return false;
+	}
+
+	// 性別選択ボタンの生成
+	public static function gender_selection_button(){
+		return '
+		<h3>性別</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 数選択ボタンの生成
+	public static function number_selection_button(){
+		return '
+		<h3>数</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="sg">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="pl">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
+		  </div>              
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 数選択ボタンの生成
+	public static function case_selection_button(){
+		return '
+		<h3>格</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="nom">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="gen">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="dat">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格</label>
+		  </div>         
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="acc">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格</label>
+		  </div>         
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-abl" autocomplete="off" value="abl">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-abl">奪格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="loc">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="voc">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
+		  </div>               
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
+		  </div>
+		</section>';
+	}	
 
 }

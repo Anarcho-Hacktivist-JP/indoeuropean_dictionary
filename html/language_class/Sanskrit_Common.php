@@ -1206,4 +1206,17 @@ class Sanskrit_Common {
       	</div> ';
 	}
 
+	// アルファベット判定をする。
+	public static function is_alphabet_or_not($word){
+		// アルファベットの場合はtrue
+		if(ctype_alnum($word) || preg_match('/(ā|ī|ū|ṛ|ṝ|ḷ|ḹ|ṅ|ñ|ṃ|ṇ|ṭ|ḍ|ś|ṣ)/',$word)){
+			return true;		
+		}
+
+		// それ以外はfalse
+		return false;
+	}
+
+
+
 }

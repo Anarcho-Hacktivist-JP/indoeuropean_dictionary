@@ -19,40 +19,10 @@ function get_adjective_declension_chart($word){
     $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_ADJECTIVE);  
     if(!$adjective_words){
       // 取得できない場合は
-      if(!$adjective_words && (!ctype_alpha($word) && 
-                               !strpos($word, "ā") && 
-                               !strpos($word, "ī") && 
-                               !strpos($word, "ū") && 
-                               !strpos($word, "ṛ") && 
-                               !strpos($word, "ṝ") &&
-                               !strpos($word, "ḷ") && 
-                               !strpos($word, "ḹ") &&
-                               !strpos($word, "ṅ") && 
-                               !strpos($word, "ñ") &&
-                               !strpos($word, "ṃ") && 
-                               !strpos($word, "ṇ") &&                               
-                               !strpos($word, "ṭ") && 
-                               !strpos($word, "ḍ") &&
-                               !strpos($word, "ś") && 
-                               !strpos($word, "ṣ"))){
+      if(!Sanskrit_Common::is_alphabet_or_not($word)){
         // 空を返す。
         return array();
-      } else if(!ctype_alpha($word) && 
-                !strpos($word, "ā") && 
-                !strpos($word, "ī") && 
-                !strpos($word, "ū") && 
-                !strpos($word, "ṛ") && 
-                !strpos($word, "ṝ") &&
-                !strpos($word, "ḷ") && 
-                !strpos($word, "ḹ") &&
-                !strpos($word, "ṅ") && 
-                !strpos($word, "ñ") &&
-                !strpos($word, "ṃ") && 
-                !strpos($word, "ṇ") &&                
-                !strpos($word, "ṭ") && 
-                !strpos($word, "ḍ") &&
-                !strpos($word, "ś") && 
-                !strpos($word, "ṣ")){
+      } else if(!Sanskrit_Common::is_alphabet_or_not($word)){
         $adjective_words[] = $word;
       }
     }

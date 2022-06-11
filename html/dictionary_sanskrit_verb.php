@@ -20,22 +20,7 @@ function get_conjugation($word, $janome_result){
   // 名詞の情報が取得できない場合は
   if(!$vedic_verbs){
     // アルファベット以外は処理しない。
-    if(ctype_alnum($word) || !ctype_alpha($word) && 
-                             !strpos($word, "ā") && 
-                             !strpos($word, "ī") && 
-                             !strpos($word, "ū") && 
-                             !strpos($word, "ṅ") && 
-                             !strpos($word, "ñ") &&
-                             !strpos($word, "ṃ") && 
-                             !strpos($word, "ṇ") &&
-                             !strpos($word, "ṛ") && 
-                             !strpos($word, "ṝ") &&
-                             !strpos($word, "ḷ") && 
-                             !strpos($word, "ḹ") &&
-                             !strpos($word, "ṭ") && 
-                             !strpos($word, "ḍ") &&
-                             !strpos($word, "ś") && 
-                             !strpos($word, "ṣ")){
+    if(Sanskrit_Common::is_alphabet_or_not($word)){
 		  // 活用表生成、配列に格納
 		  $conjugations = array_merge(get_verb_chart($word), $conjugations);
     } else {
