@@ -9,12 +9,21 @@ include(dirname(__FILE__) . "/language_class/Database_session.php");
 include(dirname(__FILE__) . "/language_class/Commons.php");
 include(dirname(__FILE__) . "/language_class/Latin_Common.php");
 
-// 
+// 挿入データ－性別－
+$gender = trim(filter_input(INPUT_POST, 'gender'));
+// 挿入データ－活用種別－
+$declension = trim(filter_input(INPUT_POST, 'declension'));
+// 挿入データ－数－
+$number = trim(filter_input(INPUT_POST, 'number'));
+// 挿入データ－格－
+$case = trim(filter_input(INPUT_POST, 'case'));
+
+// 単語取得
 $question_word = Latin_Common::get_random_adjective();
 // 読み込み
 $adjective_latin = new Latin_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_latin->get_form_by_number_case_gender_grade();
+$question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $number, $gender);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -32,6 +41,21 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade();
   <?php require_once("header.php"); ?>
   <body>
     <div class="container item">
+    <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
+        <?php echo Latin_Common::gender_selection_button(); ?>   
+        <?php echo Latin_Common::number_selection_button(); ?> 
+        <?php echo Latin_Common::case_selection_button(); ?>         
+        <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
+        <input type="submit" class="btn-check" id="btn-search">
+        <label class="btn btn-outline-secondary" for="btn-search">問題を生成</label>
+      </form>
+      <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
+      <script>
+        var storage = new FormStorage('.js-form-storage',{
+          name: 'form-storage-lat-adj',
+          checkbox: '.js-persist'
+        });
+      </script>     
       <p><?php echo $question_data['question_sentence']; ?></p>
       <div class="input-group mb-3">
         <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer">

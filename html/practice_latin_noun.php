@@ -44,41 +44,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
         <?php echo Latin_Common::gender_selection_button(); ?>   
-        <h3>変化種別</h3>
-        <section class="row">
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-2" autocomplete="off" value="2">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2">第二活用(男性)</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-2um" autocomplete="off" value="2um">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2um">第二活用(中性)</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-2r" autocomplete="off" value="2r">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2r">第二活用(r語幹)</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-3" autocomplete="off" value="3">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3">第三活用(i語幹)</label>
-          </div>        
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-3i" autocomplete="off" value="3i">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3i">第三活用(i語幹)</label>
-          </div>         
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-3con" autocomplete="off" value="3con">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3con">第三活用(子音語幹)</label>
-          </div>              
-          <div class="col-md-3">
-            <input type="radio" name="declension" class="btn-check" id="btn-all-declension" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-declension">すべて</label>
-          </div>
-        </section>
+        <?php echo Latin_Common::noun_declension_type_selection_button(); ?>   
         <?php echo Latin_Common::number_selection_button(); ?> 
         <?php echo Latin_Common::case_selection_button(); ?>         
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
