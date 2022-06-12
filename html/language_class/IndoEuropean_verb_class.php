@@ -4975,7 +4975,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 法がない場合
 		if($mood == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, Commons::$SUBJUNCTIVE, Commons::$OPTATIVE, Commons::$IMPERATIVE);	// 初期化
+			$ary = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, Commons::$OPTATIVE, Commons::$IMPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$mood = $ary[$key];			

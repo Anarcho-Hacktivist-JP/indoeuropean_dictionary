@@ -43,7 +43,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
   <body>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php echo Latin_Common::gender_selection_button(); ?>   
+        <?php echo Latin_Common::noun_gender_selection_button(); ?>   
         <?php echo Latin_Common::noun_declension_type_selection_button(); ?>   
         <?php echo Latin_Common::number_selection_button(); ?> 
         <?php echo Latin_Common::case_selection_button(); ?>         
@@ -54,7 +54,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
       <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
       <script>
         var storage = new FormStorage('.js-form-storage',{
-          name: 'form-storage',
+          name: 'form-storage-lat-noun',
           checkbox: '.js-persist'
         });
       </script>      

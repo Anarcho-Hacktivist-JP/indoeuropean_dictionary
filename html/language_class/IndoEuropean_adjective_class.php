@@ -2820,7 +2820,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_adjective_title()."の".$gender." ".$number." ".$case."を答えよ";				
+		$question_data['question_sentence'] = $this->get_adjective_title()."の".$grade." ".$gender." ".$number." ".$case."を答えよ";				
 		$question_data['answer'] = $this->get_declensioned_adjective($case, $number, $gender, $grade);
 		$question_data['case'] = $case;
 		$question_data['number'] = $number;	
