@@ -22,10 +22,10 @@ function get_noun_declension_chart($word){
       // 単語から直接取得する
       $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::$DB_NOUN);
       // 取得できない場合は
-      if(!$noun_words && (!ctype_alpha($word) && !strpos($word, "ą") && !strpos($word, "ć") && !strpos($word, "ę") && !strpos($word, "ń") && !strpos($word, "ł") && !strpos($word, "ó") && !strpos($word, "ś") && !strpos($word, "ź") && !strpos($word, "ż"))){
+      if(!$noun_words && !Polish_Common::is_alphabet_or_not($word)){
         // 空を返す。
         return array();
-      } else if(ctype_alpha($word) || !strpos($word, "ą") || !strpos($word, "ć") || !strpos($word, "ę") || !strpos($word, "ń") || !strpos($word, "ł") || !strpos($word, "ó") || !strpos($word, "ś") || !strpos($word, "ź") || !strpos($word, "ż")){
+      } else if(Polish_Common::is_alphabet_or_not($word)){
         $noun_words[] = $word;
       }
     }

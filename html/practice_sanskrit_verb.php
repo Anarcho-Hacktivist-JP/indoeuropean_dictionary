@@ -25,7 +25,7 @@ $question_word = Sanskrit_Common::get_random_verb();
 // 読み込み
 $sanskrit_verb = new Vedic_Verb($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person, $voice, $aspect, $mood);
+$question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person, $voice, $mood, $aspect);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -74,6 +74,52 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
     <script>
         var question_data = '<?php echo json_encode($question_data, JSON_UNESCAPED_UNICODE); ?>';
     </script>
+    <script>
+    //選択制御(相)
+    function click_aspect_button(){
+    	// 現在形にチェックがある場合は
+    	if ($('#practice-condition [name=aspect]:checked').val() == "present"){
+    		// 祈願法にdisableを付ける
+    		document.getElementById("btn-bend").setAttribute("disabled", true);	
+    		// 現在形のdisabled属性を削除
+    		document.getElementById("btn-tense-present").removeAttribute("disabled"); 
+     		// 受動態のdisabled属性を削除
+        document.getElementById("btn-passive").removeAttribute("disabled");                   
+    	} else if($('#practice-condition [name=aspect]:checked').val() == "aorist"){
+    		// 完結相にチェックがある場合は
+    		// 祈願法のdisabled属性を削除
+    		document.getElementById("btn-bend").removeAttribute("disabled");
+        // 現在形にdisabled属性を付与
+    		document.getElementById("btn-tense-present").setAttribute("disabled", true);
+     		// 受動態のdisabled属性を削除
+        document.getElementById("btn-passive").removeAttribute("disabled");         	       
+    	} else if($('#practice-condition [name=aspect]:checked').val() == "perfect"){
+    		// 完了相にチェックがある場合は
+    		// 祈願法にdisableを付ける
+    		document.getElementById("btn-bend").setAttribute("disabled", true);	
+     		// 受動態にdisableを付ける
+        document.getElementById("btn-passive").setAttribute("disabled", true);	       
+     		// 現在形のdisabled属性を削除
+        document.getElementById("btn-tense-present").removeAttribute("disabled");       
+    	} else if($('#practice-condition [name=aspect]:checked').val() == "future"){
+    		// 未然相にチェックがある場合は
+    		// 祈願法にdisableを付ける
+    		document.getElementById("btn-bend").setAttribute("disabled", true);	
+     		// 現在形のdisabled属性を削除
+        document.getElementById("btn-tense-present").removeAttribute("disabled");
+     		// 受動態のdisabled属性を削除
+        document.getElementById("btn-passive").removeAttribute("disabled");                 
+    	} else {
+    		// すべてにチェックがある場合は
+    		// 祈願法にdisableを付ける
+    		document.getElementById("btn-bend").setAttribute("disabled", true);	
+     		// 現在形のdisabled属性を削除
+        document.getElementById("btn-tense-present").removeAttribute("disabled"); 
+        // 受動態のdisabled属性を削除
+        document.getElementById("btn-passive").removeAttribute("disabled");               
+    	}
+    }
+    </script>    
     <script>
         $(function(){
           // イベントを設定

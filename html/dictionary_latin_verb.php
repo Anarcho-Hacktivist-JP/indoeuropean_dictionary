@@ -154,10 +154,10 @@ $janome_result = Commons::convert_compound_array($janome_result);
 if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 複合語の場合
   $conjugations = get_compound_verb_word($janome_result, $input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "名詞" && !Latin_Common::is_alphabet_or_not($word) && !strpos($input_verb, Commons::$LIKE_MARK)){
+} else if($input_verb != "" && $janome_result[0][1] == "名詞" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得
 	$conjugations = get_conjugation_by_noun($input_verb, $input_verb_type);
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Latin_Common::is_alphabet_or_not($word) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
 	$conjugations = get_conjugation_by_adjective($input_verb, $input_verb_type);    
 } else if($input_verb != ""){

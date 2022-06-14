@@ -52,6 +52,9 @@
           </div>
           <div class="col-md-1">
             <a href="dictionary_polish_adjective.php">形容詞</a>
-          </div>        
+          </div>
+          <div class="col-md-1">
+            <a href="dictionary_polish_verb.php">動詞</a>
+          </div>                 
         </section>
     </div>    

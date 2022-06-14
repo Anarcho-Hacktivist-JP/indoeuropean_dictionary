@@ -231,6 +231,7 @@ class Polish_Common {
 
 	// 動詞の情報を取得する。
 	public static function get_verb_by_english($english_translation){
+		return null;		
 		// 英数字以外は考慮しない
 		if(!ctype_alnum($english_translation)){
 			return null;
@@ -279,6 +280,7 @@ class Polish_Common {
 
 	// 動詞の情報を取得する。
 	public static function get_verb_from_DB($dictionary_stem){
+		return null;	
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -294,6 +296,30 @@ class Polish_Common {
 		} else {
 			return null;
 		}
+	}
+
+	// ラテン語の動詞を取得
+	public static function get_verb_conjugation($polish_verb){
+
+		// 配列を初期化
+		$conjugations = array();
+
+		// 活用種別で分ける。
+		if($polish_verb["verb_type"] == "5byc"){
+		    // 読み込み
+		    $verb_data = new Latin_Verb_Sum();
+        	$verb_data->add_stem($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();                    
+      	} else {
+		    // 読み込み
+		    $verb_data = new Polish_Verb($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();     
+      	}
+
+		// 結果を返す。	  
+		return $conjugations;
 	}
 
 	// ランダムな名詞を取得
@@ -445,12 +471,27 @@ class Polish_Common {
 
 		return '      
 		<div class="d-grid gap-2 d-md-block">
-        	<button class="btn btn-primary" type="button" id="button-a" value="ā">ā</button>
-        	<button class="btn btn-primary" type="button" id="button-i" value="ī">ī</button>
-        	<button class="btn btn-primary" type="button" id="button-u" value="ū">ū</button>
-        	<button class="btn btn-primary" type="button" id="button-e" value="ē">ē</button> 
-        	<button class="btn btn-primary" type="button" id="button-o" value="ō">ō</button>
+        	<button class="btn btn-primary" type="button" id="button-a" value="ą">ą</button>
+        	<button class="btn btn-primary" type="button" id="button-c" value="ć">ć</button>			
+        	<button class="btn btn-primary" type="button" id="button-e" value="ę">ę</button>
+        	<button class="btn btn-primary" type="button" id="button-l" value="ł">ł</button>
+        	<button class="btn btn-primary" type="button" id="button-n" value="ń">ń</button>
+        	<button class="btn btn-primary" type="button" id="button-o" value="ó">ó</button>
+        	<button class="btn btn-primary" type="button" id="button-s" value="ś">ś</button> 
+        	<button class="btn btn-primary" type="button" id="button-z1" value="ź">ź</button> 
+        	<button class="btn btn-primary" type="button" id="button-z2" value="ż">ż</button> 			
       	</div> ';
+	}
+
+	// アルファベット判定をする。
+	public static function is_alphabet_or_not($word){
+		// アルファベットの場合はtrue
+		if(ctype_alnum($word) || preg_match('(ą|ć|ę|ł|ń|ó|ś|ź|ż)',$word)){
+			return true;		
+		}
+
+		// それ以外はfalse
+		return false;
 	}
 
 

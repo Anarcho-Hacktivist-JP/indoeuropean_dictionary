@@ -19,10 +19,10 @@ function get_adjective_declension_chart($word){
     $adjective_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::$DB_ADJECTIVE);  
     if(!$adjective_words){
       // 取得できない場合は
-      if(!$adjective_words && (!ctype_alpha($word) && !strpos($word, "ą") && !strpos($word, "ć") && !strpos($word, "ę") && !strpos($word, "ł") && !strpos($word, "ń") && !strpos($word, "ó") && !strpos($word, "ś") && !strpos($word, "ź") && !strpos($word, "ż"))){
+      if(!$adjective_words && !Polish_Common::is_alphabet_or_not($word)){
         // 空を返す。
         return array();
-      } else if(ctype_alpha($word) || !strpos($word, "ą") || !strpos($word, "ć") || !strpos($word, "ę") || !strpos($word, "ń") || !strpos($word, "ł") || !strpos($word, "ó") || !strpos($word, "ś") || !strpos($word, "ź") || !strpos($word, "ż")){
+      } else if(Polish_Common::is_alphabet_or_not($word)){
         $adjective_words[] = $word;
       }
     }
