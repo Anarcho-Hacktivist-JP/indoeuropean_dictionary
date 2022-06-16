@@ -380,7 +380,7 @@ class Sanskrit_Common {
 	}
 
 	// ランダムな動詞を取得
-	public static function get_random_verb($verb_type = ""){
+	public static function get_random_verb($verb_type = "", $root_type = ""){
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -391,6 +391,13 @@ class Sanskrit_Common {
 		} else {
 			$query = $query."AND `conjugation_present_type` LIKE '%".$verb_type."%'";			
 		}
+
+		// 活用種別
+		if($root_type != ""){
+			$query = $query."AND `root_type` LIKE '%".$root_type."%'";
+		} else {
+			$query = $query."AND `root_type` LIKE '%".$root_type."%'";			
+		}		
 
 		// ランダムで1単語
 		$query = $query."ORDER BY RAND() LIMIT 1";
@@ -920,18 +927,26 @@ class Sanskrit_Common {
 		// バルトロマエの法則
 		$script = mb_ereg_replace("([td])h([dgb])h", "d\\2h", $script);
 		$script = mb_ereg_replace("([bp])h([dgb])h", "b\\2h", $script);
-		$script = mb_ereg_replace("([gk])h([dgb])h", "g\\2h", $script);		
+		$script = mb_ereg_replace("([gk])h([dgb])h", "g\\2h", $script);
 		$script = mb_ereg_replace("([td])h([dgb])", "d\\2h", $script);
 		$script = mb_ereg_replace("([bp])h([dgb])", "b\\2h", $script);
 		$script = mb_ereg_replace("([gk])h([dgb])", "g\\2h", $script);
-		$script = mb_ereg_replace("([dbgj])hph", "\\1bh", $script);
-		$script = mb_ereg_replace("([dbgj])hth", "\\1dh", $script);
-		$script = mb_ereg_replace("([dbgj])hkh", "\\1gh", $script);
-		$script = mb_ereg_replace("([dbgj])hch", "\\1jh", $script);
-		$script = mb_ereg_replace("([dbgj])hp", "\\1bh", $script);
-		$script = mb_ereg_replace("([dbgj])ht", "\\1dh", $script);
-		$script = mb_ereg_replace("([dbgj])hk", "\\1gh", $script);
-		$script = mb_ereg_replace("([dbgj])hc", "\\1jh", $script);		
+		$script = mb_ereg_replace("dh([ckpt])h", "t\\1h", $script);
+		$script = mb_ereg_replace("dh([ckpt])", "t\\1h", $script);
+		$script = mb_ereg_replace("d([ckpt])h", "t\\1h", $script);	
+		$script = mb_ereg_replace("d([ckpt])", "t\\1", $script);
+		$script = mb_ereg_replace("bh([ckpt])h", "p\\1h", $script);
+		$script = mb_ereg_replace("bh([ckpt])", "p\\1h", $script);
+		$script = mb_ereg_replace("b([ckpt])h", "p\\1h", $script);	
+		$script = mb_ereg_replace("b([ckpt])", "p\\1", $script);
+		$script = mb_ereg_replace("gh([ckpt])h", "k\\1h", $script);
+		$script = mb_ereg_replace("gh([ckpt])", "k\\1h", $script);
+		$script = mb_ereg_replace("g([ckpt])h", "k\\1h", $script);	
+		$script = mb_ereg_replace("g([ckpt])", "k\\1", $script);		
+		$script = mb_ereg_replace("jh([ckpt])h", "c\\1h", $script);
+		$script = mb_ereg_replace("jh([ckpt])", "c\\1h", $script);
+		$script = mb_ereg_replace("j([ckpt])h", "c\\1h", $script);	
+		$script = mb_ereg_replace("j([ckpt])", "c\\1", $script);
 		$script = mb_ereg_replace("([tpk]|[dbg])h([tpk]|[dbg])", "\\1\\2h", $script);
 		
 		// m対応
@@ -1332,7 +1347,79 @@ class Sanskrit_Common {
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
 		  </div>
 		</section>';
-	}	
+	}
+
+	// 動詞の活用種別ボタンの生成
+	public static function root_type_selection_button(){
+		return '
+        <h3>語根種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="root-type" class="btn-check" id="btn-present" autocomplete="off" value="present" onclick="click_root_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-present">不完了体語根</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="root-type" class="btn-check" id="btn-aorist" autocomplete="off" value="aorist" onclick="click_root_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aorist">完了体語根</label>
+          </div>       
+          <div class="col-md-3">
+            <input type="radio" name="root-type" class="btn-check" id="btn-all-root" autocomplete="off" value="" checked="checked" onclick="click_root_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-root">すべて</label>
+          </div>
+        </section>';
+	}
+
+	// 動詞の活用種別ボタンの生成
+	public static function verb_type_selection_button(){
+		return '
+        <h3>変化種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb1">第一活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb2" autocomplete="off" value="2">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb2">第二活用(語根)</label>
+          </div>       
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb3" autocomplete="off" value="3">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb3">第三活用(重複)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb4" autocomplete="off" value="4">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb4">第四活用(ya接辞)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb5" autocomplete="off" value="5">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb5">第五活用(no接辞)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb6" autocomplete="off" value="6">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb6">第六活用</label>
+          </div>		  
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb7" autocomplete="off" value="7">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb7">第七活用(n接辞)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb8" autocomplete="off" value="8">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb8">第八活用(o接辞)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb9" autocomplete="off" value="9">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb9">第九活用(n接辞)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb10" autocomplete="off" value="10">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb10">第十活用(aya接辞)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-all-conjugation" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-conjugation">すべて</label>
+          </div>
+        </section>';
+	}
 
 	// 人称ボタンの生成
 	public static function person_selection_button(){

@@ -3058,14 +3058,9 @@ class Polish_Adjective extends Adjective_Common_IE {
 			if(preg_match("/y$/", $adjective)){
 				$this->adjective_type = "1-2";          				// 名詞種別
 				$this->third_stem = mb_substr($adjective, 0, -1);		// 強語幹を変更			
-			} else if(preg_match("/(k|g)$/", $adjective)){					
-				$this->adjective_type = "1-2i";        					// 名詞種別
-				$this->first_stem = $adjective."i";						// 弱語幹を変更
-			} else if(preg_match("/(n|m)$/", $adjective)){
-				$this->adjective_type = "1-2i";       					// 名詞種別
-				$this->first_stem = $adjective."i";						// 弱語幹を変更
 			} else if(preg_match("/(i)$/", $adjective)){
-				$this->adjective_type = "1-2i";       					// 名詞種別		
+				$this->adjective_type = "1-2i";       					// 名詞種別	
+				$this->third_stem = mb_substr($adjective, 0, -1);		// 強語幹を変更			
 			} else {
 				$this->adjective_type = "1-2";          				// 名詞種別		
 				$this->first_stem = $adjective."y";						// 弱語幹を変更
@@ -3226,8 +3221,13 @@ class Polish_Adjective extends Adjective_Common_IE {
 			$adjective = $this->third_stem;
 		}
 
+		// 変換処理
+		$adjective = trim($adjective.$case_suffix);
+		$adjective = preg_replace("/ky$/", "cy", $adjective);
+		$adjective = preg_replace("/gy$/", "dzy", $adjective);
+
 		// 結果を返す
-		return trim($adjective.$case_suffix);
+		return $adjective;
 	}
 	
 	// 形容詞作成(比較級)

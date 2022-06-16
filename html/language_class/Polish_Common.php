@@ -10,7 +10,6 @@ class Polish_Common {
 
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dic_stem, $table){
-		return null;		
 		// 英文字以外は考慮しない
 		if(!ctype_alpha($dic_stem)){
 			return null;
@@ -41,8 +40,7 @@ class Polish_Common {
 	}
 	
 	// 名詞・形容詞の訳語を取得
-	public static function get_dictionary_stem_by_japanese($japanese_translation, $table, $gender = ""){
-		return null;		
+	public static function get_dictionary_stem_by_japanese($japanese_translation, $table, $gender = ""){	
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation)){
 			// 何も返さない。
@@ -91,7 +89,6 @@ class Polish_Common {
 
 	// 英語で名詞・形容詞の訳語を取得
 	public static function get_dictionary_stem_by_english($english_translation, $table, $gender = ""){
-		return null;
 		// 英数字以外は考慮しない
 		if(!ctype_alnum($english_translation)){
 			// 何も返さない。
@@ -139,7 +136,7 @@ class Polish_Common {
 	}	
 
 	// 名詞・形容詞の語幹を取得
-	public static function get_latin_strong_stem($japanese_translation, $table, $gender = ""){
+	public static function get_polish_strong_stem($japanese_translation, $table, $gender = ""){
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation)){
 			$new_database_info = array();
@@ -230,8 +227,7 @@ class Polish_Common {
 	}
 
 	// 動詞の情報を取得する。
-	public static function get_verb_by_english($english_translation){
-		return null;		
+	public static function get_verb_by_english($english_translation){	
 		// 英数字以外は考慮しない
 		if(!ctype_alnum($english_translation)){
 			return null;

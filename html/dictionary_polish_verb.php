@@ -16,30 +16,30 @@ function get_verb_conjugation_chart($word){
   // 配列を宣言
 	$conjugations = array();
 	// 動詞の情報を取得
-	$latin_verbs = Polish_Common::get_verb_by_japanese($word);
+	$polish_verbs = Polish_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
-  if(!$latin_verbs && Polish_Common::is_alphabet_or_not($word)){
+  if(!$polish_verbs && Polish_Common::is_alphabet_or_not($word)){
 	  // 英語で動詞の情報を取得
-	  $latin_verbs = Polish_Common::get_verb_by_english($word);
+	  $polish_verbs = Polish_Common::get_verb_by_english($word);
     // 動詞の情報が取得できない場合は
-    if(!$latin_verbs){
+    if(!$polish_verbs){
       // 動詞の情報を取得
-	    $latin_verb = Polish_Common::get_verb_from_DB($word);
+	    $polish_verb = Polish_Common::get_verb_from_DB($word);
       // 動詞が取得できたか確認する。
-      if($latin_verb){
+      if($polish_verb){
         // 動詞が取得できた場合
-        $conjugations = array_merge(Polish_Common::get_verb_conjugation($latin_verb[0]), $conjugations);
+        $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb[0]), $conjugations);
       } else {
 		    // 動詞が取得できない場合
         // 動詞を生成
-		    $verb_latin = new Polish_Verb($word);
+		    $verb_polish = new Polish_Verb($word);
 		    // 活用表生成、配列に格納
-		    $conjugations[$verb_latin->get_infinitive()] = $verb_latin->get_chart();
+		    $conjugations[$verb_polish->get_infinitive()] = $verb_polish->get_chart();
       }
     } else {
       // 新しい配列に詰め替え
-	    foreach ($latin_verbs as $latin_verb) {
-        $conjugations = array_merge(Polish_Common::get_verb_conjugation($latin_verb), $conjugations);
+	    foreach ($polish_verbs as $polish_verb) {
+        $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
 	    }
     }
   } else if(!Polish_Common::is_alphabet_or_not($word)){
@@ -47,8 +47,8 @@ function get_verb_conjugation_chart($word){
     return array();   
   } else {
 	  // 新しい配列に詰め替え
-	  foreach ($latin_verbs as $latin_verb) {
-      $conjugations = array_merge(Polish_Common::get_verb_conjugation($latin_verb), $conjugations);
+	  foreach ($polish_verbs as $polish_verb) {
+      $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
 	  }
   }
   // 結果を返す。
@@ -59,25 +59,25 @@ function get_verb_conjugation_chart($word){
 function get_conjugation_by_noun($word){
 
 	// 名詞の語幹を取得
-	$latin_nouns = Polish_Common::get_latin_strong_stem($word, Polish_Common::$DB_NOUN);
+	$polish_nouns = Polish_Common::get_polish_strong_stem($word, Polish_Common::$DB_NOUN);
   // 名詞の情報が取得できない場合は
-  if(!$latin_nouns){
+  if(!$polish_nouns){
     // 空を返す。
     return array();
   }  
   // 初期化
-  $latin_verbs = array();
+  $polish_verbs = array();
 	// 全ての値に適用
-	for ($i = 0; $i < count($latin_nouns); $i++) {
+	for ($i = 0; $i < count($polish_nouns); $i++) {
 		// 第一変化動詞に変更
-		$latin_verbs[$i] = $latin_nouns[$i]."ować";
+		$polish_verbs[$i] = $polish_nouns[$i]."ować";
 	}
   // 配列を宣言
   $conjugations = array();   
 	// 新しい配列に詰め替え
-	foreach ($latin_verbs as $latin_verb) {
+	foreach ($polish_verbs as $polish_verb) {
 	  // 読み込み
-	  $verb_data = new Polish_Verb($latin_verb);
+	  $verb_data = new Polish_Verb($polish_verb);
 	  // 活用表生成、配列に格納
 	  $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
 	}
@@ -88,25 +88,25 @@ function get_conjugation_by_noun($word){
 // 形容詞から活用表を取得する。
 function get_conjugation_by_adjective($word){
 	// 形容詞の語幹を取得
-	$latin_adjectives = Polish_Common::get_latin_strong_stem($word, Polish_Common::$DB_ADJECTIVE);
+	$polish_adjectives = Polish_Common::get_polish_strong_stem($word, Polish_Common::$DB_ADJECTIVE);
   // 形容詞の情報が取得できない場合は
-  if(!$latin_adjectives){
+  if(!$polish_adjectives){
     // 空を返す。
     return array();
   } 
   // 初期化
-  $latin_verbs = array();
+  $polish_verbs = array();
 	// 全ての値に適用
-	for ($i = 0; $i < count($latin_adjectives); $i++) {
+	for ($i = 0; $i < count($polish_adjectives); $i++) {
 		// 第一変化動詞に変更
-		$latin_verbs[$i] = $latin_adjectives[$i]."ować";
+		$polish_verbs[$i] = $polish_adjectives[$i]."ować";
 	}
   // 配列を宣言
   $conjugations = array();   
 	// 新しい配列に詰め替え
-	foreach ($latin_verbs as $latin_verb) {         
+	foreach ($polish_verbs as $polish_verb) {         
 	  // 読み込み
-	  $verb_data = new Polish_Verb($latin_verb);
+	  $verb_data = new Polish_Verb($polish_verb);
 	  // 活用表生成、配列に格納
 	  $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
 	}
@@ -150,7 +150,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
     <?php require_once("header.php"); ?>
   <body>
     <div class="container item table-striped">
-      <h1>ラテン語辞書（動詞）</h1>
+      <h1>ポーランド語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="">
@@ -348,25 +348,25 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
             [active["present"]["2pl"]["masc"], middle["present"]["2pl"]["masc"]],
             [active["present"]["3pl"]["masc"], middle["present"]["3pl"]["masc"]],
             ["", "", ""],
-            [active["past"]["1sg"]["masc"], middle["past"]["1sg"]["masc"]],
-            [active["past"]["2sg"]["masc"], middle["past"]["2sg"]["masc"]],
-            [active["past"]["3sg"]["masc"], middle["past"]["3sg"]["masc"]],
-            [active["past"]["1du"]["masc"], middle["past"]["1du"]["masc"]],
-            [active["past"]["2du"]["masc"], middle["past"]["2du"]["masc"]],
-            [active["past"]["3du"]["masc"], middle["past"]["3du"]["masc"]],            
-            [active["past"]["1pl"]["masc"], middle["past"]["1pl"]["masc"]],
-            [active["past"]["2pl"]["masc"], middle["past"]["2pl"]["masc"]],
-            [active["past"]["3pl"]["masc"], middle["past"]["3pl"]["masc"]],
+            ["*" + active["past"]["1sg"]["masc"], "*" + middle["past"]["1sg"]["masc"]],
+            ["*" + active["past"]["2sg"]["masc"], "*" + middle["past"]["2sg"]["masc"]],
+            ["*" + active["past"]["3sg"]["masc"], "*" + middle["past"]["3sg"]["masc"]],
+            ["*" + active["past"]["1du"]["masc"], "*" + middle["past"]["1du"]["masc"]],
+            ["*" + active["past"]["2du"]["masc"], "*" + middle["past"]["2du"]["masc"]],
+            ["*" + active["past"]["3du"]["masc"], "*" + middle["past"]["3du"]["masc"]],            
+            ["*" + active["past"]["1pl"]["masc"], "*" + middle["past"]["1pl"]["masc"]],
+            ["*" + active["past"]["2pl"]["masc"], "*" + middle["past"]["2pl"]["masc"]],
+            ["*" + active["past"]["3pl"]["masc"], "*" + middle["past"]["3pl"]["masc"]],
             ["", "", ""],
-            [active["aorist"]["1sg"]["masc"], middle["aorist"]["1sg"]["masc"]],
-            [active["aorist"]["2sg"]["masc"], middle["aorist"]["2sg"]["masc"]],
-            [active["aorist"]["3sg"]["masc"], middle["aorist"]["3sg"]["masc"]],
-            [active["aorist"]["1du"]["masc"], middle["aorist"]["1du"]["masc"]],
-            [active["aorist"]["2du"]["masc"], middle["aorist"]["2du"]["masc"]],
-            [active["aorist"]["3du"]["masc"], middle["aorist"]["3du"]["masc"]],            
-            [active["aorist"]["1pl"]["masc"], middle["aorist"]["1pl"]["masc"]],
-            [active["aorist"]["2pl"]["masc"], middle["aorist"]["2pl"]["masc"]],
-            [active["aorist"]["3pl"]["masc"], middle["aorist"]["3pl"]["masc"]],
+            ["*" + active["aorist"]["1sg"]["masc"], "*" + middle["aorist"]["1sg"]["masc"]],
+            ["*" + active["aorist"]["2sg"]["masc"], "*" + middle["aorist"]["2sg"]["masc"]],
+            ["*" + active["aorist"]["3sg"]["masc"], "*" + middle["aorist"]["3sg"]["masc"]],
+            ["*" + active["aorist"]["1du"]["masc"], "*" + middle["aorist"]["1du"]["masc"]],
+            ["*" + active["aorist"]["2du"]["masc"], "*" + middle["aorist"]["2du"]["masc"]],
+            ["*" + active["aorist"]["3du"]["masc"], "*" + middle["aorist"]["3du"]["masc"]],            
+            ["*" + active["aorist"]["1pl"]["masc"], "*" + middle["aorist"]["1pl"]["masc"]],
+            ["*" + active["aorist"]["2pl"]["masc"], "*" + middle["aorist"]["2pl"]["masc"]],
+            ["*" + active["aorist"]["3pl"]["masc"], "*" + middle["aorist"]["3pl"]["masc"]],
             ["", "", ""],
             [active["future"]["1sg"]["masc"], middle["future"]["1sg"]["masc"]],
             [active["future"]["2sg"]["masc"], middle["future"]["2sg"]["masc"]],

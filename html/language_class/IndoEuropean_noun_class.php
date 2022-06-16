@@ -2477,7 +2477,7 @@ class Polish_Noun extends Noun_Common_IE{
 	protected $case_suffix_list =  [
 		[
 			"noun_type" => "1",
-			"noun_type_name" => "ā-変化名詞",
+			"noun_type_name" => "a-変化名詞",
 			"gender" => "Feminine",
 			"sg_nom" => "a",
 			"sg_gen" => "y",
@@ -2501,6 +2501,84 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_loc" => "ach",
 			"pl_voc" => "y"
 		],
+		[
+			"noun_type" => "1i",
+			"noun_type_name" => "a-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "a",
+			"sg_gen" => "y",
+			"sg_dat" => "y",
+			"sg_acc" => "ę",
+			"sg_ins" => "ą",
+			"sg_loc" => "y",
+			"sg_voc" => "e",
+			"du_nom" => "e",
+			"du_gen" => "u",
+			"du_dat" => "ama",
+			"du_acc" => "e",
+			"du_ins" => "ama",
+			"du_loc" => "u",
+			"du_voc" => "e",
+			"pl_nom" => "e",
+			"pl_gen" => "",
+			"pl_dat" => "om",
+			"pl_acc" => "e",
+			"pl_ins" => "ami",
+			"pl_loc" => "ach",
+			"pl_voc" => "e"
+		],
+		[
+			"noun_type" => "1ia",
+			"noun_type_name" => "ia-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "a",
+			"sg_gen" => "i",
+			"sg_dat" => "i",
+			"sg_acc" => "ę",
+			"sg_ins" => "ą",
+			"sg_loc" => "i",
+			"sg_voc" => "e",
+			"du_nom" => "e",
+			"du_gen" => "u",
+			"du_dat" => "ama",
+			"du_acc" => "e",
+			"du_ins" => "ama",
+			"du_loc" => "u",
+			"du_voc" => "e",
+			"pl_nom" => "e",
+			"pl_gen" => "",
+			"pl_dat" => "om",
+			"pl_acc" => "e",
+			"pl_ins" => "ami",
+			"pl_loc" => "ach",
+			"pl_voc" => "e"
+		],
+		[
+			"noun_type" => "1ni",
+			"noun_type_name" => "ni-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "",
+			"sg_dat" => "",
+			"sg_acc" => "ę",
+			"sg_ins" => "ą",
+			"sg_loc" => "",
+			"sg_voc" => "",
+			"du_nom" => "e",
+			"du_gen" => "u",
+			"du_dat" => "ama",
+			"du_acc" => "e",
+			"du_ins" => "ama",
+			"du_loc" => "u",
+			"du_voc" => "e",
+			"pl_nom" => "e",
+			"pl_gen" => "",
+			"pl_dat" => "om",
+			"pl_acc" => "e",
+			"pl_ins" => "ami",
+			"pl_loc" => "ach",
+			"pl_voc" => "e"
+		],					
 		[
 			"noun_type" => "3i",
 			"noun_type_name" => "ā-変化名詞",
@@ -2608,7 +2686,7 @@ class Polish_Noun extends Noun_Common_IE{
 		[
 			"noun_type" => "2k",
 			"noun_type_name" => "男性名詞",			
-			"gender" => "Masculine-Animate",
+			"gender" => "Feminine/Masculine-Animate",
 			"sg_nom" => "",
 			"sg_gen" => "a",
 			"sg_dat" => "owi",
@@ -2762,16 +2840,42 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_voc" => "e"
 		],
 		[
-			"noun_type" => "2um",
-			"noun_type_name" => "a-変化名詞",			
-			"gender" => "Neuter",
-			"sg_nom" => "",
+			"noun_type" => "2o",
+			"noun_type_name" => "o-変化名詞",			
+			"gender" => "Feminine/Neuter",
+			"sg_nom" => "o",
 			"sg_gen" => "a",
 			"sg_dat" => "u",
-			"sg_acc" => "",
+			"sg_acc" => "o",
 			"sg_ins" => "em",
 			"sg_loc" => "u",
-			"sg_voc" => "",
+			"sg_voc" => "o",
+			"du_nom" => "ie",
+			"du_gen" => "u",
+			"du_dat" => "oma",
+			"du_acc" => "ie",
+			"du_ins" => "oma",
+			"du_loc" => "u",
+			"du_voc" => "ie",
+			"pl_nom" => "a",
+			"pl_gen" => "i",
+			"pl_dat" => "om",
+			"pl_acc" => "a",
+			"pl_ins" => "ami",			
+			"pl_loc" => "ach",
+			"pl_voc" => "a"
+		],
+		[
+			"noun_type" => "2e",
+			"noun_type_name" => "e-変化名詞",			
+			"gender" => "Feminine/Neuter",
+			"sg_nom" => "e",
+			"sg_gen" => "a",
+			"sg_dat" => "u",
+			"sg_acc" => "e",
+			"sg_ins" => "em",
+			"sg_loc" => "u",
+			"sg_voc" => "e",
 			"du_nom" => "ie",
 			"du_gen" => "u",
 			"du_dat" => "oma",
@@ -2787,6 +2891,84 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_loc" => "ach",
 			"pl_voc" => "a"
 		],		
+		[
+			"noun_type" => "2um",
+			"noun_type_name" => "um-変化名詞",			
+			"gender" => "Neuter",
+			"sg_nom" => "um",
+			"sg_gen" => "um",
+			"sg_dat" => "um",
+			"sg_acc" => "um",
+			"sg_ins" => "um",
+			"sg_loc" => "um",
+			"sg_voc" => "um",
+			"du_nom" => "ie",
+			"du_gen" => "u",
+			"du_dat" => "oma",
+			"du_acc" => "ie",
+			"du_ins" => "oma",
+			"du_loc" => "u",
+			"du_voc" => "ie",
+			"pl_nom" => "a",
+			"pl_gen" => "i",
+			"pl_dat" => "om",
+			"pl_acc" => "a",
+			"pl_ins" => "ami",			
+			"pl_loc" => "ach",
+			"pl_voc" => "a"
+		],
+		[
+			"noun_type" => "3n",
+			"noun_type_name" => "n-変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "ę",
+			"sg_gen" => "enia",
+			"sg_dat" => "eniu",
+			"sg_acc" => "ę",
+			"sg_ins" => "eniem",
+			"sg_loc" => "eniu",
+			"sg_voc" => "ę",
+			"du_nom" => "enie",
+			"du_gen" => "eniu",
+			"du_dat" => "onoma",
+			"du_acc" => "ienie",
+			"du_ins" => "onoma",
+			"du_loc" => "eniu",
+			"du_voc" => "enie",
+			"pl_nom" => "ona",
+			"pl_gen" => "on",
+			"pl_dat" => "onom",
+			"pl_acc" => "ona",
+			"pl_ins" => "onami",
+			"pl_loc" => "onach",
+			"pl_voc" => "ona"
+		],		
+		[
+			"noun_type" => "3con",
+			"noun_type_name" => "子音変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "ę",
+			"sg_gen" => "ęcia",
+			"sg_dat" => "ęciu",
+			"sg_acc" => "ę",
+			"sg_ins" => "ęciem",
+			"sg_loc" => "ęciu",
+			"sg_voc" => "ę",
+			"du_nom" => "ęcie",
+			"du_gen" => "ęciu",
+			"du_dat" => "ętoma",
+			"du_acc" => "ęcie",
+			"du_ins" => "ętoma",
+			"du_loc" => "ęciu",
+			"du_voc" => "ęcie",
+			"pl_nom" => "ęta",
+			"pl_gen" => "ąt",
+			"pl_dat" => "ętom",
+			"pl_acc" => "ęta",
+			"pl_ins" => "ętami",
+			"pl_loc" => "ętach",
+			"pl_voc" => "ęta"
+		],
 	];
 
     /*=====================================
@@ -2875,10 +3057,18 @@ class Polish_Noun extends Noun_Common_IE{
 			} else if(preg_match("/(k|g|ch)$/", $noun)){						
 				$this->gender = "Masculine";    					// 性別
 				$this->noun_type = "2k";           					// 名詞種別
-			} else if(preg_match("/(o|e)$/", $noun)){						
+			} else if(preg_match("/(o)$/", $noun)){						
 				$this->gender = "Neuter";    						// 性別
-				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更						
-				$this->noun_type = "2um";           				// 名詞種別	
+				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更
+				$this->noun_type = "2o";           					// 名詞種別	
+			} else if(preg_match("/(e)$/", $noun)){						
+				$this->gender = "Neuter";    						// 性別
+				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更
+				$this->noun_type = "2e";           					// 名詞種別	
+			} else if(preg_match("/(um)$/", $noun)){						
+				$this->gender = "Neuter";    						// 性別
+				$this->third_stem = mb_substr($noun, 0, -2);		// 強語幹を変更
+				$this->noun_type = "2um";           				// 名詞種別									
 			} else if(preg_match("/(ę)$/", $noun)){
 				$this->gender = "Neuter";    						// 性別				
 				$this->noun_type = "3con";          				// 名詞種別			

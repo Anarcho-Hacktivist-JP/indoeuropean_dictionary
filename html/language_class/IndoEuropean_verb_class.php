@@ -5132,7 +5132,7 @@ class Polish_Verb extends Verb_Common_IE {
 			$this->aorist_stem = mb_substr($this->infinitive, 0, -1);				// 過去形			
 			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語訳
 			$this->english_translation = $word_info["english_translation"];			// 英語訳
-			$this->verb_type= $word_info["verb_type"];								// 活用種別
+			$this->verb_type = $word_info["verb_type"];								// 活用種別
 		} else if(preg_match('/(ać|ac)$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -2));
@@ -5320,9 +5320,14 @@ class Polish_Verb extends Verb_Common_IE {
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];						
-		} else if($tense_mood == Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT){			
+		} else if($tense_mood == Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT){
 			// 過去完了形
-			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
+			$past_stem = $this->get_past_conditional_stem($gender, $person);
+			// 男性形単数のみ特例処理
+			if($gender == Commons::$MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+				$past_stem = $past_stem."e";
+			}						
+			$verb_conjugation = $past_stem.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
 		} else if($tense_mood == Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT){
 			// 未来完了形
 			// 補助動詞を呼び出す
