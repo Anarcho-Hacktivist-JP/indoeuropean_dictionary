@@ -211,10 +211,7 @@ class Polish_Common {
 			foreach ($table_data as $row_data ) {
 				// 動詞の語幹格納配列
 				$verb_stem_array = array();
-				$verb_stem_array["present_stem"] = $row_data["present_stem"];
 				$verb_stem_array["infinitive_stem"] = $row_data["infinitive_stem"];
-				$verb_stem_array["perfect_stem"] = $row_data["perfect_stem"];
-				$verb_stem_array["perfect_participle"] = $row_data["perfect_participle"];
 				$verb_stem_array["verb_type"] = $row_data["verb_type"];							
 				array_push($new_table_data, $verb_stem_array);
 			}
@@ -299,11 +296,10 @@ class Polish_Common {
 
 		// 配列を初期化
 		$conjugations = array();
-
 		// 活用種別で分ける。
 		if($polish_verb["verb_type"] == "5byc"){
 		    // 読み込み
-		    $verb_data = new Latin_Verb_Sum();
+		    $verb_data = new Polish_Verb_Byc();
         	$verb_data->add_stem($polish_verb["infinitive_stem"]);
 		    // 活用表生成、配列に格納
 		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();                    

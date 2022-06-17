@@ -42,7 +42,7 @@ function get_verb_conjugation_chart($word){
         $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
 	    }
     }
-  } else if(!Polish_Common::is_alphabet_or_not($word)){
+  } else if(!$polish_verbs && !Polish_Common::is_alphabet_or_not($word)){
     // 空を返す。
     return array();   
   } else {

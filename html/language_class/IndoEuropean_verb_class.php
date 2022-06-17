@@ -148,7 +148,8 @@ class Verb_Common_IE {
 
 	// 活用種別名
 	protected $class_name = "";	
-
+	// 活用種別-語根種別
+	protected $root_type = "";
 
     /*=====================================
     コンストラクタ
@@ -3078,8 +3079,7 @@ class Vedic_Verb extends Verb_Common_IE{
 
 	// 活用種別-不完了体
 	protected $conjugation_present_type = "";
-	// 活用種別-語根種別
-	protected $root_type = "";
+
 	// 活用種別-語根種別
 	protected $root_laryngeal_flag = "";
 
@@ -5114,6 +5114,7 @@ class Polish_Verb extends Verb_Common_IE {
 	// 直接法過去接尾辞
 	protected $past_ind_infix = "";
 
+
     /*=====================================
     コンストラクタ
     ======================================*/
@@ -5133,6 +5134,8 @@ class Polish_Verb extends Verb_Common_IE {
 			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語訳
 			$this->english_translation = $word_info["english_translation"];			// 英語訳
 			$this->verb_type = $word_info["verb_type"];								// 活用種別
+			$this->root_type = $word_info["verb_aspect"];							// 動詞の種別
+			$this->deponent_active = $word_info["deponent_active"];					// sie動詞判定
 		} else if(preg_match('/(ać|ac)$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -2));
@@ -5300,13 +5303,13 @@ class Polish_Verb extends Verb_Common_IE {
 		if($tense_mood == Commons::$PRESENT_TENSE) {
 			// 現在形
 			$verb_conjugation = $this->get_primary_suffix_polish($person);
-		} else if($tense_mood == Commons::$PAST_TENSE){
+		} else if($tense_mood == Commons::$PAST_TENSE && $this->root_type != Commons::$AORIST_ASPECT){
 			// 未完了過去
 			$verb_conjugation = $this->aorist_stem.$this->imperfect_number[Commons::$ACTIVE_VOICE][$person];
 		} else if($tense_mood == Commons::$AORIST_ASPECT){
 			// 過去形
 			$verb_conjugation = $this->aorist_stem.$this->aorist_number[Commons::$ACTIVE_VOICE][$person];					
-		} else if($tense_mood == Commons::$FUTURE_TENSE){
+		} else if($tense_mood == Commons::$FUTURE_TENSE && $this->root_type != Commons::$AORIST_ASPECT){
 			// 未来形
 			// 補助動詞を呼び出す
 			$auxiliary_byc = new Polish_Verb_Byc();
@@ -5328,7 +5331,7 @@ class Polish_Verb extends Verb_Common_IE {
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
-		} else if($tense_mood == Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT && $this->root_type != Commons::$AORIST_ASPECT){
 			// 未来完了形
 			// 補助動詞を呼び出す
 			$auxiliary_byc = new Polish_Verb_Byc();

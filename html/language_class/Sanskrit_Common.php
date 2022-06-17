@@ -992,7 +992,11 @@ class Sanskrit_Common {
 			$script = mb_ereg_replace("([ā])([ū])", "o", $script);
 			$script = mb_ereg_replace("([a])([ī])", "e", $script);
 			$script = mb_ereg_replace("([a])([ū])", "o", $script);			
-		}		
+		}
+
+		// 母音の子音化
+		$script = mb_ereg_replace("([uū])([aā])", "v\\2", $script);
+		$script = mb_ereg_replace("([iī])([aā])", "y\\2", $script);
 
 		// 結果を返す。
 		return $script;
