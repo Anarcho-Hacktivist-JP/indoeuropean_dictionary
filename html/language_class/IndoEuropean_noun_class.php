@@ -3205,7 +3205,7 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/l$/", "ł", $noun);				
 		$noun = preg_replace("/di$/", "dzi", $noun);
 		$noun = preg_replace("/ti$/", "ci", $noun);
-		$noun = preg_replace("/ri$/", "ry", $noun);
+		$noun = preg_replace("/ri$/", "rzy", $noun);
 
 		$noun = preg_replace("/be$/", "bie", $noun);
 		$noun = preg_replace("/pe$/", "pie", $noun);	
@@ -3219,7 +3219,6 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/ge$/", "dzie", $noun);
 
 		$noun = preg_replace("/ry$/", "rzy", $noun);
-		$noun = preg_replace("/ty$/", "ciy", $noun);
 		$noun = preg_replace("/dy$/", "dzy", $noun);
 		$noun = preg_replace("/ky$/", "cy", $noun);
 		$noun = preg_replace("/gy$/", "dzy", $noun);

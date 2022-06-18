@@ -1415,10 +1415,45 @@ class Latin_Adjective extends Adjective_Common_IE {
 
 	// 比較級・最上級を作成
 	private function get_comp_super_stem($stem){
-		$this->comparative_first_stem = $stem."ior";		// 比較級弱語幹
-		$this->comparative_third_stem = $stem."iōr";		// 比較級強語幹
-		$this->superlative_first_stem = $stem."issimus";	// 最上級強語幹
-		$this->superlative_third_stem = $stem."issim";		// 最上級強語幹
+
+		switch($stem){
+			case "bon":
+				$this->comparative_first_stem = "melior";		// 比較級弱語幹
+				$this->comparative_third_stem = "meliōr";		// 比較級強語幹
+				$this->superlative_first_stem = "optimus";		// 最上級強語幹
+				$this->superlative_third_stem = "optim";		// 最上級強語幹
+				break;
+			case "magn":
+				$this->comparative_first_stem = "maior";		// 比較級弱語幹
+				$this->comparative_third_stem = "maiōr";		// 比較級強語幹	
+				$this->superlative_first_stem = "maximus";		// 最上級強語幹
+				$this->superlative_third_stem = "maxim";		// 最上級強語幹								
+				break;
+			case "mał":
+				$this->comparative_first_stem = "peior";		// 比較級弱語幹
+				$this->comparative_third_stem = "peiōr";		// 比較級強語幹
+				$this->superlative_first_stem = "pessimus";		// 最上級強語幹
+				$this->superlative_third_stem = "pessim";		// 最上級強語幹
+				break;
+			case "parv":
+				$this->comparative_first_stem = "minor";		// 比較級弱語幹
+				$this->comparative_third_stem = "minōr";		// 比較級強語幹
+				$this->superlative_first_stem = "minimus";		// 最上級強語幹
+				$this->superlative_third_stem = "minim";		// 最上級強語幹
+				break;				
+			case "mult":
+				$this->comparative_first_stem = "plus";			// 比較級弱語幹
+				$this->comparative_third_stem = "plur";			// 比較級強語幹
+				$this->superlative_first_stem = "plurimus";		// 最上級強語幹
+				$this->superlative_third_stem = "plurim";		// 最上級強語幹				
+				break;			
+			default:
+				$this->comparative_first_stem = $stem."ior";		// 比較級弱語幹
+				$this->comparative_third_stem = $stem."iōr";		// 比較級強語幹
+				$this->superlative_first_stem = $stem."issimus";	// 最上級強語幹
+				$this->superlative_third_stem = $stem."issim";		// 最上級強語幹
+				break;				
+		}	
 	}
 	
 	// 形容詞活用取得
@@ -2863,7 +2898,7 @@ class Polish_Adjective extends Adjective_Common_IE {
 				"pl_acc" => "e",
 				"pl_ins" => "ymi",
 				"pl_loc" => "ych",
-				"pl_voc" => "i"
+				"pl_voc" => "e"
 			],
 			[
 				"adjective_type" => "1-2",
@@ -2915,7 +2950,7 @@ class Polish_Adjective extends Adjective_Common_IE {
 				"pl_acc" => "e",
 				"pl_ins" => "ymi",
 				"pl_loc" => "ych",
-				"pl_voc" => "i"
+				"pl_voc" => "e"
 			],
 			[
 				"adjective_type" => "1-2i",
@@ -3070,10 +3105,64 @@ class Polish_Adjective extends Adjective_Common_IE {
 
 	// 比較級・最上級を作成
 	private function get_comp_super_stem($stem){
-		$this->comparative_first_stem = $stem."szy";		// 比較級弱語幹
-		$this->comparative_third_stem = $stem."sz";			// 比較級強語幹
+
+		switch($stem){
+			case "dobr":
+				$this->comparative_first_stem = "lepszy";		// 比較級弱語幹
+				$this->comparative_third_stem = "lepsz";		// 比較級強語幹				
+				break;
+			case "zł":
+				$this->comparative_first_stem = "gorszy";		// 比較級弱語幹
+				$this->comparative_third_stem = "gorsz";		// 比較級強語幹					
+				break;
+			case "mał":
+				$this->comparative_first_stem = "mniejszy";		// 比較級弱語幹
+				$this->comparative_third_stem = "mniejsz";		// 比較級強語幹					
+				break;
+			case "wielk":
+				$this->comparative_first_stem = "większy";		// 比較級弱語幹
+				$this->comparative_third_stem = "większ";		// 比較級強語幹				
+				break;				
+			case "wysok":
+				$this->comparative_first_stem = "wyższy";		// 比較級弱語幹
+				$this->comparative_third_stem = "wyższ";		// 比較級強語幹
+				break;
+			case "gorąc":
+				$this->comparative_first_stem = "gorętszy";		// 比較級弱語幹
+				$this->comparative_third_stem = "gorętsz";		// 比較級強語幹
+				break;
+			case "tward":
+				$this->comparative_first_stem = "twardszy";		// 比較級弱語幹
+				$this->comparative_third_stem = "twardsz";		// 比較級強語幹
+				break;				
+			default:
+				if(preg_match('/[^aiueoąę][^aiueoąę]$/', $stem) && !preg_match('/kk$/', $stem)){
+					$stem = preg_replace("/ł$/", "l", $stem);
+					$stem = preg_replace("/st$/", "ści", $stem);					
+					$stem = preg_replace("/w$/", "wi", $stem);
+					$stem = preg_replace("/n$/", "ni", $stem);
+					$stem = preg_replace("/r$/", "rz", $stem);					
+					$stem = preg_replace("/[g|sk]$/", "ż", $stem);
+					$stem = preg_replace("/[ao](.)$/", "e\\1", $stem);
+					$stem = preg_replace("/ą/", "ę", $stem);
+					$stem = preg_replace("/kk$/", "k", $stem);					
+					$this->comparative_first_stem = $stem."ejszy";		// 比較級弱語幹
+					$this->comparative_third_stem = $stem."ejsz";		// 比較級強語幹
+				} else {
+					$stem = preg_replace("/ł$/", "l", $stem);
+					$stem = preg_replace("/n$/", "ń", $stem);
+					$stem = preg_replace("/[g|sk]$/", "ż", $stem);
+					$stem = preg_replace("/[ao](.)$/", "e\\1", $stem);
+					$stem = preg_replace("/ą/", "ę", $stem);
+					$stem = preg_replace("/kk$/", "k", $stem);
+					$this->comparative_first_stem = $stem."szy";		// 比較級弱語幹
+					$this->comparative_third_stem = $stem."sz";			// 比較級強語幹
+				}
+				break;
+		}
 		$this->superlative_first_stem = "naj".$this->comparative_first_stem;		// 最上級強語幹
-		$this->superlative_third_stem = "naj".$this->comparative_third_stem;		// 最上級強語幹
+		$this->superlative_third_stem = "naj".$this->comparative_third_stem;		// 最上級強語幹		
+
 	}
 	
 	// 形容詞活用取得
@@ -3222,10 +3311,26 @@ class Polish_Adjective extends Adjective_Common_IE {
 		}
 
 		// 変換処理
-		$adjective = trim($adjective.$case_suffix);
+		$adjective = trim($adjective.$case_suffix);			
+		$adjective = preg_replace("/di$/", "dzi", $adjective);
+		$adjective = preg_replace("/ti$/", "cy", $adjective);
+		$adjective = preg_replace("/ri$/", "rzy", $adjective);
+
+		$adjective = preg_replace("/be$/", "bie", $adjective);
+		$adjective = preg_replace("/pe$/", "pie", $adjective);	
+		$adjective = preg_replace("/me$/", "mie", $adjective);
+		$adjective = preg_replace("/ne$/", "nie", $adjective);
+		$adjective = preg_replace("/re$/", "rze", $adjective);
+		$adjective = preg_replace("/te$/", "cie", $adjective);
+		$adjective = preg_replace("/de$/", "dzie", $adjective);
+		$adjective = preg_replace("/ke$/", "ce", $adjective);
+		$adjective = preg_replace("/kem$/", "kiem", $adjective);		
+		$adjective = preg_replace("/ge$/", "dzie", $adjective);
+
+		$adjective = preg_replace("/ry$/", "rzy", $adjective);
+		$adjective = preg_replace("/dy$/", "dzy", $adjective);
 		$adjective = preg_replace("/ky$/", "cy", $adjective);
 		$adjective = preg_replace("/gy$/", "dzy", $adjective);
-
 		// 結果を返す
 		return $adjective;
 	}
