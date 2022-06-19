@@ -540,7 +540,7 @@ class Latin_Verb extends Verb_Common_IE {
 			$this->deponent_perfect = $word_info["deponent_perfect"];				// 欠如-完了形
 			$this->deponent_personal = $word_info["deponent_personal"];				// 非人称のみ
 			$this->verb_type= $word_info["verb_type"];							// 活用種別
-		} else if(preg_match('/(ficāre|ficare)/',$dic_stem)){
+		} else if(preg_match('/(ficāre|ficare)$/',$dic_stem)){
 			// 使役動詞の場合は
 			$primary_stem = mb_substr($dic_stem, 0, -6)."re";
     		// 動詞情報を取得
@@ -558,7 +558,7 @@ class Latin_Verb extends Verb_Common_IE {
 				// 不明動詞の対応
 				$this->generate_uknown_verb(mb_substr($dic_stem, 0, -3));
 			}
-		} else if(preg_match('/(scere)/',$dic_stem)){
+		} else if(preg_match('/(scere)$/',$dic_stem)){
 			// 始動動詞の場合は
 			$primary_stem = mb_substr($dic_stem, 0, -5)."re";
     		// 動詞情報を取得
@@ -583,7 +583,7 @@ class Latin_Verb extends Verb_Common_IE {
 				// 不明動詞の対応
 				$this->generate_uknown_verb3(mb_substr($dic_stem, 0, -3));	
 			}
-		} else if(preg_match('/(tare|tāre|sare|sāre)/',$dic_stem)){
+		} else if(preg_match('/(tare|tāre|sare|sāre)$/',$dic_stem)){
 			// 強意動詞の場合は
 			$word_info = $this->get_original_verb(mb_substr($dic_stem, 0, -4), mb_substr($dic_stem, -5, 1));
 			// データがある場合は
@@ -599,7 +599,7 @@ class Latin_Verb extends Verb_Common_IE {
 				// 不明動詞の対応
 				$this->generate_uknown_verb(mb_substr($dic_stem, 0, -3));		
 			}
-		} else if(preg_match('/(turire|turīre|surire|surīre)/',$dic_stem)){			
+		} else if(preg_match('/(turire|turīre|surire|surīre)$/',$dic_stem)){			
 			// 願望動詞の場合は
 			$word_info = $this->get_original_verb(mb_substr($dic_stem, 0, -6), mb_substr($dic_stem, -7, 1));
 			if($word_info){
@@ -614,7 +614,7 @@ class Latin_Verb extends Verb_Common_IE {
 				// 不明動詞の対応
 				$this->generate_uknown_verb4(mb_substr($dic_stem, 0, -3));	
 			}
-		} else if(preg_match('/(are|āre)/',$dic_stem)){	
+		} else if(preg_match('/(are|āre)$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -3));
 		} else if(preg_match('/ēre/',$dic_stem)){	
@@ -644,13 +644,13 @@ class Latin_Verb extends Verb_Common_IE {
 		// 親の呼び出し
     	parent::__construct($last_word);		
 		// 種別により分ける。
-		if(mb_strpos($japanese_word, "にする") || preg_match('/ficāre/',$last_word)){
+		if(mb_strpos($japanese_word, "にする") || preg_match('/ficāre$/',$last_word)){
 			// 動詞の活用を作る。
 			$this->generate_uknown_verb($stem."fic");												
-		} else if(mb_strpos('化する',$japanese_word) || mb_strpos('になる',$japanese_word) || preg_match('/zāre/', $last_word)){
+		} else if(mb_strpos('化する',$japanese_word) || mb_strpos('になる',$japanese_word) || preg_match('/zāre$/', $last_word)){
 			// 動詞の活用を作る。
 			$this->generate_uknown_verb($stem."z");	
-		} else if(mb_strpos('する', $japanese_word) && preg_match('/āre/', $last_word)){
+		} else if(mb_strpos('する', $japanese_word) && preg_match('/āre$/', $last_word)){
 			// 不明動詞の対応
 			$this->generate_uknown_verb(mb_substr($stem, 0, -1));																			
 		} else {

@@ -403,6 +403,68 @@ class Latin_Common {
 		}
 	}
 
+	// 名詞・形容詞起源動詞を取得
+	public static function get_latin_denomitive_verb($japanese_translation, $table, $gender = ""){
+		// 英数字は考慮しない
+		if(ctype_alnum($japanese_translation)){
+			// 何も返さない。
+			return null;
+		}
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'āre') as `strong_stem`  FROM `".$table."` WHERE (
+				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
+				 `japanese_translation` = '".$japanese_translation."')";
+
+		// 名詞の場合で性別の指定がある場合は追加する。
+		if($table == Latin_Common::$DB_NOUN && $gender != ""){
+			$query = $query."AND `gender` LIKE '%".$gender."%'";
+		}
+
+		// 動詞の条件と被らないようにする。
+		$query = $query." AND NOT EXISTS(
+							SELECT * FROM `verb_latin`
+							WHERE `verb_latin`.`dictionary_stem`  = concat(REPLACE(`noun_latin`.`strong_stem`,'-',''), 'āre') 
+						  )";
+
+		// SQLを作成 
+		$query = $query." UNION SELECT
+							`verb_latin`.`dictionary_stem` as `strong_stem` 
+   						  FROM `noun_latin`
+   						  LEFT JOIN  `verb_latin`
+   					      ON `verb_latin`.`dictionary_stem` = concat(REPLACE( `noun_latin`.`strong_stem`,'-',''), 'āre')
+   						  WHERE ( 
+							`noun_latin`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`noun_latin`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`noun_latin`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`noun_latin`.`japanese_translation` = '".$japanese_translation."')
+   						  AND 
+	   				        `verb_latin`.`dictionary_stem` is not null;";
+		echo $query;
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 新しい配列に詰め替え
+			foreach ($table_data as $row_data ) {
+				array_push($new_table_data, $row_data["strong_stem"]);
+			}
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}	
+
 	// ランダムな名詞を取得
 	public static function get_random_noun($gender = "", $noun_type = ""){
 		//DBに接続
