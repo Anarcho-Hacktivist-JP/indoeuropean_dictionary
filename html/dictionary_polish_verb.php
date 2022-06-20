@@ -182,36 +182,6 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
           <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
           <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
           <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">未完了過去</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">単純過去</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">未来時制</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
           <tr><th scope="row" colspan="3">完了形</th></tr>
           <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
           <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
@@ -231,7 +201,17 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
           <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
           <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
           <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>         
+          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>            
+          <tr><th scope="row" colspan="3">未来時制</th></tr>
+          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>       
           <tr><th scope="row" colspan="3">未来完了形</th></tr>
           <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
           <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
@@ -272,6 +252,26 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
           <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
           <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
           <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row" colspan="3">未完了過去</th></tr>
+          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row" colspan="3">単純過去</th></tr>
+          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
+          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>         
         </tbody>
         </table>
       </details><br>
@@ -348,6 +348,76 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
             [active["present"]["2pl"]["masc"], middle["present"]["2pl"]["masc"]],
             [active["present"]["3pl"]["masc"], middle["present"]["3pl"]["masc"]],
             ["", "", ""],
+            [active["perfect"]["1sg"]["masc"] + "\n" + active["perfect"]["1sg"]["fem"] + "\n" + active["perfect"]["1sg"]["neu"], middle["perfect"]["1sg"]["masc"] + "\n" + middle["perfect"]["1sg"]["fem"] + "\n" + middle["perfect"]["1sg"]["neu"]],
+            [active["perfect"]["2sg"]["masc"] + "\n" + active["perfect"]["2sg"]["fem"] + "\n" + active["perfect"]["2sg"]["neu"], middle["perfect"]["2sg"]["masc"] + "\n" + middle["perfect"]["2sg"]["fem"] + "\n" + middle["perfect"]["2sg"]["neu"]],
+            [active["perfect"]["3sg"]["masc"] + "\n" + active["perfect"]["3sg"]["fem"] + "\n" + active["perfect"]["3sg"]["neu"], middle["perfect"]["3sg"]["masc"] + "\n" + middle["perfect"]["3sg"]["fem"] + "\n" + middle["perfect"]["3sg"]["neu"]],
+            [active["perfect"]["1du"]["masc"] + "\n" + active["perfect"]["1du"]["fem"] + "\n" + active["perfect"]["1du"]["neu"], middle["perfect"]["1du"]["masc"] + "\n" + middle["perfect"]["1du"]["fem"] + "\n" + middle["perfect"]["1du"]["neu"]],
+            [active["perfect"]["2du"]["masc"] + "\n" + active["perfect"]["2du"]["fem"] + "\n" + active["perfect"]["2du"]["neu"], middle["perfect"]["2du"]["masc"] + "\n" + middle["perfect"]["2du"]["fem"] + "\n" + middle["perfect"]["2du"]["neu"]],
+            [active["perfect"]["3du"]["masc"] + "\n" + active["perfect"]["3du"]["fem"] + "\n" + active["perfect"]["3du"]["neu"], middle["perfect"]["3du"]["masc"] + "\n" + middle["perfect"]["3du"]["fem"] + "\n" + middle["perfect"]["3du"]["neu"]],            
+            [active["perfect"]["1pl"]["masc"] + "\n" + active["perfect"]["1pl"]["fem"] + "\n" + active["perfect"]["1pl"]["neu"], middle["perfect"]["1pl"]["masc"] + "\n" + middle["perfect"]["1pl"]["fem"] + "\n" + middle["perfect"]["1pl"]["neu"]],
+            [active["perfect"]["2pl"]["masc"] + "\n" + active["perfect"]["2pl"]["fem"] + "\n" + active["perfect"]["2pl"]["neu"], middle["perfect"]["2pl"]["masc"] + "\n" + middle["perfect"]["2pl"]["fem"] + "\n" + middle["perfect"]["2pl"]["neu"]],
+            [active["perfect"]["3pl"]["masc"] + "\n" + active["perfect"]["3pl"]["fem"] + "\n" + active["perfect"]["3pl"]["neu"], middle["perfect"]["3pl"]["masc"] + "\n" + middle["perfect"]["3pl"]["fem"] + "\n" + middle["perfect"]["3pl"]["neu"]],
+            ["", "", ""],
+            [active["past_perfect"]["1sg"]["masc"] + "\n" + active["past_perfect"]["1sg"]["fem"] + "\n" + active["past_perfect"]["1sg"]["neu"], middle["past_perfect"]["1sg"]["masc"] + "\n" + middle["past_perfect"]["1sg"]["fem"] + "\n" + middle["past_perfect"]["1sg"]["neu"]],
+            [active["past_perfect"]["2sg"]["masc"] + "\n" + active["past_perfect"]["2sg"]["fem"] + "\n" + active["past_perfect"]["2sg"]["neu"], middle["past_perfect"]["2sg"]["masc"] + "\n" + middle["past_perfect"]["2sg"]["fem"] + "\n" + middle["past_perfect"]["2sg"]["neu"]],
+            [active["past_perfect"]["3sg"]["masc"] + "\n" + active["past_perfect"]["3sg"]["fem"] + "\n" + active["past_perfect"]["3sg"]["neu"], middle["past_perfect"]["3sg"]["masc"] + "\n" + middle["past_perfect"]["3sg"]["fem"] + "\n" + middle["past_perfect"]["3sg"]["neu"]],
+            [active["past_perfect"]["1du"]["masc"] + "\n" + active["past_perfect"]["1du"]["fem"] + "\n" + active["past_perfect"]["1du"]["neu"], middle["past_perfect"]["1du"]["masc"] + "\n" + middle["past_perfect"]["1du"]["fem"] + "\n" + middle["past_perfect"]["1du"]["neu"]],
+            [active["past_perfect"]["2du"]["masc"] + "\n" + active["past_perfect"]["2du"]["fem"] + "\n" + active["past_perfect"]["2du"]["neu"], middle["past_perfect"]["2du"]["masc"] + "\n" + middle["past_perfect"]["2du"]["fem"] + "\n" + middle["past_perfect"]["2du"]["neu"]],
+            [active["past_perfect"]["3du"]["masc"] + "\n" + active["past_perfect"]["3du"]["fem"] + "\n" + active["past_perfect"]["3du"]["neu"], middle["past_perfect"]["3du"]["masc"] + "\n" + middle["past_perfect"]["3du"]["fem"] + "\n" + middle["past_perfect"]["3du"]["neu"]],
+            [active["past_perfect"]["1pl"]["masc"] + "\n" + active["past_perfect"]["1pl"]["fem"] + "\n" + active["past_perfect"]["1pl"]["neu"], middle["past_perfect"]["1pl"]["masc"] + "\n" + middle["past_perfect"]["1pl"]["fem"] + "\n" + middle["past_perfect"]["1pl"]["neu"]],
+            [active["past_perfect"]["2pl"]["masc"] + "\n" + active["past_perfect"]["2pl"]["fem"] + "\n" + active["past_perfect"]["2pl"]["neu"], middle["past_perfect"]["2pl"]["masc"] + "\n" + middle["past_perfect"]["2pl"]["fem"] + "\n" + middle["past_perfect"]["2pl"]["neu"]],
+            [active["past_perfect"]["3pl"]["masc"] + "\n" + active["past_perfect"]["3pl"]["fem"] + "\n" + active["past_perfect"]["3pl"]["neu"], middle["past_perfect"]["3pl"]["masc"] + "\n" + middle["past_perfect"]["3pl"]["fem"] + "\n" + middle["past_perfect"]["3pl"]["neu"]], 
+            ["", "", ""],
+            [active["future"]["1sg"]["masc"], middle["future"]["1sg"]["masc"]],
+            [active["future"]["2sg"]["masc"], middle["future"]["2sg"]["masc"]],
+            [active["future"]["3sg"]["masc"], middle["future"]["3sg"]["masc"]],
+            [active["future"]["1du"]["masc"], middle["future"]["1du"]["masc"]],
+            [active["future"]["2du"]["masc"], middle["future"]["2du"]["masc"]],
+            [active["future"]["3du"]["masc"], middle["future"]["3du"]["masc"]],            
+            [active["future"]["1pl"]["masc"], middle["future"]["1pl"]["masc"]],
+            [active["future"]["2pl"]["masc"], middle["future"]["2pl"]["masc"]],
+            [active["future"]["3pl"]["masc"], middle["future"]["3pl"]["masc"]],          
+            ["", "", ""],
+            [active["future_perfect"]["1sg"]["masc"] + "\n" + active["future_perfect"]["1sg"]["fem"] + "\n" + active["future_perfect"]["1sg"]["neu"], middle["future_perfect"]["1sg"]["masc"] + "\n" + middle["future_perfect"]["1sg"]["fem"] + "\n" + middle["future_perfect"]["1sg"]["neu"]],
+            [active["future_perfect"]["2sg"]["masc"] + "\n" + active["future_perfect"]["2sg"]["fem"] + "\n" + active["future_perfect"]["2sg"]["neu"], middle["future_perfect"]["2sg"]["masc"] + "\n" + middle["future_perfect"]["2sg"]["fem"] + "\n" + middle["future_perfect"]["2sg"]["neu"]],
+            [active["future_perfect"]["3sg"]["masc"] + "\n" + active["future_perfect"]["3sg"]["fem"] + "\n" + active["future_perfect"]["3sg"]["neu"], middle["future_perfect"]["3sg"]["masc"] + "\n" + middle["future_perfect"]["3sg"]["fem"] + "\n" + middle["future_perfect"]["3sg"]["neu"]],
+            [active["future_perfect"]["1du"]["masc"] + "\n" + active["future_perfect"]["1du"]["fem"] + "\n" + active["future_perfect"]["1du"]["neu"], middle["future_perfect"]["1du"]["masc"] + "\n" + middle["future_perfect"]["1du"]["fem"] + "\n" + middle["future_perfect"]["1du"]["neu"]],
+            [active["future_perfect"]["2du"]["masc"] + "\n" + active["future_perfect"]["2du"]["fem"] + "\n" + active["future_perfect"]["2du"]["neu"], middle["future_perfect"]["2du"]["masc"] + "\n" + middle["future_perfect"]["2du"]["fem"] + "\n" + middle["future_perfect"]["2du"]["neu"]],
+            [active["future_perfect"]["3du"]["masc"] + "\n" + active["future_perfect"]["3du"]["fem"] + "\n" + active["future_perfect"]["3du"]["neu"], middle["future_perfect"]["3du"]["masc"] + "\n" + middle["future_perfect"]["3du"]["fem"] + "\n" + middle["future_perfect"]["3du"]["neu"]],
+            [active["future_perfect"]["1pl"]["masc"] + "\n" + active["future_perfect"]["1pl"]["fem"] + "\n" + active["future_perfect"]["1pl"]["neu"], middle["future_perfect"]["1pl"]["masc"] + "\n" + middle["future_perfect"]["1pl"]["fem"] + "\n" + middle["future_perfect"]["1pl"]["neu"]],
+            [active["future_perfect"]["2pl"]["masc"] + "\n" + active["future_perfect"]["2pl"]["fem"] + "\n" + active["future_perfect"]["2pl"]["neu"], middle["future_perfect"]["2pl"]["masc"] + "\n" + middle["future_perfect"]["2pl"]["fem"] + "\n" + middle["future_perfect"]["2pl"]["neu"]],
+            [active["future_perfect"]["3pl"]["masc"] + "\n" + active["future_perfect"]["3pl"]["fem"] + "\n" + active["future_perfect"]["3pl"]["neu"], middle["future_perfect"]["3pl"]["masc"] + "\n" + middle["future_perfect"]["3pl"]["fem"] + "\n" + middle["future_perfect"]["3pl"]["neu"]],            
+            ["", "", ""],
+            [active["subj"]["1sg"]["masc"] + "\n" + active["subj"]["1sg"]["fem"] + "\n" + active["subj"]["1sg"]["neu"], middle["subj"]["1sg"]["masc"] + "\n" + middle["subj"]["1sg"]["fem"] + "\n" + middle["subj"]["1sg"]["neu"]],
+            [active["subj"]["2sg"]["masc"] + "\n" + active["subj"]["2sg"]["fem"] + "\n" + active["subj"]["2sg"]["neu"], middle["subj"]["2sg"]["masc"] + "\n" + middle["subj"]["2sg"]["fem"] + "\n" + middle["subj"]["2sg"]["neu"]],
+            [active["subj"]["3sg"]["masc"] + "\n" + active["subj"]["3sg"]["fem"] + "\n" + active["subj"]["3sg"]["neu"], middle["subj"]["3sg"]["masc"] + "\n" + middle["subj"]["3sg"]["fem"] + "\n" + middle["subj"]["3sg"]["neu"]],
+            [active["subj"]["1du"]["masc"] + "\n" + active["subj"]["1du"]["fem"] + "\n" + active["subj"]["1du"]["neu"], middle["subj"]["1du"]["masc"] + "\n" + middle["subj"]["1du"]["fem"] + "\n" + middle["subj"]["1du"]["neu"]],
+            [active["subj"]["2du"]["masc"] + "\n" + active["subj"]["2du"]["fem"] + "\n" + active["subj"]["2du"]["neu"], middle["subj"]["2du"]["masc"] + "\n" + middle["subj"]["2du"]["fem"] + "\n" + middle["subj"]["2du"]["neu"]],
+            [active["subj"]["3du"]["masc"] + "\n" + active["subj"]["3du"]["fem"] + "\n" + active["subj"]["3du"]["neu"], middle["subj"]["3du"]["masc"] + "\n" + middle["subj"]["3du"]["fem"] + "\n" + middle["subj"]["3du"]["neu"]],            
+            [active["subj"]["1pl"]["masc"] + "\n" + active["subj"]["1pl"]["fem"] + "\n" + active["subj"]["1pl"]["neu"], middle["subj"]["1pl"]["masc"] + "\n" + middle["subj"]["1pl"]["fem"] + "\n" + middle["subj"]["1pl"]["neu"]],
+            [active["subj"]["2pl"]["masc"] + "\n" + active["subj"]["2pl"]["fem"] + "\n" + active["subj"]["2pl"]["neu"], middle["subj"]["2pl"]["masc"] + "\n" + middle["subj"]["2pl"]["fem"] + "\n" + middle["subj"]["2pl"]["neu"]],
+            [active["subj"]["3pl"]["masc"] + "\n" + active["subj"]["3pl"]["fem"] + "\n" + active["subj"]["3pl"]["neu"], middle["subj"]["3pl"]["masc"] + "\n" + middle["subj"]["3pl"]["fem"] + "\n" + middle["subj"]["3pl"]["neu"]],  
+            ["", "", ""],
+            [active["subj_perfect"]["1sg"]["masc"] + "\n" + active["subj_perfect"]["1sg"]["fem"] + "\n" + active["subj_perfect"]["1sg"]["neu"], middle["subj_perfect"]["1sg"]["masc"] + "\n" + middle["subj_perfect"]["1sg"]["fem"] + "\n" + middle["subj_perfect"]["1sg"]["neu"]],
+            [active["subj_perfect"]["2sg"]["masc"] + "\n" + active["subj_perfect"]["2sg"]["fem"] + "\n" + active["subj_perfect"]["2sg"]["neu"], middle["subj_perfect"]["2sg"]["masc"] + "\n" + middle["subj_perfect"]["2sg"]["fem"] + "\n" + middle["subj_perfect"]["2sg"]["neu"]],
+            [active["subj_perfect"]["3sg"]["masc"] + "\n" + active["subj_perfect"]["3sg"]["fem"] + "\n" + active["subj_perfect"]["3sg"]["neu"], middle["subj_perfect"]["3sg"]["masc"] + "\n" + middle["subj_perfect"]["3sg"]["fem"] + "\n" + middle["subj_perfect"]["3sg"]["neu"]],
+            [active["subj_perfect"]["1du"]["masc"] + "\n" + active["subj_perfect"]["1du"]["fem"] + "\n" + active["subj_perfect"]["1du"]["neu"], middle["subj_perfect"]["1du"]["masc"] + "\n" + middle["subj_perfect"]["1du"]["fem"] + "\n" + middle["subj_perfect"]["1du"]["neu"]],
+            [active["subj_perfect"]["2du"]["masc"] + "\n" + active["subj_perfect"]["2du"]["fem"] + "\n" + active["subj_perfect"]["2du"]["neu"], middle["subj_perfect"]["2du"]["masc"] + "\n" + middle["subj_perfect"]["2du"]["fem"] + "\n" + middle["subj_perfect"]["2du"]["neu"]],
+            [active["subj_perfect"]["3du"]["masc"] + "\n" + active["subj_perfect"]["3du"]["fem"] + "\n" + active["subj_perfect"]["3du"]["neu"], middle["subj_perfect"]["3du"]["masc"] + "\n" + middle["subj_perfect"]["3du"]["fem"] + "\n" + middle["subj_perfect"]["3du"]["neu"]],            
+            [active["subj_perfect"]["1pl"]["masc"] + "\n" + active["subj_perfect"]["1pl"]["fem"] + "\n" + active["subj_perfect"]["1pl"]["neu"], middle["subj_perfect"]["1pl"]["masc"] + "\n" + middle["subj_perfect"]["1pl"]["fem"] + "\n" + middle["subj_perfect"]["1pl"]["neu"]],
+            [active["subj_perfect"]["2pl"]["masc"] + "\n" + active["subj_perfect"]["2pl"]["fem"] + "\n" + active["subj_perfect"]["2pl"]["neu"], middle["subj_perfect"]["2pl"]["masc"] + "\n" + middle["subj_perfect"]["2pl"]["fem"] + "\n" + middle["subj_perfect"]["2pl"]["neu"]],
+            [active["subj_perfect"]["3pl"]["masc"] + "\n" + active["subj_perfect"]["3pl"]["fem"] + "\n" + active["subj_perfect"]["3pl"]["neu"], middle["subj_perfect"]["3pl"]["masc"] + "\n" + middle["subj_perfect"]["3pl"]["fem"] + "\n" + middle["subj_perfect"]["3pl"]["neu"]],  
+            ["", "", ""],
+            ["", "", ""],
+            [active["imper"]["2sg"]["masc"], middle["imper"]["2sg"]["masc"]],
+            ["", "", ""],
+            [active["imper"]["1du"]["masc"], middle["imper"]["1du"]["masc"]],
+            [active["imper"]["2du"]["masc"], middle["imper"]["2du"]["masc"]],
+            ["", "", ""],         
+            [active["imper"]["1pl"]["masc"], middle["imper"]["1pl"]["masc"]],
+            [active["imper"]["2pl"]["masc"], middle["imper"]["2pl"]["masc"]],
+            ["", "", ""],
+            ["", "", ""],
             ["*" + active["past"]["1sg"]["masc"], "*" + middle["past"]["1sg"]["masc"]],
             ["*" + active["past"]["2sg"]["masc"], "*" + middle["past"]["2sg"]["masc"]],
             ["*" + active["past"]["3sg"]["masc"], "*" + middle["past"]["3sg"]["masc"]],
@@ -366,82 +436,159 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
             ["*" + active["aorist"]["3du"]["masc"], "*" + middle["aorist"]["3du"]["masc"]],            
             ["*" + active["aorist"]["1pl"]["masc"], "*" + middle["aorist"]["1pl"]["masc"]],
             ["*" + active["aorist"]["2pl"]["masc"], "*" + middle["aorist"]["2pl"]["masc"]],
-            ["*" + active["aorist"]["3pl"]["masc"], "*" + middle["aorist"]["3pl"]["masc"]],
-            ["", "", ""],
-            [active["future"]["1sg"]["masc"], middle["future"]["1sg"]["masc"]],
-            [active["future"]["2sg"]["masc"], middle["future"]["2sg"]["masc"]],
-            [active["future"]["3sg"]["masc"], middle["future"]["3sg"]["masc"]],
-            [active["future"]["1du"]["masc"], middle["future"]["1du"]["masc"]],
-            [active["future"]["2du"]["masc"], middle["future"]["2du"]["masc"]],
-            [active["future"]["3du"]["masc"], middle["future"]["3du"]["masc"]],            
-            [active["future"]["1pl"]["masc"], middle["future"]["1pl"]["masc"]],
-            [active["future"]["2pl"]["masc"], middle["future"]["2pl"]["masc"]],
-            [active["future"]["3pl"]["masc"], middle["future"]["3pl"]["masc"]],
-            ["", "", ""],
-            [active["perfect"]["1sg"]["masc"], middle["perfect"]["1sg"]["masc"]],
-            [active["perfect"]["2sg"]["masc"], middle["perfect"]["2sg"]["masc"]],
-            [active["perfect"]["3sg"]["masc"], middle["perfect"]["3sg"]["masc"]],
-            [active["perfect"]["1du"]["masc"], middle["perfect"]["1du"]["masc"]],
-            [active["perfect"]["2du"]["masc"], middle["perfect"]["2du"]["masc"]],
-            [active["perfect"]["3du"]["masc"], middle["perfect"]["3du"]["masc"]],            
-            [active["perfect"]["1pl"]["masc"], middle["perfect"]["1pl"]["masc"]],
-            [active["perfect"]["2pl"]["masc"], middle["perfect"]["2pl"]["masc"]],
-            [active["perfect"]["3pl"]["masc"], middle["perfect"]["3pl"]["masc"]],
-            ["", "", ""],
-            [active["past_perfect"]["1sg"]["masc"], middle["past_perfect"]["1sg"]["masc"]],
-            [active["past_perfect"]["2sg"]["masc"], middle["past_perfect"]["2sg"]["masc"]],
-            [active["past_perfect"]["3sg"]["masc"], middle["past_perfect"]["3sg"]["masc"]],
-            [active["past_perfect"]["1du"]["masc"], middle["past_perfect"]["1du"]["masc"]],
-            [active["past_perfect"]["2du"]["masc"], middle["past_perfect"]["2du"]["masc"]],
-            [active["past_perfect"]["3du"]["masc"], middle["past_perfect"]["3du"]["masc"]],
-            [active["past_perfect"]["1pl"]["masc"], middle["past_perfect"]["1pl"]["masc"]],
-            [active["past_perfect"]["2pl"]["masc"], middle["past_perfect"]["2pl"]["masc"]],
-            [active["past_perfect"]["3pl"]["masc"], middle["past_perfect"]["3pl"]["masc"]], 
-            ["", "", ""],
-            [active["future_perfect"]["1sg"]["masc"], middle["future_perfect"]["1sg"]["masc"]],
-            [active["future_perfect"]["2sg"]["masc"], middle["future_perfect"]["2sg"]["masc"]],
-            [active["future_perfect"]["3sg"]["masc"], middle["future_perfect"]["3sg"]["masc"]],
-            [active["future_perfect"]["1du"]["masc"], middle["future_perfect"]["1du"]["masc"]],
-            [active["future_perfect"]["2du"]["masc"], middle["future_perfect"]["2du"]["masc"]],
-            [active["future_perfect"]["3du"]["masc"], middle["future_perfect"]["3du"]["masc"]],
-            [active["future_perfect"]["1pl"]["masc"], middle["future_perfect"]["1pl"]["masc"]],
-            [active["future_perfect"]["2pl"]["masc"], middle["future_perfect"]["2pl"]["masc"]],
-            [active["future_perfect"]["3pl"]["masc"], middle["future_perfect"]["3pl"]["masc"]],            
-            ["", "", ""],
-            [active["subj"]["1sg"]["masc"], middle["subj"]["1sg"]["masc"]],
-            [active["subj"]["2sg"]["masc"], middle["subj"]["2sg"]["masc"]],
-            [active["subj"]["3sg"]["masc"], middle["subj"]["3sg"]["masc"]],
-            [active["subj"]["1du"]["masc"], middle["subj"]["1du"]["masc"]],
-            [active["subj"]["2du"]["masc"], middle["subj"]["2du"]["masc"]],
-            [active["subj"]["3du"]["masc"], middle["subj"]["3du"]["masc"]],            
-            [active["subj"]["1pl"]["masc"], middle["subj"]["1pl"]["masc"]],
-            [active["subj"]["2pl"]["masc"], middle["subj"]["2pl"]["masc"]],
-            [active["subj"]["3pl"]["masc"], middle["subj"]["3pl"]["masc"]],  
-            ["", "", ""],
-            [active["subj_perfect"]["1sg"]["masc"], middle["subj_perfect"]["1sg"]["masc"]],
-            [active["subj_perfect"]["2sg"]["masc"], middle["subj_perfect"]["2sg"]["masc"]],
-            [active["subj_perfect"]["3sg"]["masc"], middle["subj_perfect"]["3sg"]["masc"]],
-            [active["subj_perfect"]["1du"]["masc"], middle["subj_perfect"]["1du"]["masc"]],
-            [active["subj_perfect"]["2du"]["masc"], middle["subj_perfect"]["2du"]["masc"]],
-            [active["subj_perfect"]["3du"]["masc"], middle["subj_perfect"]["3du"]["masc"]],            
-            [active["subj_perfect"]["1pl"]["masc"], middle["subj_perfect"]["1pl"]["masc"]],
-            [active["subj_perfect"]["2pl"]["masc"], middle["subj_perfect"]["2pl"]["masc"]],
-            [active["subj_perfect"]["3pl"]["masc"], middle["subj_perfect"]["3pl"]["masc"]],  
-            ["", "", ""],
-            ["", "", ""],
-            [active["imper"]["2sg"]["masc"], middle["imper"]["2sg"]["masc"]],
-            ["", "", ""],
-            [active["imper"]["1du"]["masc"], middle["imper"]["1du"]["masc"]],
-            [active["imper"]["2du"]["masc"], middle["imper"]["2du"]["masc"]],
-            ["", "", ""],         
-            [active["imper"]["1pl"]["masc"], middle["imper"]["1pl"]["masc"]],
-            [active["imper"]["2pl"]["masc"], middle["imper"]["2pl"]["masc"]],
-            ["", "", ""],          
+            ["*" + active["aorist"]["3pl"]["masc"], "*" + middle["aorist"]["3pl"]["masc"]],                
           ];
           
           // 結果を返す。
           return verb_table;
         }
+
+        // 配列をテーブル用に変換にする。
+        function get_participle(table_data, word, participle_name){
+
+          // JSONに書き換え
+          var json_participle = JSON.parse(table_data)[word][participle_name];
+
+          // 原級形容詞の格変化情報を取得
+          var positive_masc_sg = json_participle["positive"]["masc"]["sg"];   //単数男性
+          var positive_fem_sg = json_participle["positive"]["fem"]["sg"];     //単数女性
+          var positive_neu_sg = json_participle["positive"]["neu"]["sg"];   	//単数中性
+          var positive_masc_du = json_participle["positive"]["masc"]["du"];   //双数男性
+          var positive_fem_du = json_participle["positive"]["fem"]["du"];     //双数女性
+          var positive_neu_du = json_participle["positive"]["neu"]["du"];   	//双数中性          
+          var positive_masc_pl = json_participle["positive"]["masc"]["pl"]; 	//複数男性
+          var positive_fem_pl = json_participle["positive"]["fem"]["pl"];   	//複数女性
+          var positive_neu_pl = json_participle["positive"]["neu"]["pl"];   	//複数中性
+          
+          // 比較級形容詞の格変化情報を取得
+          var comp_masc_sg = json_participle["comp"]["masc"]["sg"]; 	        //単数男性
+          var comp_fem_sg = json_participle["comp"]["fem"]["sg"];   	        //単数女性
+          var comp_neu_sg = json_participle["comp"]["neu"]["sg"];   	        //単数中性
+          var comp_masc_du = json_participle["comp"]["masc"]["du"];           //双数男性
+          var comp_fem_du = json_participle["comp"]["fem"]["du"];             //双数女性
+          var comp_neu_du = json_participle["comp"]["neu"]["du"];   	        //双数中性           
+          var comp_masc_pl = json_participle["comp"]["masc"]["pl"]; 		      //複数男性
+          var comp_fem_pl = json_participle["comp"]["fem"]["pl"];   		      //複数女性
+          var comp_neu_pl = json_participle["comp"]["neu"]["pl"];   		      //複数中性
+          
+          // 最上級形容詞の格変化情報を取得
+          var super_masc_sg = json_participle["super"]["masc"]["sg"]; 	      //単数男性
+          var super_fem_sg = json_participle["super"]["fem"]["sg"];   	      //単数女性
+          var super_neu_sg = json_participle["super"]["neu"]["sg"];   	      //単数中性
+          var super_masc_du = json_participle["super"]["masc"]["du"];         //双数男性
+          var super_fem_du = json_participle["super"]["fem"]["du"];           //双数女性
+          var super_neu_du = json_participle["super"]["neu"]["du"];   	      //双数中性            
+          var super_masc_pl = json_participle["super"]["masc"]["pl"]; 		    //複数男性
+          var super_fem_pl = json_participle["super"]["fem"]["pl"];   		    //複数女性
+          var super_neu_pl = json_participle["super"]["neu"]["pl"];   		    //複数中性
+          
+          // 格納データを作成
+          var adj_table = [
+            ["", "", "", "", "", "", ""],
+            [positive_masc_sg["nom"], positive_fem_sg["nom"], positive_neu_sg["nom"], "*" + positive_masc_du["nom"], "*" + positive_fem_du["nom"], "*" + positive_neu_du["nom"], positive_masc_pl["nom"], positive_fem_pl["nom"], positive_neu_pl["nom"]],
+            [positive_masc_sg["gen"], positive_fem_sg["gen"], positive_neu_sg["gen"], "*" + positive_masc_du["gen"], "*" + positive_fem_du["gen"], "*" + positive_neu_du["gen"], positive_masc_pl["gen"], positive_fem_pl["gen"], positive_neu_pl["gen"]],
+            [positive_masc_sg["dat"], positive_fem_sg["dat"], positive_neu_sg["dat"], "*" + positive_masc_du["dat"], "*" + positive_fem_du["dat"], "*" + positive_neu_du["dat"], positive_masc_pl["dat"], positive_fem_pl["dat"], positive_neu_pl["dat"]],
+            [positive_masc_sg["acc"], positive_fem_sg["acc"], positive_neu_sg["acc"], "*" + positive_masc_du["acc"], "*" + positive_fem_du["acc"], "*" + positive_neu_du["acc"], positive_masc_pl["acc"], positive_fem_pl["acc"], positive_neu_pl["acc"]],
+            [positive_masc_sg["ins"], positive_fem_sg["ins"], positive_neu_sg["ins"], "*" + positive_masc_du["ins"], "*" + positive_fem_du["ins"], "*" + positive_neu_du["ins"], positive_masc_pl["ins"], positive_fem_pl["ins"], positive_neu_pl["ins"]],            
+            [positive_masc_sg["loc"], positive_fem_sg["loc"], positive_neu_sg["loc"], "*" + positive_masc_du["loc"], "*" + positive_fem_du["loc"], "*" + positive_neu_du["loc"], positive_masc_pl["loc"], positive_fem_pl["loc"], positive_neu_pl["loc"]],
+            [positive_masc_sg["voc"], positive_fem_sg["voc"], positive_neu_sg["voc"], "*" + positive_masc_du["voc"], "*" + positive_fem_du["voc"], "*" + positive_neu_du["voc"], positive_masc_pl["voc"], positive_fem_pl["voc"], positive_neu_pl["voc"]],
+            ["", "", "", "", "", "", ""],
+            [comp_masc_sg["nom"], comp_fem_sg["nom"], comp_neu_sg["nom"], "*" + comp_masc_du["nom"], "*" + comp_fem_du["nom"], "*" + comp_neu_du["nom"], comp_masc_pl["nom"], comp_fem_pl["nom"], comp_neu_pl["nom"]],
+            [comp_masc_sg["gen"], comp_fem_sg["gen"], comp_neu_sg["gen"], "*" + comp_masc_du["gen"], "*" + comp_fem_du["gen"], "*" + comp_neu_du["gen"], comp_masc_pl["gen"], comp_fem_pl["gen"], comp_neu_pl["gen"]],
+            [comp_masc_sg["dat"], comp_fem_sg["dat"], comp_neu_sg["dat"], "*" + comp_masc_du["dat"], "*" + comp_fem_du["dat"], "*" + comp_neu_du["dat"], comp_masc_pl["dat"], comp_fem_pl["dat"], comp_neu_pl["dat"]],
+            [comp_masc_sg["acc"], comp_fem_sg["acc"], comp_neu_sg["acc"], "*" + comp_masc_du["acc"], "*" + comp_fem_du["acc"], "*" + comp_neu_du["acc"], comp_masc_pl["acc"], comp_fem_pl["acc"], comp_neu_pl["acc"]],
+            [comp_masc_sg["ins"], comp_fem_sg["ins"], comp_neu_sg["ins"], "*" + comp_masc_du["ins"], "*" + comp_fem_du["ins"], "*" + comp_neu_du["ins"], comp_masc_pl["ins"], comp_fem_pl["ins"], comp_neu_pl["ins"]],
+            [comp_masc_sg["loc"], comp_fem_sg["loc"], comp_neu_sg["loc"], "*" + comp_masc_du["loc"], "*" + comp_fem_du["loc"], "*" + comp_neu_du["loc"], comp_masc_pl["loc"], comp_fem_pl["loc"], comp_neu_pl["loc"]],
+            [comp_masc_sg["voc"], comp_fem_sg["voc"], comp_neu_sg["voc"], "*" + comp_masc_du["voc"], "*" + comp_fem_du["voc"], "*" + comp_neu_du["voc"], comp_masc_pl["voc"], comp_fem_pl["voc"], comp_neu_pl["voc"]],  
+            ["", "", "", "", "", "", ""],
+            [super_masc_sg["nom"], super_fem_sg["nom"], super_neu_sg["nom"], "*" + super_masc_du["nom"], "*" + super_fem_du["nom"], "*" + super_neu_du["nom"], super_masc_pl["nom"], super_fem_pl["nom"], super_neu_pl["nom"]],
+            [super_masc_sg["gen"], super_fem_sg["gen"], super_neu_sg["gen"], "*" + super_masc_du["gen"], "*" + super_fem_du["gen"], "*" + super_neu_du["gen"], super_masc_pl["gen"], super_fem_pl["gen"], super_neu_pl["gen"]],
+            [super_masc_sg["dat"], super_fem_sg["dat"], super_neu_sg["dat"], "*" + super_masc_du["dat"], "*" + super_fem_du["dat"], "*" + super_neu_du["dat"], super_masc_pl["dat"], super_fem_pl["dat"], super_neu_pl["dat"]],
+            [super_masc_sg["acc"], super_fem_sg["acc"], super_neu_sg["acc"], "*" + super_masc_du["acc"], "*" + super_fem_du["acc"], "*" + super_neu_du["acc"], super_masc_pl["acc"], super_fem_pl["acc"], super_neu_pl["acc"]],
+            [super_masc_sg["ins"], super_fem_sg["ins"], super_neu_sg["ins"], "*" + super_masc_du["ins"], "*" + super_fem_du["ins"], "*" + super_neu_du["ins"], super_masc_pl["ins"], super_fem_pl["ins"], super_neu_pl["ins"]],            
+            [super_masc_sg["loc"], super_fem_sg["loc"], super_neu_sg["loc"], "*" + super_masc_du["loc"], "*" + super_fem_du["loc"], "*" + super_neu_du["loc"], super_masc_pl["loc"], super_fem_pl["loc"], super_neu_pl["loc"]],
+            [super_masc_sg["voc"], super_fem_sg["voc"], super_neu_sg["voc"], "*" + super_masc_du["voc"], "*" + super_fem_du["voc"], "*" + super_neu_du["voc"], super_masc_pl["voc"], super_fem_pl["voc"], super_neu_pl["voc"]],             
+          ];
+          
+          // 結果を返す。
+          return adj_table;
+        }
+
+        // 配列をテーブル用に変換にする。
+        function get_verbal_noun(table_data, word, participle_name){
+          // JSONに書き換え
+          var json_verbal_noun = JSON.parse(table_data)[word][participle_name];
+          // 格変化情報を取得
+          var declension_sg = json_verbal_noun["sg"];  //単数
+          var declension_du = json_verbal_noun["du"];  //双数
+          var declension_pl = json_verbal_noun["pl"];  //複数
+          // 格納データを作成
+          var verbal_noun = [
+            [declension_sg["nom"], "*" + declension_du["nom"], declension_pl["nom"]],
+            [declension_sg["gen"], "*" + declension_du["gen"], declension_pl["gen"]],
+            [declension_sg["dat"], "*" + declension_du["dat"], declension_pl["dat"]],
+            [declension_sg["acc"], "*" + declension_du["acc"], declension_pl["acc"]],
+            [declension_sg["ins"], "*" + declension_du["ins"], declension_pl["ins"]],            
+            [declension_sg["loc"], "*" + declension_du["loc"], declension_pl["loc"]],
+            [declension_sg["voc"], "*" + declension_du["voc"], declension_pl["voc"]],            
+          ];
+          
+          // 結果を返す。
+          return verbal_noun;
+        }
+
+        // 分詞をテーブルにセットする。
+        function set_particple_to_table(particple_data, table_id){
+          // 行オブジェクトの取得
+          var rows = $(table_id)[0].rows;
+          // 各行をループ処理
+          $.each(rows, function(i){
+            // タイトル行は除外する。
+            if(i == 0 || i == 1){
+              return true;
+            } else if(particple_data[i - 2][0] == ""){
+              if(i == 2){
+                rows[i].cells[0].innerText = "原級";
+              } else if(i == 20){
+                rows[i].cells[0].innerText = "比較級";
+              } else if(i == 38){
+                rows[i].cells[0].innerText = "最上級";
+              }
+              // 説明行も除外
+              return true;
+            } else {
+              // 格変化を挿入
+              rows[i].cells[1].innerText = particple_data[i - 2][0]; // 単数男性(1行目)
+              rows[i].cells[2].innerText = particple_data[i - 2][1]; // 単数女性(2行目)
+              rows[i].cells[3].innerText = particple_data[i - 2][2]; // 単数中性(3行目)
+              rows[i].cells[4].innerText = particple_data[i - 2][3]; // 双数男性(4行目)
+              rows[i].cells[5].innerText = particple_data[i - 2][4]; // 双数女性(5行目)
+              rows[i].cells[6].innerText = particple_data[i - 2][5]; // 双数中性(6行目)  
+              rows[i].cells[7].innerText = particple_data[i - 2][6]; // 複数男性(4行目)
+              rows[i].cells[8].innerText = particple_data[i - 2][7]; // 複数女性(5行目)
+              rows[i].cells[9].innerText = particple_data[i - 2][8]; // 複数中性(6行目)       
+            }
+          });
+        }
+
+        // 単語選択後の処理
+        function set_verbal_noun_to_table(particple_data, table_id){
+          // 行オブジェクトの取得
+          var rows = $(table_id)[0].rows;
+          // 各行をループ処理
+          $.each(rows, function(i){
+            // タイトル行は除外する。
+            if(i == 0){
+              return true;
+            } else if(i < 9){
+              // 格変化を挿入
+              rows[i].cells[1].innerText = particple_data[i - 1][0]; // 単数(1行目)
+              rows[i].cells[2].innerText = particple_data[i - 1][1]; // 双数(2行目)
+              rows[i].cells[3].innerText = particple_data[i - 1][2]; // 複数(3行目)
+            }
+          });
+        }
+
 
         // 単語選択後の処理
         function output_table_data(){
@@ -463,6 +610,15 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
             rows[i].cells[2].innerText = conjugation_table[i - 1][1]; // 中動
           });
 
+          // 分詞のデータを取得
+          const present_active = get_participle(verb_table_data, $('#verb-selection').val(), "present_active");       // 現在能動分詞
+          const present_passive = get_participle(verb_table_data, $('#verb-selection').val(), "present_passive");     // 現在受動分詞
+          const verbal_noun = get_verbal_noun(verb_table_data, $('#verb-selection').val(), "verbal_noun");            // 動名詞
+
+          // テーブルにセットする。
+          set_particple_to_table(present_active, '#active-participle-table');     // 現在能動分詞
+          set_particple_to_table(present_passive, '#passive-participle-table');   // 現在受動分詞
+          set_verbal_noun_to_table(verbal_noun, '#verbal-noun-table');            // 動名詞
         }
         
 

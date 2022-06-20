@@ -3348,13 +3348,13 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem, $root);														// 語根
-		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $root), "dhi");				// 語根dhi(中動態)不定詞		
+		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $root), "dhi");					// 語根dhi(中動態)不定詞		
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "tu");													// 語根tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->present_stem, "itu");									// 不完了体tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->inchorative_stem, "tu");								// 始動動詞tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->resultative_stem, "tu");								// 結果動詞tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $root), "ti");					// 語根tiスラブ式不定詞
-		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $this->present_stem), "ti");	// 不完了体tiスラブ式不定詞
+		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $this->present_stem), "ti");		// 不完了体tiスラブ式不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->inchorative_stem, "ti");								// 始動動詞tiスラブ式不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->resultative_stem, "ti");								// 結果動詞tiスラブ式不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "as");													// 語根asギリシア・ラテン式不定詞
@@ -5019,7 +5019,24 @@ class Polish_Verb extends Verb_Common_IE {
 			"3sg" => "",
 			"1du" => "wa",
 			"2du" => "ta", 
-			"3du" => "ta",			
+			"3du" => "ta",
+			"1pl" => "my",
+			"2pl" => "cie", 
+			"3pl" => "ją",	
+		],
+	];
+
+	// 一次人称接尾辞(現在、未来)
+	protected $primary_number2 = 
+	[		
+		"active" => 
+		[
+			"1sg" => "ę",
+			"2sg" => "sz", 
+			"3sg" => "",
+			"1du" => "wa",
+			"2du" => "ta", 
+			"3du" => "ta",
 			"1pl" => "my",
 			"2pl" => "cie", 
 			"3pl" => "ą",	
@@ -5136,6 +5153,10 @@ class Polish_Verb extends Verb_Common_IE {
 			$this->verb_type = $word_info["verb_type"];								// 活用種別
 			$this->root_type = $word_info["verb_aspect"];							// 動詞の種別
 			$this->deponent_active = $word_info["deponent_active"];					// sie動詞判定
+			$this->verbal_noun = mb_substr($this->infinitive, 0, -1)."nie";			// 動名詞
+		} else if(preg_match('/(ować|owac)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb5(mb_substr($dic_stem, 0, -4));			
 		} else if(preg_match('/(ać|ac)$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -2));
@@ -5204,7 +5225,12 @@ class Polish_Verb extends Verb_Common_IE {
 				$this->ind = "i";					// 直接法
 				$this->opt = "ij";					// 接続法←希求法
 				$this->class_name = "不規則動詞";	 // 活用名				
-		        break;							
+		        break;
+		    case "denomitive":
+				$this->ind = "";					// 直接法
+				$this->opt = "";					// 接続法←希求法
+				$this->class_name = "名詞起源動詞";	 // 活用名				
+		        break;																		
 			default:
 				break;
 		}
@@ -5223,7 +5249,8 @@ class Polish_Verb extends Verb_Common_IE {
 		$this->present_stem2 = mb_substr($common_stem, 0, -1);			// 現在形2		
 		$this->aorist_stem = $common_stem;								// 完了形		
 		$this->infinitive = $dic_stem ."ać";							// 不定形
-		$this->past_stem = $common_stem."ł";							// 過去分詞		
+		$this->past_stem = $common_stem."ł";							// 過去分詞
+		$this->verbal_noun = $common_stem."nie";						// 動名詞
 	}
 
 	// 不明動詞の対応2
@@ -5239,7 +5266,8 @@ class Polish_Verb extends Verb_Common_IE {
 		$this->present_stem2 = mb_substr($common_stem, 0, -1);			// 現在形2		
 		$this->aorist_stem = $common_stem;								// 完了形		
 		$this->infinitive = $dic_stem ."eć";							// 不定形
-		$this->past_stem = $common_stem."ł";							// 過去分詞				
+		$this->past_stem = $common_stem."ł";							// 過去分詞
+		$this->verbal_noun = $common_stem."nie";						// 動名詞
 	}
 
 	// 不明動詞の対応3
@@ -5255,7 +5283,8 @@ class Polish_Verb extends Verb_Common_IE {
 		$this->present_stem2 = $common_stem;							// 現在形2
 		$this->infinitive = $dic_stem ."ąć";							// 不定形				
 		$this->aorist_stem = mb_substr($this->infinitive, 0, -1);		// 完了形		
-		$this->past_stem = $common_stem."ł";							// 過去分詞				
+		$this->past_stem = $common_stem."ł";							// 過去分詞
+		$this->verbal_noun = $common_stem."nie";						// 動名詞	
 	}
 
 	// 不明動詞の対応4
@@ -5266,12 +5295,30 @@ class Polish_Verb extends Verb_Common_IE {
 		$this->japanese_translation = "借用";
 		$this->english_translation = "loanword";	
 		// データを挿入(借用語)
-		$this->verb_type= "4";					// 活用種別					
+		$this->verb_type= "1";											// 活用種別					
 		$this->present_stem = mb_substr($common_stem, 0, -1);			// 現在形
 		$this->present_stem2 = mb_substr($common_stem, 0, -1);			// 現在形2		
 		$this->aorist_stem = $common_stem;								// 完了形		
 		$this->infinitive = $dic_stem ."ić";							// 不定形
-		$this->past_stem = $common_stem."ł";							// 過去分詞				
+		$this->past_stem = $common_stem."ł";							// 過去分詞	
+		$this->verbal_noun = $common_stem."nie";						// 動名詞	
+	}
+
+	// 不明動詞の対応5
+	private function generate_uknown_verb5($dic_stem){
+		// 共通語幹を取得
+		$common_stem = $dic_stem."uj";
+		// 訳を入れる。
+		$this->japanese_translation = "借用";
+		$this->english_translation = "loanword";	
+		// データを挿入(借用語)
+		$this->verb_type= "denomitive";									// 活用種別					
+		$this->present_stem = $common_stem."e";							// 現在形
+		$this->present_stem2 = $common_stem;							// 現在形2		
+		$this->aorist_stem = $dic_stem."owa";							// 完了形		
+		$this->infinitive = $dic_stem ."ować";							// 不定形
+		$this->past_stem = $common_stem."ował";							// 過去分詞				
+		$this->verbal_noun = $dic_stem."owanie";						// 動名詞
 	}
 
 	// 動詞の語幹を作成
@@ -5345,7 +5392,7 @@ class Polish_Verb extends Verb_Common_IE {
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
 		} else if($tense_mood == Commons::$IMPERATIVE){
 			// 命令法
-			$verb_conjugation = $this->present_stem.$this->opt.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
+			$verb_conjugation = $this->present_stem2.$this->opt.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
 			// ハイフンを返す。
 			return "-";
@@ -5359,10 +5406,7 @@ class Polish_Verb extends Verb_Common_IE {
 	protected function get_primary_suffix_polish($person){
 
 		// 一人称単数、三人称複数
-		if(preg_match('/3pl/', $person) && $this->verb_type == "1"){
-			// 語幹を作成
-			$verb_stem  = $this->present_stem2.$this->ind."j";
-		} else 	if(preg_match('(1sg|3pl)', $person)){
+		if(preg_match('(1sg|3pl)', $person)){
 			// 語幹を作成
 			$verb_stem  = $this->present_stem2.$this->ind;
 		} else {
@@ -5370,8 +5414,17 @@ class Polish_Verb extends Verb_Common_IE {
 			$verb_stem  = $this->present_stem.$this->ind;
 		}
 
-		// 親クラスを呼び出す
-		$verb_conjugation = $this->get_primary_suffix($verb_stem, Commons::$ACTIVE_VOICE, $person);
+		// 初期化
+		$verb_conjugation = "";
+		// 第一変化動詞の場合は
+		if($this->verb_type == "1"){
+			// 親クラスを呼び出す
+			$verb_conjugation = $this->get_primary_suffix($verb_stem, Commons::$ACTIVE_VOICE, $person);
+		} else {
+			// それ以外は固有のメンバを呼び出す
+			$verb_conjugation = $verb_stem.$this->primary_number2[Commons::$ACTIVE_VOICE][$person];;			
+		}
+
 
 		// 結果を返す。
 		return $verb_conjugation;
@@ -5421,17 +5474,17 @@ class Polish_Verb extends Verb_Common_IE {
 	protected function get_pluperfect_stem($gender, $person){
 		// 性別・数に分けて返す
 		if($gender == Commons::$MASCULINE_GENDER && preg_match("/sg$/", $person)){
-			return $this->subj;
+			return "był";
 		} else if($gender == Commons::$FEMINE_GENDER && preg_match("/sg$/", $person)){
-			return $this->subj."a";
+			return $this->subj."ła";
 		} else if($gender == Commons::$NEUTER_GENDER && preg_match("/sg$/", $person)){
-			return $this->subj."o";
+			return $this->subj."ło";
 		} else if($gender == Commons::$MASCULINE_GENDER && preg_match("/(du|pl)$/", $person)){	
-			return $this->subj."y";		
+			return $this->subj."ły";		
 		} else if($gender == Commons::$FEMINE_GENDER && preg_match("/(du|pl)$/", $person)){
-			return $this->subj."i";
+			return $this->subj."łi";
 		} else if($gender == Commons::$NEUTER_GENDER && preg_match("/(du|pl)$/", $person)){		
-			return $this->subj."i";			
+			return $this->subj."łi";			
 		} else {
 			// ハイフンを返す。
 			return "-";			
@@ -5505,7 +5558,7 @@ class Polish_Verb extends Verb_Common_IE {
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 能動分詞
-		$conjugation["present_passive"] = $this->get_participle($this->perfect_participle_passive);	// 受動分詞
+		$conjugation["present_passive"] = $this->get_participle($this->present_participle_passive);	// 受動分詞
 		$conjugation["supine"] = $this->get_participle($this->supine);								// 副分詞
 		$conjugation["verbal_noun"] = $this->get_verbal_noun($this->verbal_noun);					// 動名詞		
 		
