@@ -291,7 +291,68 @@ class Polish_Common {
 		}
 	}
 
-	// ラテン語の動詞を取得
+	// 名詞・形容詞起源動詞を取得
+	public static function get_polish_denomitive_verb($japanese_translation, $table, $gender = ""){
+		// 英数字は考慮しない
+		if(ctype_alnum($japanese_translation)){
+			// 何も返さない。
+			return null;
+		}
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'ować') as `strong_stem`  FROM `".$table."` WHERE (
+				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
+				 `japanese_translation` = '".$japanese_translation."')";
+
+		// 名詞の場合で性別の指定がある場合は追加する。
+		if($table == Polish_Common::$DB_NOUN && $gender != ""){
+			$query = $query."AND `gender` LIKE '%".$gender."%'";
+		}
+
+		// 動詞の条件と被らないようにする。
+		$query = $query." AND NOT EXISTS(
+							SELECT * FROM `".Polish_Common::$DB_VERB."`
+							WHERE `".Polish_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'ować') 
+						  )";
+
+		// SQLを作成 
+		$query = $query." UNION SELECT
+							`".Polish_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
+   						  FROM `".$table."`
+   						  LEFT JOIN  `".Polish_Common::$DB_VERB."`
+   					      ON `".Polish_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'ować')
+   						  WHERE ( 
+							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`".$table."`.`japanese_translation` = '".$japanese_translation."')
+   						  AND 
+							 `".Polish_Common::$DB_VERB."`.`dictionary_stem` is not null;";
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 新しい配列に詰め替え
+			foreach ($table_data as $row_data ) {
+				array_push($new_table_data, $row_data["strong_stem"]);
+			}
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
+	// ポーランド語の動詞を取得
 	public static function get_verb_conjugation($polish_verb){
 
 		// 配列を初期化

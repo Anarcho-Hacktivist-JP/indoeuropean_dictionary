@@ -426,24 +426,23 @@ class Latin_Common {
 
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
-							SELECT * FROM `verb_latin`
-							WHERE `verb_latin`.`dictionary_stem`  = concat(REPLACE(`noun_latin`.`strong_stem`,'-',''), 'āre') 
+							SELECT * FROM `".Latin_Common::$DB_VERB."`
+							WHERE `".Latin_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'āre') 
 						  )";
 
 		// SQLを作成 
 		$query = $query." UNION SELECT
-							`verb_latin`.`dictionary_stem` as `strong_stem` 
-   						  FROM `noun_latin`
-   						  LEFT JOIN  `verb_latin`
-   					      ON `verb_latin`.`dictionary_stem` = concat(REPLACE( `noun_latin`.`strong_stem`,'-',''), 'āre')
+							`".Latin_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
+   						  FROM `".$table."`
+   						  LEFT JOIN  `".Latin_Common::$DB_VERB."`
+   					      ON `".Latin_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'āre')
    						  WHERE ( 
-							`noun_latin`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
-							`noun_latin`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
-							`noun_latin`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
-							`noun_latin`.`japanese_translation` = '".$japanese_translation."')
+							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`".$table."`.`japanese_translation` = '".$japanese_translation."')
    						  AND 
-	   				        `verb_latin`.`dictionary_stem` is not null;";
-		echo $query;
+							 `".Latin_Common::$DB_VERB."`.`dictionary_stem` is not null;";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
