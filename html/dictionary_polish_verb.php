@@ -139,7 +139,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
       <h1>ポーランド語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="">
+        <input type="text" name="input_verb" class="" id="input_verb">
         <input type="submit" class="btn-check" id="btn-generate">
         <label class="btn" for="btn-generate">検索</label>
         <select class="" id="verb-selection" aria-label="Default select example">
@@ -147,6 +147,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
+      <?php echo Polish_Common::input_special_button(); ?>     
       <details>
         <summary>動詞の活用</summary>      
         <table class="table-bordered" id="conjugation-table" style="overflow: auto;">
@@ -607,12 +608,81 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_a
           set_verbal_noun_to_table(verbal_noun, '#verbal-noun-table');            // 動名詞
         }
         
+        // 入力ボックスに文字の挿入
+        function add_chara(str, selIdx)
+        {
+          // テキストボックスの値を取得
+          var text_sentence = $('#input_verb').val();
+          $('#input_verb').val(strIns(text_sentence, selIdx, str));
+        }
+
+        // 文字列の挿入
+        function strIns(str, idx, val){
+          var res = str.slice(0, idx) + val + str.slice(idx);
+          return res;
+        };
+
 
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#verb-selection').change( function(){
             output_table_data();
+	        });
+	        // ボタン入力
+	        $('#button-a').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-c').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-e').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-l').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-n').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-s').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z1').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z2').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
 	        });
         }
 

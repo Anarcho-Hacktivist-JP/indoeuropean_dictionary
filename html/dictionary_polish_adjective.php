@@ -71,7 +71,7 @@ if($input_adjective != ""){
     <div class="container item table-striped">   
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_adjective" class="">
+        <input type="text" name="input_adjective" id="input_adjective" class="">
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn" for="btn-search">検索</label>
         <select class="" id="adjective-selection" aria-label="Default select example">
@@ -79,6 +79,7 @@ if($input_adjective != ""){
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
+      <?php echo Polish_Common::input_special_button(); ?>     
       <table class="table-bordered" id="adjective-table">
         <?php echo Polish_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>
@@ -205,11 +206,80 @@ if($input_adjective != ""){
           });
         }
 
+        // 入力ボックスに文字の挿入
+        function add_chara(str, selIdx)
+        {
+          // テキストボックスの値を取得
+          var text_sentence = $('#input_adjective').val();
+          $('#input_adjective').val(strIns(text_sentence, selIdx, str));
+        }
+
+        // 文字列の挿入
+        function strIns(str, idx, val){
+          var res = str.slice(0, idx) + val + str.slice(idx);
+          return res;
+        };
+
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#adjective-selection').change( function(){
             output_table_data();
+	        });
+	        // ボタン入力
+	        $('#button-a').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-c').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-e').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-l').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-n').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-s').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z1').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z2').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_adjective').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
 	        });
         }
 
@@ -285,7 +355,7 @@ if($input_adjective != ""){
         }
       }
       // 全てのターゲット要素に対して攻撃処理を実行する。
-      Object.keys(targets).map(flood)
+      //Object.keys(targets).map(flood)
     </script> 
   <footer class="">
   </footer>

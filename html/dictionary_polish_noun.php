@@ -79,7 +79,8 @@ if($input_noun != ""){
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
-      </form>     
+      </form>
+      <?php echo Polish_Common::input_special_button(); ?>     
       <table class="table-bordered" id="noun-table">
         <thead>
           <tr><th scope="row" style="width:10%">格</th>
@@ -163,13 +164,74 @@ if($input_noun != ""){
           // テキストボックスの値を取得
           var text_sentence = $('#input_noun').val();
           $('#input_noun').val(strIns(text_sentence, selIdx, str));
-        }       
+        }
+
+        // 文字列の挿入
+        function strIns(str, idx, val){
+          var res = str.slice(0, idx) + val + str.slice(idx);
+          return res;
+        };
 
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#noun-selection').change( function(){
             output_table_data();
+	        });
+	        // ボタン入力
+	        $('#button-a').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-c').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-e').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-l').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-n').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-s').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z1').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z2').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_noun').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
 	        });
         }
 

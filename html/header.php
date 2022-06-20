@@ -55,6 +55,15 @@
           </div>
           <div class="col-md-1">
             <a href="dictionary_polish_verb.php">動詞</a>
-          </div>                 
+          </div>
+          <div class="col-md-1">
+            <a href="practice_polish_noun.php">問題集(名詞)</a>
+          </div>
+          <div class="col-md-1">
+            <a href="practice_polish_adjective.php">問題集(形容詞)</a>
+          </div>
+          <div class="col-md-1">
+            <a href="practice_polish_verb.php">問題集(動詞)</a>
+          </div>  
         </section>
     </div>    

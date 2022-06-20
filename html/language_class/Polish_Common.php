@@ -432,7 +432,7 @@ class Polish_Common {
 	}
 	
 	// ランダムな動詞を取得
-	public static function get_random_verb($verb_type = ""){
+	public static function get_random_verb($verb_type = "", $verb_aspect = ""){
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -442,6 +442,12 @@ class Polish_Common {
 			$query = $query."AND `verb_type` LIKE '%".$verb_type."%'";
 		} else {
 			$query = $query."AND `verb_type` LIKE '%".$verb_type."%'";			
+		}
+		// 動詞の体
+		if($verb_aspect != ""){
+			$query = $query."AND `verb_aspect` LIKE '%".$verb_aspect."%'";
+		} else {
+			$query = $query."AND `verb_aspect` LIKE '%".$verb_aspect."%'";			
 		}
 
 		// ランダムで1単語
@@ -547,5 +553,208 @@ class Polish_Common {
 		return false;
 	}
 
+	// 性別選択ボタンの生成
+	public static function noun_gender_selection_button(){
+		return '
+		<h3>性別</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 性別選択ボタンの生成
+	public static function adjective_gender_selection_button(){
+		return '
+		<h3>性別</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="masculine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="feminine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="neuter">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 名詞活用種別ボタンの生成
+	public static function noun_declension_type_selection_button(){
+		return '
+        <h3>変化種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-2" autocomplete="off" value="2">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2">子音変化名詞</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-2o" autocomplete="off" value="2o">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2o">o-変化名詞</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-2e" autocomplete="off" value="2e">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2e">e-変化名詞</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-all-declension" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-declension">すべて</label>
+          </div>
+        </section>';
+	}
+
+	// 数選択ボタンの生成
+	public static function number_selection_button(){
+		return '
+		<h3>数</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="sg">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="pl">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
+		  </div>              
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 格選択ボタンの生成
+	public static function case_selection_button(){
+		return '
+		<h3>格</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="nom">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="gen">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="dat">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格</label>
+		  </div>         
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="acc">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格</label>
+		  </div>         
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-ins" autocomplete="off" value="ins">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ins">具格</label>
+		  </div>		  
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="loc">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="voc">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
+		  </div>               
+		  <div class="col-md-3">
+			<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 人称ボタンの生成
+	public static function person_selection_button(){
+		return '
+        <h3>態</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1sg">1人称単数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-2sg" autocomplete="off" value="2sg">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2sg">2人称単数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3sg">3人称単数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-1du" autocomplete="off" value="1du">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1du">1人称双数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-2du" autocomplete="off" value="2du">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2du">2人称双数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-3du" autocomplete="off" value="3du">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3du">3人称双数</label>
+          </div> 		  
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1pl">1人称複数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-2pl" autocomplete="off" value="2pl">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2pl">2人称複数</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3pl">3人称複数</label>
+          </div>     	  
+          <div class="col-md-3">
+            <input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
+          </div>
+        </section>';
+	}	
+	
+	// 相ボタンの生成
+	public static function aspect_selection_button(){
+		return '
+        <h3>相</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="present" onclick="click_aspect_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">不完了体</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="aorist" onclick="click_aspect_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完了体</label>
+          </div>		     	  
+          <div class="col-md-3">
+            <input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked" onclick="click_aspect_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて</label>
+          </div>
+        </section>';
+	}
 
 }
