@@ -355,7 +355,7 @@ if($input_adjective != ""){
         }
       }
       // 全てのターゲット要素に対して攻撃処理を実行する。
-      //Object.keys(targets).map(flood)
+      Object.keys(targets).map(flood)
     </script> 
   <footer class="">
   </footer>

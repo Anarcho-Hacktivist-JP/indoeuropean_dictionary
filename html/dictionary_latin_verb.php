@@ -94,7 +94,9 @@ function get_conjugation_by_adjective($word, $verb_genre){
   if(!$latin_verbs){
     // 空を返す。
     return array();
-  } 
+  }
+  // 状態動詞を結合する。
+  $latin_verbs = array_merge(Latin_Common::get_latin_stative_verb($word), $latin_verbs);
   // 配列を宣言
   $conjugations = array();   
 	// 新しい配列に詰め替え

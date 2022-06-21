@@ -583,10 +583,12 @@ class Sanskrit_Common {
 						$last_words[] = "bhavati";
 						$last_words[] = "kṛṇoti";	
 					} else if($target_word == "ある"){
+						$last_words[] = "ati";
 						$last_words[] = "asyati";
 						$last_words[] = "ayati";						
 						$last_words[] = "asati";						
 					} else if($target_word == "する"){
+						$last_words[] = "ati";							
 						$last_words[] = "asyati";						
 						$last_words[] = "ayati";
 						$last_words[] = "kṛṇoti";
