@@ -184,6 +184,57 @@ class Sanskrit_Common {
 		return $new_table_data;
 	}
 
+	//動詞から派生名詞・形容詞を生成
+	public static function get_noun_from_verb($word){
+
+		// 初期化
+		$roots = array();
+
+		// 語根を取得
+		// 入力値で区別する。
+		if(ctype_alnum($word)){
+			// 語根で検索
+			$roots = Sanskrit_Common::get_root_from_DB($word);
+		} else {
+			// 日本語で検索
+			$roots = Sanskrit_Common::get_verb_by_japanese($word);
+		}
+
+
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT `stem`  FROM `".$table."` WHERE (
+				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
+				 `japanese_translation` = '".$japanese_translation."')";
+
+		// 名詞の場合で性別の指定がある場合は追加する。
+		if($table == Sanskrit_Common::$DB_NOUN && $gender != ""){
+			$query = $query."AND `gender` LIKE '%".$gender."%'";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 新しい配列に詰め替え
+			foreach ($table_data as $row_data ) {
+				array_push($new_table_data, $row_data["stem"]);
+			}
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
 	// 動詞の情報を取得する。
 	public static function get_verb_by_japanese($japanese_translation){
 		// 英数字は考慮しない
@@ -194,7 +245,7 @@ class Sanskrit_Common {
 		$db_host = set_DB_session();
 
 		// SQLを作成 
-		$query = "SELECT * FROM `verb_sanskrit` WHERE ";
+		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -230,6 +281,64 @@ class Sanskrit_Common {
 		return $new_table_data;
 	}
 
+	// 動詞の情報を取得する。
+	public static function get_verb_by_english($english_translation){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE ";
+		// 検索条件に*を含む場合は
+		if(strpos($english_translation, Commons::$LIKE_MARK)){
+			$query = $query." `english_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $english_translation)."%'";
+		} else {
+			// それ以外は
+			$query = $query." ( `english_translation` LIKE '%,".$english_translation.",%' OR 
+			`english_translation` LIKE '".$english_translation.",%' OR 
+			`english_translation` LIKE '%,".$english_translation."' OR 
+			`english_translation` = '".$english_translation."')";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 新しい配列に詰め替え
+			foreach ($table_data as $row_data ) {
+				// 動詞の語幹格納配列
+				$verb_stem_array = array();
+				$verb_stem_array["root"] = $row_data["root"];
+				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];						
+				array_push($new_table_data, $verb_stem_array);
+			}
+		} else {
+			return null;
+		}
+
+		//結果を返す。
+		return $new_table_data;
+	}
+
+	// 動詞の情報を取得する。
+	public static function get_root_from_DB($dictionary_stem){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$row_data = $stmt->fetchAll(PDO::FETCH_BOTH);
+		// 結果がある場合は
+		if($row_data){
+			//結果を返す。			
+			return $row_data;				
+		} else {
+			return null;
+		}
+	}
 	// 副詞を取得
 	public static function get_sanskrit_adverb($japanese_translation){
 		// 英数字は考慮しない
