@@ -184,8 +184,8 @@ class Sanskrit_Common {
 		return $new_table_data;
 	}
 
-	//動詞から派生名詞・形容詞を生成
-	public static function get_noun_from_verb($word){
+	//動詞から派生体言を生成
+	public static function get_noun_adjective_from_verb($word){
 
 		// 初期化
 		$roots = array();
@@ -194,7 +194,7 @@ class Sanskrit_Common {
 		// 入力値で区別する。
 		if(ctype_alnum($word)){
 			// 語根で検索
-			$roots = Sanskrit_Common::get_root_from_DB($word);
+			$roots = Sanskrit_Common::get_verb_by_english($word);
 		} else {
 			// 日本語で検索
 			$roots = Sanskrit_Common::get_verb_by_japanese($word);
@@ -204,16 +204,7 @@ class Sanskrit_Common {
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT `stem`  FROM `".$table."` WHERE (
-				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
-				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
-				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
-				 `japanese_translation` = '".$japanese_translation."')";
-
-		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Sanskrit_Common::$DB_NOUN && $gender != ""){
-			$query = $query."AND `gender` LIKE '%".$gender."%'";
-		}
+		$query = "SELECT * FROM `suffix_sanskrit` ";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -224,7 +215,16 @@ class Sanskrit_Common {
 		if($table_data){
 			// 新しい配列に詰め替え
 			foreach ($table_data as $row_data ) {
-				array_push($new_table_data, $row_data["stem"]);
+				// 動詞の語幹格納配列
+				$noun_stem_array = array();
+				// 全ての語根が対象
+				foreach ($$roots as $root) {
+					// 語幹を生成				
+					$noun_stem_array["stem"] = Sanskrit_Common::sandhi_engine($root["root"], $row_data["suffix"]);
+					// 名詞の種別を入れる。
+					$noun_stem_array["genre"] = $row_data["genre"];	
+				}					
+				array_push($new_table_data, $noun_stem_array);
 			}
 		} else {
 			// 何も返さない。

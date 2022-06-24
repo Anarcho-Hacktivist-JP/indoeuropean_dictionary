@@ -16,7 +16,7 @@ function get_adjective_declension_chart($word){
   // 取得できない場合は
   if(!$adjective_words){
     // 英語で取得する。
-    $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_ADJECTIVE);  
+    $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_ADJECTIVE);
     if(!$adjective_words && Sanskrit_Common::is_alphabet_or_not($word)){
       // 単語から直接取得する
       $adjective_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::$DB_ADJECTIVE);      
@@ -24,7 +24,7 @@ function get_adjective_declension_chart($word){
       if(!$adjective_words){
         $adjective_words[] = $word;
       }
-    } else {
+    } else if(!Sanskrit_Common::is_alphabet_or_not($word)){
       // 空を返す。
       return array();      
     }

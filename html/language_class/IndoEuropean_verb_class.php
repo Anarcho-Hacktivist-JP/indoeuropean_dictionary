@@ -5361,7 +5361,7 @@ class Polish_Verb extends Verb_Common_IE {
 		$this->japanese_translation = "借用";
 		$this->english_translation = "loanword";	
 		// データを挿入(借用語)
-		$this->verb_type= "1";											// 活用種別					
+		$this->verb_type= "4";											// 活用種別					
 		$this->present_stem = mb_substr($common_stem, 0, -1);			// 現在形
 		$this->present_stem2 = mb_substr($common_stem, 0, -1);			// 現在形2		
 		$this->aorist_stem = $common_stem;								// 完了形		

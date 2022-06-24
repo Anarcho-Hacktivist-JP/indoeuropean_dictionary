@@ -88,7 +88,7 @@ function get_conjugation_by_adjective($word){
     return array();
   } 
   // 状態動詞を結合する。
-  $polish_verbs = array_merge(Polish_Common::get_latin_stative_verb($word), $polish_verbs);
+  $polish_verbs = array_merge(Polish_Common::get_polish_stative_verb($word), $polish_verbs);
   // 配列を宣言
   $conjugations = array();   
 	// 新しい配列に詰め替え

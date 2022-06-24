@@ -362,7 +362,7 @@ class Polish_Common {
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'ēre') as `strong_stem`  FROM `".Polish_Common::$DB_ADJECTIVE."` WHERE (
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'eć') as `strong_stem`  FROM `".Polish_Common::$DB_ADJECTIVE."` WHERE (
 				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
@@ -371,7 +371,7 @@ class Polish_Common {
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
 							SELECT * FROM `".Polish_Common::$DB_VERB."`
-							WHERE `".Polish_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Polish_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre') 
+							WHERE `".Polish_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Polish_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć') 
 						  )";
 
 		// SQLを作成 
@@ -379,7 +379,7 @@ class Polish_Common {
 							`".Polish_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
    						  FROM `".Polish_Common::$DB_ADJECTIVE."`
    						  LEFT JOIN  `".Polish_Common::$DB_VERB."`
-   					      ON `".Polish_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Polish_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre')
+   					      ON `".Polish_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Polish_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć')
    						  WHERE ( 
 							`".Polish_Common::$DB_ADJECTIVE."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
 							`".Polish_Common::$DB_ADJECTIVE."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
