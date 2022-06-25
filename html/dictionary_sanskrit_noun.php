@@ -4,7 +4,9 @@ session_start();
 header("Content-type: text/html; charset=utf-8");
 
 //読み込み
+include(dirname(__FILE__) . "/language_class/IndoEuropean_adjective_class.php");
 include(dirname(__FILE__) . "/language_class/IndoEuropean_noun_class.php");
+include(dirname(__FILE__) . "/language_class/IndoEuropean_verb_class.php");
 include(dirname(__FILE__) . "/language_class/Database_session.php");
 include(dirname(__FILE__) . "/language_class/Commons.php");
 include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
@@ -48,7 +50,7 @@ function get_noun_declension_chart($word){
 function get_compound_noun_word($janome_result, $input_noun)
 {
   // データを取得(男性)
-	$declensions = Sanskrit_Common::make_compound_chart(Commons::convert_compound_array($janome_result), "noun", $input_noun);
+	$declensions = Sanskrit_Common::make_compound_chart($janome_result, "noun", $input_noun);
 	// 結果を返す。
 	return $declensions;
 }
@@ -58,13 +60,18 @@ $input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_noun);
+$janome_result = Commons::convert_compound_array($janome_result);
 
 // 検索結果の配列
 $declensions = array();
 
+
 if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 複合語の場合
   $declensions = get_compound_noun_word($janome_result, $input_noun);
+} else if($input_noun != "" && $janome_result[0][1] == "動詞"){
+  // 複合語の場合
+  $declensions = Sanskrit_Common::get_noun_from_verb($input_noun);
 } else if($input_noun != ""){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart($input_noun);

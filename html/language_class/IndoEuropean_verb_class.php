@@ -5070,6 +5070,78 @@ class Vedic_Verb extends Verb_Common_IE{
 		return $question_data;
 	}	
 
+	// 動詞語根から派生名詞を作る。
+	public function make_derivative_noun_from_root($suffixes){
+		// 派生語を格納するリストを初期化
+		$words = array();
+		// 語根の準備
+
+		$weak_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$ZERO_GRADE);	// 弱語根
+		$middle_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$GUNA);		// 中語根
+		$strong_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI);		// 強語根
+		// 重複語根
+		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->root);
+		$add_stem = mb_ereg_replace("k", "c", $add_stem);
+		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+		$add_stem = mb_substr($add_stem, 0, 2);	
+		$redumplication_stem = $this->add_stem.$add_stem.$this->root;
+
+		
+		// 全ての接尾辞を対象とする。
+		foreach ($suffixes as $suffix) {
+			// 初期化
+			$verb_stem = "";
+			// 必要な語根の種別によって分ける
+			if($suffix["stem_type"] == "root"){
+				$verb_stem = $this->add_stem.$this->root;
+			} else if($suffix["stem_type"] == Sanskrit_Common::$ZERO_GRADE){
+				$verb_stem = $weak_stem;
+			} else if($suffix["stem_type"] == Sanskrit_Common::$GUNA){
+				$verb_stem = $middle_stem;
+			} else if($suffix["stem_type"] == Sanskrit_Common::$VRIDDHI){
+				$verb_stem = $strong_stem;
+			} else if($suffix["stem_type"] == "redumplication"){
+				$verb_stem = $redumplication_stem;
+			} else if($suffix["stem_type"] == "causative"){
+				$verb_stem = $this->add_stem.$this->present_causative_stem;
+			} else if($suffix["stem_type"] == "desiderative"){
+				$verb_stem = $this->add_stem.$this->present_desiderative_stem;
+			} else if($suffix["stem_type"] == "intensive"){
+				$verb_stem = $this->add_stem.$this->present_intensive_stem;
+			} else if($suffix["stem_type"] == Commons::$PRESENT_ASPECT){
+				$verb_stem = $this->add_stem.$this->present_stem;
+			} else if($suffix["stem_type"] == Commons::$AORIST_ASPECT){
+				$verb_stem = $this->add_stem.$this->aorist_stem;
+			} else if($suffix["stem_type"] == Commons::$PERFECT_ASPECT){
+				$verb_stem = $this->add_stem.$this->perfect_stem;
+			} else if($suffix["stem_type"] == Commons::$FUTURE_TENSE){
+				$verb_stem = $this->add_stem.$this->future_stem;
+ 			} else {
+				$verb_stem = "";
+			}
+			// 名詞を生成
+			$noun = new Vedic_Noun($verb_stem, $suffix["suffix"], $this->japanese_translation, $suffix["mean"], $suffix["genre"]);
+			// 結果を返す。
+			$words[$noun->get_second_stem()] = $noun->get_chart();
+		}
+		// 結果を返す。
+		return $words;
+	}
+
+	// 動詞語根から派生形容詞を作る。
+	public function make_derivative_adjective_from_root($suffixes){
+		// 派生語を格納するリストを初期化
+		$words = array();
+		// 全ての接尾辞を対象とする。
+		foreach ($suffixes as $suffix) {
+			// 読み込み
+			$words[] = new Vedic_Adjective(Sanskrit_Common::sandhi_engine($this->root, $suffix));
+		}
+
+		// 結果を返す。
+		return $words;
+	}
+
 }
 
 // ポーランド語クラス

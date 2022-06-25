@@ -185,7 +185,7 @@ class Sanskrit_Common {
 	}
 
 	//動詞から派生体言を生成
-	public static function get_noun_adjective_from_verb($word){
+	public static function get_noun_from_verb($word){
 
 		// 初期化
 		$roots = array();
@@ -209,23 +209,19 @@ class Sanskrit_Common {
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
 		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		//
+		echo $query;
 		// 配列を宣言
 		$new_table_data = array();
 		// 結果がある場合は
 		if($table_data){
-			// 新しい配列に詰め替え
-			foreach ($table_data as $row_data ) {
-				// 動詞の語幹格納配列
-				$noun_stem_array = array();
-				// 全ての語根が対象
-				foreach ($$roots as $root) {
-					// 語幹を生成				
-					$noun_stem_array["stem"] = Sanskrit_Common::sandhi_engine($root["root"], $row_data["suffix"]);
-					// 名詞の種別を入れる。
-					$noun_stem_array["genre"] = $row_data["genre"];	
-				}					
-				array_push($new_table_data, $noun_stem_array);
-			}
+			// 全ての語根が対象
+			foreach ($roots as $root) {
+				// 読み込み
+				$vedic_verb = new Vedic_Verb($root["dictionary_stem"]);
+		  		// 活用表生成、配列に格納
+		  		$new_table_data = array_merge($vedic_verb->make_derivative_noun_from_root($table_data), $new_table_data);
+			}					
 		} else {
 			// 何も返さない。
 			return null;
@@ -339,6 +335,7 @@ class Sanskrit_Common {
 			return null;
 		}
 	}
+	
 	// 副詞を取得
 	public static function get_sanskrit_adverb($japanese_translation){
 		// 英数字は考慮しない

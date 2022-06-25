@@ -1978,6 +1978,24 @@ class Vedic_Noun extends Noun_Common_IE {
 		// 活用表を挿入
 		$this->get_noun_declension();
     }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_sanskrit5($root, $suffix, $verb_translation, $suffix_translation, $noun_genre) {
+     	// 親クラス初期化
+		parent::__construct();
+		// 単語を作成
+		$word = Sanskrit_Common::sandhi_engine($root, $suffix);
+		// 情報をセット
+		$this->set_data($word, $noun_genre);
+		// 日本語訳を書き換え
+		$this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
+		$this->english_translation = "";											// 英語訳
+		
+		// 活用表を挿入
+		$this->get_noun_declension();
+    }
     
     /*=====================================
     コンストラクタ
@@ -2511,7 +2529,7 @@ class Polish_Noun extends Noun_Common_IE{
 			"sg_acc" => "ę",
 			"sg_ins" => "ą",
 			"sg_loc" => "ie",
-			"sg_voc" => "e",
+			"sg_voc" => "o",
 			"du_nom" => "e",
 			"du_gen" => "u",
 			"du_dat" => "ama",
@@ -2529,7 +2547,7 @@ class Polish_Noun extends Noun_Common_IE{
 		],
 		[
 			"noun_type" => "1i",
-			"noun_type_name" => "a-変化名詞",
+			"noun_type_name" => "ia-変化名詞",
 			"gender" => "Feminine",
 			"sg_nom" => "a",
 			"sg_gen" => "y",
@@ -2537,7 +2555,7 @@ class Polish_Noun extends Noun_Common_IE{
 			"sg_acc" => "ę",
 			"sg_ins" => "ą",
 			"sg_loc" => "y",
-			"sg_voc" => "e",
+			"sg_voc" => "o",
 			"du_nom" => "e",
 			"du_gen" => "u",
 			"du_dat" => "yma",
@@ -2563,7 +2581,7 @@ class Polish_Noun extends Noun_Common_IE{
 			"sg_acc" => "ę",
 			"sg_ins" => "ą",
 			"sg_loc" => "i",
-			"sg_voc" => "e",
+			"sg_voc" => "o",
 			"du_nom" => "e",
 			"du_gen" => "u",
 			"du_dat" => "yma",
@@ -2838,6 +2856,32 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_ins" => "ami",
 			"pl_loc" => "ach",
 			"pl_voc" => "y"
+		],
+		[
+			"noun_type" => "2ki",
+			"noun_type_name" => "男性名詞",			
+			"gender" => "Feminine/Masculine-Animate",
+			"sg_nom" => "",
+			"sg_gen" => "a",
+			"sg_dat" => "owi",
+			"sg_acc" => "a",
+			"sg_ins" => "iem",
+			"sg_loc" => "u",
+			"sg_voc" => "u",
+			"du_nom" => "a",
+			"du_gen" => "u",
+			"du_dat" => "oma",
+			"du_acc" => "u",
+			"du_ins" => "oma",
+			"du_loc" => "u",
+			"du_voc" => "a",
+			"pl_nom" => "i",
+			"pl_gen" => "ów",
+			"pl_dat" => "om",
+			"pl_acc" => "ów",
+			"pl_ins" => "ami",
+			"pl_loc" => "ach",
+			"pl_voc" => "i"
 		],
 		[
 			"noun_type" => "2k",
@@ -3287,7 +3331,7 @@ class Polish_Noun extends Noun_Common_IE{
 		}
 
 		// 語幹を取得
-		if(($case == Commons::$NOMINATIVE && $number == Commons::$SINGULAR) || ($case == Commons::$VOCATIVE && $number == Commons::$SINGULAR)){
+		if(($number == Commons::$SINGULAR && $this->gender == "Neuter") && ($case == Commons::$VOCATIVE || $case == Commons::$NOMINATIVE)){
 			// ここで結果を返す。
 			return $this->first_stem;					
 		} else if($case == Commons::$ACCUSATIVE && $this->gender == "Neuter" && $number == Commons::$SINGULAR){
@@ -3316,6 +3360,7 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/me$/", "mie", $noun);
 		$noun = preg_replace("/ne$/", "nie", $noun);
 		$noun = preg_replace("/re$/", "rze", $noun);
+		$noun = preg_replace("/tie$/", "cie", $noun);
 		$noun = preg_replace("/te$/", "cie", $noun);
 		$noun = preg_replace("/de$/", "dzie", $noun);
 		$noun = preg_replace("/ke$/", "ce", $noun);
