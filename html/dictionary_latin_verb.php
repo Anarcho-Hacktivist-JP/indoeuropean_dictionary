@@ -173,7 +173,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <h1>ラテン語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="">
+        <input type="text" name="input_verb" class="" id="input_verb">
         <select name="input_verb_type">
           <option selected>動詞の種別</option>
           <option value="">通常</option>          
@@ -189,6 +189,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
+      <?php echo Latin_Common::input_special_button(); ?>    
       <details>
         <summary>動詞の活用</summary>      
         <table class="table-bordered" id="conjugation-table" style="overflow: auto;">
@@ -570,12 +571,58 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           });
         }
 
+        // 入力ボックスに文字の挿入
+        function add_chara(str, selIdx)
+        {
+          // テキストボックスの値を取得
+          var text_sentence = $('#input_verb').val();
+          $('#input_verb').val(strIns(text_sentence, selIdx, str));
+        }
+
+        // 文字列の挿入
+        function strIns(str, idx, val){
+          var res = str.slice(0, idx) + val + str.slice(idx);
+          return res;
+        };
+       
+
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#verb-selection').change( function(){
             output_table_data();
 	        });
+	        // ボタン入力
+	        $('#button-a').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-i').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-u').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-e').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $('#input_verb').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
         }
 
     </script>

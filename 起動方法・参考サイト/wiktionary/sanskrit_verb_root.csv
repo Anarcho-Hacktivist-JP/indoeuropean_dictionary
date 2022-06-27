@@ -1,330 +1,431 @@
-"4",,"ad",,present,0,2,食べる,to eat,,,,,,
-"1",ajati,"aj",,present,0,1,運転する、推進する、投げる、投げる,"to drive,  to propel, to throw, to cast",,,,,,
-"5",,"an",,present,0,2,呼吸する、呼吸する、あえぎ、生きる,"to breathe, to respire, to gasp, to live",,,,,,
-"7",,"arc",,present,0,1,崇拝すること、名誉を与えること、輝くこと、賞賛すること,"to worship, to honour, to shine, to praise",,,,,,
-"9",,"arh",,present,0,1,値する、メリット,"to deserve, to merit",,,,,,
-"8",,"arj",,present,0,1,調達する、獲得する、稼ぐ,"to procure, to acquire, to earn",,,,,,
-"268",,"as",sam,present,0,1,似ている、等しい、存在する,"to be like, to equal, to exist",,,,,,
-,,"as",sam,present,0,4,追加する、組み合わせる、組み合わせる、混ぜる、混ぜる、接続する,"to add, to combine, to compound, to mix, to mingle, to connect",,,,,,
-"2",,"añc",,present,0,1,曲がる、曲がる、傾く、曲がる,"to bend, to curve, to incline, to curl",,,,,,
-"3",,"añj",,aorist,0,7,油を塗る、飾る、準備する,"to anoint, to decorate, to prepare",,,,,,
-"153",,"bandh",,present,0,1,縛る、結ぶ、固定する、留める、鎖でつなぐ、束縛する,"to bind, to tie, to fix, to fasten, to chain, to fetter",,,,,,
-"158",,"bharts",,present,0,10,脅迫する、脅迫する、虐待する、罵倒する、嘲笑する,"to menace, to threaten, to abuse, to revile, to deride",,,,,,
-"159",,"bharv",,present,0,1,噛む、むさぼり食う、食べる、傷つける,"to chew, to devour, to eat, to hurt",,,,,,
-"157",bhanakti,"bhañj",,present,0,7,壊す、粉砕する、分割する,"to break, to shatter, to split",,,,,,
-,,"bhañj",,present,0,10,話す、輝く,"to speak, to shine",,,,,,
-,bhedati,"bhid",,aorist,0,1,壊す、切り刻む、違反する、分割する、開く、拡大させる、変化させる、困惑させる、区別する、邪魔する、裏切る、分散させる,"to break, to cut asunder, to transgress, to divide, to open, to cause to expand, to change, to perplex, to distinguish, to disturb, to betray, to set at variance",,,,,,
-"161",,"bhid",,aorist,0,7,壊す、切り刻む、違反する、分割する、開く、拡大させる、変化させる、困惑させる、区別する、邪魔する、裏切る、分散させる,"to break, to cut asunder, to transgress, to divide, to open, to cause to expand, to change, to perplex, to distinguish, to disturb, to betray, to set at variance",,,,,,
-"162",,"saj",abhi,present,0,1,癒す、治す,"to heal, to cure",,,,,,
-,bhramati,"bhram",,present,1,1,不安定になる、さまよう、よろめく、歩き回る,"to be unsteady, to wander, to totter, to roam about",,,,,,
-"166",bhrāmyati,"bhram",,present,1,4,不安定になる、さまよう、よろめく、歩き回る,"to be unsteady, to wander, to totter, to roam about",,,,,,
-"167",bhriṇāti,"bhrī",,present,0,9,恐れること、支援すること,"to fear, to support",,,,,,
-"164",,"bhuj",,present,0,6,曲がる、曲がる,"to bend, to curve",,,,,,
-,bhunakti,"bhuj",,present,0,7,守る、統治する、支配する,"to protect, to govern, to rule",,,,,,
-"146",,"bhā",pra,present,0,2,現れる,to appear,,,,,,
-"160",,"bhā",,present,0,2,輝く、現れる,"to shine, to appear",,,,,,
-"156",,"brū",,present,0,2,話す、言う、言う,"to speak, to say, to tell",,,,,,
-"155",bodhati,"budh",,present,1,1,知ること、理解すること、目覚めること、感覚を取り戻すこと、知ること、理解すること、考えること、知らせること、知らせること、教えること,"to know, to understand, to awake, to be restored to one’s senses, to know, to understand, to think, to make known, to inform, to teach",,,,,,
-,budhyati,"budh",,present,1,4,知ること、理解すること、目覚めること、感覚を取り戻すこと、知ること、理解すること、考えること、知らせること、知らせること、教えること,"to know, to understand, to awake, to be restored to one’s senses, to know, to understand, to think, to make known, to inform, to teach",,,,,,
-"154",bukkati,"bukk",,present,0,1,吠える、叫ぶ、鳴らす、話す,"to bark, to yelp, to sound, to talk",,,,,,
-,bukkayati,"bukk",,present,0,10,吠える、叫ぶ、鳴らす、話す,"to bark, to yelp, to sound, to talk",,,,,,
-"79",camati,"cam",,present,1,1,食べる、飲む,"to eat, to drink",,,,,,
-"78",candati,"cand",,present,0,1,輝くために、喜んで,"to shine, to gladden",,,,,,
-"80",carati,"car",,present,1,1,疑う、行く、歩く、放牧する、食べる,"to doubt, to go, to walk, to graze, to eat",,,,,,
-"83",chinatti,"chid",,aorist,0,7,切る、中断する、破壊する,"to cut, to interrupt, to destroy",,,,,,
-"84",chṛṇatti,"chṛd",,aorist,0,1,燃える、輝く、遊ぶ,"to kindle, to shine, to play",,,,,,
-,chardati,"chṛd",,aorist,0,7,燃える、輝く、遊ぶ,"to kindle, to shine, to play",,,,,,
-"81",,"cud",,present,0,1,推進する、扇動する、活気づける、送る、指示する,"to impel, to incite, to animate, to send, to direct",,,,,,
-"82",,"cur",,denomitive,0,10,盗む,to steal,,,,,,
-"105",dahati,"dah",,present,0,1,燃やす、焦がす、ローストする,"to burn, to scorch, to roast ",,,,,,
-"104",dāmyati,"dam",,aorist,0,4,飼いならす、征服する、征服する,"to tame, to subdue, to conquer",,,,,,
-"115",dhanati,"dhan",,present,0,1,鳴らす,to sound,,,,,,
-,dadhanti,"dhan",,aorist,0,3,実行させる,to cause to run,,,,,,
-"15",,"dhā",ā,aorist,1,3,置く、置く、預ける、移植する、宿る,"to put, to place, to deposit, to implant, to lodge",,,,,,
-"258",,"dhā",saṃ,aorist,1,3,参加する、一緒にする、団結する、組み合わせる、まとめる、組み合わせる、混ぜる,"to join, to bring togethr, to unite, to combine, to put together, to compound, to mix",,,,,,
-"267",,"dhā",san,aorist,1,3,参加する、一緒にする、団結する、組み合わせる、まとめる、組み合わせる、混ぜる,"to join, to bring togethr, to unite, to combine, to put together, to compound, to mix",,,,,,
-"116",dharati,"dhṛ",,present,0,1,存在する、存在する、年をとる、保持する、借りる、保持する、サポートする、所有する、維持する、つかむ、配置する,"to be, to exist, to grow old, to hold, to owe, to hold, to support, to possess, to keep, to seize, to place",,,,,,
-"108",,"digh",,present,0,2,油を塗る、塗る、石膏にする,"to anoint, to smear, to plaster",,,,,,
-"257",,"digh",saṃ,present,0,2,塗る、塗る、覆う,"to smear, to besmear, to cover",,,,,,
-"107",devati,"div",,present,0,1,苦しむ、悩む、尋ねる、物乞いする、行く,"to pain, to vex, to ask, to beg, to go",,,,,,
-,deyavati,"div",,present,0,10,苦しむ、悩む、尋ねる、物乞いする、行く,"to pain, to vex, to ask, to beg, to go",,,,,,
-,dīvyati,"div",,present,1,4,ダイスやギャンブルで遊ぶ、欲望する、克服する、交通する、輝く、賞賛する、喜ぶ、怒ったり酔ったりする、眠くなる、望む、行く、こする,"to play with dice or gamble, to desire, to overcome, to traffic, to shine, to praise, to be glad, to be mad or drunk, to be sleepy, to wish for, to go, to rub",,,,,,
-"113",druṇoti,"dru",,present,0,5,傷つける、傷つける,"to hurt, to injure",,,,,,
-,dravati,"dru",,present,0,1,走る、急ぐ、攻撃する,"to run, to hasten, to attack",,,,,,
-"114",druhyati,"druh",,aorist,0,4,傷つけること、憎しみに耐えること、傷つけることを求めること,"to hurt, to bear hatred, to seek to hurt",,,,,,
-"112",dyotati,"dyut",,present,0,1,輝く,to shine,,,,,,
-"109",dīpyati,"dīp",,present,1,1,燃える、燃える、輝く,"to blaze, to flare, to shine",,,,,,
-,paśati,"paś",,present,0,10,留める、縛る,"to fasten, bind",0,0,0,0,0,0
-,paśyati,"paś",,present,0,4,見る、見る、見る、観察する、知覚する、気づく,"to see, to behold, to look at, to observe, to perceive, to notice",0,0,0,1,1,1
-,spaśati,"spaś",,present,0,1,"縛り付ける、束縛する、止める、妨げる ","to bind, fetter, stop, hinder ",0,0,0,0,0,0
-,spaśyati,"spaś",,present,0,4,見ること、見ること、知覚すること,"to see, to behold, to perceive",0,0,0,0,0,0
-,darśati,"dṛś",,aorist,0,1,見る、考える,"to see, to behold, to look at, to regard, to consider",0,0,0,0,0,0
-,didaṛśati,"dṛś",,aorist,0,3,見る、考える,"to see, to behold, to look at, to regard, to consider",0,0,0,0,0,0
-"110",dṛśyati,"dṛś",,aorist,0,4,見る、考える,"to see, to behold, to look at, to regard, to consider",0,0,0,0,0,0
-,dṛśnoti,"dṛś",,aorist,0,5,見る、考える,"to see, to behold, to look at, to regard, to consider",0,0,0,0,0,0
-,dṛmśti,"dṛś",,aorist,0,7,見る、考える,"to see, to behold, to look at, to regard, to consider",0,0,0,0,0,0
-,darati,"dṝ",,aorist,1,1,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",,,,,,
-,darti,"dṝ",,aorist,1,2,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",,,,,,
-,dṛyati,"dṝ",,aorist,1,4,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",,,,,,
-"111",dṛṇāti,"dṝ",,aorist,1,9,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",,,,,,
-"39",,"edh",,,,,,,,,,,,
-"68",,"gaṇ",,,,,,,,,,,,
-"73",,"ghaṭ",,,,,,,,,,,,
-"74",,"ghiṇṇ",,,,,,,,,,,,
-"75",,"ghuṇ",,,,,,,,,,,,
-"76",,"ghūrṇ",,,,,,,,,,,,
-"71",,"grabh",,,,,,,,,,,,
-"72",,"grah",,,,,,,,,,,,
-"69",,"gṛdh",,,,,,,,,,,,
-"70",,"gṝ",,,,,,,,,,,,
-"281",,"hal",,,,,,,,,,,,
-"280",,"han",,,,,,,,,,,,
-"282",,"has",,,,,,,,,,,,
-"284",,"hikk",,,,,,,,,,,,
-"288",,"hve",,,,,,,,,,,,
-"23",,"idh",,,,,,,,,,,,
-"24",,"iras",,,,,,,,,,,,
-"25",,"iṣ",,,,,,,,,,,,
-"85",,"jan",,,,,,,,,,,,
-"86",,"jas",,,,,,,,,,,,
-"91",,"jyut",,,,,,,,,,,,
-"6",,"jñā",abhi,,,,,,,,,,,
-"90",,"jñā",,,,,,,,,,,,
-"143",,"jñā",pra,,,,,,,,,,,
-"144",,"jñā",prati,,,,,,,,,,,
-"256",,"jñā",saṃ,,,,,,,,,,,
-"87",,"jīv",,,,,,,,,,,,
-"88",,"jū",,,,,,,,,,,,
-"89",,"jṝ",,,,,,,,,,,,
-,,"kā",,aorist,1,1,同意する、愛する、望む,"to agree, to love, to wish",0,0,1,0,0,0
+"3",anakti,"añj",,aorist,0,7,油を注ぐ、飾る、準備する、名誉を与える、祝う、現れるようにする、明確にする、美しくする、行く,"to anoint, to decorate, to prepare, to honour, to celebrate, to cause to appear, to make clear, to be beautiful, to go",0,0,0,0,0,0
+,bhedati,"bhid",,aorist,0,1,壊す、切り刻む、違反する、分割する、開く、拡大させる、変化させる、困惑させる、区別する、邪魔する、裏切る、分散させる,"to break, to cut asunder, to transgress, to divide, to open, to cause to expand, to change, to perplex, to distinguish, to disturb, to betray, to set at variance",0,0,0,0,0,0
+"161",bhinatti,"bhid",,aorist,0,7,壊す、切り刻む、違反する、分割する、開く、拡大させる、変化させる、困惑させる、区別する、邪魔する、裏切る、分散させる,"to break, to cut asunder, to transgress, to divide, to open, to cause to expand, to change, to perplex, to distinguish, to disturb, to betray, to set at variance",0,0,0,0,0,0
+"129",paricchinatti,"cchid",pari,aorist,0,7,両側をカットする、丸く切り取る、切り抜く、切り落とす、または断片化する、切断する、刈る、刈り取る、すべての側面を制限する、正確に定義する、正確に修正する、区別する、決定する、決定する 、分離する、分割する、分割する、回避する、回避する,"to cut on both sides, to clip round, to cut through or off or to pieces, to mutilate, to mow, to reap, to limit on all sides, to define accurately, to fix accurately, to discriminate, to decide, to determine, to separate, to divide, to part, to avert, to obviate",0,0,0,0,0,0
+"83",chinatti,"chid",,aorist,0,7,切る、中断する、破壊する,"to cut, to interrupt, to destroy",0,0,0,0,0,0
+"84",chṛṇatti,"chṛd",,aorist,0,1,燃える、輝く、遊ぶ,"to kindle, to shine, to play",0,0,0,0,0,0
+,chardati,"chṛd",,aorist,0,7,燃える、輝く、遊ぶ,"to kindle, to shine, to play",0,0,0,0,0,0
+"104",dāmyati,"dam",,aorist,0,4,飼いならす、征服する、征服する,"to tame, to subdue, to conquer",0,0,0,0,0,0
+,dadhanti,"dhan",,aorist,0,3,実行させる,"to cause to run",0,0,0,0,0,0
+"15",ādadhāti,"dhā",ā,aorist,1,3,置く、置く、預ける、移植する、宿る,"to put, to place, to deposit, to implant, to lodge",0,0,0,0,0,0
+"258",saṃdadhāti,"dhā",saṃ,aorist,1,3,参加する、一緒にする、団結する、組み合わせる、まとめる、組み合わせる、混ぜる,"to join, to bring togethr, to unite, to combine, to put together, to compound, to mix",0,0,0,0,0,0
+"267",sandadhāti,"dhā",san,aorist,1,3,参加する、一緒にする、団結する、組み合わせる、まとめる、組み合わせる、混ぜる,"to join, to bring togethr, to unite, to combine, to put together, to compound, to mix",0,0,0,0,0,0
+"114",druhyati,"druh",,aorist,0,4,傷つけること、憎しみに耐えること、傷つけることを求めること,"to hurt, to bear hatred, to seek to hurt",0,0,0,0,0,0
+,darśati,"dṛś",,aorist,0,1,見る、考える、気づく、世話をする、調べる、試みる,"to see, to behold, to look at, to regard, to consider, to notice, to care for, to look into, to try, to examine",0,0,0,0,0,0
+,didaṛśati,"dṛś",,aorist,0,3,見る、考える、気づく、世話をする、調べる、試みる,"to see, to behold, to look at, to regard, to consider, to notice, to care for, to look into, to try, to examine",0,0,0,0,0,0
+"110",dṛśyati,"dṛś",,aorist,0,4,見る、考える、気づく、世話をする、調べる、試みる,"to see, to behold, to look at, to regard, to consider, to notice, to care for, to look into, to try, to examine",0,0,0,0,0,0
+,dṛśnoti,"dṛś",,aorist,0,5,見る、考える、気づく、世話をする、調べる、試みる,"to see, to behold, to look at, to regard, to consider, to notice, to care for, to look into, to try, to examine",0,0,0,0,0,0
+,dṛmśti,"dṛś",,aorist,0,7,見る、考える、気づく、世話をする、調べる、試みる,"to see, to behold, to look at, to regard, to consider, to notice, to care for, to look into, to try, to examine",0,0,0,0,0,0
+,darati,"dṝ",,aorist,1,1,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",0,0,0,0,0,0
+,darti,"dṝ",,aorist,1,2,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",0,0,0,0,0,0
+,dṛyati,"dṝ",,aorist,1,4,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",0,0,0,0,0,0
+"111",dṛṇāti,"dṝ",,aorist,1,9,破裂させる、引き裂く、分割する,"to burst, to tear, to rend, to divide",0,0,0,0,0,0
+"71",gṛbhṇāti,"grabh",,aorist,0,9,取る、魅了する、買う、理解する,"to take, to captivate, to buy, to understand",0,0,0,0,0,0
+"72",gṛbhṇāti,"grah",,aorist,0,9,取る、魅了する、買う、理解する,"to take, to captivate, to buy, to understand",0,0,0,0,0,0
+"70",gṛṇāti,"gṝ",,aorist,1,9,呼び出す、呼び出す、呼び出す、発表する、宣言する、賞賛をもって言及する、賞賛する、称賛する、発音する、引用する、関連付ける、詩で教える,"to call, to call out to, to invoke, to announce, to proclaim, to mention with praise, to praise, to extol, to pronounce, to recite, to relate, to teach in verses",0,0,0,0,0,0
+,girati,"gṝ",,aorist,1,6,飲み込む、むさぼり食う、食べる、口から放出する、口から排出する,"to swallow, to devour, to eat, to emit from the mouth, to eject from the mouth",0,0,0,0,0,0
+,kṝ,"kṝ",,aorist,1,9,注ぎ出す、散らかす、投げる、投げる、分散させる、山に投げる、積み上げる,"to pour out, to scatter, to throw, to cast, to disperse, to throw up in a heap, to heap up",0,0,0,0,0,0
+,kṛṇoti,"kṝ",,aorist,1,5,傷つける、傷つける、殺す,"to hurt, to injure, to kill",0,0,0,0,0,0
+,kṛṇvati,"kṝ",,aorist,1,9,傷つける、傷つける、殺す,"to hurt, to injure, to kill",0,0,0,0,0,0
+"6",abhijijāhi,"jñā",abhi,aorist,1,3,認識する、知覚する、知る、認識する、認識する、認める、同意する、所有する、覚える,"to recognize, to perceive, to know, to be aware of, to become aware of, to acknowledge, to agree to, to own, to remember",0,0,0,0,0,0
+,abhijānāti,"jñā",abhi,aorist,1,9,認識する、知覚する、知る、認識する、認識する、認める、同意する、所有する、覚える,"to recognize, to perceive, to know, to be aware of, to become aware of, to acknowledge, to agree to, to own, to remember",0,0,0,0,0,0
+,jijāhi,"jñā",,aorist,1,3,知る、認識する、理解する、経験する、認識する、確認する、調査する、見なす,"to know, to have knowledge, to become acquainted with, to perceive, to apprehend, to understand, to experience, to recognise, to ascertain, to investigate, to know as, to know that, to perceive that, to regard as, to consider as",0,0,0,0,0,0
+"90",jānāti,"jñā",,aorist,1,9,知る、認識する、理解する、経験する、認識する、確認する、調査する、見なす,"to know, to have knowledge, to become acquainted with, to perceive, to apprehend, to understand, to experience, to recognise, to ascertain, to investigate, to know as, to know that, to perceive that, to regard as, to consider as",0,0,0,0,0,0
+"143",prajijāhi,"jñā",pra,aorist,1,3,知る、理解する、識別する、区別する、見つける、発見する、知覚する、学ぶ,"to know, to understand, to discern, to distinguish, to know about, to be acquainted with, to find out, to discover, to perceive, to learn",0,0,0,0,0,0
+,prajānāti,"jñā",pra,aorist,1,9,知る、理解する、識別する、区別する、見つける、発見する、知覚する、学ぶ,"to know, to understand, to discern, to distinguish, to know about, to be acquainted with, to find out, to discover, to perceive, to learn",0,0,0,0,0,0
+"144",pratijijāhi,"jñā",prati,aorist,1,3,認める、所有する、認める、黙認する、同意する、承認する、約束する,"to admit, to own, to acknowledge, to acquiesce in, to consent to, to approve, to promise",0,0,0,0,0,0
+,pratijānāti,"jñā",prati,aorist,1,9,認める、所有する、認める、黙認する、同意する、承認する、約束する,"to admit, to own, to acknowledge, to acquiesce in, to consent to, to approve, to promise",0,0,0,0,0,0
+"256",saṃjijāhi,"jñā",saṃ,aorist,1,3,一緒に同意する、同じ意見を持つ、調和する、従う、任命する、割り当てる、意図する、運命を決める,"to agree together, to be of the same opinion, to be in harmony with, to obey, to appoint, to assign, to intend, to destine ",0,0,0,0,0,0
+,saṃjānāti,"jñā",saṃ,aorist,1,9,一緒に同意する、同じ意見を持つ、調和する、従う、任命する、割り当てる、意図する、運命を決める,"to agree together, to be of the same opinion, to be in harmony with, to obey, to appoint, to assign, to intend, to destine ",0,0,0,0,0,0
+"88",javati,"jū",,aorist,1,1,前進する、急ぐ、急ぐ、急ぐ、駆り立てる、駆り立てる、扇動する、怖がらせる、興奮させる、促進する、活気づける、刺激する,"to press forwards, to hurry on, be quick, to impel quickly, to urge on, to drive on, to incite, to scare, to excite, to promote, to animate, to inspire",0,0,0,0,0,0
+,junāti,"jū",,aorist,1,9,前進する、急ぐ、急ぐ、急ぐ、駆り立てる、駆り立てる、扇動する、怖がらせる、興奮させる、促進する、活気づける、刺激する,"to press forwards, to hurry on, be quick, to impel quickly, to urge on, to drive on, to incite, to scare, to excite, to promote, to animate, to inspire",0,0,0,0,0,0
 ,kanati,"kan",,aorist,1,1,同意する、愛する、望む,"to agree, to love, to wish",0,0,0,0,0,0
-"41",,"kam",,denomitive,0,10,愛する,to love,,,,,,
-"42",,"kamp",,,,,,,,,,,,
-"40",,"kaṭh",,,,,,,,,,,,
-"50",,"kel",,,,,,,,,,,,
-"62",,"khan",,,,,,,,,,,,
-"61",,"khaṇakhaṇāya",,,,,,,,,,,,
-"67",,"khel",,,,,,,,,,,,
-"65",,"khid",,,,,,,,,,,,
-"64",,"khiṭ",,,,,,,,,,,,
-"63",,"khād",,,,,,,,,,,,
-"44",,"kiṭ",,,,,,,,,,,,
-"56",,"kliś",,,,,,,,,,,,
-"51",,"kram",,,,,,,,,,,,
-"55",,"krudh",,,,,,,,,,,,
-"54",,"kruñc",,,,,,,,,,,,
-"52",,"krī",,,,,,,,,,,,
-"53",,"krīḍ",,,,,,,,,,,,
-"47",,"kup",,,,,,,,,,,,
-"46",,"kuṭṭ",,,,,,,,,,,,
-"43",,"kāś",,,,,,,,,,,,
-"45",,"kīrt",,,,,,,,,,,,
-"60",,"kḷp",,,,,,,,,,,,
-,,"kṛ",alaṃ,aorist,0,2,チェックする、準備する、飾る,"to check, to prepare, to decorate",0,0,0,0,0,0
-,,"kṛ",alaṃ,aorist,0,3,チェックする、準備する、飾る,"to check, to prepare, to decorate",,,,,,
-"10",,"kṛ",alaṃ,aorist,0,5,チェックする、準備する、飾る,"to check, to prepare, to decorate",,,,,,
-"49",,"kṛp",,present,0,6,嘆き悲しむ、切望する、嘆く、懇願する,"to mourn, to long for, to lament, to implore",,,,,,
-,,"kṛp",,present,0,10,嘆き悲しむ、切望する、嘆く、懇願する,"to mourn, to long for, to lament, to implore",,,,,,
-,,"kṛt",,present,0,1,切る、分ける,"to cut, to devide",,,,,,
-"48",,"kṛt",,present,0,6,切る、分ける,"to cut, to devide",,,,,,
-,kṛntati,"kṛt",,aorist,0,7,糸をねじる、紡ぐ,"to twist threads, to spin",,,,,,
-"57",,"kṣam",,present,0,1,許す、許す、苦しむ、耐える,"to permit, to allow, to suffer, to endure",,,,,,
-,,"kṣam",,present,0,2,許す、許す、苦しむ、耐える,"to permit, to allow, to suffer, to endure",,,,,,
-,,"kṣam",,present,0,4,許す、許す、苦しむ、耐える,"to permit, to allow, to suffer, to endure",,,,,,
-,kṣobhati,"kṣubh",,aorist,0,1,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",,,,,,
-"59",kṣubhyati,"kṣubh",,aorist,0,4,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",,,,,,
-,kṣubhnoti,"kṣubh",,aorist,0,5,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",,,,,,
-,kṣubhnāti,"kṣubh",,aorist,0,9,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",,,,,,
-"58",,"kṣudh",,aorist,0,4,お腹を空かせて、お腹を空かせて,"to feel hungry, to be hungry ",,,,,,
-"205",labhati,"labh",,present,0,1,取る、つかむ、捕まえる,"to take, to seize, to catch ",,,,,,
-,,"lach",,present,0,1,マークする、見る,"to mark, to see",,,,,,
-"203",lagati,"lag",,present,1,1,付着する、固執する,"to adhere, to stick",,,,,,
-"261",saṃlagati,"lag",saṃ,present,1,1,に取り付ける,to attach to,,,,,,
-"204",lajjati,"lajj",,present,1,6,恥ずかしい、赤面する,"to be ashamed, to blush",,,,,,
-"202",,"lakṣ",,denomitive,0,1,知覚する、観察する,"to perceive, to observe",,,,,,
-,,"lakṣ",,denomitive,0,10,マークする、署名する、特徴づける、示す,"to mark, to sign, to characterize, to indicate",,,,,,
-"260",,"lakṣ",saṃ,denomitive,0,1,観察する、見る、知覚する、感じる、聞く、学ぶ,"to observe, to see, to perceive, to feel, to hear, to learn",,,,,,
-"206",,"lamb",,present,0,1,ぶら下がる、依存する、ぶら下がる,"to hang down, to depend, to dangle",,,,,,
-,,"ramb",,present,0,1,ハングダウンする,to hang down,,,,,,
-,,"lamb",,present,0,1,鳴らす,to sound,,,,,,
-,,"ramb",,present,0,1,鳴く、咆哮する,"to sound, to roar",,,,,,
-,,"rabh",,present,0,1,つかむ、つかむ、握り締める、抱きしめる,"to take hold of, to grasp, to clasp, to embrace",,,,,,
-,,"rih",,present,0,1,なめる,to lick,,,,,,
-"209",,"lih",,present,0,1,なめる,to lick,,,,,,
-"208",liṅgati,"liṅg",,present,0,1,ペイントする、変化させる,"to paint, variegate",,,,,,
-,liṅgayati,"liṅg",,present,0,10,ペイントする、変化させる,"to paint, variegate",,,,,,
-"213",,"lok",,denomitive,0,1,見る、見る、知覚する,"to see, to behold, to perceive",,,,,,
-"212",,"lubh",,present,0,4,欲しがり、憧れ、興味を持って,"to desire, to long for, to be interested in",,,,,,
-,,"lubh",,present,0,6,欲しがり、憧れ、興味を持って,"to desire, to long for, to be interested in",,,,,,
-,,"ruṇḍ",,present,0,1,盗む、奪う,"to steal, to rob",,,,,,
-,,"ruṇṭ",,present,0,1,盗む、奪う,"to steal, to rob",,,,,,
-"211",,"luṇṭ",,present,0,1,奪う、略奪する,"to rob, to plunder",,,,,,
-,,"luṇṭ",,present,0,10,奪う、略奪する,"to rob, to plunder",,,,,,
-"207",,"lāñch",,present,0,1,マークする、区別する、特徴づける,"to mark, to distinguish, to characterize",,,,,,
-,,"lī",,present,1,1,しがみつく、うそをつく、リクライニングする,"to cling, to lie, to recline",,,,,,
-"210",,"lī",,present,1,4,しがみつく、うそをつく、リクライニングする,"to cling, to lie, to recline",,,,,,
-,,"lī",,present,1,9,しがみつく、うそをつく、リクライニングする,"to cling, to lie, to recline",,,,,,
-,,"magh",,present,0,1,高揚する、喜ぶ、高揚する、興奮させる、興奮する,"to elate, to gladden, to exalt, to arouse, to excite",,,,,,
-,,"magh",,present,0,10,高揚する、喜ぶ、高揚する、興奮させる、興奮する,"to elate, to gladden, to exalt, to arouse, to excite",,,,,,
-,,"maṃh",,present,0,1,与える、与える、授ける,"to give, to grant, to bestow",,,,,,
-"172",,"mah",,present,0,1,高揚する、喜ぶ、高揚する、興奮させる、興奮する,"to elate, to gladden, to exalt, to arouse, to excite",,,,,,
-,,"mah",,present,0,10,高揚する、喜ぶ、高揚する、興奮させる、興奮する,"to elate, to gladden, to exalt, to arouse, to excite",,,,,,
-,madati,"mad",,present,0,1,縛る、殺す、満足させる、喜ばせる、喜ぶ、貧しい、酔う,"to bind, to kill, to gratify, to please, to rejoice, to be poor, to be intoxicated",,,,,,
-,mamatti,"mad",,present,0,3,縛る、殺す、満足させる、喜ばせる、喜ぶ、貧しい、酔う,"to bind, to kill, to gratify, to please, to rejoice, to be poor, to be intoxicated",,,,,,
-,madyati,"mad",,present,0,4,縛る、殺す、満足させる、喜ばせる、喜ぶ、貧しい、酔う,"to bind, to kill, to gratify, to please, to rejoice, to be poor, to be intoxicated",,,,,,
-,manyati,"man",,present,0,4,誇りに思う、やめる、知る、考える、尊敬する、名誉を与える,"to be proud, to stop, to know, to think, to suppose, to regard as, to esteem, to honour, to know",,,,,,
-,manuti,"man",,present,0,8,誇りに思う、やめる、知る、考える、尊敬する、名誉を与える,"to be proud, to stop, to know, to think, to suppose, to regard as, to esteem, to honour, to know",,,,,,
-,manyati,"man",prati,present,0,4,対照的である,to contrast with,,,,,,
-"145",manuti,"man",prati,present,0,8,対照的である,to contrast with,,,,,,
-"171",,"mas",,aorist,0,4,計量する、測定する、会う,"to weigh, to measure, to mete",,,,,,
-,,"mṛṣ",,present,0,4,忘れる、無視する、無視する,"to forget, to neglect, to disregard",,,,,,
-,,"mṛś",,present,0,6,触れる、撫でる、扱う,"to touch, to stroke, to handle",,,,,,
-,,"muñj",,present,0,6,音を立てる,to make noise,,,,,,
-,mojati,"muj",,present,0,1,音を立てる,to make noise,,,,,,
-,,"muj",,present,0,10,鳴らす、浄化する,"to sound, to cleanse",,,,,,
-,marjati,"marj",,present,0,6,鳴らす,to sound,,,,,,
-,mṛjati,"mṛj",,present,0,6,拭く、こする、洗う、磨く、洗う、浄化する、飾る、飾る,"to wipe, to rub, to cleanse, to polish, to clean, to purify, to embellish, to adorn",,,,,,
-"169",mañjayati,"mañj",,present,0,10,鳴らす,to sound,,,,,,
-"168",maṃhati,"maṃh",,present,0,1,与える、与える、授ける,"to give, to grant, to bestow",,,,,,
-"182",manati,"mnā",,present,0,1,繰り返す,"to repeat ",,,,,,
-,mañcati,"mañc",,present,0,1,騙す、抱きしめる、崇拝する、輝く、行く、動く,"to cheat, to hold, to adore, to shine, to go, to move",,,,,,
-,macati,"mac",,present,0,1,騙す、叩く、挽く,"to cheat, to pound, to grind",,,,,,
-,mocati,"muc",,present,0,1,カンニングする,to cheat,,,,,,
-"174",mocati,"muc",,present,0,1,緩める、解放する,"to loose, to liberate",,,,,,
-"176",mohati,"muh",,aorist,0,4,誤りを犯す,to err,,,,,,
-"175",murchati,"murch",,present,0,1,固まる、厚くなる、固まる,"to become solid, to thicken, to congeal",,,,,,
-"177",mūrcchati,"mūrcch",,present,0,1,固まる、厚くなる、固まる,"to become solid, to thicken, to congeal",,,,,,
-"178",mūrchati,"mūrch",,present,0,1,固まる、厚くなる、固まる,"to become solid, to thicken, to congeal",,,,,,
+"65",khidati,"khid",,aorist,0,6,叩く、押す、押す、押す,"to strike, press, press down, to be depressed ",0,0,0,0,0,0
+,khintti,"khid",,aorist,0,7,押し下げられ、痛みに苦しむ,"to be pressed down, to suffer pain",0,0,0,0,0,0
+,khidyati,"khid",,aorist,0,4,押し下げられる、苦しむ、疲れる、疲れる、疲れ果てる,"to be pressed down, to be distressed, to be wearied, feel tired, to be exhausted",0,0,0,0,0,0
+,kliśnāti,"kliś",,aorist,1,9,苦しむ、悩む、痴漢する、痛みを引き起こす、苦しむ、苦しむ、痛みを感じる,"to torment, to trouble, to molest, to cause pain, to afflict, to suffer, to feel pain ",0,0,0,0,0,0
+"52",krīṇāti,"krī",,aorist,1,9,買う、購入する,"to buy, to purchase",0,0,0,0,0,0
+,kāti,"kā",,aorist,1,1,同意する、望む、求める、望む、憧れる、愛する、好きになる、楽しむ、満足する、,"to agree, to wish, to seek, to desire, to yearn, to love, to like, to enjoy, to be satisfied with,",0,0,1,0,0,0
+"60",kalpati,"kḷp",,aorist,0,1,合致する、合う、ふさわしい、従う、効果を発揮する,"to be fit for, to be suitable, to subserve, to effect",0,0,0,0,0,0
+,alaṃkarati,"kṛ",alaṃ,aorist,0,1,チェックする、準備する、飾る,"to check, to prepare, to decorate",0,0,0,0,0,0
+,alaṃkarti,"kṛ",alaṃ,aorist,0,2,チェックする、準備する、飾る,"to check, to prepare, to decorate",0,0,0,0,0,0
+,alaṃcikarti,"kṛ",alaṃ,aorist,0,3,チェックする、準備する、飾る,"to check, to prepare, to decorate",0,0,0,0,0,0
+"10",alaṃkṛnoti,"kṛ",alaṃ,aorist,0,5,チェックする、準備する、飾る,"to check, to prepare, to decorate",0,0,0,0,0,0
+,kṛntati,"kṛt",,aorist,0,7,糸をねじる、紡ぐ,"to twist threads, to spin",0,0,0,0,0,0
+,kṣobhati,"kṣubh",,aorist,0,1,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",0,0,0,0,0,0
+"59",kṣubhyati,"kṣubh",,aorist,0,4,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",0,0,0,0,0,0
+,kṣubhnoti,"kṣubh",,aorist,0,5,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",0,0,0,0,0,0
+,kṣubhnāti,"kṣubh",,aorist,0,9,震える、震える、動揺する、邪魔される,"to shake, to tremble, to be agitated, to disturbed",0,0,0,0,0,0
+"58",kṣudhyati,"kṣudh",,aorist,0,4,お腹を空かせて、お腹を空かせて,"to feel hungry, to be hungry ",0,0,0,0,0,0
+"171",mṛṣyati,"mas",,aorist,0,4,計量する、測定する、会う,"to weigh, to measure, to mete",0,0,0,0,0,0
+"176",mohati,"muh",,aorist,0,4,誤りを犯す,"to err",0,0,0,0,0,0
 "180",marati,"mṛ",,aorist,0,1,死ぬ、滅びる、死ぬ,"to die, to perish, to decease",0,1,0,0,0,0
 ,mriyati,"mṛ",,aorist,0,6,死ぬ、滅びる、死ぬ,"to die, to perish, to decease",0,1,0,0,0,0
-,mradati,"mrad",,present,0,1,押す、絞る、押しつぶす、叩く、粉砕する、踏みつける、踏む、破壊する,"to press, to squeeze, to crush, to pound, to smash, to trample down, to tread upon, to destroy",,,,,,
-,mṛḷati,"mṛḷ",,present,1,6,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",,,,,,
-,mṛḷnāti,"mṛḷ",,present,1,9,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",,,,,,
-,mṛḷayati,"mṛḷ",,present,1,10,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",,,,,,
-,mṛḍati,"mṛḍ",,present,1,6,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",,,,,,
-,mṛḍnāti,"mṛḍ",,present,1,9,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",,,,,,
-,mṛḍayati,"mṛḍ",,present,1,10,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",,,,,,
-,mardati,"mṛd",,present,1,1,押す、絞る、押しつぶす、叩く、粉砕する、踏みつける、踏む、破壊する,"to press, to squeeze, to crush, to pound, to smash, to trample down, to tread upon, to destroy",,,,,,
-"181",mṛdnāti,"mṛd",,present,1,9,押す、絞る、押しつぶす、叩く、粉砕する、踏みつける、踏む、破壊する,"to press, to squeeze, to crush, to pound, to smash, to trample down, to tread upon, to destroy",,,,,,
-"118",namati,"nam",,present,0,1,曲がる、お辞儀をする,"to bend, to bow",,,,,,
-"117",nandati,"nand",,present,0,1,喜ぶ、喜ぶ,"to rejoice, to delight",,,,,,
-,namśati,"namś",,present,0,1,到達する、達成する、会う、見つける,"to reach, to attain, to meet with, to find ",,,,,,
-,naśati,"naś",,aorist,0,1,到達する、達成する、会う、見つける,"to reach, to attain, to meet with, to find ",,,,,,
-"119",naśati,"naś",,aorist,0,1,失われる、滅びる、消える,"to be lost, to perish, to disappear",,,,,,
-,naśyati,"naś",,aorist,0,4,失われる、滅びる、消える,"to be lost, to perish, to disappear",,,,,,
-,drāyati,"drai",,present,0,1,寝るため,to sleep,0,0,0,1,1,1
-,drāti,"drā",,present,1,2,寝るため,to sleep,0,0,0,0,0,0
-,drāti,"drā",,present,1,2,走る,to run,0,0,0,0,0,0
+,naśati,"naś",,aorist,0,1,到達する、達成する、会う、見つける,"to reach, to attain, to meet with, to find ",0,0,0,0,0,0
+"119",naśati,"naś",,aorist,0,1,失われる、滅びる、消える、追放される、取り除く、破壊する、消滅する,"to be lost, to perish, to disappear, to expel, to remove, to destroy, to efface",0,0,0,0,0,0
+,naśyati,"naś",,aorist,0,4,失われる、滅びる、消える、追放される、取り除く、破壊する、消滅する,"to be lost, to perish, to disappear, to expel, to remove, to destroy, to efface",0,0,0,0,0,0
+"127",padyati,"pad",,aorist,0,4,落ちる、落ちる、落ちる、滅びる、行く,"to fall, to fall down, to fall down out, to perish, to go",0,0,0,0,0,0
+"138",puṣyati,"puṣ",,aorist,0,4,分割する、配布する,"to divide, to distribute",0,0,0,0,0,0
+,poṣati,"puṣ",,aorist,0,1,栄養を与えられる、繁栄する、育成する、増強する、増加する、促進する、実現する、発展する、展開する、表示する 、得る、得る、楽しむ、所有する,"to be nourished, to thrive, to flourish, to prosper, to cause to thrive, to prosper, to nourish, to foster, to augment, to increase, to further, to promote, to fulfil, to develop, to unfold, to display, to gain, to obtain, to enjoy, to possess",0,0,0,0,0,0
+,puṣyati,"puṣ",,aorist,0,4,栄養を与えられる、繁栄する、育成する、増強する、増加する、促進する、実現する、発展する、展開する、表示する 、得る、得る、楽しむ、所有する,"to be nourished, to thrive, to flourish, to prosper, to cause to thrive, to prosper, to nourish, to foster, to augment, to increase, to further, to promote, to fulfil, to develop, to unfold, to display, to gain, to obtain, to enjoy, to possess",0,0,0,0,0,0
+,puṣṇāti,"puṣ",,aorist,0,9,栄養を与えられる、繁栄する、育成する、増強する、増加する、促進する、実現する、発展する、展開する、表示する 、得る、得る、楽しむ、所有する,"to be nourished, to thrive, to flourish, to prosper, to cause to thrive, to prosper, to nourish, to foster, to augment, to increase, to further, to promote, to fulfil, to develop, to unfold, to display, to gain, to obtain, to enjoy, to possess",0,0,0,0,0,0
+"136",,"pī",,aorist,1,4,飲む,"to drink",0,0,0,0,0,0
+"139",punāti,"pū",,aorist,1,9,浄化し、識別し、考案する,"to purify, to discern, to contrive",0,0,0,0,0,0
+"196",recati,"ric",,aorist,0,1,空にする、避難する、去る、あきらめる、辞任する,"to empty, to evacuate, to leave, to give up, to resign",0,0,0,0,0,0
+,riṇakti,"ric",,aorist,0,7,空にする、避難する、去る、あきらめる、辞任する,"to empty, to evacuate, to leave, to give up, to resign",0,0,0,0,0,0
+"198",rocati,"ruc",,aorist,0,1,輝く,"to shine",0,0,0,0,0,0
+,rodati,"rud",,aorist,0,1,泣く、泣く、遠吠えする、咆哮する、嘆く、泣く,"to weep, to cry, to howl, to roar, to lament, to wail",0,0,0,0,0,0
+"199",rudati,"rud",,aorist,0,6,泣く、泣く、遠吠えする、咆哮する、嘆く、泣く,"to weep, to cry, to howl, to roar, to lament, to wail",0,0,0,0,0,0
+,pariskarati,"skṛ",pari,aorist,0,1,取り囲む、支持する,"to surround, to uphold",0,0,0,0,0,0
+,pariskarti,"skṛ",pari,aorist,0,2,取り囲む、支持する,"to surround, to uphold",0,0,0,0,0,0
+,pariskṛnoti,"skṛ",pari,aorist,0,5,取り囲む、支持する,"to surround, to uphold",0,0,0,0,0,0
+,upaskarati,"skṛ",upa,aorist,0,1,追加する、準備する、精巧にする、完璧にする、飾る、供給する,"to add, to prepare, to elaborate, to perfect, to adorn, to supply",0,0,0,0,0,0
+,upaskarti,"skṛ",upa,aorist,0,2,追加する、準備する、精巧にする、完璧にする、飾る、供給する,"to add, to prepare, to elaborate, to perfect, to adorn, to supply",0,0,0,0,0,0
+,upaskṛnoti,"skṛ",upa,aorist,0,5,追加する、準備する、精巧にする、完璧にする、飾る、供給する,"to add, to prepare, to elaborate, to perfect, to adorn, to supply",0,0,0,0,0,0
+,saṃskarati,"skṛ",saṃ,aorist,0,1,まとめる、一緒にする、構成する、蓄積する、準備する、準備する、服を着る、料理する、奉献する、神聖にする、飾る、飾る、洗練する、精巧にする、完璧にする、 訂正する、校正する、正す,"to put together, to join together, to compose, to accumulate, to prepare, to make ready, to dress, to cook, to consecrate, to hallow, to adorn, to embellish, to refine, to elaborate, to make perfect, to correct",0,0,0,0,0,0
+,saṃskarti,"skṛ",saṃ,aorist,0,2,まとめる、一緒にする、構成する、蓄積する、準備する、準備する、服を着る、料理する、奉献する、神聖にする、飾る、飾る、洗練する、精巧にする、完璧にする、 訂正する、校正する、正す,"to put together, to join together, to compose, to accumulate, to prepare, to make ready, to dress, to cook, to consecrate, to hallow, to adorn, to embellish, to refine, to elaborate, to make perfect, to correct",0,0,0,0,0,0
+"262",saṃskṛnoti,"skṛ",saṃ,aorist,0,5,まとめる、一緒にする、構成する、蓄積する、準備する、準備する、服を着る、料理する、奉献する、神聖にする、飾る、飾る、洗練する、精巧にする、完璧にする、 訂正する、校正する、正す,"to put together, to join together, to compose, to accumulate, to prepare, to make ready, to dress, to cook, to consecrate, to hallow, to adorn, to embellish, to refine, to elaborate, to make perfect, to correct",0,0,0,0,0,0
+,skarati,"skṛ",,aorist,0,1,作る、する、実行する、達成する、引き起こす、実行する、準備する、引き受ける、実行する、実行する、製造する、準備する、働く、精巧にする、構築する、採用する、 使用する、利用する、構成する、説明する、育成する,"to make, to do, to perform, to accomplish, to cause, to effect, to prepare, to undertake, to execute, to carry out, to manufacture, to prepare, to work at, to elaborate, to build, to employ, to use, to make use of, to compose, to describe, to cultivate",0,0,0,0,0,0
+,skarti,"skṛ",,aorist,0,2,作る、する、実行する、達成する、引き起こす、実行する、準備する、引き受ける、実行する、実行する、製造する、準備する、働く、精巧にする、構築する、採用する、 使用する、利用する、構成する、説明する、育成する,"to make, to do, to perform, to accomplish, to cause, to effect, to prepare, to undertake, to execute, to carry out, to manufacture, to prepare, to work at, to elaborate, to build, to employ, to use, to make use of, to compose, to describe, to cultivate",0,0,0,0,0,0
+"274",skṛnoti,"skṛ",,aorist,0,5,作る、する、実行する、達成する、引き起こす、実行する、準備する、引き受ける、実行する、実行する、製造する、準備する、働く、精巧にする、構築する、採用する、 使用する、利用する、構成する、説明する、育成する,"to make, to do, to perform, to accomplish, to cause, to effect, to prepare, to undertake, to execute, to carry out, to manufacture, to prepare, to work at, to elaborate, to build, to employ, to use, to make use of, to compose, to describe, to cultivate",0,0,0,0,0,0
+,spṛṇāti,"spṛ",,aorist,1,9,傷つける、殺す,"to hurt, to kill ",0,0,0,0,0,0
+,spṛṇoti,"spṛ",,aorist,0,5,解放する、救う、獲得する、勝つ,"to release, to save, to gain, to win",0,0,0,0,0,0
+,spṛṇāti,"spṝ",,aorist,1,9,傷つける、殺す,"to hurt, to kill ",0,0,0,0,0,0
+"276",tisthāti,"sthā",,aorist,0,3,立つ,"to stand",0,0,0,0,0,0
+"97",tuṣyati,"tuṣ",,aorist,0,4,満足させる、喜ばせる、なだめる、満足させる,"to satisfy, to please, to appease, to gratify",0,0,0,0,0,0
+"13",,"āgā",,aorist,1,3,近づく、入る、近づく、達成する、克服する、訪問する,"to come towards, to come into, to approach, to attain, to overcome, to visit ",0,0,0,0,0,0
+"238",śaknoti,"śak",,aorist,0,5,強くなる、強力になる、できる、能力がある,"to be strong, to be powerful, to be able to, to be capable of to be competent for, can",0,0,0,0,0,0
+"241",śamyati,"śam",,aorist,1,4,苦労する、疲れる、自分を鍛える、準備する、整える、疲れる、終わらせる、やめる、終わらせる、休む、静かにする、落ち着く、満足する、 満足し、やめ、和らげられ、消滅し、終わらせ、傷つけ、傷つけ、破壊する,"to toil at, to fatigue, to exert one's self, to prepare, to arrange, to become tired, to finish, to stop, to come to an end, to rest, to be quiet, to be calm, to be satisfied, to be contented, to cease, to be allayed, to be extinguished, to put an end to, to hurt, to injure, to destroy",0,0,0,0,0,0
+"237",śaṃyati,"śaṃ",,aorist,1,4,苦労する、疲れる、自分を鍛える、準備する、整える、疲れる、終わらせる、やめる、終わらせる、休む、静かにする、落ち着く、満足する、 満足し、やめ、和らげられ、消滅し、終わらせ、傷つけ、傷つけ、破壊する,"to toil at, to fatigue, to exert one's self, to prepare, to arrange, to become tired, to finish, to stop, to come to an end, to rest, to be quiet, to be calm, to be satisfied, to be contented, to cease, to be allayed, to be extinguished, to put an end to, to hurt, to injure, to destroy",0,0,0,0,0,0
+"253",śrāmyati,"śram",,aorist,0,4,疲れる、何かをするのに飽きる、努力する、自分を発揮する,"to be weary, to become weary, to be tired,  to become tired,  to be tired of doing anything,  to make effort,to  exert one's self",0,0,0,0,0,0
+,śamnati,"śam",,aorist,1,9,苦労する、疲れる、自分を鍛える、準備する、整える、疲れる、終わらせる、やめる、終わらせる、休む、静かにする、落ち着く、満足する、 満足し、やめ、和らげられ、消滅し、終わらせ、傷つけ、傷つけ、破壊する,"to toil at, to fatigue, to exert one's self, to prepare, to arrange, to become tired, to finish, to stop, to come to an end, to rest, to be quiet, to be calm, to be satisfied, to be contented, to cease, to be allayed, to be extinguished, to put an end to, to hurt, to injure, to destroy",0,0,0,0,0,0
+,śaṃnati,"śaṃ",,aorist,1,9,苦労する、疲れる、自分を鍛える、準備する、整える、疲れる、終わらせる、やめる、終わらせる、休む、静かにする、落ち着く、満足する、 満足し、やめ、和らげられ、消滅し、終わらせ、傷つけ、傷つけ、破壊する,"to toil at, to fatigue, to exert one's self, to prepare, to arrange, to become tired, to finish, to stop, to come to an end, to rest, to be quiet, to be calm, to be satisfied, to be contented, to cease, to be allayed, to be extinguished, to put an end to, to hurt, to injure, to destroy",0,0,0,0,0,0
+"248",śvaati,"śū",,aorist,0,1,膨らむ、成長する、増加する,"to swell, to grow, to increase",0,0,0,0,0,0
+,śuṣyati,"śuṣ",,aorist,0,4,乾く、乾く、枯れる、衰える、衰える、衰える,"to dry, to become dry, to become withered, to fade, to languish, to decay",0,0,0,0,0,0
+,śvayati,"śvi",,aorist,0,1,膨らむ、成長する、増加する,"to swell, to grow, to increase",0,0,0,0,0,0
+"82",corayati,"cur",,denomitive,0,10,盗む,"to steal",0,0,0,0,1,0
+"68",gaṇayati,"gaṇ",,denomitive,0,10,数える、数える、列挙する、合計する、合計する、計算する、考慮に入れる,"to count, to number, to enumerate, to sum up, to add up, to reckon, to take into account",0,0,0,0,1,0
+,gholayati,"ghol",,denomitive,0,10,混ぜる、一緒にかき混ぜて半流動性の物質にする,"to mix, to stir together into a semi-fluid substance",0,0,0,0,1,0
+"24",irasayati,"iras",,denomitive,0,10,横柄に振る舞う、怒る,"to behave insolently, to be angry",0,0,0,0,1,0
+"41",kamayati,"kam",,denomitive,0,10,愛する,"to love",0,0,0,0,1,0
+"61",khaṇakhaṇāyati,"khaṇakhaṇāya",,denomitive,0,1,刻む、いじくり回す、割る,"to tick, to tinkle, to crack",0,0,0,0,1,0
+"55",krudhyati,"krudh",,denomitive,0,4,怒らせる、挑発する、苛立たせる,"to make angry, to provoke, to irritate",0,0,0,0,1,0
+"46",kuṭṭayati,"kuṭṭ",,denomitive,0,10,押しつぶす、傷つける、挽く、叩く、足を伸ばす、増殖させる、非難する、虐待する、満たす,"to crush, bruise, to grind, to pound, to paw, to multiply, to censure, to abuse, to fill",0,0,0,0,1,0
+"45",kīrtayati,"kīrt",,denomitive,0,10,言及する、伝える、名前を付ける、呼び出す、引用する、繰り返す、関連付ける、宣言する、伝える、記念する、祝う、賞賛する,"to mention, to make mention of, to tell, to name, to call, to recite, to repeat, to relate, to declare, to communicate, to commemorate, to celebrate, to praise, to glorify",0,0,0,0,1,0
+"202",lakṣati,"lakṣ",,denomitive,0,1,知覚する、観察する,"to perceive, to observe",0,0,0,0,1,0
+,lakṣayati,"lakṣ",,denomitive,0,10,マークする、署名する、特徴づける、示す,"to mark, to sign, to characterize, to indicate",0,0,0,0,1,0
+"260",saṃlakṣati,"lakṣ",saṃ,denomitive,0,1,観察する、見る、知覚する、感じる、聞く、学ぶ,"to observe, to see, to perceive, to feel, to hear, to learn",0,0,0,0,1,0
+"213",lokati,"lok",,denomitive,0,1,見る、見る、知覚する,"to see, to behold, to perceive",0,0,0,0,1,0
+"137",puṃsayati,"puṃs",,denomitive,0,10,粉砕する,"to crush, to grind",0,0,0,0,1,0
+"193",rasati,"ras",,denomitive,0,1,咆哮する、叫ぶ、泣く、鳴らす、反響する,"to roar, to yell, to cry, to sound, to reverberate",0,0,0,0,1,0
+,rasati,"ras",,denomitive,0,1,味わう、楽しむ,"to taste, to relish",0,0,0,0,1,0
+,rasayati,"ras",,denomitive,0,10,味わう、楽しむ,"to taste, to relish",0,0,0,0,1,0
+"201",rūpayati,"rūp",,denomitive,0,10,形成する、図解する、表現する、見る、調べる、熟考する、行動する、偽装する,"to form, to figure, to represent, to view, to inspect, to contemplate, to act, to feign",0,0,0,0,1,0
+"279",svarayati,"svar",,denomitive,0,10,過ちを見つける、非難する,"to find fault, to blame, to censure",0,0,0,0,1,0
+,surati,"sur",,denomitive,0,6,支配する、最高のものを所有する、輝く,"to rule, to possess supreme, to shine",0,0,0,0,1,0
+,surayati,"sur",,denomitive,0,10,欠点を見つける,"to find fault",0,0,0,0,1,0
+"93",tāḍayati,"taḍ",,denomitive,0,10,殴る、ノックする、殴る、傷つける、罰する、楽器を打つ,"to beat, to strike, to knock, to strike, to wound, to punish, to strike a musical instrument ",0,0,0,0,1,0
+,,"bal",,denomitive,0,10,生きる,"to live",0,0,0,0,1,0
+"249",śūrpayati,"śūrp",,denomitive,0,10,測定する、会う,"to measure, to mete out",0,0,0,0,0,0
+"4",atti,"ad",,present,0,2,食べる、消費する、むさぼり食う,"to eat, to consume, to devour",0,0,0,0,0,0
+"1",ajati,"aj",,present,0,1,運転する、推進する、投げる、投げる,"to drive,  to propel, to throw, to cast",0,0,0,0,0,0
+"5",anati,"an",,present,0,1,呼吸する、呼吸する、あえぎ、生きる,"to breathe, to respire, to gasp, to live",0,0,0,0,0,0
+"7",arcati,"arc",,present,0,1,崇拝すること、名誉を与えること、輝くこと、賞賛すること,"to worship, to honour, to shine, to praise",0,0,0,0,0,0
+"9",arhati,"arh",,present,0,1,値する、メリット,"to deserve, to merit",0,0,0,0,0,0
+"8",arjati,"arj",,present,0,1,調達する、獲得する、稼ぐ,"to procure, to acquire, to earn",0,0,0,0,0,0
+,asyati,"as",,present,0,4,投げる、撃つ,"to throw, to cast, to shoot at",0,0,0,0,0,0
+"268",samasati,"as",sam,present,0,1,似ている、等しい、存在する,"to be like, to equal, to exist",0,0,0,0,0,0
+,asyati,"as",sam,present,0,4,追加する、組み合わせる、組み合わせる、混ぜる、混ぜる、接続する,"to add, to combine, to compound, to mix, to mingle, to connect",0,0,0,0,0,0
+"2",añcati,"añc",,present,0,1,曲がる、傾く,"to bend, to curve, to incline, to curl",0,0,0,0,0,0
+"153",bandhati,"bandh",,present,0,1,縛る、結ぶ、固定する、留める、鎖でつなぐ、束縛する,"to bind, to tie, to fix, to fasten, to chain, to fetter",0,0,0,0,0,0
+,bhartsati,"bharts",,present,0,1,脅迫する、脅迫する、虐待する、罵倒する、嘲笑する,"to menace, to threaten, to abuse, to revile, to deride",0,0,0,0,0,0
+"158",bhartsayati,"bharts",,present,0,10,脅迫する、脅迫する、虐待する、罵倒する、嘲笑する,"to menace, to threaten, to abuse, to revile, to deride",0,0,0,0,0,0
+"159",bharvati,"bharv",,present,0,1,噛む、むさぼり食う、食べる、傷つける,"to chew, to devour, to eat, to hurt",0,0,0,0,0,0
+"157",bhanakti,"bhañj",,present,0,7,壊す、粉砕する、分割する,"to break, to shatter, to split",0,0,0,0,0,0
+,bhañjayati,"bhañj",,present,0,10,話す、輝く,"to speak, to shine",0,0,0,0,0,0
+,bhramati,"bhram",,present,1,1,不安定になる、さまよう、よろめく、歩き回る,"to be unsteady, to wander, to totter, to roam about",0,0,0,0,0,0
+"166",bhrāmyati,"bhram",,present,1,4,不安定になる、さまよう、よろめく、歩き回る,"to be unsteady, to wander, to totter, to roam about",0,0,0,0,0,0
+"167",bhriṇāti,"bhrī",,present,0,9,恐れること、支援すること,"to fear, to support",0,0,0,0,0,0
+"164",bhujati,"bhuj",,present,0,6,曲がる、曲がる,"to bend, to curve",0,0,0,0,0,0
+,bhunakti,"bhuj",,present,0,7,守る、統治する、支配する,"to protect, to govern, to rule",0,0,0,0,0,0
+"146",prabhāti,"bhā",pra,present,0,2,現れる,"to appear",0,0,0,0,0,0
+"160",bhāti,"bhā",,present,0,2,輝く、現れる,"to shine, to appear",0,0,0,0,0,0
+"156",brūti,"brū",,present,0,2,話す、言う、言う,"to speak, to say, to tell",0,0,0,0,0,0
+"155",bodhati,"budh",,present,1,1,知ること、理解すること、目覚めること、感覚を取り戻すこと、知ること、理解すること、考えること、知らせること、知らせること、教えること,"to know, to understand, to awake, to be restored to one’s senses, to know, to understand, to think, to make known, to inform, to teach",0,0,0,0,0,0
+,budhyati,"budh",,present,1,4,知ること、理解すること、目覚めること、感覚を取り戻すこと、知ること、理解すること、考えること、知らせること、知らせること、教えること,"to know, to understand, to awake, to be restored to one’s senses, to know, to understand, to think, to make known, to inform, to teach",0,0,0,0,0,0
+"154",bukkati,"bukk",,present,0,1,吠える、叫ぶ、鳴らす、話す,"to bark, to yelp, to sound, to talk",0,0,0,0,0,0
+,bukkayati,"bukk",,present,0,10,吠える、叫ぶ、鳴らす、話す,"to bark, to yelp, to sound, to talk",0,0,0,0,0,0
+"79",camati,"cam",,present,1,1,食べる、飲む,"to eat, to drink",0,0,0,0,0,0
+"78",candati,"cand",,present,0,1,輝くために、喜んで,"to shine, to gladden",0,0,0,0,0,0
+"80",carati,"car",,present,1,1,疑う、行く、歩く、放牧する、食べる,"to doubt, to go, to walk, to graze, to eat",0,0,0,0,0,0
+"81",codati,"cud",,present,0,1,推進する、扇動する、活気づける、送る、指示する,"to impel, to incite, to animate, to send, to direct",0,0,0,0,0,0
+"105",dahati,"dah",,present,0,1,燃やす、焦がす、ローストする,"to burn, to scorch, to roast ",0,0,0,0,0,0
+"115",dhanati,"dhan",,present,0,1,鳴らす,"to sound",0,0,0,0,0,0
+"116",dharati,"dhṛ",,present,0,1,存在する、存在する、年をとる、保持する、借りる、保持する、サポートする、所有する、維持する、つかむ、配置する,"to be, to exist, to grow old, to hold, to owe, to hold, to support, to possess, to keep, to seize, to place",0,0,0,0,0,0
+"108",degdhi,"digh",,present,0,2,油を塗る、塗る、石膏にする,"to anoint, to smear, to plaster",0,0,0,0,0,0
+"257",saṃdegdhi,"digh",saṃ,present,0,2,塗る、塗る、覆う,"to smear, to besmear, to cover",0,0,0,0,0,0
+"107",devati,"div",,present,0,1,苦しむ、悩む、尋ねる、物乞いする、行く,"to pain, to vex, to ask, to beg, to go",0,0,0,0,0,0
+,deyavati,"div",,present,0,10,苦しむ、悩む、尋ねる、物乞いする、行く,"to pain, to vex, to ask, to beg, to go",0,0,0,0,0,0
+,dīvyati,"div",,present,1,4,ダイスやギャンブルで遊ぶ、欲望する、克服する、交通する、輝く、賞賛する、喜ぶ、怒ったり酔ったりする、眠くなる、望む、行く、こする,"to play with dice or gamble, to desire, to overcome, to traffic, to shine, to praise, to be glad, to be mad or drunk, to be sleepy, to wish for, to go, to rub",0,0,0,0,0,0
+,drāyati,"drai",,present,0,1,寝る,"to sleep",0,0,0,1,1,1
 ,dramati,"dram",,present,0,1,走り回ったり、歩き回ったり、さまよったりする,"to run about, roam, wander",0,0,0,0,0,0
-"121",nidrāti,"drā",ni,present,1,2,眠りにつく、眠る、眠る,"to fall asleep, to sleep, to slumber",,,,,,
-"123",nṛtyati,"nṛt",,present,1,4,踊る、行動する,"to dance, to act",,,,,,
-,pacati,"pac",,present,0,1,広がる、明確にする、明らかにする,"to spread out, to make clear, to make evident",,,,,,
-,pañcati,"pañc",,present,0,1,広がる、明確にする、明らかにする,"to spread out, to make clear, to make evident",,,,,,
-"124",pacati,"pac",,present,0,1,調理する、焼く、焙煎する、沸騰させる,"to cook, to bake, to roast, to boil",,,,,,
-,pacyati,"pac",,present,0,4,調理する、焼く、焙煎する、沸騰させる,"to cook, to bake, to roast, to boil",,,,,,
-,padati,"pad",,present,0,1,速く立つ、固定する,"to stand fast, to stand fixed",,,,,,
-"127",padyati,"pad",,aorist,0,4,落ちる、落ちる、落ちる、滅びる、行く,"to fall, to fall down, to fall down out, to perish, to go",,,,,,
-"129",,"cchid",pari,,,,,,,,,,,
-"131",,"paritrai",,,,,,"to save, defend",,,,,,
-"133",,"ṣad",pari,,,,,,,,,,,
-"134",,"parīkṣ",,,,,,,,,,,,
-"126",,"pat",,,,,,,,,,,,
+"113",druṇoti,"dru",,present,0,5,傷つける、傷つける,"to hurt, to injure",0,0,0,0,0,0
+,dravati,"dru",,present,0,1,走る、急ぐ、攻撃する,"to run, to hasten, to attack",0,0,0,0,0,0
+,drāti,"drā",,present,1,2,寝る,"to sleep",0,0,0,0,0,0
+,drāti,"drā",,present,1,2,走る,"to run",0,0,0,0,0,0
+"121",nidrāti,"drā",ni,present,1,2,眠りにつく、眠る、眠る,"to fall asleep, to sleep, to slumber",0,0,0,0,0,0
+"112",dyotati,"dyut",,present,0,1,輝く,"to shine",0,0,0,0,0,0
+"109",dīpyati,"dīp",,present,1,1,燃える、燃える、輝く,"to blaze, to flare, to shine",0,0,0,0,0,0
+"39",edhati,"edh",,present,0,1,繁栄する、増加する、幸せになる、強く成長する,"to prosper, to increase, to become happy, to grow strong",0,0,0,0,0,0
+"73",ghaṭati,"ghaṭ",,present,0,1,熱心に夢中になる、忙しい、後を追う。 後に努力する,"to be intently occupied about, to be busy with, to strive after. to endeavour after",0,0,0,0,0,0
+"74",ghiṇṇati,"ghiṇṇ",,present,0,1,取る、把握する,"to take, to grasp",0,0,0,0,0,0
+,ghuṇṇati,"ghuṇṇ",,present,0,1,取る、把握する,"to take, to grasp",0,0,0,0,0,0
+,ghṛṇṇati,"ghṛṇṇ",,present,0,1,取る、把握する,"to take, to grasp",0,0,0,0,0,0
+"75",ghuṇati,"ghuṇ",,present,0,1,防ぐ、守る、守る,"to prevent, to defend, to protect",0,0,0,0,0,0
+,ghuṇati,"ghuṇ",,present,0,6,行く,"to go",0,0,0,0,0,0
+"76",ghūrṇati,"ghūrṇ",,present,0,1,前後に移動する、振る、動揺する、転がる,"to move to and fro, to shake, to be agitated, to roll about",0,0,0,0,0,0
+"69",gṛdhyati,"gṛdh",,present,0,4,努力する、獲得する、欲しがる、欲望する,"to endeavour, to gain, to covet, to desire",0,0,0,0,0,0
+,gārayati,"gṝ",,present,1,10,知る、知らせる、教える,"to know, to make known, to teach ",0,0,0,0,0,0
+,kārayati,"kṝ",,present,1,10,知る、知らせる,"to know, to inform ",0,0,0,0,0,0
+"281",halati,"hal",,present,0,1,耕す、溝を作る,"to plough, to make furrows ",0,0,0,0,0,0
+"280",hanti,"han",,present,1,1,殴る、殴る、叩く、槌で打つ、殴る、打つ、殺す、殴る、殺す、傷つける、破壊する,"to strike, to beat, to pound, to hammer , to strike,  to smite, to slay, to hit, to kill, to mar, to destroy",0,0,0,0,0,0
+"282",hasati,"has",,present,1,1,笑う、嘲笑する,"to laugh, to smile, to laugh at, to deride, mock, to ridicule",0,0,0,0,0,0
+,heṣati,"heṣ",,present,0,1,隣人に、泣き言を言う,"to neigh, to whinny",0,0,0,0,0,0
+"284",hikkati,"hikk",,present,0,1,傷つける、殺す,"to hurt, to injure, to kill",0,0,0,0,0,0
+,hreṣati,"hreṣ",,present,0,1,隣に、泣き言を言う、行く、移動する,"to neigh, to whinny, to go, to move",0,0,0,0,0,0
+"288",hvayati,"hve",,present,0,1,呼び出す、呼び出す、呼び出す、挑戦する、呼び出す,"to call, to call upon, to summon, to challenge, to invoke",0,0,0,0,0,0
+"23",edhati,"idh",,present,0,1,燃える,"to kindle",0,0,0,0,0,0
+"25",eṣati,"iṣ",,present,0,1,素早く動かす、飛ばす、投げる、振り回す、送り出す、流す、注ぎ出す、排出する、配達する、発表しする、宣言する、推進する、扇動する 、アニメートする、宣伝する,"to cause to move quickly, to let fly, to throw, to cast, to swing, to send out or off, to stream out, to pour out, to discharge, to deliver, to announce, to proclaim, to impel, to incite, to animate, to promote",0,0,0,0,0,0
+,iṣyati,"iṣ",,present,0,4,素早く動かす、飛ばす、投げる、振り回す、送り出す、流す、注ぎ出す、排出する、配達する、発表しする、宣言する、推進する、扇動する 、アニメートする、宣伝する,"to cause to move quickly, to let fly, to throw, to cast, to swing, to send out or off, to stream out, to pour out, to discharge, to deliver, to announce, to proclaim, to impel, to incite, to animate, to promote",0,0,0,0,0,0
+,iṣṇāti,"iṣ",,present,0,9,素早く動かす、飛ばす、投げる、振り回す、送り出す、流す、注ぎ出す、排出する、配達する、発表しする、宣言する、推進する、扇動する 、アニメートする、宣伝する,"to cause to move quickly, to let fly, to throw, to cast, to swing, to send out or off, to stream out, to pour out, to discharge, to deliver, to announce, to proclaim, to impel, to incite, to animate, to promote",0,0,0,0,0,0
+,īṣati,"iṣ",,present,0,1,獲得するために努力する、努力する、求める、好意的にするために努力する、望む、望む、切望する、要求する、何かをしたい、何かをしようとしている、意図する、努力する 誰からも何かを得る、誰からも何かを期待または要求する、同意する、好意的である、認める、選択する、認める、維持する、尊重する、考える,"to endeavour to obtain, to strive, to seek for, to endeavour to make favourable, to desire, to wish, to long for, to request, to wish to do anything, to be about to do anything, to intend, to strive to obtain anything from any one, to expect or ask anything from any one, to assent, be favourable, to concede, to choose, to acknowledge, to maintain, to regard, to think",0,0,0,0,0,0
+"86",jasati,"jas",,present,0,1,行く,"to go",0,0,0,0,0,0
+,jasyati,"jas",,present,0,4,解放する,"to liberate",0,0,0,0,0,0
+"91",jyotati,"jyut",,present,0,1,照らす、照らす,"to shine upon, to illuminate",0,0,0,0,0,0
+"87",jīvati,"jīv",,present,0,1,生きる、生き続ける、復活する,"to live, to be alive, to remain alive, to revive",0,0,0,0,0,0
+,jinvati,"jinv",,present,0,1,自分自身を動かす、活発で活気のある、促す、素早く動かす、推進する、扇動する、リフレッシュする、活気づける、促進する、助ける、好む,"to move one's self, to be active or lively, to urge on, to cause to move to quickly, to impel, to incite, to refresh, to animate, to promote, to help, to favour ",0,0,0,0,0,0
+"42",kampati,"kamp",,present,0,1,震える、揺れる,"to tremble, to shake",0,0,0,0,0,0
+"40",,"kaṭh",,present,1,1,苦しみの中で生きるために,"to live in distress",0,0,0,0,0,0
+"50",,"kel",,present,0,1,振る、震える、行く、動く、戯れる、スポーツする,"to shake, to tremble, to go or move, to be frolic-some, to sport ",0,0,0,0,0,0
+"62",,"khan",,present,0,1,掘る、掘る、掘る、土を上げる、発掘する、根を下ろす、突き刺す,"to dig, to dig up, to delve, to turn up the soil, to excavate, to root up, to pierce",0,0,0,0,0,0
+"67",,"khel",,present,0,1,揺れる、前後に動く、揺れる、震える,"to shake, to move to and fro, to swing, to tremble",0,0,0,0,0,0
+"64",kheṭati,"khiṭ",,present,0,1,恐れること、恐れること、恐れること、警戒すること,"to be terrified, to be frightened, to terrify, to alarm",0,0,0,0,0,0
+"63",khādati,"khād",,present,1,1,噛む、噛む、食べる、むさぼり食う、餌をやる、捕食する,"to chew, to bite, to eat, to devour, to feed, to prey upon",0,0,0,0,0,0
+"44",keṭati,"kiṭ",,present,0,1,行く、近づく、警戒する、恐れる、恐れる,"to go, to approach, to alarm, to terrify, to fear",0,0,0,0,0,0
+"56",kliśyati,"kliś",,present,0,4,苦しみ、痛みを引き起こす,"to torment, cause pain",0,0,0,0,0,0
+"51",kramati,"kram",,present,0,1,歩む、歩く、行く、向かう、近づく,"to step, to walk, to go, to go towards, to approach",0,0,0,0,0,0
+"54",,"kruñc",,present,0,1,曲がる,"to make crooked ",0,0,0,0,0,0
+"53",krīḍati,"krīḍ",,present,0,6,遊ぶ、スポーツする、自分を楽しませる、戯れる、ガンガンする、ダリーする,"to play,  to sport,  to amuse one's self,  to frolic,  to gambol,  to dally",0,0,0,0,0,0
+"47",kupyati,"kup",,present,0,4,動く、振る、かき混ぜる,"to move, to shake, to agitate",0,0,0,0,0,0
+"43",kāśati,"kāś",,present,0,1,見える、現れる、輝く、輝かしい,"to be visible,  to appear, to shine,  to be brilliant",0,0,0,0,0,0
+,kāśyati,"kāś",,present,0,4,見える、現れる、輝く、輝かしい,"to be visible,  to appear, to shine,  to be brilliant",0,0,0,0,0,0
+"49",kṛpati,"kṛp",,present,0,6,嘆き悲しむ、切望する、嘆く、懇願する,"to mourn, to long for, to lament, to implore",0,0,0,0,0,0
+,karpayati,"kṛp",,present,0,10,嘆き悲しむ、切望する、嘆く、懇願する,"to mourn, to long for, to lament, to implore",0,0,0,0,0,0
+,kartati,"kṛt",,present,0,1,切る、分ける,"to cut, to devide",0,0,0,0,0,0
+"48",kṛtati,"kṛt",,present,0,6,切る、分ける,"to cut, to devide",0,0,0,0,0,0
+"57",kṣamati,"kṣam",,present,0,1,許す、許す、苦しむ、耐える,"to permit, to allow, to suffer, to endure",0,0,0,0,0,0
+,kṣamti,"kṣam",,present,0,2,許す、許す、苦しむ、耐える,"to permit, to allow, to suffer, to endure",0,0,0,0,0,0
+,kṣamyati,"kṣam",,present,0,4,許す、許す、苦しむ、耐える,"to permit, to allow, to suffer, to endure",0,0,0,0,0,0
+"205",labhati,"labh",,present,0,1,取る、つかむ、捕まえる,"to take, to seize, to catch ",0,0,0,0,0,0
+,lachati,"lach",,present,0,1,マークする、見る,"to mark, to see",0,0,0,0,0,0
+"203",lagati,"lag",,present,1,1,付着する、固執する,"to adhere, to stick",0,0,0,0,0,0
+"261",saṃlagati,"lag",saṃ,present,1,1,に取り付ける,"to attach to",0,0,0,0,0,0
+"204",lajjati,"lajj",,present,1,6,恥ずかしい、赤面する,"to be ashamed, to blush",0,0,0,0,0,0
+"206",lambati,"lamb",,present,0,1,ぶら下がる、依存する、ぶら下がる,"to hang down, to depend, to dangle",0,0,0,0,0,0
+,lambati,"lamb",,present,0,1,鳴らす,"to sound",0,0,0,0,0,0
+"209",lehati,"lih",,present,0,1,なめる,"to lick",0,0,0,0,0,0
+"208",liṅgati,"liṅg",,present,0,1,ペイントする、変化させる,"to paint, variegate",0,0,0,0,0,0
+,liṅgayati,"liṅg",,present,0,10,ペイントする、変化させる,"to paint, variegate",0,0,0,0,0,0
+"212",lubhyati,"lubh",,present,0,4,欲しがる、憧れる、興味を持つ、誘惑する、魅了する,"to desire, to long for, to be interested in, to entice, to allure",0,0,0,0,0,0
+,lubhati,"lubh",,present,0,6,欲しがる、憧れる、興味を持つ、誘惑する、魅了する,"to desire, to long for, to be interested in, to entice, to allure",0,0,0,0,0,0
+"211",luṇṭati,"luṇṭ",,present,0,1,奪う、略奪する,"to rob, to plunder",0,0,0,0,0,0
+,loṇṭayati,"luṇṭ",,present,0,10,奪う、略奪する,"to rob, to plunder",0,0,0,0,0,0
+"207",lāñchati,"lāñch",,present,0,1,マークする、区別する、特徴づける,"to mark, to distinguish, to characterize",0,0,0,0,0,0
+,layati,"lī",,present,1,1,しがみつく、うそをつく、リクライニングする,"to cling, to lie, to recline",0,0,0,0,0,0
+"210",līyati,"lī",,present,1,4,しがみつく、うそをつく、リクライニングする,"to cling, to lie, to recline",0,0,0,0,0,0
+,lināti,"lī",,present,1,9,しがみつく、うそをつく、リクライニングする,"to cling, to lie, to recline",0,0,0,0,0,0
+,macati,"mac",,present,0,1,騙す、叩く、挽く,"to cheat, to pound, to grind",0,0,0,0,0,0
+,madati,"mad",,present,0,1,縛る、殺す、満足させる、喜ばせる、喜ぶ、貧しい、酔う,"to bind, to kill, to gratify, to please, to rejoice, to be poor, to be intoxicated",0,0,0,0,0,0
+,mamatti,"mad",,present,0,3,縛る、殺す、満足させる、喜ばせる、喜ぶ、貧しい、酔う,"to bind, to kill, to gratify, to please, to rejoice, to be poor, to be intoxicated",0,0,0,0,0,0
+,madyati,"mad",,present,0,4,縛る、殺す、満足させる、喜ばせる、喜ぶ、貧しい、酔う,"to bind, to kill, to gratify, to please, to rejoice, to be poor, to be intoxicated",0,0,0,0,0,0
+,maghati,"magh",,present,0,1,高揚する、喜ぶ、高揚する、興奮させる、興奮する,"to elate, to gladden, to exalt, to arouse, to excite",0,0,0,0,0,0
+,maghayati,"magh",,present,0,10,高揚する、喜ぶ、高揚する、興奮させる、興奮する,"to elate, to gladden, to exalt, to arouse, to excite",0,0,0,0,0,0
+"172",mahati,"mah",,present,0,1,高める、喜ぶ、高揚する、興奮させる、興奮させる、拡大する、高く評価する、尊敬する、尊敬する、喜ぶ、喜ぶ、与える、授ける,"to elate, to gladden, to exalt, to arouse, to excite, to magnify, eto steem highly, to honour, to revere, to rejoice, to delight in, to give, to bestow",0,0,0,0,0,0
+,mahayati,"mah",,present,0,10,高める、喜ぶ、高揚する、興奮させる、興奮させる、拡大する、高く評価する、尊敬する、尊敬する、喜ぶ、喜ぶ、与える、授ける,"to elate, to gladden, to exalt, to arouse, to excite, to magnify, eto steem highly, to honour, to revere, to rejoice, to delight in, to give, to bestow",0,0,0,0,0,0
+,manyati,"man",,present,0,4,誇りに思う、やめる、知る、考える、尊敬する、名誉を与える,"to be proud, to stop, to know, to think, to suppose, to regard as, to esteem, to honour, to know",0,0,0,0,0,0
+,manuti,"man",,present,0,8,誇りに思う、やめる、知る、考える、尊敬する、名誉を与える,"to be proud, to stop, to know, to think, to suppose, to regard as, to esteem, to honour, to know",0,0,0,0,0,0
+,manyati,"man",prati,present,0,4,対照的である,"to contrast with",0,0,0,0,0,0
+"145",manuti,"man",prati,present,0,8,対照的である,"to contrast with",0,0,0,0,0,0
+,marjati,"marj",,present,0,6,鳴らす,"to sound",0,0,0,0,0,0
+,mañcati,"mañc",,present,0,1,騙す、抱きしめる、崇拝する、輝く、行く、動く,"to cheat, to hold, to adore, to shine, to go, to move",0,0,0,0,0,0
+"169",mañjayati,"mañj",,present,0,10,鳴らす,"to sound",0,0,0,0,0,0
+,maṃhati,"maṃh",,present,0,1,与える、与える、授ける,"to give, to grant, to bestow",0,0,0,0,0,0
+"168",maṃhati,"maṃh",,present,0,1,与える、与える、授ける,"to give, to grant, to bestow",0,0,0,0,0,0
+"182",manati,"mnā",,present,0,1,繰り返す,"to repeat ",0,0,0,0,0,0
+,mradati,"mrad",,present,0,1,押す、絞る、押しつぶす、叩く、粉砕する、踏みつける、踏む、破壊する,"to press, to squeeze, to crush, to pound, to smash, to trample down, to tread upon, to destroy",0,0,0,0,0,0
+,mocati,"muc",,present,0,1,カンニングする,"to cheat",0,0,0,0,0,0
+"174",mocati,"muc",,present,0,1,緩める、解放する,"to loose, to liberate",0,0,0,0,0,0
+,mojati,"muj",,present,0,1,音を立てる,"to make noise",0,0,0,0,0,0
+,mojayati,"muj",,present,0,10,鳴らす、浄化する,"to sound, to cleanse",0,0,0,0,0,0
+"175",murchati,"murch",,present,0,1,固まる、厚くなる、固まる,"to become solid, to thicken, to congeal",0,0,0,0,0,0
+,muñjati,"muñj",,present,0,6,音を立てる,"to make noise",0,0,0,0,0,0
+"177",mūrcchati,"mūrcch",,present,0,1,固まる、厚くなる、固まる,"to become solid, to thicken, to congeal",0,0,0,0,0,0
+"178",mūrchati,"mūrch",,present,0,1,固まる、厚くなる、固まる,"to become solid, to thicken, to congeal",0,0,0,0,0,0
+,mardati,"mṛd",,present,1,1,押す、絞る、押しつぶす、叩く、粉砕する、踏みつける、踏む、破壊する,"to press, to squeeze, to crush, to pound, to smash, to trample down, to tread upon, to destroy",0,0,0,0,0,0
+"181",mṛdnāti,"mṛd",,present,1,9,押す、絞る、押しつぶす、叩く、粉砕する、踏みつける、踏む、破壊する,"to press, to squeeze, to crush, to pound, to smash, to trample down, to tread upon, to destroy",0,0,0,0,0,0
+,mṛjati,"mṛj",,present,0,6,拭く、こする、洗う、磨く、洗う、浄化する、飾る、飾る,"to wipe, to rub, to cleanse, to polish, to clean, to purify, to embellish, to adorn",0,0,0,0,0,0
+,mṛśati,"mṛś",,present,0,6,触れる、撫でる、扱う,"to touch, to stroke, to handle",0,0,0,0,0,0
+,mṛḍati,"mṛḍ",,present,1,6,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",0,0,0,0,0,0
+,mṛḍnāti,"mṛḍ",,present,1,9,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",0,0,0,0,0,0
+,mṛḍayati,"mṛḍ",,present,1,10,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",0,0,0,0,0,0
+,mṛḷati,"mṛḷ",,present,1,6,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",0,0,0,0,0,0
+,mṛḷnāti,"mṛḷ",,present,1,9,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",0,0,0,0,0,0
+,mṛḷayati,"mṛḷ",,present,1,10,優雅に、好意的に、許し、惜しまない,"to be gracious, to be favourable, to pardon, to spare",0,0,0,0,0,0
+,mṛṣyati,"mṛṣ",,present,0,4,忘れる、無視する、無視する,"to forget, to neglect, to disregard",0,0,0,0,0,0
+"118",namati,"nam",,present,0,1,曲がる、お辞儀をする,"to bend, to bow",0,0,0,0,0,0
+,namśati,"namś",,present,0,1,到達する、達成する、会う、見つける,"to reach, to attain, to meet with, to find ",0,0,0,0,0,0
+"117",nandati,"nand",,present,0,1,喜ぶ、喜ぶ,"to rejoice, to delight",0,0,0,0,0,0
+"123",nṛtyati,"nṛt",,present,1,4,踊る、行動する,"to dance, to act",0,0,0,0,0,0
+,pacati,"pac",,present,0,1,広がる、明確にする、明らかにする,"to spread out, to make clear, to make evident",0,0,0,0,0,0
+"124",pacati,"pac",,present,0,1,調理する、焼く、焙煎する、沸騰させる,"to cook, to bake, to roast, to boil",0,0,0,0,0,0
+,pacyati,"pac",,present,0,4,調理する、焼く、焙煎する、沸騰させる,"to cook, to bake, to roast, to boil",0,0,0,0,0,0
+,padati,"pad",,present,0,1,速く立つ、固定する,"to stand fast, to stand fixed",0,0,0,0,0,0
+"126",patyati,"pat",,present,0,4,マスターになる、統治する、支配する、統治する、支配する、所有する、所有する、処分する、参加する、共有する,"to be master, reign, rule, govern, control, own, possess, dispose of, to partake of, to share in",0,0,0,0,0,0
+,patati,"pat",,present,1,1,飛ぶ、舞い上がる、急ぐ、倒れる、落ちる、降りる、降りる,"to fly, to soar, to rush on, to fall down, to fall off, to alight, to descend",0,0,0,0,0,0
+,pañcati,"pañc",,present,0,1,広がる、明確にする、明らかにする,"to spread out, to make clear, to make evident",0,0,0,0,0,0
+,paśati,"paś",,present,0,10,留める、縛る,"to fasten, bind",0,0,0,0,0,0
+,paśyati,"paś",,present,0,4,見る、観察する、知覚する、気づく,"to see, to behold, to look at, to observe, to perceive, to notice",0,0,0,1,1,1
+"125",paṭhati,"paṭh",,present,1,1,宣言する、言及する、引用する、研究する、読む、引用する,"to declare, to mention, to cite, to study, to read, to recite",0,0,0,0,0,0
+"152",phalati,"phal",,present,1,1,実を結ぶ、結果を出す、成功する、役に立つ、実を結ぶ、破裂する、分裂する,"to bear fruit, to result, to succeed, to be useful, to be fruitful,to burst open, to split",0,0,0,0,0,0
+"150",plavati,"plu",,present,0,1,行く、ジャンプする、飛ぶ、浮く、泳ぐ,"to go, to jump, to fly, to float, to swim",0,0,0,0,0,0
+,preṣati,"preṣ",,present,0,1,行く、動く,"to go, to move",0,0,0,0,0,0
+"149",preṣati,"preṣ",,present,0,1,運転する、促す、推進する、送り出す、招待する、召喚する、呼びかける,"to drive on, to urge, to impel, to send forth, to invite, to summon, to call upon",0,0,0,0,0,0
+"148",prīyati,"prī",,present,0,4,喜ばせる、喜ぶ、喜ぶ、満足させる、応援する、慰める、なだめる、傲慢にする,"to please, to gladden, to delight, to gratify, to cheer, to comfort, to soothe, to propitiate",0,0,0,0,0,0
+,prīṇāti,"prī",,present,0,9,喜ばせる、喜ぶ、喜ぶ、満足させる、応援する、慰める、なだめる、傲慢にする,"to please, to gladden, to delight, to gratify, to cheer, to comfort, to soothe, to propitiate",0,0,0,0,0,0
+"151",psāti,"psā",,present,0,2,噛む、飲み込む、むさぼり食う、食べる、消費する,"to chew, to swallow, to devour, to eat, to consume",0,0,0,0,0,0
+"142",,"pyai",,present,0,1,膨らむ、あふれんばかりになる、浮かぶ,"to swell, to be exuberant, to overflo",0,0,0,0,0,0
+"141",,"pyāy",,present,0,1,膨らむ、成長する,"to swell, to grow",0,0,0,0,0,0
+,,"pī",,present,1,1,膨らむ、あふれる、あふれんばかりになる、たくさんある、増える、成長する,"to swell, to overflow, to be exuberant, to abound, to increase, to grow",0,0,0,0,0,0
+,pīti,"pī",,present,1,2,膨らむ、あふれる、あふれんばかりになる、たくさんある、増える、成長する,"to swell, to overflow, to be exuberant, to abound, to increase, to grow",0,0,0,0,0,0
+,,"pī",,present,1,3,膨らむ、あふれる、あふれんばかりになる、たくさんある、増える、成長する,"to swell, to overflow, to be exuberant, to abound, to increase, to grow",0,0,0,0,0,0
+,rabhati,"rabh",,present,0,1,つかむ、つかむ、握り締める、抱きしめる,"to take hold of, to grasp, to clasp, to embrace",0,0,0,0,0,0
+"189",racati,"rac",,present,0,1,生産する、作る、形作る、作る、構築する、完成させる、引き起こす、達成する,"to produce, to fashion, to form, to make, to construct, to complete, to cause, to effect",0,0,0,0,0,0
+,radhati,"radh",,present,0,1,対象となる,"to become subject to",0,0,0,0,0,0
+"188",rakṣati,"rakṣ",,present,0,1,守る、見る、世話をする、守る、救う、保存する,"to guard, to watch, to take care of, to protect, to save, to preserve",0,0,0,0,0,0
+"192",ramati,"ram",,present,0,1,立ち止まる、とどまる、速くする、落ち着く,"to stop, to stay, to make fast, to calm",0,0,0,0,0,0
+,rambati,"ramb",,present,0,1,ハングダウンする,"to hang down",0,0,0,0,0,0
+,rambati,"ramb",,present,0,1,鳴く、咆哮する,"to sound, to roar",0,0,0,0,0,0
+,rañjati,"rañj",,present,0,1,染められる、着色される、赤くなる、赤くなる、輝く,"to be dyed, to be coloured, to redden, to grow red, to glow",0,0,0,0,0,0
+,raṇati,"raṇ",,present,0,1,喜ぶ、喜ぶ、満足する、応援する、喜ぶ、爽快にする,"to gladden, to delight, to gratify, to cheer, to gladden, to exhilarate with",0,0,0,0,0,0
+,raṇyati,"raṇ",,present,0,4,喜ぶ、喜ぶ、満足する、応援する、喜ぶ、爽快にする,"to gladden, to delight, to gratify, to cheer, to gladden, to exhilarate with",0,0,0,0,0,0
+"191",raṇati,"raṇ",,present,0,1,鳴らす、鳴らす、ガタガタする、ジングルする,"to sound, to ring, to rattle, to jingle",0,0,0,0,0,0
+,raṇayati,"raṇ",,present,0,10,行く,"to go",0,0,0,0,0,0
+,rehati,"rih",,present,0,1,なめる,"to lick",0,0,0,0,0,0
+,rimphati,"rimph",,present,0,6,投げる、殺す,"to hurl, to kill",0,0,0,0,0,0
+"11",avariphati,"riph",ava,present,0,6,せせらぎのガチュラルサウンドを発する,"to utter a murmuring guttural sound",0,0,0,0,0,0
+"18",āriphati,"riph",ā,present,0,6,いびきをかく,"to snore",0,0,0,0,0,0
+"197",riphati,"riph",,present,0,6,責める、戦う、与える、傷つける、殺す,"to blame, to fight, to give, to hurt, to kill",0,0,0,0,0,0
+,ruvati,"ru",,present,0,1,咆哮する、怒鳴る、遠吠えする、叫ぶ、大声で叫ぶ,"to roar, to bellow, to howl, to yelp, to cry aloud",0,0,0,0,0,0
+,rauti,"ru",,present,0,2,咆哮する、怒鳴る、遠吠えする、叫ぶ、大声で叫ぶ,"to roar, to bellow, to howl, to yelp, to cry aloud",0,0,0,0,0,0
+,ruṇaddhi,"rudh",,present,0,1,妨害する、チェックする、逮捕する、止める、拘束する、防ぐ、引き留める、差し控える,"to obstruct, to check, to arrest, to stop,to restrain, to prevent, to keep back, to withhold",0,0,0,0,0,0
+,rohati,"ruh",,present,0,1,登る、登る、登る,"to ascend, to mount, to climb",0,0,0,0,0,0
+"200",ruhati,"ruh",,present,0,6,登る、登る、登る,"to ascend, to mount, to climb",0,0,0,0,0,0
+,ruṇḍati,"ruṇḍ",,present,0,1,盗む、奪う,"to steal, to rob",0,0,0,0,0,0
+,ruṇṭati,"ruṇṭ",,present,0,1,盗む、奪う,"to steal, to rob",0,0,0,0,0,0
+"195",rādhyati,"rādh",,present,0,4,成功する,"to succeed",0,0,0,0,0,0
+,rādhnoti,"rādh",,present,0,5,成功する,"to succeed",0,0,0,0,0,0
+"194",rājati,"rāj",,present,0,1,統治する、王になる、首長になる、支配する、指示する、統治する,"to reign, to be king, to be chief, to rule over, to direct, to govern",0,0,0,0,0,0
+,rāsati,"rās",,present,0,1,声を出して泣く,"to cry aloud",0,0,0,0,0,0
+"265",sadati,"sad",,present,0,1,座る,"to sit down",0,0,0,0,0,0
+"162",abhisajati,"saj",abhi,present,0,1,癒す、治す,"to heal, to cure",0,0,0,0,0,0
+"263",sajjati,"sajj",,present,0,1,行く、動く,"to go, to move",0,0,0,0,0,0
+,samati,"sam",,present,0,1,動揺する、邪魔される,"to be agitated, to be disturbed",0,0,0,0,0,0
+"271",samayati,"sam",,present,0,10,動揺する、邪魔される,"to be agitated, to be disturbed",0,0,0,0,0,0
+"270",samiyati,"sami",,present,0,1,一緒に行く、一緒に来る、で会う、会う,"to go together, to come together, to meet at, to meet with",0,0,0,0,0,0
+,sanati,"san",,present,0,1,獲得する、獲得する,"to gain, to acquire",0,0,0,0,0,0
+"266",sanoti,"san",,present,0,8,獲得する、獲得する,"to gain, to acquire",0,0,0,0,0,0
+"264",sañjati,"sañj",,present,0,1,固執する,"to cling",0,0,0,0,0,0
+"272",sivyati,"siv",,present,0,4,縫う、縫う、くじく、縫う、縫い合わせる,"to sew, to sew on, to darn, to stitch, to stitch together",0,0,0,0,0,0
+"278",smarati,"smṛ",,present,0,1,覚えて、思い出して、教えて、宣言して、暗唱する,"to remember, to recollect, to teach, to declare, to recite ",0,0,0,0,0,0
+"277",snehati,"snih",,present,0,1,しっとりする,"to be moist",0,0,0,0,0,0
+,sihyati,"snih",,present,0,4,しっとりする,"to be moist",0,0,0,0,0,0
+,spaśati,"spaś",,present,0,1,"縛り付ける、束縛する、止める、妨げる ","to bind, to fetter, to stop, to hinder ",0,0,0,0,0,0
+,spaśyati,"spaś",,present,0,4,見る、知覚する、明確にする、示す、観察する,"to see, to behold, to perceive, to make clear, show, to observe",0,0,0,0,0,0
+,stamati,"stam",,present,0,1,動揺する、邪魔される,"to be agitated, to be disturbed",0,0,0,0,0,0
+,stamayati,"stam",,present,0,10,動揺する、邪魔される,"to be agitated, to be disturbed",0,0,0,0,0,0
+"275",sthalati,"sthal",,present,0,1,しっかり立つ、しっかりする,"to stand firm, to be firm",0,0,0,0,0,0
+,starati,"stṛ",,present,0,1,広がる、まき散らす、散らばる、広がる、最善を尽くす、覆う,"to spread, to strew, to scatter, to spread over, to bestrew, to cover",0,0,0,0,0,0
+,stṛnoti,"stṛ",,present,0,5,広がる、まき散らす、散らばる、広がる、最善を尽くす、覆う,"to spread, to strew, to scatter, to spread over, to bestrew, to cover",0,0,0,0,0,0
+,starati,"stṝ",,present,1,1,広がる、まき散らす、散らばる、広がる、最善を尽くす、覆う,"to spread, to strew, to scatter, to spread over, to bestrew, to cover",0,0,0,0,0,0
+,stṛnāti,"stṝ",,present,1,9,広がる、まき散らす、散らばる、広がる、最善を尽くす、覆う,"to spread, to strew, to scatter, to spread over, to bestrew, to cover",0,0,0,0,0,0
+,svarati,"svṛ",,present,0,1,音を発する、音を出す、響く、響く、歌う、賞賛する、輝く,"to utter a sound, to sound, to resound, to make resound, to sing, to praise, to shine ",0,0,0,0,0,0
+"273",suvati,"sū",,present,1,6,動き出す、促す、推進する、生き返らせる、創造する、生み出す、投げつける、与える、授ける,"to set in motion, to urge, to impel, to vivify, to create, to produce, to hurl upon, to grant, to bestow",0,0,0,0,0,0
+,sūti,"sū",,present,1,2,生む、生み出す、生み出す、耐える、生み出す、生み出す,"to beget, to procreate, to bring forth, to bear, to produce, to yield",0,0,0,0,0,0
+"95",talati,"tal",,present,0,1,達成する、確立する、修正する,"to accomplish, to establish, to fix",0,0,0,0,0,0
+,tālayati,"tal",,present,0,10,達成する、確立する、修正する,"to accomplish, to establish, to fix",0,0,0,0,0,0
+"94",tapyati,"tap",,present,0,4,治める、統治する,"to rule ",0,0,0,0,0,0
+,tapati,"tap",,present,0,1,熱を与える、熱くする、輝く、熱くする、暖かくする、熱する、輝く、熱で消費する、熱で破壊する、痛みに苦しむ,"to give out heat, to be hot, to shine, to make hot, to make warm, to heat, shine upon,  to consume by heat, to destroy by heat, to suffer pain",0,0,0,0,0,0
+,tapyati,"tap",,present,0,4,熱を与える、熱くする、輝く、熱くする、暖かくする、熱する、輝く、熱で消費する、熱で破壊する、痛みに苦しむ,"to give out heat, to be hot, to shine, to make hot, to make warm, to heat, shine upon,  to consume by heat, to destroy by heat, to suffer pain",0,0,0,0,0,0
+"131",,"trai",pari,present,0,1,救助する、救う、守る,"to rescue, to save, to protect, to defend",0,0,0,0,0,0
+"99",trapati,"trap",,present,0,1,困惑する、恥ずかしい,"to become perplexed, to be ashamed",0,0,0,0,0,0
+"103",tsarati,"tsar",,present,0,1,ステルスに行く、ステルスに近づく、忍び寄る、こっそりする,"to go stealthily, to approach stealthily, to creep on, to sneak",0,0,0,0,0,0
+"96",,"tud",,present,0,6,押す、打つ、やる、傷つける、刺す,"to push, to strike, to goad, to bruise, to sting",0,0,0,0,0,0
+"101",tvacati,"tvac",,present,0,6,覆う,"to cover",0,0,0,0,0,0
+"102",tviṣati,"tviṣ",,present,0,1,興奮する、扇動する、輝く、きらめく,"to excite, to instigate, to shine, to glitter",0,0,0,0,0,0
+"33",unnamati,"nam",un,present,0,1,上向きに曲がる、自分を上げる、上がる、上がる、上がる、持ち上げる,"to bend upwards, to raise one's self, to rise, to ascend, to raise up, to lift up ",0,0,0,0,0,0
+"34",upaniṣadati,"ṣad",upani,present,0,1,近くに座る、近づく、着手する,"to sit down near to, to approach, to set about ",0,0,0,0,0,0
+,,"bal",,present,0,1,呼吸する、生きる,"to breathe, to live",0,0,0,0,0,0
+"216",valati,"val",,present,1,1,曲がる、覆う、動く,"to turn, to cover, to move",0,0,0,0,0,0
+,vallati,"vall",,present,1,1,覆われる、行く,"to be covered, to go",0,0,0,0,0,0
+"215",vamati,"vam",,present,0,1,吐く、落とす、放出する、与える、拒絶する,"to vomit, to drop, to emit, to give out, to reject",0,0,0,0,0,0
+"217",vaśati,"vaś",,present,1,1,願う、憧れる、好きになる,"to wish, to long for, to like",0,0,0,0,0,0
+,vaṣṭi,"vaś",,present,1,1,願う、憧れる、好きになる,"to wish, to long for, to like",0,0,0,0,0,0
+,vavaṣṭi,"vaś",,present,1,1,願う、憧れる、好きになる,"to wish, to long for, to like",0,0,0,0,0,0
+"220",vāti,"vā",,present,1,2,吹く、においをかぐ、傷つける、けがをする,"to blow, to smell, to hurt, to injure",0,0,0,0,0,0
+"228",,"vī",,present,1,2,行く、近づく、つかむ、つかむ、受け入れる、楽しむ、攻撃する、襲う、訪れる、罰する、復讐する、動き出す、興奮させる、興奮させる、推進する、促進する、促進する,"to go, approach, to grasp, to seize, to accept, to enjoy, to attack, to assail, to visit, to punish, avenge, to set in motion, to arouse, to excite, to impel, to further, to promote",0,0,0,0,0,0
+"19",āviśati,"āviś",,present,0,1,,"to go, to drive in, to drive towards, to approach, to enter, to take possession of, to sit down, to settle, to get or fall into, to reach, to obtain, to become",0,0,0,0,0,0
+"269",samāviśati,"āviś",sam,present,0,1,,,,,,,,
+"134",,"īkṣ",pari,present,0,1,見る、見つめる、見守る,"to see, to look, to view, to behold, to look at, to gaze at, to watch over",0,0,0,0,0,0
+"240",śapati,"śap",,present,0,1,呪う、誓いを誓う、処刑を発する、罵倒する、叱る、非難する,"to curse, to swear an oath, to utter an execration, to revile, to scold, to blame",0,0,0,0,0,0
+"239",śaṅkati,"śaṅk",,present,0,1,心配する、恐れる、疑う、不信感を抱く、疑う、不確かである、躊躇する、ありそうなことを考える、想定する、信じる、考える,"to be anxious, to be apprehensive, to be afraid of, to fear, to dread, to suspect, to distrust, to be in doubt, to be uncertain about, to hesitate, to think probable, to assume, to believe, to regard",0,0,0,0,0,0
+"242",śikṣati,"śikṣ",,present,0,1,実行しようとする、試みる、着手する、学ぶ、知識を習得する、勉強する、実践する、学ぶ、自分自身を実践する、助けたい、助けたい、友だちになりたい、与えたい、 授ける,"to try to effect, attempt, undertake, to learn, acquire knowledge, study, practise, learn from, to practise one's self in, to wish to help, to aid, to befriend, to wish to give, to bestow",0,0,0,0,0,0
+"252",śnathati,"śnath",,present,0,1,突き刺す、殴る、怪我をする、殺す,"to pierce, to strike, to injure, to kill",0,0,0,0,0,0
+"226",viśvasati,"śvas",vi,present,0,2,自由に息を吸う、恐れから解放される、不安から解放される、信頼される、自信を持つ、信頼する、依存する,"to draw breath freely, to be free from fear, to be free from apprehension, to be trustful, to be confident, to trust, to confide in, to rely on, to depend on",0,0,0,0,0,0
+,śapyati,"śap",,present,0,4,呪う、誓いを誓う、処刑を発する、罵倒する、叱る、非難する,"to curse, to swear an oath, to utter an execration, to revile, to scold, to blame",0,0,0,0,0,0
+"255",śvasati,"śvas",,present,0,2,吹く、ヒスする、喘ぐ、鼻を鳴らす、呼吸する、呼吸する、息を吸う,"to blow, to hiss, to pant, to snort, to breathe, to to respire, to draw breath",0,0,0,0,0,0
+"250",śūlati,"śūl",,present,0,1,傷つける、痛みを引き起こす,"to hurt, to cause pain ",0,0,0,0,0,0
+,śṛṇāti,"śṝ",,present,1,9,押しつぶす、引き裂く、壊す,"to crush, rend, break",0,0,0,0,0,0
+"128",parāśṛṇāti,"śṝ",parā,present,1,9,押しつぶす、破壊する,"to crush, to destroy",0,0,0,0,0,0
+"251",śṛṇāti,"śṝ",,present,1,9,押しつぶす、引き裂く、壊す,"to crush, to rend, to break",0,0,0,0,0,0
+"130",pariṇayati,"ṇī",pari,present,0,1,導く、耐える,"to lead, to bear",0,0,0,0,0,0
+"37",ṛcati,"ṛc",,present,0,1,賞賛する、称賛する、称える、高く評価する,"to praise",0,0,0,0,0,0
+,ṛdhyati,"ṛdh",,present,0,4,成長する、増加する、繁栄する、成功する,"to grow, to increase, to prosper, to succeed",0,0,0,0,0,0
+,ṛdhnoti,"ṛdh",,present,0,5,成長する、増加する、繁栄する、成功する,"to grow, to increase, to prosper, to succeed",0,0,0,0,0,0
+,ṛdhati,"ṛdh",,present,0,6,成長する、増加する、繁栄する、成功する,"to grow, to increase, to prosper, to succeed",0,0,0,0,0,0
+"38",arjati,"ṛj",,present,0,1,行く、立つ、得る、獲得する、強くなる,"to go, to stand, to obtain, to acquire, to be strong",0,0,0,0,0,0
+,riñjati,"ṛñj",,present,0,1,まっすぐにする、正しくする、適切にする、配置する、合わせる、飾る、飾る、好意的にする、傲慢にする、得る、得る,"to make straight, to make right, to make proper, to arrange, to fit out, to decorate, to ornament, to make favourable, to propitiate, to gain, to obtain",0,0,0,0,0,0
+,sadati,"ṣad",,present,0,1,前に座る、包囲する、待つ、見る、沈む、落胆する、気を失う、落胆する、絶望する、浪費する、滅びる,"to sit down before, to besiege, to lie in wait for, to watch, to sink down, to sink into despondency, to become faint, to despond, to despair, to waste away, to perish",0,0,0,0,0,0
+"133",pariṣadati,"ṣad",pari,present,0,1,周りに座る、包囲する、悩む、ダメージを受ける、損なわれる,"to sit round, to besiege, to beset, to suffer damage, to be impaired",0,0,0,0,0,0
+,śūlyati,"śūl",,present,0,4,傷つける、痛みを引き起こす,"to hurt, to cause pain ",0,0,0,0,0,0
+"92",ṭaṅkayati,"ṭaṅk",,present,0,10,閉める、覆う,"to shut, to cover",0,0,0,0,0,0
+"85",,"jan",,,,,,,,,,,,
+"89",,"jṝ",,,,,,,,,,,,
 "135",,"paśy",,,,,,,,,,,,
-"125",,"paṭh",,,,,,,,,,,,
-"152",,"phal",,,,,,,,,,,,
-"150",,"plu",,,,,,,,,,,,
-"149",,"preṣ",,,,,,,,,,,,
-"148",,"prī",,,,,,,,,,,,
-"151",,"psā",,,,,,,,,,,,
-"137",,"puṃs",,,,,,,,,,,,
-"138",,"puṣ",,,,,,,,,,,,
-"142",,"pyai",,present,0,1,,"to swell, to be exuberant, to overflo",,,,,,
-"141",,"pyāy",,present,0,1,,"to swell, to grow",,,,,,
-"136",,"pī",,aorist,1,4,,to drink,,,,,,
-,,"pī",,present,1,1,,"to swell, to overflow, to be exuberant, to abound, to increase, to grow",,,,,,
-,,"pī",,present,1,2,,"to swell, to overflow, to be exuberant, to abound, to increase, to grow",,,,,,
-,,"pī",,present,1,3,,"to swell, to overflow, to be exuberant, to abound, to increase, to grow",,,,,,
-"139",punāti,"pū",,aorist,1,9,,"to purify, to discern, to contrive",,,,,,
-"189",,"rac",,present,0,1,,"to produce, to fashion, to form, to make, to construct, to complete, to cause, to effect",,,,,,
-"188",,"rakṣ",,present,0,1,,"to guard, to watch, to take care of, to protect, to save, to preserve",,,,,,
-"192",,"ram",,present,0,1,,"to stop, to stay, to make fast, to calm",,,,,,
-,rāsati,"rās",,present,0,1,,to cry aloud,,,,,,
-"193",rasati,"ras",,denomitive,0,1,,"to roar, to yell, to cry, to sound, to reverberate",,,,,,
-,rasati,"ras",,denomitive,0,1,,"to taste, to relish",,,,,,
-,rasayati,"ras",,denomitive,0,10,,"to taste, to relish",,,,,,
-"190",,"rañj",,,,,,,,,,,,
-"191",,"raṇ",,,,,,,,,,,,
-"196",,"ric",,,,,,,,,,,,
-"11",,"riph",ava,,,,,,,,,,,
-"18",,"riph",ā,,,,,,,,,,,
-"197",,"riph",,,,,,,,,,,,
-"198",,"ruc",,present,0,1,,to shine,,,,,,
-"199",,"rud",,,,,,,,,,,,
-"200",,"ruh",,,,,,,,,,,,
-"195",,"rādh",,,,,,,,,,,,
-"194",,"rāj",,,,,,,,,,,,
-"201",,"rūp",,,,,,,,,,,,
-"265",sadati,"sad",,present,0,1,,to sit down,,,,,,
-"263",,"sajj",,,,,,,,,,,,
-,,"sam",,present,0,1,,"to be agitated, to be disturbed",,,,,,
-"271",,"sam",,present,0,10,,"to be agitated, to be disturbed",,,,,,
-"270",,"sami",,present,0,1,,"to go together, to come together, to meet at, to meet with",,,,,,
-,sanati,"san",,present,0,1,,"to gain, to acquire",,,,,,
-"266",sanoti,"san",,present,0,8,,"to gain, to acquire",,,,,,
-"264",,"sañj",,present,0,1,,to cling,,,,,,
-"272",,"siv",,,,,,,,,,,,
-,,"skṛ",saṃ,aorist,0,2,,"to put together, to join together, to compose",,,,,,
-,,"skṛ",saṃ,aorist,0,3,,"to put together, to join together, to compose",,,,,,
-"262",,"skṛ",saṃ,aorist,0,5,,"to put together, to join together, to compose",,,,,,
-,,"skṛ",,aorist,0,2,,"to make, to do ",,,,,,
-,,"skṛ",,aorist,0,3,,"to make, to do ",,,,,,
-"274",,"skṛ",,aorist,0,5,,"to make, to do ",,,,,,
-,śṛṇāti,"śṝ",,present,1,9,,"to crush, rend, break",,,,,,
-,starati,"stṝ",,present,1,1,,"to spread, to strew, to scatter",,,,,,
-,,"stṝ",,present,1,9,,"to spread, to strew, to scatter",,,,,,
-,starati,"stṛ",,present,0,1,,"to spread, to strew, to scatter",,,,,,
-,,"stṛ",,present,0,5,,"to spread, to strew, to scatter",,,,,,
-,spṛṇāti,"spṝ",,aorist,1,9,,"to hurt, to kill ",,,,,,
-,spṛṇāti,"spṛ",,aorist,1,9,,"to hurt, to kill ",,,,,,
-,spṛṇoti,"spṛ",,aorist,0,5,,"to release, to save, to gain, to win",,,,,,
-"278",,"smṛ",,present,0,1,,"to remember, to recollect, to teach, to declare, to recite ",,,,,,
-"277",,"snih",,,,,,,,,,,,
-,,"stam",,present,0,1,,"to be agitated, to be disturbed",,,,,,
-,,"stam",,present,0,10,,"to be agitated, to be disturbed",,,,,,
-"275",,"sthal",,,,,,,,,,,,
-"276",,"sthā",,,,,,,,,,,,
-"279",,"svar",,,,,,,,,,,,
-"273",,"sū",,,,,,,,,,,,
-"95",,"tal",,,,,,,,,,,,
-"94",,"tap",,,,,,,,,,,,
-"93",,"taḍ",,,,,,,,,,,,
 "100",,"trai",,,,,,,,,,,,
-"99",,"trap",,,,,,,,,,,,
-"103",,"tsar",,,,,,,,,,,,
-"96",,"tud",,,,,,,,,,,,
-"97",,"tuṣ",,,,,,,,,,,,
-"101",,"tvac",,,,,,,,,,,,
-"102",,"tviṣ",,,,,,,,,,,,
-"31",,"ucchvas",,,,,,,,,,,,
-"32",,"udgṝ",,,,,,,,,,,,
-"33",,"unnam",,,,,,,,,,,,
-"34",,"upaniṣad",,,,,,,,,,,,
-"35",,"upārj",,,,,,,,,,,,
-"214",,"vac",,,,,,,,,,,,
+"31",,"vas",ucch,,,,,,,,,,,
+"32",,"gṝ",ud,,,,,,,,,,,
+"35",,"rj",upā,,,,,,,,,,,
+"214",,"vac",,,,,話す、言う、話す、発声する、発表する、宣言する、言及する、宣言する、引用する、説明する,"to speak, to say, to tell, to utter, to announce, to declare, to mention, to proclaim, to recite, to describe",0,0,0,0,0,0
 "147",,"vah",pra,,,,,,,,,,,
-"219",,"vah",,,,,,,,,,,,
-"216",,"val",,,,,,,,,,,,
-"215",,"vam",,,,,,,,,,,,
-"217",,"vaś",,,,,,,,,,,,
-"223",,"vid",,,,,,,,,,,,
+"219",vahati,"vah",,,,,,,,,,,,
+"223",vetti,"vid",,perfect,0,2,,,,,,,,
+,vintti,"vid",,perfect,0,7,,,,,,,,
 "222",,"vidā",,,,,,,,,,,,
 "221",,"vij",,,,,,,,,,,,
 "224",,"vind",,,,,,,,,,,,
 "234",,"vyadh",,,,,,,,,,,,
 "235",,"vyas",,,,,,,,,,,,
 "236",,"vyāyam",,,,,,,,,,,,
-"220",,"vā",,,,,,,,,,,,
-"228",,"vī",,,,,,,,,,,,
 "231",,"vīr",,,,,,,,,,,,
 "230",,"vīḍ",,,,,,,,,,,,
 "232",,"vṛ",,,,,,,,,,,,
@@ -335,10 +436,7 @@
 "187",,"yudh",,,,,,,,,,,,
 "186",,"yuj",,,,,,,,,,,,
 "259",,"yuj",saṃ,,,,,,,,,,,
-"13",,"āgā",,,,,,,,,,,,
 "21",,"ās",,,,,,,,,,,,
-"19",,"āviś",,,,,,,,,,,,
-"269",,"āviś",sam,,,,,,,,,,,
 "17",,"āyam",,,,,,,,,,,,
 "16",,"āyat",,,,,,,,,,,,
 "14",,"āñch",,,,,,,,,,,,
@@ -348,29 +446,10 @@
 "29",,"īl̤",,,,,,,,,,,,
 "30",,"īś",,,,,,,,,,,,
 "28",,"īḍ",,,,,,,,,,,,
-"238",śaknoti,"śak",,aorist,0,5,,,,,,,,
-"241",,"śam",,,,,,,,,,,,
-"240",,"śap",,,,,,,,,,,,
-"237",,"śaṃ",,,,,,,,,,,,
-"239",,"śaṅk",,,,,,,,,,,,
-"242",,"śikṣ",,,,,,,,,,,,
 "225",,"śiṣ",vi,,,,,,,,,,,
 "243",,"śiṣ",,,,,,,,,,,,
-"252",,"śnath",,,,,,,,,,,,
-"253",,"śram",,,,,,,,,,,,
 "254",,"śru",,,,,,,,,,,,
 "246",,"śubh",,,,,,,,,,,,
 "244",,"śuc",,,,,,,,,,,,
 "245",,"śudh",,,,,,,,,,,,
 "247",,"śumbh",,,,,,,,,,,,
-"226",,"śvas",vi,,,,,,,,,,,
-"255",,"śvas",,,,,,,,,,,,
-"248",,"śū",,,,,,,,,,,,
-"250",,"śūl",,,,,,,,,,,,
-"249",,"śūrp",,,,,,,,,,,,
-"128",,"śṝ",parā,,,,,,,,,,,
-"251",,"śṝ",,present,1,9,,"to crush, to rend, to break",,,,,,
-"130",,"ṇī",pari,,,,,,,,,,,
-"37",,"ṛc",,,,,,,,,,,,
-"38",,"ṛj",,,,,,,,,,,,
-"92",,"ṭaṅk",,,,,,,,,,,,
