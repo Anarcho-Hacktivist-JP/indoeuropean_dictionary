@@ -42,7 +42,7 @@ function get_verb_conjugation_chart($word, $verb_genre){
         $conjugations = array_merge(Latin_Common::get_verb_conjugation($latin_verb, $verb_genre), $conjugations);
 	    }
     }
-  } else if(!Latin_Common::is_alphabet_or_not($word)){
+  } else if(!$latin_verbs && !Latin_Common::is_alphabet_or_not($word)){
     // 空を返す。
     return array();   
   } else {
