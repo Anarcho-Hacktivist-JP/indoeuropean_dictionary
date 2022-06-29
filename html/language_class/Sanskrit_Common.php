@@ -1,5 +1,5 @@
 <?php
-set_time_limit(120);
+set_time_limit(240);
 header('Content-Type: text/html; charset=UTF-8');
 
 class Sanskrit_Common {
@@ -429,6 +429,49 @@ class Sanskrit_Common {
 		return $new_table_data;
 	}
 
+	// 接頭辞を取得
+	public static function get_sanskrit_prefix($japanese_translation){
+		// 英数字は考慮しない
+		if(ctype_alnum($japanese_translation)){
+			$new_database_info = array();
+			array_push($new_database_info, $japanese_translation);
+			return $new_database_info;
+		}
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT `prefix` FROM `prefix_sanskrit` WHERE";
+		// 検索条件に*を含む場合は
+		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
+			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
+		} else {
+			// それ以外は
+			$query = $query." ( `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+			`japanese_translation` LIKE '".$japanese_translation."、%' OR 
+			`japanese_translation` LIKE '%、".$japanese_translation."' OR 
+			`japanese_translation` = '".$japanese_translation."')";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 新しい配列に詰め替え
+			foreach ($table_data as $row_data ) {
+				array_push($new_table_data, mb_substr($row_data["prefix"], 0, -1));
+			}
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
 	// ランダムな名詞を取得
 	public static function get_random_noun($gender = "", $noun_type = ""){
 		//DBに接続
@@ -637,7 +680,34 @@ class Sanskrit_Common {
 				$table = Sanskrit_Common::$DB_VERB;			// テーブル取得先
 			} else if($word_type  == "副詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Sanskrit_Common::$DB_ADVERB;		// テーブル取得先		
+				$table = Sanskrit_Common::$DB_ADVERB;		// テーブル取得先
+			} else if($word_type  == "助詞"){				
+				// 日本語訳を入れる。
+				$japanese_translation = $japanese_translation.$target_word;
+				// 名詞複合化フラグがある場合は
+				if($noun_compound_flag){
+					// 単語を結合する。
+					$target_word = $remain_word.$target_word;
+					// データベースから接尾辞を取得する。
+					$word_datas = Sanskrit_Common::get_sanskrit_prefix($target_word);	
+					// データベースが取得できた場合は
+					if($word_datas){
+						// 挿入する。
+						$sanskrit_words[] = $word_datas;
+						// フラグをfalseにする。
+						$noun_compound_flag = false;
+					}				
+				} else {
+					// データベースから接尾辞を取得する。
+					$word_datas = Sanskrit_Common::get_sanskrit_prefix($target_word);	
+					// データベースが取得できた場合は
+					if($word_datas){
+						// 挿入する。
+						$sanskrit_words[] = $word_datas;
+					}					
+				}
+				// 次に移動
+				continue;	
 			} else {
 				// 日本語訳を入れる。
 				$japanese_translation = $japanese_translation.$target_word;					
@@ -1010,8 +1080,7 @@ class Sanskrit_Common {
 		}	
 
 		// 内連声対応
-		$script = str_replace("ṃs", "ṃṣ", $script);	
-		$script = str_replace("ḥs", "ḥṣ", $script);
+		$script = str_replace("(ṃ|ḥ)s", "\\1ṣ", $script);	
 		$script = str_replace("bs", "pṣ", $script);
 		$script = mb_ereg_replace("[bp]hs", "pṣ", $script);			
 		$script = str_replace("ds", "tṣ", $script);
@@ -1033,30 +1102,25 @@ class Sanskrit_Common {
 		$script = str_replace("g([tpck])", "k\\2", $script);
 
 		// バルトロマエの法則
-		$script = mb_ereg_replace("([td])h([dgb])h", "d\\2h", $script);
-		$script = mb_ereg_replace("([bp])h([dgb])h", "b\\2h", $script);
-		$script = mb_ereg_replace("([gk])h([dgb])h", "g\\2h", $script);
-		$script = mb_ereg_replace("([td])h([dgb])", "d\\2h", $script);
-		$script = mb_ereg_replace("([bp])h([dgb])", "b\\2h", $script);
-		$script = mb_ereg_replace("([gk])h([dgb])", "g\\2h", $script);
-		$script = mb_ereg_replace("dh([ckpt])h", "t\\1h", $script);
-		$script = mb_ereg_replace("dh([ckpt])", "t\\1h", $script);
+		$script = mb_ereg_replace("([td])h([dgb]h|[dgb])", "d\\2h", $script);
+		$script = mb_ereg_replace("([bp])h([dgb]h|[dgb])", "b\\2h", $script);
+		$script = mb_ereg_replace("([gk])h([dgb]h|[dgb])", "g\\2h", $script);
+		$script = mb_ereg_replace("dh([ckpt]h|[ckpt])", "t\\1h", $script);
 		$script = mb_ereg_replace("d([ckpt])h", "t\\1h", $script);	
 		$script = mb_ereg_replace("d([ckpt])", "t\\1", $script);
-		$script = mb_ereg_replace("bh([ckpt])h", "p\\1h", $script);
-		$script = mb_ereg_replace("bh([ckpt])", "p\\1h", $script);
+		$script = mb_ereg_replace("bh([ckpt]h|[ckpt])", "p\\1h", $script);
 		$script = mb_ereg_replace("b([ckpt])h", "p\\1h", $script);	
 		$script = mb_ereg_replace("b([ckpt])", "p\\1", $script);
-		$script = mb_ereg_replace("gh([ckpt])h", "k\\1h", $script);
-		$script = mb_ereg_replace("gh([ckpt])", "k\\1h", $script);
+		$script = mb_ereg_replace("gh([ckpt]h|[ckpt])", "k\\1h", $script);
 		$script = mb_ereg_replace("g([ckpt])h", "k\\1h", $script);	
 		$script = mb_ereg_replace("g([ckpt])", "k\\1", $script);		
-		$script = mb_ereg_replace("jh([ckpt])h", "c\\1h", $script);
-		$script = mb_ereg_replace("jh([ckpt])", "c\\1h", $script);
+		$script = mb_ereg_replace("jh([ckpt]h|[ckpt])", "c\\1h", $script);
 		$script = mb_ereg_replace("j([ckpt])h", "c\\1h", $script);	
 		$script = mb_ereg_replace("j([ckpt])", "c\\1", $script);
 		$script = mb_ereg_replace("([tpk]|[dbg])h([tpk]|[dbg])", "\\1\\2h", $script);
-		
+		$script = mb_ereg_replace("hh", "h", $script);
+
+
 		// m対応
 		$script = mb_ereg_replace("([ñṅn])([pb]|[pb]h)", "m\\2", $script);				
 		$script = mb_ereg_replace("([ñmn])([kg]|[kg]h)", "ṅ\\2", $script);

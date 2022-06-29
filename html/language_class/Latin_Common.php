@@ -790,7 +790,7 @@ class Latin_Common {
 					// データベースから接尾辞を取得する。
 					$word_datas = Latin_Common::get_latin_prefix($target_word);	
 					// データベースが取得できた場合は
-					if(!$word_datas){
+					if($word_datas){
 						// 挿入する。
 						$latin_words[] = $word_datas;
 						// フラグをfalseにする。
@@ -800,7 +800,7 @@ class Latin_Common {
 					// データベースから接尾辞を取得する。
 					$word_datas = Latin_Common::get_latin_prefix($target_word);	
 					// データベースが取得できた場合は
-					if(!$word_datas){
+					if($word_datas){
 						// 挿入する。
 						$latin_words[] = $word_datas;
 					}					
