@@ -206,6 +206,8 @@ class Verb_Common_IE {
 		$query = "SELECT * FROM `".$table."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
+		// メモリ解放処理
+		unset($db_host);
 		// 結果が取得できたら、
 		if($stmt){
 			// 連想配列に整形して返す。
@@ -3402,10 +3404,17 @@ class Vedic_Verb extends Verb_Common_IE{
 		$prefix = "";
 		// 使役用語幹
 		if($this->root_type == "denomitive"){
+			// 強語幹にする。
+			$denomitive = Sanskrit_Common::change_vowel_grade($this->add_stem, Sanskrit_Common::$VRIDDHI);
 			// 名詞起源動詞		
-			$common_causative_stem = Sanskrit_Common::sandhi_engine($this->add_stem, $root);
+			$common_causative_stem = Sanskrit_Common::sandhi_engine($denomitive, $root);
 		} else {
+			// それ以外は強語幹にする。
 			$common_causative_stem = Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::$VRIDDHI);
+			// āで終わる動詞はpを加える。
+			if(preg_match("/ā$/", $this->root)){
+				$common_causative_stem = $common_causative_stem."p";
+			}
 			// 接頭辞を入れる。
 			$prefix = $this->add_stem;
 		}		
@@ -4661,16 +4670,24 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected function get_participle($participle_stem){
 		// 読み込み
 		$vedic_adjective = new Vedic_Adjective($participle_stem);
+		// 結果を取得
+		$chart = $vedic_adjective->get_chart();
+		// メモリを解放
+		unset($vedic_adjective);
 		// 結果を返す。
-		return $vedic_adjective->get_chart();
+		return $chart;
 	}
 
 	// 不定詞の曲用表を返す。	
 	protected function get_infinitive($infinitive_stem){
 		// 読み込み
 		$infinitive = new Vedic_Noun($infinitive_stem);
+		// 結果を取得
+		$chart = $infinitive->get_chart();
+		// メモリを解放
+		unset($infinitive);
 		// 結果を返す。
-		return $infinitive->get_infinitive();
+		return $chart;
 	}
 
 	// 一次動詞の活用を作成する。
@@ -5168,7 +5185,6 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 読み込み
 			$words[] = new Vedic_Adjective(Sanskrit_Common::sandhi_engine($this->root, $suffix));
 		}
-
 		// 結果を返す。
 		return $words;
 	}

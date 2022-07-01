@@ -46,6 +46,8 @@ function get_verb_chart($word){
   $new_array = array();
 	// 活用表生成、配列に格納
 	$new_array[$vedic_verb->get_root()] = $vedic_verb->get_chart();
+	// メモリを解放
+	unset($vedic_verb);
   // 結果を返す。
   return $new_array;
 }
