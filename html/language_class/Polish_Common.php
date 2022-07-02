@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 
-class Polish_Common {
+class Polish_Common extends Common_IE{
 
 	public static $DB_NOUN = "noun_polish";				// 名詞データベース名
 	public static $DB_ADJECTIVE = "adjective_polish";	// 形容詞データベース名
@@ -444,6 +444,8 @@ class Polish_Common {
 		// 活用種別
 		if($noun_type != ""){
 			$query = $query."AND `noun_type` LIKE '%".$noun_type."%'";
+		} else {
+			$query = $query."AND `noun_type` != '0'";			
 		}
 
 		// ランダムで1単語
@@ -615,8 +617,12 @@ class Polish_Common {
 		<h3>性別</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine-animate" autocomplete="off" value="Masculine-Animate">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine-animate">男性(生物)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine-inanimate" autocomplete="off" value="Masculine-Inanimate">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine-inanimate">男性(非生物)</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
@@ -624,30 +630,6 @@ class Polish_Common {
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
-		  </div>
-		</section>';
-	}
-
-	// 性別選択ボタンの生成
-	public static function adjective_gender_selection_button(){
-		return '
-		<h3>性別</h3>
-		<section class="row">
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="masculine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="feminine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="neuter">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
 		  </div>
 		  <div class="col-md-3">
@@ -667,8 +649,24 @@ class Polish_Common {
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
           </div>
           <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1i" autocomplete="off" value="1i">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1i">第一活用i</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1ia" autocomplete="off" value="1ia">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1ia">第一活用ia</label>
+          </div>
+          <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-2" autocomplete="off" value="2">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2">子音変化名詞</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-2p" autocomplete="off" value="2p">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2p">子音変化名詞(軟音)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-2k" autocomplete="off" value="2k">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2k">子音変化名詞(硬音)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-2o" autocomplete="off" value="2o">
@@ -685,19 +683,39 @@ class Polish_Common {
         </section>';
 	}
 
+	// 形容詞活用種別ボタンの生成
+	public static function adjective_declension_type_selection_button(){
+		return '
+        <h3>変化種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1-2" autocomplete="off" value="1-2">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2">第一・第二活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1-2i" autocomplete="off" value="1-2i">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2i">第一・第二活用(i語幹)</label>
+          </div>       
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-all-declension" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-declension">すべて</label>
+          </div>
+        </section>';
+	}
+
 	// 数選択ボタンの生成
 	public static function number_selection_button(){
 		return '
 		<h3>数</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="sg">
+			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::$SINGULAR.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="pl">
+			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::$PLURAL.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
-		  </div>              
+		  </div>               
 		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
@@ -761,19 +779,7 @@ class Polish_Common {
           <div class="col-md-3">
             <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3sg">3人称単数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-1du" autocomplete="off" value="1du">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1du">1人称双数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-2du" autocomplete="off" value="2du">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2du">2人称双数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-3du" autocomplete="off" value="3du">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3du">3人称双数</label>
-          </div> 		  
+          </div>	  
           <div class="col-md-3">
             <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1pl">1人称複数</label>

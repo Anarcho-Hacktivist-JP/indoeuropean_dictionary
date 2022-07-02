@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 
-class Latin_Common {
+class Latin_Common extends Common_IE{
 
 	public static $DB_NOUN = "noun_latin";				// 名詞データベース名
 	public static $DB_ADJECTIVE = "adjective_latin";	// 形容詞データベース名
@@ -1090,54 +1090,6 @@ class Latin_Common {
 		return false;
 	}
 
-	// 性別選択ボタンの生成
-	public static function noun_gender_selection_button(){
-		return '
-		<h3>性別</h3>
-		<section class="row">
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
-		  </div>
-		</section>';
-	}
-
-	// 性別選択ボタンの生成
-	public static function adjective_gender_selection_button(){
-		return '
-		<h3>性別</h3>
-		<section class="row">
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="masculine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="feminine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="neuter">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
-		  </div>
-		</section>';
-	}	
-
 	// 名詞活用種別ボタンの生成
 	public static function noun_declension_type_selection_button(){
 		return '
@@ -1272,11 +1224,11 @@ class Latin_Common {
 		<h3>数</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="sg">
+			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::$SINGULAR.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="pl">
+			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::$PLURAL.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
 		  </div>              
 		  <div class="col-md-3">

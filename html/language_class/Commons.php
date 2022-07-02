@@ -179,4 +179,88 @@ class Commons {
 	} 
 
 }
+
+class Common_IE {
+	public static $DB_NOUN = "";			// 名詞データベース名
+	public static $DB_ADJECTIVE = "";		// 形容詞データベース名
+	public static $DB_VERB = "";			// 動詞データベース名
+	public static $DB_ADVERB = "";			// 副詞データベース名
+
+
+	// 性別選択ボタンの生成
+	public static function noun_gender_selection_button(){
+		return '
+		<h3>性別</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		  </div>
+		</section>';
+	}
+
+	// 性別選択ボタンの生成
+	public static function adjective_gender_selection_button(){
+		return '
+		<h3>性別</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::$MASCULINE_GENDER.'">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::$FEMINE_GENDER.'">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::$NEUTER_GENDER.'">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		  </div>
+		</section>';
+	}	
+
+	// 数選択ボタンの生成
+	public static function number_selection_button(){
+		return '
+		<h3>数</h3>
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::$SINGULAR.'">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-du" autocomplete="off" value="'.Commons::$DUAL.'">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-du">双数</label>
+		  </div>		  
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::$PLURAL.'">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
+		  </div>              
+		  <div class="col-md-3">
+			<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
+		  </div>
+		</section>';
+	}
+
+}
+
+
+
 ?>
