@@ -17,7 +17,7 @@ class Polish_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT `dictionary_stem` FROM `".$table."` WHERE `dictionary_stem` = '".$dic_stem."'";	
+		$query = "SELECT `dictionary_stem` FROM `".$table."` WHERE `dictionary_stem` = '".$dic_stem."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -815,6 +815,38 @@ class Polish_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて</label>
+          </div>
+        </section>';
+	}
+
+	// 法ボタンの生成
+	public static function mood_selection_button(){
+		return '
+        <h3>法</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="present">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-tense-past" autocomplete="off" value="perfect">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形</label>
+          </div>		
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-future" autocomplete="off" value="future">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future">未来形</label>
+          </div> 
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::$SUBJUNCTIVE.'">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">仮定法</label>
+          </div>	  
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::$IMPERATIVE.'">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
           </div>
         </section>';
 	}

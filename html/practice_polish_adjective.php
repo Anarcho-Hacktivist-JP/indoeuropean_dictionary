@@ -21,9 +21,9 @@ $case = trim(filter_input(INPUT_POST, 'case'));
 // 単語取得
 $question_word = Polish_Common::get_random_adjective($declension);
 // 読み込み
-$adjective_latin = new Polish_Adjective($question_word["dictionary_stem"]);
+$adjective_polish = new Polish_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
+$question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -119,13 +119,7 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
             // 挿入
             add_chara($(this).val(), selIdx);
 	        });
-	        $('#button-i').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-u').click( function(){
+	        $('#button-c').click( function(){
             // カーソル位置
             var selIdx = $('#input-answer').get(0).selectionStart;
             // 挿入
@@ -137,7 +131,37 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
             // 挿入
             add_chara($(this).val(), selIdx);
 	        }); 
+	        $('#button-l').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-n').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
 	        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        }); 
+	        $('#button-s').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z1').click( function(){
+            // カーソル位置
+            var selIdx = $('#input-answer').get(0).selectionStart;
+            // 挿入
+            add_chara($(this).val(), selIdx);
+	        });
+	        $('#button-z2').click( function(){
             // カーソル位置
             var selIdx = $('#input-answer').get(0).selectionStart;
             // 挿入

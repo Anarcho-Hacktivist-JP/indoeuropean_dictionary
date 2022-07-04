@@ -22,7 +22,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT `dictionary_stem`, FROM `".$table."` WHERE `dictionary_stem` = '".$dictionary_stem."'";	
+		$query = "SELECT `dictionary_stem` FROM `".$table."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形

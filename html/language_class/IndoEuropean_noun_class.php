@@ -2158,7 +2158,17 @@ class Vedic_Noun extends Noun_Common_IE {
 			$this->english_translation = "loanword";
 			
 			// 文字列の最後で判断
-			if(preg_match('/(a|ā)$/',$noun)){		
+			if(preg_match('/(e|o|au|ai)$/',$noun)){
+				$this->noun_type = "double";								// 名詞種別
+				// 名詞の種別で性別・活用が決定する。										
+				if($noun_genre == "agent" || $noun_genre == "animate" || $noun_genre == "inanimate"){
+					$this->gender = "Masculine";							// 名詞区分
+				} else if($noun_genre == "action"){						
+					$this->gender = "Feminine";    							// 名詞区分
+				} else {
+					$this->gender = "Masculine";							// 名詞区分
+				}
+			} else if(preg_match('/(a|ā)$/',$noun)){		
 				// 名詞の種別で性別・活用が決定する。		
 				if($noun_genre == "agent" || $noun_genre == "animate"){
 					$this->gender = "Masculine";						// 名詞区分
@@ -2215,17 +2225,7 @@ class Vedic_Noun extends Noun_Common_IE {
 					$this->noun_type = "3i";           						// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
 				}
-			} else if(preg_match('/(e|o)$/',$noun)){
-				$this->noun_type = "double";							// 名詞種別
-				// 名詞の種別で性別・活用が決定する。										
-				if($noun_genre == "agent" || $noun_genre == "animate" || $noun_genre == "inanimate"){
-					$this->gender = "Masculine";							// 名詞区分
-				} else if($noun_genre == "action"){						
-					$this->gender = "Feminine";    							// 名詞区分
-				} else {
-					$this->gender = "Masculine";							// 名詞区分
-				}
-			} else if(preg_match('/(r)$/',$noun)){
+			} else if(preg_match('/(r|ṛ)$/',$noun)){
 				$this->noun_type = "3r";								// 名詞種別				
 				if($noun_genre == "agent" || $noun_genre == "animate"){
 					$this->gender = "Masculine";							// 名詞区分

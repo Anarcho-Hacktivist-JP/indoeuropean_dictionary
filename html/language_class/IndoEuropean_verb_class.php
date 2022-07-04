@@ -5770,14 +5770,9 @@ class Polish_Verb extends Verb_Common_IE {
 		if($tense_mood == ""){
 			// 全ての性別の中からランダムで選択
 			$ary = array(Commons::$PRESENT_TENSE, 
-						 Commons::$PAST_TENSE, 
-						 Commons::$AORIST_ASPECT, 
 						 Commons::$FUTURE_TENSE, 
 						 Commons::$PERFECT_ASPECT, 
-						 Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT,
-						 Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT,
 						 Commons::$SUBJUNCTIVE, 
-						 Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT,
 						 Commons::$IMPERATIVE);																				
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
