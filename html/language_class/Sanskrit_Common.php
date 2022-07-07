@@ -531,7 +531,7 @@ class Sanskrit_Common extends Common_IE{
 	}
 
 	// ランダムな動詞を取得
-	public static function get_random_verb($verb_type = "", $root_type = ""){
+	public static function get_random_verb($verb_type = "", $root_type = "", $laryngeal_type = ""){
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -544,21 +544,29 @@ class Sanskrit_Common extends Common_IE{
 
 		// 活用種別
 		if($verb_type != ""){
-			$query = $query."AND `conjugation_present_type` LIKE '%".$verb_type."%'";
+			$query = $query."AND `conjugation_present_type` = '".$verb_type."' ";
 		} else {
-			$query = $query."AND `conjugation_present_type` != ''";			
+			$query = $query."AND `conjugation_present_type` != '' ";			
 		}
 
-		// 活用種別
+		// 語根種別
 		if($root_type != ""){
-			$query = $query."AND `root_type` LIKE '%".$root_type."%'";
+			$query = $query."AND `root_type` = '".$root_type."' ";
 		} else {
-			$query = $query."AND `root_type` != ''";			
-		}		
+			$query = $query."AND `root_type` != '' ";			
+		}
+		
+		// 喉音有無
+		if($laryngeal_type != ""){
+			$query = $query."AND `root_laryngeal_flag` = '".$laryngeal_type."' ";
+		} else {
+			$query = $query."AND `root_laryngeal_flag` != '' ";			
+		}
 
 		// ランダムで1単語
 		$query = $query."ORDER BY RAND() LIMIT 1";
 
+		echo $query;
 		// SQLを実行
 		$stmt = $db_host->query($query);
 
@@ -981,7 +989,8 @@ class Sanskrit_Common extends Common_IE{
 				$script = str_replace("ar", "ṛ", $script);		//ra
 				$script = str_replace("al", "ḷ", $script);		//al				
 				$script = str_replace("ār", "ṛ", $script);		//ra
-				$script = str_replace("āl", "ḷ", $script);		//al					
+				$script = str_replace("āl", "ḷ", $script);		//al
+				$script = str_replace("ā", "a", $script);		//al									
 				break;
 			case Sanskrit_Common::$GUNA:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
@@ -1013,6 +1022,7 @@ class Sanskrit_Common extends Common_IE{
 				$script = str_replace("āv", "v", $script);		//av
 				$script = str_replace("ār", "ar", $script);		//ra
 				$script = str_replace("āl", "al", $script);		//al
+				$script = str_replace("ā", "a", $script);		//ā
 				break;
 			case Sanskrit_Common::$VRIDDHI:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
@@ -1042,7 +1052,8 @@ class Sanskrit_Common extends Common_IE{
 				$script = str_replace("ay", "āy", $script);		//ay
 				$script = str_replace("av", "āv", $script);		//av
 				$script = str_replace("ar", "ār", $script);		//ra
-				$script = str_replace("al", "āl", $script);		//al				
+				$script = str_replace("al", "āl", $script);		//al
+				$script = str_replace("a", "ā", $script);		//ā
 				break;	
 			default:
 				break;				
@@ -1108,18 +1119,21 @@ class Sanskrit_Common extends Common_IE{
 		$script = mb_ereg_replace("([dḍṭṅñṇśṣāīū])s([a-z])", "\\1ṣ\\2", $script);
 		$script = mb_ereg_replace("([a-z])s([āīū])", "\\1ṣ\\2", $script);
 		
-		$script = str_replace("t([dgbj])", "d\\2", $script);
-		$script = str_replace("p([dgbj])", "b\\2", $script);
-		$script = str_replace("c([dgbj])", "j\\2", $script);		
-		$script = str_replace("k([dgbj])", "g\\2", $script);
+		$script = str_replace("t([ḍdgbj])", "d\\2", $script);
+		$script = str_replace("ṭ([ḍdgbj])", "d\\2", $script);
+		$script = str_replace("p([ḍdgbj])", "b\\2", $script);
+		$script = str_replace("c([ḍdgbj])", "j\\2", $script);		
+		$script = str_replace("k([ḍdgbj])", "g\\2", $script);
 
-		$script = str_replace("d([tpck])", "t\\2", $script);
-		$script = str_replace("b([tpck])", "p\\2", $script);
-		$script = str_replace("j([tpck])", "c\\2", $script);		
-		$script = str_replace("g([tpck])", "k\\2", $script);
+		$script = str_replace("d([ṭtpck])", "t\\2", $script);
+		$script = str_replace("ḍ([ṭtpck])", "t\\2", $script);
+		$script = str_replace("b([ṭtpck])", "p\\2", $script);
+		$script = str_replace("j([ṭtpck])", "c\\2", $script);		
+		$script = str_replace("g([ṭtpck])", "k\\2", $script);
 
 		// バルトロマエの法則
 		$script = mb_ereg_replace("([td])h([dgb]h|[dgb])", "d\\2h", $script);
+		$script = mb_ereg_replace("([ṭḍ])h([dgb]h|[dgb])", "ḍ\\2h", $script);
 		$script = mb_ereg_replace("([bp])h([dgb]h|[dgb])", "b\\2h", $script);
 		$script = mb_ereg_replace("([gk])h([dgb]h|[dgb])", "g\\2h", $script);
 		$script = mb_ereg_replace("dh([ckpt]h|[ckpt])", "t\\1h", $script);
@@ -1129,8 +1143,10 @@ class Sanskrit_Common extends Common_IE{
 		$script = mb_ereg_replace("gh([ckpt]h|[ckpt])", "k\\1h", $script);
 		$script = mb_ereg_replace("g([ckpt])h", "k\\1h", $script);		
 		$script = mb_ereg_replace("jh([ckpt]h|[ckpt])", "c\\1h", $script);
-		$script = mb_ereg_replace("j([ckpt])h", "c\\1h", $script);	
-		$script = mb_ereg_replace("([tpk]|[dbg])h([tpk]|[dbg])", "\\1\\2h", $script);
+		$script = mb_ereg_replace("j([ckpt])h", "c\\1h", $script);
+		$script = mb_ereg_replace("ḍh([ckpt]h|[ckpt])", "ṭ\\1h", $script);
+		$script = mb_ereg_replace("ḍ([ckpt])h", "ṭ\\1h", $script);	
+		$script = mb_ereg_replace("([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])", "\\1\\2h", $script);
 		$script = mb_ereg_replace("hh", "h", $script);
 
 		// m対応
@@ -1465,7 +1481,7 @@ class Sanskrit_Common extends Common_IE{
 		</section>';
 	}
 
-	// 動詞の活用種別ボタンの生成
+	// 語根の種別ボタンの生成
 	public static function root_type_selection_button(){
 		return '
         <h3>語根種別</h3>
@@ -1481,6 +1497,26 @@ class Sanskrit_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="root-type" class="btn-check" id="btn-all-root" autocomplete="off" value="" checked="checked" onclick="click_root_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-root">すべて</label>
+          </div>
+        </section>';
+	}
+
+	// 語根の種別ボタンの生成2
+	public static function laryngeal_type_selection_button(){
+		return '
+        <h3>語根種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="laryngeal-type" class="btn-check" id="btn-sat" autocomplete="off" value="1">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sat">sat語根</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="laryngeal-type" class="btn-check" id="btn->anit" autocomplete="off" value="0">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn->anit">anit語根</label>
+          </div>       
+          <div class="col-md-3">
+            <input type="radio" name="laryngeal-type" class="btn-check" id="btn-all-laryngeal" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-laryngeal">すべて</label>
           </div>
         </section>';
 	}

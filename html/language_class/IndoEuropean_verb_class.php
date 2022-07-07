@@ -683,16 +683,16 @@ class Latin_Verb extends Verb_Common_IE {
 
 		// 動詞の種別ごとで分ける。
 		switch($verb_genre){
-			case "inchorative":
+			case Commons::$START_VERB:
 				$infinitive = mb_substr($infinitive, 0, -2)."scere";
 				break;
-			case "frequentive":
+			case Commons::$STRONG_VERB:
 				$infinitive = mb_substr($infinitive, 0, -2)."tāre";
 				break;
-			case "desiderative":
+			case Commons::$WANT_VERB:
 				$infinitive = mb_substr($infinitive, 0, -2)."turīre";
 				break;
-			case "causative":
+			case Commons::$MAKE_VERB:
 				$infinitive = mb_substr($infinitive, 0, -2)."ficāre";
 				break;				
 			default:
@@ -2910,7 +2910,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			"3sg" => "tu",
 			"1du" => "",
 			"2du" => "tam", 
-			"3du" => "tām",				
+			"3du" => "tām",
 			"1pl" => "",
 			"2pl" => "ta", 
 			"3pl" => "ntu",	
@@ -2922,7 +2922,36 @@ class Vedic_Verb extends Verb_Common_IE{
 			"3sg" => "tām",
 			"1du" => "",
 			"2du" => "ithām", 
-			"3du" => "itām",				
+			"3du" => "itām",
+			"1pl" => "",
+			"2pl" => "dhvam", 
+			"3pl" => "ntām",	
+		],
+	];
+
+	// 命令人称接尾辞(子音変化用)
+	protected $imperative_number2 = 
+	[
+		"active" => 
+		[
+			"1sg" => "",
+			"2sg" => "dhi", 
+			"3sg" => "tu",
+			"1du" => "",
+			"2du" => "tam", 
+			"3du" => "tām",
+			"1pl" => "",
+			"2pl" => "ta", 
+			"3pl" => "ntu",	
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "",
+			"2sg" => "sva", 
+			"3sg" => "tām",
+			"1du" => "",
+			"2du" => "ithām", 
+			"3du" => "itām",
 			"1pl" => "",
 			"2pl" => "dhvam", 
 			"3pl" => "ntām",	
@@ -3293,6 +3322,9 @@ class Vedic_Verb extends Verb_Common_IE{
 					$this->aorist_stem = mb_substr($root, 0, 1).$this->get_vowel_in_root().$root."a";	// 完結相
 				} else if($this->root_laryngeal_flag != Commons::$TRUE){
 					// anit語根
+					$this->aorist_stem = Sanskrit_Common::sandhi_engine($root, "s", true, false);					// 完結相
+				} else if(preg_match("/(ā|ai)$/", $root)){
+					// āとaiで終わる場合はs(is)アオリスト
 					$this->aorist_stem = Sanskrit_Common::sandhi_engine($root, "s", true, false);					// 完結相
 				} else if($this->root_laryngeal_flag == Commons::$TRUE){
 					// sat語根
@@ -3802,7 +3834,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		$verb_conjugation = "";
 
 		// 条件ごとで分ける。
-		if(($aspect == "inchorative" || $aspect == "resultative") && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
+		if(($aspect == Commons::$START_VERB || $aspect == "resultative") && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
 			// 始動相・結果相の場合
 			// 母音活用動詞は親クラスで処理
 			$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);
@@ -3819,12 +3851,14 @@ class Vedic_Verb extends Verb_Common_IE{
 		} else if($aspect == Commons::$AORIST_ASPECT && $this->conjugation_present_type == "10"){
 			// 重複アオリストは親クラスで処理
 			$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);
-		} else if(($this->root_type == Commons::$PRESENT_ASPECT || $this->root_type == "denomitive") && $this->root_laryngeal_flag != Commons::$TRUE && $aspect == Commons::$AORIST_ASPECT){
-			// sアオリストは連音処理入り
-			$verb_conjugation = $this->get_s_aorist_indcative_conjugation($verb_stem, $voice, $person);
-		} else if(($this->root_type == Commons::$PRESENT_ASPECT || $this->root_type == "denomitive") && $this->root_laryngeal_flag == Commons::$TRUE && $aspect == Commons::$AORIST_ASPECT){
-			// isアオリストは連音処理入り
-			$verb_conjugation = $this->get_is_aorist_indcative_conjugation($verb_stem, $voice, $person, Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI));
+		} else if(($this->root_type == Commons::$PRESENT_ASPECT || $this->root_type == "denomitive") && $aspect == Commons::$AORIST_ASPECT){
+			if($this->root_laryngeal_flag != Commons::$TRUE || preg_match("/(ā|ai)$/", $this->root)){
+				// sアオリストは連音処理入り
+				$verb_conjugation = $this->get_s_aorist_indcative_conjugation($verb_stem, $voice, $person);
+			} else{
+				// isアオリストは連音処理入り
+				$verb_conjugation = $this->get_is_aorist_indcative_conjugation($verb_stem, $voice, $person, Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI));
+			}
 		} else if($this->root_type == Commons::$AORIST_ASPECT && $aspect == Commons::$AORIST_ASPECT){
 			// 第二アオリストは親クラスで処理
 			$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);
@@ -3924,7 +3958,7 @@ class Vedic_Verb extends Verb_Common_IE{
 					$verb_stem = $this->get_weak_present_stem();				
 				}
 			}
-		} else if($aspect == "inchorative" && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
+		} else if($aspect == Commons::$START_VERB && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
 			// 始動相
 			// 第10類・名詞起源動詞以外は追加する。
 			$verb_stem = $this->inchorative_stem;
@@ -3953,8 +3987,14 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 母音で終わる動詞は専用の受動態を作る
 				$verb_stem = Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI), "yis");				
 			} else if($voice == Commons::$MEDIOPASSIVE_VOICE && $this->root_type == Commons::$PRESENT_ASPECT){
-				// それ以外
-				$verb_stem = Sanskrit_Common::change_vowel_grade($this->aorist_stem, Sanskrit_Common::$GUNA);
+				// isアオリストの場合はこちら
+				if($this->root_laryngeal_flag == Commons::$TRUE && !preg_match("/(ā|ai)$/", $this->root)){
+					// それ以外
+					$verb_stem = Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$GUNA)."is";				
+				} else {
+					// それ以外
+					$verb_stem = Sanskrit_Common::change_vowel_grade($this->aorist_stem, Sanskrit_Common::$GUNA);
+				}
 			} else {
 				// 完了体語幹の場合
 				$verb_stem = $this->aorist_stem;
@@ -4016,7 +4056,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 母音活用動詞は親クラスで処理
 				$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);				
 			}
-		} else if(($aspect == "inchorative" || $aspect == "resultative") && $tense_mood == Commons::$PRESENT_TENSE && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
+		} else if(($aspect == Commons::$START_VERB || $aspect == "resultative") && $tense_mood == Commons::$PRESENT_TENSE && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
 			// 始動相・結果相の場合は親クラスで処理
 			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
 		} else if($aspect == Commons::$PERFECT_ASPECT && $tense_mood == Commons::$PRESENT_TENSE && $this->root_type != "denomitive"){
@@ -4109,7 +4149,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			if(preg_match('/(1sg|1du|1pl)/', $person)){
 				// 1人称の場合は接続法にする。
 				$verb_stem = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
-				$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);	
+				$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);
 			} else {
 				// それ以外は命令法
 				// 条件ごとで分ける。
@@ -4124,10 +4164,10 @@ class Vedic_Verb extends Verb_Common_IE{
 					// 重複アオリストは親クラスで処理
 					$verb_conjugation = $this->get_imperative_suffix($verb_stem, $voice, $person);
 				} else if(preg_match("/[aiuṛāīūṝ]$/", $this->root) && $voice == Commons::$MEDIOPASSIVE_VOICE && $this->deponent_mediopassive != Commons::$TRUE && $aspect == Commons::$AORIST_ASPECT){
-					// isアオリストは親クラスで処理
+					// アオリストの中動態はこちらで処理
 					$verb_conjugation = $this->get_sanskrit_imperative_suffix($verb_stem, $voice, $person);	
 				} else if(($this->root_type == Commons::$PRESENT_ASPECT || $this->root_type == "denomitive") && $aspect == Commons::$AORIST_ASPECT){
-					if($this->root_laryngeal_flag == "1"){
+					if($this->root_laryngeal_flag == Commons::$TRUE && !preg_match("/(ā|ai)$/", $this->root)){
 						// isアオリストは親クラスで処理
 						$verb_conjugation = $this->get_sanskrit_imperative_suffix($verb_stem, $voice, $person);	
 					} else {
@@ -4165,12 +4205,15 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 結果を返す。
 				// 過去形はここで追加する。
 				if($tense_mood == Commons::$PAST_TENSE){
+					// 過去形の場合
 					return "a".Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 				} else {
+					// それ以外の場合
 					return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 				}
 			}
 		} else {
+			// それ以外、sandhiはここで行う。
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 		}
 	}
@@ -4296,7 +4339,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			} else {
 				// それ以外は命令法
 				if($aspect == Commons::$AORIST_ASPECT){
-					// sアオリストは連音処理入り
+					// isアオリストは連音処理入り
 					$verb_conjugation = $this->get_sanskrit_imperative_suffix($verb_stem, $voice, $person);	
 				} else {
 					// 母音活用動詞は親クラスで処理
@@ -4433,8 +4476,10 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 結果を返す。
 		if($this->root_type == "denomitive"){
+			// 名詞起源動詞の場合
 			return $verb_conjugation;
 		} else {
+			// それ以外の場合
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 		}		
 	}
@@ -4589,8 +4634,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		
 		// 結果を返す。
 		if($this->root_type == "denomitive"){
+			// 名詞起源動詞
 			return $verb_conjugation;
 		} else {
+			// それ以外の場合
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 		}
 	}
@@ -4637,10 +4684,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 語尾を取得
 		if($voice == Commons::$ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
 			// 能動態単数
-			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_conjugation, $this->imperative_number[$voice][$person]);
+			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_conjugation, $this->imperative_number2[$voice][$person]);
 		} else if($voice == Commons::$MEDIOPASSIVE_VOICE && $this->deponent_mediopassive != Commons::$TRUE){
 			// 中受動態単数
-			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_conjugation, $this->imperative_number[$voice][$person]);
+			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_conjugation, $this->imperative_number2[$voice][$person]);
 		} else {
 			// ハイフンを返す。
 			return "-";
@@ -4694,7 +4741,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected function get_primary_verb_conjugation(){
 
 		// 配列を作成
-		$aspect_array = array(Commons::$PRESENT_ASPECT, "inchorative", "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
+		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, Commons::$OPTATIVE, "bend", Commons::$IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
@@ -4790,7 +4837,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected function get_causative_verb_conjugation(){
 
 		// 配列を作成
-		$aspect_array = array(Commons::$PRESENT_ASPECT, "inchorative", "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
+		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
@@ -4874,7 +4921,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected function get_desiderative_verb_conjugation(){
 
 		// 配列を作成
-		$aspect_array = array(Commons::$PRESENT_ASPECT, "inchorative", "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
+		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
@@ -4958,7 +5005,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected function get_intensive_verb_conjugation(){
 
 		// 配列を作成
-		$aspect_array = array(Commons::$PRESENT_ASPECT, "inchorative", "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
+		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
@@ -5055,9 +5102,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 一次動詞
 		$conjugation["primary"] = $this->get_primary_verb_conjugation();
 		// 使役動詞
-		$conjugation["causative"] = $this->get_causative_verb_conjugation();		
+		$conjugation[Commons::$MAKE_VERB] = $this->get_causative_verb_conjugation();		
 		// 願望動詞
-		$conjugation["desiderative"] = $this->get_desiderative_verb_conjugation();
+		$conjugation[Commons::$WANT_VERB] = $this->get_desiderative_verb_conjugation();
 		// 強意動詞
 		$conjugation["intensive"] = $this->get_intensive_verb_conjugation();
 
@@ -5150,9 +5197,9 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = $strong_stem;
 			} else if($suffix["stem_type"] == "redumplication"){
 				$verb_stem = $redumplication_stem;
-			} else if($suffix["stem_type"] == "causative"){
+			} else if($suffix["stem_type"] == Commons::$MAKE_VERB){
 				$verb_stem = $this->add_stem.$this->present_causative_stem;
-			} else if($suffix["stem_type"] == "desiderative"){
+			} else if($suffix["stem_type"] == Commons::$WANT_VERB){
 				$verb_stem = $this->add_stem.$this->present_desiderative_stem;
 			} else if($suffix["stem_type"] == "intensive"){
 				$verb_stem = $this->add_stem.$this->present_intensive_stem;

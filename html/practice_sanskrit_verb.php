@@ -11,6 +11,8 @@ include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
 
 // 挿入データ－語根の種別－
 $root_type = trim(filter_input(INPUT_POST, 'root-type'));
+// 挿入データ－喉音の有無－
+$laryngeal_type = trim(filter_input(INPUT_POST, 'laryngeal-type'));
 // 挿入データ－動詞の種別－
 $verb_type = trim(filter_input(INPUT_POST, 'verb-type'));
 // 挿入データ－人称－
@@ -23,7 +25,7 @@ $aspect = trim(filter_input(INPUT_POST, 'aspect'));
 $mood = trim(filter_input(INPUT_POST, 'mood'));
 
 // 単語取得
-$question_word = Sanskrit_Common::get_random_verb($verb_type, $root_type);
+$question_word = Sanskrit_Common::get_random_verb($verb_type, $root_type, $laryngeal_type);
 // 読み込み
 $sanskrit_verb = new Vedic_Verb($question_word["dictionary_stem"]);
 // 問題集生成
@@ -46,7 +48,8 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
   <body>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php echo Sanskrit_Common::root_type_selection_button(); ?>       
+        <?php echo Sanskrit_Common::root_type_selection_button(); ?>
+        <?php echo Sanskrit_Common::laryngeal_type_selection_button(); ?>       
         <?php echo Sanskrit_Common::verb_type_selection_button(); ?>
         <?php echo Sanskrit_Common::voice_selection_button(); ?>
         <?php echo Sanskrit_Common::aspect_selection_button(); ?>

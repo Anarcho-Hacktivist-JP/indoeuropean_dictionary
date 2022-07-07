@@ -43,6 +43,11 @@ class Commons {
 	public static $OPTATIVE = "opt";						// 希求法
 	public static $IMPERATIVE = "imper";					// 命令法
 
+	public static $START_VERB = "inchorative";				// 始動動詞
+	public static $STRONG_VERB = "frequentive";				// 頻度動詞
+	public static $WANT_VERB = "desiderative";				// 願望動詞
+	public static $MAKE_VERB = "causative";					// 使役動詞
+
 	public static $SINGULAR = "sg";							// 単数
 	public static $DUAL = "du";								// 双数
 	public static $PLURAL = "pl";							// 複数
