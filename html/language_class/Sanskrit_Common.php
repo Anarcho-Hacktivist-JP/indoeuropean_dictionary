@@ -182,7 +182,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	//動詞から派生体言を生成
+	//動詞から名詞を生成
 	public static function get_noun_from_verb($word){
 
 		// 初期化
@@ -202,7 +202,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `suffix_sanskrit` ";
+		$query = "SELECT * FROM `suffix_sanskrit` WHERE (`type` = 'krt' OR `type` = 'unadi') AND `genre` != 'adjective' ";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -217,6 +217,53 @@ class Sanskrit_Common extends Common_IE{
 				$vedic_verb = new Vedic_Verb($root["dictionary_stem"]);
 		  		// 活用表生成、配列に格納
 		  		$new_table_data = array_merge($vedic_verb->make_derivative_noun_from_root($table_data), $new_table_data);
+				// メモリを解放
+				unset($vedic_verb);
+			}					
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
+	//動詞から形容詞を生成
+	public static function get_adjective_from_verb($word){
+
+		// 初期化
+		$roots = array();
+
+		// 語根を取得
+		// 入力値で区別する。
+		if(ctype_alnum($word)){
+			// 語根で検索
+			$roots = Sanskrit_Common::get_verb_by_english($word);
+		} else {
+			// 日本語で検索
+			$roots = Sanskrit_Common::get_verb_by_japanese($word);
+		}
+
+
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `suffix_sanskrit` WHERE (`type` = 'krt' OR `type` = 'unadi') AND `genre` = 'adjective' ";
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 全ての語根が対象
+			foreach ($roots as $root) {
+				// 読み込み
+				$vedic_verb = new Vedic_Verb($root["dictionary_stem"]);
+		  		// 活用表生成、配列に格納
+		  		$new_table_data = array_merge($vedic_verb->make_derivative_adjective_from_root($table_data), $new_table_data);
 				// メモリを解放
 				unset($vedic_verb);
 			}					
@@ -565,8 +612,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ランダムで1単語
 		$query = $query."ORDER BY RAND() LIMIT 1";
-
-		echo $query;
+		
 		// SQLを実行
 		$stmt = $db_host->query($query);
 
@@ -760,7 +806,7 @@ class Sanskrit_Common extends Common_IE{
 				if($table == Sanskrit_Common::$DB_VERB){
 					// 「する」や派生動詞の場合は動詞接尾辞も追加
 					if($target_word == "する" && preg_match('/化$/u', $input_words[$i - 1][0])){
-						$sanskrit_words[count($sanskrit_words) - 1][0] = $sanskrit_words[count($sanskrit_words) - 1][0]."vat"; 
+						$sanskrit_words[count($sanskrit_words) - 1][0] = $sanskrit_words[count($sanskrit_words) - 1][0]."sāt"; 
 						$last_words[] = "asati";						
 						$last_words[] = "bhavati";
 						$last_words[] = "ī";
@@ -800,6 +846,10 @@ class Sanskrit_Common extends Common_IE{
 					} else {
 						// データベースから訳語の語幹を取得する。
 						$last_words_data = Sanskrit_Common::get_verb_by_japanese($target_word);
+						// 単語が取得できない場合は、何も返さない。
+						if(!$last_words_data){
+							return null;
+						}
 						// 新しい配列に詰め替え
 						foreach ($last_words_data as $last_word_data){	
 							// 最終単語

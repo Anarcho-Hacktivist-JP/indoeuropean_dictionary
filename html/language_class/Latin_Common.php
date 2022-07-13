@@ -65,6 +65,7 @@ class Latin_Common extends Common_IE{
 		if($table == Latin_Common::$DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
+		echo $query;
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形

@@ -38,7 +38,46 @@ function get_adjective_declension_chart($word){
 	}
   // 結果を返す。
 	return $declensions;
-  
+}
+
+// 名詞から形容詞の活用表を取得する。
+function get_noun_declension_chart($word){
+	// 名詞の情報を取得
+	$noun_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::$DB_NOUN, "");
+  // 取得できない場合は
+  if(!$noun_words){
+    // 英語で取得する。
+    $noun_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::$DB_NOUN);    
+    // 取得できない場合は
+    if(!$noun_words){    
+      // 単語から直接取得する
+      $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::$DB_NOUN);
+      // 取得できない場合は
+      if(!$noun_words && !Polish_Common::is_alphabet_or_not($word)){
+        // 空を返す。
+        return array();
+      } else if(Polish_Common::is_alphabet_or_not($word)){
+        $noun_words[] = $word;
+      }
+    }
+  }
+
+  // 形容詞化配列を生成
+  $adjective_suffix = array("owy", "ny");
+ 	// 配列を宣言
+  $declensions = array(); 
+	// 新しい配列に詰め替え
+	foreach ($noun_words as $noun_word) {
+    // 形容詞化
+    foreach($adjective_suffix as $suffix){
+		  // 読み込み
+		  $polish_noun = new Polish_Adjective($noun_word.$suffix);
+		  // 配列に格納
+		  $declensions[$polish_noun->get_first_stem()] = $polish_noun->get_chart();
+    }
+	}
+  // 結果を返す。
+	return $declensions;
 }
 
 // 挿入データ－対象－
@@ -47,8 +86,15 @@ $input_adjective = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_adjec
 // 検索結果の配列
 $declensions = array();
 
+// AIによる造語対応
+$janome_result = Commons::get_multiple_words_detail($input_adjective);
+$janome_result = Commons::convert_compound_array($janome_result);
+
 // 対象が入力されていれば処理を実行
-if($input_adjective != ""){
+if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] == "名詞" && !Polish_Common::is_alphabet_or_not($input_adjective)){
+  // 動詞の場合は動詞で形容詞を取得
+	$declensions = get_noun_declension_chart($input_adjective);
+} else if($input_adjective != ""){
 	$declensions = get_adjective_declension_chart($input_adjective);
 }
 
@@ -355,7 +401,7 @@ if($input_adjective != ""){
       //  }
       //}
       //// 全てのターゲット要素に対して攻撃処理を実行する。
-      // Object.keys(targets).map(flood)
+      //Object.keys(targets).map(flood)
     </script> 
   <footer class="">
   </footer>

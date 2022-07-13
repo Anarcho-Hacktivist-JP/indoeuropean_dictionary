@@ -3451,7 +3451,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			$prefix = $this->add_stem;
 		}		
 		// 現在相
-		$this->present_causative_stem = Sanskrit_Common::sandhi_engine($common_causative_stem, "aya", true, false);
+		$this->present_causative_stem = Sanskrit_Common::sandhi_engine($common_causative_stem, "aya", false, false);
 		
 		// 完了体・完了形
 		// 重複語幹を作る。
@@ -3460,10 +3460,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
 
 		$this->perfect_causative_stem = mb_substr($common_causative_stem, 0, 1)."i".$root."a";									// 完了形
-		$this->aorist_causative_stem = Sanskrit_Common::sandhi_engine($common_causative_stem."ay", "is", true, false);			// 完了体
+		$this->aorist_causative_stem = Sanskrit_Common::sandhi_engine($common_causative_stem."ay", "is", false, false);			// 完了体
 		
 		// 未然相
-		$this->future_causative_stem = Sanskrit_Common::sandhi_engine($common_causative_stem."ay", "isya", true, false);		//未然相
+		$this->future_causative_stem = Sanskrit_Common::sandhi_engine($common_causative_stem."ay", "isya", false, false);		//未然相
 
 		// 現在分詞
 		$this->present_causative_participle_active = $prefix.$common_causative_stem."ay"."at";			// 能動態
@@ -3498,8 +3498,8 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 不定詞	
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix, $common_causative_stem);					// 語根		
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mn]$/u", "", $this->present_causative_stem), "dhi");		// dhi(中動態)不定詞		
-		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "itu");				// 語根tu不定詞
-		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$this->present_causative_stem, "itu");		// 不完了体tu不定詞
+		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "tu");				// 語根tu不定詞
+		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem."ay", "itu");		// 不完了体tu不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mn]$/u", "", $this->present_causative_stem), "ti");		// 不完了体tiスラブ式不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "as");				// 語根asギリシア・ラテン式不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$this->aorist_causative_stem, "as");		// 完了体asギリシア・ラテン式不定詞		
@@ -3533,22 +3533,22 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在相
 		// 喉音フラグで判定(anitはなし、setはあり)
 		if($this->root_laryngeal_flag != Commons::$TRUE){
-			$this->present_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "sa", true, false);
+			$this->present_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "sa", false, false);
 		} else if($this->root_laryngeal_flag == Commons::$TRUE){
-			$this->present_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "isa", true, false);
+			$this->present_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "isa", false, false);
 		}
 	
 		// 完了体・完了形
-		$this->aorist_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "is", true, false);			// 完了体		
+		$this->aorist_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "is", false, false);			// 完了体		
 		$this->perfect_desiderative_stem = $this->present_desiderative_stem;										// 完了形
 	
 		// 未然相
-		$this->future_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "isya", true, false);		//未然相
+		$this->future_desiderative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_stem, "isya", false, false);		//未然相
 
 		// 現在分詞
-		$this->present_desiderative_participle_active = $prefix.mb_substr($this->present_desiderative_stem, 0, 1)."at";				// 能動態
-		$this->present_desiderative_participle_middle = $prefix.mb_substr($this->present_desiderative_stem, 0, 1)."māma";				// 中動態
-		$this->present_desiderative_participle_passive = $prefix.mb_substr($this->present_desiderative_stem, 0, 1)."ya"."māma";		// 受動態
+		$this->present_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1), "at");				// 能動態
+		$this->present_desiderative_participle_middle = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1), "māma");				// 中動態
+		$this->present_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1)."ya", "māma");		// 受動態
 
 		// 完了体分詞
 		$this->aorist_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_desiderative_stem, "at");		// 能動態
@@ -4477,7 +4477,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 結果を返す。
 		if($this->root_type == "denomitive"){
 			// 名詞起源動詞の場合
-			return $verb_conjugation;
+			return Sanskrit_Common::sandhi_engine("", $verb_conjugation, true, true);
 		} else {
 			// それ以外の場合
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
@@ -4816,19 +4816,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation["adjective"]["aniya"] = $this->get_participle($this->verbal_adjectives[3]);
 
 		// 不定詞
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[0]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[1]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[2]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[3]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[4]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[5]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[6]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[7]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[8]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[9]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[10]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->primary_infinitives[11]);
-
+		foreach($this->primary_infinitives as $primary_infinitive){
+			$conjugation["infinitive"][] = $this->get_infinitive($primary_infinitive);
+		}
 		// 結果を返す。
 		return $conjugation;
 	}
@@ -4904,14 +4894,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation["adjective"]["aniya"] = $this->get_participle($this->causative_verbal_adjectives[2]);
 
 		// 不定詞
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[0]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[1]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[2]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[3]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[4]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[5]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[6]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->causative_infinitives[7]);
+		foreach($this->causative_infinitives as $causative_infinitive){
+			$conjugation["infinitive"][] = $this->get_infinitive($causative_infinitive);
+		}
 
 		// 結果を返す。
 		return $conjugation;
@@ -4992,10 +4977,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation["adjective"]["aniya"] = $this->get_participle($this->desiderative_verbal_adjectives[2]);
 
 		// 不定詞
-		$conjugation["infinitive"][] = $this->get_infinitive($this->desiderative_infinitives[0]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->desiderative_infinitives[1]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->desiderative_infinitives[2]);
-
+		foreach($this->desiderative_infinitives as $desiderative_infinitive){
+			$conjugation["infinitive"][] = $this->get_infinitive($desiderative_infinitive);
+		}
 
 		// 結果を返す。
 		return $conjugation;
@@ -5072,11 +5056,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation["adjective"]["aniya"] = $this->get_participle($this->intensive_verbal_adjectives[2]);
 
 		// 不定詞
-		$conjugation["infinitive"][] = $this->get_infinitive($this->intensive_infinitives[0]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->intensive_infinitives[1]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->intensive_infinitives[2]);
-		$conjugation["infinitive"][] = $this->get_infinitive($this->intensive_infinitives[3]);		
-
+		foreach($this->intensive_infinitives as $intensive_infinitive){
+			$conjugation["infinitive"][] = $this->get_infinitive($intensive_infinitive);
+		}
 		// 結果を返す。
 		return $conjugation;
 	}
@@ -5170,7 +5152,6 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 派生語を格納するリストを初期化
 		$words = array();
 		// 語根の準備
-
 		$weak_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$ZERO_GRADE);	// 弱語根
 		$middle_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$GUNA);		// 中語根
 		$strong_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI);		// 強語根
@@ -5181,7 +5162,6 @@ class Vedic_Verb extends Verb_Common_IE{
 		$add_stem = mb_substr($add_stem, 0, 2);	
 		$redumplication_stem = $this->add_stem.$add_stem.$this->root;
 
-		
 		// 全ての接尾辞を対象とする。
 		foreach ($suffixes as $suffix) {
 			// 初期化
@@ -5219,6 +5199,17 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 結果を返す。
 			$words[$noun->get_second_stem()] = $noun->get_chart();
 		}
+
+		// 一次動詞不定詞
+		foreach($this->primary_infinitives as $primary_infinitive){
+			$words[$primary_infinitive] = $this->get_infinitive($primary_infinitive);
+		}
+
+		// 使役動詞不定詞
+		foreach($this->causative_infinitives as $causative_infinitive){
+			$words[$causative_infinitive] = $this->get_infinitive($causative_infinitive);
+		}
+
 		// 結果を返す。
 		return $words;
 	}
@@ -5227,11 +5218,122 @@ class Vedic_Verb extends Verb_Common_IE{
 	public function make_derivative_adjective_from_root($suffixes){
 		// 派生語を格納するリストを初期化
 		$words = array();
+		// 語根の準備
+		$weak_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$ZERO_GRADE);	// 弱語根
+		$middle_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$GUNA);		// 中語根
+		$strong_stem = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI);		// 強語根
+		// 重複語根
+		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->root);
+		$add_stem = mb_ereg_replace("k", "c", $add_stem);
+		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+		$add_stem = mb_substr($add_stem, 0, 2);	
+		$redumplication_stem = $this->add_stem.$add_stem.$this->root;
+
 		// 全ての接尾辞を対象とする。
 		foreach ($suffixes as $suffix) {
+			// 必要な語根の種別によって分ける
+			if($suffix["stem_type"] == "root"){
+				$verb_stem = $this->add_stem.$this->root;
+			} else if($suffix["stem_type"] == Sanskrit_Common::$ZERO_GRADE){
+				$verb_stem = $weak_stem;
+			} else if($suffix["stem_type"] == Sanskrit_Common::$GUNA){
+				$verb_stem = $middle_stem;
+			} else if($suffix["stem_type"] == Sanskrit_Common::$VRIDDHI){
+				$verb_stem = $strong_stem;
+			} else if($suffix["stem_type"] == "redumplication"){
+				$verb_stem = $redumplication_stem;
+			} else if($suffix["stem_type"] == Commons::$MAKE_VERB){
+				$verb_stem = $this->add_stem.$this->present_causative_stem;
+			} else if($suffix["stem_type"] == Commons::$WANT_VERB){
+				$verb_stem = $this->add_stem.$this->present_desiderative_stem;
+			} else if($suffix["stem_type"] == "intensive"){
+				$verb_stem = $this->add_stem.$this->present_intensive_stem;
+			} else if($suffix["stem_type"] == Commons::$PRESENT_ASPECT){
+				$verb_stem = $this->add_stem.$this->present_stem;
+			} else if($suffix["stem_type"] == Commons::$AORIST_ASPECT){
+				$verb_stem = $this->add_stem.$this->aorist_stem;
+			} else if($suffix["stem_type"] == Commons::$PERFECT_ASPECT){
+				$verb_stem = $this->add_stem.$this->perfect_stem;
+			} else if($suffix["stem_type"] == Commons::$FUTURE_TENSE){
+				$verb_stem = $this->add_stem.$this->future_stem;
+ 			} else {
+				$verb_stem = "";
+			}
 			// 読み込み
-			$words[] = new Vedic_Adjective(Sanskrit_Common::sandhi_engine($this->root, $suffix));
+			$words[] = new Vedic_Adjective($verb_stem, $suffix["suffix"], $this->japanese_translation, $suffix["mean"]);
 		}
+
+		// 現在分詞
+		$words[] = $this->get_participle($this->present_participle_active);			// 能動
+		$words[] = $this->get_participle($this->present_participle_middle);			// 中動
+		$words[] = $this->get_participle($this->present_participle_passive);		// 受動
+
+		// 完了体分詞
+		$words[] = $this->get_participle($this->aorist_participle_active);			// 能動
+		$words[] = $this->get_participle($this->aorist_participle_middle);			// 中動
+		$words[] = $this->get_participle($this->aorist_participle_passive);			// 受動
+
+		// 完了形分詞
+		$words[] = $this->get_participle($this->perfect_participle_active);			// 能動
+		$words[] = $this->get_participle($this->perfect_participle_middle);			// 中受動
+
+		// 未来分詞
+		$words[] = $this->get_participle($this->future_participle_active);			// 能動
+		$words[] = $this->get_participle($this->future_participle_middle);			// 中動
+		$words[] = $this->get_participle($this->future_participle_passive);			// 受動
+
+		// 過去分詞
+		$words[] = $this->get_participle($this->past_na_participle_active);			// na-能動
+		$words[] = $this->get_participle($this->past_ta_participle_active);			// ta-能動
+		$words[] = $this->get_participle($this->past_na_participle_passive);		// na-受動
+		$words[] = $this->get_participle($this->past_ta_participle_passive);		// ta-受動
+
+		// 現在分詞
+		$words[] = $this->get_participle($this->present_causative_participle_active);		// 能動
+		$words[] = $this->get_participle($this->present_causative_participle_middle);		// 中動
+		$words[] = $this->get_participle($this->present_causative_participle_passive);		// 受動
+
+		// 完了体分詞
+		$words[] = $this->get_participle($this->aorist_causative_participle_active);		// 能動
+		$words[] = $this->get_participle($this->aorist_causative_participle_middle);		// 中動
+		$words[] = $this->get_participle($this->aorist_causative_participle_passive);		// 受動
+
+		// 完了形分詞
+		$words[] = $this->get_participle($this->perfect_causative_participle_active);		// 能動
+		$words[] = $this->get_participle($this->perfect_causative_participle_middle);		// 中受動
+
+		// 未来分詞
+		$words[] = $this->get_participle($this->future_causative_participle_active);		// 能動
+		$words[] = $this->get_participle($this->future_causative_participle_middle);		// 中動
+		$words[] = $this->get_participle($this->future_causative_participle_passive);		// 受動
+
+		// 過去分詞
+		$words[] = $this->get_participle($this->past_causative_na_participle_active);		// na-能動
+		$words[] = $this->get_participle($this->past_causative_ta_participle_active);		// ta-能動
+		$words[] = $this->get_participle($this->past_causative_na_participle_passive);		// na-受動
+		$words[] = $this->get_participle($this->past_causative_ta_participle_passive);		// ta-受動
+
+
+		// 動形容詞
+		foreach($this->verbal_adjectives as $verbal_adjective){
+			$words[] = $this->get_infinitive($verbal_adjective);
+		}
+
+		// 使役動形容詞
+		foreach($this->causative_verbal_adjectives as $causative_verbal_adjective){
+			$words[] = $this->get_infinitive($causative_verbal_adjective);
+		}
+
+		// 願望動形容詞
+		foreach($this->desiderative_verbal_adjectives as $desiderative_verbal_adjective){
+			$words[] = $this->get_infinitive($desiderative_verbal_adjective);
+		}
+
+		// 強意動形容詞
+		foreach($this->intensive_verbal_adjectives as $intensive_verbal_adjective){
+			$words[] = $this->get_infinitive($intensive_verbal_adjective);
+		}
+		
 		// 結果を返す。
 		return $words;
 	}
@@ -5657,6 +5759,7 @@ class Polish_Verb extends Verb_Common_IE {
 			$verb_conjugation = $verb_stem.$this->primary_number2[Commons::$ACTIVE_VOICE][$person];;			
 		}
 
+		$verb_conjugation = preg_replace("/o([bcfhlmnprswzćłńśźż])$/u", "ó\\1", $verb_conjugation);
 
 		// 結果を返す。
 		return $verb_conjugation;

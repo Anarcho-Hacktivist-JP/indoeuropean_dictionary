@@ -110,10 +110,10 @@ $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 条件分岐
-if($input_verb != "" && $janome_result[0][1] == "名詞" && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result) == 1 && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得
 	$conjugations = get_conjugation_by_noun($input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && count($janome_result) == 1 && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
 	$conjugations = get_conjugation_by_adjective($input_verb);    
 } else if($input_verb != ""){

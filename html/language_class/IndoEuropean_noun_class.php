@@ -3372,7 +3372,7 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/ky$/", "cy", $noun);
 		$noun = preg_replace("/gy$/", "dzy", $noun);
 
-
+		$noun = preg_replace("/o([bcfhlmnprswzćłńśźż])$/u", "ó\\1", $noun);
 
 		// 結果を返す
 		return $noun;

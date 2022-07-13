@@ -26,7 +26,7 @@ function get_adjective_declension_chart($word){
         $adjective_words[] = $word;
       } 
     }
-  } else if(!Latin_Common::is_alphabet_or_not($word)){
+  } else if(!$adjective_words && !Latin_Common::is_alphabet_or_not($word)){
     // 空を返す。
     return array();   
   }

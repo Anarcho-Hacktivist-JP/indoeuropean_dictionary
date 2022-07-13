@@ -2304,6 +2304,26 @@ class Vedic_Adjective extends Adjective_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
+    public function __construct_sanskrit4($root, $suffix, $verb_translation, $suffix_translation) {
+		// 親クラス初期化
+	   parent::__construct();
+	   // 単語を作成
+	   $word = Sanskrit_Common::sandhi_engine($root, $suffix);
+	   // 情報をセット
+	   $this->set_adj_data($word);
+	   // 日本語訳を書き換え
+	   $this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
+	   $this->english_translation = "";											// 英語訳
+	   
+	   // 活用表を挿入
+		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
+		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
+		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
+   }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
     public function __construct_sanskrit3($compound, $last_word, $translation) {
     	// 親クラス初期化
 		parent::__construct();
@@ -2322,9 +2342,9 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		$this->english_translation = "";			// 英語訳
 		
 		// 活用表を挿入
-		$this->get_adj_declension("positive");
-		$this->get_adj_declension("comp");
-		$this->get_adj_declension("super");
+		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
+		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
+		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
     }
 
     /*=====================================
