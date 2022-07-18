@@ -1,13 +1,46 @@
-"9001","Balzakowski","Balzakowski","Balzakowsk-",バルザック,Balzac,1-2i,0,0,0
-"9007","Pański","Pański","Pańsk-",あなたの,Your,1-2i,0,0,0
 "9014","aalborski","aalborski","aalborsk-",オールボルグスキー,Aalborg,1-2i,0,0,0
 "9015","abazyński","abazyński","abazyńsk-",アバジニアン,Abazinian,1-2i,0,0,0
+"9016","abażurowy","abażurowy","abażurow-",ランプシェード,lampshade,1-2,0,0,0
 "9017","abchaski","abchaski","abchask-",アブハジア語,Abkhazian,1-2i,0,0,0
+"9018","abdominalny","abdominalny","abdominaln-",腹部,abdominal,1-2,0,0,0
+"9019","abdukcyjny","abdukcyjny","abdukcyjn-",誘拐,abductive,1-2,0,0,0
+"9020","abdykacyjny","abdykacyjny","abdykacyjn-",アブディケーティブ,abdicative,1-2,0,0,0
+"9021","abecadlny","abecadlny","abecadln-",アルファベット順,abecadal,1-2,0,0,0
+"9022","abecadłowy","abecadłowy","abecadłow-",アルファベット順,abecadal,1-2,0,0,0
+"9023","aberracyjny","aberracyjny","aberracyjn-",異常,aberrant,1-2,0,0,0
+"9024","abietynowy","abietynowy","abietynow-",アビエチン,abietic,1-2,0,0,0
+"9025","abiogenny","abiogenny","abiogenn-",非生物起源,abiogenic,1-2,0,0,0
+"9026","abiotyczny","abiotyczny","abiotyczn-",非生物的,abiotic,1-2,0,0,0
+"9027","abisalny","abisalny","abisaln-",深淵,abysmal,1-2,0,0,0
 "9028","abisyński","abisyński","abisyńsk-",アビシニアン,Abyssinian,1-2i,0,0,0
+"9029","ablacyjny","ablacyjny","ablacyjn-",アブレイティブ,ablative,1-2,0,0,0
 "9030","abnegacki","abnegacki","abnegack-",アブネガティアン,Abnegatian,1-2i,0,0,0
+"9031","abolicjonistyczny","abolicjonistyczny","abolicjonistyczn-",廃止主義者,abolitionist,1-2,0,0,0
+"9032","abolicyjny","abolicyjny","abolicyjn-",廃止主義者,abolitionist,1-2,0,0,0
+"9033","abonamentowy","abonamentowy","abonamentow-",サブスクリプション,subscriptionist,1-2,0,0,0
 "9034","abonencki","abonencki","abonenck-",サブスクライバ,subscriber,1-2i,0,0,0
+"9035","aborcjonistyczny","aborcjonistyczny","aborcjonistyczn-",流産主義者,abortionist,1-2,0,0,0
+"9036","aborcyjny","aborcyjny","aborcyjn-",中絶,abortionist,1-2,0,0,0
+"9037","abordażowy","abordażowy","abordażow-",搭乗,abortionist,1-2,0,0,0
+"9038","abrazyjny","abrazyjny","abrazyjn-",研磨剤,abrasive,1-2,0,0,0
+"9039","absencyjny","absencyjny","absencyjn-",欠席主義,absentive,1-2,0,0,0
+"9040","absolutny","absolutny","absolutn-",絶対の,absolute,1-2,0,0,0
+"9041","absolutoryjny","absolutoryjny","absolutoryjn-",絶対の,absolute,1-2,0,0,0
+"9042","absolutystyczny","absolutystyczny","absolutystyczn-",絶対主義者,absolutist,1-2,0,0,0
 "9043","absolwencki","absolwencki","absolwenck-",卒業生,graduate,1-2i,0,0,0
+"9044","absorpcyjny","absorpcyjny","absorpcyjn-",吸収性,absorptive,1-2,0,0,0
+"9045","abstrakcjonistyczny","abstrakcjonistyczny","abstrakcjonistyczn-",概要,abstractive,1-2,0,0,0
+"9046","abstrakcyjny","abstrakcyjny","abstrakcyjn-",概要,abstract,1-2,0,0,0
+"9047","abstraktowy","abstraktowy","abstraktow-",概要,abstract,1-2,0,0,0
 "9048","abstynencki","abstynencki","abstynenck-",抄録,abstract,1-2i,0,0,0
+"9049","abstynencyjny","abstynencyjny","abstynencyjn-",禁欲,abstract,1-2,0,0,0
+"9050","absurdalny","absurdalny","absurdaln-",ばかげている,absurd,1-2,0,0,0
+"9051","absydalny","absydalny","absydaln-",棄権,absurd,1-2,0,0,0
+"9052","absydowy","absydowy","absydow-",apse,absid,1-2,0,0,0
+"9053","absyntowy","absyntowy","absyntow-",アブサン,absinthe,1-2,0,0,0
+"9054","abuliczny","abuliczny","abuliczn-",abulic,abulic,1-2,0,0,0
+"9055","abuzywny","abuzywny","abuzywn-",虐待的,abusive,1-2,0,0,0
+"9056","abysalny","abysalny","abysaln-",アビサル,abysmal,1-2,0,0,0
 "9057","acetonowy","acetonowy","acetonow-",アセトン,acetone,1-2,0,0,0
 "58","acetylenowy","acetylenowy","acetylenow-",アセチレン,acetylene,1-2,0,0,0
 "60","achromatyczny","achromatyczny","achromatyczn-",無彩色,achromatic,1-2,0,0,0
@@ -877,7 +910,7 @@
 "929","audiologiczny","audiologiczny","audiologiczn-",オーディオロジー,audiological,1-2,0,0,0
 "930","audiometryczny","audiometryczny","audiometryczn-",オージオメトリック,audiometric,1-2,0,0,0
 "931","audiowizualny","audiowizualny","audiowizualn-",オーディオビジュアル,audiovisual,1-2,0,0,0
-"932","audytorski","audytorski","audytorsk-",オーディオマニア,audiophile,1-2i,0,0,0
+"932","audytorski","audytorski","audytorsk-",オーディオマニア,auditor,1-2i,0,0,0
 "933","audytoryjny","audytoryjny","audytoryjn-",オーディトリアム,auditorium,1-2,0,0,0
 "934","audytowy","audytowy","audytow-",聴覚,auditory,1-2,0,0,0
 "935","audytywny","audytywny","audytywn-",可聴,auditive,1-2,0,0,0
@@ -1000,26 +1033,26 @@
 "1054","badylkowaty","badylkowaty","badylkowat-",あぶなっかしい,caddy,1-2,0,0,0
 "1055","badylowaty","badylowaty","badylowat-",アディラスティック,adylous,1-2,0,0,0
 "1056","badylowy","badylowy","badylow-",アディル,adyl,1-2,0,0,0
-"1057","badziewny","badziewny","badziewn-",バギー,buggy,1-2,0,0,0
-"1058","bagatelny","bagatelny","bagateln-",バガテル,bagatelle,1-2,0,0,0
-"1059","bagażowy","bagażowy","bagażow-",ラゲージ,luggage,1-2,0,0,0
+"1057","badziewny","badziewny","badziewn-",くだらない,crap,1-2,0,0,0
+"1058","bagatelny","bagatelny","bagateln-",ささいな,trifling,1-2,0,0,0
+"1059","bagażowy","bagażowy","bagażow-",荷物,luggage,1-2,0,0,0
 "1060","bagienny","bagienny","bagienn-",泥沼,boggy,1-2,0,0,0
 "1061","bagnetowy","bagnetowy","bagnetow-",ベイオニット,bayonet,1-2,0,0,0
 "1062","bagnisty","bagnisty","bagnist-",泥沼,boggy,1-2,0,0,0
-"1063","bagrowniczy","bagrowniczy","bagrownicz-",どろぶかい,swampy,1-2,0,0,0
-"1064","bagrowy","bagrowy","bagrow-",どろぶかい,swampy,1-2,0,0,0
-"1065","bajarski","bajarski","bajarsk-",嘘のような本当の話,fabulous,1-2i,0,0,0
-"1066","bajczarski","bajczarski","bajczarsk-",嘘のような本当の話,fabulous,1-2i,0,0,0
-"1067","bajeczny","bajeczny","bajeczn-",嘘のような本当の話,fabulous,1-2,0,0,0
-"1069","bajerancki","bajerancki","bajeranck-",嘘のような本当の話,fabulous,1-2i,0,0,0
-"1070","bajerny","bajerny","bajern-",嘘のような本当の話,fabulous,1-2,0,0,0
-"1071","bajkopisarski","bajkopisarski","bajkopisarsk-",嘘のような本当の話,fabulous,1-2i,0,0,0
-"1072","bajkotwórczy","bajkotwórczy","bajkotwórcz-",嘘のような本当の話,fabulous,1-2,0,0,0
-"1073","bajkowy","bajkowy","bajkow-",嘘のような本当の話,fabulous,1-2,0,0,0
-"1074","bajowy","bajowy","bajow-",嘘のような本当の話,fabulous,1-2,0,0,0
-"1075","bajoński","bajoński","bajońsk-",嘘のような本当の話,fabulous,1-2i,0,0,0
-"1076","bajroniczny","bajroniczny","bajroniczn-",嘘のような本当の話,fabulous,1-2,0,0,0
-"1077","bajronistyczny","bajronistyczny","bajronistyczn-",嘘のような本当の話,fabulous,1-2,0,0,0
+"1063","bagrowniczy","bagrowniczy","bagrownicz-",どろぶかい,dredging,1-2,0,0,0
+"1064","bagrowy","bagrowy","bagrow-",どろぶかい,dredger,1-2,0,0,0
+"1065","bajarski","bajarski","bajarsk-",空想の,fairy tale,1-2i,0,0,0
+"1066","bajczarski","bajczarski","bajczarsk-",素晴らしい,fabulous,1-2i,0,0,0
+"1067","bajeczny","bajeczny","bajeczn-",素晴らしい,fabulous,1-2,0,0,0
+"1069","bajerancki","bajerancki","bajeranck-",派手な,fancy,1-2i,0,0,0
+"1070","bajerny","bajerny","bajern-",素晴らしい,fabulous,1-2,0,0,0
+"1071","bajkopisarski","bajkopisarski","bajkopisarsk-",おとぎ話作家,fairy tale writer,1-2i,0,0,0
+"1072","bajkotwórczy","bajkotwórczy","bajkotwórcz-",空想の,fairy-tale,1-2,0,0,0
+"1073","bajkowy","bajkowy","bajkow-",空想の,fairy-tale,1-2,0,0,0
+"1074","bajowy","bajowy","bajow-",素晴らしい,fabulous,1-2,0,0,0
+"1075","bajoński","bajoński","bajońsk-",甚大な、巨大な、でかい,enormous,1-2i,0,0,0
+"1076","bajroniczny","bajroniczny","bajroniczn-",バイロニック,byronic,1-2,0,0,0
+"1077","bajronistyczny","bajronistyczny","bajronistyczn-",バイロニスティック,byronistic,1-2,0,0,0
 "1078","bajronowski","bajronowski","bajronowsk-",バイロンフスキー,byronovsky,1-2i,0,0,0
 "1079","bajroński","bajroński","bajrońsk-",バイロン,byronic,1-2i,0,0,0
 "1080","bakaliowy","bakaliowy","bakaliow-",バカラ,baccarat,1-2,0,0,0
@@ -1061,6 +1094,7 @@
 "1116","balsowy","balsowy","balsow-",バルキー,balsamic,1-2,0,0,0
 "1117","balustradowy","balustradowy","balustradow-",手すり,railing,1-2,0,0,0
 "1118","balwierski","balwierski","balwiersk-",バルーンアーティスト,baller,1-2i,0,0,0
+"9001","Balzakowski","Balzakowski","Balzakowsk-",バルザック,Balzac,1-2i,0,0,0
 "1119","balzakowski","balzakowski","balzakowsk-",バルザキスト,balzacist,1-2i,0,0,0
 "1120","bambusowy","bambusowy","bambusow-",竹,bamboo,1-2,0,0,0
 "1121","banalny","banalny","banaln-",凡庸,banal,1-2,0,0,0
@@ -1144,7 +1178,7 @@
 "1199","bawełniasty","bawełniasty","bawełniast-",コットン,cotton,1-2,0,0,0
 "1200","bawełnisty","bawełnisty","bawełnist-",コットン,cotton,1-2,0,0,0
 "1201","bawełnopodobny","bawełnopodobny","bawełnopodobn-",綿状,cotton-like,1-2,0,0,0
-"1202","bawny","bawny","bawn-",コットン,cotton,1-2,0,0,0
+"1202","bawny","bawny","bawn-",面白い,interesting,1-2,0,0,0
 "1203","bawoli","bawoli","bawol-",バッファロー,buffalo,1-2i,0,0,0
 "1204","bazalny","bazalny","bazaln-",塩基性,basal,1-2,0,0,0
 "1205","bazaltowy","bazaltowy","bazaltow-",玄武岩質,basaltic,1-2,0,0,0
@@ -1159,10 +1193,10 @@
 "1214","bałkański","bałkański","bałkańsk-",バルカン,Balkan,1-2i,0,0,0
 "1215","bałtosłowiański","bałtosłowiański","bałtosłowiańsk-",バルトスラブ語,Balto-Slavic,1-2i,0,0,0
 "1216","bałtycki","bałtycki","bałtyck-",バルト,BALTIC,1-2i,0,0,0
-"1217","bałwaniasty","bałwaniasty","bałwaniast-",偶像教徒的,idolatrous,1-2,0,0,0
-"1218","bałwanisty","bałwanisty","bałwanist-",偶像教徒的,idolatrous,1-2,0,0,0
-"1219","bałwanowaty","bałwanowaty","bałwanowat-",偶像教徒的,idolatrous,1-2,0,0,0
-"1220","bałwanowy","bałwanowy","bałwanow-",偶像教徒的,idolatrous,1-2,0,0,0
+"1217","bałwaniasty","bałwaniasty","bałwaniast-",腫れの,swelling,1-2,0,0,0
+"1218","bałwanisty","bałwanisty","bałwanist-",雪だるまの,snowman,1-2,0,0,0
+"1219","bałwanowaty","bałwanowaty","bałwanowat-",ドルティッシュ,doltish,1-2,0,0,0
+"1220","bałwanowy","bałwanowy","bałwanow-",雪だるまの,snowman,1-2,0,0,0
 "1221","bałwański","bałwański","bałwańsk-",バルカン,Balkan,1-2i,0,0,0
 "1222","bałwochwalczy","bałwochwalczy","bałwochwalcz-",偶像教徒的,idolatrous,1-2,0,0,0
 "1223","baśniowy","baśniowy","baśniow-",おとぎ話,idolatrous,1-2,0,0,0
@@ -1318,13 +1352,13 @@
 "1382","bezksiężycowy","bezksiężycowy","bezksiężycow-",むげつ,moonless,1-2,0,0,0
 "1383","bezkształtny","bezkształtny","bezkształtn-",無定形,shapeless,1-2,0,0,0
 "1384","bezkurkowy","bezkurkowy","bezkurkow-",シュリンク,shrinkless,1-2,0,0,0
-"1385","bezkwiatowy","bezkwiatowy","bezkwiatow-",無花果,flowerless,1-2,0,0,0
-"1386","bezkwietny","bezkwietny","bezkwietn-",無花果,flowerless,1-2,0,0,0
-"1387","bezkłopotliwy","bezkłopotliwy","bezkłopotliw-",センタレス,centerless,1-2,0,0,0
-"1388","bezkłowy","bezkłowy","bezkłow-",センタレス,centerless,1-2,0,0,0
-"1389","bezleśny","bezleśny","bezleśn-",のうなし,forestless,1-2,0,0,0
-"1390","bezlicy","bezlicy","bezlic-",気だるい,listless,1-2,0,0,0
-"1391","bezlistny","bezlistny","bezlistn-",リーフレス,listless,1-2,0,0,0
+"1385","bezkwiatowy","bezkwiatowy","bezkwiatow-",花のない,flowerless,1-2,0,0,0
+"1386","bezkwietny","bezkwietny","bezkwietn-",花のない,flowerless,1-2,0,0,0
+"1387","bezkłopotliwy","bezkłopotliwy","bezkłopotliw-",手間のかからない,hassle-free,1-2,0,0,0
+"1388","bezkłowy","bezkłowy","bezkłow-",タスクレス,tuskless,1-2,0,0,0
+"1389","bezleśny","bezleśny","bezleśn-",森のない,deforested,1-2,0,0,0
+"1390","bezlicy","bezlicy","bezlic-",数え切れないほど,the countless,1-2,0,0,0
+"1391","bezlistny","bezlistny","bezlistn-",葉のない,leafless,1-2,0,0,0
 "1392","bezlitosny","bezlitosny","bezlitosn-",寛容,unforgiving,1-2,0,0,0
 "1393","bezlodowy","bezlodowy","bezlodow-",ふとう,iceless,1-2,0,0,0
 "1394","bezludny","bezludny","bezludn-",砂漠,desert,1-2,0,0,0
@@ -1459,9 +1493,9 @@
 "1523","bezszumny","bezszumny","bezszumn-",ノイズレス,noiseless,1-2,0,0,0
 "1524","bezszumowy","bezszumowy","bezszumow-",ノイズレス,noiseless,1-2,0,0,0
 "1525","bezszwowy","bezszwowy","bezszwow-",シームレス,seamless,1-2,0,0,0
-"1526","bezszynowy","bezszynowy","bezszynow-",シームレス,seamless,1-2,0,0,0
-"1527","bezszypułkowy","bezszypułkowy","bezszypułkow-",ステムレス,stemless,1-2,0,0,0
-"1528","bezsęczny","bezsęczny","bezsęczn-",ノットレス,knotless,1-2,0,0,0
+"1526","bezszynowy","bezszynowy","bezszynow-",無軌道の,trackless,1-2,0,0,0
+"1527","bezszypułkowy","bezszypułkowy","bezszypułkow-",無柄の,sessile,1-2,0,0,0
+"1528","bezsęczny","bezsęczny","bezsęczn-",結び目がない,knotless,1-2,0,0,0
 "1529","bezsęki","bezsęki","bezsęk-",骨無し,spineless,1-2i,0,0,0
 "1530","bezsłoneczny","bezsłoneczny","bezsłoneczn-",サンレス,sunless,1-2,0,0,0
 "1531","bezsłowny","bezsłowny","bezsłown-",むだばなし,wordless,1-2,0,0,0
@@ -1537,7 +1571,7 @@
 "1602","biało-czerwony","biało-czerwony","biało-czerwon-",白っぽい,whitish,1-2,0,0,0
 "1603","białobrody","białobrody","białobrod-",白っぽい,whitish,1-2,0,0,0
 "1604","białobrzuchy","białobrzuchy","białobrzuch-",白っぽい,whitish,1-2,0,0,0
-"1605","białoczelny","białoczelny","białoczeln-",ホワイトテール,whitetail,1-2,0,0,0
+"1605","białoczelny","białoczelny","białoczeln-",マガン,white-fronted,1-2,0,0,0
 "1606","białogrzbiety","białogrzbiety","białogrzbiet-",ホワイトバック,whitetails,1-2,0,0,0
 "1607","białogrzywy","białogrzywy","białogrzyw-",鼠族,whitetails,1-2,0,0,0
 "1608","białolicy","białolicy","białolic-",鼠族,whitethroats,1-2,0,0,0
@@ -1545,16 +1579,16 @@
 "1610","białonogi","białonogi","białonog-",アルビーノ,albino,1-2i,0,0,0
 "1611","białopióry","białopióry","białopiór-",はくしゅきょうりゅう,whitethroated,1-2,0,0,0
 "1612","białoramienny","białoramienny","białoramienn-",むせかえる,whitethroat,1-2,0,0,0
-"1613","białorunny","białorunny","białorunn-",ホワイトテール,whitetail,1-2,0,0,0
+"1613","białorunny","białorunny","białorunn-",白髪の,white-haired,1-2,0,0,0
 "1614","białoruski","białoruski","białorusk-",ベラルーシ語,Belarussian,1-2i,0,0,0
 "1615","białorzęsy","białorzęsy","białorzęs-",アルビーノ,albino,1-2,0,0,0
 "1616","białoręki","białoręki","białoręk-",ベラルーシ語,Belarussian,1-2i,0,0,0
 "1617","białoskrzydły","białoskrzydły","białoskrzydł-",しらさぎ,whitetail,1-2,0,0,0
-"1618","białoskórniczy","białoskórniczy","białoskórnicz-",ホワイトテール,whitetail,1-2,0,0,0
-"1619","białoskóry","białoskóry","białoskór-",ホワイトテール,whitetail,1-2,0,0,0
+"1618","białoskórniczy","białoskórniczy","białoskórnicz-",白い肌の,white-skinned,1-2,0,0,0
+"1619","białoskóry","białoskóry","białoskór-",白い肌の,white skin,1-2,0,0,0
 "1620","białostocki","białostocki","białostock-",ビャウィストク,Białystok,1-2i,0,0,0
-"1621","białowłosy","białowłosy","białowłos-",ホワイトテール,whitetail,1-2,0,0,0
-"1622","białościenny","białościenny","białościenn-",ホワイトテール,whitetail,1-2,0,0,0
+"1621","białowłosy","białowłosy","białowłos-",白髪の,white-haired,1-2,0,0,0
+"1622","białościenny","białościenny","białościenn-",白壁の,white-walled,1-2,0,0,0
 "1623","biały","biały","biał-",ホワイト,whitewash,1-2,0,0,0
 "1624","biblijny","biblijny","biblijn-",ビブリカル,biblical,1-2,0,0,0
 "1625","bibliofilski","bibliofilski","bibliofilsk-",本好き,bibliophilic,1-2i,0,0,0
@@ -1573,10 +1607,10 @@
 "1638","bidny","bidny","bidn-",ビデニー,bidny,1-2,0,0,0
 "1639","biedermeierowski","biedermeierowski","biedermeierowsk-",ビーダーマイヤー,Biedermeier,1-2i,0,0,0
 "1640","biedniacki","biedniacki","biedniack-",ビエニャッキ,biedniacki,1-2i,0,0,0
-"1641","biednieńki","biednieńki","biednieńk-",貧弱,poor,1-2i,0,0,0
-"1642","biedniuchny","biedniuchny","biedniuchn-",貧弱,poor,1-2,0,0,0
-"1643","biedniutki","biedniutki","biedniutk-",貧弱,poor,1-2i,0,0,0
-"1644","biedny","biedny","biedn-",貧弱,poor,1-2,0,0,0
+"1641","biednieńki","biednieńki","biednieńk-",貧しい人々,the poor ones,1-2i,0,0,0
+"1642","biedniuchny","biedniuchny","biedniuchn-",貧乏な,poor man,1-2,0,0,0
+"1643","biedniutki","biedniutki","biedniutk-",かわいそうなな,poor one,1-2i,0,0,0
+"1644","biedny","biedny","biedn-",貧しい,poor,1-2,0,0,0
 "1646","biegnikowy","biegnikowy","biegnikow-",ギア,gear,1-2,0,0,0
 "1647","biegowy","biegowy","biegow-",ふてぶてしい,biegowy,1-2,0,0,0
 "1648","biegunowy","biegunowy","biegunow-",ポーラー,polar,1-2,0,0,0
@@ -1597,7 +1631,7 @@
 "1664","biesiadny","biesiadny","biesiadn-",饗宴,feast,1-2,0,0,0
 "1665","biesowski","biesowski","biesowsk-",ビエスキ,bieski,1-2i,0,0,0
 "1666","bieżny","bieżny","bieżn-",ランニング,running,1-2,0,0,0
-"1667","bieżący","bieżący","bieżąc-",ランニング,running,1-2,0,0,0
+"1667","bieżący","bieżący","bieżąc-",現在の,present,1-2,0,0,0
 "1668","bifilarny","bifilarny","bifilarn-",二律背反,bifilar,1-2,0,0,0
 "1669","bifurkacyjny","bifurkacyjny","bifurkacyjn-",ぶんし,bifurcating,1-2,0,0,0
 "1670","bigamiczny","bigamiczny","bigamiczn-",重婚,bigamy,1-2,0,0,0
@@ -1608,8 +1642,8 @@
 "1675","bikwadratowy","bikwadratowy","bikwadratow-",にじげん,biquadratic,1-2,0,0,0
 "1676","bilabialny","bilabialny","bilabialn-",両唇音,bilabial,1-2,0,0,0
 "1677","bilansowy","bilansowy","bilansow-",バランス,balance,1-2,0,0,0
-"1678","bilardowy","bilardowy","bilardow-",ビリヤード,billiards,1-2,0,0,0
-"1679","bilarowy","bilarowy","bilarow-",ビリヤード,billiards,1-2,0,0,0
+"1678","bilardowy","bilardowy","bilardow-",ビリヤード,billiard,1-2,0,0,0
+"1679","bilarowy","bilarowy","bilarow-",納屋の,barn,1-2,0,0,0
 "1680","bilateralny","bilateralny","bilateraln-",二国間,bilateral,1-2,0,0,0
 "1681","biletowy","biletowy","biletow-",チケット,ticket,1-2,0,0,0
 "1682","bilingwalny","bilingwalny","bilingwaln-",ビリヤード,billiard,1-2,0,0,0
@@ -1619,7 +1653,7 @@
 "1686","bimbrowniczy","bimbrowniczy","bimbrownicz-",密造酒,moonshiner,1-2,0,0,0
 "1687","bimbrowy","bimbrowy","bimbrow-",密造酒,moonshine,1-2,0,0,0
 "1688","bimetaliczny","bimetaliczny","bimetaliczn-",バイメタル,bimetallic,1-2,0,0,0
-"1689","bimetalistyczny","bimetalistyczny","bimetalistyczn-",バイメタル,bimetallic,1-2,0,0,0
+"1689","bimetalistyczny","bimetalistyczny","bimetalistyczn-",バイメタル,bimetalistic,1-2,0,0,0
 "1690","bimetalowy","bimetalowy","bimetalow-",バイメタル,bimetallic,1-2,0,0,0
 "1691","bimorficzny","bimorficzny","bimorficzn-",バイモルフ,bimorph,1-2,0,0,0
 "1692","binarny","binarny","binarn-",バイナリ,binary,1-2,0,0,0
@@ -1695,9 +1729,9 @@
 "1765","brukselski","brukselski","brukselsk-",ブルックセルセント,Bruxellescent,1-2i,0,0,0
 "1766","brunatny","brunatny","brunatn-",ブラウン,brown,1-2,0,0,0
 "1767","brunejski","brunejski","brunejsk-",ブルネイ語,Bruneian,1-2i,0,0,0
-"1768","brutalny","brutalny","brutaln-",残忍,brutal,1-2,0,0,0
+"1768","brutalny","brutalny","brutaln-",残忍な,brutal,1-2,0,0,0
 "1769","brydżowy","brydżowy","brydżow-",橋,bridge,1-2,0,0,0
-"1770","brylantowy","brylantowy","brylantow-",燦々,brilliant,1-2,0,0,0
+"1770","brylantowy","brylantowy","brylantow-",ダイヤモンド,diamond,1-2,0,0,0
 "1771","brytyjski","brytyjski","brytyjsk-",英,British,1-2i,0,0,0
 "1772","brzany","brzany","brzan-",触鬚,barbel,1-2,0,0,0
 "1773","brzemienny","brzemienny","brzemienn-",漂う,beached,1-2,0,0,0
@@ -1709,13 +1743,13 @@
 "1779","brzydki","brzydki","brzydk-",醜い,ugly,1-2i,0,0,0
 "1781","brązowawy","brązowawy","brązowaw-",茶色っぽい,brownish,1-2,0,0,0
 "1782","brązowooki","brązowooki","brązowook-",茶目,brown-eyed,1-2i,0,0,0
-"1783","brązowy","brązowy","brązow-",ブラウン,brown,1-2,0,0,0
+"1783","brązowy","brązowy","brązow-",茶色い、茶色の、褐色の,brown,1-2,0,0,0
 "1784","budapeszteński","budapeszteński","budapeszteńsk-",ブタペスト,Budapest,1-2i,0,0,0
 "1785","buddyjski","buddyjski","buddyjsk-",仏教徒,buddhist,1-2i,0,0,0
-"1786","budowlany","budowlany","budowlan-",ビルディング,building,1-2,0,0,0
-"1787","buduarowy","buduarowy","buduarow-",ブドワール,boudoir,1-2,0,0,0
-"1788","budujący","budujący","budując-",ビルディング,building,1-2,0,0,0
-"1789","budulcowy","budulcowy","budulcow-",ビルディング,building,1-2,0,0,0
+"1786","budowlany","budowlany","budowlan-",建物の,building,1-2,0,0,0
+"1787","buduarowy","buduarowy","buduarow-",親密な,intimate,1-2,0,0,0
+"1788","budujący","budujący","budując-",ビルダー,builder,1-2,0,0,0
+"1789","budulcowy","budulcowy","budulcow-",建材,building material,1-2,0,0,0
 "1790","budżetowy","budżetowy","budżetow-",予算,budgetary,1-2,0,0,0
 "1791","bufetowy","bufetowy","bufetow-",ブッフェ,buffet,1-2,0,0,0
 "1792","bufiasty","bufiasty","bufiast-",ブッフェ,buffet,1-2,0,0,0
@@ -1754,9 +1788,9 @@
 "1828","błahy","błahy","błah-",足が地に着かない,frivolous,1-2,0,0,0
 "1829","błogi","błogi","błog-",あざやか,blissful,1-2i,0,0,0
 "1830","błogosławiony","błogosławiony","błogosławion-",祝福された,blessed,1-2,0,0,0
-"1831","błoniasty","błoniasty","błoniast-",ドロドロ,muddy,1-2,0,0,0
-"1832","błotnisty","błotnisty","błotnist-",ドロドロ,muddy,1-2,0,0,0
-"1833","błotny","błotny","błotn-",ドロドロ,muddy,1-2,0,0,0
+"1831","błoniasty","błoniasty","błoniast-",膜状の,membranous,1-2,0,0,0
+"1832","błotnisty","błotnisty","błotnist-",泥だらけ,muddy,1-2,0,0,0
+"1833","błotny","błotny","błotn-",泥の,mud,1-2,0,0,0
 "1834","błyskawiczny","błyskawiczny","błyskawiczn-",インスタント,instant,1-2,0,0,0
 "1835","błyskotliwy","błyskotliwy","błyskotliw-",燦々,brilliant,1-2,0,0,0
 "1836","błyszczący","błyszczący","błyszcząc-",艶やか,shiny,1-2,0,0,0
@@ -1767,9 +1801,9 @@
 "1842","castingowy","castingowy","castingow-",鋳造,casting,1-2,0,0,0
 "1843","cateringowy","cateringowy","cateringow-",ケータリング,catering,1-2,0,0,0
 "1844","całki","całki","całk-",積分法,integrals,1-2i,0,0,0
-"1846","całkowalny","całkowalny","całkowaln-",ぜんすう,total,1-2,0,0,0
-"1847","całkowity","całkowity","całkowit-",ぜんすう,total,1-2,0,0,0
-"1848","całkowy","całkowy","całkow-",ぜんすう,total,1-2,0,0,0
+"1846","całkowalny","całkowalny","całkowaln-",可積分,integrable,1-2,0,0,0
+"1847","całkowity","całkowity","całkowit-",全体の、総計の,total,1-2,0,0,0
+"1848","całkowy","całkowy","całkow-",積分の,integral,1-2,0,0,0
 "1849","całodobowy","całodobowy","całodobow-",二六時中,round-the-clock,1-2,0,0,0
 "1850","całopalny","całopalny","całopaln-",ぜんすう,total,1-2,0,0,0
 "1851","całościowy","całościowy","całościow-",ぜんすう,total,1-2,0,0,0
@@ -1839,12 +1873,13 @@
 "1918","chropowaty","chropowaty","chropowat-",粗い,rough,1-2,0,0,0
 "1919","chrupki","chrupki","chrupk-",クリスピー,crispy,1-2i,0,0,0
 "1920","chrystusowy","chrystusowy","chrystusow-",クリスチャン,christian,1-2,0,0,0
+"9002","Chrystusowy","Chrystusowy","Chrystusow-",キリストのような,Christ,1-2,0,0,0
 "1921","chrzestny","chrzestny","chrzestn-",名前入り,christened,1-2,0,0,0
 "1922","chrześcijański","chrześcijański","chrześcijańsk-",クリスチャン,Christian,1-2i,0,0,0
 "1923","chrzęstny","chrzęstny","chrzęstn-",軟骨性,cartilaginous,1-2,0,0,0
 "1924","chtoniczny","chtoniczny","chtoniczn-",チトニック,chthonic,1-2,0,0,0
 "1925","chudy","chudy","chud-",スキニー,skinny,1-2,0,0,0
-"1928","chujowy","chujowy","chujow-",スキニー,skinny,1-2,0,0,0
+"1928","chujowy","chujowy","chujow-",くだらない,shitty,1-2,0,0,0
 "1929","chuligański","chuligański","chuligańsk-",乱暴者,hooligan,1-2i,0,0,0
 "1930","chutliwy","chutliwy","chutliw-",生意気,hoary,1-2,0,0,0
 "1931","chwacki","chwacki","chwack-",図太い,brash,1-2i,0,0,0
@@ -1858,7 +1893,7 @@
 "1939","chybotliwy","chybotliwy","chybotliw-",がたがた,wobbly,1-2,0,0,0
 "1940","chytry","chytry","chytr-",ずるい,sneaky,1-2,0,0,0
 "1942","chyży","chyży","chyż-",鋭い,keen,1-2,0,0,0
-"1943","chędogi","chędogi","chędog-",スキニー,skinny,1-2i,0,0,0
+"1943","chędogi","chędogi","chędog-",几帳面な,tidy,1-2i,0,0,0
 "1944","chętny","chętny","chętn-",せつなる,eager,1-2,0,0,0
 "1945","chłodny","chłodny","chłodn-",冷ややか,cool,1-2,0,0,0
 "1946","chłonny","chłonny","chłonn-",感受性豊か,receptive,1-2,0,0,0
@@ -1869,14 +1904,14 @@
 "1951","ciałopalny","ciałopalny","ciałopaln-",有体,corporeal,1-2,0,0,0
 "1952","cichuchny","cichuchny","cichuchn-",閑散,meek,1-2,0,0,0
 "1953","cichusi","cichusi","cichus-",閑散,quiet,1-2i,0,0,0
-"1954","cichusieńki","cichusieńki","cichusieńk-",順良,meek,1-2i,0,0,0
-"1955","cichuteczki","cichuteczki","cichuteczk-",順良,meek,1-2i,0,0,0
-"1956","cichuteńki","cichuteńki","cichuteńk-",順良,meek,1-2i,0,0,0
-"1957","cichutki","cichutki","cichutk-",順良,meek,1-2i,0,0,0
-"1958","cichuśki","cichuśki","cichuśk-",閑散,meek,1-2i,0,0,0
-"1959","cichy","cichy","cich-",閑散,quiet,1-2,0,0,0
-"1961","ciekawski","ciekawski","ciekawsk-",珍奇,curious,1-2i,0,0,0
-"1962","ciekawy","ciekawy","ciekaw-",珍奇,curious,1-2,0,0,0
+"1954","cichusieńki","cichusieńki","cichusieńk-",静かな,quiet,1-2i,0,0,0
+"1955","cichuteczki","cichuteczki","cichuteczk-",静かに,quietly,1-2i,0,0,0
+"1956","cichuteńki","cichuteńki","cichuteńk-",静かな,quiet,1-2i,0,0,0
+"1957","cichutki","cichutki","cichutk-",静かな,quiet,1-2i,0,0,0
+"1958","cichuśki","cichuśki","cichuśk-",静かな,silent,1-2i,0,0,0
+"1959","cichy","cichy","cich-",静かな,quiet,1-2,0,0,0
+"1961","ciekawski","ciekawski","ciekawsk-",好奇心旺盛な,inquisitive,1-2i,0,0,0
+"1962","ciekawy","ciekawy","ciekaw-",面白い、興味のある,interesting,1-2,0,0,0
 "1963","ciekły","ciekły","ciekł-",液体,liquid,1-2,0,0,0
 "1964","cielesny","cielesny","cielesn-",肉的,fleshly,1-2,0,0,0
 "1965","cielisty","cielisty","cielist-",肉的,fleshly,1-2,0,0,0
@@ -1891,13 +1926,13 @@
 "1974","ciemny","ciemny","ciemn-",暗い,dark,1-2,0,0,0
 "1975","cienisty","cienisty","cienist-",胡散臭い,shady,1-2,0,0,0
 "1976","cieniuchny","cieniuchny","cieniuchn-",胡散臭い,shady,1-2,0,0,0
-"1977","cieniusi","cieniusi","cienius-",細い,thin,1-2i,0,0,0
-"1978","cieniusieńki","cieniusieńki","cieniusieńk-",細い,shadowy,1-2i,0,0,0
-"1979","cieniuteczki","cieniuteczki","cieniuteczk-",細い,thin,1-2i,0,0,0
-"1980","cieniuteńki","cieniuteńki","cieniuteńk-",細い,thin,1-2i,0,0,0
-"1981","cieniutki","cieniutki","cieniutk-",細い,thin,1-2i,0,0,0
-"1982","cieniuśki","cieniuśki","cieniuśk-",細い,thin,1-2i,0,0,0
-"1983","cienki","cienki","cienk-",細い,thin,1-2i,0,0,0
+"1977","cieniusi","cieniusi","cienius-",可愛い,cute,1-2i,0,0,0
+"1978","cieniusieńki","cieniusieńki","cieniusieńk-",非常に薄い,extremely thin,1-2i,0,0,0
+"1979","cieniuteczki","cieniuteczki","cieniuteczk-",薄い,thin,1-2i,0,0,0
+"1980","cieniuteńki","cieniuteńki","cieniuteńk-",薄い,thin,1-2i,0,0,0
+"1981","cieniutki","cieniutki","cieniutk-",細い、きゃしゃな、くだらない、薄っぺらい,slim,1-2i,0,0,0
+"1982","cieniuśki","cieniuśki","cieniuśk-",薄い,thin,1-2i,0,0,0
+"1983","cienki","cienki","cienk-",細い、きゃしゃな、くだらない、薄っぺらい,slim,1-2i,0,0,0
 "1984","cienkonogi","cienkonogi","cienkonog-",蠏股,thin-legged,1-2i,0,0,0
 "1985","cieplny","cieplny","ciepln-",あたたかい,warm,1-2,0,0,0
 "1986","ciepławy","ciepławy","ciepław-",暖かめ,warmish,1-2,0,0,0
@@ -2080,7 +2115,7 @@
 "2173","despotyczny","despotyczny","despotyczn-",高飛車,domineering,1-2,0,0,0
 "2174","destrukcyjny","destrukcyjny","destrukcyjn-",破壊的,disruptive,1-2,0,0,0
 "2175","deszczoodporny","deszczoodporny","deszczoodporn-",防雨,rainproof,1-2,0,0,0
-"2176","deszczowy","deszczowy","deszczow-",レイニー,rainy,1-2,0,0,0
+"2176","deszczowy","deszczowy","deszczow-",雨の,rainy,1-2,0,0,0
 "2177","detaliczny","detaliczny","detaliczn-",小売り,retail,1-2,0,0,0
 "2178","detonacyjny","detonacyjny","detonacyjn-",ばくはつせい,detonational,1-2,0,0,0
 "2179","detronizacyjny","detronizacyjny","detronizacyjn-",ばくはつせい,detonational,1-2,0,0,0
@@ -2335,7 +2370,7 @@
 "2442","dźwiękonaśladowczy","dźwiękonaśladowczy","dźwiękonaśladowcz-",たからか,sonorous,1-2,0,0,0
 "2443","dźwiękoszczelny","dźwiękoszczelny","dźwiękoszczeln-",ぼうおん,soundproof,1-2,0,0,0
 "2444","dźwiękowy","dźwiękowy","dźwiękow-",たからか,sonorous,1-2,0,0,0
-"2445","dżdżysty","dżdżysty","dżdżyst-",レイニー,rainy,1-2,0,0,0
+"2445","dżdżysty","dżdżysty","dżdżyst-",雨の,rainy,1-2,0,0,0
 "2446","dżentelmeński","dżentelmeński","dżentelmeńsk-",紳士的,gentlemanly,1-2i,0,0,0
 "2447","dżezowy","dżezowy","dżezow-",デニム,jeez,1-2,0,0,0
 "2448","dżinsowy","dżinsowy","dżinsow-",デニム,denim,1-2,0,0,0
@@ -3007,6 +3042,7 @@
 "3141","jezdny","jezdny","jezdn-",車道,roadway,1-2,0,0,0
 "3142","jeziorny","jeziorny","jeziorn-",湖水,lake,1-2,0,0,0
 "3143","jezusowy","jezusowy","jezusow-",ジーザス,jesus,1-2,0,0,0
+"9003","Jezusowy","Jezusowy","Jezusow-",イエス,Jesus',1-2,0,0,0
 "3144","jełki","jełki","jełk-",アイク,jellyfish,1-2i,0,0,0
 "3145","jeździecki","jeździecki","jeździeck-",馬術競技,equestrian,1-2i,0,0,0
 "3146","jeżowy","jeżowy","jeżow-",ヘッジホッグ,hedgehog,1-2,0,0,0
@@ -3226,7 +3262,7 @@
 "3361","komunikatywny","komunikatywny","komunikatywn-",コミュニカティブ,communicative,1-2,0,0,0
 "3362","komunistyczny","komunistyczny","komunistyczn-",共産主義者,communist,1-2,0,0,0
 "3363","komuszy","komuszy","komusz-",コムスジー,komuszy,1-2,0,0,0
-"3364","komórkowy","komórkowy","komórkow-",モバイル,mobile,1-2,0,0,0
+"3364","komórkowy","komórkowy","komórkow-",モバイル,cellular,1-2,0,0,0
 "3365","konający","konający","konając-",瀕死状態,moribund,1-2,0,0,0
 "3366","konceptualny","konceptualny","konceptualn-",概念的,conceptual,1-2,0,0,0
 "3367","koncertowy","koncertowy","koncertow-",コンサート,concert,1-2,0,0,0
@@ -3527,16 +3563,16 @@
 "3666","lidyjski","lidyjski","lidyjsk-",リディアン,Lydian,1-2i,0,0,0
 "3667","ligowy","ligowy","ligow-",リーグ,league,1-2,0,0,0
 "3668","liliowy","liliowy","liliow-",ライラック,lilac,1-2,0,0,0
-"3669","limbowy","limbowy","limbow-",ライム,lime,1-2,0,0,0
+"3669","limbowy","limbowy","limbow-",手足の,limb,1-2,0,0,0
 "3670","limburski","limburski","limbursk-",リンブルフ,Limburg,1-2i,0,0,0
 "3671","limfatyczny","limfatyczny","limfatyczn-",リンパ系,lymphatic,1-2,0,0,0
-"3672","limonkowy","limonkowy","limonkow-",ライム,lime,1-2,0,0,0
+"3672","limonkowy","limonkowy","limonkow-",ライム,lime green,1-2,0,0,0
 "3673","liniowy","liniowy","liniow-",線形,linear,1-2,0,0,0
 "3674","linowy","linowy","linow-",線形,linear,1-2,0,0,0
-"3675","lipcowy","lipcowy","lipcow-",ライム,lime,1-2,0,0,0
+"3675","lipcowy","lipcowy","lipcow-",ライム,July,1-2,0,0,0
 "3676","lipecki","lipecki","lipeck-",リペツク,Lipetsk,1-2i,0,0,0
-"3677","lipny","lipny","lipn-",ライム,lime,1-2,0,0,0
-"3678","lipowy","lipowy","lipow-",ライム,lime,1-2,0,0,0
+"3677","lipny","lipny","lipn-",ライム,duff,1-2,0,0,0
+"3678","lipowy","lipowy","lipow-",菩提樹の,linden,1-2,0,0,0
 "3679","liryczny","liryczny","liryczn-",リリカル,lyrical,1-2,0,0,0
 "3680","lisi","lisi","lis-",フォクシー,foxy,1-2i,0,0,0
 "3681","listny","listny","listn-",木の葉,foliage,1-2,0,0,0
@@ -3547,8 +3583,8 @@
 "3687","literaturoznawczy","literaturoznawczy","literaturoznawcz-",文学的,literary,1-2,0,0,0
 "3688","literniczy","literniczy","liternicz-",文学的,literary,1-2,0,0,0
 "3689","litewski","litewski","litewsk-",リトアニア語,Lithuanian,1-2i,0,0,0
-"3690","litosny","litosny","litosn-",リテラル,literal,1-2,0,0,0
-"3691","litościwy","litościwy","litościw-",リテラル,literal,1-2,0,0,0
+"3690","litosny","litosny","litosn-",哀れな,literal,1-2,0,0,0
+"3691","litościwy","litościwy","litościw-",思いやりのある,literal,1-2,0,0,0
 "3692","liturgiczny","liturgiczny","liturgiczn-",典礼的,liturgical,1-2,0,0,0
 "3693","lity","lity","lit-",文学的,literary,1-2,0,0,0
 "3694","lizboński","lizboński","lizbońsk-",リスボン,Lisbon,1-2i,0,0,0
@@ -3930,9 +3966,9 @@
 "4074","mączysty","mączysty","mączyst-",ぱりぱり,floury,1-2,0,0,0
 "4075","mądry","mądry","mądr-",如才ない,clever,1-2,0,0,0
 "4078","męczący","męczący","męcząc-",疲弊,tiring,1-2,0,0,0
-"4079","męski","męski","męsk-",マスキュリン,masculine,1-2i,0,0,0
-"4080","męskoosobowy","męskoosobowy","męskoosobow-",マスキュリン,masculine,1-2,0,0,0
-"4081","męskorzeczowy","męskorzeczowy","męskorzeczow-",マスキュリン,masculine,1-2,0,0,0
+"4079","męski","męski","męsk-",男性の,male,1-2i,0,0,0
+"4080","męskoosobowy","męskoosobowy","męskoosobow-",男性の,masculine,1-2,0,0,0
+"4081","męskorzeczowy","męskorzeczowy","męskorzeczow-",男性の,masculine,1-2,0,0,0
 "4082","męskozwierzęcy","męskozwierzęcy","męskozwierzęc-",マスキュリンアニマル,male animals,1-2,0,0,0
 "4083","męskożywotny","męskożywotny","męskożywotn-",マスキュリン・ライビング,male life,1-2,0,0,0
 "4084","mętnawy","mętnawy","mętnaw-",どす黒い,filmy,1-2,0,0,0
@@ -4037,7 +4073,7 @@
 "4197","narzucony","narzucony","narzucon-",課せられる,imposed,1-2,0,0,0
 "4198","naręczny","naręczny","naręczn-",ハンドヘルド,handheld,1-2,0,0,0
 "4199","nasienny","nasienny","nasienn-",精力的,seminal,1-2,0,0,0
-"4200","naskalny","naskalny","naskaln-",ロッキー,rocky,1-2,0,0,0
+"4200","naskalny","naskalny","naskaln-",岩がちな,rocky,1-2,0,0,0
 "4201","naskórkowy","naskórkowy","naskórkow-",表皮,epidermal,1-2,0,0,0
 "4202","nastawny","nastawny","nastawn-",調整可能,adjustable,1-2,0,0,0
 "4203","nastoletni","nastoletni","nastoletn-",ティーンエイジャー,teenager,1-2i,0,0,0
@@ -4047,9 +4083,9 @@
 "4207","natarczywy","natarczywy","natarczyw-",しつこい,insistent,1-2,0,0,0
 "4208","natowski","natowski","natowsk-",生得的,natal,1-2i,0,0,0
 "4209","natrętny","natrętny","natrętn-",邪魔な,obtrusive,1-2,0,0,0
-"4210","naturalny","naturalny","naturaln-",ナチュラル,natural,1-2,0,0,0
+"4210","naturalny","naturalny","naturaln-",自然の,natural,1-2,0,0,0
 "4211","natychmiastowy","natychmiastowy","natychmiastow-",インスタント,instant,1-2,0,0,0
-"4212","natywny","natywny","natywn-",ネイティブ,native,1-2,0,0,0
+"4212","natywny","natywny","natywn-",生来の、固有の、生まれつき,native,1-2,0,0,0
 "4213","nauczycielski","nauczycielski","nauczycielsk-",師匠,teacher,1-2i,0,0,0
 "4214","naukowy","naukowy","naukow-",科学的,scientific,1-2,0,0,0
 "4215","nawalony","nawalony","nawalon-",酔っ払い,drunk,1-2,0,0,0
@@ -4560,7 +4596,7 @@
 "4735","nowatorski","nowatorski","nowatorsk-",革新的,innovative,1-2i,0,0,0
 "4736","nowelowy","nowelowy","nowelow-",ショートストーリー,short story,1-2,0,0,0
 "4737","nowobogacki","nowobogacki","nowobogack-",ヌーボー,nouveau,1-2i,0,0,0
-"4738","nowoczesny","nowoczesny","nowoczesn-",モダン,modern,1-2,0,0,0
+"4738","nowoczesny","nowoczesny","nowoczesn-",近代的な,modern,1-2,0,0,0
 "4739","nowogrecki","nowogrecki","nowogreck-",新ギリシャ語,Novogreek,1-2i,0,0,0
 "4740","nowojorski","nowojorski","nowojorsk-",ニューヨーク,New York,1-2i,0,0,0
 "4741","nowokaledoński","nowokaledoński","nowokaledońsk-",ニューカレドニアン,New Caledonian,1-2i,0,0,0
@@ -4573,7 +4609,7 @@
 "4748","nowotarski","nowotarski","nowotarsk-",ニューヨーク,New Orleans,1-2i,0,0,0
 "4749","nowotestamentowy","nowotestamentowy","nowotestamentow-",新約聖書,New Testament,1-2,0,0,0
 "4750","nowozelandzki","nowozelandzki","nowozelandzk-",ニュージーランド,New Zealand,1-2i,0,0,0
-"4751","nowożytny","nowożytny","nowożytn-",モダン,modern,1-2,0,0,0
+"4751","nowożytny","nowożytny","nowożytn-",近代的な,modern,1-2,0,0,0
 "4752","nowy","nowy","now-",新着,new,1-2,0,0,0
 "4753","nośny","nośny","nośn-",ベアリング,bearing,1-2,0,0,0
 "4754","nożny","nożny","nożn-",ペダル,pedal,1-2,0,0,0
@@ -4724,7 +4760,7 @@
 "4905","ojcobójczy","ojcobójczy","ojcobójcz-",殺虫剤,parricidal,1-2,0,0,0
 "4906","ojcowski","ojcowski","ojcowsk-",父系,paternal,1-2i,0,0,0
 "4907","ojcowy","ojcowy","ojcow-",父方,paternal,1-2,0,0,0
-"4908","ojczysty","ojczysty","ojczyst-",ネイティブ,native,1-2,0,0,0
+"4908","ojczysty","ojczysty","ojczyst-",生来の、固有の、生まれつき,native,1-2,0,0,0
 "4909","ojczyźniany","ojczyźniany","ojczyźnian-",故郷,homeland,1-2,0,0,0
 "4910","okazały","okazały","okazał-",壮大,magnificent,1-2,0,0,0
 "4911","okazjonalny","okazjonalny","okazjonaln-",たまに,occasional,1-2,0,0,0
@@ -4964,10 +5000,11 @@
 "5148","pawi","pawi","paw-",ピーコック,peacocks,1-2i,0,0,0
 "5149","pawiooki","pawiooki","pawiook-",ピーコック,peacock,1-2i,0,0,0
 "5150","pazerny","pazerny","pazern-",よく深い,greedy,1-2,0,0,0
-"5151","pałacowy","pałacowy","pałacow-",城,palace,1-2,0,0,0
+"5151","pałacowy","pałacowy","pałacow-",城の,palace,1-2,0,0,0
 "5152","pałąkowaty","pałąkowaty","pałąkowat-",バンディ,bandy,1-2,0,0,0
-"5153","pański","pański","pańsk-",尊,ladies,1-2i,0,0,0
-"5154","państwowy","państwowy","państwow-",州,state,1-2,0,0,0
+"9007","Pański","Pański","Pańsk-",君の,Your,1-2i,0,0,0
+"5153","pański","pański","pańsk-",君の,your,1-2i,0,0,0
+"5154","państwowy","państwowy","państwow-",国家の,state,1-2,0,0,0
 "5155","pańszczyźniany","pańszczyźniany","pańszczyźnian-",ヴィランの,of villein,1-2,0,0,0
 "5156","październikowy","październikowy","październikow-",10月,October,1-2,0,0,0
 "5157","pchli","pchli","pchl-",ノミ,flea,1-2i,0,0,0
@@ -5528,7 +5565,7 @@
 "5723","przemądrzały","przemądrzały","przemądrzał-",うまい,smarter,1-2,0,0,0
 "5724","przenajświętszy","przenajświętszy","przenajświętsz-",炯眼,insightful,1-2,0,0,0
 "5725","przenikliwy","przenikliwy","przenikliw-",炯眼,insightful,1-2,0,0,0
-"5726","przenośny","przenośny","przenośn-",モバイル,mobile,1-2,0,0,0
+"5726","przenośny","przenośny","przenośn-",モバイル,portable,1-2,0,0,0
 "5727","przeogromny","przeogromny","przeogromn-",膨大,huge,1-2,0,0,0
 "5728","przepiórczy","przepiórczy","przepiórcz-",ウズラ,quail,1-2,0,0,0
 "5729","przepiękny","przepiękny","przepiękn-",華やか,gorgeous,1-2,0,0,0
@@ -5820,9 +5857,9 @@
 "6019","rodowity","rodowity","rodowit-",血統書,pedigree,1-2,0,0,0
 "6020","rodowodowy","rodowodowy","rodowodow-",血統書,pedigree,1-2,0,0,0
 "6021","rodzicielski","rodzicielski","rodzicielsk-",親,parental,1-2i,0,0,0
-"6022","rodzimowierczy","rodzimowierczy","rodzimowiercz-",ネイティブ,native,1-2,0,0,0
-"6023","rodzimy","rodzimy","rodzim-",ネイティブ,native,1-2,0,0,0
-"6024","rodzinny","rodzinny","rodzinn-",ネイティブ,native,1-2,0,0,0
+"6022","rodzimowierczy","rodzimowierczy","rodzimowiercz-",先住民族の,indigenous,1-2,0,0,0
+"6023","rodzimy","rodzimy","rodzim-",生来の、固有の、生まれつき,native,1-2,0,0,0
+"6024","rodzinny","rodzinny","rodzinn-",家族の,family,1-2,0,0,0
 "6025","rogaty","rogaty","rogat-",べんきょー,horny,1-2,0,0,0
 "6026","rojny","rojny","rojn-",浅黒い,swarthy,1-2,0,0,0
 "6027","rolniczy","rolniczy","rolnicz-",アグリカルチュラル,agricultural,1-2,0,0,0
@@ -5902,9 +5939,9 @@
 "6102","rubaszny","rubaszny","rubaszn-",ちゃちい,rubbishy,1-2,0,0,0
 "6103","rubinowy","rubinowy","rubinow-",ルビー,ruby,1-2,0,0,0
 "6105","ruchalny","ruchalny","ruchaln-",モバイル,mobile,1-2,0,0,0
-"6106","ruchliwy","ruchliwy","ruchliw-",モバイル,mobile,1-2,0,0,0
+"6106","ruchliwy","ruchliwy","ruchliw-",忙しい,busy,1-2,0,0,0
 "6107","ruchomy","ruchomy","ruchom-",モバイル,mobile,1-2,0,0,0
-"6108","ruchowy","ruchowy","ruchow-",モバイル,mobile,1-2,0,0,0
+"6108","ruchowy","ruchowy","ruchow-",モバイル,motor,1-2,0,0,0
 "6109","rudy","rudy","rud-",鉱石,ore,1-2,0,0,0
 "6110","rudymentarny","rudymentarny","rudymentarn-",初歩的,rudimentary,1-2,0,0,0
 "6111","rufowy","rufowy","rufow-",険しい,stern,1-2,0,0,0
@@ -6412,9 +6449,9 @@
 "6623","szacowny","szacowny","szacown-",いっかど,respectable,1-2,0,0,0
 "6624","szacunkowy","szacunkowy","szacunkow-",推定,respectable,1-2,0,0,0
 "6625","szafirowy","szafirowy","szafirow-",サファイア,sapphire,1-2,0,0,0
-"6626","szaleńczy","szaleńczy","szaleńcz-",マッド,mad,1-2,0,0,0
-"6627","szalony","szalony","szalon-",マッド,mad,1-2,0,0,0
-"6628","szalupowy","szalupowy","szalupow-",マッド,mad,1-2,0,0,0
+"6626","szaleńczy","szaleńczy","szaleńcz-",狂った,mad,1-2,0,0,0
+"6627","szalony","szalony","szalon-",非常識な、おかしい,insane,1-2,0,0,0
+"6628","szalupowy","szalupowy","szalupow-",救命ボートの,lifeboat,1-2,0,0,0
 "6629","szamański","szamański","szamańsk-",シャーマニズム的,shamanistic,1-2i,0,0,0
 "6630","szampański","szampański","szampańsk-",シャンパン,champagne,1-2i,0,0,0
 "6631","szanowny","szanowny","szanown-",いっかど,esteemed,1-2,0,0,0
@@ -6444,8 +6481,8 @@
 "6655","szczytny","szczytny","szczytn-",しゅしょう,laudable,1-2,0,0,0
 "6656","szczątkowy","szczątkowy","szczątkow-",ネズミ,rat,1-2,0,0,0
 "6657","szczękowy","szczękowy","szczękow-",あごひげ,jawy,1-2,0,0,0
-"6658","szczęsny","szczęsny","szczęsn-",ラッキー,lucky,1-2,0,0,0
-"6659","szczęśliwy","szczęśliwy","szczęśliw-",ラッキー,lucky,1-2,0,0,0
+"6658","szczęsny","szczęsny","szczęsn-",幸せな、幸福な,lucky,1-2,0,0,0
+"6659","szczęśliwy","szczęśliwy","szczęśliw-",幸せな、幸福な,lucky,1-2,0,0,0
 "6660","szelmowski","szelmowski","szelmowsk-",ほほえましい,charming,1-2i,0,0,0
 "6661","szemrany","szemrany","szemran-",奔放,shabby,1-2,0,0,0
 "6662","szeregowy","szeregowy","szeregow-",シリアル,serial,1-2,0,0,0
@@ -6700,7 +6737,7 @@
 "6916","trójwartościowy","trójwartościowy","trójwartościow-",三価,trivalent,1-2,0,0,0
 "6917","trójwymiarowy","trójwymiarowy","trójwymiarow-",りったい,three-dimensional,1-2,0,0,0
 "6918","tubalny","tubalny","tubaln-",筒状,tubular,1-2,0,0,0
-"6919","tubylczy","tubylczy","tubylcz-",ネイティブ,native,1-2,0,0,0
+"6919","tubylczy","tubylczy","tubylcz-",生来の、固有の、生まれつき,native,1-2,0,0,0
 "6920","tuczny","tuczny","tuczn-",ツッキー,tuczny,1-2,0,0,0
 "6921","tunezyjski","tunezyjski","tunezyjsk-",チューニジアン,tunisian,1-2i,0,0,0
 "6922","tunguski","tunguski","tungusk-",ツングースキ,tunguski,1-2i,0,0,0
@@ -6732,7 +6769,7 @@
 "6949","tysiącletni","tysiącletni","tysiącletn-",千歳飴,millennial,1-2i,0,0,0
 "6950","tyski","tyski","tysk-",タイスキ,tyski,1-2i,0,0,0
 "6951","tytoniowy","tytoniowy","tytoniow-",タバコ,tobacco,1-2,0,0,0
-"6952","tęczowy","tęczowy","tęczow-",レインボー,rainbow,1-2,0,0,0
+"6952","tęczowy","tęczowy","tęczow-",虹の,rainbow,1-2,0,0,0
 "6953","tęgi","tęgi","tęg-",冴えない,blunt,1-2i,0,0,0
 "6954","tępy","tępy","tęp-",素っ気ない,blunt,1-2,0,0,0
 "6955","tęskny","tęskny","tęskn-",憧憬,longing,1-2,0,0,0
@@ -7137,8 +7174,8 @@
 "7371","wybuchowy","wybuchowy","wybuchow-",爆薬,temperamental,1-2,0,0,0
 "7372","wybujały","wybujały","wybujał-",あふれんばかりの,exuberant,1-2,0,0,0
 "7373","wychowawczy","wychowawczy","wychowawcz-",教育的,educational,1-2,0,0,0
-"7374","wychudzony","wychudzony","wychudzon-",スキニー,skinny,1-2,0,0,0
-"7375","wychudły","wychudły","wychudł-",スキニー,skinny,1-2,0,0,0
+"7374","wychudzony","wychudzony","wychudzon-",やせ衰えた,emaciated,1-2,0,0,0
+"7375","wychudły","wychudły","wychudł-",罵倒,gaunt,1-2,0,0,0
 "7376","wyczerpany","wyczerpany","wyczerpan-",ぐだぐだ,exhausted,1-2,0,0,0
 "7377","wyczerpujący","wyczerpujący","wyczerpując-",消耗的,exhausting,1-2,0,0,0
 "7378","wyczuwalny","wyczuwalny","wyczuwaln-",触知可能,palpable,1-2,0,0,0
@@ -7528,8 +7565,8 @@
 "7783","ziemisty","ziemisty","ziemist-",アーシー,earthy,1-2,0,0,0
 "7784","ziemniaczany","ziemniaczany","ziemniaczan-",ポテト,potato,1-2,0,0,0
 "7785","ziemno-wodny","ziemno-wodny","ziemno-wodn-",アーシーウォータリー,earthy-watery,1-2,0,0,0
-"7786","ziemny","ziemny","ziemn-",アーシー,earthy,1-2,0,0,0
-"7787","ziemski","ziemski","ziemsk-",アーシー,earthy,1-2i,0,0,0
+"7786","ziemny","ziemny","ziemn-",陸生の,earthy,1-2,0,0,0
+"7787","ziemski","ziemski","ziemsk-",地上の,earthy,1-2i,0,0,0
 "7788","zimbabwejski","zimbabwejski","zimbabwejsk-",ジンバブエ,zimbabwean,1-2i,0,0,0
 "7789","zimbabweński","zimbabweński","zimbabweńsk-",ジンバブエ,zimbabwean,1-2i,0,0,0
 "7790","zimnokrwisty","zimnokrwisty","zimnokrwist-",血も涙もない,cold-blooded,1-2,0,0,0
@@ -7551,8 +7588,8 @@
 "7806","zmienny","zmienny","zmienn-",揮発性,mutable,1-2,0,0,0
 "7807","zmieszany","zmieszany","zmieszan-",慌しい,confused,1-2,0,0,0
 "7808","zmięty","zmięty","zmięt-",しわしわ,crumpled,1-2,0,0,0
-"7809","zmoknięty","zmoknięty","zmoknięt-",ウェット,wet,1-2,0,0,0
-"7810","zmokły","zmokły","zmokł-",ウェット,wet,1-2,0,0,0
+"7809","zmoknięty","zmoknięty","zmoknięt-",濡れた,wet,1-2,0,0,0
+"7810","zmokły","zmokły","zmokł-",濡れた,wet,1-2,0,0,0
 "7811","zmordowany","zmordowany","zmordowan-",皺くちゃ,squashed,1-2,0,0,0
 "7812","zmurszały","zmurszały","zmurszał-",皺くちゃ,crumpled,1-2,0,0,0
 "7813","zmysłowy","zmysłowy","zmysłow-",感覚的,sensuous,1-2,0,0,0
@@ -7562,8 +7599,8 @@
 "7817","zmęczony","zmęczony","zmęczon-",くたくた,tired,1-2,0,0,0
 "7818","znaczny","znaczny","znaczn-",意義深い,significant,1-2,0,0,0
 "7819","znajomy","znajomy","znajom-",手近か,familiar,1-2,0,0,0
-"7820","znakomity","znakomity","znakomit-",燦々,notable,1-2,0,0,0
-"7821","znamienity","znamienity","znamienit-",顕著,notable,1-2,0,0,0
+"7820","znakomity","znakomity","znakomit-",優れた,notable,1-2,0,0,0
+"7821","znamienity","znamienity","znamienit-",輝かしい,notable,1-2,0,0,0
 "7822","znamienny","znamienny","znamienn-",ぐういてき,emblematic,1-2,0,0,0
 "7823","znany","znany","znan-",手近か,familiar,1-2,0,0,0
 "7824","zniecierpliwiony","zniecierpliwiony","zniecierpliwion-",きがみじかい,impatient,1-2,0,0,0
@@ -7611,8 +7648,8 @@
 "7867","zyskowny","zyskowny","zyskown-",ゆうえき,profitable,1-2,0,0,0
 "7868","ząbkowany","ząbkowany","ząbkowan-",ギザギザ,serrated,1-2,0,0,0
 "7869","zębatkowy","zębatkowy","zębatkow-",ラックアンドピニオン,rack and pinion,1-2,0,0,0
-"7870","zębaty","zębaty","zębat-",ラック,rack,1-2,0,0,0
-"7871","zębowy","zębowy","zębow-",ラック,rack,1-2,0,0,0
+"7870","zębaty","zębaty","zębat-",歯の,rack,1-2,0,0,0
+"7871","zębowy","zębowy","zębow-",歯の,rack,1-2,0,0,0
 "7872","złocistobrązowy","złocistobrązowy","złocistobrązow-",飴色,golden brown,1-2,0,0,0
 "7873","złocisty","złocisty","złocist-",ゴールデン,golden,1-2,0,0,0
 "7874","złodziejski","złodziejski","złodziejsk-",盗賊団,thieving,1-2i,0,0,0
@@ -7822,40 +7859,3 @@
 "8094","żółty","żółty","żółt-",イエロー,yellow,1-2,0,0,0
 "8095","żółwi","żółwi","żółw-",亀,turtles,1-2i,0,0,0
 "8096","żądny","żądny","żądn-",せつなる,eager,1-2,0,0,0
-"9002","Chrystusowy","Chrystusowy","Chrystusow-",キリストのような,Christ,1-2,0,0,0
-"9003","Jezusowy","Jezusowy","Jezusow-",イエス,Jesus',1-2,0,0,0
-"9016","abażurowy","abażurowy","abażurow-",ランプシェード,lampshade,1-2,0,0,0
-"9018","abdominalny","abdominalny","abdominaln-",腹部,abdominal,1-2,0,0,0
-"9019","abdukcyjny","abdukcyjny","abdukcyjn-",誘拐,abductive,1-2,0,0,0
-"9020","abdykacyjny","abdykacyjny","abdykacyjn-",アブディケーティブ,abdicative,1-2,0,0,0
-"9021","abecadlny","abecadlny","abecadln-",アルファベット順,abecadal,1-2,0,0,0
-"9022","abecadłowy","abecadłowy","abecadłow-",アルファベット順,abecadal,1-2,0,0,0
-"9023","aberracyjny","aberracyjny","aberracyjn-",異常,aberrant,1-2,0,0,0
-"9024","abietynowy","abietynowy","abietynow-",アビエチン,abietic,1-2,0,0,0
-"9025","abiogenny","abiogenny","abiogenn-",非生物起源,abiogenic,1-2,0,0,0
-"9026","abiotyczny","abiotyczny","abiotyczn-",非生物的,abiotic,1-2,0,0,0
-"9027","abisalny","abisalny","abisaln-",深淵,abysmal,1-2,0,0,0
-"9029","ablacyjny","ablacyjny","ablacyjn-",アブレイティブ,ablative,1-2,0,0,0
-"9031","abolicjonistyczny","abolicjonistyczny","abolicjonistyczn-",廃止主義者,abolitionist,1-2,0,0,0
-"9032","abolicyjny","abolicyjny","abolicyjn-",廃止主義者,abolitionist,1-2,0,0,0
-"9033","abonamentowy","abonamentowy","abonamentow-",サブスクリプション,subscriptionist,1-2,0,0,0
-"9035","aborcjonistyczny","aborcjonistyczny","aborcjonistyczn-",流産主義者,abortionist,1-2,0,0,0
-"9036","aborcyjny","aborcyjny","aborcyjn-",中絶,abortionist,1-2,0,0,0
-"9037","abordażowy","abordażowy","abordażow-",搭乗,abortionist,1-2,0,0,0
-"9038","abrazyjny","abrazyjny","abrazyjn-",研磨剤,abrasive,1-2,0,0,0
-"9039","absencyjny","absencyjny","absencyjn-",欠席主義,absentive,1-2,0,0,0
-"9040","absolutny","absolutny","absolutn-",絶対の,absolute,1-2,0,0,0
-"9041","absolutoryjny","absolutoryjny","absolutoryjn-",絶対の,absolute,1-2,0,0,0
-"9042","absolutystyczny","absolutystyczny","absolutystyczn-",絶対主義者,absolutist,1-2,0,0,0
-"9044","absorpcyjny","absorpcyjny","absorpcyjn-",吸収性,absorptive,1-2,0,0,0
-"9045","abstrakcjonistyczny","abstrakcjonistyczny","abstrakcjonistyczn-",概要,abstractive,1-2,0,0,0
-"9046","abstrakcyjny","abstrakcyjny","abstrakcyjn-",概要,abstract,1-2,0,0,0
-"9047","abstraktowy","abstraktowy","abstraktow-",概要,abstract,1-2,0,0,0
-"9049","abstynencyjny","abstynencyjny","abstynencyjn-",禁欲,abstract,1-2,0,0,0
-"9050","absurdalny","absurdalny","absurdaln-",ばかげている,absurd,1-2,0,0,0
-"9051","absydalny","absydalny","absydaln-",棄権,absurd,1-2,0,0,0
-"9052","absydowy","absydowy","absydow-",apse,absid,1-2,0,0,0
-"9053","absyntowy","absyntowy","absyntow-",アブサン,absinthe,1-2,0,0,0
-"9054","abuliczny","abuliczny","abuliczn-",abulic,abulic,1-2,0,0,0
-"9055","abuzywny","abuzywny","abuzywn-",虐待的,abusive,1-2,0,0,0
-"9056","abysalny","abysalny","abysaln-",アビサル,abysmal,1-2,0,0,0

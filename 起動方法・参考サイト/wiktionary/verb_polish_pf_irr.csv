@@ -1,259 +1,258 @@
-"55","dobiec",,,,,,,,,
-"63","dociec",,,,,,,,,
-"78","dogryźć",,,,,,,,,
-"83","dojeść",,,,,,,,,
-"85","dojść",,,,,,,,,
-"99","doleźć",,,,,,,,,
-"104","donieść",,,,,,,,,
-"107","dopaść",,,,,,,,,
-"112","dopiec",,,,,,,,,
-"118","dopomóc",,,,,,,,,
-"135","dosiąść",,,,,,,,,
-"145","dostrzec",,,,,,,,,
-"162","dowieść",,,,,,,,,
-"163","dowieźć",,,,,,,,,
-"218","lec",,,,,,,,,
-"259","nadejść",,,,,,,,,
-"292","najeść",,,,,,,,,
-"294","najść",,,,,,,,,
-"300","nakraść",,,,,,,,,
-"306","nakłaść",,,,,,,,,
-"310","naleźć",,,,,,,,,
-"322","nanieść",,,,,,,,,
-"328","napaść",,,,,,,,,
-"336","napleść",,,,,,,,,
-"400","nawieźć",,,,,,,,,
-"404","nawlec",,,,,,,,,
-"430","obejść",,,,,,,,,
-"439","obiec",,,,,,,,,
-"446","objeść",,,,,,,,,
-"451","oblec",,,,,,,,,
-"454","obleźć",,,,,,,,,
-"481","obsiąść",,,,,,,,,
-"493","obtłuc",,,,,,,,,
-"498","obuć",,,,,,,,,
-"500","obwieść",,,,,,,,,
-"501","obwieźć",,,,,,,,,
-"531","odbiec",,,,,,,,,
-"545","odczuć",,,,,,,,,
-"557","odejść",,,,,,,,,
-"574","odgryźć",,,,,,,,,
-"596","odleźć",,,,,,,,,
-"604","odnaleźć",,,,,,,,,
-"605","odnieść",,,,,,,,,
-"610","odpaść",,,,,,,,,
-"616","odpleść",,,,,,,,,
-"633","odrzec",,,,,,,,,
-"655","odtruć",,,,,,,,,
-"665","odwieść",,,,,,,,,
-"666","odwieźć",,,,,,,,,
-"667","odwlec",,,,,,,,,
-"710","okraść",,,,,,,,,
-"718","okuć",,,,,,,,,
-"739","opaść",,,,,,,,,
-"742","opiec",,,,,,,,,
-"748","opleść",,,,,,,,,
-"749","opluć",,,,,,,,,
-"773","orzec",,,,,,,,,
-"777","osiec",,,,,,,,,
-"782","osiąść",,,,,,,,,
-"790","ostrzec",,,,,,,,,
-"792","ostrzyc",,,,,,,,,
-"813","otruć",,,,,,,,,
-"845","paść",,,,,,,,,
-"859","pobiec",,,,,,,,,
-"879","pociec",,,,,,,,,
-"887","poczuć",,,,,,,,,
-"896","podbiec",,,,,,,,,
-"910","podejść",,,,,,,,,
-"926","podjeść",,,,,,,,,
-"933","podkraść",,,,,,,,,
-"939","podkuć",,,,,,,,,
-"941","podlec",,,,,,,,,
-"942","podleźć",,,,,,,,,
-"946","podmieść",,,,,,,,,
-"949","podnieść",,,,,,,,,
-"956","podpaść",,,,,,,,,
-"978","podstrzyc",,,,,,,,,
-"982","podszczuć",,,,,,,,,
-"985","podtruć",,,,,,,,,
-"989","podupaść",,,,,,,,,
-"992","podwieźć",,,,,,,,,
-"1017","pognieść",,,,,,,,,
-"1023","pogryźć",,,,,,,,,
-"1040","pojeść",,,,,,,,,
-"1075","polec",,,,,,,,,
-"1079","poleźć",,,,,,,,,
-"1092","pomieść",,,,,,,,,
-"1102","pomóc",,,,,,,,,
-"1107","ponieść",,,,,,,,,
-"1123","popleść",,,,,,,,,
-"1135","popsuć",,,,,,,,,
-"1173","posiąść",,,,,,,,,
-"1200","postrzec",,,,,,,,,
-"1235","potłuc",,,,,,,,,
-"1251","powieść",,,,,,,,,
-"1259","powlec",,,,,,,,,
-"1328","przebiec",,,,,,,,,
-"1335","przebóść",,,,,,,,,
-"1353","przeczuć",,,,,,,,,
-"1379","przegryźć",,,,,,,,,
-"1387","przejeść",,,,,,,,,
-"1391","przejść",,,,,,,,,
-"1407","przekuć",,,,,,,,,
-"1411","przeleźć",,,,,,,,,
-"1426","przemóc",,,,,,,,,
-"1427","przenieść",,,,,,,,,
-"1434","przepaść",,,,,,,,,
-"1442","przepleść",,,,,,,,,
-"1470","przesiąść",,,,,,,,,
-"1477","przestrzec",,,,,,,,,
-"1515","przewieźć",,,,,,,,,
-"1537","przeżuć",,,,,,,,,
-"1540","przybiec",,,,,,,,,
-"1561","przygnieść",,,,,,,,,
-"1564","przygryźć",,,,,,,,,
-"1571","przyjść",,,,,,,,,
-"1580","przykuć",,,,,,,,,
-"1584","przyleźć",,,,,,,,,
-"1594","przynieść",,,,,,,,,
-"1596","przyoblec",,,,,,,,,
-"1601","przypaść",,,,,,,,,
-"1603","przypiec",,,,,,,,,
-"1623","przyrzec",,,,,,,,,
-"1628","przysiąc",,,,,,,,,
-"1629","przysiąść",,,,,,,,,
-"1643","przystrzyc",,,,,,,,,
-"1657","przytruć",,,,,,,,,
-"1671","przywieść",,,,,,,,,
-"1672","przywieźć",,,,,,,,,
-"1699","pójść",,,,,,,,,
-"1711","rozbiec",,,,,,,,,
-"1744","rozejść",,,,,,,,,
-"1762","rozgryźć",,,,,,,,,
-"1781","rozkraść",,,,,,,,,
-"1786","rozlec",,,,,,,,,
-"1787","rozleźć",,,,,,,,,
-"1801","roznieść",,,,,,,,,
-"1809","rozpaść",,,,,,,,,
-"1814","rozpleść",,,,,,,,,
-"1830","rozpruć",,,,,,,,,
-"1847","rozsiąść",,,,,,,,,
-"1868","rozwieść",,,,,,,,,
-"1869","rozwieźć",,,,,,,,,
-"1947","siąść",,,,,,,,,
-"2023","skraść",,,,,,,,,
-"2056","skuć",,,,,,,,,
-"2085","spaść",,,,,,,,,
-"2096","spiec",,,,,,,,,
-"2113","spleść",,,,,,,,,
-"2137","spostrzec",,,,,,,,,
-"2169","sprząc",,,,,,,,,
-"2263","stłuc",,,,,,,,,
-"2292","ubiec",,,,,,,,,
-"2299","ubóść",,,,,,,,,
-"2312","uciec",,,,,,,,,
-"2324","uczuć",,,,,,,,,
-"2343","ugnieść",,,,,,,,,
-"2348","ugryźć",,,,,,,,,
-"2353","ujeść",,,,,,,,,
-"2357","ujść",,,,,,,,,
-"2365","uknuć",,,,,,,,,
-"2372","ukraść",,,,,,,,,
-"2384","ukłuć",,,,,,,,,
-"2386","ulec",,,,,,,,,
-"2392","uleźć",,,,,,,,,
-"2413","unieść",,,,,,,,,
-"2417","upaść",,,,,,,,,
-"2421","upiec",,,,,,,,,
-"2430","upleść",,,,,,,,,
-"2448","uprząść",,,,,,,,,
-"2473","usiąść",,,,,,,,,
-"2483","ustrzec",,,,,,,,,
-"2516","uwieść",,,,,,,,,
-"2545","wbiec",,,,,,,,,
-"2556","wczuć",,,,,,,,,
-"2564","wejść",,,,,,,,,
-"2577","wgnieść",,,,,,,,,
-"2588","wkraść",,,,,,,,,
-"2591","wkuć",,,,,,,,,
-"2594","wleźć",,,,,,,,,
-"2598","wnieść",,,,,,,,,
-"2601","wpaść",,,,,,,,,
-"2608","wpleść",,,,,,,,,
-"2628","wsiąść",,,,,,,,,
-"2634","wspomóc",,,,,,,,,
-"2677","wybiec",,,,,,,,,
-"2703","wyciec",,,,,,,,,
-"2717","wyczuć",,,,,,,,,
-"2765","wygryźć",,,,,,,,,
-"2781","wyjeść",,,,,,,,,
-"2784","wyjść",,,,,,,,,
-"2803","wykluć",,,,,,,,,
-"2816","wykraść",,,,,,,,,
-"2829","wykuć",,,,,,,,,
-"2830","wykłuć",,,,,,,,,
-"2842","wyleźć",,,,,,,,,
-"2848","wyląc",,,,,,,,,
-"2858","wymieść",,,,,,,,,
-"2871","wymóc",,,,,,,,,
-"2877","wynaleźć",,,,,,,,,
-"2880","wynieść",,,,,,,,,
-"2893","wypaść",,,,,,,,,
-"2900","wypiec",,,,,,,,,
-"2911","wypleść",,,,,,,,,
-"2912","wypluć",,,,,,,,,
-"2961","wyrzec",,,,,,,,,
-"2978","wysiąść",,,,,,,,,
-"3037","wytruć",,,,,,,,,
-"3062","wywieść",,,,,,,,,
-"3066","wywlec",,,,,,,,,
-"3081","wyzuć",,,,,,,,,
-"3116","wzejść",,,,,,,,,
-"3138","wziąść",,,,,,,,,
-"3141","wzmóc",,,,,,,,,
-"3143","wznieść",,,,,,,,,
-"3152","wściec",,,,,,,,,
-"3196","zabiec",,,,,,,,,
-"3297","zagnieść",,,,,,,,,
-"3307","zagryźć",,,,,,,,,
-"3353","zajeść",,,,,,,,,
-"3359","zajść",,,,,,,,,
-"3391","zakraść",,,,,,,,,
-"3405","zakuć",,,,,,,,,
-"3415","zalec",,,,,,,,,
-"3421","zaleźć",,,,,,,,,
-"3444","zamieść",,,,,,,,,
-"3469","zaniemóc",,,,,,,,,
-"3471","zanieść",,,,,,,,,
-"3499","zapaść",,,,,,,,,
-"3506","zapiec",,,,,,,,,
-"3515","zapleść",,,,,,,,,
-"3518","zapobiec",,,,,,,,,
-"3548","zaprzysiąc",,,,,,,,,
-"3549","zaprząc",,,,,,,,,
-"3593","zasiąść",,,,,,,,,
-"3614","zastrzec",,,,,,,,,
-"3628","zaszczuć",,,,,,,,,
-"3668","zatruć",,,,,,,,,
-"3675","zatrząść",,,,,,,,,
-"3695","zawieść",,,,,,,,,
-"3701","zawlec",,,,,,,,,
-"3757","zbiec",,,,,,,,,
-"3866","zejść",,,,,,,,,
-"3880","zepsuć",,,,,,,,,
-"3924","zgnieść",,,,,,,,,
-"3940","zgryźć",,,,,,,,,
-"3975","zjeść",,,,,,,,,
-"3983","zleźć",,,,,,,,,
-"3992","zląc",,,,,,,,,
-"4024","zmieść",,,,,,,,,
-"4055","zmóc",,,,,,,,,
-"4062","znaleźć",,,,,,,,,
-"4074","znieść",,,,,,,,,
-"4148","zrzec",,,,,,,,,
-"4158","zsiec",,,,,,,,,
-"4162","zsiąść",,,,,,,,,
-"4192","zwieść",,,,,,,,,
-"4221","zzuć",,,,,,,,,
-"4243","ściec",,,,,,,,,
+"12046","dopomóc",dopomoże,dopomog,dopomóc,助ける,to help,3root,aorist,0,0
+"12047","pomóc",pomoże,pomog,pomóc,助ける,to help,3root,aorist,0,0
+"12048","przemóc",przemoże,przemog,przemóc,暴力,violence,3root,aorist,0,0
+"12049","wspomóc",wspomoże,wspomog,wspomóc,助ける,to help,3root,aorist,0,0
+"12050","wymóc",wymoże,wymog,wymóc,強いる,to force,3root,aorist,0,0
+"12051","wzmóc",wzmoże,wzmog,wzmóc,増幅する,boost,3root,aorist,0,0
+"12052","zaniemóc",zaniemoże,zaniemog,zaniemóc,病む,become sick,3root,aorist,0,0
+"12053","zmóc",zmoże,zmog,zmóc,圧倒する,overpower,3root,aorist,0,0
+"12054","dobiec",dobieże,dobieg,dobiec,到着する、着く,reach,3root,aorist,0,0
+"12055","dociec",dociecze,dociek,dociec,探し出す,find out,3root,aorist,0,0
+"12056","donieść",doniesie,donios,donieść,報告する、知らせる,report,3root,aorist,0,0
+"12057","dopiec",dopiecz,dopiek,dopiec,焼く、温める、熱くなる,"to bake, to be hot",3root,aorist,0,0
+"12058","dostrzec",dostrzeże,dostrzeg,dostrzec,知覚する,perceive,3root,aorist,0,0
+"12059","dowieść",dowiodzie,dowiod,dowieść,照明する,prove,3root,aorist,0,0
+"12060","dowieźć",dowiozie,dowioz,dowieźć,持っていく,bring,3root,aorist,0,0
+"12061","nakłaść",nakładzie,nakład,nakłaść,つける,put on,3root,aorist,0,0
+"12062","nanieść",niesie,nios,nanieść,運ぶ,carry,3root,aorist,0,0
+"12063","napleść",naplecie,naplot,napleść,ひだ,plait,3root,aorist,0,0
+"12064","nawieźć",nadwiezie,nadwioz,nawieźć,受精する,fertilize,3root,aorist,0,0
+"12065","nawlec",nawlecze,nawlok,nawlec,滑る,slip,3root,aorist,0,0
+"12066","obiec",obieże,obieg,obiec,回転する,revolve,3root,aorist,0,0
+"12067","oblec",olegnie,olegn,oblec,つける,put on,3root,aorist,0,0
+"12068","obtłuc",obtłucze,obtłuk,obtłuc,疵つける,chip,3root,aorist,0,0
+"12069","obwieść",obwiodzie,obwiod,obwieść,発表する,announce,3root,aorist,0,0
+"12070","obwieźć",obwiezie,obwioz,obwieźć,運転する、駆ける,drive,3root,aorist,0,0
+"12071","odbiec",odbieże,odbieg,odbiec,逃げる,run away,3root,aorist,0,0
+"12072","odnaleźć",odlezie,odnalez,odnaleźć,探す,find,3root,aorist,0,0
+"12073","odnieść",odniesie,odnios,odnieść,取り戻す,take back,3root,aorist,0,0
+"12074","odrzec",odrzecz,odrzek,odrzec,はぎ取る、剥ぐ,strip,3root,aorist,0,0
+"12075","odwieść",odwiodzie,odwiod,odwieść,思いとどまらせる,dissuade,3root,aorist,0,0
+"12076","odwieźć",odwiezie,odwioz,odwieźć,運転する、駆ける,drive,3root,aorist,0,0
+"12077","opiec",opiecze,opiek,opiec,乾杯する,to toast,3root,aorist,0,0
+"12078","orzec",orzecz,orzek,orzec,治める、統治する,rule,3root,aorist,0,0
+"12079","osiec",osiecze,osiek,osiec,切る、斬る、切断する,osch,3root,aorist,0,0
+"12080","ostrzec",ostrzeże,ostrzeg,ostrzec,暖かい,warn,3root,aorist,0,0
+"12081","ostrzyc",ostrzyże,ostrzyg,ostrzyc,研ぐ,sharpen,3root,aorist,0,0
+"12082","pobiec",pobieże,pobieg,pobiec,走る,run,3root,aorist,0,0
+"12083","pociec",pociecze,pociek,pociec,汗をかく,sweat,3root,aorist,0,0
+"12084","podbiec",podbieże,podbieg,podbiec,駆け上がる,run up,3root,aorist,0,0
+"12085","podmieść",podmiesie,podmiot,podmieść,交換する,swap,3root,aorist,0,0
+"12086","podnieść",podniesie,podnios,podnieść,選び出す,pick up,3root,aorist,0,0
+"12087","podstrzyc",podstrzyże,podstrzyg,podstrzyc,切り取る,trim,3root,aorist,0,0
+"12088","podwieźć",podwiezie,podwioz,podwieźć,乗り物を与える,give you a lift,3root,aorist,0,0
+"12089","pognieść",pogniecie,pogniot,pognieść,しわくちゃ,crumple,3root,aorist,0,0
+"12090","pomieść",pomiesie,pomiot,pomieść,催す、抱える,hold,3root,aorist,0,0
+"12091","ponieść",poniesie,ponios,ponieść,運ぶ,bear,3root,aorist,0,0
+"12092","postrzec",postrzeże,postrzeg,postrzec,知覚する,perceive,3root,aorist,0,0
+"12093","potłuc",potłucze,potłuk,potłuc,壊す,break,3root,aorist,0,0
+"12094","powieść",powiodzie,powiod,powieść,一緒に行く、導く,"to go along, to guide ",3root,aorist,0,0
+"12095","powlec",powlecze,powlok,powlec,覆う、保護する,"to coat, to cover",3root,aorist,0,0
+"12096","przebiec",przebieże,przebieg,przebiec,走る,run,3root,aorist,0,0
+"12097","przegryźć",przegryzie,przegryz,przegryźć,一口食べる,take a bite,3root,aorist,0,0
+"12098","przenieść",przeniesie,przenios,przenieść,動く,move,3root,aorist,0,0
+"12099","przestrzec",przestrzeże,przestrzeg,przestrzec,暖かい,warn,3root,aorist,0,0
+"12100","przewieźć",przewiezie,przewioz,przewieźć,運ぶ,carry,3root,aorist,0,0
+"12101","przybiec",przybieże,przybieg,przybiec,駆け上がる,run up,3root,aorist,0,0
+"12102","przygnieść",przygniecie,przygniot,przygnieść,つぶす,to crush,3root,aorist,0,0
+"12103","przygryźć",przygryzie,przygryz,przygryźć,噛む,bite,3root,aorist,0,0
+"12104","przynieść",przyniesie,przynios,przynieść,持っていく,bring,3root,aorist,0,0
+"12105","przyoblec",przyoblecze,przyoblek,przyoblec,縫う,clothe,3root,aorist,0,0
+"12106","przypiec",przypiecze,przypiek,przypiec,焦がす,scorch,3root,aorist,0,0
+"12107","przyrzec",przyrzecz,przyrzek,przyrzec,約束する、誓う,promise,3root,aorist,0,0
+"12108","przywieść",przywiodzie,przywiod,przywieść,持っていく,bring,3root,aorist,0,0
+"12109","przywieźć",przywiezie,przywioz,przywieźć,持っていく,bring,3root,aorist,0,0
+"12110","rozbiec",bieże,bieg,rozbiec,駆け上がる,run up,3root,aorist,0,0
+"12111","rozgryźć",rozgryzie,rozgryz,rozgryźć,探し出す,figure out,3root,aorist,0,0
+"12112","rozlec",rozlegnie,rozlegn,rozlec,海さんする,dissolution,3root,aorist,0,0
+"12113","roznieść",rozniesie,roznios,roznieść,つぶす,to crush,3root,aorist,0,0
+"12114","rozwieść",rozwiodzie,rozwiod,rozwieść,離婚する、別れる,divorce,3root,aorist,0,0
+"12115","rozwieźć",rozwiezie,rozwioz,rozwieźć,配達する、持ってくる,deliver,3root,aorist,0,0
+"12116","spiec",spiecze,spiek,spiec,干乾びる,parch,3root,aorist,0,0
+"12117","spostrzec",spostrzeże,spostrzeg,spostrzec,見る,see,3root,aorist,0,0
+"12118","sprząc",sprzęże,sprzęg,sprząc,繋ぐ、統合する、統一する,team,3root,aorist,0,0
+"12119","stłuc",stłucze,stłuk,stłuc,壊す,break,3root,aorist,0,0
+"12120","ubiec",ubieże,ubieg,ubiec,未然に防ぐ,forestall,3root,aorist,0,0
+"12121","uciec",uciecze,uciek,uciec,逃げる、逃亡する,escape,3root,aorist,0,0
+"12122","ugnieść",ugniecie,ugniot,ugnieść,捏ねる,knead,3root,aorist,0,0
+"12123","ulec",ulegnie,ulegn,ulec,屈服する,succumb,3root,aorist,0,0
+"12124","unieść",uniesie,unios,unieść,横に移動する,to lift,3root,aorist,0,0
+"12125","upiec",upiecze,upiek,upiec,焼く,bake,3root,aorist,0,0
+"12126","ustrzec",ustrzeże,ustrzeg,ustrzec,守る,protect,3root,aorist,0,0
+"12127","uwieść",uwiodzie,uwiod,uwieść,誘惑する,seduce,3root,aorist,0,0
+"12128","wgnieść",wgniecie,wgniot,wgnieść,窪む,dent,3root,aorist,0,0
+"12129","wnieść",wniesie,wnios,wnieść,持っていく,bring,3root,aorist,0,0
+"12130","wygryźć",wygryzie,wygryz,wygryźć,噛む,bite out,3root,aorist,0,0
+"12131","wykraść",wykradnie,wykradn,wykraść,盗む,to steal,3root,aorist,0,0
+"12132","wymieść",wymiesie,wymiot,wymieść,追い払う,sweep away,3root,aorist,0,0
+"12133","wynaleźć",wynalezie,wynalez,wynaleźć,発明,invent,3root,aorist,0,0
+"12134","wynieść",wyniesie,wynios,wynieść,匹敵する,amount to,3root,aorist,0,0
+"12135","wypiec",wypiecze,wypiek,wypiec,焼く,bake,3root,aorist,0,0
+"12136","wywieść",wywiodzie,wywiod,wywieść,持ち出す,take out,3root,aorist,0,0
+"12137","wywlec",wywlecze,wywlok,wywlec,引きずり出す,drag out,3root,aorist,0,0
+"12138","zabiec",zabieże,zabieg,zabiec,取る,take,3root,aorist,0,0
+"12139","zagnieść",zagniecie,zagniot,zagnieść,捏ねる,knead,3root,aorist,0,0
+"12140","zalec",zalezie,zalez,zalec,勧める,recommended,3root,aorist,0,0
+"12141","zamieść",zamiesie,zamiot,zamieść,掃く,sweep,3root,aorist,0,0
+"12142","zanieść",zaniesie,zanios,zanieść,運ぶ,carry,3root,aorist,0,0
+"12143","zapiec",zapiecze,zapiek,zapiec,焼く,bake,3root,aorist,0,0
+"12144","zapleść",zaplecie,zaplot,zapleść,織る、波打つ,weave,3root,aorist,0,0
+"12145","zapobiec",zapobieże,zapobieg,zapobiec,防ぐ,prevent,3root,aorist,0,0
+"12146","zastrzec",zastrzeże,zastrzeg,zastrzec,予約する,reserve,3root,aorist,0,0
+"12147","zawieść",zawiodzie,zawiod,zawieść,失敗する、失う,fail,3root,aorist,0,0
+"12148","zawlec",zawlecze,zawlok,zawlec,引っ張る,drag,3root,aorist,0,0
+"12149","zbiec",zbieże,zbieg,zbiec,逃げる、逃亡する,escape,3root,aorist,0,0
+"12150","zgnieść",zgniecie,zgniot,zgnieść,打ち砕く,crush,3root,aorist,0,0
+"12151","zmieść",zmiesie,zmiot,zmieść,追い払う,sweep away,3root,aorist,0,0
+"12152","znaleźć",znalezie,znalez,znaleźć,見つかる,found,3root,aorist,0,0
+"12153","znieść",niesie,nios,znieść,運ぶ、動かす,bear,3root,aorist,0,0
+"12154","zrzec",zrzecz,zrzek,zrzec,辞任,resign,3root,aorist,0,0
+"12155","zsiec",zsiecze,zsiek,zsiec,ハック,hack,3root,aorist,0,0
+"12156","zwieść",zwiodzie,zwiod,zwieść,欺く,deceive,3root,aorist,0,0
+"12157","dogryźć",dogryzie,dogryz,dogryźć,揶揄する,tease,3root,aorist,0,0
+"12158","dosiąść",dosiądzie,dosiąd,dosiąść,乳絞りをする,milk,3root,aorist,0,0
+"12159","obsiąść",obsiądzie,obsiąd,obsiąść,含まれる,suckle,3root,aorist,0,0
+"12160","odgryźć",odgryzie,odgryz,odgryźć,咬む,bite,3root,aorist,0,0
+"12161","odpleść",odplecie,odplot,odpleść,乳離れ,wean,3root,aorist,0,0
+"12162","opleść",oplecie,oplot,opleść,折り返し,braid,3root,aorist,0,0
+"12163","osiąść",osiądzie,osiąd,osiąść,まとめる,settle,3root,aorist,0,0
+"12164","pogryźć",pogryzie,pogryz,pogryźć,囓る,chew,3root,aorist,0,0
+"12165","popleść",poplecie,poplot,popleść,織る,weave,3root,aorist,0,0
+"12166","posiąść",posiądzie,posiąd,posiąść,もつ,possess,3root,aorist,0,0
+"12167","przebóść",przebodzie,przebod,przebóść,突き通す,penetrate,3root,aorist,0,0
+"12168","przepleść",przeplecie,przeplot,przepleść,縒りをかける、絡める,"to intertwine, to entwine",3root,aorist,0,0
+"12169","przesiąść",przesiądzie,przesiąd,przesiąść,渡す,pass,3root,aorist,0,0
+"12170","przysiąść",przysiądzie,przysiąd,przysiąść,座る,arrive,3root,aorist,0,0
+"12171","przystrzyc",przystrzyże,przystrzyg,przystrzyc,繕う,trim,3root,aorist,0,0
+"12172","rozpleść",rozplecie,rozplot,rozpleść,くさる,decompose,3root,aorist,0,0
+"12173","rozsiąść",rozsiądzie,rozsiąd,rozsiąść,ひろがり,spread,3root,aorist,0,0
+"12174","siąść",siądzie,siąd,siąść,座る,sit,3root,aorist,0,0
+"12175","spleść",splecie,splot,spleść,はり合わせる,splice,3root,aorist,0,0
+"12176","ubóść",ubodzie,ubod,ubóść,貧乏,poverty,3root,aorist,0,0
+"12177","ugryźć",ugryzie,ugryz,ugryźć,咬む,bite,3root,aorist,0,0
+"12178","upleść",uplecie,uplot,upleść,からむ,entangle,3root,aorist,0,0
+"12179","uprząść",uprzędzie,uprzęd,uprząść,とりかたづける,clean up,3root,aorist,0,0
+"12180","usiąść",usiądzie,usiąd,usiąść,座る,sit,3root,aorist,0,0
+"12181","wpleść",wplecie,wplot,wpleść,忍び込む,creep in,3root,aorist,0,0
+"12182","wsiąść",wsiądzie,wsiąd,wsiąść,入る,get in,3root,aorist,0,0
+"12183","wypleść",wyplecie,wyplot,wypleść,織る,weave,3root,aorist,0,0
+"12184","wyrzec",wyrzecz,wyrzek,wyrzec,つるし上げる,relinquish,3root,aorist,0,0
+"12185","wysiąść",wysiądzie,wysiąd,wysiąść,下りる,get off,3root,aorist,0,0
+"12186","wznieść",wzniesie,wznios,wznieść,立てる,erect,3root,aorist,0,0
+"12187","zagryźć",zagryzie,zagryz,zagryźć,囓る,chew,3root,aorist,0,0
+"12188","zaprzysiąc",zaprzysięż,zaprzysięg,zaprzysiąc,誓う,swear,3root,aorist,0,0
+"12189","zaprząc",zaprzęże,zaprzęg,zaprząc,誓う,swear,3root,aorist,0,0
+"12190","zasiąść",zasiądzie,zasiąd,zasiąść,座る,sit,3root,aorist,0,0
+"12191","zatrząść",zatrzęsie,zatrzęs,zatrząść,ゆさぶる,shake,3root,aorist,0,0
+"12192","zgryźć",zgryzie,zgryz,zgryźć,咬む,bite,3root,aorist,0,0
+"12193","zsiąść",zsiądzie,zsiąd,zsiąść,下りる,get down,3root,aorist,0,0
+"12194","odwlec",odwlecze,odwlok,odwlec,延期する,postpone,3root2,aorist,0,0
+"12195","podlec",podlegnie,podlegn,podlec,部下になる,to be subordinate,3root2,aorist,0,0
+"12196","polec",polegnie,polegn,polec,命令する,command,3root2,aorist,0,0
+"12197","wbiec",wbiegnie,wbiegn,wbiec,実行する,run in,3root2,aorist,0,0
+"12198","wybiec",wybiegnie,wybiegn,wybiec,なくなる,run out,3root2,aorist,0,0
+"12199","wyciec",wycieknie,wyciekn,wyciec,漏らす、漏れる,leak,3root2,aorist,0,0
+"12200","doleźć",dolezie,dolez,doleźć,足を動かす,drag oneself,3root2,aorist,0,0
+"12201","dopaść",dopadnie,dopadn,dopaść,得る,get,3root2,aorist,0,0
+"12202","lec",legnie,legn,lec,漏れる,funnel,3root2,aorist,0,0
+"12203","naleźć",nalezie,nalez,naleźć,見つける、発見する,find,3root2,aorist,0,0
+"12204","napaść",napadnie,napadn,napaść,襲う、襲われる,raid,3root2,aorist,0,0
+"12205","odpaść",odpadnie,odpadn,odpaść,ころげおちる,fall off,3root2,aorist,0,0
+"12206","paść",padnie,padn,paść,転げ落ちる、凋落する、滑る,fall,3root2,aorist,0,0
+"12207","podpaść",podpadnie,podpadn,podpaść,転げ落ちる、凋落する、滑る,fall,3root2,aorist,0,0
+"12208","przepaść",przepadnie,przepadn,przepaść,転げ落ちる、凋落する、滑る,abyss,3root2,aorist,0,0
+"12209","spaść",spadnie,spadn,spaść,落ちる,to fall,3root2,aorist,0,0
+"12210","uleźć",ulezie,ulez,uleźć,動けなくなる,get stuck,3root2,aorist,0,0
+"12211","wleźć",wlezie,wlez,wleźć,登る,climb,3root2,aorist,0,0
+"12212","wyleźć",wylezie,wylez,wyleźć,出て行く,get out,3root2,aorist,0,0
+"12213","zapaść",zapadnie,zapadn,zapaść,倒れる、倒壊する,collapse,3root2,aorist,0,0
+"12214","obleźć",oblezie,oblez,obleźć,囲む,besiege,3root2,aorist,0,0
+"12215","odleźć",odlezie,odlez,odleźć,くすぐる,tickle,3root2,aorist,0,0
+"12216","podleźć",podlezie,podlez,podleźć,近づく,waterboard,3root2,aorist,0,0
+"12217","poleźć",polezie,polez,poleźć,嘘をつく、偽る、ごまかす,lie,3root2,aorist,0,0
+"12218","przeleźć",przelezie,przelez,przeleźć,突き通す,penetrate,3root2,aorist,0,0
+"12219","przyleźć",przylezie,przylez,przyleźć,来る,arrive,3root2,aorist,0,0
+"12220","rozleźć",rozlezie,rozlez,rozleźć,くさる,decompose,3root2,aorist,0,0
+"12221","zaleźć",zalezie,zalez,zaleźć,拾う,find,3root2,aorist,0,0
+"12222","zleźć",zlezie,zlez,zleźć,沈む、沈没する,sink,3root2,aorist,0,0
+"12223","przysiąc",przysięgnie,przysięgn,przysiąc,誓う,swear,3root3,aorist,0,0
+"12224","wyląc",wylęże,wylęg,wyląc,注ぎ出す,pour out,3root3,aorist,0,0
+"12225","wściec",wścieknie,wściekn,wściec,怒る,rage,3root3,aorist,0,0
+"12226","zakraść",zakradnie,zakradn,zakraść,隠れる,sneak,3root3,aorist,0,0
+"12227","ściec",ścieknie,ściekn,ściec,滴下,drip,3root3,aorist,0,0
+"12228","dojeść",doje,doj,dojeść,食べる,to eat,3root3,aorist,0,0
+"12229","najeść",naje,naj,najeść,食べる,to eat,3root3,aorist,0,0
+"12230","objeść",obje,obj,objeść,食べる,to eat,3root3,aorist,0,0
+"12231","podjeść",obje,obj,podjeść,食べる,to eat,3root3,aorist,0,0
+"12232","przejeść",przeje,przej,przejeść,食べ過ぎる,to overeat,3root3,aorist,0,0
+"12233","wyjeść",wyje,wyj,wyjeść,去る,to leave,3root3,aorist,0,0
+"12234","nakraść",nakradnie,nakradn,nakraść,盗む,steal,3root3,aorist,0,0
+"12235","opaść",opadnie,opadn,opaść,落ちる,fall,3root3,aorist,0,0
+"12236","podupaść",podupadnie,podupadn,podupaść,劣化する,deteriorate,3root3,aorist,0,0
+"12237","pojeść",poje,poj,pojeść,食べる,eat,3root3,aorist,0,0
+"12238","przypaść",przypadnie,przypadn,przypaść,落ちる,fall,3root3,aorist,0,0
+"12239","rozpaść",rozpadnie,rozpadn,rozpaść,バラバラになる,fall apart,3root3,aorist,0,0
+"12240","ujeść",uje,uj,ujeść,食べる,eat,3root3,aorist,0,0
+"12241","upaść",upadnie,upadn,upaść,落ちる,fall,3root3,aorist,0,0
+"12242","wpaść",wpadnie,wpadn,wpaść,立ち寄る,drop by,3root3,aorist,0,0
+"12243","wypaść",wypadnie,wypadn,wypaść,落とす,fall out,3root3,aorist,0,0
+"12244","zajeść",zaje,zaj,zajeść,食べる,eat,3root3,aorist,0,0
+"12245","zjeść",zje,zj,zjeść,食べる,eat,3root3,aorist,0,0
+"12246","okraść",okradnie,okradn,okraść,打っ手繰る,rob,3root3,aorist,0,0
+"12247","podkraść",kradnie,kradn,podkraść,掠め取る,creep up,3root3,aorist,0,0
+"12248","rozkraść",rozkradnie,rozkradn,rozkraść,裂ける、剥がれる,rip,3root3,aorist,0,0
+"12249","skraść",kradnie,kradn,skraść,這う,creep,3root3,aorist,0,0
+"12250","ukraść",kradnie,kradn,ukraść,掠め取る,steal,3root3,aorist,0,0
+"12251","wkraść",kradnie,kradn,wkraść,忍び込む,creep in,3root3,aorist,0,0
+"12252","zląc",zlęże,zlęg,zląc,飲み下す,swallow,3root3,aorist,0,0
+"12253","dojść",dojd,dojdzie,dojść,来る,come,5isc,aorist,0,0
+"12254","nadejść",nadejd,nadejdzie,nadejść,来る,to come,5isc,aorist,0,0
+"12255","najść",najd,najdzie,najść,出くわす,come across,5isc,aorist,0,0
+"12256","obejść",obejd,obejdzie,obejść,回避する、避ける,to get around,5isc,aorist,0,0
+"12257","odejść",odejd,odejdzie,odejść,離れる、出る、遠くに行く、遠ざかる,go away,5isc,aorist,0,0
+"12258","podejść",podejd,podejdzie,podejść,やってくる,come up,5isc,aorist,0,0
+"12259","przejść",przejd,przejdzie,przejść,通過する、過ぎる,go through,5isc,aorist,0,0
+"12260","przyjść",przyjd,przyjdzie,przyjść,来る,come,5isc,aorist,0,0
+"12261","pójść",pójd,pójdzie,pójść,行く,go,5isc,aorist,0,0
+"12262","rozejść",rozejd,rozejdzie,rozejść,壊れる、分裂する、別れる、裂ける,diverge,5isc,aorist,0,0
+"12263","ujść",ujd,ujdzie,ujść,逃げる、逃亡する,escape,5isc,aorist,0,0
+"12264","wejść",wejd,wejdzie,wejść,入る,enter,5isc,aorist,0,0
+"12265","wyjść",wyjd,wyjdzie,wyjść,出る,go out,5isc,aorist,0,0
+"12266","wzejść",wzejd,wzejdzie,wzejść,立ち上がる、上る、登る、上昇する,rise up,5isc,aorist,0,0
+"12267","zajść",zajd,zajdzie,zajść,起こる、起きる,happen,5isc,aorist,0,0
+"12268","zejść",zejd,zejdzie,zejść,降りる,go down,5isc,aorist,0,0
+"12269","obuć",obuje,obuj,obuć,目を覚ます,wake up,denomitive2,aorist,0,0
+"12270","odczuć",odczuje,odczuj,odczuć,感じる,feel,denomitive2,aorist,0,0
+"12271","odtruć",odtruje,odtruj,odtruć,解毒する,detoxify,denomitive2,aorist,0,0
+"12272","okuć",okuje,okuj,okuć,あらいたてる,ferret out,denomitive2,aorist,0,0
+"12273","otruć",otruje,otruj,otruć,毒を盛る,poison,denomitive2,aorist,0,0
+"12274","poczuć",poczuje,poczuj,poczuć,感じる,feel,denomitive2,aorist,0,0
+"12275","podkuć",podkuje,podkuj,podkuć,靴を履く,shoe,denomitive2,aorist,0,0
+"12276","podtruć",podtruje,podtruj,podtruć,毒を盛る,poison,denomitive2,aorist,0,0
+"12277","popsuć",popsuje,popsuj,popsuć,腐らせる,spoil,denomitive2,aorist,0,0
+"12278","przeczuć",przeczuje,przeczuj,przeczuć,感じる,feel,denomitive2,aorist,0,0
+"12279","przekuć",przekuje,przekuj,przekuć,かんつう,perforate,denomitive2,aorist,0,0
+"12280","przeżuć",przeżuje,przeżuj,przeżuć,囓る,chew,denomitive2,aorist,0,0
+"12281","przykuć",przykuje,przykuj,przykuć,つまむ,pinch,denomitive2,aorist,0,0
+"12282","przytruć",przytruje,przytruj,przytruć,食らいつく,nibble,denomitive2,aorist,0,0
+"12283","rozpruć",rozpruje,rozpruj,rozpruć,裂ける、剥がれる,rip,denomitive2,aorist,0,0
+"12284","skuć",skuje,skuj,skuć,裾を折り返す,cuff,denomitive2,aorist,0,0
+"12285","uczuć",uczuje,uczuj,uczuć,感じる,feel,denomitive2,aorist,0,0
+"12286","uknuć",uknuje,uknuj,uknuć,なだめる,coax,denomitive2,aorist,0,0
+"12287","ukłuć",ukłuje,ukłuj,ukłuć,突く,prick,denomitive2,aorist,0,0
+"12288","wkuć",wkuje,wkuj,wkuć,なだめる,coax,denomitive2,aorist,0,0
+"12289","wykluć",wykluje,wykluj,wykluć,孵化させる、孵る,hatch,denomitive2,aorist,0,0
+"12290","wykuć",wykuje,wykuj,wykuć,鉄を鍛える,forge,denomitive2,aorist,0,0
+"12291","wykłuć",wykłuje,wykłuj,wykłuć,突き出す,prick out,denomitive2,aorist,0,0
+"12292","wypluć",wypluje,wypluj,wypluć,吐き出す,spit out,denomitive2,aorist,0,0
+"12293","wytruć",wytruje,wytruj,wytruć,毒を盛る,poison,denomitive2,aorist,0,0
+"12294","wyzuć",wyzuje,wyzuj,wyzuć,吐き出す,expel,denomitive2,aorist,0,0
+"12295","zakuć",zakuje,zakuj,zakuć,罵る,cuss,denomitive2,aorist,0,0
+"12296","zatruć",zatruje,zatruj,zatruć,毒を盛る,poison,denomitive2,aorist,0,0
+"12297","zepsuć",zepsuje,zepsuj,zepsuć,腐らせる,spoil,denomitive2,aorist,0,0
+"12298","zzuć",zzuje,zzuj,zzuć,捨てる,dump,denomitive2,aorist,0,0
+"12299","opluć",opluje,opluj,opluć,唾を吐く,spit,denomitive2,aorist,0,0
+"12300","podszczuć",podszczuje,podszczuj,podszczuć,噛む,chew up,denomitive2,aorist,0,0
+"12301","wczuć",wczuje,wczuj,wczuć,感じる,feel,denomitive2,aorist,0,0
+"12302","wyczuć",wyczuje,wyczuj,wyczuć,感じる,feel,denomitive2,aorist,0,0
+"12303","zaszczuć",zaszczuje,zaszczuj,zaszczuć,嫌う、憎む,hate,denomitive2,aorist,0,0

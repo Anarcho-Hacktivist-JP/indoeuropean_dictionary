@@ -419,7 +419,19 @@ class Polish_Common extends Common_IE{
 		    $verb_data = new Polish_Verb_Byc();
         	$verb_data->add_stem($polish_verb["infinitive_stem"]);
 		    // 活用表生成、配列に格納
-		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();                    
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		} else if($polish_verb["verb_type"] == "5isc"){
+		    // 読み込み
+		    $verb_data = new Polish_Verb_Isc();
+        	$verb_data->add_stem($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		} else if($polish_verb["verb_type"] == "5brac"){
+		    // 読み込み
+		    $verb_data = new Polish_Verb_Brac();
+        	$verb_data->add_stem($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
       	} else {
 		    // 読み込み
 		    $verb_data = new Polish_Verb($polish_verb["infinitive_stem"]);
