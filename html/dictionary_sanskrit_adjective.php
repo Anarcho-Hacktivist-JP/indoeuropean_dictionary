@@ -65,6 +65,9 @@ $declensions = array();
 if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
   // 複合語の場合
   $declensions = get_compound_adjective_word($janome_result, $input_adjective);
+} else if($input_adjective != "" && $janome_result[0][1] == "動詞"){
+  // 動詞の場合
+  $declensions = Sanskrit_Common::get_adjective_from_verb($input_adjective);
 } else if($input_adjective != ""){
   // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart($input_adjective);

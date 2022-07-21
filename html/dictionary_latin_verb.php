@@ -192,7 +192,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <?php echo Latin_Common::input_special_button(); ?>    
       <details>
         <summary>動詞の活用</summary>      
-        <table class="table-bordered" id="conjugation-table" style="overflow: auto;">
+        <table class="table-bordered text-nowrap" id="conjugation-table" style="overflow: auto;">
           <thead>
             <tr>
               <th scope="row" style="width:5%">相</th>
@@ -262,7 +262,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>現在分詞</summary>      
-        <table class="table-bordered" id="present-participle-table">
+        <table class="table-bordered text-nowrap" id="present-participle-table">
             <?php echo Latin_Common::make_adjective_column_chart("現在分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="7">原級</th></tr>
@@ -276,7 +276,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>完了分詞</summary>
-        <table class="table-bordered" id="perfect-participle-table">
+        <table class="table-bordered text-nowrap" id="perfect-participle-table">
           <?php echo Latin_Common::make_adjective_column_chart("完了分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="7">原級</th></tr>
@@ -290,7 +290,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>未来能動分詞</summary>      
-        <table class="table-bordered" id="future-active-participle-table">
+        <table class="table-bordered text-nowrap" id="future-active-participle-table">
           <?php echo Latin_Common::make_adjective_column_chart("未来能動分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="7">原級</th></tr>
@@ -304,7 +304,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>未来受動分詞</summary>     
-        <table class="table-bordered" id="future-passive-participle-table">
+        <table class="table-bordered text-nowrap" id="future-passive-participle-table">
           <?php echo Latin_Common::make_adjective_column_chart("未来受動分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="7">原級</th></tr>
@@ -318,7 +318,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>不定詞</summary>      
-        <table class="table-bordered" id="infinitive-table">
+        <table class="table-bordered text-nowrap" id="infinitive-table">
           <thead>
             <tr><th scope="row" style="width:10%">不定詞</th><th scope="col" style="width:45%">能動形</th><th scope="col" style="width:45%">受動形</th></tr></thead>
           <tbody>

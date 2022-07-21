@@ -44,7 +44,7 @@ function get_noun_declension_chart($word){
 	return $declensions;
 }
 
-// 活用表を取得する。
+// 動詞から活用表を取得する。
 function get_noun_declension_chart_by_verb($word){
 	// データベースから訳語の動詞を取得する。
 	$verb_words = Latin_Common::get_verb_by_japanese($word);

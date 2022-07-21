@@ -746,7 +746,7 @@ class Sanskrit_Common extends Common_IE{
 			if($word_type == "名詞"){
 				// 単語の種別と取得先を変更する。
 				$table = Sanskrit_Common::$DB_NOUN;			// テーブル取得先
-			} else if($word_type  == "形容詞"){
+			} else if($word_type  == "形容詞" || $word_type  == "連体詞" || $word_type  == "形容動詞"){
 				// 単語の種別と取得先を変更する。
 				$table = Sanskrit_Common::$DB_ADJECTIVE;		// テーブル取得先
 			} else if($word_type  == "動詞"){
@@ -891,7 +891,8 @@ class Sanskrit_Common extends Common_IE{
 					}
 					// 配列に挿入
 					$sanskrit_words[$i] = $verbs_data;				
-				} else if($table == Sanskrit_Common::$DB_ADVERB){
+				} else if($table == Sanskrit_Common::$DB_ADVERB || 
+				          (preg_match('/verb/', $word_category) && ($table == Sanskrit_Common::$DB_NOUN || $table == Sanskrit_Common::$DB_ADJECTIVE))){
 					// 副詞の場合
 					// データベースから訳語の語幹を取得する。
 					$sanskrit_words[] = Sanskrit_Common::get_sanskrit_adverb($target_word);

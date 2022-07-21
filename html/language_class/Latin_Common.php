@@ -763,7 +763,7 @@ class Latin_Common extends Common_IE{
 			if($word_type == "名詞"){
 				// 単語の種別と取得先を変更する。
 				$table = Latin_Common::$DB_NOUN;			// テーブル取得先
-			} else if($word_type  == "形容詞"){
+			} else if($word_type  == "形容詞" || $word_type  == "連体詞" || $word_type  == "形容動詞"){
 				// 単語の種別と取得先を変更する。
 				$table = Latin_Common::$DB_ADJECTIVE;		// テーブル取得先
 			} else if($word_type  == "動詞"){
@@ -920,8 +920,9 @@ class Latin_Common extends Common_IE{
 					if(!$latin_words[$i]){
 						return null;
 					}								
-				} else if($table == Latin_Common::$DB_ADVERB){
-					// 副詞の場合
+				} else if($table == Latin_Common::$DB_ADVERB || 
+				  (preg_match('/verb/', $word_category) && ($table == Latin_Common::$DB_NOUN || $table == Latin_Common::$DB_ADJECTIVE))){
+					// 副詞または動詞複合語の場合
 					// データベースから接尾辞を取得する。
 					$adverb_array = Latin_Common::get_latin_prefix($target_word);			
 					// 接尾辞がある場合はそちらを優先。
@@ -930,11 +931,24 @@ class Latin_Common extends Common_IE{
 						continue;
 					}					
 					// データベースから訳語の語幹を取得する。
-					$latin_words[$i] = Latin_Common::get_latin_adverb($target_word);
+					$adverb_array = Latin_Common::get_latin_adverb($target_word);
 					// 単語が取得できない場合は、何も返さない。
-					if(!$latin_words[$i]){
-						return null;
+					// 単語が取得できない場合は、何も返さない。
+					if(!$adverb_array && $i == count($input_words) - 2 && count($latin_words) == 0){
+						return null;								
+					} else if(!$adverb_array){
+						// 単語が取得できない場合は
+						// 名詞複合化フラグをONにする。
+						$noun_compound_flag = true;
+						$remain_word = $remain_word.$input_word[0];
+						// 次に移動															
+						continue;
+					} else {
+						// 見つかったら初期化する。
+						$remain_word = "";
 					}
+					// 副詞を入れる。
+					$latin_words[$i] = $adverb_array;
 				} else {
 					// 一部の単語はここで処理を終了
 					if(preg_match('/^化$/u', $target_word)){

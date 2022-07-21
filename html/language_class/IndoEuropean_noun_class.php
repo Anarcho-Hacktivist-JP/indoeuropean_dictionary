@@ -2158,7 +2158,11 @@ class Vedic_Noun extends Noun_Common_IE {
 			$this->english_translation = "loanword";
 			
 			// 文字列の最後で判断
-			if(preg_match('/(e|o|au|ai)$/',$noun)){
+			if($noun_genre == "root"){
+				// 語根名詞(不定詞)はこちら
+				$this->gender = "Feminine";    							// 名詞区分
+				$this->noun_type = "3s";								// 名詞種別
+			} else if(preg_match('/(e|o|au|ai)$/',$noun)){
 				$this->noun_type = "double";								// 名詞種別
 				// 名詞の種別で性別・活用が決定する。										
 				if($noun_genre == "agent" || $noun_genre == "animate" || $noun_genre == "inanimate"){
