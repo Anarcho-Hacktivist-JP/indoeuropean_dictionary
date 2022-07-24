@@ -1223,9 +1223,9 @@ class Sanskrit_Common extends Common_IE{
 		$script = mb_ereg_replace("([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])", "n\\2", $script);
 
 		// 母音の統合
-		$script = mb_ereg_replace("([aā])([aā])", "ā", $script);
-		$script = mb_ereg_replace("([iī])([iī])", "ī", $script);
-		$script = mb_ereg_replace("([uū])([uū])", "ū", $script);
+		$script = mb_ereg_replace("(a|ā)(a|ā)", "ā", $script);
+		$script = mb_ereg_replace("(i|ī)(i|ī)", "ī", $script);
+		$script = mb_ereg_replace("(u|ū)(u|ū)", "ū", $script);
 
 		$script = mb_ereg_replace("([iī])([aāuūeoṛṝ])", "y\\2", $script);
 		$script = mb_ereg_replace("([uū])([aāiīeoṛṝ])", "v\\2", $script);
