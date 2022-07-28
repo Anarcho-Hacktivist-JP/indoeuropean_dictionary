@@ -5,6 +5,8 @@ header("Content-type: text/html; charset=utf-8");
 
 //読み込み
 include(dirname(__FILE__) . "/language_class/IndoEuropean_adjective_class.php");
+include(dirname(__FILE__) . "/language_class/IndoEuropean_noun_class.php");
+include(dirname(__FILE__) . "/language_class/IndoEuropean_verb_class.php");
 include(dirname(__FILE__) . "/language_class/Database_session.php");
 include(dirname(__FILE__) . "/language_class/Commons.php");
 include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
@@ -47,17 +49,17 @@ function get_adjective_declension_chart($word){
 function get_compound_adjective_word($janome_result, $input_adjective)
 {
   // データを取得
-	$declensions = Sanskrit_Common::make_compound_chart(Commons::convert_compound_array($janome_result), "adjective", $input_adjective);
+	$declensions = Sanskrit_Common::make_compound_chart($janome_result, "adjective", $input_adjective);
 	// 結果を返す。
 	return $declensions;
 }
 
 // 挿入データ－対象－
-$input_adjective = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_adjective')), 128);
+$input_adjective = trim(filter_input(INPUT_POST, 'input_adjective'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_adjective);
-var_dump($janome_result);
+$janome_result = Commons::convert_compound_array($janome_result);
 
 // 検索結果の配列
 $declensions = array();

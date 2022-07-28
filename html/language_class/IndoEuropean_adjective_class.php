@@ -2306,19 +2306,22 @@ class Vedic_Adjective extends Adjective_Common_IE {
     ======================================*/
     public function __construct_sanskrit4($root, $suffix, $verb_translation, $suffix_translation) {
 		// 親クラス初期化
-	   parent::__construct();
-	   // 単語を作成
-	   $word = Sanskrit_Common::sandhi_engine($root, $suffix);
-	   // 情報をセット
-	   $this->set_adj_data($word);
-	   // 日本語訳を書き換え
-	   $this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
-	   $this->english_translation = "";											// 英語訳
-	   
-	   // 活用表を挿入
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
+	    parent::__construct();
+	    // 単語を作成
+	    $word = Sanskrit_Common::sandhi_engine($root, $suffix);
+	    // 情報をセット
+	    $this->set_adj_data($word);
+	    // 日本語訳を書き換え
+	    $this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
+	    $this->english_translation = "";											// 英語訳
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 比較級・最上級を作成
+		$this->get_comp_super_stem();   
+	    // 活用表を挿入
+	    $this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
+	    $this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
+	    $this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
    }
 
     /*=====================================

@@ -618,36 +618,48 @@ class Latin_Common extends Common_IE{
         	$verb_data->add_stem($latin_verb["infinitive_stem"]);
 		    // 活用表生成、配列に格納
 		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+			// メモリを解放
+			unset($verb_data);
       	} else if($latin_verb["verb_type"] == "5volo"){
 		    // 読み込み
 		    $verb_data = new Latin_Verb_Volo();
         	$verb_data->add_stem($latin_verb["infinitive_stem"]);
 		    // 活用表生成、配列に格納
 		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+			// メモリを解放
+			unset($verb_data);
       	} else if($latin_verb["verb_type"] == "5fer"){
         	// 読み込み
         	$verb_data = new Latin_Verb_Fero();
        	 	$verb_data->add_stem($latin_verb["infinitive_stem"]);
         	// 活用表生成、配列に格納
         	$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+			// メモリを解放
+			unset($verb_data);
       	} else if($latin_verb["verb_type"] == "5eo"){
         	// 読み込み
         	$verb_data = new Latin_Verb_Eo();
         	$verb_data->add_stem($latin_verb["infinitive_stem"]);
         	// 活用表生成、配列に格納
-        	$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();                         
+        	$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();  
+			// メモリを解放
+			unset($verb_data);
       	} else {
         	// 動詞の種別が指定されている場合はそちらを優先
         	if($verb_genre != ""){
 		      	// 読み込み
 		      	$verb_data = new Latin_Verb($latin_verb["infinitive_stem"], $verb_genre);
 		      	// 活用表生成、配列に格納
-		      	$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();                    
+		      	$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+				// メモリを解放
+				unset($verb_data);
         	} else {
 		      	// 読み込み
 		     	$verb_data = new Latin_Verb($latin_verb["present_stem"], $latin_verb["infinitive_stem"], $latin_verb["perfect_stem"], $latin_verb["perfect_participle"]);
 		      	// 活用表生成、配列に格納
 		      	$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+				// メモリを解放
+				unset($verb_data);
         	}
       	}
 
@@ -672,6 +684,8 @@ class Latin_Common extends Common_IE{
 					$latin_noun = new Latin_Noun($noun_word);
 					// 配列に格納
 					$charts[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
+					// メモリを解放
+					unset($latin_noun);
 		  		}
 			}
 		} else if($word_category == "adjective"){
@@ -685,6 +699,8 @@ class Latin_Common extends Common_IE{
 					$latin_adjective = new Latin_Adjective($adjective_word);
 					// 配列に格納
 					$charts[$latin_adjective->get_first_stem()] = $latin_adjective->get_chart();
+					// メモリを解放
+					unset($latin_adjective);
 		  		}
 			}
 		} else if($word_category == "verb"){
@@ -721,16 +737,22 @@ class Latin_Common extends Common_IE{
 					$latin_noun = new Latin_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
 					// 活用表生成
 					$charts[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
+					// メモリを解放
+					unset($latin_noun);
 				} else if($word_category == "adjective"){
 					// 読み込み
 					$latin_adjective = new Latin_Adjective($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
 					// 活用表生成
 					$charts[$latin_adjective->get_first_stem()] = $latin_adjective->get_chart();
+					// メモリを解放
+					unset($latin_adjective);
 				} else if($word_category == "verb"){
 					// 読み込み
 					$latin_verb = new Latin_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
 					// 活用表生成、配列に格納
 					$charts[$latin_verb->get_infinitive()] = $latin_verb->get_chart();
+					// メモリを解放
+					unset($latin_verb);
 				} 
 			}
 		}
@@ -796,7 +818,23 @@ class Latin_Common extends Common_IE{
 						$latin_words[] = $word_datas;
 						// フラグをfalseにする。
 						$noun_compound_flag = false;
-					}				
+					}
+					// 形容詞の単語を取得する(動詞の場合は副詞から)
+					if((preg_match('/verb/', $word_category))){
+						// データベースから訳語の語幹を取得する。
+						$word_datas = Latin_Common::get_latin_adverb($target_word);
+					} else {
+						$word_datas = Latin_Common::get_latin_strong_stem($target_word, Latin_Common::$DB_ADJECTIVE);
+					}
+					// データベースが取得できた場合は
+					if($word_datas){
+						// 挿入する。
+						$latin_words[] = $word_datas;
+						// フラグをfalseにする。
+						$noun_compound_flag = false;
+						// 次に移動
+						continue;	
+					}
 				} else {
 					// データベースから接尾辞を取得する。
 					$word_datas = Latin_Common::get_latin_prefix($target_word);	

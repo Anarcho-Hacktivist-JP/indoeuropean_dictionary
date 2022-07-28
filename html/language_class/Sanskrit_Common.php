@@ -44,7 +44,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 	
-	//訳語を取得
+	// 訳語を取得
 	public static function get_dictionary_stem_by_japanese($japanese_translation, $table, $gender = ""){
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation) || strpos($japanese_translation, "ā") || strpos($japanese_translation, "ī") || strpos($japanese_translation, "ū")){
@@ -141,7 +141,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	//語幹を取得
+	// 語幹を取得
 	public static function get_sanskrit_strong_stem($japanese_translation, $table, $gender = ""){
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation)){
@@ -182,7 +182,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	//動詞から名詞を生成
+	// 動詞から名詞を生成
 	public static function get_noun_from_verb($word){
 
 		// 初期化
@@ -229,7 +229,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	//動詞から形容詞を生成
+	// 動詞から形容詞を生成
 	public static function get_adjective_from_verb($word){
 
 		// 初期化
@@ -267,6 +267,70 @@ class Sanskrit_Common extends Common_IE{
 				// メモリを解放
 				unset($vedic_verb);
 			}					
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
+	// 名詞接尾辞を生成
+	public static function get_second_noun_suffix($suffix_word = ""){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `suffix_sanskrit` WHERE (`type` = 'taddhita' OR `type` = 'taddhita-unadi') AND `genre` != 'adjective' ";
+		// 条件がある場合は追加
+		if($suffix_word != ""){
+			$query = " AND (
+				`mean` LIKE '%、".$suffix_word."、%' OR 
+				`mean` LIKE '".$suffix_word."、%' OR 
+				`mean` LIKE '%、".$suffix_word."' OR 
+				`mean` = '".$suffix_word."')";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			$new_table_data = $table_data;
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
+	// 形容詞を生成
+	public static function get_second_adjective_suffix($suffix_word = ""){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `suffix_sanskrit` WHERE (`type` = 'taddhita' OR `type` = 'taddhita-unadi') AND `genre` = 'adjective' ";
+		// 条件がある場合は追加
+		if($suffix_word != ""){
+			$query = " AND (
+				`mean` LIKE '%、".$suffix_word."、%' OR 
+				`mean` LIKE '".$suffix_word."、%' OR 
+				`mean` LIKE '%、".$suffix_word."' OR 
+				`mean` = '".$suffix_word."')";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			$new_table_data = $table_data;
 		} else {
 			// 何も返さない。
 			return null;
@@ -758,11 +822,24 @@ class Sanskrit_Common extends Common_IE{
 			} else if($word_type  == "助詞"){				
 				// 日本語訳を入れる。
 				$japanese_translation = $japanese_translation.$target_word;
+				// 最終行の場合は
+				if($i == count($input_words) - 1){
+					// 形容詞
+					// データベースから訳語の単語を取得する。
+					$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::$DB_ADJECTIVE, "");
+					// 形容詞が取得できた場合は追加する。
+					if($last_words_adjective){
+						// 最終単語
+						$last_words = array_merge($last_words, $last_words_adjective);
+					}
+					// 次に移動
+					continue;
+				}
 				// 名詞複合化フラグがある場合は
 				if($noun_compound_flag){
 					// 単語を結合する。
 					$target_word = $remain_word.$target_word;
-					// データベースから接尾辞を取得する。
+					// データベースから接頭辞を取得する。
 					$word_datas = Sanskrit_Common::get_sanskrit_prefix($target_word);	
 					// データベースが取得できた場合は
 					if($word_datas){
@@ -770,7 +847,26 @@ class Sanskrit_Common extends Common_IE{
 						$sanskrit_words[] = $word_datas;
 						// フラグをfalseにする。
 						$noun_compound_flag = false;
-					}				
+						// 次に移動
+						continue;	
+					}
+					// 形容詞の単語を取得する(動詞の場合は副詞から)
+					if((preg_match('/verb/', $word_category))){
+						// データベースから訳語の語幹を取得する。
+						$word_datas = Sanskrit_Common::get_sanskrit_adverb($target_word);
+					} else {
+						// 形容詞の単語を取得する
+						$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, Sanskrit_Common::$DB_ADJECTIVE);
+					}
+					// データベースが取得できた場合は
+					if($word_datas){
+						// 挿入する。
+						$sanskrit_words[] = $word_datas;
+						// フラグをfalseにする。
+						$noun_compound_flag = false;
+						// 次に移動
+						continue;	
+					}
 				} else {
 					// データベースから接尾辞を取得する。
 					$word_datas = Sanskrit_Common::get_sanskrit_prefix($target_word);	
@@ -800,49 +896,123 @@ class Sanskrit_Common extends Common_IE{
 					   $input_words[$i - 1][1] != "形容詞"){
 						$target_word = $input_words[$i - 2][0].$target_word;
 					}
+					// フラグをfalseにする。
 					$noun_compound_flag = false;
 				}				
 				// 動詞の場合
 				if($table == Sanskrit_Common::$DB_VERB){
 					// 「する」や派生動詞の場合は動詞接尾辞も追加
 					if($target_word == "する" && preg_match('/化$/u', $input_words[$i - 1][0])){
+						// 動詞を結合する。
 						$sanskrit_words[count($sanskrit_words) - 1][0] = $sanskrit_words[count($sanskrit_words) - 1][0]."sāt"; 
-						$last_words[] = "asati";						
-						$last_words[] = "bhavati";
-						$last_words[] = "ī";
-						$last_words[] = "yāti";
-						$last_words[] = "nī";
-						$last_words[] = "gacchati";	
-						$last_words[] = "ganti";						
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "bhū";
+							$last_words[] = "gam";
+							$last_words[] = "i";
+							$last_words[] = "ya";
+							$last_words[] = "nī";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "asati";						
+							$last_words[] = "bhavati";
+							$last_words[] = "eti";
+							$last_words[] = "yāti";
+							$last_words[] = "nayati";
+							$last_words[] = "gacchati";	
+							$last_words[] = "ganti";
+						}
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "と"){
-						$last_words[] = "asati";						
-						$last_words[] = "bhavati";
-						$last_words[] = "ī";
-						$last_words[] = "yāti";
-						$last_words[] = "nī";
-						$last_words[] = "gacchati";																								
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "bhū";
+							$last_words[] = "gam";
+							$last_words[] = "i";
+							$last_words[] = "ya";
+							$last_words[] = "nī";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "asati";
+							$last_words[] = "bhavati";
+							$last_words[] = "eti";
+							$last_words[] = "yāti";
+							$last_words[] = "nayati";
+							$last_words[] = "gacchati";	
+						}																		
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "に"){
-						$last_words[] = "bhavati";
-						$last_words[] = "i";
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "bhū";
+							$last_words[] = "i";
+							$last_words[] = "ya";
+							$last_words[] = "nī";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "bhavati";
+							$last_words[] = "eti";	
+							$last_words[] = "yāti";
+							$last_words[] = "nayati";
+						}
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "く"){
-						$last_words[] = "bhavati";
-						$last_words[] = "i";												
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "bhū";
+							$last_words[] = "i";	
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "bhavati";
+							$last_words[] = "eti";	
+						}									
 					} else if($target_word == "する" && $input_words[$i - 1][0] == "に"){
-						$last_words[] = "kṛṇoti";
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "kṛ";	
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "kṛṇoti";	
+						}
 					} else if($target_word == "びる"){
-						$last_words[] = "bhavati";
-						$last_words[] = "kṛṇoti";	
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "kṛ";
+							$last_words[] = "bhū";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "bhavati";
+							$last_words[] = "kṛṇoti";	
+						}
 					} else if($target_word == "ある"){
-						$last_words[] = "ati";
-						$last_words[] = "asyati";
-						$last_words[] = "ayati";						
-						$last_words[] = "asati";						
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "as";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "ati";
+							$last_words[] = "asyati";
+							$last_words[] = "ayati";
+							$last_words[] = "asati";
+						}				
 					} else if($target_word == "する"){
-						$last_words[] = "ati";							
-						$last_words[] = "asyati";						
-						$last_words[] = "ayati";
-						$last_words[] = "kṛṇoti";
-						$last_words[] = "dadhāti";
+						// 最終単語
+						if(preg_match('(noun|adjective)', $word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "kṛ";
+							$last_words[] = "dhā";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "ati";
+							$last_words[] = "asyati";
+							$last_words[] = "ayati";
+							$last_words[] = "kṛṇoti";
+							$last_words[] = "dadhāti";
+						}	
 					} else {
 						// データベースから訳語の語幹を取得する。
 						$last_words_data = Sanskrit_Common::get_verb_by_japanese($target_word);
@@ -853,10 +1023,16 @@ class Sanskrit_Common extends Common_IE{
 						// 新しい配列に詰め替え
 						foreach ($last_words_data as $last_word_data){	
 							// 最終単語
-							$last_words[] = $last_word_data["dictionary_stem"];		
+							if(preg_match('(noun|adjective)', $word_category)){
+								// 名詞や形容詞の場合は語根
+								$last_words[] = $last_word_data["root"];	
+							} else {
+								// それ以外は辞書形
+								$last_words[] = $last_word_data["dictionary_stem"];	
+							}
 						}
 					}
-				} else {				
+				} else {
 					// 名詞
 					// データベースから訳語の単語を取得する。
 					$last_words_noun = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::$DB_NOUN, "");			
@@ -880,26 +1056,35 @@ class Sanskrit_Common extends Common_IE{
 					return $result_data;
 				}		
 			} else {
+				// 名詞複合化フラグ
+				if($noun_compound_flag){
+					// 前の名詞とつなげる。
+					if($input_words[$i - 1][1] != "名詞" &&
+					   $input_words[$i - 1][1] != "形容詞"){
+						// 助詞などの場合はさらに後ろにつなげる。								   
+						$target_word = $remain_word.$input_words[$i - 1][0].$target_word;
+					} else {
+						$target_word = $remain_word.$target_word;
+					}
+					// フラグをfalseにする。
+					$noun_compound_flag = false;
+				}
 				// 品詞ごとに分ける。
 				if($table == Sanskrit_Common::$DB_VERB){
 					// 動詞の場合
 					// データベースから訳語の語幹を取得する。
 					$verbs_data = Sanskrit_Common::get_verb_by_japanese($target_word);
-					// 単語が取得できない場合は、何も返さない。
-					if(!$sanskrit_words[$i]){
-						return null;
-					}
-					// 配列に挿入
-					$sanskrit_words[$i] = $verbs_data;				
+					// 新しい配列に詰め替え
+					$word_datas = array();
+					foreach ($verbs_data as $verb_data ) {
+						// 語根のみ配列に挿入
+						$word_datas[] = $verb_data["root"];	
+					}			
 				} else if($table == Sanskrit_Common::$DB_ADVERB || 
 				          (preg_match('/verb/', $word_category) && ($table == Sanskrit_Common::$DB_NOUN || $table == Sanskrit_Common::$DB_ADJECTIVE))){
-					// 副詞の場合
+					// 動詞造語および副詞の場合
 					// データベースから訳語の語幹を取得する。
-					$sanskrit_words[] = Sanskrit_Common::get_sanskrit_adverb($target_word);
-					// 単語が取得できない場合は、何も返さない。
-					if(!$sanskrit_words[$i]){
-						return null;
-					}									
+					$word_datas = Sanskrit_Common::get_sanskrit_adverb($target_word);	
 				} else {
 					// 一部の単語はここで処理を終了
 					if(preg_match('/^化$/u', $target_word)){
@@ -911,39 +1096,26 @@ class Sanskrit_Common extends Common_IE{
 					// 一部の単語は事前処理
 					if(preg_match('/^.+化$/u', $target_word)){
 						$target_word = mb_ereg_replace("化", "", $target_word);
-					} 	
-					// 名詞複合化フラグ
-					if($noun_compound_flag){
-						// 前の名詞とつなげる。
-						if($input_words[$i - 1][1] != "名詞" &&
-						   $input_words[$i - 1][1] != "形容詞"){
-							// 助詞などの場合はさらに後ろにつなげる。								   
-							$target_word = $remain_word.$input_words[$i - 1][0].$target_word;
-						} else {
-							$target_word = $remain_word.$target_word;
-						}
-						// フラグをfalseにする。
-						$noun_compound_flag = false;
-					}					
+					} 			
 					// データベースから訳語の語幹を取得する。
-					$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, $table);
-					// 単語が取得できない場合は、何も返さない。
-					if(!$word_datas && $i == count($input_words) - 2 && count($sanskrit_words) == 0){
-						return null;
-					} else if(!$word_datas){
-						// 単語が取得できない場合は
-						// 名詞複合化フラグをONにする。
-						$noun_compound_flag = true;
-						$remain_word = $remain_word.$input_word[0];
-						// 次に移動
-						continue;
-					} else {
-						// 見つかったら初期化する。
-						$remain_word = "";
-					}
-					// 挿入する。
-					$sanskrit_words[] = $word_datas;					
+					$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, $table);				
 				}
+				// 単語が取得できない場合は、何も返さない。
+				if(!$word_datas && $i == count($input_words) - 2 && count($sanskrit_words) == 0){
+					return null;
+				} else if(!$word_datas){
+					// 単語が取得できない場合は
+					// 名詞複合化フラグをONにする。
+					$noun_compound_flag = true;
+					$remain_word = $remain_word.$input_word[0];
+					// 次に移動
+					continue;
+				} else {
+					// 見つかったら初期化する。
+					$remain_word = "";
+				}
+				// 挿入する。
+				$sanskrit_words[] = $word_datas;	
 			}
 			// 日本語訳を入れる。
 			$japanese_translation = $japanese_translation.$target_word;			
@@ -1212,8 +1384,8 @@ class Sanskrit_Common extends Common_IE{
 
 		// 最後の子音が連続する場合は
 		if($word_flag){		
-			$script = mb_ereg_replace("([bpkghcjlrtdḍṭmnṅñṃṇśṣs])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);
-			$script = mb_ereg_replace("([bpkghcjlrtdḍṭmnṅñṃṇśṣs])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);			
+			$script = mb_ereg_replace("([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);
+			$script = mb_ereg_replace("([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);			
 		}
 		
 		// n対応
@@ -1234,7 +1406,8 @@ class Sanskrit_Common extends Common_IE{
 		// 文字を変換(ヴェーダ対応)
 		if($vedic_flag){
 			$script = str_replace("/(ai|aī|āī)/", "āi", $script);		//ai
-			$script = str_replace("/(au|aū|āū)/", "āu", $script);		//au
+			$script = str_replace("/(aū|āū)/", "āu", $script);		//au
+			$script = str_replace("au", "āu", $script);		//au			
 			$script = str_replace("e", "ai", $script);		//e
 			$script = str_replace("o", "au", $script);		//o	
 			$script = str_replace("aa", "ā", $script);				

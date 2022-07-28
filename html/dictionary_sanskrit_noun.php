@@ -15,12 +15,16 @@ include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
 function get_noun_declension_chart($word){
 	// 名詞の情報を取得
 	$noun_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::$DB_NOUN, "");
+	// 名詞の情報を取得
+	$adjective_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::$DB_ADJECTIVE, "");
   // 取得できない場合は
-  if(!$noun_words){
+  if(!$noun_words && !$adjective_words){
     // 英語で取得する。
-    $noun_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_NOUN);    
+    $noun_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_NOUN);
+    // 英語で取得する。
+    $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_ADJECTIVE);   
     // 取得できない場合は
-    if(!$noun_words){    
+    if(!$noun_words && !$adjective_words){    
       // 単語から直接取得する
       $noun_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::$DB_NOUN);
       // 取得できない場合は
@@ -28,20 +32,42 @@ function get_noun_declension_chart($word){
         // 空を返す。
         return array();
       } else if(Sanskrit_Common::is_alphabet_or_not($word)){
-        // 単語を入れる。
+        // アルファベットの場合は単語を入れる。
         $noun_words[] = $word;
       }
     }
   }
  	// 配列を宣言
   $declensions = array(); 
-	// 新しい配列に詰め替え
-	foreach ($noun_words as $noun_word) {
-		// 読み込み
-		$sanskrit_noun = new Vedic_Noun($noun_word);
-		// 配列に格納
-		$declensions[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
-	}
+	// 名詞がある場合は名詞を新しい配列に詰め替え
+  if($noun_words){
+    foreach ($noun_words as $noun_word) {
+      // 読み込み
+      $sanskrit_noun = new Vedic_Noun($noun_word);
+      // 配列に格納
+      $declensions[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
+      // メモリを解放
+      unset($sanskrit_noun);
+    }
+  }
+
+	// 形容詞がある場合は名詞を新しい配列に詰め替え
+  if($adjective_words){
+    // 名詞区分のセット
+    $noun_genres = array("animate", "action");
+	  // 形容詞を新しい配列に詰め替え
+	  foreach ($adjective_words as $adjective_word) {
+	    // 全ての名詞区分の名詞を取得する。
+	    foreach ($noun_genres as $noun_genre) {
+	  	  // 読み込み
+	  	  $sanskrit_noun = new Vedic_Noun($adjective_word, $noun_genre);
+	  	  // 配列に格納
+	  	  $declensions[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
+	  		// メモリを解放
+	  		unset($sanskrit_noun);
+      }
+	  }
+  }
   // 結果を返す。
 	return $declensions;
 }
@@ -64,7 +90,6 @@ $janome_result = Commons::convert_compound_array($janome_result);
 
 // 検索結果の配列
 $declensions = array();
-
 
 if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 複合語の場合

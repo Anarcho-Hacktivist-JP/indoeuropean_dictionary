@@ -3217,7 +3217,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 活用種別ごとに分ける。
 			switch ($this->conjugation_present_type) {
 			    case 1:
-					// 子音が連続している場合は中語根になる。
+					// 子音が連続している場合はそのまま
 					if(!preg_match("/[bpkghcjlrtdḍṭmnṅñṃṇśṣs][bpkgcjlrtdḍṭmnṅñṃṇśṣs]$/", $root)){
 						$this->present_stem = Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::$GUNA)."a";
 					} else {
@@ -3252,7 +3252,7 @@ class Vedic_Verb extends Verb_Common_IE{
 					$this->present_stem = mb_ereg_replace("n|ñ|ṅ", "", $root)."nā";
 			        break;
 			    case 10:
-					// 子音が連続している場合は中語根になる。
+					// 子音が連続している場合はそのまま
 					if(!preg_match("/[bpkghcjlrtdḍṭmnṅñṃṇśṣs][bpkgcjlrtdḍṭmnṅñṃṇśṣs]$/", $root)){
 						$this->present_stem = Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::$GUNA)."aya";
 					} else {
@@ -3296,14 +3296,18 @@ class Vedic_Verb extends Verb_Common_IE{
 			$this->perfect_stem = $add_stem.Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::$GUNA);
 			// 始動相
 			if(preg_match("/[kg]$/", $this->root)){
-				$this->inchorative_stem = Sanskrit_Common::sandhi_engine(preg_replace("/[mn]$/u", "c", $root), "śca");
+				// kgで始まる場合は
+				$this->inchorative_stem = Sanskrit_Common::sandhi_engine(preg_replace("/[mn]$/u", "c", $root), "śca");		//mnは消す。
 			} else {
-				$this->inchorative_stem = Sanskrit_Common::sandhi_engine(preg_replace("/[mn]$/u", "c", $root), "cha");
+				// それ以外は
+				$this->inchorative_stem = Sanskrit_Common::sandhi_engine(preg_replace("/[mn]$/u", "c", $root), "cha");		//mnは消す。
 			}
 			// 結果相
 			if(preg_match("/dh$/", $this->root)){
+				// dhで終わる場合は(語根に結合している場合は)
 				$this->resultative_stem = Sanskrit_Common::sandhi_engine($root, "ā");
 			} else {
+				// それ以外は
 				$this->resultative_stem = Sanskrit_Common::sandhi_engine($root, "dhā");
 			}
 			// 完了形
@@ -3419,6 +3423,8 @@ class Vedic_Verb extends Verb_Common_IE{
 		$this->verbal_adjectives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "ya");
 		$this->verbal_adjectives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "ata");		
 		$this->verbal_adjectives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "anīya");
+		$this->verbal_adjectives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "enya");
+		$this->verbal_adjectives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "āyya");
 
 		// 不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem, $root);														// 語根
@@ -5203,8 +5209,10 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 			// 名詞を生成
 			$noun = new Vedic_Noun($verb_stem, $suffix["suffix"], $this->japanese_translation, $suffix["mean"], $suffix["genre"]);
-			// 結果を返す。
+			// 結果を取得
 			$words[$noun->get_second_stem()] = $noun->get_chart();
+			// メモリを解放
+			unset($noun);
 		}
 
 		// 一次動詞不定詞
@@ -5266,120 +5274,124 @@ class Vedic_Verb extends Verb_Common_IE{
  			} else {
 				$verb_stem = "";
 			}
-			// 読み込み
-			$words[] = new Vedic_Adjective($verb_stem, $suffix["suffix"], $this->japanese_translation, $suffix["mean"]);
+			// 形容詞を生成
+			$adjective = new Vedic_Adjective($verb_stem, $suffix["suffix"], $this->japanese_translation, $suffix["mean"]);
+			// 結果を取得
+			$words[$adjective->get_second_stem()] = $adjective->get_chart();
+			// メモリを解放
+			unset($adjective);
 		}
 
 		// 現在分詞
-		$words[] = $this->get_participle($this->present_participle_active);			// 能動
-		$words[] = $this->get_participle($this->present_participle_middle);			// 中動
-		$words[] = $this->get_participle($this->present_participle_passive);		// 受動
+		$words[$this->present_participle_active] = $this->get_participle($this->present_participle_active);			// 能動
+		$words[$this->present_participle_middle] = $this->get_participle($this->present_participle_middle);			// 中動
+		$words[$this->present_participle_passive] = $this->get_participle($this->present_participle_passive);		// 受動
 
 		// 完了体分詞
-		$words[] = $this->get_participle($this->aorist_participle_active);			// 能動
-		$words[] = $this->get_participle($this->aorist_participle_middle);			// 中動
-		$words[] = $this->get_participle($this->aorist_participle_passive);			// 受動
+		$words[$this->aorist_participle_active] = $this->get_participle($this->aorist_participle_active);			// 能動
+		$words[$this->aorist_participle_middle] = $this->get_participle($this->aorist_participle_middle);			// 中動
+		$words[$this->aorist_participle_passive] = $this->get_participle($this->aorist_participle_passive);			// 受動
 
 		// 完了形分詞
-		$words[] = $this->get_participle($this->perfect_participle_active);			// 能動
-		$words[] = $this->get_participle($this->perfect_participle_middle);			// 中受動
+		$words[$this->perfect_participle_active] = $this->get_participle($this->perfect_participle_active);			// 能動
+		$words[$this->perfect_participle_middle] = $this->get_participle($this->perfect_participle_middle);			// 中受動
 
 		// 未来分詞
-		$words[] = $this->get_participle($this->future_participle_active);			// 能動
-		$words[] = $this->get_participle($this->future_participle_middle);			// 中動
-		$words[] = $this->get_participle($this->future_participle_passive);			// 受動
+		$words[$this->future_participle_active] = $this->get_participle($this->future_participle_active);			// 能動
+		$words[$this->future_participle_middle] = $this->get_participle($this->future_participle_middle);			// 中動
+		$words[$this->future_participle_passive] = $this->get_participle($this->future_participle_passive);			// 受動
 
 		// 過去分詞
-		$words[] = $this->get_participle($this->past_na_participle_active);			// na-能動
-		$words[] = $this->get_participle($this->past_ta_participle_active);			// ta-能動
-		$words[] = $this->get_participle($this->past_na_participle_passive);		// na-受動
-		$words[] = $this->get_participle($this->past_ta_participle_passive);		// ta-受動
+		$words[$this->past_na_participle_active] = $this->get_participle($this->past_na_participle_active);			// na-能動
+		$words[$this->past_ta_participle_active] = $this->get_participle($this->past_ta_participle_active);			// ta-能動
+		$words[$this->past_na_participle_passive] = $this->get_participle($this->past_na_participle_passive);		// na-受動
+		$words[$this->past_ta_participle_passive] = $this->get_participle($this->past_ta_participle_passive);		// ta-受動
 
 		// 使役動詞現在分詞
-		$words[] = $this->get_participle($this->present_causative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->present_causative_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->present_causative_participle_passive);		// 受動
+		$words[$this->present_causative_participle_active] = $this->get_participle($this->present_causative_participle_active);		// 能動
+		$words[$this->present_causative_participle_middle] = $this->get_participle($this->present_causative_participle_middle);		// 中動
+		$words[$this->present_causative_participle_passive] = $this->get_participle($this->present_causative_participle_passive);		// 受動
 
 		// 使役動詞完了体分詞
-		$words[] = $this->get_participle($this->aorist_causative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->aorist_causative_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->aorist_causative_participle_passive);		// 受動
+		$words[$this->aorist_causative_participle_active] = $this->get_participle($this->aorist_causative_participle_active);		// 能動
+		$words[$this->aorist_causative_participle_middle] = $this->get_participle($this->aorist_causative_participle_middle);		// 中動
+		$words[$this->aorist_causative_participle_passive] = $this->get_participle($this->aorist_causative_participle_passive);		// 受動
 
 		// 使役動詞完了形分詞
-		$words[] = $this->get_participle($this->perfect_causative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->perfect_causative_participle_middle);		// 中受動
+		$words[$this->perfect_causative_participle_active] = $this->get_participle($this->perfect_causative_participle_active);		// 能動
+		$words[$this->perfect_causative_participle_middle] = $this->get_participle($this->perfect_causative_participle_middle);		// 中受動
 
 		// 使役動詞未来分詞
-		$words[] = $this->get_participle($this->future_causative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->future_causative_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->future_causative_participle_passive);		// 受動
+		$words[$this->future_causative_participle_active] = $this->get_participle($this->future_causative_participle_active);		// 能動
+		$words[$this->future_causative_participle_middle] = $this->get_participle($this->future_causative_participle_middle);		// 中動
+		$words[$this->future_causative_participle_passive] = $this->get_participle($this->future_causative_participle_passive);		// 受動
 
 		// 使役動詞過去分詞
-		$words[] = $this->get_participle($this->past_causative_na_participle_active);		// na-能動
-		$words[] = $this->get_participle($this->past_causative_ta_participle_active);		// ta-能動
-		$words[] = $this->get_participle($this->past_causative_na_participle_passive);		// na-受動
-		$words[] = $this->get_participle($this->past_causative_ta_participle_passive);		// ta-受動
+		$words[$this->past_causative_na_participle_active] = $this->get_participle($this->past_causative_na_participle_active);		// na-能動
+		$words[$this->past_causative_ta_participle_active] = $this->get_participle($this->past_causative_ta_participle_active);		// ta-能動
+		$words[$this->past_causative_na_participle_passive] = $this->get_participle($this->past_causative_na_participle_passive);		// na-受動
+		$words[$this->past_causative_ta_participle_passive] = $this->get_participle($this->past_causative_ta_participle_passive);		// ta-受動
 
 		// 願望動詞現在分詞
-		$words[] = $this->get_participle($this->present_desiderative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->present_desiderative_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->present_desiderative_participle_passive);		// 受動
+		$words[$this->present_desiderative_participle_active] = $this->get_participle($this->present_desiderative_participle_active);		// 能動
+		$words[$this->present_desiderative_participle_middle] = $this->get_participle($this->present_desiderative_participle_middle);		// 中動
+		$words[$this->present_desiderative_participle_passive] = $this->get_participle($this->present_desiderative_participle_passive);		// 受動
 
 		// 願望動詞完了体分詞
-		$words[] = $this->get_participle($this->aorist_desiderative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->aorist_desiderative_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->aorist_desiderative_participle_passive);		// 受動
+		$words[$this->aorist_desiderative_participle_active] = $this->get_participle($this->aorist_desiderative_participle_active);		// 能動
+		$words[$this->aorist_desiderative_participle_middle] = $this->get_participle($this->aorist_desiderative_participle_middle);		// 中動
+		$words[$this->aorist_desiderative_participle_passive] = $this->get_participle($this->aorist_desiderative_participle_passive);		// 受動
 
 		// 願望動詞未来分詞
-		$words[] = $this->get_participle($this->future_desiderative_participle_active);		// 能動
-		$words[] = $this->get_participle($this->future_desiderative_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->future_desiderative_participle_passive);		// 受動
+		$words[$this->future_desiderative_participle_active] = $this->get_participle($this->future_desiderative_participle_active);		// 能動
+		$words[$this->future_desiderative_participle_middle] = $this->get_participle($this->future_desiderative_participle_middle);		// 中動
+		$words[$this->future_desiderative_participle_passive] = $this->get_participle($this->future_desiderative_participle_passive);		// 受動
 
 		// 願望動詞過去分詞
-		$words[] = $this->get_participle($this->past_desiderative_na_participle_active);		// na-能動
-		$words[] = $this->get_participle($this->past_desiderative_ta_participle_active);		// ta-能動
-		$words[] = $this->get_participle($this->past_desiderative_na_participle_passive);		// na-受動
-		$words[] = $this->get_participle($this->past_desiderative_ta_participle_passive);		// ta-受動
+		$words[$this->past_desiderative_na_participle_active] = $this->get_participle($this->past_desiderative_na_participle_active);		// na-能動
+		$words[$this->past_desiderative_ta_participle_active] = $this->get_participle($this->past_desiderative_ta_participle_active);		// ta-能動
+		$words[$this->past_desiderative_na_participle_passive] = $this->get_participle($this->past_desiderative_na_participle_passive);		// na-受動
+		$words[$this->past_desiderative_ta_participle_passive] = $this->get_participle($this->past_desiderative_ta_participle_passive);		// ta-受動
 
 		// 強意動詞現在分詞
-		$words[] = $this->get_participle($this->present_intensive_participle_active);		// 能動
-		$words[] = $this->get_participle($this->present_intensive_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->present_intensive_participle_passive);		// 受動
+		$words[$this->present_intensive_participle_active] = $this->get_participle($this->present_intensive_participle_active);		// 能動
+		$words[$this->present_intensive_participle_middle] = $this->get_participle($this->present_intensive_participle_middle);		// 中動
+		$words[$this->present_intensive_participle_passive] = $this->get_participle($this->present_intensive_participle_passive);		// 受動
 
 		// 強意動詞完了体分詞
-		$words[] = $this->get_participle($this->aorist_intensive_participle_active);		// 能動
-		$words[] = $this->get_participle($this->aorist_intensive_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->aorist_intensive_participle_passive);		// 受動
+		$words[$this->aorist_intensive_participle_active] = $this->get_participle($this->aorist_intensive_participle_active);		// 能動
+		$words[$this->aorist_intensive_participle_middle] = $this->get_participle($this->aorist_intensive_participle_middle);		// 中動
+		$words[$this->aorist_intensive_participle_passive] = $this->get_participle($this->aorist_intensive_participle_passive);		// 受動
 
 		// 強意動詞未来分詞
-		$words[] = $this->get_participle($this->future_intensive_participle_active);		// 能動
-		$words[] = $this->get_participle($this->future_intensive_participle_middle);		// 中動
-		$words[] = $this->get_participle($this->future_intensive_participle_passive);		// 受動
+		$words[$this->future_intensive_participle_active] = $this->get_participle($this->future_intensive_participle_active);		// 能動
+		$words[$this->future_intensive_participle_middle] = $this->get_participle($this->future_intensive_participle_middle);		// 中動
+		$words[$this->future_intensive_participle_passive] = $this->get_participle($this->future_intensive_participle_passive);		// 受動
 
 		// 強意動詞過去分詞
-		$words[] = $this->get_participle($this->past_intensive_na_participle_active);		// na-能動
-		$words[] = $this->get_participle($this->past_intensive_ta_participle_active);		// ta-能動
-		$words[] = $this->get_participle($this->past_intensive_na_participle_passive);		// na-受動
-		$words[] = $this->get_participle($this->past_intensive_ta_participle_passive);		// ta-受動
+		$words[$this->past_intensive_na_participle_active] = $this->get_participle($this->past_intensive_na_participle_active);		// na-能動
+		$words[$this->past_intensive_ta_participle_active] = $this->get_participle($this->past_intensive_ta_participle_active);		// ta-能動
+		$words[$this->past_intensive_na_participle_passive] = $this->get_participle($this->past_intensive_na_participle_passive);		// na-受動
+		$words[$this->past_intensive_ta_participle_passive] = $this->get_participle($this->past_intensive_ta_participle_passive);		// ta-受動
 
 		// 動形容詞
 		foreach($this->verbal_adjectives as $verbal_adjective){
-			$words[] = $this->get_infinitive($verbal_adjective);
+			$words[$verbal_adjective] = $this->get_infinitive($verbal_adjective);
 		}
 
 		// 使役動形容詞
 		foreach($this->causative_verbal_adjectives as $causative_verbal_adjective){
-			$words[] = $this->get_infinitive($causative_verbal_adjective);
+			$words[$causative_verbal_adjective] = $this->get_infinitive($causative_verbal_adjective);
 		}
 
 		// 願望動形容詞
 		foreach($this->desiderative_verbal_adjectives as $desiderative_verbal_adjective){
-			$words[] = $this->get_infinitive($desiderative_verbal_adjective);
+			$words[$desiderative_verbal_adjective] = $this->get_infinitive($desiderative_verbal_adjective);
 		}
 
 		// 強意動形容詞
 		foreach($this->intensive_verbal_adjectives as $intensive_verbal_adjective){
-			$words[] = $this->get_infinitive($intensive_verbal_adjective);
+			$words[$intensive_verbal_adjective] = $this->get_infinitive($intensive_verbal_adjective);
 		}
 		
 		// 結果を返す。
