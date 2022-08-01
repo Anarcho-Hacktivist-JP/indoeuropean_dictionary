@@ -790,9 +790,9 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
             if(particple_table[i][0] == ""){
               return true;
             } else if(rows[i].cells[5] == undefined){
-              rows[i].cells[1].innerText = particple_table[i - 2][0]; // 副詞列
-              rows[i].cells[2].innerText = particple_table[i - 2][1]; // 副詞列
-              rows[i].cells[3].innerText = particple_table[i - 2][2]; // 副詞列               
+              rows[i].cells[1].innerText = particple_table[i][0]; // 副詞列
+              rows[i].cells[2].innerText = particple_table[i][1]; // 副詞列
+              rows[i].cells[3].innerText = particple_table[i][2]; // 副詞列               
             } else {
               // 格変化を挿入
               rows[i].cells[1].innerText = particple_table[i][0];     // 単数男性(1行目)

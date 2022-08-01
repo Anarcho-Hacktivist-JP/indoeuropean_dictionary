@@ -2353,6 +2353,41 @@ class Vedic_Adjective extends Adjective_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
+    public function __construct_sanskrit2($adjective, $flag) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 第二語幹生成
+		$this->comp_type = Commons::$FALSE;
+		// 文字列の最後で判断
+		if(preg_match('/(a|ā)$/',$adjective)){		
+			// 形容詞の種別で活用が決定する。		
+			$this->adjective_type = "1-2";           						// 名詞種別
+			$this->second_stem = mb_substr($adjective, 0, -1)."a";			// 第二語幹
+		} else if(preg_match('/(at|ac)$/',$adjective)){
+			$this->adjective_type = "3con";									// 名詞種別
+			$this->second_stem = $adjective;								// 第二語幹						
+		} else if(preg_match('/(as|is|us)$/',$adjective)){			
+			// 形容詞の種別で活用が決定する。													
+			$this->adjective_type = "3con";									// 名詞種別
+			$this->second_stem = $adjective;								// 第二語幹												
+		} else {		
+			// 形容詞の種別で活用が決定する。													
+			$this->adjective_type = "3s";									// 名詞種別
+			$this->second_stem = $adjective;								// 第二語幹
+		}
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 比較級・最上級を作成
+		$this->get_comp_super_stem();		
+		// 活用語尾を取得
+		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);		// 最上級
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
     public function __construct_sanskrit1($adjective) {
     	// 親クラス初期化
 		parent::__construct();
@@ -2773,7 +2808,6 @@ class Vedic_Adjective extends Adjective_Common_IE {
 			// 名詞クラスごとに語幹を取得
 			$masc_stem = $this->get_second_stem($grade);
 			$fem_stem = Sanskrit_Common::sandhi_engine($masc_stem, $this->case_suffix[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$NOMINATIVE]);
-			$neu_stem = $this->get_second_stem($grade);
 
 			// 副詞(拡張格)
 			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($masc_stem, "tas");
@@ -2796,16 +2830,16 @@ class Vedic_Adjective extends Adjective_Common_IE {
 			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($fem_stem, "dā");	
 			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($fem_stem, "ac");	
 			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($fem_stem, "sas");
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($neu_stem, "tas");
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($neu_stem, "trā");
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($neu_stem, "dha");		
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($neu_stem, "thā");		
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($neu_stem, "dhā");	
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($neu_stem, "vat");	
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($neu_stem, "sāt");		
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($neu_stem, "dā");	
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($neu_stem, "ac");	
-			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($neu_stem, "sas");			
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["elative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["elative"];
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["inessive1"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["inessive1"];
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["inessive2"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["inessive2"];		
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["comitative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["comitative"];		
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["multiplicative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["multiplicative"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["essive"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["essive"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["translative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["translative"];		
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["temporal"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["temporal"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["illative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["illative"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["distributive"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["distributive"];			
 		}	
 		// 結果を返す。
 		return $word_chart;
@@ -2827,12 +2861,8 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		$word_chart['type'] = $this->adjective_type_name;
 		// 曲用を取得
 		$word_chart = $this->make_adjective_declension($word_chart);
-		// 原級を取得
+		// 副詞を取得
 		$word_chart = $this->get_adverb_chart($word_chart);
-		// 比較級を取得
-		$word_chart = $this->get_adverb_chart($word_chart);
-		// 最上級を取得
-		$word_chart = $this->get_adverb_chart($word_chart);		
 		// 結果を返す。
 		return $word_chart;
 	}

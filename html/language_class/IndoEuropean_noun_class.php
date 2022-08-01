@@ -273,7 +273,11 @@ class Noun_Common_IE {
 		} else if($this->gender == "Masculine/Neuter"){
 			return "男性/中性";
 		} else if($this->gender == "Masculine/Feminine/Neuter"){
-			return "男性/女性/中性";			
+			return "男性/女性/中性";
+		} else if($this->gender == "Masculine-Animate"){
+			return "男性-生物";
+		} else if($this->gender == "Masculine-Inanimate"){
+			return "男性-無生物";				
 		} else {
 			return "なし";
 		}
@@ -3012,7 +3016,7 @@ class Polish_Noun extends Noun_Common_IE{
 			"du_ins" => "oma",
 			"du_loc" => "u",
 			"du_voc" => "a",
-			"pl_nom" => "u",
+			"pl_nom" => "y",
 			"pl_gen" => "ów",
 			"pl_dat" => "om",
 			"pl_acc" => "ów",
@@ -3038,13 +3042,13 @@ class Polish_Noun extends Noun_Common_IE{
 			"du_ins" => "oma",
 			"du_loc" => "u",
 			"du_voc" => "a",
-			"pl_nom" => "e",
+			"pl_nom" => "y",
 			"pl_gen" => "ów",
 			"pl_dat" => "om",
 			"pl_acc" => "e",
 			"pl_ins" => "ami",
 			"pl_loc" => "ach",
-			"pl_voc" => "e"
+			"pl_voc" => "y"
 		],
 		[
 			"noun_type" => "2o",
@@ -3405,7 +3409,7 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/ky$/", "cy", $noun);
 		$noun = preg_replace("/gy$/", "dzy", $noun);
 
-		$noun = preg_replace("/o([bcfhlmnprswzćłńśźż])$/u", "ó\\1", $noun);
+		$noun = preg_replace("/o([bcfhjlmnprswzćłńśźż])$/u", "ó\\1", $noun);
 
 		// 結果を返す
 		return $noun;

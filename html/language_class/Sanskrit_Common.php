@@ -822,6 +822,8 @@ class Sanskrit_Common extends Common_IE{
 			} else if($word_type  == "助詞"){				
 				// 日本語訳を入れる。
 				$japanese_translation = $japanese_translation.$target_word;
+				// 単語を結合する。
+				$target_word = $remain_word.$target_word;
 				// 最終行の場合は
 				if($i == count($input_words) - 1){
 					// 形容詞
@@ -837,8 +839,6 @@ class Sanskrit_Common extends Common_IE{
 				}
 				// 名詞複合化フラグがある場合は
 				if($noun_compound_flag){
-					// 単語を結合する。
-					$target_word = $remain_word.$target_word;
 					// データベースから接頭辞を取得する。
 					$word_datas = Sanskrit_Common::get_sanskrit_prefix($target_word);	
 					// データベースが取得できた場合は
@@ -1334,53 +1334,40 @@ class Sanskrit_Common extends Common_IE{
 		}	
 
 		// 内連声対応
-		$script = str_replace("(ṃ|ḥ)s", "\\1ṣ", $script);	
+		$script = mb_ereg_replace("(ṃ|ḥ)s", "\\1ṣ", $script);	
 		$script = mb_ereg_replace("([bp]|[bp]h)s", "pṣ", $script);			
 		$script = mb_ereg_replace("([dt]|[dt]h)s", "tṣ", $script);		
 		$script = mb_ereg_replace("([śṣsjkgc]|[jkgc]h)s", "kṣ", $script);
 		$script = mb_ereg_replace("([a-z])s([a-z])", "\\1ṣ\\2", $script);		
 		$script = mb_ereg_replace("([dḍṭṅñṇśṣāīū])s([a-z])", "\\1ṣ\\2", $script);
 		$script = mb_ereg_replace("([a-z])s([āīū])", "\\1ṣ\\2", $script);
-		
-		$script = str_replace("t([ḍdgbj])", "d\\2", $script);
-		$script = str_replace("ṭ([ḍdgbj])", "d\\2", $script);
-		$script = str_replace("p([ḍdgbj])", "b\\2", $script);
-		$script = str_replace("c([ḍdgbj])", "j\\2", $script);		
-		$script = str_replace("k([ḍdgbj])", "g\\2", $script);
-
-		$script = str_replace("d([ṭtpck])", "t\\2", $script);
-		$script = str_replace("ḍ([ṭtpck])", "t\\2", $script);
-		$script = str_replace("b([ṭtpck])", "p\\2", $script);
-		$script = str_replace("j([ṭtpck])", "c\\2", $script);		
-		$script = str_replace("g([ṭtpck])", "k\\2", $script);
 
 		// バルトロマエの法則
-		$script = mb_ereg_replace("([td])h([dgb]h|[dgb])", "d\\2h", $script);
-		$script = mb_ereg_replace("([ṭḍ])h([dgb]h|[dgb])", "ḍ\\2h", $script);
-		$script = mb_ereg_replace("([bp])h([dgb]h|[dgb])", "b\\2h", $script);
-		$script = mb_ereg_replace("([gk])h([dgb]h|[dgb])", "g\\2h", $script);
-		$script = mb_ereg_replace("dh([ckpt]h|[ckpt])", "t\\1h", $script);
-		$script = mb_ereg_replace("d([ckpt])h", "t\\1h", $script);	
-		$script = mb_ereg_replace("bh([ckpt]h|[ckpt])", "p\\1h", $script);
-		$script = mb_ereg_replace("b([ckpt])h", "p\\1h", $script);	
-		$script = mb_ereg_replace("gh([ckpt]h|[ckpt])", "k\\1h", $script);
-		$script = mb_ereg_replace("g([ckpt])h", "k\\1h", $script);		
-		$script = mb_ereg_replace("jh([ckpt]h|[ckpt])", "c\\1h", $script);
-		$script = mb_ereg_replace("j([ckpt])h", "c\\1h", $script);
-		$script = mb_ereg_replace("ḍh([ckpt]h|[ckpt])", "ṭ\\1h", $script);
-		$script = mb_ereg_replace("ḍ([ckpt])h", "ṭ\\1h", $script);	
-		$script = mb_ereg_replace("([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])", "\\1\\2h", $script);
-		$script = mb_ereg_replace("hh", "h", $script);
+		$script = mb_ereg_replace("/([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])/u", "\\1\\2h", $script);
+		$script = preg_replace("/hh/u", "h", $script);
+
+		// 子音同化
+		$script = preg_replace("/t([ḍdgbj])/u", "d\\1", $script);
+		$script = preg_replace("/ṭ([ḍdgbj])/u", "ḍ\\1", $script);
+		$script = preg_replace("/p([ḍdgbj])/u", "b\\1", $script);
+		$script = preg_replace("/c([ḍdgbj])/u", "j\\1", $script);		
+		$script = preg_replace("/k([ḍdgbj])/u", "g\\1", $script);
+
+		$script = preg_replace("/d([ṭtpck])/u", "t\\1", $script);
+		$script = preg_replace("/ḍ([ṭtpck])/u", "ṭ\\1", $script);
+		$script = preg_replace("/b([ṭtpck])/u", "p\\1", $script);
+		$script = preg_replace("/j([ṭtpck])/u", "c\\1", $script);		
+		$script = preg_replace("/g([ṭtpck])/u", "k\\1", $script);
 
 		// m対応
-		$script = mb_ereg_replace("([ñṅn])([pb]|[pb]h)", "m\\2", $script);				
-		$script = mb_ereg_replace("([ñmn])([kg]|[kg]h)", "ṅ\\2", $script);
-		$script = mb_ereg_replace("([ṅmn])([cj]|[cj]h)", "ñ\\2", $script);
-		$script = mb_ereg_replace("([mṅñ])([td]|[td]h)", "n\\2", $script);
+		$script = preg_replace("/([ñṅn])([pb]|[pb]h)/u", "m\\2", $script);				
+		$script = preg_replace("/([ñmn])([kg]|[kg]h)/u", "ṅ\\2", $script);
+		$script = preg_replace("/([ṅmn])([cj]|[cj]h)/u", "ñ\\2", $script);
+		$script = preg_replace("/([mṅñ])([td]|[td]h)/u", "n\\2", $script);
 
 		// rl対応
-		$script = mb_ereg_replace("([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])", "\\1ṛ\\2", $script);
-		$script = mb_ereg_replace("([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])", "\\1ḷ\\2", $script);	
+		$script = mb_ereg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ṛ\\2", $script);
+		$script = mb_ereg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ḷ\\2", $script);	
 
 		// 最後の子音が連続する場合は
 		if($word_flag){		
@@ -1389,28 +1376,28 @@ class Sanskrit_Common extends Common_IE{
 		}
 		
 		// n対応
-		$script = mb_ereg_replace("([bpkghcjlrtdḍṭv])n", "\\1ñ", $script);
-		$script = mb_ereg_replace("([bpkghcjlrtdḍṭv])m", "\\1n", $script);
-		$script = mb_ereg_replace("([śṣs])([mn])", "\\1n", $script);
-		$script = mb_ereg_replace("([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])", "n\\2", $script);
+		$script = mb_ereg_replace("/([bpkghcjlrtdḍṭv])n/u", "\\1ñ", $script);
+		$script = mb_ereg_replace("/([bpkghcjlrtdḍṭv])m/u", "\\1n", $script);
+		$script = mb_ereg_replace("/([śṣs])([mn])/u", "\\1n", $script);
+		$script = mb_ereg_replace("/([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])/u", "n\\2", $script);
 
 		// 母音の統合
-		$script = mb_ereg_replace("(a|ā)(a|ā)", "ā", $script);
-		$script = mb_ereg_replace("(i|ī)(i|ī)", "ī", $script);
-		$script = mb_ereg_replace("(u|ū)(u|ū)", "ū", $script);
+		$script = mb_ereg_replace("/(a|ā)(a|ā)/u", "ā", $script);
+		$script = mb_ereg_replace("/(i|ī)(i|ī)/u", "ī", $script);
+		$script = mb_ereg_replace("/(u|ū)(u|ū)/u", "ū", $script);
 
-		$script = mb_ereg_replace("([iī])([aāuūeoṛṝ])", "y\\2", $script);
-		$script = mb_ereg_replace("([uū])([aāiīeoṛṝ])", "v\\2", $script);
-		$script = mb_ereg_replace("([ṛṝ])([aāiīuūeo])", "r\\2", $script);
+		$script = preg_replace("/([iī])([aāuūeoṛṝ])/u", "y\\2", $script);
+		$script = preg_replace("/([uū])([aāiīeoṛṝ])/u", "v\\2", $script);
+		$script = preg_replace("/([ṛṝ])([aāiīuūeo])/u", "r\\2", $script);
 
 		// 文字を変換(ヴェーダ対応)
 		if($vedic_flag){
-			$script = str_replace("/(ai|aī|āī)/", "āi", $script);		//ai
-			$script = str_replace("/(aū|āū)/", "āu", $script);		//au
-			$script = str_replace("au", "āu", $script);		//au			
-			$script = str_replace("e", "ai", $script);		//e
-			$script = str_replace("o", "au", $script);		//o	
-			$script = str_replace("aa", "ā", $script);				
+			$script = preg_replace("/(ai|aī|āī)/u", "āi", $script);		//ai
+			$script = preg_replace("/(aū|āū)/u", "āu", $script);		//au
+			$script = preg_replace("/au/u", "āu", $script);		//au			
+			$script = preg_replace("/e/u", "ai", $script);		//e
+			$script = preg_replace("/o/u", "au", $script);		//o	
+			$script = preg_replace("/aa/u", "ā", $script);				
 		} else {
 			$script = mb_ereg_replace("([ā])([ī])", "e", $script);
 			$script = mb_ereg_replace("([ā])([ū])", "o", $script);
