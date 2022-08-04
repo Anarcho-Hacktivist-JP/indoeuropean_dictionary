@@ -5132,19 +5132,19 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 活用種別
 		$conjugation["type"] = $this->conjugation_present_type;	
 
-		echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 一次動詞
 		$conjugation["primary"] = $this->get_primary_verb_conjugation();
-		echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 使役動詞
 		$conjugation[Commons::$MAKE_VERB] = $this->get_causative_verb_conjugation();
-		echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 願望動詞
 		$conjugation[Commons::$WANT_VERB] = $this->get_desiderative_verb_conjugation();
-		echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 強意動詞
 		$conjugation["intensive"] = $this->get_intensive_verb_conjugation();
-		echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 
 		// 結果を返す。
 		return $conjugation;

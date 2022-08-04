@@ -1334,16 +1334,16 @@ class Sanskrit_Common extends Common_IE{
 		}	
 
 		// 内連声対応
-		$script = mb_ereg_replace("(ṃ|ḥ)s", "\\1ṣ", $script);	
-		$script = mb_ereg_replace("([bp]|[bp]h)s", "pṣ", $script);			
-		$script = mb_ereg_replace("([dt]|[dt]h)s", "tṣ", $script);		
-		$script = mb_ereg_replace("([śṣsjkgc]|[jkgc]h)s", "kṣ", $script);
-		$script = mb_ereg_replace("([a-z])s([a-z])", "\\1ṣ\\2", $script);		
-		$script = mb_ereg_replace("([dḍṭṅñṇśṣāīū])s([a-z])", "\\1ṣ\\2", $script);
-		$script = mb_ereg_replace("([a-z])s([āīū])", "\\1ṣ\\2", $script);
+		$script = preg_replace("/(ṃ|ḥ)s/u", "\\1ṣ", $script);	
+		$script = preg_replace("/([bp]|[bp]h)s/u", "pṣ", $script);			
+		$script = preg_replace("/([dt]|[dt]h)s/u", "tṣ", $script);		
+		$script = preg_replace("/([śṣsjkgc]|[jkgc]h)s/u", "kṣ", $script);
+		$script = preg_replace("/([a-z])s([a-z])/u", "\\1ṣ\\2", $script);		
+		$script = preg_replace("/([dḍṭṅñṇśṣāīū])s([a-z])/u", "\\1ṣ\\2", $script);
+		$script = preg_replace("/([a-z])s([āīū])/u", "\\1ṣ\\2", $script);
 
 		// バルトロマエの法則
-		$script = mb_ereg_replace("/([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])/u", "\\1\\2h", $script);
+		$script = preg_replace("/([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])/u", "\\1\\2h", $script);
 		$script = preg_replace("/hh/u", "h", $script);
 
 		// 子音同化
@@ -1366,25 +1366,25 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/([mṅñ])([td]|[td]h)/u", "n\\2", $script);
 
 		// rl対応
-		$script = mb_ereg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ṛ\\2", $script);
-		$script = mb_ereg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ḷ\\2", $script);	
+		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ṛ\\2", $script);
+		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ḷ\\2", $script);	
 
 		// 最後の子音が連続する場合は
 		if($word_flag){		
-			$script = mb_ereg_replace("([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);
-			$script = mb_ereg_replace("([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b", '\\1', $script);			
+			$script = preg_replace("/([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b/u", '\\1', $script);
+			$script = preg_replace("/([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b/u", '\\1', $script);			
 		}
 		
 		// n対応
-		$script = mb_ereg_replace("/([bpkghcjlrtdḍṭv])n/u", "\\1ñ", $script);
-		$script = mb_ereg_replace("/([bpkghcjlrtdḍṭv])m/u", "\\1n", $script);
-		$script = mb_ereg_replace("/([śṣs])([mn])/u", "\\1n", $script);
-		$script = mb_ereg_replace("/([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])/u", "n\\2", $script);
+		$script = preg_replace("/([bpkghcjlrtdḍṭv])n/u", "\\1ñ", $script);
+		$script = preg_replace("/([bpkghcjlrtdḍṭv])m/u", "\\1n", $script);
+		$script = preg_replace("/([śṣs])([mn])/u", "\\1n", $script);
+		$script = preg_replace("/([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])/u", "n\\2", $script);
 
 		// 母音の統合
-		$script = mb_ereg_replace("/(a|ā)(a|ā)/u", "ā", $script);
-		$script = mb_ereg_replace("/(i|ī)(i|ī)/u", "ī", $script);
-		$script = mb_ereg_replace("/(u|ū)(u|ū)/u", "ū", $script);
+		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);
+		$script = preg_replace("/(i|ī)(i|ī)/u", "ī", $script);
+		$script = preg_replace("/(u|ū)(u|ū)/u", "ū", $script);
 
 		$script = preg_replace("/([iī])([aāuūeoṛṝ])/u", "y\\2", $script);
 		$script = preg_replace("/([uū])([aāiīeoṛṝ])/u", "v\\2", $script);
@@ -1399,15 +1399,15 @@ class Sanskrit_Common extends Common_IE{
 			$script = preg_replace("/o/u", "au", $script);		//o	
 			$script = preg_replace("/aa/u", "ā", $script);				
 		} else {
-			$script = mb_ereg_replace("([ā])([ī])", "e", $script);
-			$script = mb_ereg_replace("([ā])([ū])", "o", $script);
-			$script = mb_ereg_replace("([a])([ī])", "e", $script);
-			$script = mb_ereg_replace("([a])([ū])", "o", $script);			
+			$script = preg_replace("/([ā])([ī])/u", "e", $script);
+			$script = preg_replace("/([ā])([ū])/u", "o", $script);
+			$script = preg_replace("/([a])([ī])/u", "e", $script);
+			$script = preg_replace("/([a])([ū])/u", "o", $script);			
 		}
 
 		// 母音の子音化
-		$script = mb_ereg_replace("([uū])([aā])", "v\\2", $script);
-		$script = mb_ereg_replace("([iī])([aā])", "y\\2", $script);
+		$script = preg_replace("/([uū])([aā])/u", "v\\2", $script);
+		$script = preg_replace("/([iī])([aā])/u", "y\\2", $script);
 
 		// 結果を返す。
 		return $script;
