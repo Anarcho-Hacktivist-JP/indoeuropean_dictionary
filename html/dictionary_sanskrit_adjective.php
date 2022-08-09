@@ -114,6 +114,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
     <script>
         var adj_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
     </script>
+	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -272,6 +273,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
 	        $('#adjective-selection').change( function(){
             output_table_data();
 	        });
+          // ボタンにイベントを設定
+          Input_Botton.SanskritBotton('#input_adjective'); 
         }
 
     </script>

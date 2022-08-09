@@ -308,6 +308,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
     <script>
         var verb_table_data = '<?php echo json_encode($conjugations, JSON_UNESCAPED_UNICODE); ?>';
     </script>
+	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -578,7 +579,6 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
           });
         }
 
-
         // 単語選択後の処理
         function output_table_data(){
           // 活用表を取得 
@@ -609,21 +609,6 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
           set_particple_to_table(present_passive, '#passive-participle-table');   // 現在受動分詞
           set_verbal_noun_to_table(verbal_noun, '#verbal-noun-table');            // 動名詞
         }
-        
-        // 入力ボックスに文字の挿入
-        function add_chara(str, selIdx)
-        {
-          // テキストボックスの値を取得
-          var text_sentence = $('#input_verb').val();
-          $('#input_verb').val(strIns(text_sentence, selIdx, str));
-        }
-
-        // 文字列の挿入
-        function strIns(str, idx, val){
-          var res = str.slice(0, idx) + val + str.slice(idx);
-          return res;
-        };
-
 
         //イベントを設定
         function setEvents(){
@@ -631,61 +616,8 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
 	        $('#verb-selection').change( function(){
             output_table_data();
 	        });
-	        // ボタン入力
-	        $('#button-a').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-c').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-e').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        }); 
-	        $('#button-l').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-n').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-o').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        }); 
-	        $('#button-s').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-z1').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-z2').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_verb').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
+          // ボタンにイベントを設定
+          Input_Botton.PolishBotton('#input_verb'); 
         }
 
     </script>

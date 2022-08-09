@@ -150,6 +150,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
     <script>
         var adj_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
     </script>
+	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -271,57 +272,14 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
           });
         }
 
-        // 入力ボックスに文字の挿入
-        function add_chara(str, selIdx)
-        {
-          // テキストボックスの値を取得
-          var text_sentence = $('#input_adjective').val();
-          $('#input_adjective').val(strIns(text_sentence, selIdx, str));
-        }      
-
-        // 文字列の挿入
-        function strIns(str, idx, val){
-          var res = str.slice(0, idx) + val + str.slice(idx);
-          return res;
-        };        
-
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#adjective-selection').change( function(){
             output_table_data();
 	        });
-	        // ボタン入力
-	        $('#button-a').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_adjective').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-i').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_adjective').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-u').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_adjective').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-e').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_adjective').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        }); 
-	        $('#button-o').click( function(){
-            // カーソル位置
-            var selIdx = $('#input_adjective').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
+          // ボタンにイベントを設定
+          Input_Botton.LatinBotton('#input_adjective');  
         }
 
     </script>

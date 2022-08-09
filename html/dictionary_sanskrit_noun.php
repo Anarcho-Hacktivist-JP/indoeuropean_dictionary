@@ -167,6 +167,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
     <script>
         var noun_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';    
     </script>
+	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -234,20 +235,14 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
           });
         }
 
-        // 入力ボックスに文字の挿入
-        function add_chara(str, selIdx)
-        {
-          // テキストボックスの値を取得
-          var text_sentence = $('#input_noun').val();
-          $('#input_noun').val(strIns(text_sentence, selIdx, str));
-        }       
-
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#noun-selection').change( function(){
             output_table_data();
 	        });
+          // ボタンにイベントを設定
+          Input_Botton.SanskritBotton('#input_noun'); 
         }
 
     </script>

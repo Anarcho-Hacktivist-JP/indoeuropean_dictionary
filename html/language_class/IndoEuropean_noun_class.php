@@ -3409,7 +3409,8 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/ky$/", "cy", $noun);
 		$noun = preg_replace("/gy$/", "dzy", $noun);
 
-		$noun = preg_replace("/o([bcfhjlmnprswzćłńśźż])$/u", "ó\\1", $noun);
+		// 最後の音節のoは短音になる。但し単音節の単語は除く
+		$noun = preg_replace("/[aiueo]{1}.o([^aiueoąęó])$/u", "ó\\1", $noun);
 
 		// 結果を返す
 		return $noun;

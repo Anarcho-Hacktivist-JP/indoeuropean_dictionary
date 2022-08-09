@@ -3384,6 +3384,10 @@ class Polish_Adjective extends Adjective_Common_IE {
 		$adjective = preg_replace("/dy$/", "dzy", $adjective);
 		$adjective = preg_replace("/ky$/", "cy", $adjective);
 		$adjective = preg_replace("/gy$/", "dzy", $adjective);
+
+		// 最後の音節のoは短音になる。但し単音節の単語は除く
+		$adjective = preg_replace("/[aiueo]{1}.o([^aiueoąęó])$/u", "ó\\1", $adjective);
+
 		// 結果を返す
 		return $adjective;
 	}

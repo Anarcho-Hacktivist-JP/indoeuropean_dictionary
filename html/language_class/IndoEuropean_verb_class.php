@@ -3369,7 +3369,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 母音で終わる動詞は専用の受動態分詞を作る		
 			if(preg_match("/[aiuṛāīūṝ]$/u", $this->root)){
 				// アオリスト分詞
-				$this->aorist_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI), "is"), "māma");
+				$this->aorist_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI), "yis"), "māma");
 			} else {
 				// それ以外は中動態と同じ
 				$this->aorist_participle_passive = $this->aorist_participle_middle;		// アオリスト分詞
@@ -5858,7 +5858,10 @@ class Polish_Verb extends Verb_Common_IE {
 		} else {
 			// ハイフンを返す。
 			return "-";
-		}  
+		} 
+
+		// 最後の音節のoは短音になる。但し単音節の単語は除く
+		$verb_conjugation = preg_replace("/[aiueo]{1}.o([^aiueoąęó])$/u", "ó\\1", $verb_conjugation);
 
 		// 結果を返す。
 		return $verb_conjugation;

@@ -167,7 +167,8 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
           document.getElementById("btn-verb10").removeAttribute("disabled");      // 動詞種別 - 第10類 
       	}
       }
-    </script>    
+    </script> 
+	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -187,94 +188,15 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
             alert("不正解");            
           }
         }
-
-        // 入力ボックスに文字の挿入
-        function add_chara(str, selIdx)
-        {
-          // テキストボックスの値を取得
-          var text_sentence = $('#input-answer').val();
-          $('#input-answer').val(strIns(text_sentence, selIdx, str));
-        }
-
-        // 文字列の挿入
-        function strIns(str, idx, val){
-          var res = str.slice(0, idx) + val + str.slice(idx);
-          return res;
-        };
-
+        
         //イベントを設定
         function setEvents(){
 	        // セレクトボックス選択時
 	        $('#button-answer').click( function(){
             answer_the_question();
 	        });
-	        // ボタン入力
-	        $('#button-a').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-i').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-u').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-r').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        }); 
-	        $('#button-R').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });
-	        $('#button-l').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });          
-	        $('#button-L').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        }); 
-	        $('#button-t').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });          
-	        $('#button-d').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });           
-	        $('#button-z').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });          
-	        $('#button-s').click( function(){
-            // カーソル位置
-            var selIdx = $('#input-answer').get(0).selectionStart;
-            // 挿入
-            add_chara($(this).val(), selIdx);
-	        });                                    
+          // ボタンにイベントを設定
+          Input_Botton.SanskritBotton('#input-answer');
         }
 
     </script>      
