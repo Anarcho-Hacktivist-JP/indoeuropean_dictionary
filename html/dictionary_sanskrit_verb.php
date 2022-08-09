@@ -1059,7 +1059,6 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           set_infinitive_to_table(table_id, infinitives);
         }
 
-
         // 単語選択後の処理
         function output_table_data(){
           // 各動詞をテーブルに入れる。
@@ -1102,6 +1101,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           // ボタンにイベントを設定
           Input_Botton.SanskritBotton('#input_verb'); 
         }
+        
     </script>
   <footer class="">
   </footer>

@@ -79,28 +79,15 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
           setEvents();
         });
 
-        function answer_the_question(){
-          var answer = $('#input-answer').val();
-
-          // JSON → 配列に書き換え
-          var json_question_data = JSON.parse(question_data);          
-
-          if(answer == json_question_data['answer']){
-            alert("正解");
-            location.reload();
-          } else {
-            alert("不正解");            
-          }
-        }
-
         //イベントを設定
         function setEvents(){
-	        // セレクトボックス選択時
+	        // 回答ボタン選択時
 	        $('#button-answer').click( function(){
-            answer_the_question();
+            // 答えを出す
+            Language_Practice.answer_the_question();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.LatinBotton('#input-answer');                                 
+          Input_Botton.SanskritBotton('#input-answer');
         }
 
     </script>      
