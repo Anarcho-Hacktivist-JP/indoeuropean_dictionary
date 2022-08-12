@@ -5192,8 +5192,9 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(第".$this->conjugation_present_type."類動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";				
+		$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(第".$this->conjugation_present_type."類動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";
 		$question_data['answer'] = $this->get_sanskrit_verb($person, $voice, $mood, $aspect);
+		$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。";
 		$question_data['aspect'] = $aspect;
 		$question_data['mood'] = $mood;
 		$question_data['voice'] = $voice;

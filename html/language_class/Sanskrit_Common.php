@@ -1648,6 +1648,102 @@ class Sanskrit_Common extends Common_IE{
 		return false;
 	}
 
+	// 名詞活用種別ボタンの生成
+	public static function noun_declension_type_selection_button(){
+		return '
+        <h3>変化種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">a活用(長音)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-2" autocomplete="off" value="2">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2">a活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3i" autocomplete="off" value="3i">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3i">i活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3ilong" autocomplete="off" value="3ilong">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3ilong">i活用(長音)</label>
+          </div>           
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3con" autocomplete="off" value="3con">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3con">子音活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3r" autocomplete="off" value="3r">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3r">r活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3n" autocomplete="off" value="3n">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3n">n活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3s" autocomplete="off" value="3s">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3s">語幹活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-4u" autocomplete="off" value="4u">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-4u">u活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-4ulong" autocomplete="off" value="4ulong">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-4ulong">u活用(長音)</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-double" autocomplete="off" value="double">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-double">二重母音活用</label>
+          </div>   
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-all-declension" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-declension">すべて</label>
+          </div>
+        </section>';
+	}
+	
+	// 形容詞活用種別ボタンの生成
+	public static function adjective_declension_type_selection_button(){
+		return '
+        <h3>変化種別</h3>
+        <section class="row">
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-1-2" autocomplete="off" value="1-2">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2">a活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3i" autocomplete="off" value="3i">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3i">i活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-double" autocomplete="off" value="double">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-double">二重母音活用</label>
+          </div>           
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3con" autocomplete="off" value="3con">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3con">子音活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3r" autocomplete="off" value="3r">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3r">r活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3n" autocomplete="off" value="3n">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3n">n活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-3s" autocomplete="off" value="3s">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3s">語根活用</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="declension" class="btn-check" id="btn-all-declension" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-declension">すべて</label>
+          </div>
+        </section>';
+	}	
+
 	// 格選択ボタンの生成
 	public static function case_selection_button(){
 		return '

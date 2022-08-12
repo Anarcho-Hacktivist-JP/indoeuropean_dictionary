@@ -41,7 +41,16 @@
           </div>
           <div class="col-md-1">
             <a href="practice_sanskrit_verb.php">問題集(動詞)</a>
-          </div>          
+          </div>
+          <div class="col-md-1">
+            <a href="practice_sanskrit_noun2.php">問題集(名詞)2</a>
+          </div>
+          <div class="col-md-1">
+            <a href="practice_sanskrit_adjective2.php">問題集(形容詞)2</a>
+          </div>
+          <div class="col-md-1">
+            <a href="practice_sanskrit_verb2.php">問題集(動詞)2</a>
+          </div>
         </section>
     </div>
     <div class="container item">

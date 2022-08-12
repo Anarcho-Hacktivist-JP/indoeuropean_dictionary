@@ -19,7 +19,7 @@ $number = trim(filter_input(INPUT_POST, 'number'));
 $case = trim(filter_input(INPUT_POST, 'case'));
 
 // 単語取得
-$question_word = Sanskrit_Common::get_random_adjective();
+$question_word = Sanskrit_Common::get_random_adjective($declension);
 // 読み込み
 $adjective_latin = new Vedic_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
@@ -42,7 +42,8 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
   <body>  
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php echo Sanskrit_Common::noun_gender_selection_button(); ?>
+        <?php echo Sanskrit_Common::adjective_gender_selection_button(); ?>
+        <?php echo Sanskrit_Common::adjective_declension_type_selection_button(); ?>
         <?php echo Sanskrit_Common::number_selection_button(); ?> 
         <?php echo Sanskrit_Common::case_selection_button(); ?>         
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
