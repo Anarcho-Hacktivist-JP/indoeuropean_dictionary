@@ -1373,12 +1373,12 @@ class Vedic_Noun extends Noun_Common_IE {
 			"sg_loc" => "āyām",
 			"sg_voc" => "e",
 			"du_nom" => "e",
-			"du_gen" => "ayos",
+			"du_gen" => "yos",
 			"du_dat" => "bhiām",
 			"du_acc" => "e",
 			"du_abl" => "bhiām",
 			"du_ins" => "bhiām",
-			"du_loc" => "ayos",
+			"du_loc" => "yos",
 			"du_voc" => "e",
 			"pl_nom" => "ās",
 			"pl_gen" => "ānām",
@@ -1392,14 +1392,14 @@ class Vedic_Noun extends Noun_Common_IE {
 		[
 			"noun_type" => "2",
 			"noun_type_name" => "a-変化名詞",			
-			"gender" => "Masculine",
+			"gender" => "Masculine/Feminine",
 			"sg_nom" => "s",
 			"sg_gen" => "sya",
 			"sg_dat" => "aya",
 			"sg_acc" => "m",
 			"sg_abl" => "at",
 			"sg_ins" => "ena",
-			"sg_loc" => "i",
+			"sg_loc" => "e",
 			"sg_voc" => "",
 			"du_nom" => "au",
 			"du_gen" => "yos",
@@ -1409,14 +1409,14 @@ class Vedic_Noun extends Noun_Common_IE {
 			"du_ins" => "bhiām",
 			"du_loc" => "yos",
 			"du_voc" => "au",
-			"pl_nom" => "asas",
-			"pl_gen" => "anām",
-			"pl_dat" => "ibhyas",
-			"pl_acc" => "an",
-			"pl_abl" => "ibhyas",
-			"pl_ins" => "ibhis",			
-			"pl_loc" => "isu",
-			"pl_voc" => "asas"
+			"pl_nom" => "āsas",
+			"pl_gen" => "ānām",
+			"pl_dat" => "ebhyas",
+			"pl_acc" => "ān",
+			"pl_abl" => "ebhyas",
+			"pl_ins" => "ebhis",			
+			"pl_loc" => "esu",
+			"pl_voc" => "āsas"
 		],
 		[
 			"noun_type" => "2",
@@ -1428,22 +1428,22 @@ class Vedic_Noun extends Noun_Common_IE {
 			"sg_acc" => "m",
 			"sg_abl" => "at",
 			"sg_ins" => "ena",
-			"sg_loc" => "i",
+			"sg_loc" => "e",
 			"sg_voc" => "",
-			"du_nom" => "i",
+			"du_nom" => "e",
 			"du_gen" => "yos",
 			"du_dat" => "bhiām",
-			"du_acc" => "i",
+			"du_acc" => "e",
 			"du_abl" => "bhiām",
 			"du_ins" => "bhiām",
 			"du_loc" => "yos",
-			"du_voc" => "i",
+			"du_voc" => "e",
 			"pl_nom" => "a",
 			"pl_gen" => "anām",
-			"pl_dat" => "ibhyas",
+			"pl_dat" => "ebhyas",
 			"pl_acc" => "a",
-			"pl_abl" => "ibhyas",
-			"pl_ins" => "ibhis",			
+			"pl_abl" => "ebhyas",
+			"pl_ins" => "ebhis",			
 			"pl_loc" => "esu",
 			"pl_voc" => "a"
 		],
@@ -1488,14 +1488,14 @@ class Vedic_Noun extends Noun_Common_IE {
 			"sg_ins" => "ā",
 			"sg_loc" => "i",
 			"sg_voc" => "s",
-			"du_nom" => "au",
+			"du_nom" => "u",
 			"du_gen" => "os",
 			"du_dat" => "bhiām",
-			"du_acc" => "au",
+			"du_acc" => "u",
 			"du_abl" => "bhiām",
 			"du_ins" => "bhiām",
 			"du_loc" => "os",
-			"du_voc" => "au",
+			"du_voc" => "u",
 			"pl_nom" => "as",
 			"pl_gen" => "ām",
 			"pl_dat" => "bhyas",
@@ -1567,7 +1567,7 @@ class Vedic_Noun extends Noun_Common_IE {
 			"noun_type" => "3con",
 			"noun_type_name" => "子音変化名詞",
 			"gender" => "Masculine",
-			"sg_nom" => "s",
+			"sg_nom" => "",
 			"sg_gen" => "as",
 			"sg_dat" => "e",
 			"sg_acc" => "am",
@@ -1596,7 +1596,7 @@ class Vedic_Noun extends Noun_Common_IE {
 			"noun_type" => "3con",
 			"noun_type_name" => "子音変化名詞",
 			"gender" => "Feminine",
-			"sg_nom" => "s",
+			"sg_nom" => "",
 			"sg_gen" => "as",
 			"sg_dat" => "e",
 			"sg_acc" => "am",
@@ -1740,7 +1740,7 @@ class Vedic_Noun extends Noun_Common_IE {
 		[
 			"noun_type" => "3r",
 			"noun_type_name" => "r-変化名詞",
-			"gender" => "Masculine",
+			"gender" => "Masculine/Feminine",
 			"sg_nom" => "ā",
 			"sg_gen" => "ur",
 			"sg_dat" => "e",
@@ -2389,11 +2389,8 @@ class Vedic_Noun extends Noun_Common_IE {
 		}
 		
 		// 語幹修正
-		if($this->noun_type == 2){
-			// 第二変化の場合は、最後のaを削る
-			//$stem = mb_substr($stem, 0, -1);
-		} else if($this->noun_type == "3i" || $this->noun_type == 4){
-			// 第三・第四変化の場合
+		if($this->noun_type == 1 || $this->noun_type == 2 || $this->noun_type == "3i" || $this->noun_type == 4){
+			// 第一・第二・第三・第四変化の場合
 			// 格変化の語尾が母音で始まる場合は
 			if(Commons::is_vowel_or_not(mb_substr($case_suffix, 0, 1))){
 				// 最後の母音を削る

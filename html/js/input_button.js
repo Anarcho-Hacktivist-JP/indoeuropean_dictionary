@@ -280,15 +280,15 @@ class Language_Practice{
         // 入力情報を受け取る。
         var adj_case = $('input[name="case"]:checked').val();       // 格
         var adj_number = $('input[name="number"]:checked').val();   // 数
-        var adj_number = $('input[name="number"]:checked').val();   // 数
-
+        var adj_gender = $('input[name="gender"]:checked').val();   // 性
 
         // JSON → 配列に書き換え
         var json_question_data = JSON.parse(question_data);
   
         // 入力情報と答えを受け取る
-        if(noun_case == json_question_data['case'] &&
-           noun_number == json_question_data['number']){
+        if(adj_case == json_question_data['case'] &&
+           adj_number == json_question_data['number'] &&
+           adj_gender == json_question_data['gender']){
           // 正解のダイアログを出す。
           alert("正解");
           // 再読み込み

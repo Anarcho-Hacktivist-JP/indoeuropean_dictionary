@@ -36,3 +36,4 @@ services:
       - 4000:80
     volumes:
       - ./phpmyadmin/sessions:/sessions
+      - ./phpmyadmin/phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini 

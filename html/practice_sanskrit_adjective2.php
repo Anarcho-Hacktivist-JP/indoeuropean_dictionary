@@ -54,7 +54,7 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
           checkbox: '.js-persist'
         });
       </script>       
-      <p><?php echo $question_data['question_sentence']; ?></p>
+      <p><?php echo $question_data['question_sentence2']; ?></p>
       <div class="mt-2 js-form-storage">
         <?php echo Sanskrit_Common::adjective_gender_selection_button(); ?>
         <?php echo Sanskrit_Common::number_selection_button(); ?> 
