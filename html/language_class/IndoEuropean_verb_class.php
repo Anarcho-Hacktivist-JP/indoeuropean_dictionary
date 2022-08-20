@@ -2865,9 +2865,9 @@ class Vedic_Verb extends Verb_Common_IE{
 			"1du" => "vahe",
 			"2du" => "the", 
 			"3du" => "te",				
-			"1pl" => "mahai",
-			"2pl" => "dhvai", 
-			"3pl" => "ntai",
+			"1pl" => "mahe",
+			"2pl" => "dhve", 
+			"3pl" => "nte",
 		],
 	];
 	
