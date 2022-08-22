@@ -173,7 +173,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <h1>ラテン語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="" id="input_verb">
+        <input type="text" name="input_verb" class="form-control" id="input_verb">
         <select name="input_verb_type">
           <option selected>動詞の種別</option>
           <option value="">通常</option>          
@@ -183,8 +183,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           <option value="frequentive">強意動詞</option>          
         </select> 
         <input type="submit" class="btn-check" id="btn-generate">
-        <label class="btn" for="btn-generate">検索</label>
-        <select class="" id="verb-selection" aria-label="Default select example">
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+        <select class="form-select" id="verb-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($conjugations); ?>
         </select>
@@ -192,139 +192,139 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <?php echo Latin_Common::input_special_button(); ?>    
       <details>
         <summary>動詞の活用</summary>      
-        <table class="table-bordered text-nowrap" id="conjugation-table" style="overflow: auto;">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="conjugation-table" style="overflow: auto;">
           <thead>
             <tr>
-              <th scope="row" style="width:5%">相</th>
-              <th scope="col" colspan="6" style="width:60%">進行相</th>
-              <th scope="col" colspan="4" style="width:35%">完了相</th>
+              <th class="text-center" scope="row" style="width:5%">相</th>
+              <th class="text-center" scope="col" colspan="6" style="width:60%">進行相</th>
+              <th class="text-center" scope="col" colspan="4" style="width:35%">完了相</th>
             </tr>
             <tr>
-              <th scope="row" style="width:5%">法</th>
-              <th scope="col" colspan="2" style="width:15%">直説法</th>
-              <th scope="col" colspan="2" style="width:15%">接続法</th>
-              <th scope="col" colspan="2" style="width:15%">命令法</th>
-              <th scope="col" colspan="2" style="width:15%">直説法</th>
-              <th scope="col" colspan="2" style="width:15%">接続法</th>
+              <th class="text-center" scope="row" style="width:5%">法</th>
+              <th class="text-center" scope="col" colspan="2" style="width:15%">直説法</th>
+              <th class="text-center" scope="col" colspan="2" style="width:15%">接続法</th>
+              <th class="text-center" scope="col" colspan="2" style="width:15%">命令法</th>
+              <th class="text-center" scope="col" colspan="2" style="width:15%">直説法</th>
+              <th class="text-center" scope="col" colspan="2" style="width:15%">接続法</th>
             </tr>
             <tr>
-              <th scope="row" style="width:5%">態</th>
-              <th scope="col" style="width:8%">能動</th>
-              <th scope="col" style="width:8%">受動</th>
-              <th scope="col" style="width:8%">能動</th>
-              <th scope="col" style="width:8%">受動</th>
-              <th scope="col" style="width:8%">能動</th>
-              <th scope="col" style="width:8%">受動</th>
-              <th scope="col" style="width:10%">能動</th>
-              <th scope="col" style="width:10%">受動</th>
-              <th scope="col" style="width:10%">能動</th>
-              <th scope="col" style="width:10%">受動</th>
+              <th class="text-center" scope="row" style="width:5%">態</th>
+              <th class="text-center" scope="col" style="width:8%">能動</th>
+              <th class="text-center" scope="col" style="width:8%">受動</th>
+              <th class="text-center" scope="col" style="width:8%">能動</th>
+              <th class="text-center" scope="col" style="width:8%">受動</th>
+              <th class="text-center" scope="col" style="width:8%">能動</th>
+              <th class="text-center" scope="col" style="width:8%">受動</th>
+              <th class="text-center" scope="col" style="width:10%">能動</th>
+              <th class="text-center" scope="col" style="width:10%">受動</th>
+              <th class="text-center" scope="col" style="width:10%">能動</th>
+              <th class="text-center" scope="col" style="width:10%">受動</th>
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row" colspan="11">現在形</th></tr>
-            <tr><th scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row" colspan="11">過去形</th></tr>
-            <tr><th scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row" colspan="11">未来形</th></tr>
-            <tr><th scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row" colspan="11">未来形2</th></tr>
-            <tr><th scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row" colspan="11">無時制</th></tr>
-            <tr><th scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row" colspan="11">現在形</th></tr>
+            <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row" colspan="11">過去形</th></tr>
+            <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row" colspan="11">未来形</th></tr>
+            <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row" colspan="11">未来形2</th></tr>
+            <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row" colspan="11">無時制</th></tr>
+            <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           </tbody>
         </table>
       </details><br>
       <details>
         <summary>現在分詞</summary>      
-        <table class="table-bordered text-nowrap" id="present-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap text-nowrap" id="present-participle-table">
             <?php echo Latin_Common::make_adjective_column_chart("現在分詞"); ?>
           <tbody>
-            <tr><th scope="row" colspan="7">原級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">原級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">比較級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">比較級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">最上級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">最上級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
           </tbody>
         </table>
       </details><br>
       <details>
         <summary>完了分詞</summary>
-        <table class="table-bordered text-nowrap" id="perfect-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap text-nowrap" id="perfect-participle-table">
           <?php echo Latin_Common::make_adjective_column_chart("完了分詞"); ?>
           <tbody>
-            <tr><th scope="row" colspan="7">原級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">原級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">比較級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">比較級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">最上級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">最上級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
           </tbody>
         </table>
       </details><br>
       <details>
         <summary>未来能動分詞</summary>      
-        <table class="table-bordered text-nowrap" id="future-active-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap text-nowrap" id="future-active-participle-table">
           <?php echo Latin_Common::make_adjective_column_chart("未来能動分詞"); ?>
           <tbody>
-            <tr><th scope="row" colspan="7">原級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">原級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">比較級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">比較級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">最上級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">最上級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
           </tbody>
         </table>
       </details><br>
       <details>
         <summary>未来受動分詞</summary>     
-        <table class="table-bordered text-nowrap" id="future-passive-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap text-nowrap" id="future-passive-participle-table">
           <?php echo Latin_Common::make_adjective_column_chart("未来受動分詞"); ?>
           <tbody>
-            <tr><th scope="row" colspan="7">原級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">原級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">比較級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">比較級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
-            <tr><th scope="row" colspan="7">最上級</th></tr>
+            <tr><th class="text-center" scope="row" colspan="7">最上級</th></tr>
             <?php echo Latin_Common::make_adjective_chart(); ?>
           </tbody>
         </table>
       </details><br>
       <details>
         <summary>不定詞</summary>      
-        <table class="table-bordered text-nowrap" id="infinitive-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap text-nowrap" id="infinitive-table">
           <thead>
-            <tr><th scope="row" style="width:10%">不定詞</th><th scope="col" style="width:45%">能動形</th><th scope="col" style="width:45%">受動形</th></tr></thead>
+            <tr><th class="text-center" scope="row" style="width:10%">不定詞</th><th scope="col" style="width:45%">能動形</th><th scope="col" style="width:45%">受動形</th></tr></thead>
           <tbody>
-            <tr><th scope="row">現在形</th><td></td><td></td></tr>
-            <tr><th scope="row">完了形</th><td></td><td></td></tr>
-            <tr><th scope="row">未来形</th><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">現在形</th><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">完了形</th><td></td><td></td></tr>
+            <tr><th class="text-center" scope="row">未来形</th><td></td><td></td></tr>
           </tbody>
         </table>
       </details><br>   

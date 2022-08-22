@@ -65,7 +65,6 @@ class Latin_Common extends Common_IE{
 		if($table == Latin_Common::$DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
-		echo $query;
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -1099,8 +1098,20 @@ class Latin_Common extends Common_IE{
 		// タイトルを入れて表を返す。
 		return '
 			<thead>
-				<tr><th scope="row" style="width:10%">'.$title.'</th><th scope="col" colspan="3" style="width:45%">単数</th><th scope="col" colspan="3" style="width:45%">複数</th></tr>
-				<tr><th scope="row" style="width:10%">格</th><th scope="col" style="width:15%">男性</th><th scope="col" style="width:15%">女性</th><th scope="col" style="width:15%">中性</th><th scope="col" style="width:15%">男性</th><th scope="col" style="width:15%">女性</th><th scope="col" style="width:15%">中性</th></tr>
+				<tr>
+				<th class="text-center" scope="row" style="width:10%">'.$title.'</th>
+				<th class="text-center" scope="col" colspan="3" style="width:45%">単数</th>
+				<th class="text-center" scope="col" colspan="3" style="width:45%">複数</th>
+				</tr>
+				<tr>
+				<th class="text-center" scope="row" style="width:10%">格</th>
+				<th class="text-center" scope="col" style="width:15%">男性</th>
+				<th class="text-center" scope="col" style="width:15%">女性</th>
+				<th class="text-center" scope="col" style="width:15%">中性</th>
+				<th class="text-center" scope="col" style="width:15%">男性</th>
+				<th class="text-center" scope="col" style="width:15%">女性</th>
+				<th class="text-center" scope="col" style="width:15%">中性</th>
+				</tr>
 	  		</thead>';
 	}
 
@@ -1109,13 +1120,13 @@ class Latin_Common extends Common_IE{
 
 		// 表を返す。
 		return '
-			<tr><th scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			';
 	}	
 

@@ -116,8 +116,10 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link href="css/style.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">   
     <title>印欧語活用辞典：羅和辞書(名詞)</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -128,26 +130,31 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
     <div class="container item table-striped">
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4 form-search" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="">           
+        <input type="text" name="input_noun" id="input_noun" class="form-control">           
         <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn" for="btn-search">検索</label>
-        <select class="" id="noun-selection">
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
+        <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
       <?php echo Latin_Common::input_special_button(); ?>       
-      <table class="table-bordered" id="noun-table">
+      <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
-          <tr><th scope="row" style="width:30%">格</th><th scope="col" style="width:35%">単数</th><th scope="col" style="width:35%">複数</th></tr></thead>
+          <tr>
+            <th class="text-center" scope="row"style="width:30%">格</th>
+            <th class="text-center" scope="col" style="width:35%">単数</th>
+            <th class="text-center" scope="col" style="width:35%">複数</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><th scope="row">主格</th><td></td><td></td></tr>
-          <tr><th scope="row">属格</th><td></td><td></td></tr>
-          <tr><th scope="row">与格</th><td></td><td></td></tr>
-          <tr><th scope="row">対格</th><td></td><td></td></tr>
-          <tr><th scope="row">奪格</th><td></td><td></td></tr>
-          <tr><th scope="row">地格</th><td></td><td></td></tr>
-          <tr><th scope="row">呼格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">主格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">属格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">与格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">対格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">奪格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">地格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">呼格</th><td></td><td></td></tr>
         </tbody>
       </table>
     </div>

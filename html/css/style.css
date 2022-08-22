@@ -1,0 +1,320 @@
+p {
+  font-family: "メイリオ", Meiryo, sans-serif !important;
+}
+a {
+  color: #134D99;
+  text-decoration: none !important;
+}
+h2 {
+  font-size: 30px;
+  font-size: 3rem;
+  position: relative;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+h2 span {
+  font-size: 18px;
+  font-size: 1.8rem;
+  display: block;
+}
+
+h2:before {
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 5px;
+  content: '';
+  border-radius: 3px;
+  background: #fa4141;
+}
+h3 {
+  position: relative;
+  padding: 1rem .5rem;
+}
+
+h3:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2af598), to(#009efd));
+  background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+}
+h4 {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 2rem 1.5rem 130px;
+  border: 2px solid #000;
+}
+
+h4:before {
+  position: absolute;
+  top: -150%;
+  left: -100px;
+  width: 200px;
+  height: 300%;
+  content: '';
+  -webkit-transform: rotate(25deg);
+  transform: rotate(25deg);
+  background: #000;
+}
+
+h4 span {
+  font-size: 30px;
+  font-size: 3rem;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: block;
+  padding-top: 3px;
+  padding-left: 16px;
+  color: #fff;
+}
+h5 {
+  background-color: #0099cc;
+  border-left: 3px solid rgb(2, 22, 59);
+  padding-left: 5px;
+  color:#FFF;
+  overflow-wrap:  break-word;
+}
+.highlight {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fffaf0;
+}
+.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
+  color: #000 !important;
+  background-color: #e6e6fa !important;
+  border-color: #e6e6fa !important;
+}
+.textBox {
+  border: 2px solid #ff6666;
+  border-radius: 5px;
+  padding: 30px;
+  position: relative;
+  background-color: #ffcccc;
+}
+.textBox::before {
+  background-color: #fff;
+  color: #ff6666;
+  content: "学名提案";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox1 {
+  border: 2px solid #99ccff;
+  background-color: #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+}
+.textBox1::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "単語種別";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox2 {
+  border: 2px solid #ccffff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #ccffff;
+}
+.textBox2::before {
+  background-color: #fff;
+  color: #009999;
+  content: "品詞";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox3 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #99ccff;
+}
+.textBox3::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "性別（人名または形容詞の場合に選択）";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox4 {
+  border: 2px solid #ccffff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #ccffff;
+}
+.textBox4::before {
+  background-color: #fff;
+  color: #009999;
+  content: "数（地名、借用語は単数推奨）";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox5 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #99ccff;
+}
+.textBox5::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "格";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox6 {
+  border: 2px solid #ffcccc;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #ffcccc;
+}
+.textBox6::before {
+  background-color: #fff;
+  color: #ff6666;
+  content: "入力項目";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+#input_word::placeholder {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) { 
+  .form-size {
+    max-width: 768px !important;
+  }
+}
+.right {
+    display: flex;
+    justify-content: flex-end;
+}
+.highlight {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fffaf0;
+}
+.pt80 {
+  padding-top: 80px!important;
+}
+.mb0 {
+  margin-bottom: 0!important;
+}
+.align1 {
+  text-align: center !important;
+}
+.sticky_table thead th {
+    /* 縦スクロール時に固定する */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 65px;
+    /* tbody内のセルより手前に表示する */
+    z-index: 1;
+}
+.title {
+  font-family: "メイリオ", Meiryo, sans-serif !important;;
+  text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+              -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+              0px 1px 0 #FFF,  0-1px 0 #FFF,
+              -1px 0 0 #FFF, 1px 0 0 #FFF;
+  padding-top:100px;
+}
+.nav-title {
+  font-family: "メイリオ", Meiryo, sans-serif !important;;
+}
+.table-blue {
+  background-color:#aad5ff;
+  padding: 10px;
+}
+.table-skyblue {
+  background-color:#aaffff;
+  padding: 10px;
+}
+.table-gray {
+  background-color:#dfdfdfaf;
+  padding: 10px;
+}
+.table-white {
+  background-color:#fff;
+  padding: 10px;
+}
+.table-green {
+  background-color:#66cc66;
+  padding: 10px;
+}
+.table-lightgreen {
+  background-color:#90ee90;
+  padding: 10px;
+}
+.table-orange {
+  background-color:#ffaa55;
+  padding: 10px;
+}
+.table-lightorange {
+  background-color:#ffead5;
+  padding: 10px;
+}
+  /* ----------- iPad mini ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
