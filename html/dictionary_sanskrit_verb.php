@@ -175,13 +175,13 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <?php echo Sanskrit_Common::input_special_button(); ?>         
       <details>
         <summary>一次動詞</summary>
-        <table class="table-bordered text-nowrap" id="primary-conjugation-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-conjugation-table">
           <?php echo Sanskrit_Common::make_verbal_chart("一次動詞"); ?>     
         </table>
       </details><br>
       <details>
         <summary>一次動詞分詞</summary>
-        <table class="table-bordered text-nowrap" id="primary-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("一次動詞分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
@@ -211,7 +211,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>一次動詞不定詞</summary>      
-        <table class="table-bordered text-nowrap" id="primary-infinitive-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-infinitive-table">
           <thead>
             <tr>
               <th scope="row" style="width:12%">不定詞</th>
@@ -253,7 +253,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>一次動詞過去分詞</summary>       
-        <table class="table-bordered text-nowrap" id="primary-past-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-past-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("過去分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
@@ -269,7 +269,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>一次動詞動形容詞</summary>          
-        <table class="table-bordered text-nowrap" id="primary-verbal-adjective-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-verbal-adjective-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("動形容詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
@@ -285,13 +285,13 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>使役動詞</summary>      
-        <table class="table-bordered text-nowrap" id="causative-conjugation-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-conjugation-table">
           <?php echo Sanskrit_Common::make_verbal_chart("使役動詞");?>   
         </table>
       </details><br>
       <details>
         <summary>使役動詞分詞</summary>        
-        <table class="table-bordered text-nowrap" id="causative-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("使役動詞分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
@@ -321,7 +321,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>使役動詞不定詞</summary>  
-        <table class="table-bordered text-nowrap" id="causative-infinitive-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-infinitive-table">
           <thead>
             <tr>
               <th scope="row" style="width:12%">使役動詞不定詞</th>
@@ -359,7 +359,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>使役動詞過去分詞</summary>         
-        <table class="table-bordered text-nowrap" id="causative-past-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-past-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("使役動詞過去分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
@@ -375,7 +375,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>使役動形容詞</summary>         
-        <table class="table-bordered text-nowrap" id="causative-verbal-adjective-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-verbal-adjective-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("使役動形容詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
@@ -389,13 +389,13 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>願望動詞</summary>           
-        <table class="table-bordered text-nowrap" id="desiderative-conjugation-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-conjugation-table">
           <?php echo Sanskrit_Common::make_verbal_chart("願望動詞");?>  
         </table>
       </details><br>
       <details>
         <summary>願望動詞分詞</summary>         
-        <table class="table-bordered text-nowrap" id="desiderative-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("願望動詞分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
@@ -417,7 +417,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>願望動詞不定詞</summary>      
-        <table class="table-bordered text-nowrap" id="desiderative-infinitive-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-infinitive-table">
           <thead>
             <tr>
               <th scope="row" style="width:12%">願望動詞不定詞</th>
@@ -450,7 +450,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>願望動詞過去分詞</summary>
-        <table class="table-bordered text-nowrap" id="desiderative-past-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-past-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("願望動詞過去分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
@@ -466,7 +466,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>願望動形容詞</summary>
-        <table class="table-bordered text-nowrap" id="desiderative-verbal-adjective-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-verbal-adjective-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("願望動形容詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
@@ -480,13 +480,13 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>強意動詞</summary>
-        <table class="table-bordered text-nowrap" id="intensive-conjugation-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-conjugation-table">
           <?php echo Sanskrit_Common::make_verbal_chart("強意動詞");?>  
         </table>
       </details><br>
       <details>
         <summary>強意動詞分詞</summary>      
-        <table class="table-bordered text-nowrap" id="intensive-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("強意動詞分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
@@ -508,7 +508,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>強意動詞不定詞</summary>      
-        <table class="table-bordered text-nowrap" id="intensive-infinitive-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-infinitive-table">
           <thead>
             <tr>
               <th scope="row" style="width:12%">強意動詞不定詞</th>
@@ -542,7 +542,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>強意動詞過去分詞</summary>
-        <table class="table-bordered text-nowrap" id="intensive-past-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-past-participle-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("強意動詞過去分詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
@@ -558,7 +558,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       </details><br>
       <details>
         <summary>強意動詞動形容詞</summary>
-        <table class="table-bordered text-nowrap" id="intensive-verbal-adjective-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-verbal-adjective-table">
           <?php echo Sanskrit_Common::make_adjective_column_chart("強意動詞動形容詞"); ?>
           <tbody>
             <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>

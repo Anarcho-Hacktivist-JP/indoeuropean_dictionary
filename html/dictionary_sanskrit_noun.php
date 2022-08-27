@@ -122,42 +122,43 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
     <div class="container item table-striped">
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="">
+        <input type="text" name="input_noun" id="input_noun" class="form-control">
         <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn" for="btn-search">検索</label>
-        <select class="" id="noun-selection">
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
+        <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
       <?php echo Sanskrit_Common::input_special_button(); ?>              
-      <table class="table-bordered" id="noun-table">
+      <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
-          <tr><th scope="row" style="width:10%">格</th>
-          <th scope="col" style="width:30%">単数</th>
-          <th scope="col" style="width:30%">双数</th>
-          <th scope="col" style="width:30%">複数</th>
+          <tr>
+          <th class="text-center" scope="row" style="width:10%">格</th>
+          <th class="text-center" scope="col" style="width:30%">単数</th>
+          <th class="text-center" scope="col" style="width:30%">双数</th>
+          <th class="text-center" scope="col" style="width:30%">複数</th>
         </tr>
       </thead>
         <tbody>
-          <tr><th scope="row">主格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">属格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">与格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">対格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">奪格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">具格</th><td></td><td></td><td></td></tr>          
-          <tr><th scope="row">地格</th><td></td><td></td><td></td></tr>          
-          <tr><th scope="row">呼格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">出格(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">内格1(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">内格2(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">共格(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">乗法格(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">様格(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">変格(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">時格(副詞)</th><td colspan="3"></td></tr>
-          <tr><th scope="row">入格(副詞)</th><td colspan="3"></td></tr> 
-          <tr><th scope="row">分配格(副詞)</th><td colspan="3"></td></tr>                    
+          <tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td></tr>          
+          <tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td></tr>          
+          <tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">出格(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">内格1(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">内格2(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">共格(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">乗法格(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">様格(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">変格(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">時格(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center" scope="row">入格(副詞)</th><td colspan="3"></td></tr> 
+          <tr><th class="text-center" scope="row">分配格(副詞)</th><td colspan="3"></td></tr>                    
         </tbody>
       </table>
     </div>

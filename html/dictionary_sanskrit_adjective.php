@@ -94,16 +94,16 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
     <div class="container item table-striped">   
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_adjective" class="" id="input_adjective">
+        <input type="text" name="input_adjective" class="form-control" id="input_adjective">
         <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn" for="btn-search">検索</label>
-        <select class="" id="adjective-selection" aria-label="Default select example">
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
+        <select class="form-select" id="adjective-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
       <?php echo Sanskrit_Common::input_special_button(); ?>         
-      <table class="table-bordered" id="adjective-table">
+      <table class="table table-success table-bordered table-striped table-hover" id="adjective-table">
         <?php echo Sanskrit_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>
           <?php echo Sanskrit_Common::make_adjective_chart(); ?>     

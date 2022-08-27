@@ -3156,9 +3156,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		$this->add_stem = $noun_stem;
 		// 各動詞の語幹を作成
 		$this->make_each_stems($this->root);				// 一次動詞
-		$this->make_each_causative_stems($this->root);		// 使役動詞
-		$this->make_each_desiderative_stems($this->root);	// 願望動詞
-		$this->make_each_intensive_stems($this->root);		// 強意動詞
+		$this->make_each_causative_stems($dic_stem);		// 使役動詞
+		$this->make_each_desiderative_stems($dic_stem);		// 願望動詞
+		$this->make_each_intensive_stems($dic_stem);		// 強意動詞
 		// 翻訳を変更
 		$this->japanese_translation	= $translation;
     }
@@ -3345,8 +3345,16 @@ class Vedic_Verb extends Verb_Common_IE{
 					$this->aorist_stem = Sanskrit_Common::sandhi_engine($root, "is", true, false);					// 完結相
 				}
 			} else if($this->root_type == "denomitive") {
-				// 名詞起源動詞
+				// 名詞起源動詞(語根から)
 				// 完了相(重複アオリスト)
+				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
+				$add_stem = mb_ereg_replace("k", "c", $add_stem);
+				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+				$add_stem = mb_substr($add_stem, 0, 1);
+				// 完結相	
+				$this->aorist_stem = $add_stem."i".$this->add_stem;
+			} else if($this->conjugation_present_type == "denomitive") {
+				// 名詞起源動詞
 				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
 				$add_stem = mb_ereg_replace("k", "c", $add_stem);
 				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
@@ -3378,8 +3386,12 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 未然相
 		if($this->deponent_future != Commons::$TRUE){
+
 			// 最後の音に基づいて語幹を作成
-			if(preg_match("/[aiuāī]$/u", $this->root)){
+			if($this->conjugation_present_type == "denomitive"){
+				// 名詞起源動詞
+				$this->future_stem = Sanskrit_Common::sandhi_engine($root, "sya", false, false);			//未然相
+			} else if(preg_match("/[aiuāī]$/u", $this->root)){
 				// 母音で終わる場合は
 				$this->future_stem = Sanskrit_Common::sandhi_engine($root, "sya", false, false);			//未然相
 			} else if(preg_match("/[bpkgcjtdmnṅñṃṇ]$/u", $this->root)){
@@ -3445,11 +3457,11 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 初期化
 		$prefix = "";
 		// 使役用語幹
-		if($this->root_type == "denomitive"){
+		if($this->conjugation_present_type == "denomitive"){
 			// 強語幹にする。
 			$denomitive = Sanskrit_Common::change_vowel_grade($this->add_stem, Sanskrit_Common::$VRIDDHI);
 			// 名詞起源動詞		
-			$common_causative_stem = Sanskrit_Common::sandhi_engine($denomitive, $root);
+			$common_causative_stem = Sanskrit_Common::sandhi_engine($denomitive, "");
 		} else {
 			// それ以外は強語幹にする。
 			$common_causative_stem = Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::$VRIDDHI);
