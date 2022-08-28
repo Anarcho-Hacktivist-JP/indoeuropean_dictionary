@@ -2628,7 +2628,7 @@ class Latin_Verb_Eo extends Latin_Verb {
 				// 時制を分ける。
 				if($tense == Commons::$PRESENT_TENSE) {
 					//現在形
-					$verb_conjugation = $this->added_stem.$this->present_number[$voice][$person];;
+					$verb_conjugation = $this->added_stem.$this->present_number[$voice][$person];
 				} else if($tense == Commons::$PAST_TENSE){
 					//過去形
 					$verb_conjugation = $this->get_ind_past($voice, $person);
@@ -3344,15 +3344,6 @@ class Vedic_Verb extends Verb_Common_IE{
 					// sat語根
 					$this->aorist_stem = Sanskrit_Common::sandhi_engine($root, "is", true, false);					// 完結相
 				}
-			} else if($this->root_type == "denomitive") {
-				// 名詞起源動詞(語根から)
-				// 完了相(重複アオリスト)
-				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
-				$add_stem = mb_ereg_replace("k", "c", $add_stem);
-				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
-				$add_stem = mb_substr($add_stem, 0, 1);
-				// 完結相	
-				$this->aorist_stem = $add_stem."i".$this->add_stem;
 			} else if($this->conjugation_present_type == "denomitive") {
 				// 名詞起源動詞
 				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
@@ -3362,6 +3353,15 @@ class Vedic_Verb extends Verb_Common_IE{
 				$this->perfect_stem = $add_stem."i".$this->add_stem;
 				// 完結相				
 				$this->aorist_stem = Sanskrit_Common::sandhi_engine("ay", "is", true, false);		
+			} else if($this->root_type == "denomitive") {
+				// 名詞起源動詞(語根から)
+				// 完了相(重複アオリスト)
+				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
+				$add_stem = mb_ereg_replace("k", "c", $add_stem);
+				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+				$add_stem = mb_substr($add_stem, 0, 1);
+				// 完結相	
+				$this->aorist_stem = $add_stem."i".$this->add_stem;
 			} else if($this->root_type == Commons::$AORIST_ASPECT) {
 				// 喉音フラグで判定(anitはなし、setはあり)
 				if($this->root_laryngeal_flag == Commons::$TRUE){
@@ -3459,7 +3459,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 使役用語幹
 		if($this->conjugation_present_type == "denomitive"){
 			// 強語幹にする。
-			$denomitive = Sanskrit_Common::change_vowel_grade($this->add_stem, Sanskrit_Common::$VRIDDHI);
+			$denomitive = Sanskrit_Common::change_vowel_grade($this->add_stem, Sanskrit_Common::$VRIDDHI);;
 			// 名詞起源動詞		
 			$common_causative_stem = Sanskrit_Common::sandhi_engine($denomitive, "");
 		} else {
@@ -4015,7 +4015,7 @@ class Vedic_Verb extends Verb_Common_IE{
 					$verb_stem = $this->get_weak_present_stem();				
 				}
 			}
-		} else if($aspect == Commons::$START_VERB && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
+		} else if($aspect == Commons::$START_VERB && $this->root_type != "denomitive"){
 			// 始動相
 			// 第10類・名詞起源動詞以外は追加する。
 			$verb_stem = $this->inchorative_stem;
@@ -4023,7 +4023,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			if($voice == Commons::$PASSIVE_VOICE){
 				$verb_stem = $verb_stem."ya";
 			}			
-		} else if($aspect == "resultative" && $this->conjugation_present_type != "10" && $this->root_type != "denomitive"){
+		} else if($aspect == "resultative" && $this->root_type != "denomitive"){
 			// 結果相
 			// 第10類・名詞起源動詞以外は追加する。
 			$verb_stem = $this->resultative_stem;
@@ -4067,6 +4067,11 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 人称・法・時制によって場合分け
 			if($this->root_type == "denomitive"){
 				// 名詞起源動詞はこちら
+				// 名詞派生動詞以外は中断する。
+				if($this->conjugation_present_type != "denomitive"){
+					// ハイフンを返す。
+					return "-";
+				}
 				// 重複語幹の場合
 				$verb_stem = $this->perfect_stem;			
 			} else if(preg_match('/(1sg|2sg)/', $person) && $tense_mood == Commons::$PRESENT_TENSE && $voice == Commons::$ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
@@ -4415,8 +4420,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		} 
 
 		// 結果を返す。
-		if($aspect == Commons::$PERFECT_ASPECT && $this->root_type != "denomitive"){
-			return $verb_conjugation;
+		if($this->conjugation_present_type == "denomitive"){
+			// 名詞起源動詞場合
+			return $verb_conjugation;	
 		} else {
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 		}
@@ -4538,7 +4544,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 
 		// 結果を返す。
-		if($this->root_type == "denomitive"){
+		if($this->conjugation_present_type == "denomitive"){
 			// 名詞起源動詞の場合
 			return Sanskrit_Common::sandhi_engine("", $verb_conjugation, true, true);
 		} else {
@@ -4696,7 +4702,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 		
 		// 結果を返す。
-		if($this->root_type == "denomitive"){
+		if($this->conjugation_present_type == "denomitive"){
 			// 名詞起源動詞
 			return $verb_conjugation;
 		} else {
@@ -5696,6 +5702,16 @@ class Polish_Verb extends Verb_Common_IE {
 				$this->opt = "";					// 接続法←希求法
 				$this->class_name = "不規則動詞";	 // 活用名				
 		        break;
+		    case "5miec":
+				$this->ind = "";					// 直接法
+				$this->opt = "";					// 接続法←希求法
+				$this->class_name = "不規則動詞";	 // 活用名				
+		        break;
+		    case "5brac":
+				$this->ind = "";					// 直接法
+				$this->opt = "";					// 接続法←希求法
+				$this->class_name = "不規則動詞";	 // 活用名				
+		        break;
 		    case "denomitive":
 				$this->ind = "";					// 直接法
 				$this->opt = "";					// 接続法←希求法
@@ -6184,7 +6200,7 @@ class Polish_Verb_Byc extends Polish_Verb {
 		//時制と法で取得
 		if($tense_mood == Commons::$PRESENT_TENSE) {
 			// 現在形
-			$verb_conjugation = $this->added_stem.$this->get_primary_suffix_polish($person);
+			$verb_conjugation = $this->present_number[Commons::$ACTIVE_VOICE][$person];
 		} else if($tense_mood == Commons::$PAST_TENSE){
 			// 未完了過去
 			$verb_conjugation = $this->aorist_stem.$this->imperfect_number[Commons::$ACTIVE_VOICE][$person];
@@ -6538,6 +6554,112 @@ class Polish_Verb_Wziac extends Polish_Verb {
 
 }
 
+class Polish_Verb_Miec extends Polish_Verb {
+
+	// 活用種別
+	protected $class = "5miec";
+	
+	// 不定形
+	protected $infinitive = "mieć";
+
+	// 命令形語幹
+	private $imperative_stem = "";
+	
+	// 追加語幹
+	protected $added_stem = "";
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct() {
+		// 親の呼び出し
+    	parent::__construct($this->infinitive);
+		
+		$this->verbal_noun = "";		// 動名詞
+		$this->imperative_stem = mb_substr($this->infinitive, 0, -1)."j";
+    }
+
+	// 派生動詞に対応
+	public function add_stem($verb){	
+		// 派生部分を取得
+		$this->added_stem = mb_substr($verb, 0, -4);
+		// 変更がなければ、ここで処理を中断する。
+		if($this->added_stem == ""){
+			return;
+		}
+
+		// 追加語幹に対応
+		$this->present_participle_active = $this->added_stem.$this->supine;		// 現在能動分詞			
+		$this->supine = $this->added_stem.$this->supine;						// 副分詞		
+		$this->verbal_noun = $this->added_stem.$this->verbal_noun;				// 動名詞
+	}
+
+	
+	// 動詞作成
+	public function get_polish_verb($person, $tense_mood, $gender){
+
+		// 初期化
+		$verb_conjugation = "";
+		echo "test";
+		
+		//時制と法で取得
+		if($tense_mood == Commons::$PRESENT_TENSE) {
+			// 現在形
+			$verb_conjugation = $this->get_primary_suffix_polish($person);
+		} else if($tense_mood == Commons::$PAST_TENSE && $this->root_type != Commons::$AORIST_ASPECT){
+			// 未完了過去
+			$verb_conjugation = $this->aorist_stem.$this->imperfect_number[Commons::$ACTIVE_VOICE][$person];
+		} else if($tense_mood == Commons::$AORIST_ASPECT){
+			// 過去形
+			$verb_conjugation = $this->aorist_stem.$this->aorist_number[Commons::$ACTIVE_VOICE][$person];	
+		} else if($tense_mood == Commons::$FUTURE_TENSE && $this->root_type != Commons::$AORIST_ASPECT){
+			// 未来形
+			// 補助動詞を呼び出す
+			$auxiliary_byc = new Polish_Verb_Byc();
+			// 結合
+			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->infinitive;			
+		} else if($tense_mood == Commons::$PERFECT_ASPECT){
+			// 過去形(完了)	
+			$past_stem = $this->get_past_conditional_stem($gender, $person);
+			// 男性形単数のみ特例処理
+			if($gender == Commons::$MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+				$past_stem = $past_stem."e";
+			}
+			$verb_conjugation = $past_stem.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];						
+		} else if($tense_mood == Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT){
+			// 過去完了形
+			$past_stem = $this->get_past_conditional_stem($gender, $person);
+			// 男性形単数のみ特例処理
+			if($gender == Commons::$MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+				$past_stem = $past_stem."e";
+			}						
+			$verb_conjugation = $past_stem.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
+		} else if($tense_mood == Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT && $this->root_type != Commons::$AORIST_ASPECT){
+			// 未来完了形
+			// 補助動詞を呼び出す
+			$auxiliary_byc = new Polish_Verb_Byc();
+			// 結合
+			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
+		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+			// 仮定法
+			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
+		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+			// 仮定法過去形
+			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
+		} else if($tense_mood == Commons::$IMPERATIVE){
+			// 命令法
+			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}  
+
+		// 結果を返す。
+		return $verb_conjugation;
+	}
+
+}
+
 class Polish_Verb_Root extends Polish_Verb {
 
 	// 活用種別
@@ -6552,9 +6674,9 @@ class Polish_Verb_Root extends Polish_Verb {
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct() {
+    public function __construct($infinitive) {
 		// 親の呼び出し
-    	parent::__construct($this->infinitive);
+    	parent::__construct($infinitive);
 
 		$this->past_stem = $this->present_stem."ł";		// 過去分詞
 		$this->aorist_stem = $this->present_stem2;			// 過去形
@@ -6640,9 +6762,9 @@ class Polish_Verb_Root2 extends Polish_Verb {
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct() {
+    public function __construct($infinitive) {
 		// 親の呼び出し
-    	parent::__construct($this->infinitive);
+    	parent::__construct($infinitive);
 
 		$this->past_stem = $this->present_stem2."ł";		// 過去分詞
 		$this->aorist_stem = $this->present_stem2;			// 過去形
@@ -6728,9 +6850,9 @@ class Polish_Verb_Root3 extends Polish_Verb {
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct() {
+    public function __construct($infinitive) {
 		// 親の呼び出し
-    	parent::__construct($this->infinitive);
+    	parent::__construct($infinitive);
 
 		$this->past_stem = mb_substr($this->present_stem2, 0, -1)."ł";		// 過去分詞
 		$this->aorist_stem = mb_substr($this->present_stem2, 0, -1);			// 過去形

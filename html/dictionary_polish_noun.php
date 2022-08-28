@@ -72,16 +72,16 @@ if($input_noun != ""){
     <div class="container item table-striped">
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="">
+        <input type="text" name="input_noun" id="input_noun" class="form-control">
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn" for="btn-search">検索</label>
-        <select class="" id="noun-selection">
+        <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
       <?php echo Polish_Common::input_special_button(); ?>     
-      <table class="table-bordered" id="noun-table">
+      <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
           <tr><th scope="row" style="width:10%">格</th>
           <th scope="col" style="width:30%">単数</th>

@@ -466,13 +466,13 @@ class Sanskrit_Common extends Common_IE{
 		// SQLを作成 
 		$query = "SELECT
 					case
-		  			 when `stem` = '1' then CONCAT(`stem`, 'm')
-					 when `stem` = '2' then CONCAT(`stem`, 'm')
-					 when `stem` = '3i' then CONCAT(`stem`, 'm')
-					 when `stem` = '3ilong' then CONCAT(`stem`, 'm')
-					 when `stem` = '4u' then CONCAT(`stem`, 'm')
-					 when `stem` = '4ulong' then CONCAT(`stem`, 'm')
-					 when `stem` = '3n' then CONCAT(`stem`, 'am')
+		  			 when `noun_type` = '1' then CONCAT(`stem`, 'm')
+					 when `noun_type` = '2' then CONCAT(`stem`, 'm')
+					 when `noun_type` = '3i' then CONCAT(`stem`, 'm')
+					 when `noun_type` = '3ilong' then CONCAT(`stem`, 'm')
+					 when `noun_type` = '4u' then CONCAT(`stem`, 'm')
+					 when `noun_type` = '4ulong' then CONCAT(`stem`, 'm')
+					 when `noun_type` = '3n' then CONCAT(`stem`, 'am')
 		  			 else CONCAT(`stem`, 'am')
 					end as `adverb` 
 					FROM `".Sanskrit_Common::$DB_NOUN."` WHERE ";
@@ -490,11 +490,11 @@ class Sanskrit_Common extends Common_IE{
 		// SQLを作成 
 		$query = $query." UNION SELECT
 							case
-							 when `stem` = '1' then CONCAT(`stem`, 'm')
-							 when `stem` = '2' then CONCAT(`stem`, 'm')
-							 when `stem` = '3i' then CONCAT(`stem`, 'm')
-							 when `stem` = '4u' then CONCAT(`stem`, 'm')
-							 when `stem` = '3n' then CONCAT(`stem`, 'am')
+							 when `adjective_type` = '1' then CONCAT(`stem`, 'm')
+							 when `adjective_type` = '2' then CONCAT(`stem`, 'm')
+							 when `adjective_type` = '3i' then CONCAT(`stem`, 'm')
+							 when `adjective_type` = '4u' then CONCAT(`stem`, 'm')
+							 when `adjective_type` = '3n' then CONCAT(`stem`, 'am')
 							 else CONCAT(`stem`, 'am')
 							end as `adverb` 
 							FROM `".Sanskrit_Common::$DB_ADJECTIVE."` WHERE ";
@@ -1081,7 +1081,9 @@ class Sanskrit_Common extends Common_IE{
 						$word_datas[] = $verb_data["root"];	
 					}			
 				} else if($table == Sanskrit_Common::$DB_ADVERB || 
-				          (preg_match('/verb/', $word_category) && ($table == Sanskrit_Common::$DB_NOUN || $table == Sanskrit_Common::$DB_ADJECTIVE))){
+				          (preg_match('/verb/', $word_category) && 
+						  ($table == Sanskrit_Common::$DB_NOUN || $table == Sanskrit_Common::$DB_ADJECTIVE) && 
+						  $input_words[count($input_words) - 1][0] != "する")){
 					// 動詞造語および副詞の場合
 					// データベースから訳語の語幹を取得する。
 					$word_datas = Sanskrit_Common::get_sanskrit_adverb($target_word);	

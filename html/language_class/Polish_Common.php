@@ -432,6 +432,27 @@ class Polish_Common extends Common_IE{
         	$verb_data->add_stem($polish_verb["infinitive_stem"]);
 		    // 活用表生成、配列に格納
 		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		} else if($polish_verb["verb_type"] == "5miec"){
+		    // 読み込み
+		    $verb_data = new Polish_Verb_Miec();
+        	$verb_data->add_stem($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		} else if($polish_verb["verb_type"] == "3root"){
+		    // 読み込み
+		    $verb_data = new Polish_Verb_Root($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		} else if($polish_verb["verb_type"] == "3root2"){
+		    // 読み込み
+		    $verb_data = new Polish_Verb_Root2($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		} else if($polish_verb["verb_type"] == "3root3"){
+		    // 読み込み
+		    $verb_data = new Polish_Verb_Root3($polish_verb["infinitive_stem"]);
+		    // 活用表生成、配列に格納
+		    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
       	} else {
 		    // 読み込み
 		    $verb_data = new Polish_Verb($polish_verb["infinitive_stem"]);

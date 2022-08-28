@@ -117,16 +117,16 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
     <div class="container item table-striped">   
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_adjective" id="input_adjective" class="">
+        <input type="text" name="input_adjective" id="input_adjective" class="form-control">
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn" for="btn-search">検索</label>
-        <select class="" id="adjective-selection" aria-label="Default select example">
+        <select class="form-select" id="adjective-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
       <?php echo Polish_Common::input_special_button(); ?>     
-      <table class="table-bordered" id="adjective-table">
+      <table class="table table-success table-bordered table-striped table-hover" id="adjective-table">
         <?php echo Polish_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>
           <?php echo Polish_Common::make_adjective_chart(); ?>     

@@ -3253,7 +3253,6 @@ class Polish_Noun extends Noun_Common_IE{
 			} else if(preg_match("/ół/", $noun)){						
 				$this->gender = "Masculine";    					// 性別
 				$this->noun_type = "2p1";           				// 名詞種別
-				$this->third_stem = mb_substr($noun, 0, -2)."ol";	// 第三語幹		
 			} else if(preg_match("/(ć|dź|ń|ś|ź|l|j)$/", $noun)){	
 				$this->gender = "Masculine";    					// 性別
 				$this->noun_type = "2p";           					// 名詞種別
@@ -3282,12 +3281,9 @@ class Polish_Noun extends Noun_Common_IE{
 				$this->gender = "Neuter";    						// 性別				
 				$this->noun_type = "3con";          				// 名詞種別			
 				$this->third_stem = mb_substr($noun, 0, -2)."n";	// 強語幹を変更
-				$this->first_stem = $noun;							// 弱語幹を変更	
 			} else {											
 				$this->gender = "Masculine";    				// 性別
 				$this->noun_type = 2;           				// 名詞種別
-				$this->first_stem = $noun."us";					// 第一語幹
-				$this->third_stem = $noun;						// 第三語幹
 			}
 
 			// 男性名詞の場合は
@@ -3408,7 +3404,7 @@ class Polish_Noun extends Noun_Common_IE{
 		$noun = preg_replace("/gy$/", "dzy", $noun);
 
 		// 最後の音節のoは短音になる。但し単音節の単語は除く
-		$noun = preg_replace("/[aiueo]{1}.o([^aiueoąęó])$/u", "ó\\1", $noun);
+		$noun = mb_ereg_replace("(.{2})o([^aiueoąęó])\b", "\\1ó\\2", $noun);
 
 		// 結果を返す
 		return $noun;
