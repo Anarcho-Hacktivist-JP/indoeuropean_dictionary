@@ -2037,7 +2037,7 @@ class Vedic_Noun extends Noun_Common_IE {
     	// 親クラス初期化
 		parent::__construct();
 		// 情報をセット
-		$this->set_data($last_word, "agent");
+		$this->set_data($last_word, "");
 		// 語幹を変更
 		$this->first_stem = Sanskrit_Common::sandhi_engine($compound, $this->first_stem);		// 第一語幹
 		$this->second_stem = Sanskrit_Common::sandhi_engine($compound, $this->second_stem);		// 第二語幹		
@@ -2220,9 +2220,15 @@ class Vedic_Noun extends Noun_Common_IE {
 					$this->noun_type = 1;           					// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."ā";	// 第二語幹
 				} else {
-					$this->gender = "Masculine";    					// 名詞区分
-					$this->noun_type = 2;           					// 名詞種別
-					$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
+					if(preg_match('/a$/u',$noun)){
+						$this->gender = "Masculine";    					// 名詞区分
+						$this->noun_type = 2;           					// 名詞種別
+						$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
+					} else if(preg_match('/ā$/u',$noun)){
+						$this->gender = "Feminine";    						// 名詞区分
+						$this->noun_type = 1;           					// 名詞種別
+						$this->second_stem = mb_substr($noun, 0, -1)."ā";	// 第二語幹
+					}
 				}
 			} else if(preg_match('/(u|ū)$/',$noun)){			
 				// 名詞の種別で性別・活用が決定する。							
@@ -2239,9 +2245,15 @@ class Vedic_Noun extends Noun_Common_IE {
 					$this->noun_type = "4ulong";           				// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."ū";	// 第二語幹
 				} else {
-					$this->gender = "Neuter";    						// 名詞区分
-					$this->noun_type = 4;           					// 名詞種別
-					$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
+					if(preg_match('/u$/',$noun)){
+						$this->gender = "Masculine";						// 名詞区分
+						$this->noun_type = 4;								// 名詞種別
+						$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
+					} else if(preg_match('/ū$/',$noun)){
+						$this->gender = "Feminine";    						// 名詞区分
+						$this->noun_type = "4ulong";           				// 名詞種別
+						$this->second_stem = mb_substr($noun, 0, -1)."ū";	// 第二語幹
+					}
 				}
 			} else if(preg_match('/(i|ī)$/',$noun)){		
 				// 名詞の種別で性別・活用が決定する。								
@@ -2258,9 +2270,15 @@ class Vedic_Noun extends Noun_Common_IE {
 					$this->noun_type = "3ilong";           					// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."ī";		// 第二語幹
 				} else {
-					$this->gender = "Neuter";    							// 名詞区分
-					$this->noun_type = "3i";           						// 名詞種別
-					$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
+					if(preg_match('/i$/',$noun)){
+						$this->gender = "Masculine";							// 名詞区分
+						$this->noun_type = "3i";								// 名詞種別
+						$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
+					} else if(preg_match('/ī$/',$noun)){
+						$this->gender = "Feminine";    							// 名詞区分
+						$this->noun_type = "3ilong";           					// 名詞種別
+						$this->second_stem = mb_substr($noun, 0, -1)."ī";		// 第二語幹
+					}
 				}
 			} else if(preg_match('/(r|ṛ)$/',$noun)){
 				$this->noun_type = "3r";								// 名詞種別				
