@@ -1510,6 +1510,7 @@ class Latin_Verb extends Verb_Common_IE {
 		$question_data = array();
 		$question_data['question_sentence'] = $this->get_title($this->infinitive)."の".$aspect." ".$tense." ".$mood." ".$voice." ".$person."を答えよ";				
 		$question_data['answer'] = $this->get_latin_verb($person, $voice, $mood, $aspect, $tense);
+		$question_data['question_sentence2'] = $question_data['answer']."の時制、法、態と人称を答えよ。";
 		$question_data['aspect'] = $aspect;
 		$question_data['tense'] = $tense;	
 		$question_data['mood'] = $mood;
@@ -3346,6 +3347,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				}
 			} else if($this->conjugation_present_type == "denomitive") {
 				// 名詞起源動詞
+				// 完了相(重複アオリスト)
 				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
 				$add_stem = mb_ereg_replace("k", "c", $add_stem);
 				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
@@ -3355,12 +3357,11 @@ class Vedic_Verb extends Verb_Common_IE{
 				$this->aorist_stem = Sanskrit_Common::sandhi_engine("ay", "is", true, false);		
 			} else if($this->root_type == "denomitive") {
 				// 名詞起源動詞(語根から)
-				// 完了相(重複アオリスト)
+				// 完結相(重複アオリスト)
 				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
 				$add_stem = mb_ereg_replace("k", "c", $add_stem);
 				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
 				$add_stem = mb_substr($add_stem, 0, 1);
-				// 完結相	
 				$this->aorist_stem = $add_stem."i".$this->add_stem;
 			} else if($this->root_type == Commons::$AORIST_ASPECT) {
 				// 喉音フラグで判定(anitはなし、setはあり)
@@ -3400,9 +3401,12 @@ class Vedic_Verb extends Verb_Common_IE{
 			} else if(preg_match("/[śṣs]$/u", $this->root)){
 				// 摩擦音の場合は
 				$this->future_stem = Sanskrit_Common::sandhi_engine($root, "sya", false, false);			//未然相
-			} else if(preg_match("/[bpkgcjtd]h$/u", $this->root) || preg_match("/rṛṝlḷḹ$/u", $this->root) || preg_match("/h$/u", $this->root)){
+			} else if(preg_match("/[bpkgcjtd]h$/u", $this->root) || preg_match("/[rṛṝlḷḹ]$/u", $this->root) || preg_match("/h$/u", $this->root)){
 				// 帯気音・流音・喉音の場合は
 				$this->future_stem = $root."isya";		//未然相		
+			} else {
+				// それ以外
+				$this->future_stem = Sanskrit_Common::sandhi_engine($root, "sya", false, false);			//未然相
 			}
 			// 未来語幹
 			$this->future_participle_active = $this->add_stem.Sanskrit_Common::sandhi_engine($this->future_stem, "t");			// 能動態	

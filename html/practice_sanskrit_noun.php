@@ -20,9 +20,9 @@ $case = trim(filter_input(INPUT_POST, 'case'));
 // 単語を検索
 $question_word = Sanskrit_Common::get_random_noun($gender, $declension);
 // 読み込み
-$latin_noun = new Vedic_Noun($question_word["dictionary_stem"]);
+$vedic_noun = new Vedic_Noun($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $latin_noun->get_form_by_number_case($case, $number);
+$question_data = $vedic_noun->get_form_by_number_case($case, $number);
 ?>
 <!doctype html>
 <html lang="ja">

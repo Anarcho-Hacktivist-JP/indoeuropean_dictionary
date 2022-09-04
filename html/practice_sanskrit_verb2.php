@@ -15,14 +15,6 @@ $root_type = trim(filter_input(INPUT_POST, 'root-type'));
 $laryngeal_type = trim(filter_input(INPUT_POST, 'laryngeal-type'));
 // 挿入データ－動詞の種別－
 $verb_type = trim(filter_input(INPUT_POST, 'verb-type'));
-// 挿入データ－人称－
-$person = trim(filter_input(INPUT_POST, 'person'));
-// 挿入データ－態－
-$voice = trim(filter_input(INPUT_POST, 'voice'));
-// 挿入データ－相－
-$aspect = trim(filter_input(INPUT_POST, 'aspect'));
-// 挿入データ－法－
-$mood = trim(filter_input(INPUT_POST, 'mood'));
 
 // 単語取得
 $question_word = Sanskrit_Common::get_random_verb($verb_type, $root_type, $laryngeal_type);
@@ -172,7 +164,6 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition();
           // イベントを設定
           setEvents();
         });
-
         //イベントを設定
         function setEvents(){
 	        // 回答ボタン選択時
@@ -181,7 +172,6 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition();
             Language_Practice.answer_the_question_skr_verb();
 	        });
         }
-
     </script>      
     </script>
   </body>

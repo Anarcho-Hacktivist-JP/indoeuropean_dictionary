@@ -227,6 +227,34 @@ class Language_Practice{
         }
     }
 
+    // 答え合わせ(ラテン語動詞)
+    static answer_the_question_lat_verb(){
+        // 入力情報を受け取る。
+        var person = $('input[name="person"]:checked').val(); // 人称
+        var voice = $('input[name="voice"]:checked').val();   // 態
+        var tense = $('input[name="tense"]:checked').val();   // 時制
+        var aspect = $('input[name="aspect"]:checked').val(); // 相
+        var mood = $('input[name="mood"]:checked').val();     // 法
+
+        // JSON → 配列に書き換え
+        var json_question_data = JSON.parse(question_data);
+  
+        // 入力情報と答えを受け取る
+        if(person == json_question_data['person'] &&
+           voice == json_question_data['voice'] &&
+           aspect == json_question_data['aspect'] &&
+           tense == json_question_data['tense'] &&
+           mood == json_question_data['mood']){
+          // 正解のダイアログを出す。
+          alert("正解");
+          // 再読み込み
+          location.reload();
+        } else {
+          // 不正解のダイアログを出す。
+          alert("不正解");            
+        }
+    }
+
     // 答え合わせ(梵語動詞)
     static answer_the_question_skr_verb(){
         // 入力情報を受け取る。
@@ -253,8 +281,8 @@ class Language_Practice{
         }
     }
 
-    // 答え合わせ(梵語名詞)
-    static answer_the_question_skr_noun(){
+    // 答え合わせ(名詞)
+    static answer_the_question_noun(){
         // 入力情報を受け取る。
         var noun_case = $('input[name="case"]:checked').val();       // 格
         var noun_number = $('input[name="number"]:checked').val();   // 数
@@ -275,8 +303,8 @@ class Language_Practice{
         }
     }
 
-    // 答え合わせ(梵語形容詞)
-    static answer_the_question_skr_adjective(){
+    // 答え合わせ(形容詞)
+    static answer_the_question_adjective(){
         // 入力情報を受け取る。
         var adj_case = $('input[name="case"]:checked').val();       // 格
         var adj_number = $('input[name="number"]:checked').val();   // 数

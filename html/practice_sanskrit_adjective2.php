@@ -21,9 +21,9 @@ $case = trim(filter_input(INPUT_POST, 'case'));
 // 単語取得
 $question_word = Sanskrit_Common::get_random_adjective($declension);
 // 読み込み
-$adjective_latin = new Vedic_Adjective($question_word["dictionary_stem"]);
+$adjective_vedic = new Vedic_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
+$question_data = $adjective_vedic->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -82,10 +82,9 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
 	        // 回答ボタン選択時
 	        $('#button-answer').click( function(){
             // 答えを出す
-            Language_Practice.answer_the_question_skr_adjective();
+            Language_Practice.answer_the_question_adjective();
 	        });
         }
-
     </script>      
     </script>
   </body>

@@ -1361,6 +1361,7 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/([a-z])s([a-z])/u", "\\1ṣ\\2", $script);		
 		$script = preg_replace("/([dḍṭṅñṇśṣāīū])s([a-z])/u", "\\1ṣ\\2", $script);
 		$script = preg_replace("/([a-z])s([āīū])/u", "\\1ṣ\\2", $script);
+		$script = preg_replace("/([aāiīuūeoṛṝ])ch([aāiīuūeoṛṝ])/u", "\\1cch\\2", $script);
 
 		// バルトロマエの法則
 		$script = preg_replace("/([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])/u", "\\1\\2h", $script);
