@@ -4801,7 +4801,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	// 不定詞の曲用表を返す。	
 	protected function get_infinitive($infinitive_stem){
 		// 読み込み
-		$infinitive = new Vedic_Noun($infinitive_stem);
+		$infinitive = new Vedic_Noun($infinitive_stem, "");
 		// 結果を取得
 		$chart = $infinitive->get_chart();
 		// メモリを解放
@@ -5282,14 +5282,11 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 
 		// 一次動詞不定詞
-		foreach($this->primary_infinitives as $primary_infinitive){
-			$words[$primary_infinitive] = $this->get_infinitive($primary_infinitive);
-		}
-
-		// 使役動詞不定詞
-		foreach($this->causative_infinitives as $causative_infinitive){
-			$words[$causative_infinitive] = $this->get_infinitive($causative_infinitive);
-		}
+		$root_infinitive = new Vedic_Noun($this->root);
+		// 結果を取得
+		$words[$this->root] = $root_infinitive->get_chart();
+		// メモリを解放
+		unset($root_infinitive);
 
 		// 結果を返す。
 		return $words;

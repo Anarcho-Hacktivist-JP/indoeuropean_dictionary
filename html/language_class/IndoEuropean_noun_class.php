@@ -1944,7 +1944,7 @@ class Vedic_Noun extends Noun_Common_IE {
 		[
 			"noun_type" => "3ilong",
 			"noun_type_name" => "ī-変化名詞",
-			"gender" => "Feminine",
+			"gender" => "Feminine/Masculine",
 			"sg_nom" => "",
 			"sg_gen" => "ās",
 			"sg_dat" => "ai",
@@ -2007,8 +2007,10 @@ class Vedic_Noun extends Noun_Common_IE {
     public function __construct_sanskrit2($noun, $noun_genre) {
     	// 親クラス初期化
 		parent::__construct();
-		// 名詞情報をセット
-		$this->set_data(htmlspecialchars($noun), $noun_genre);
+		// 手動で情報をセット
+		$this->set_data_manual(htmlspecialchars($noun), $noun_genre);
+		// 残りの語幹を作成
+		$this->make_other_stem();
 		// 活用表を挿入
 		$this->get_noun_declension();
     }
@@ -2021,8 +2023,10 @@ class Vedic_Noun extends Noun_Common_IE {
 		parent::__construct();
 		// 単語を作成
 		$word = Sanskrit_Common::sandhi_engine($root, $suffix);
-		// 情報をセット
-		$this->set_data($word, $noun_genre);
+		// 手動で情報をセット
+		$this->set_data_manual(htmlspecialchars($word), $noun_genre);
+		// 残りの語幹を作成
+		$this->make_other_stem();
 		// 日本語訳を書き換え
 		$this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
 		$this->english_translation = "";											// 英語訳
@@ -2039,6 +2043,8 @@ class Vedic_Noun extends Noun_Common_IE {
 		parent::__construct();
 		// 情報をセット
 		$this->set_data($last_word, "");
+		// 残りの語幹を作成
+		$this->make_other_stem();
 		// 語幹を変更
 		$this->first_stem = Sanskrit_Common::sandhi_engine($compound, $this->first_stem);		// 第一語幹
 		$this->second_stem = Sanskrit_Common::sandhi_engine($compound, $this->second_stem);		// 第二語幹		
@@ -2059,6 +2065,8 @@ class Vedic_Noun extends Noun_Common_IE {
 		parent::__construct();
 		// 名詞情報をセット
 		$this->set_data(htmlspecialchars($noun), "animate");
+		// 残りの語幹を作成
+		$this->make_other_stem();
 		// 活用表を挿入
 		$this->get_noun_declension();
     }
@@ -2184,163 +2192,178 @@ class Vedic_Noun extends Noun_Common_IE {
 			$this->japanese_translation = $word_info["japanese_translation"];	// 日本語訳
 			$this->english_translation = $word_info["english_translation"];		// 英語訳
 		} else {
-			// 第一語幹・第三語幹生成
-			$this->second_stem = $noun;												// 第二語幹
-			// 日本語訳
-			$this->japanese_translation = "借用";
-			// 英語訳
-			$this->english_translation = "loanword";
-			
-			// 文字列の最後で判断
-			if($noun_genre == "root"){
-				// 語根名詞(不定詞)はこちら
+			// 見つからない場合は手動で設定
+			$this->set_data_manual($noun, $noun_genre);
+		}
+    }
+
+	// 語幹を手動作成
+	private function set_data_manual($noun, $noun_genre){
+		// 第一語幹・第三語幹生成
+		$this->second_stem = $noun;												// 第二語幹
+		// 日本語訳
+		$this->japanese_translation = "借用";
+		// 英語訳
+		$this->english_translation = "loanword";
+		
+		// 文字列の最後で判断
+		if($noun_genre == "root"){
+			// 語根名詞(不定詞)はこちら
+			$this->gender = "Feminine";    							// 名詞区分
+			$this->noun_type = "3s";								// 名詞種別
+		} else if(preg_match('/(e|o|au|ai)$/',$noun)){
+			$this->noun_type = "double";								// 名詞種別
+			// 名詞の種別で性別・活用が決定する。										
+			if($noun_genre == "agent" || $noun_genre == "animate" || $noun_genre == "inanimate"){
+				$this->gender = "Masculine";							// 名詞区分
+			} else if($noun_genre == "action"){						
 				$this->gender = "Feminine";    							// 名詞区分
-				$this->noun_type = "3s";								// 名詞種別
-			} else if(preg_match('/(e|o|au|ai)$/',$noun)){
-				$this->noun_type = "double";								// 名詞種別
-				// 名詞の種別で性別・活用が決定する。										
-				if($noun_genre == "agent" || $noun_genre == "animate" || $noun_genre == "inanimate"){
-					$this->gender = "Masculine";							// 名詞区分
-				} else if($noun_genre == "action"){						
-					$this->gender = "Feminine";    							// 名詞区分
-				} else {
-					$this->gender = "Masculine";							// 名詞区分
-				}
-			} else if(preg_match('/(a|ā)$/',$noun)){		
-				// 名詞の種別で性別・活用が決定する。		
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";						// 名詞区分
-					$this->noun_type = 2;								// 名詞種別
-					$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
-				} else if($noun_genre == "inanimate"){						
-					$this->gender = "Neuter";    						// 名詞区分
+			} else {
+				$this->gender = "Masculine";							// 名詞区分
+			}
+		} else if(preg_match('/(a|ā)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。		
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";						// 名詞区分
+				$this->noun_type = 2;								// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
+			} else if($noun_genre == "inanimate"){						
+				$this->gender = "Neuter";    						// 名詞区分
+				$this->noun_type = 2;           					// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
+			} else if($noun_genre == "action"){						
+				$this->gender = "Feminine";    						// 名詞区分
+				$this->noun_type = 1;           					// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."ā";	// 第二語幹
+			} else {
+				if(preg_match('/a$/u',$noun)){
+					$this->gender = "Masculine";    					// 名詞区分
 					$this->noun_type = 2;           					// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
-				} else if($noun_genre == "action"){						
+				} else if(preg_match('/ā$/u',$noun)){
 					$this->gender = "Feminine";    						// 名詞区分
 					$this->noun_type = 1;           					// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."ā";	// 第二語幹
-				} else {
-					if(preg_match('/a$/u',$noun)){
-						$this->gender = "Masculine";    					// 名詞区分
-						$this->noun_type = 2;           					// 名詞種別
-						$this->second_stem = mb_substr($noun, 0, -1)."a";	// 第二語幹
-					} else if(preg_match('/ā$/u',$noun)){
-						$this->gender = "Feminine";    						// 名詞区分
-						$this->noun_type = 1;           					// 名詞種別
-						$this->second_stem = mb_substr($noun, 0, -1)."ā";	// 第二語幹
-					}
 				}
-			} else if(preg_match('/(u|ū)$/',$noun)){			
-				// 名詞の種別で性別・活用が決定する。							
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";						// 名詞区分
+			}
+		} else if(preg_match('/(u|ū)$/',$noun)){			
+			// 名詞の種別で性別・活用が決定する。							
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";						// 名詞区分
+				$this->noun_type = 4;								// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
+			} else if($noun_genre == "inanimate"){						
+				$this->gender = "Neuter";    						// 名詞区分
+				$this->noun_type = 4;           					// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
+			} else if($noun_genre == "action"){	
+				if(preg_match('/u$/',$noun)){
+					$this->gender = "Feminine";						    // 名詞区分
 					$this->noun_type = 4;								// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
-				} else if($noun_genre == "inanimate"){						
-					$this->gender = "Neuter";    						// 名詞区分
-					$this->noun_type = 4;           					// 名詞種別
-					$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
-				} else if($noun_genre == "action"){						
+				} else if(preg_match('/ū$/',$noun)){
 					$this->gender = "Feminine";    						// 名詞区分
 					$this->noun_type = "4ulong";           				// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."ū";	// 第二語幹
-				} else {
-					if(preg_match('/u$/',$noun)){
-						$this->gender = "Masculine";						// 名詞区分
-						$this->noun_type = 4;								// 名詞種別
-						$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
-					} else if(preg_match('/ū$/',$noun)){
-						$this->gender = "Feminine";    						// 名詞区分
-						$this->noun_type = "4ulong";           				// 名詞種別
-						$this->second_stem = mb_substr($noun, 0, -1)."ū";	// 第二語幹
-					}
 				}
-			} else if(preg_match('/(i|ī)$/',$noun)){		
-				// 名詞の種別で性別・活用が決定する。								
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";							// 名詞区分
+			} else {
+				if(preg_match('/u$/',$noun)){
+					$this->gender = "Masculine";						// 名詞区分
+					$this->noun_type = 4;								// 名詞種別
+					$this->second_stem = mb_substr($noun, 0, -1)."u";	// 第二語幹
+				} else if(preg_match('/ū$/',$noun)){
+					$this->gender = "Feminine";    						// 名詞区分
+					$this->noun_type = "4ulong";           				// 名詞種別
+					$this->second_stem = mb_substr($noun, 0, -1)."ū";	// 第二語幹
+				}
+			}
+		} else if(preg_match('/(i|ī)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。								
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";							// 名詞区分
+				$this->noun_type = "3i";								// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
+			} else if($noun_genre == "inanimate"){						
+				$this->gender = "Neuter";    							// 名詞区分
+				$this->noun_type = "3i";           						// 名詞種別
+				$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
+			} else if($noun_genre == "action"){						
+				if(preg_match('/i$/',$noun)){
+					$this->gender = "Feminine";								// 名詞区分
 					$this->noun_type = "3i";								// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
-				} else if($noun_genre == "inanimate"){						
-					$this->gender = "Neuter";    							// 名詞区分
-					$this->noun_type = "3i";           						// 名詞種別
-					$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
-				} else if($noun_genre == "action"){						
+				} else if(preg_match('/ī$/',$noun)){
 					$this->gender = "Feminine";    							// 名詞区分
 					$this->noun_type = "3ilong";           					// 名詞種別
 					$this->second_stem = mb_substr($noun, 0, -1)."ī";		// 第二語幹
-				} else {
-					if(preg_match('/i$/',$noun)){
-						$this->gender = "Masculine";							// 名詞区分
-						$this->noun_type = "3i";								// 名詞種別
-						$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
-					} else if(preg_match('/ī$/',$noun)){
-						$this->gender = "Feminine";    							// 名詞区分
-						$this->noun_type = "3ilong";           					// 名詞種別
-						$this->second_stem = mb_substr($noun, 0, -1)."ī";		// 第二語幹
-					}
 				}
-			} else if(preg_match('/(r|ṛ)$/',$noun)){
-				$this->noun_type = "3r";								// 名詞種別				
-				if($noun_genre == "agent" || $noun_genre == "animate"){
+			} else {
+				if(preg_match('/i$/',$noun)){
 					$this->gender = "Masculine";							// 名詞区分
-					$this->second_stem = mb_substr($noun, 0, -1);			// 第二語幹
-				} else {
-					$this->gender = "Neuter";								// 名詞区分
-					$this->second_stem = mb_substr($noun, 0, -1);			// 第二語幹
-				}
-			} else if(preg_match('/(n)$/',$noun)){
-				$this->noun_type = "3n";								// 名詞種別				
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";		// 名詞区分
-				} else {
-					$this->gender = "Neuter";			// 名詞区分
-				}
-			} else if(preg_match('/(at|ac|yas|vas)$/',$noun)){
-				// 名詞の種別で性別・活用が決定する。						
-				$this->noun_type = "3con";									// 名詞種別
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";							// 名詞区分
-				} else if($noun_genre == "action"){						
+					$this->noun_type = "3i";								// 名詞種別
+					$this->second_stem = mb_substr($noun, 0, -1)."i";		// 第二語幹
+				} else if(preg_match('/ī$/',$noun)){
 					$this->gender = "Feminine";    							// 名詞区分
-				} else {
-					$this->gender = "Neuter";								// 名詞区分
-				}												
-			} else if(preg_match('/(as|is|us)$/',$noun)){
-				$this->gender = "Neuter";									// 名詞区分
-				$this->noun_type = "3con";									// 名詞種別
-			} else if(preg_match('/(s|t)$/',$noun)){
-				$this->noun_type = "3con";									// 名詞種別
-				// 名詞の種別で性別・活用が決定する。										
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";							// 名詞区分
-				} else {
-					$this->gender = "Neuter";								// 名詞区分
-				}							
-			} else {		
-				// 名詞の種別で性別・活用が決定する。													
-				if($noun_genre == "agent" || $noun_genre == "animate"){
-					$this->gender = "Masculine";							// 名詞区分
-					$this->noun_type = "3s";								// 名詞種別
-				} else if($noun_genre == "inanimate"){						
-					$this->gender = "Neuter";    							// 名詞区分
-					$this->noun_type = 2;           						// 名詞種別
-					$this->second_stem = $noun."a";							// 第二語幹
-				} else if($noun_genre == "action"){						
-					$this->gender = "Feminine";    							// 名詞区分
-					$this->noun_type = "3s";								// 名詞種別
-				} else {
-					$this->gender = "Masculine";    						// 名詞区分
-					$this->noun_type = "3s";								// 名詞種別
+					$this->noun_type = "3ilong";           					// 名詞種別
+					$this->second_stem = mb_substr($noun, 0, -1)."ī";		// 第二語幹
 				}
 			}
+		} else if(preg_match('/(r|ṛ)$/',$noun)){
+			$this->noun_type = "3r";								// 名詞種別				
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";							// 名詞区分
+				$this->second_stem = mb_substr($noun, 0, -1);			// 第二語幹
+			} else {
+				$this->gender = "Neuter";								// 名詞区分
+				$this->second_stem = mb_substr($noun, 0, -1);			// 第二語幹
+			}
+		} else if(preg_match('/(n)$/',$noun)){
+			$this->noun_type = "3n";								// 名詞種別				
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";		// 名詞区分
+			} else {
+				$this->gender = "Neuter";			// 名詞区分
+			}
+		} else if(preg_match('/(at|ac|yas|vas)$/',$noun)){
+			// 名詞の種別で性別・活用が決定する。						
+			$this->noun_type = "3con";									// 名詞種別
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";							// 名詞区分
+			} else if($noun_genre == "action"){						
+				$this->gender = "Feminine";    							// 名詞区分
+			} else {
+				$this->gender = "Neuter";								// 名詞区分
+			}												
+		} else if(preg_match('/(as|is|us)$/',$noun)){
+			$this->gender = "Neuter";									// 名詞区分
+			$this->noun_type = "3con";									// 名詞種別
+		} else if(preg_match('/(s|t)$/',$noun)){
+			$this->noun_type = "3con";									// 名詞種別
+			// 名詞の種別で性別・活用が決定する。										
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";							// 名詞区分
+			} else {
+				$this->gender = "Neuter";								// 名詞区分
+			}							
+		} else {		
+			// 名詞の種別で性別・活用が決定する。													
+			if($noun_genre == "agent" || $noun_genre == "animate"){
+				$this->gender = "Masculine";							// 名詞区分
+				$this->noun_type = "3s";								// 名詞種別
+			} else if($noun_genre == "inanimate"){						
+				$this->gender = "Neuter";    							// 名詞区分
+				$this->noun_type = 2;           						// 名詞種別
+				$this->second_stem = $noun."a";							// 第二語幹
+			} else if($noun_genre == "action"){						
+				$this->gender = "Feminine";    							// 名詞区分
+				$this->noun_type = "3s";								// 名詞種別
+			} else {
+				$this->gender = "Masculine";    						// 名詞区分
+				$this->noun_type = "3s";								// 名詞種別
+			}
 		}
+	}
 
-		// 残りの語幹を作成
-		$this->make_other_stem();
-    }
-	
 	// 名詞作成
 	public function get_declensioned_noun($case, $number){
 
@@ -2987,7 +3010,7 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_acc" => "ów",
 			"pl_ins" => "ami",
 			"pl_loc" => "ach",
-			"pl_voc" => "e"
+			"pl_voc" => "owie"
 		],
 		[
 			"noun_type" => "2p",
@@ -3062,7 +3085,7 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_nom" => "y",
 			"pl_gen" => "ów",
 			"pl_dat" => "om",
-			"pl_acc" => "e",
+			"pl_acc" => "y",
 			"pl_ins" => "ami",
 			"pl_loc" => "ach",
 			"pl_voc" => "y"

@@ -51,10 +51,10 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
         <?php echo Sanskrit_Common::root_type_selection_button(); ?>
         <?php echo Sanskrit_Common::laryngeal_type_selection_button(); ?>       
         <?php echo Sanskrit_Common::verb_type_selection_button(); ?>
-        <?php echo Sanskrit_Common::voice_selection_button(); ?>
-        <?php echo Sanskrit_Common::aspect_selection_button(); ?>
-        <?php echo Sanskrit_Common::mood_selection_button(); ?>
-        <?php echo Sanskrit_Common::person_selection_button(); ?>        
+        <?php echo Sanskrit_Common::voice_selection_button(true); ?>
+        <?php echo Sanskrit_Common::aspect_selection_button(true); ?>
+        <?php echo Sanskrit_Common::mood_selection_button(true); ?>
+        <?php echo Sanskrit_Common::person_selection_button(true); ?>        
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-outline-secondary" for="btn-search">問題を生成</label>

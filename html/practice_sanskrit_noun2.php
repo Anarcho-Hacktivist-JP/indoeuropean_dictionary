@@ -41,7 +41,7 @@ $question_data = $vedic_noun->get_form_by_number_case($case, $number);
   <body>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php echo Sanskrit_Common::adjective_gender_selection_button(); ?>
+        <?php echo Sanskrit_Common::adjective_gender_selection_button(true); ?>
         <?php echo Sanskrit_Common::noun_declension_type_selection_button(); ?>    
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
         <input type="submit" class="btn-check" id="btn-search">

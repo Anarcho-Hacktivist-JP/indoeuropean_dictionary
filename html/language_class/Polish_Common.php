@@ -645,7 +645,7 @@ class Polish_Common extends Common_IE{
 	}
 
 	// 性別選択ボタンの生成
-	public static function noun_gender_selection_button(){
+	public static function noun_gender_selection_button($all_flag = false){
 		return '
 		<h3>性別</h3>
 		<section class="row">
@@ -736,26 +736,6 @@ class Polish_Common extends Common_IE{
         </section>';
 	}
 
-	// 数選択ボタンの生成
-	public static function number_selection_button(){
-		return '
-		<h3>数</h3>
-		<section class="row">
-		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::$SINGULAR.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::$PLURAL.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
-		  </div>               
-		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
-		  </div>
-		</section>';
-	}
-
 	// 格選択ボタンの生成
 	public static function case_selection_button(){
 		return '
@@ -795,42 +775,6 @@ class Polish_Common extends Common_IE{
 		  </div>
 		</section>';
 	}
-
-	// 人称ボタンの生成
-	public static function person_selection_button(){
-		return '
-        <h3>態</h3>
-        <section class="row">
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1sg">1人称単数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-2sg" autocomplete="off" value="2sg">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2sg">2人称単数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3sg">3人称単数</label>
-          </div>	  
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1pl">1人称複数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-2pl" autocomplete="off" value="2pl">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2pl">2人称複数</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3pl">3人称複数</label>
-          </div>     	  
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
-          </div>
-        </section>';
-	}	
 	
 	// 相ボタンの生成
 	public static function aspect_selection_button(){

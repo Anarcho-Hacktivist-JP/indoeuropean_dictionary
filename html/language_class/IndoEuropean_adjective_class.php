@@ -2357,7 +2357,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
     public function __construct_sanskrit2($adjective, $flag) {
     	// 親クラス初期化
 		parent::__construct();
-		// 第二語幹生成
+		// 比較級フラグ
 		$this->comp_type = Commons::$FALSE;
 		// 文字列の最後で判断
 		if(preg_match('/(a|ā)$/',$adjective)){		
