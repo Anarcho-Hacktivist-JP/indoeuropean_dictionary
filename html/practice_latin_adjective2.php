@@ -9,21 +9,15 @@ include(dirname(__FILE__) . "/language_class/Database_session.php");
 include(dirname(__FILE__) . "/language_class/Commons.php");
 include(dirname(__FILE__) . "/language_class/Latin_Common.php");
 
-// 挿入データ－性別－
-$gender = trim(filter_input(INPUT_POST, 'gender'));
 // 挿入データ－活用種別－
 $declension = trim(filter_input(INPUT_POST, 'declension'));
-// 挿入データ－数－
-$number = trim(filter_input(INPUT_POST, 'number'));
-// 挿入データ－格－
-$case = trim(filter_input(INPUT_POST, 'case'));
 
 // 単語取得
 $question_word = Latin_Common::get_random_adjective($declension);
 // 読み込み
 $adjective_latin = new Latin_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
+$question_data = $adjective_latin->get_form_by_number_case_gender_grade("", "", "", Commons::$ADJ_GRADE_POSITIVE);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -50,7 +44,7 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
       <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
       <script>
         var storage = new FormStorage('.js-form-storage',{
-          name: 'form-storage-lat-adj',
+          name: 'form-storage-lat-adj2',
           checkbox: '.js-persist'
         });
       </script>     

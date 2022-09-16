@@ -45,7 +45,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
         <?php echo Polish_Common::noun_gender_selection_button(); ?>   
         <?php echo Polish_Common::noun_declension_type_selection_button(); ?>   
-        <?php echo Polish_Common::number_selection_button(); ?> 
+        <?php echo Polish_Common::number_selection_button(true); ?> 
         <?php echo Polish_Common::case_selection_button(); ?>         
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
         <input type="submit" class="btn-check" id="btn-search">

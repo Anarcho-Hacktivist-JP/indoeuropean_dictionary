@@ -13,17 +13,13 @@ include(dirname(__FILE__) . "/language_class/Latin_Common.php");
 $gender = trim(filter_input(INPUT_POST, 'gender'));
 // 挿入データ－活用種別－
 $declension = trim(filter_input(INPUT_POST, 'declension'));
-// 挿入データ－数－
-$number = trim(filter_input(INPUT_POST, 'number'));
-// 挿入データ－格－
-$case = trim(filter_input(INPUT_POST, 'case'));
 
 // 単語を検索
 $question_word = Latin_Common::get_random_noun($gender, $declension);
 // 読み込み
 $latin_noun = new Latin_Noun($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $latin_noun->get_form_by_number_case($case, $number);
+$question_data = $latin_noun->get_form_by_number_case("", "");
 ?>
 <!doctype html>
 <html lang="ja">
@@ -43,7 +39,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
   <body>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php echo Latin_Common::noun_gender_selection_button(); ?>   
+        <?php echo Latin_Common::noun_gender_selection_button(true); ?>   
         <?php echo Latin_Common::noun_declension_type_selection_button(); ?>   
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
         <input type="submit" class="btn-check" id="btn-search">
@@ -52,7 +48,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
       <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
       <script>
         var storage = new FormStorage('.js-form-storage',{
-          name: 'form-storage-lat-noun',
+          name: 'form-storage-lat-noun2',
           checkbox: '.js-persist'
         });
       </script>      

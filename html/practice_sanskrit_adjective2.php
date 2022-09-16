@@ -23,7 +23,7 @@ $question_word = Sanskrit_Common::get_random_adjective($declension);
 // 読み込み
 $adjective_vedic = new Vedic_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_vedic->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
+$question_data = $adjective_vedic->get_form_by_number_case_gender_grade("", "", "", Commons::$ADJ_GRADE_POSITIVE);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -50,7 +50,7 @@ $question_data = $adjective_vedic->get_form_by_number_case_gender_grade($case, $
       <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
       <script>
         var storage = new FormStorage('.js-form-storage',{
-          name: 'form-storage-ved-adj',
+          name: 'form-storage-ved-adj2',
           checkbox: '.js-persist'
         });
       </script>       

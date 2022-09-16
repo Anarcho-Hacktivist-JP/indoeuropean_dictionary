@@ -50,7 +50,7 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition();
       <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
       <script>
         var storage = new FormStorage('.js-form-storage',{
-          name: 'form-storage-ved-verb',
+          name: 'form-storage-ved-verb2',
           checkbox: '.js-persist'
         });
       </script>     

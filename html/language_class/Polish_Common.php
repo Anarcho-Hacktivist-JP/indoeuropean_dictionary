@@ -646,7 +646,8 @@ class Polish_Common extends Common_IE{
 
 	// 性別選択ボタンの生成
 	public static function noun_gender_selection_button($all_flag = false){
-		return '
+		// ボタンを生成
+		$button_html_code = '
 		<h3>性別</h3>
 		<section class="row">
 		  <div class="col-md-3">
@@ -668,8 +669,21 @@ class Polish_Common extends Common_IE{
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
-		  </div>
-		</section>';
+		  </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+				<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		  	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+
+
 	}
 
 	// 名詞活用種別ボタンの生成
@@ -737,8 +751,9 @@ class Polish_Common extends Common_IE{
 	}
 
 	// 格選択ボタンの生成
-	public static function case_selection_button(){
-		return '
+	public static function case_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
 		<h3>格</h3>
 		<section class="row">
 		  <div class="col-md-3">
@@ -768,12 +783,20 @@ class Polish_Common extends Common_IE{
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="voc">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
-		  </div>               
-		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
-		  </div>
-		</section>';
+		  </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+				<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
+		 	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+
 	}
 	
 	// 相ボタンの生成
@@ -797,8 +820,9 @@ class Polish_Common extends Common_IE{
 	}
 
 	// 法ボタンの生成
-	public static function mood_selection_button(){
-		return '
+	public static function mood_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
         <h3>法</h3>
         <section class="row">
           <div class="col-md-3">
@@ -820,12 +844,20 @@ class Polish_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::$IMPERATIVE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
-          </div>
-        </section>';
+          </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+            	<input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
+            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
+         	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+
 	}
 
 }

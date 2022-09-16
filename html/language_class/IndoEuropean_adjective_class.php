@@ -3534,6 +3534,7 @@ class Polish_Adjective extends Adjective_Common_IE {
 		$question_data = array();
 		$question_data['question_sentence'] = $this->get_adjective_title()."の".$gender." ".$number." ".$case."を答えよ";				
 		$question_data['answer'] = $this->get_declensioned_adjective($case, $number, $gender, $grade);
+		$question_data['question_sentence2'] = $question_data['answer']."の性、格と数を答えよ";	
 		$question_data['case'] = $case;
 		$question_data['number'] = $number;	
 		$question_data['gender'] = $gender;

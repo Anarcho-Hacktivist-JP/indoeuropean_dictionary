@@ -6111,6 +6111,7 @@ class Polish_Verb extends Verb_Common_IE {
 		$question_data = array();
 		$question_data['question_sentence'] = $this->get_title($this->infinitive)."の".$tense_mood." ".$gender." ".$person."を答えよ";				
 		$question_data['answer'] = $this->get_polish_verb($person, $tense_mood, $gender);
+		$question_data['question_sentence2'] = $question_data['answer']."の時制、法、態と人称を答えよ。";
 		$question_data['mood'] = $tense_mood;
 		$question_data['person'] = $person;			
 

@@ -43,8 +43,8 @@ $question_data = $polish_verb->get_conjugation_form_by_each_condition($person, $
         <?php //echo Polish_Common::verb_type_type_selection_button(); ?>
         <?php //echo Polish_Common::adjective_gender_selection_button(); ?>
         <?php echo Polish_Common::aspect_selection_button(); ?>        
-        <?php echo Polish_Common::mood_selection_button(); ?>
-        <?php echo Polish_Common::person_selection_button(); ?>        
+        <?php echo Polish_Common::mood_selection_button(true); ?>
+        <?php echo Polish_Common::person_selection_button(true); ?>        
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-outline-secondary" for="btn-search">問題を生成</label>

@@ -259,8 +259,10 @@ class Common_IE {
 	}	
 
 	// 数選択ボタンの生成
-	public static function number_selection_button(){
-		return '
+	public static function number_selection_button($all_flag = false){
+
+		// ボタンを生成
+		$button_html_code = '
 		<h3>数</h3>
 		<section class="row">
 		  <div class="col-md-3">
@@ -270,18 +272,26 @@ class Common_IE {
 		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::$PLURAL.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
-		  </div>              
-		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
-		  </div>
-		</section>';
+		  </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+				<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
+		  	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
 	}
 
 	// 人称ボタンの生成
-	public static function person_selection_button(){
-		return '
-        <h3>態</h3>
+	public static function person_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
+        <h3>人称</h3>
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg">
@@ -306,12 +316,21 @@ class Common_IE {
           <div class="col-md-3">
             <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3pl">3人称複数</label>
-          </div>     	  
-          <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
-          </div>
-        </section>';
+          </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+            	<input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked">
+            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
+         	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+
+
 	}
 
 }

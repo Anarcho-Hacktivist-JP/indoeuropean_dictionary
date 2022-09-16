@@ -47,11 +47,11 @@ $question_data = $latin_verb->get_conjugation_form_by_each_condition($person, $v
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
         <?php echo Latin_Common::verb_type_type_selection_button(); ?>
-        <?php echo Latin_Common::voice_selection_button(); ?>
-        <?php echo Latin_Common::aspect_selection_button(); ?>       
-        <?php echo Latin_Common::tense_selection_button(); ?>       
-        <?php echo Latin_Common::mood_selection_button(); ?>
-        <?php echo Latin_Common::person_selection_button(); ?>        
+        <?php echo Latin_Common::voice_selection_button(true); ?>
+        <?php echo Latin_Common::aspect_selection_button(true); ?>       
+        <?php echo Latin_Common::tense_selection_button(true); ?>       
+        <?php echo Latin_Common::mood_selection_button(true); ?>
+        <?php echo Latin_Common::person_selection_button(true); ?>        
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-outline-secondary" for="btn-search">問題を生成</label>

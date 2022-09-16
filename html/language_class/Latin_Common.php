@@ -1283,8 +1283,10 @@ class Latin_Common extends Common_IE{
 	}
 
 	// 格選択ボタンの生成
-	public static function case_selection_button(){
-		return '
+	public static function case_selection_button($all_flag = false){
+
+		// ボタンを生成
+		$button_html_code = '
 		<h3>格</h3>
 		<section class="row">
 		  <div class="col-md-3">
@@ -1314,12 +1316,19 @@ class Latin_Common extends Common_IE{
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="voc">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
-		  </div>               
-		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
-		  </div>
-		</section>';
+		  </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+				<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
+		  	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
 	}
 
 	// 動詞の活用種別ボタンの生成
@@ -1355,8 +1364,9 @@ class Latin_Common extends Common_IE{
 	}
 
 	// 態ボタンの生成
-	public static function voice_selection_button(){
-		return '
+	public static function voice_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
         <h3>態</h3>
         <section class="row">
           <div class="col-md-3">
@@ -1366,17 +1376,26 @@ class Latin_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="mediopassive">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">受動態</label>
-          </div>       	  
-          <div class="col-md-3">
-            <input type="radio" name="voice" class="btn-check" id="btn-all-voice" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-voice">すべて</label>
-          </div>
-        </section>';
+          </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+            	<input type="radio" name="voice" class="btn-check" id="btn-all-voice" autocomplete="off" value="" checked="checked">
+            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-voice">すべて</label>
+          	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+
 	}	
 
 	// 相ボタンの生成
-	public static function aspect_selection_button(){
-		return '
+	public static function aspect_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
         <h3>相</h3>
         <section class="row">
           <div class="col-md-3">
@@ -1386,17 +1405,25 @@ class Latin_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-perfect" autocomplete="off" value="perfect">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-perfect">完了相</label>
-          </div>       	  
-          <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて</label>
-          </div>
-        </section>';
+          </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+            	<input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked">
+            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて</label>
+         	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
 	}
 
 	// 時制ボタンの生成
-	public static function tense_selection_button(){
-		return '
+	public static function tense_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
         <h3>時制</h3>
         <section class="row">
           <div class="col-md-3">
@@ -1410,17 +1437,26 @@ class Latin_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="tense" class="btn-check" id="btn-tense-future" autocomplete="off" value="future">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-future">未来形</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="tense" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-tense">すべて</label>
-          </div>
-        </section>';
+          </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+            	<input type="radio" name="tense" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked">
+           	 	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-tense">すべて</label>
+          	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+
 	}
 
 	// 法ボタンの生成
-	public static function mood_selection_button(){
-		return '
+	public static function mood_selection_button($all_flag = false){
+		// ボタンを生成
+		$button_html_code = '
         <h3>法</h3>
         <section class="row">
           <div class="col-md-3">
@@ -1430,12 +1466,18 @@ class Latin_Common extends Common_IE{
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="subj">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">接続法</label>
-          </div>       	  
-          <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
-          </div>
-        </section>';
+          </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-3">
+            	<input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
+            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
+          	 </div>';
+		}
+		// 結果を返す。
+		return $button_html_code.'</section>';
 	}
 
 }

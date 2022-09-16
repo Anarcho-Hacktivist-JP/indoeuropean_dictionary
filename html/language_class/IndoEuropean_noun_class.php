@@ -3502,6 +3502,7 @@ class Polish_Noun extends Noun_Common_IE{
 		$question_data = array();
 		$question_data['question_sentence'] = $this->get_noun_title()."の".$number." ".$case."を答えよ";
 		$question_data['answer'] = $this->get_declensioned_noun($case, $number);
+		$question_data['question_sentence2'] = $question_data['answer']."の数と格を答えよ";
 		$question_data['case'] = $case;
 		$question_data['number'] = $number;
 
