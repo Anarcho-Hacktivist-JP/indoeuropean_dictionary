@@ -340,7 +340,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	// 動詞の情報を取得する。
+	// 日本語から動詞の情報を取得する。
 	public static function get_verb_by_japanese($japanese_translation){
 		// 英数字は考慮しない
 		if(ctype_alnum($japanese_translation)){
@@ -375,7 +375,7 @@ class Sanskrit_Common extends Common_IE{
 				// 動詞の語幹格納配列
 				$verb_stem_array = array();
 				$verb_stem_array["root"] = $row_data["root"];
-				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];						
+				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];
 				array_push($new_table_data, $verb_stem_array);
 				// メモリを解放
 				unset($verb_stem_array);
@@ -388,7 +388,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	// 動詞の情報を取得する。
+	// 英語から動詞の情報を取得する。
 	public static function get_verb_by_english($english_translation){
 		//DBに接続
 		$db_host = set_DB_session();
@@ -430,7 +430,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	// 動詞の情報を取得する。
+	// 辞書形から動詞の情報を取得する。
 	public static function get_root_from_DB($dictionary_stem){
 		//DBに接続
 		$db_host = set_DB_session();
@@ -447,6 +447,38 @@ class Sanskrit_Common extends Common_IE{
 		} else {
 			return null;
 		}
+	}
+
+	// 語根から動詞の情報を取得する。
+	public static function get_root_from_root($root){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE `root` = '".$root."'";
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			// 新しい配列に詰め替え
+			foreach ($table_data as $row_data ) {
+				// 動詞の語幹格納配列
+				$verb_stem_array = array();
+				$verb_stem_array["root"] = $row_data["root"];
+				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];
+				array_push($new_table_data, $verb_stem_array);
+				// メモリを解放
+				unset($verb_stem_array);
+			}
+		} else {
+			return null;
+		}
+
+		//結果を返す。
+		return $new_table_data;
 	}
 	
 	// 副詞を取得
@@ -1358,9 +1390,7 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/([bp]|[bp]h)s/u", "pṣ", $script);			
 		$script = preg_replace("/([dt]|[dt]h)s/u", "tṣ", $script);		
 		$script = preg_replace("/([śṣsjkgc]|[jkgc]h)s/u", "kṣ", $script);
-		$script = preg_replace("/([a-z])s([a-z])/u", "\\1ṣ\\2", $script);		
-		$script = preg_replace("/([dḍṭṅñṇśṣāīū])s([a-z])/u", "\\1ṣ\\2", $script);
-		$script = preg_replace("/([a-z])s([āīū])/u", "\\1ṣ\\2", $script);
+		$script = preg_replace("/([iīuūeoṛṝ])s([bpkghcjlrtdḍṭmnṅñṃṇśṣsyvaāiīuūeo])/u", "\\1ṣ\\2", $script);
 		$script = preg_replace("/([aāiīuūeoṛṝ])ch([aāiīuūeoṛṝ])/u", "\\1cch\\2", $script);
 
 		// バルトロマエの法則
@@ -1386,10 +1416,6 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/([ṅmn])([cj]|[cj]h)/u", "ñ\\2", $script);
 		$script = preg_replace("/([mṅñ])([td]|[td]h)/u", "n\\2", $script);
 
-		// rl対応
-		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ṛ\\2", $script);
-		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ḷ\\2", $script);	
-
 		// 最後の子音が連続する場合は
 		if($word_flag){		
 			$script = preg_replace("/([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b/u", '\\1', $script);
@@ -1401,6 +1427,14 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/([bpkghcjlrtdḍṭv])m/u", "\\1n", $script);
 		$script = preg_replace("/([śṣs])([mn])/u", "\\1n", $script);
 		$script = preg_replace("/([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])/u", "n\\2", $script);
+
+		// r対応
+		$script = preg_replace("/([kghcjlrtdḍṭśṣsy])ṝ([a-z])/u", "\\1īr\\2", $script);
+		$script = preg_replace("/([bpmnṅñṃṇv])ṝ([a-z])/u", "\\1ūr\\2", $script);
+
+		// rl対応
+		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ṛ\\2", $script);
+		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ḷ\\2", $script);	
 
 		// 母音の統合
 		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);
@@ -1633,6 +1667,41 @@ class Sanskrit_Common extends Common_IE{
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
         </tbody>';
+	}
+	
+	// 三次動詞の不定形の活用表を作る。
+	public static function make_third_verb_infinitive_chart($title = ""){
+
+		// 表を返す。
+		return '
+		<thead>
+		  <tr>
+		    <th scope="row" style="width:12%">'.$title.'不定詞</th>
+		    <th scope="col" style="width:11%">語根tu不定詞</th>
+		    <th scope="col" style="width:11%">不完了体tu不定詞</th>          
+		  </tr>
+	    </thead>
+	    <tbody>
+	  	  <tr><th scope="row">主格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">属格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">与格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">対格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">奪格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">具格</th><td></td><td></td></tr>          
+	  	  <tr><th scope="row">地格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">呼格</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">出格(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">内格1(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">内格2(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">共格(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">乗法格(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">様格(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">変格(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">時格(副詞)</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">入格(副詞)</th><td></td><td></td></tr> 
+	  	  <tr><th scope="row">分配格(副詞)</th><td></td><td></td></tr>   
+	    </tbody>						
+		';
 	}
 
 	// 特殊文字入力ボタンを配置する。

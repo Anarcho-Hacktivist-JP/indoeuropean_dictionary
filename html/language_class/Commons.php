@@ -47,6 +47,8 @@ class Commons {
 	public static $STRONG_VERB = "frequentive";				// 頻度動詞
 	public static $WANT_VERB = "desiderative";				// 願望動詞
 	public static $MAKE_VERB = "causative";					// 使役動詞
+	public static $NOUN_VERB = "denomitive";				// 名詞起源動詞
+	public static $INTENSE_VERB = "intensive";				// 強意動詞
 
 	public static $SINGULAR = "sg";							// 単数
 	public static $DUAL = "du";								// 双数

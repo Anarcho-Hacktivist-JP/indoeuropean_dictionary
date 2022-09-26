@@ -281,6 +281,28 @@ class Language_Practice{
         }
     }
 
+    // 答え合わせ(ポーランド語動詞)
+    static answer_the_question_pol_verb(){
+        // 入力情報を受け取る。
+        var person = $('input[name="person"]:checked').val(); // 人称
+        var mood = $('input[name="mood"]:checked').val();     // 法
+
+        // JSON → 配列に書き換え
+        var json_question_data = JSON.parse(question_data);
+  
+        // 入力情報と答えを受け取る
+        if(person == json_question_data['person'] &&
+           mood == json_question_data['mood']){
+          // 正解のダイアログを出す。
+          alert("正解");
+          // 再読み込み
+          location.reload();
+        } else {
+          // 不正解のダイアログを出す。
+          alert("不正解");            
+        }
+    }
+
     // 答え合わせ(名詞)
     static answer_the_question_noun(){
         // 入力情報を受け取る。

@@ -11,23 +11,13 @@ include(dirname(__FILE__) . "/language_class/Latin_Common.php");
 
 // 挿入データ－動詞の種別－
 $verb_type = trim(filter_input(INPUT_POST, 'verb-type'));
-// 挿入データ－人称－
-$person = trim(filter_input(INPUT_POST, 'person'));
-// 挿入データ－態－
-$voice = trim(filter_input(INPUT_POST, 'voice'));
-// 挿入データ－相－
-$aspect = trim(filter_input(INPUT_POST, 'aspect'));
-// 挿入データ－時制－
-$tense = trim(filter_input(INPUT_POST, 'tense'));
-// 挿入データ－法－
-$mood = trim(filter_input(INPUT_POST, 'mood'));
 
 // 単語取得
 $question_word = Latin_Common::get_random_verb($verb_type);
 // 読み込み
 $latin_verb = new Latin_Verb($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $latin_verb->get_conjugation_form_by_each_condition($person, $voice, $mood, $aspect, $tense);
+$question_data = $latin_verb->get_conjugation_form_by_each_condition();
 ?>
 <!doctype html>
 <html lang="ja">

@@ -835,7 +835,11 @@ class Polish_Common extends Common_IE{
           </div>		
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-future" autocomplete="off" value="future">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future">未来形</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future">未来形1</label>
+          </div> 
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-future2" autocomplete="off" value="future_perfect">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future2">未来形2</label>
           </div> 
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::$SUBJUNCTIVE.'">

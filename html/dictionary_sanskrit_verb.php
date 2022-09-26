@@ -17,23 +17,30 @@ function get_conjugation($word){
 	$conjugations = array();
 	// 動詞の情報を取得
 	$vedic_verbs = Sanskrit_Common::get_verb_by_japanese($word);
-  // 名詞の情報が取得できない場合は
+  // 動詞の情報が取得できない場合は
   if(!$vedic_verbs){
     // アルファベット以外は処理しない。
     if(Sanskrit_Common::is_alphabet_or_not($word)){
-		  // 活用表生成、配列に格納
-		  $conjugations = array_merge(get_verb_chart($word), $conjugations);
+	    // 動詞の情報を語根から取得
+	    $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
+      // 取得できなかった場合は
+      if(!$vedic_verbs){
+		    // 活用表生成、配列に格納
+		    $conjugations = array_merge(get_verb_chart($word), $conjugations);
+        // 結果を返す。
+	      return $conjugations;
+      }
     } else {
       // 空を返す。
       return array();
     }
-  } else {
-	  // 新しい配列に詰め替え
-	  foreach ($vedic_verbs as $vedic_verb) {
-		  // 活用表生成、配列に格納
-		  $conjugations = array_merge(get_verb_chart($vedic_verb["dictionary_stem"]), $conjugations);
-	  }
   }
+	// 新しい配列に詰め替え
+	foreach ($vedic_verbs as $vedic_verb) {
+	  // 活用表生成、配列に格納
+	  $conjugations = array_merge(get_verb_chart($vedic_verb["dictionary_stem"]), $conjugations);
+	}
+
   // 結果を返す。
 	return $conjugations;
 }
@@ -570,6 +577,262 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           </tbody>
         </table>
       </details><br>
+      <details>
+        <summary>使役+願望動詞</summary>           
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-desiderative-conjugation-table">
+          <?php echo Sanskrit_Common::make_verbal_chart("使役+願望動詞");?>  
+        </table>
+      </details><br>
+      <details>
+        <summary>使役+願望動詞分詞</summary>         
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-desiderative-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("使役+願望動詞分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">不完了体中動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+            <tr><th scope="row" colspan="10">不完了体受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>   
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>使役+願望動詞不定詞</summary>      
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-desiderative-infinitive-table">
+          <?php echo Sanskrit_Common::make_third_verb_infinitive_chart("使役+願望動詞"); ?>
+        </table>
+      </details><br>
+      <details>
+        <summary>使役+願望動詞過去分詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-desiderative-past-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("使役+願望動詞過去分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">na-過去能動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去受動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>使役+願望動形容詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-desiderative-verbal-adjective-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("使役+願望動形容詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">anīya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>  
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+願望動詞</summary>           
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-desiderative-conjugation-table">
+          <?php echo Sanskrit_Common::make_verbal_chart("強意+願望動詞");?>  
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+願望動詞分詞</summary>         
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-desiderative-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("強意+願望動詞分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">不完了体中動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+            <tr><th scope="row" colspan="10">不完了体受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>   
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+願望動詞不定詞</summary>      
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-desiderative-infinitive-table">
+          <?php echo Sanskrit_Common::make_third_verb_infinitive_chart("強意+願望動詞"); ?>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+願望動詞過去分詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-desiderative-past-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("強意+願望動詞過去分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">na-過去能動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去受動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+願望動形容詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-desiderative-verbal-adjective-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("強意+願望動形容詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">anīya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>  
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>願望+使役動詞</summary>           
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-causative-conjugation-table">
+          <?php echo Sanskrit_Common::make_verbal_chart("願望+使役動詞");?>  
+        </table>
+      </details><br>
+      <details>
+        <summary>願望+使役動詞分詞</summary>         
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-causative-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("願望+使役動詞分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">不完了体中動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+            <tr><th scope="row" colspan="10">不完了体受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>   
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>願望+使役動詞不定詞</summary>      
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-causative-infinitive-table">
+          <?php echo Sanskrit_Common::make_third_verb_infinitive_chart("願望+使役動詞"); ?>
+        </table>
+      </details><br>
+      <details>
+        <summary>願望+使役動詞過去分詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-causative-past-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("願望+使役動詞過去分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">na-過去能動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去受動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>願望+使役動形容詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-causative-verbal-adjective-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("願望+使役動形容詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">anīya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>  
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+使役動詞</summary>           
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-causative-conjugation-table">
+          <?php echo Sanskrit_Common::make_verbal_chart("強意+使役動詞");?>  
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+使役動詞分詞</summary>         
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-causative-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("強意+使役動詞分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">不完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">不完了体中動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+            <tr><th scope="row" colspan="10">不完了体受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">完了体中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相能動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">未然相中受動態</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>   
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+使役動詞不定詞</summary>      
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-causative-infinitive-table">
+          <?php echo Sanskrit_Common::make_third_verb_infinitive_chart("強意+使役動詞"); ?>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+使役動詞過去分詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-causative-past-participle-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("強意+使役動詞過去分詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">na-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>      
+            <tr><th scope="row" colspan="10">na-過去能動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ta-過去受動分詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>        
+          </tbody>
+        </table>
+      </details><br>
+      <details>
+        <summary>強意+使役動形容詞</summary>
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-causative-verbal-adjective-table">
+          <?php echo Sanskrit_Common::make_adjective_column_chart("強意+使役動形容詞"); ?>
+          <tbody>
+            <tr><th scope="row" colspan="10">tavya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">ya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?> 
+            <tr><th scope="row" colspan="10">anīya-動形容詞</th></tr>
+            <?php echo Sanskrit_Common::make_adjective_chart(); ?>  
+          </tbody>
+        </table>
+      </details><br>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
@@ -577,16 +840,14 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
     </script>
 	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
+
         $(function(){
           // イベントを設定
           setEvents();
         });
 
         // 動詞の配列をテーブル用に変換にする。
-        function get_verb(table_data, word, verb_type, table_id){
-
-          // JSONに書き換え
-          var json_verb = JSON.parse(table_data)[word][verb_type];
+        function get_verb(json_verb, verb_type, table_id){
 
           // 活用情報を取得
           var active_present = json_verb["present"]["active"];                  //能動態不完了体
@@ -895,9 +1156,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         }       
 
         // 分詞をセット
-        function set_participle(table_data, word, verb_type, table_id){
-          // JSONに書き換え
-          var json_participle = JSON.parse(table_data)[word][verb_type];
+        function set_participle(json_participle, verb_type, table_id){
+
           // 各分詞を挿入
           var active_present = json_participle["present"]["active"]["participle"];            //能動態不完了体
           var middle_present = json_participle["present"]["middle"]["participle"];            //中動態不完了体
@@ -935,9 +1195,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         }
 
         // 分詞をテーブルにセット(派生動詞用)
-        function set_socondary_participle(table_data, word, verb_type, table_id){
-          // JSONに書き換え
-          var json_participle = JSON.parse(table_data)[word][verb_type];
+        function set_socondary_participle(json_participle, verb_type, table_id){
+
           // 各分詞を挿入
           var active_present = json_participle["present"]["active"]["participle"];            //能動態不完了体
           var middle_present = json_participle["present"]["middle"]["participle"];            //中動態不完了体
@@ -967,9 +1226,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         }
 
         // 過去分詞をセット
-        function set_past_particple(table_data, word, verb_type, table_id){
-          // JSONに書き換え
-          var json_participle = JSON.parse(table_data)[word][verb_type];
+        function set_past_particple(json_participle, verb_type, table_id){
 
           var active_ta_past = json_participle["past"]["active"]["ta-participle"];            //能動態ta過去形
           var active_na_past = json_participle["past"]["active"]["na-participle"];            //能動態na過去形
@@ -993,9 +1250,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         }
 
         // 動形容詞をセット
-        function set_primary_adjective_particple(table_data, word, verb_type, table_id){
-          // JSONに書き換え
-          var json_participle = JSON.parse(table_data)[word][verb_type];
+        function set_primary_adjective_particple(json_participle, verb_type, table_id){
 
           var adjective_tavya = json_participle["adjective"]["tavya"];           //tavya
           var adjective_ya = json_participle["adjective"]["ya"];                 //ya
@@ -1019,9 +1274,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         }
 
         // 動形容詞をセット
-        function set_secondary_adjective_particple(table_data, word, verb_type, table_id){
-          // JSONに書き換え
-          var json_participle = JSON.parse(table_data)[word][verb_type];
+        function set_secondary_adjective_particple(json_participle, verb_type, table_id){
 
           var adjective_tavya = json_participle["adjective"]["tavya"];           //tavya
           var adjective_ya = json_participle["adjective"]["ya"];                 //ya
@@ -1043,9 +1296,9 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         }
 
         // 不定詞
-        function set_infinitive(table_data, word, verb_type, table_id){
+        function set_infinitive(table_data, verb_type, table_id){
           // JSONに書き換え
-          var json_infinitive = JSON.parse(table_data)[word][verb_type]["infinitive"];
+          var json_infinitive = table_data["infinitive"];
 
           // 初期化
           var infinitives = new Array();
@@ -1059,37 +1312,50 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           set_infinitive_to_table(table_id, infinitives);
         }
 
+        // 動詞ごとにテーブルを出力する。
+        function verb_output_by_verb_type(verb_data, verb_type){
+          // 動詞をテーブルに入れる。
+          get_verb(verb_data, verb_type, '#' + verb_type + '-conjugation-table');         
+          // 不定詞をセットする。
+          set_infinitive(verb_data, verb_type, '#' + verb_type + '-infinitive-table');
+          // 過去分詞をテーブルを入れる。
+          set_past_particple(verb_data, verb_type, '#' + verb_type + '-past-participle-table');  
+          // 一次動詞とそれ以外で場合分け
+          if(verb_type == "primary"){
+            // 通常の分詞をテーブルを入れる。
+            set_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
+            // 動形容詞をテーブルに入れる。
+            set_primary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
+          } else if(verb_type == "causative"){
+            // 使役動詞
+            // 通常の分詞をテーブルを入れる。
+            set_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
+            // 動形容詞をテーブルに入れる。
+            set_secondary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
+          } else {
+            // 二次動詞以降
+            // 通常の分詞をテーブルを入れる。
+            set_socondary_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
+            // 動形容詞をテーブルに入れる。
+            set_secondary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
+          }
+        }
+
         // 単語選択後の処理
         function output_table_data(){
-          // 各動詞をテーブルに入れる。
-          get_verb(verb_table_data, $('#verb-selection').val(), "primary", '#primary-conjugation-table');             // 一次動詞
-          get_verb(verb_table_data, $('#verb-selection').val(), "causative", '#causative-conjugation-table');         // 使役動詞
-          get_verb(verb_table_data, $('#verb-selection').val(), "desiderative", '#desiderative-conjugation-table');   // 願望動詞
-          get_verb(verb_table_data, $('#verb-selection').val(), "intensive", '#intensive-conjugation-table');         // 強意動詞
+          // JSONに書き換え
+          var table_data = JSON.parse(verb_table_data)[$('#verb-selection').val()];
 
-          // 通常の分詞をテーブルを入れる。
-          set_participle(verb_table_data, $('#verb-selection').val(), "primary", '#primary-participle-table');             // 一次動詞
-          set_participle(verb_table_data, $('#verb-selection').val(), "causative", '#causative-participle-table');         // 使役動詞
-          set_socondary_participle(verb_table_data, $('#verb-selection').val(), "desiderative", '#desiderative-participle-table');    // 願望動詞
-          set_socondary_participle(verb_table_data, $('#verb-selection').val(), "intensive", '#intensive-participle-table');        // 強意動詞
+          // mapに変換
+          const map = new Map(Object.entries(table_data))
 
-          // 過去分詞をテーブルを入れる。
-          set_past_particple(verb_table_data, $('#verb-selection').val(), "primary", '#primary-past-participle-table');             // 一次動詞
-          set_past_particple(verb_table_data, $('#verb-selection').val(), "causative", '#causative-past-participle-table');         // 使役動詞
-          set_past_particple(verb_table_data, $('#verb-selection').val(), "desiderative", '#desiderative-past-participle-table');   // 願望動詞
-          set_past_particple(verb_table_data, $('#verb-selection').val(), "intensive", '#intensive-past-participle-table');         // 強意動詞
-          
-          // 動形容詞をテーブルに入れる。
-          set_primary_adjective_particple(verb_table_data, $('#verb-selection').val(), "primary", '#primary-verbal-adjective-table');               // 一次動詞
-          set_secondary_adjective_particple(verb_table_data, $('#verb-selection').val(), "causative", '#causative-verbal-adjective-table');         // 使役動詞
-          set_secondary_adjective_particple(verb_table_data, $('#verb-selection').val(), "desiderative", '#desiderative-verbal-adjective-table');   // 願望動詞
-          set_secondary_adjective_particple(verb_table_data, $('#verb-selection').val(), "intensive", '#intensive-verbal-adjective-table');         // 強意動詞
-          
-          // 不定詞をセットする。
-          set_infinitive(verb_table_data, $('#verb-selection').val(), "primary", '#primary-infinitive-table');
-          set_infinitive(verb_table_data, $('#verb-selection').val(), "causative", '#causative-infinitive-table');
-          set_infinitive(verb_table_data, $('#verb-selection').val(), "desiderative", '#desiderative-infinitive-table');
-          set_infinitive(verb_table_data, $('#verb-selection').val(), "intensive", '#intensive-infinitive-table');
+          // 要素ごとに処理する。
+          map.forEach((val,key)=>{
+            if(key != "title" && key != "dic_title" && key != "category" && key != "type"){
+              // 動詞を動詞の種別ごとに出力
+              verb_output_by_verb_type(val, key);
+            }
+          })
         }
 
         //イベントを設定
