@@ -3499,7 +3499,8 @@ class Vedic_Verb extends Verb_Common_IE{
 				} else if(preg_match("/(ā|ai)$/u", $root)){
 					// āとaiで終わる場合はs(is)アオリスト
 					$this->aorist_stem = Sanskrit_Common::sandhi_engine($root, "sis", true, false);					// 完結相
-				} else if(preg_match("/(ai|au|[iīuūeoṛṝ])[bpkghcjtdḍṭmnṅñṃṇ]*([śṣh])$/u", $root)){
+				} else if(preg_match("/(ai|au|[iīuūeoṛṝ])[bpkghcjtdḍṭmnṅñṃṇ]*([śṣh])$/u", $root) &&
+					      !preg_match("/(bh|ph|kh|gh|dh|th|ḍh|ṭh)$/u", $root)){
 					// aを含まず、ś,ṣ,hで終わる場合はsaアオリスト
 					$this->aorist_stem = Sanskrit_Common::sandhi_engine($root, "sa", true, false);					// 完結相
 				} else if($this->root_laryngeal_flag != Commons::$TRUE){
@@ -4309,7 +4310,8 @@ class Vedic_Verb extends Verb_Common_IE{
 			if(preg_match("/(ā|ai)$/u", $this->root)){
 				// sisはアオリストは連音処理入り
 				$verb_conjugation = $this->get_sis_aorist_indcative_conjugation($verb_stem."a", $voice, $person, Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$VRIDDHI));
-			} else if(preg_match("/(ai|au|[iīuūeoṛṝ])[bpkghcjtdḍṭmnṅñṃṇ]*([śṣh])$/u", $this->root)){
+			} else if(preg_match("/(ai|au|[iīuūeoṛṝ])[bpkghcjtdḍṭmnṅñṃṇ]*([śṣh])$/u", $this->root) &&
+					  !preg_match("/(bh|ph|kh|gh|dh|th|ḍh|ṭh)$/u", $this->root)){
 				// saアオリストは親クラスで処理
 				$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);				
 			} else if($this->root_laryngeal_flag != Commons::$TRUE){
@@ -4644,7 +4646,8 @@ class Vedic_Verb extends Verb_Common_IE{
 				if(preg_match("/(ā|ai)$/u", $this->root)){
 					// sisアオリストの場合は
 					$verb_stem = Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$GUNA)."sis";
-				} else if(preg_match("/(ai|au|ī|u|ū|e|o|ṛ|ṝ|)[śṣh]$/u", $this->root)){
+				} else if(preg_match("/(ai|au|[iīuūeoṛṝ])[bpkghcjtdḍṭmnṅñṃṇ]*([śṣh])$/u", $this->root) &&
+						  !preg_match("/(bh|ph|kh|gh|dh|th|ḍh|ṭh)$/u", $this->root)){
 					// saアオリストの場合は
 					$verb_stem  = $this->aorist_stem;
 				} else if($this->root_laryngeal_flag == Commons::$TRUE && !preg_match("/(ā|ai)$/u", $this->root)){
