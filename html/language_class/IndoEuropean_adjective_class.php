@@ -3546,5 +3546,767 @@ class Polish_Adjective extends Adjective_Common_IE {
 
 }
 
+// ギリシア語共通クラス
+class Koinw_Adjective extends Adjective_Common_IE {
+
+	// 格語尾リスト
+	protected $case_suffix_list =  [
+		[
+			"adjective_type" => "1-2",
+			"adjective_type_name" => "a-変化形容詞",				
+			"gender" => "Feminine",
+			"sg_nom" => "ή",
+			"sg_gen" => "ῆς",
+			"sg_dat" => "ῇ",
+			"sg_acc" => "ήν",
+			"sg_voc" => "ή",
+			"du_nom" => "ᾱ́",
+			"du_gen" => "αῖν",
+			"du_dat" => "αῖν",
+			"du_acc" => "ᾱ́",
+			"du_voc" => "ᾱ́",
+			"pl_nom" => "αί",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "αῖς",
+			"pl_acc" => "άς",
+			"pl_voc" => "αί"
+		],
+		[
+			"adjective_type" => "1-2",
+			"adjective_type_name" => "a-変化形容詞",			
+			"gender" => "Masculine",
+			"sg_nom" => "ος",
+			"sg_gen" => "ου",
+			"sg_dat" => "ῳ",
+			"sg_acc" => "ον",
+			"sg_voc" => "ε",
+			"du_nom" => "ω",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ω",
+			"du_voc" => "ω",
+			"pl_nom" => "οι",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "οις",
+			"pl_acc" => "ους",
+			"pl_voc" => "οι"
+		],
+		[
+			"adjective_type" => "1-2",
+			"adjective_type_name" => "a-変化形容詞",			
+			"gender" => "Neuter",
+			"sg_nom" => "ον",
+			"sg_gen" => "ου",
+			"sg_dat" => "ῳ",
+			"sg_acc" => "ον",
+			"sg_voc" => "ον",
+			"du_nom" => "ω",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ω",
+			"du_voc" => "ω",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "οις",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "root",
+			"noun_type_name" => "語根形容詞",	
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
+		],
+		[
+			"noun_type" => "root",
+			"noun_type_name" => "語根形容詞",	
+			"gender" => "Neuter",
+			"sg_nom" => "ξ",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "",
+			"sg_voc" => "ξ",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3t",
+			"noun_type_name" => "t-変化形容詞",
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "ς",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "ς",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3nt",
+			"noun_type_name" => "t-変化形容詞",
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "ς",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3at",
+			"noun_type_name" => "t-変化形容詞",
+			"gender" => "Neuter",
+			"sg_nom" => "α",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "α",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3n",
+			"noun_type_name" => "n-変化形容詞",
+			"gender" => "Masculine/Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
+		],
+		[
+			"noun_type" => "3n",
+			"noun_type_name" => "n-変化形容詞",
+			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3con",
+			"noun_type_name" => "子音変化形容詞",
+			"gender" => "Masculine/Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
+		],
+		[
+			"noun_type" => "3con",
+			"noun_type_name" => "子音変化形容詞",
+			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3r",
+			"noun_type_name" => "r-変化形容詞",
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
+		],
+	];
+
+	// 比較級種別
+	protected $comp_type = "";
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_sanskrit3($compound, $last_word, $translation) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 形容詞情報をセット
+		$this->set_adj_data($last_word);
+		// 残りの語幹を作成
+		$this->make_other_stem();	
+		// 語幹を変更
+		$this->first_stem = Sanskrit_Common::sandhi_engine($compound, $this->first_stem);		// 第一語幹
+		$this->second_stem = Sanskrit_Common::sandhi_engine($compound, $this->second_stem);		// 第二語幹		
+		$this->third_stem = Sanskrit_Common::sandhi_engine($compound, $this->third_stem);		// 第三語幹
+		// 比較級・最上級を作成
+		$this->get_comp_super_stem();
+		// 日本語訳を書き換え
+		$this->japanese_translation = $translation;			// 日本語訳
+		$this->english_translation = "";			// 英語訳
+		
+		// 活用表を挿入
+		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
+		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
+		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_sanskrit1($adjective) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 形容詞情報をセット
+		$this->set_adj_data(htmlspecialchars($adjective));
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 比較級・最上級を作成
+		$this->get_comp_super_stem();		
+		// 活用語尾を取得
+		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);		// 最上級
+    }
+    
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct() {
+        $a = func_get_args();
+        $i = func_num_args();
+        //引数に応じて別々のコンストラクタを似非的に呼び出す
+        if (method_exists($this,$f='__construct_sanskrit'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+    
+    // 活用表セット
+    private function get_adj_declension($grade = "positive"){
+
+		// 形容詞の程度で分岐する。
+		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+			$adjective_type = $this->adjective_type;
+		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+			$adjective_type = "1-2";
+		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+			$adjective_type = "1-2";
+		}
+		// 曲用を取得
+		$masculine_declension = $this->get_adjective_case_suffix($adjective_type, "Masculine");
+		$feminine_declension = $this->get_adjective_case_suffix($adjective_type, "Feminine");
+		$neuter_declension = $this->get_adjective_case_suffix($adjective_type, "Neuter");
+
+		// 活用表を挿入(男性)
+		// 単数
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$SINGULAR][Commons::$NOMINATIVE] = $masculine_declension["sg_nom"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$SINGULAR][Commons::$GENETIVE] = $masculine_declension["sg_gen"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$SINGULAR][Commons::$DATIVE] = $masculine_declension["sg_dat"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$SINGULAR][Commons::$ACCUSATIVE] = $masculine_declension["sg_acc"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$SINGULAR][Commons::$VOCATIVE] = $masculine_declension["sg_voc"];
+		
+		// 双数
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$DUAL][Commons::$NOMINATIVE] = $masculine_declension["du_nom"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$DUAL][Commons::$GENETIVE] = $masculine_declension["du_gen"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$DUAL][Commons::$DATIVE] = $masculine_declension["du_dat"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$DUAL][Commons::$ACCUSATIVE] = $masculine_declension["du_acc"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$DUAL][Commons::$VOCATIVE] = $masculine_declension["du_voc"];
+		
+		// 複数
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$PLURAL][Commons::$NOMINATIVE] = $masculine_declension["pl_nom"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$PLURAL][Commons::$GENETIVE] = $masculine_declension["pl_gen"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$PLURAL][Commons::$DATIVE] = $masculine_declension["pl_dat"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$PLURAL][Commons::$ACCUSATIVE] = $masculine_declension["pl_acc"];
+		$case_suffixes[Commons::$MASCULINE_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $masculine_declension["pl_voc"];
+
+		// 活用表を挿入(女性)		
+		// 単数
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$NOMINATIVE] = $feminine_declension["sg_nom"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$GENETIVE] = $feminine_declension["sg_gen"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$DATIVE] = $feminine_declension["sg_dat"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$ACCUSATIVE] = $feminine_declension["sg_acc"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$VOCATIVE] = $feminine_declension["sg_voc"];
+		
+		// 双数
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$DUAL][Commons::$NOMINATIVE] = $feminine_declension["du_nom"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$DUAL][Commons::$GENETIVE] = $feminine_declension["du_gen"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$DUAL][Commons::$DATIVE] = $feminine_declension["du_dat"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$DUAL][Commons::$ACCUSATIVE] = $feminine_declension["du_acc"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$DUAL][Commons::$VOCATIVE] = $feminine_declension["du_voc"];
+		
+		// 複数
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$PLURAL][Commons::$NOMINATIVE] = $feminine_declension["pl_nom"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$PLURAL][Commons::$GENETIVE] = $feminine_declension["pl_gen"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$PLURAL][Commons::$DATIVE] = $feminine_declension["pl_dat"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$PLURAL][Commons::$ACCUSATIVE] = $feminine_declension["pl_acc"];
+		$case_suffixes[Commons::$FEMINE_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $feminine_declension["pl_voc"];
+
+		// 活用表を挿入(女性)		
+		// 単数
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$SINGULAR][Commons::$NOMINATIVE] = $neuter_declension["sg_nom"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$SINGULAR][Commons::$GENETIVE] = $neuter_declension["sg_gen"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$SINGULAR][Commons::$DATIVE] = $neuter_declension["sg_dat"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$SINGULAR][Commons::$ACCUSATIVE] = $neuter_declension["sg_acc"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$SINGULAR][Commons::$VOCATIVE] = $neuter_declension["sg_voc"];
+		
+		// 双数
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$DUAL][Commons::$NOMINATIVE] = $neuter_declension["du_nom"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$DUAL][Commons::$GENETIVE] = $neuter_declension["du_gen"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$DUAL][Commons::$DATIVE] = $neuter_declension["du_dat"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$DUAL][Commons::$ACCUSATIVE] = $neuter_declension["du_acc"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$DUAL][Commons::$VOCATIVE] = $neuter_declension["du_voc"];
+		
+		// 複数
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$NOMINATIVE] = $neuter_declension["pl_nom"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$GENETIVE] = $neuter_declension["pl_gen"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$DATIVE] = $neuter_declension["pl_dat"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$ACCUSATIVE] = $neuter_declension["pl_acc"];
+		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $neuter_declension["pl_voc"];
+
+		// 活用を挿入
+		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+			// 活用種別名
+			$this->adjective_type_name = $masculine_declension["adjective_type_name"];				
+			$this->case_suffix = $case_suffixes;
+		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+			$this->comparative_case_suffix = $case_suffixes;
+		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+			$this->superlative_case_suffix = $case_suffixes;
+		}	
+    }
+
+	// 語幹を作成
+	private function make_other_stem(){
+		// 活用種別に合わせて語幹を作る。
+		if(preg_match('/^(1-2)/',$this->noun_type)){
+			// 第一・第二変化活用の場合
+			$this->first_stem = $this->second_stem;		// 弱語幹
+			$this->third_stem = $this->second_stem;		// 強語幹
+		} else if(preg_match('/^(root|3t|3con)/',$this->noun_type)){
+			// 子音活用の場合			
+			if(preg_match('/(τ|δ|θ)$/',$this->second_stem)){				
+				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+				$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			} else if(preg_match('/(κ|γ|χ)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+				$this->third_stem = mb_substr($this->second_stem, 0, -1)."ξ";			
+			} else if(preg_match('/(π|β|φ)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+				$this->third_stem = mb_substr($this->second_stem, 0, -1)."ψ";	
+			}
+		} else if(preg_match('/^(3at)/',$this->noun_type)){
+			// 子音活用の場合			
+			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+		} else if(preg_match('/^(3nt)/',$this->noun_type)){
+			// 子音活用の場合			
+			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+		} else if(preg_match('/^(3n)/',$this->noun_type)){
+			// 子音活用の場合			
+			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+		} else {
+			// それ以外の活用の場合				
+			$this->first_stem = $this->second_stem;			// 弱語幹
+			$this->third_stem = $this->second_stem;			// 強語幹
+		}
+	}
+    
+    // 形容詞情報を取得
+    private function set_adj_data($adjective){
+    	// 名詞情報を取得
+		$word_info = $this->get_adjective_from_DB($adjective, Sanskrit_Common::$DB_ADJECTIVE, false);
+		// データがある場合は
+		if($word_info){
+			// データを挿入
+			$this->adjective_type = $word_info["adjective_type"];				// 形容詞種別
+			$this->comp_type = $word_info["comp_type"];							// 比較級種別			
+			$this->second_stem = $word_info["stem"];							// 語幹		
+			$this->japanese_translation = $word_info["japanese_translation"];	// 日本語訳
+			$this->english_translation = $word_info["english_translation"];		// 英語訳
+		} else {
+			// 第一語幹・第三語幹生成
+			$this->second_stem = $adjective;							// 第二語幹
+			$this->comp_type = Commons::$FALSE;
+
+			// 日本語訳
+			$this->japanese_translation = "借用";
+			// 英語訳
+			$this->english_translation = "loanword";
+			
+			// 文字列の最後で判断
+			if(preg_match('/(α|ᾱ)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->adjective_type = "1-2";           					// 形容詞種別
+				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+			} else if(preg_match('/(ο)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->adjective_type = "1-2";								// 名詞種別
+				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+			} else if(preg_match('/(ος)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->adjective_type = "1-2";								// 名詞種別
+				$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
+			} else if(preg_match('/(ον)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->gender = "Neuter";									// 名詞区分
+				$this->adjective_type = "1-2";								// 名詞種別
+				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+			} else if(preg_match('/(υ)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->gender = "Masculine";						// 名詞区分
+				$this->adjective_type = 4;								// 名詞種別
+			} else if(preg_match('/(ι)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。								
+				$this->gender = "Masculine";						// 名詞区分
+				$this->adjective_type = "3i";							// 名詞種別
+			} else if(preg_match('/(η)$/',$adjective)){
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->gender = "Feminine";    						// 名詞区分
+				$this->adjective_type = "1e";           					// 名詞種別
+			} else if(preg_match('/(λ|ρ)$/',$adjective)){
+				$this->gender = "Masculine";						// 名詞区分
+				$this->adjective_type = "3r";							// 名詞種別				
+			} else if(preg_match('/(τ|ς)$/',$adjective)){
+				$this->gender = "Masculine";						// 名詞区分
+				$this->adjective_type = "3con";							// 名詞種別	
+			} else if(preg_match('/(ν)$/',$adjective)){
+				$this->gender = "Masculine";						// 名詞区分
+				$this->adjective_type = "3n";							// 名詞種別										
+			} else {														
+				// 名詞の種別で性別・活用が決定する。		
+				$this->gender = "Masculine";						// 名詞区分
+				$this->adjective_type = 2;								// 名詞種別
+			}
+		}
+    }
+
+	// 比較級・最上級を作成
+	private function get_comp_super_stem(){
+		// 比較級・最上級接尾辞を初期化
+		$comp_inffix = "";
+		$super_inffix = "";
+
+		// 比較級種別
+		if($this->comp_type != Commons::$TRUE){
+			$comp_inffix = "τερ";
+			$super_inffix = "τατ";
+		} else {
+			$comp_inffix = "ίων";
+			$super_inffix = "ιστ";
+		}
+
+		// 比較級・最上級語幹を初期化
+		$comp_super_stem = "";
+
+		// 3語幹以上は中語幹、それ以外は弱語幹
+		if(mb_strlen($this->second_stem) > 7){
+			$comp_super_stem = $this->second_stem;
+		} else {
+			$comp_super_stem = $this->first_stem;
+		}
+
+		// 語幹を作成
+		$this->comparative_first_stem = $comp_super_stem.$comp_inffix;
+		$this->comparative_second_stem = $comp_super_stem.$comp_inffix; 
+		$this->comparative_third_stem = $comp_super_stem.$comp_inffix; 
+		$this->superlative_first_stem = $comp_super_stem.$super_inffix; 
+		$this->superlative_second_stem = $comp_super_stem.$super_inffix; 
+		$this->superlative_third_stem = $comp_super_stem.$super_inffix; 
+	}
+	
+	// 形容詞作成
+	public function generate_positive($case, $number, $gender){
+
+		// 語幹が存在しない場合は返さない。
+		if($this->third_stem == ""){
+			return "-";
+		}
+
+		// 格語尾を取得
+		$case_suffix = "";
+		//曲用語尾を取得(単数の複数の有無をチェック)
+		if($number == Commons::$SINGULAR && $this->deponent_singular != Commons::$TRUE){
+			// 単数
+			$case_suffix = $this->case_suffix[$number][$case];
+		} else if($number == Commons::$DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+			// 双数
+			$case_suffix = $this->case_suffix[$number][$case];			
+		} else if($number == Commons::$PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+			// 複数
+			$case_suffix = $this->case_suffix[$number][$case];
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
+
+		// 語幹を取得
+		$stem = "";
+
+		// 性・数・格に応じて語幹を生成
+		if($number == Commons::$SINGULAR && ($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE)){
+			// 単数主格・呼格
+			$stem = $this->first_stem;
+		} else if($number == Commons::$SINGULAR && $this->gender == "Neuter" && $case == Commons::$ACCUSATIVE){
+			// 単数対格(中性)
+			$stem = $this->first_stem;	
+		} else if ($number == Commons::$PLURAL && $case == Commons::$DATIVE){
+			// 複数与格
+			$stem = $this->third_stem;	
+		} else {
+			$stem = $this->second_stem;	
+		}
+
+		// 結果を返す
+		return htmlspecialchars($stem.$case_suffix);
+	}
+
+	// 比較級形容詞作成
+	protected function generate_comp($case, $number, $gender){
+		// 格語尾を取得
+		$case_suffix = $this->comparative_case_suffix[$gender][$number][$case];
+		// 形容詞と結合		
+		$adjective = Sanskrit_Common::sandhi_engine($this->comparative_third_stem, $case_suffix, true, true);
+		// 結果を返す
+		return $adjective;
+	}
+
+	// 最上級形容詞作成
+	protected function generate_super($case, $number, $gender){
+		// 格語尾を取得
+		$case_suffix = $this->superlative_case_suffix[$gender][$number][$case];
+		// 形容詞と結合
+		$adjective = Sanskrit_Common::sandhi_engine($this->superlative_third_stem, $case_suffix, true, true);	
+		// 結果を返す
+		return $adjective;
+	}
+
+	// 語幹を取得
+	public function get_second_stem($grade = "positive"){
+		// 形容詞の程度で分岐する。
+		if($grade == "positive"){
+			return $this->second_stem;
+		} else if($grade == "comp"){
+			return $this->comparative_second_stem;
+		} else if($grade == "super"){
+			return $this->superlative_second_stem;
+		}
+	}
+
+    // 曲用表を取得
+	private function get_adverb_chart($word_chart){
+		// 形容詞級
+		$grande_array = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);
+		// 全ての級
+		foreach ($grande_array as $grade){
+
+			// 名詞クラスごとに語幹を取得
+			$masc_stem = $this->get_second_stem($grade);
+			$fem_stem = Sanskrit_Common::sandhi_engine($masc_stem, $this->case_suffix[Commons::$FEMINE_GENDER][Commons::$SINGULAR][Commons::$NOMINATIVE]);
+
+			// 副詞(拡張格)
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($masc_stem, "tas");
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($masc_stem, "trā");
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($masc_stem, "dha");		
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($masc_stem, "thā");		
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($masc_stem, "dhā");	
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($masc_stem, "vat");	
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($masc_stem, "sāt");		
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($masc_stem, "dā");	
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($masc_stem, "ac");	
+			$word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($masc_stem, "sas");
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($fem_stem, "tas");
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($fem_stem, "trā");
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($fem_stem, "dha");		
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($fem_stem, "thā");		
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($fem_stem, "dhā");	
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($fem_stem, "vat");	
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($fem_stem, "sāt");		
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($fem_stem, "dā");	
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($fem_stem, "ac");	
+			$word_chart[$grade][Commons::$FEMINE_GENDER][Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($fem_stem, "sas");
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["elative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["elative"];
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["inessive1"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["inessive1"];
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["inessive2"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["inessive2"];		
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["comitative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["comitative"];		
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["multiplicative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["multiplicative"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["essive"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["essive"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["translative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["translative"];		
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["temporal"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["temporal"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["illative"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["illative"];	
+			$word_chart[$grade][Commons::$NEUTER_GENDER][Commons::$SINGULAR]["distributive"] = $word_chart[$grade][Commons::$MASCULINE_GENDER][Commons::$SINGULAR]["distributive"];			
+		}	
+		// 結果を返す。
+		return $word_chart;
+	}	
+	
+	// 曲用表を取得
+	public function get_chart(){
+		
+		// 初期化
+		$word_chart = array();
+		
+		// タイトル情報を挿入
+		$word_chart['title'] = $this->get_adjective_title();
+		// 辞書見出しを入れる。
+		$word_chart['dic_title'] = $this->get_second_stem();
+		// 種別を入れる。
+		$word_chart['category'] = "形容詞";
+		// 活用種別を入れる。
+		$word_chart['type'] = $this->adjective_type_name;
+		// 曲用を取得
+		$word_chart = $this->make_adjective_declension($word_chart);
+		// 副詞を取得
+		$word_chart = $this->get_adverb_chart($word_chart);
+		// 結果を返す。
+		return $word_chart;
+	}
+
+	// 特定の格変化を取得する(ない場合はランダム)。
+	public function get_form_by_number_case_gender_grade($case = "", $number = "", $gender = "", $grade = ""){
+
+		// 格がない場合
+		if($case == ""){
+			// 全ての格の中からランダムで選択
+			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$ABLATIVE, Commons::$INSTRUMENTAL, Commons::$LOCATIVE, Commons::$VOCATIVE);	// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$case = $ary[$key];			
+		}
+
+		// 数がない場合
+		if($number == ""){
+			// 単数・複数の中からランダムで選択
+			$ary = array(Commons::$SINGULAR, Commons::$DUAL, Commons::$PLURAL);			// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$number = $ary[$key];			
+		}
+
+		// 性別がない場合
+		if($gender == ""){
+			// 全ての性別の中からランダムで選択
+			$ary = array(Commons::$MASCULINE_GENDER, Commons::$FEMINE_GENDER, Commons::$NEUTER_GENDER);			// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$gender = $ary[$key];			
+		}	
+
+		// 形容詞の級に指定がない場合は
+		if($grade == ""){
+			// 全ての級を対象にする。
+			$ary = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);	// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$grade = $ary[$key];			
+		}
+
+		// 配列に格納
+		$question_data = array();
+		$question_data['question_sentence'] = $this->get_adjective_title()."の".$grade." ".$gender." ".$number." ".$case."を答えよ";				
+		$question_data['answer'] = $this->get_declensioned_adjective($case, $number, $gender, $grade);
+		$question_data['question_sentence2'] = $question_data['answer']."の性、格と数を答えよ";	
+		$question_data['case'] = $case;
+		$question_data['number'] = $number;	
+		$question_data['gender'] = $gender;
+		$question_data['grade'] = $grade;			
+
+		// 結果を返す。
+		return $question_data;
+	}	
+	
+}
 
 ?>

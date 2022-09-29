@@ -3538,12 +3538,32 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_voc" => "αι"
 		],
 		[
+			"noun_type" => "1a",
+			"noun_type_name" => "as-変化名詞",			
+			"gender" => "Masculine",
+			"sg_nom" => "ᾱς",
+			"sg_gen" => "ου",
+			"sg_dat" => "ᾳ",
+			"sg_acc" => "ᾱν",
+			"sg_voc" => "ᾱ",
+			"du_nom" => "ᾱ́",
+			"du_gen" => "αιν",
+			"du_dat" => "αιν",
+			"du_acc" => "ᾱ́",
+			"du_voc" => "ᾱ́",
+			"pl_nom" => "αι",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "αις",
+			"pl_acc" => "ᾱς",
+			"pl_voc" => "αι"			
+		],
+		[
 			"noun_type" => "1e",
 			"noun_type_name" => "ē-変化名詞",
 			"gender" => "Feminine",
 			"sg_nom" => "ή",
-			"sg_gen" => "ᾱς",
-			"sg_dat" => "ᾳ",
+			"sg_gen" => "ῆς",
+			"sg_dat" => "ῇ",
 			"sg_acc" => "ήν",
 			"sg_voc" => "ή",
 			"du_nom" => "ᾱ́",
@@ -3558,130 +3578,331 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_voc" => "αί"
 		],
 		[
+			"noun_type" => "1e",
+			"noun_type_name" => "ēs-変化名詞",			
+			"gender" => "Masculine",
+			"sg_nom" => "ής",
+			"sg_gen" => "οῦ",
+			"sg_dat" => "ῇ",
+			"sg_acc" => "ήν",
+			"sg_voc" => "ᾰ́",
+			"du_nom" => "ᾱ́",
+			"du_gen" => "αῖν",
+			"du_dat" => "αῖν",
+			"du_acc" => "ᾱ́",
+			"du_voc" => "ᾱ́",
+			"pl_nom" => "αι",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "αῖς",
+			"pl_acc" => "άς",
+			"pl_voc" => "αι"			
+		],
+		[
 			"noun_type" => "2",
 			"noun_type_name" => "os-変化名詞",			
-			"gender" => "Masculine",
+			"gender" => "Masculine/Feminine",
+			"sg_nom" => "ος",
+			"sg_gen" => "ου",
+			"sg_dat" => "ῳ",
+			"sg_acc" => "ον",
+			"sg_voc" => "ε",
+			"du_nom" => "ω",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ω",
+			"du_voc" => "ω",
+			"pl_nom" => "οι",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "οις",
+			"pl_acc" => "ους",
+			"pl_voc" => "οι"
 		],
 		[
 			"noun_type" => "2",
 			"noun_type_name" => "on-変化名詞",			
 			"gender" => "Neuter",
+			"sg_nom" => "ον",
+			"sg_gen" => "ου",
+			"sg_dat" => "ῳ",
+			"sg_acc" => "ον",
+			"sg_voc" => "ον",
+			"du_nom" => "ω",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ω",
+			"du_voc" => "ω",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "οις",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3s",
+			"noun_type" => "root",
 			"noun_type_name" => "語根名詞",	
 			"gender" => "Feminine/Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
 		],
 		[
-			"noun_type" => "3s",
+			"noun_type" => "root",
 			"noun_type_name" => "語根名詞",	
 			"gender" => "Neuter",
+			"sg_nom" => "ξ",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "",
+			"sg_voc" => "ξ",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
 		],
 		[
 			"noun_type" => "3t",
 			"noun_type_name" => "t-変化名詞",
-			"gender" => "Masculine",
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "ς",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "ς",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3nt",
+			"noun_type_name" => "t-変化名詞",
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "ς",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
+		],
+		[
+			"noun_type" => "3at",
+			"noun_type_name" => "t-変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "α",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "α",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
 		],
 		[
 			"noun_type" => "3n",
 			"noun_type_name" => "n-変化名詞",
 			"gender" => "Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
 		],
 		[
 			"noun_type" => "3n",
 			"noun_type_name" => "n-変化名詞",
 			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
 		],
 		[
 			"noun_type" => "3con",
 			"noun_type_name" => "子音変化名詞",
-			"gender" => "Masculine",
-		],
-		[
-			"noun_type" => "3con",
-			"noun_type_name" => "子音変化名詞",
-			"gender" => "Feminine",
+			"gender" => "Masculine/Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
 		],
 		[
 			"noun_type" => "3con",
 			"noun_type_name" => "子音変化名詞",
 			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
 		],
 		[
 			"noun_type" => "double",
 			"noun_type_name" => "二重母音名詞",
 			"gender" => "Feminine/Masculine",
-		],
-		[
-			"noun_type" => "double",
-			"noun_type_name" => "二重母音名詞",
-			"gender" => "Masculine",
+			"sg_nom" => "ύς",
+			"sg_gen" => "ύως",
+			"sg_dat" => "ῖ",
+			"sg_acc" => "ᾱ",
+			"sg_voc" => "ῦ",
+			"du_nom" => "",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "",
+			"du_voc" => "",
+			"pl_nom" => "ῖς",
+			"pl_gen" => "ων",
+			"pl_dat" => "ῦσι",
+			"pl_acc" => "ᾱς",
+			"pl_voc" => "ῖς"
 		],
 		[
 			"noun_type" => "3r",
 			"noun_type_name" => "r-変化名詞",
-			"gender" => "Masculine",	
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "ος",
+			"sg_dat" => "ι",
+			"sg_acc" => "α",
+			"sg_voc" => "",
+			"du_nom" => "ε",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ε",
+			"du_voc" => "ε",
+			"pl_nom" => "ες",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "ι",
+			"pl_acc" => "ας",
+			"pl_voc" => "ες"
 		],
 		[
 			"noun_type" => "3i",
 			"noun_type_name" => "i-変化名詞",
 			"gender" => "Feminine/Masculine",
+			"sg_nom" => "ις",
+			"sg_gen" => "εως",
+			"sg_dat" => "ει",
+			"sg_acc" => "ιν",
+			"sg_voc" => "ι",
+			"du_nom" => "ει",
+			"du_gen" => "έοιν",
+			"du_dat" => "έοιν",
+			"du_acc" => "ει",
+			"du_voc" => "ει",
+			"pl_nom" => "εις",
+			"pl_gen" => "εων",
+			"pl_dat" => "εσι",
+			"pl_acc" => "εις",
+			"pl_voc" => "εις"
 		],
 		[
 			"noun_type" => "4u",
 			"noun_type_name" => "u-変化名詞",
 			"gender" => "Feminine/Masculine",
-			"sg_nom" => "s",
-			"sg_gen" => "os",
-			"sg_dat" => "avai",
-			"sg_acc" => "m",
-			"sg_abl" => "os",
-			"sg_ins" => "ā",
-			"sg_loc" => "au",
-			"sg_voc" => "o",
-			"du_nom" => "ū",
-			"du_gen" => "os",
-			"du_dat" => "bhiām",
-			"du_acc" => "ū",
-			"du_abl" => "bhiām",
-			"du_ins" => "bhiām",
-			"du_loc" => "os",
-			"du_voc" => "ū",
-			"pl_nom" => "avas",
-			"pl_gen" => "ūnām",
-			"pl_dat" => "bhyas",
-			"pl_acc" => "ūs",
-			"pl_abl" => "bhyas",
-			"pl_ins" => "bhis",	
-			"pl_loc" => "su",
-			"pl_voc" => "avas"
+			"sg_nom" => "ύς",
+			"sg_gen" => "ύως",
+			"sg_dat" => "ύι",
+			"sg_acc" => "ύν",
+			"sg_voc" => "ύ",
+			"du_nom" => "ύι",
+			"du_gen" => "ύοιν",
+			"du_dat" => "ύοιν",
+			"du_acc" => "ύι",
+			"du_voc" => "ύι",
+			"pl_nom" => "ύις",
+			"pl_gen" => "ύων",
+			"pl_dat" => "ύσι",
+			"pl_acc" => "ύις",
+			"pl_voc" => "ύις"
 		],
 	];
-
-    /*=====================================
-    コンストラクタ
-    ======================================*/
-    public function __construct_sanskrit5($root, $suffix, $verb_translation, $suffix_translation, $noun_genre) {
-     	// 親クラス初期化
-		parent::__construct();
-		// 単語を作成
-		$word = Sanskrit_Common::sandhi_engine($root, $suffix);
-		// 手動で情報をセット
-		$this->set_data_manual(htmlspecialchars($word), $noun_genre);
-		// 残りの語幹を作成
-		$this->make_other_stem();
-		// 日本語訳を書き換え
-		$this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
-		$this->english_translation = "";											// 英語訳
-		
-		// 活用表を挿入
-		$this->get_noun_declension();
-    }
     
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct_sanskrit3($compound, $last_word, $translation) {
+    public function __construct_koine3($compound, $last_word, $translation) {
     	// 親クラス初期化
 		parent::__construct();
 		// 情報をセット
@@ -3703,11 +3924,11 @@ class Koine_Noun extends Noun_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct_sanskrit1($noun) {
+    public function __construct_koine1($noun) {
     	// 親クラス初期化
 		parent::__construct();
 		// 名詞情報をセット
-		$this->set_data(htmlspecialchars($noun), "animate");
+		$this->set_data(htmlspecialchars($noun));
 		// 残りの語幹を作成
 		$this->make_other_stem();
 		// 活用表を挿入
@@ -3721,7 +3942,7 @@ class Koine_Noun extends Noun_Common_IE {
         $a = func_get_args();
         $i = func_num_args();
         //引数に応じて別々のコンストラクタを似非的に呼び出す
-        if (method_exists($this,$f='__construct_sanskrit'.$i)) {
+        if (method_exists($this,$f='__construct_koine'.$i)) {
             call_user_func_array(array($this,$f),$a);
         }
     }
@@ -3765,29 +3986,30 @@ class Koine_Noun extends Noun_Common_IE {
 			// 第一・第二変化活用の場合
 			$this->first_stem = $this->second_stem;		// 弱語幹
 			$this->third_stem = $this->second_stem;		// 強語幹
-		} else if(preg_match('/^(3s|3t|3con)/',$this->noun_type)){
+		} else if(preg_match('/^(root|3t|3con)/',$this->noun_type)){
 			// 子音活用の場合			
 			if(preg_match('/(τ|δ|θ)$/',$this->second_stem)){				
 				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
 				$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
-			} else if(preg_match('/(τ|δ|θ)$/',$this->second_stem)){
+			} else if(preg_match('/(κ|γ|χ)$/',$this->second_stem)){
 				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-				$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";			
-			} else if(preg_match('/(vas)$/',$this->second_stem)){
-				$this->first_stem = mb_substr($this->second_stem, 0, -3)."uṣ";
-				$this->second_stem = mb_substr($this->second_stem, 0, -3)."vat";
-				$this->third_stem = mb_substr($this->second_stem, 0, -3)."vāṃs";
-			} else if(preg_match('/(ac)$/',$this->second_stem)){
-				$this->first_stem = mb_substr($this->second_stem, 0, -2)."āc";
-				$this->second_stem = mb_substr($this->second_stem, 0, -2)."āc";
-				$this->third_stem = mb_substr($this->second_stem, 0, -2)."ānc";						
-			} else {
-				$this->first_stem = $this->second_stem;		// 弱語幹
-				$this->third_stem = $this->second_stem;		// 強語幹
-				if($this->gender == "Neuter"){
-					$this->third_stem = mb_substr($this->second_stem, 0, -2)."āṃs";
-				}	
-			}			
+				$this->third_stem = mb_substr($this->second_stem, 0, -1)."ξ";			
+			} else if(preg_match('/(π|β|φ)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+				$this->third_stem = mb_substr($this->second_stem, 0, -1)."ψ";	
+			}
+		} else if(preg_match('/^(3at)/',$this->noun_type)){
+			// 子音活用の場合			
+			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+		} else if(preg_match('/^(3nt)/',$this->noun_type)){
+			// 子音活用の場合			
+			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+		} else if(preg_match('/^(3n)/',$this->noun_type)){
+			// 子音活用の場合			
+			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
 		} else {
 			// それ以外の活用の場合				
 			$this->first_stem = $this->second_stem;			// 弱語幹
@@ -3796,7 +4018,7 @@ class Koine_Noun extends Noun_Common_IE {
 	}
     
     // 名詞情報を取得
-    private function set_data($noun, $noun_genre){
+    private function set_data($noun){
     	// 名詞情報を取得
 		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::$DB_NOUN, false);
 		// データがある場合は
@@ -3809,12 +4031,12 @@ class Koine_Noun extends Noun_Common_IE {
 			$this->english_translation = $word_info["english_translation"];		// 英語訳
 		} else {
 			// 見つからない場合は手動で設定
-			$this->set_data_manual($noun, $noun_genre);
+			$this->set_data_manual($noun);
 		}
     }
 
 	// 語幹を手動作成
-	private function set_data_manual($noun, $noun_genre){
+	private function set_data_manual($noun){
 		// 第一語幹・第三語幹生成
 		$this->second_stem = $noun;												// 第二語幹
 		// 日本語訳
@@ -3881,69 +4103,40 @@ class Koine_Noun extends Noun_Common_IE {
 
 		// 格語尾を取得
 		$case_suffix = "";
-		// 曲用語尾を取得
-		$case_suffix = $this->case_suffix[$number][$case];
+		//曲用語尾を取得(単数の複数の有無をチェック)
+		if($number == Commons::$SINGULAR && $this->deponent_singular != Commons::$TRUE){
+			// 単数
+			$case_suffix = $this->case_suffix[$number][$case];
+		} else if($number == Commons::$DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+			// 双数
+			$case_suffix = $this->case_suffix[$number][$case];			
+		} else if($number == Commons::$PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+			// 複数
+			$case_suffix = $this->case_suffix[$number][$case];
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
 
 		// 語幹を取得
 		$stem = "";
 
 		// 性・数・格に応じて語幹を生成
-		if($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE){
-			// 主格
+		if($number == Commons::$SINGULAR && ($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE)){
+			// 単数主格・呼格
 			$stem = $this->first_stem;
-		}
-
-
-
-		if($this->gender == "Masculine" || $this->gender == "Feminine"){
-
-		} else if($this->gender == "Neuter"){
-			if($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE || $case == Commons::$ACCUSATIVE){
-				switch($number){
-					case Commons::$SINGULAR:
-						$stem = $this->second_stem;							
-						break;
-					case Commons::$DUAL:
-						$stem = $this->first_stem;							
-						break;
-					case Commons::$PLURAL:
-						$stem = $this->third_stem;							
-						break;
-					default:
-						$stem = $this->third_stem;				
-						break;			
-				}
-			} else if($case == Commons::$INSTRUMENTAL && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
-				$stem = $this->second_stem;
-			} else if($case == Commons::$DATIVE && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
-				$stem = $this->second_stem;
-			} else if($case == Commons::$ABLATIVE && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
-				$stem = $this->second_stem;	
-			} else if($case == Commons::$LOCATIVE && $number == Commons::$PLURAL){
-				$stem = $this->second_stem;							
-			} else {
-				$stem = $this->first_stem;
-			}
+		} else if($number == Commons::$SINGULAR && $this->gender == "Neuter" && $case == Commons::$ACCUSATIVE){
+			// 単数対格(中性)
+			$stem = $this->first_stem;	
+		} else if ($number == Commons::$PLURAL && $case == Commons::$DATIVE){
+			// 複数与格
+			$stem = $this->third_stem;	
 		} else {
-			// ハイフンを返す。
-			return "-";
+			$stem = $this->second_stem;	
 		}
-		
-		// 語幹修正
-		if($this->noun_type == 1 || $this->noun_type == 2 || $this->noun_type == "3i" || $this->noun_type == 4){
-			// 第一・第二・第三・第四変化の場合
-			// 格変化の語尾が母音で始まる場合は
-			if(Commons::is_vowel_or_not(mb_substr($case_suffix, 0, 1))){
-				// 最後の母音を削る
-				$stem = mb_substr($stem, 0, -1);				
-			}
-		}
-
-		// 結果を生成
-		$noun = Sanskrit_Common::sandhi_engine($stem, $case_suffix, true, true);
 
 		// 結果を返す
-		return htmlspecialchars($noun);
+		return htmlspecialchars($stem.$case_suffix);
 	}
 
 	// 語幹を取得
@@ -3955,21 +4148,7 @@ class Koine_Noun extends Noun_Common_IE {
 	public function get_third_stem(){
 		return $this->third_stem;
 	}
-	
-	// 性別の名称を返す
-	public function get_gender_name(){
-		// 名称に応じて分ける。
-		if($this->gender == "Masculine"){
-			return "名詞区分 - 動作主名詞";
-		} else if($this->gender == "Feminine"){
-			return "名詞区分 - 動作名詞";
-		} else if($this->gender == "Neuter"){
-			return "名詞区分 - 無生物名詞";
-		} else {
-			return "なし";
-		}
-	}
-	
+
 	// 曲用表を取得
 	public function get_chart(){
 		
@@ -3990,17 +4169,12 @@ class Koine_Noun extends Noun_Common_IE {
 		$word_chart = $this->make_noun_declension($word_chart);
 
 		// 副詞(拡張格)
-		$word_chart[Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "tas", true);
-		$word_chart[Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($this->second_stem, "trā", true);
-		$word_chart[Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dha", true);		
-		$word_chart[Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "thā", true);		
-		$word_chart[Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dhā", true);	
-		$word_chart[Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "vat", true);	
-		$word_chart[Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sāt", true);		
-		$word_chart[Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dā", true);	
-		$word_chart[Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "ac", true);	
-		$word_chart[Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sas", true);	
-		
+		$word_chart[Commons::$SINGULAR]["allative"] = $this->second_stem."δε";
+		$word_chart[Commons::$SINGULAR]["allative2"] = $this->second_stem."σε";
+		$word_chart[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $this->second_stem."δον";
+		$word_chart[Commons::$SINGULAR][Commons::$ABLATIVE] = $this->second_stem."θεν";
+		$word_chart[Commons::$SINGULAR][Commons::$LOCATIVE] = $this->second_stem."θι";
+
 		// 結果を返す。
 		return $word_chart;
 	}
@@ -4015,16 +4189,11 @@ class Koine_Noun extends Noun_Common_IE {
 		$word_chart = $this->make_infinitive_declension($word_chart);
 
 		// 副詞(拡張格)
-		$word_chart[Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "tas", true);
-		$word_chart[Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($this->second_stem, "trā", true);
-		$word_chart[Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dha", true);		
-		$word_chart[Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "thā", true);		
-		$word_chart[Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dhā", true);	
-		$word_chart[Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "vat", true);	
-		$word_chart[Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sāt", true);		
-		$word_chart[Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dā", true);	
-		$word_chart[Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "ac", true);	
-		$word_chart[Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sas", true);	
+		$word_chart[Commons::$SINGULAR]["allative"] = $this->second_stem."δε";
+		$word_chart[Commons::$SINGULAR]["allative2"] = $this->second_stem."σε";
+		$word_chart[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $this->second_stem."δον";
+		$word_chart[Commons::$SINGULAR][Commons::$ABLATIVE] = $this->second_stem."θεν";
+		$word_chart[Commons::$SINGULAR][Commons::$LOCATIVE] = $this->second_stem."θι";
 		
 		// 結果を返す。
 		return $word_chart;
@@ -4036,7 +4205,7 @@ class Koine_Noun extends Noun_Common_IE {
 		// 格がない場合
 		if($case == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$ABLATIVE, Commons::$INSTRUMENTAL, Commons::$LOCATIVE, Commons::$VOCATIVE);	// 初期化
+			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$VOCATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$case = $ary[$key];			
