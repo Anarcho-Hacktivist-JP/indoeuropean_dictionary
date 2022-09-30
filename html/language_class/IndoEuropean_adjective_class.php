@@ -2790,11 +2790,11 @@ class Vedic_Adjective extends Adjective_Common_IE {
 	// 語幹を取得
 	public function get_second_stem($grade = "positive"){
 		// 形容詞の程度で分岐する。
-		if($grade == "positive"){
+		if($grade == Commons::$ADJ_GRADE_POSITIVE){
 			return $this->second_stem;
-		} else if($grade == "comp"){
+		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
 			return $this->comparative_second_stem;
-		} else if($grade == "super"){
+		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
 			return $this->superlative_second_stem;
 		}
 	}
@@ -4041,33 +4041,25 @@ class Koinw_Adjective extends Adjective_Common_IE {
 				$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 			} else if(preg_match('/(ον)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。		
-				$this->gender = "Neuter";									// 名詞区分
 				$this->adjective_type = "1-2";								// 名詞種別
 				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
 			} else if(preg_match('/(υ)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。		
-				$this->gender = "Masculine";						// 名詞区分
 				$this->adjective_type = 4;								// 名詞種別
 			} else if(preg_match('/(ι)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。								
-				$this->gender = "Masculine";						// 名詞区分
 				$this->adjective_type = "3i";							// 名詞種別
 			} else if(preg_match('/(η)$/',$adjective)){
 				// 形容詞の種別で性別・活用が決定する。		
-				$this->gender = "Feminine";    						// 名詞区分
 				$this->adjective_type = "1e";           					// 名詞種別
 			} else if(preg_match('/(λ|ρ)$/',$adjective)){
-				$this->gender = "Masculine";						// 名詞区分
 				$this->adjective_type = "3r";							// 名詞種別				
 			} else if(preg_match('/(τ|ς)$/',$adjective)){
-				$this->gender = "Masculine";						// 名詞区分
 				$this->adjective_type = "3con";							// 名詞種別	
 			} else if(preg_match('/(ν)$/',$adjective)){
-				$this->gender = "Masculine";						// 名詞区分
 				$this->adjective_type = "3n";							// 名詞種別										
 			} else {														
 				// 名詞の種別で性別・活用が決定する。		
-				$this->gender = "Masculine";						// 名詞区分
 				$this->adjective_type = 2;								// 名詞種別
 			}
 		}
@@ -4176,11 +4168,11 @@ class Koinw_Adjective extends Adjective_Common_IE {
 	// 語幹を取得
 	public function get_second_stem($grade = "positive"){
 		// 形容詞の程度で分岐する。
-		if($grade == "positive"){
+		if($grade == Commons::$ADJ_GRADE_POSITIVE){
 			return $this->second_stem;
-		} else if($grade == "comp"){
+		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
 			return $this->comparative_second_stem;
-		} else if($grade == "super"){
+		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
 			return $this->superlative_second_stem;
 		}
 	}
