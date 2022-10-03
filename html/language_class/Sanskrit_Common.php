@@ -1236,19 +1236,11 @@ class Sanskrit_Common extends Common_IE{
 		switch($sound_grade){
 			case Sanskrit_Common::$ZERO_GRADE:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
-				$script = str_replace("an", "n", $script);		//na
-				$script = str_replace("aṅ", "ṅ", $script);		//ṅa
-				$script = str_replace("aṇ", "ṇ", $script);		//ña
-				$script = str_replace("am", "m", $script);		//ma
-				$script = str_replace("ya", "i", $script);		//ya
-				$script = str_replace("va", "u", $script);		//va
-				$script = str_replace("ān", "n", $script);		//nā
-				$script = str_replace("āṅ", "ṅ", $script);		//ṅā
-				$script = str_replace("āṇ", "ṇ", $script);		//ñā
-				$script = str_replace("ām", "m", $script);		//mā
-				$script = str_replace("rā", "ṛ", $script);		//rā
-				$script = str_replace("yā", "i", $script);		//yā
-				$script = str_replace("vā", "u", $script);		//vā
+				$script = preg_replace("/([aā])([nṅṇmṃ])/u", "\\1\\2", $script);		//an, aṅ, añ, am	
+				$script = preg_replace("/y([aā])/u", "i", $script);		// ya	
+				$script = preg_replace("/v([aā])/u", "u", $script);		// va
+				$script = preg_replace("/r([aā])/u", "ṛ", $script);		// ra
+				$script = preg_replace("/l([aā])/u", "ḷ", $script);		// la
 
 				// 文字を変換(ai, au)
 				$script = str_replace("e", "i", $script);		//ai
@@ -1257,30 +1249,15 @@ class Sanskrit_Common extends Common_IE{
 				$script = str_replace("au", "u", $script);		//au		
 
 				// 文字を変換(ay, av, ar, al)
-				$script = str_replace("ar", "ṛ", $script);		//ra
-				$script = str_replace("al", "ḷ", $script);		//al
-				$script = str_replace("āy", "y", $script);		//ay
-				$script = str_replace("āv", "v", $script);		//av
-				$script = str_replace("ar", "ṛ", $script);		//ra
-				$script = str_replace("al", "ḷ", $script);		//al				
-				$script = str_replace("ār", "ṛ", $script);		//ra
-				$script = str_replace("āl", "ḷ", $script);		//al
+				$script = preg_replace("/([aā])r/u", "ṛ", $script);		// ar
+				$script = preg_replace("/([aā])l/u", "ḷ", $script);		// al
+				$script = preg_replace("/([aā])y/u", "i", $script);		// ay
+				$script = preg_replace("/([aā])v/u", "u", $script);		// av
 				$script = str_replace("ā", "a", $script);		//al									
 				break;
 			case Sanskrit_Common::$GUNA:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
-				$script = mb_ereg_replace("([bcdghjklmnpst])n", "\\1an", $script);		//na
-				$script = mb_ereg_replace("([bcdghjklmnpst])ṅ", "\\1aṅ", $script);		//ṅa
-				$script = mb_ereg_replace("([bcdghjklmnpst])ṇ", "\\1aṇ", $script);		//ña
-				$script = mb_ereg_replace("([bcdghjklmnpst])m", "\\1am", $script);		//ma
-	
-				$script = str_replace("ān", "an", $script);		//nā
-				$script = str_replace("āṅ", "aṅ", $script);		//ṅā
-				$script = str_replace("aṇ", "aṇ", $script);		//ñā
-				$script = str_replace("ām", "am", $script);		//mā
-				$script = str_replace("rā", "ra", $script);		//rā
-				$script = str_replace("yā", "ya", $script);		//yā
-				$script = str_replace("vā", "va", $script);		//vā
+				$script = preg_replace("/([bcdghjklmnpst])([nṅṇmṃ])/u", "\\1a\\2", $script);		//an, aṅ, añ, am				
 
 				// 文字を変換(ai, au)
 				$script = str_replace("i", "e", $script);		//ai
@@ -1293,25 +1270,13 @@ class Sanskrit_Common extends Common_IE{
 				// 文字を変換(ay, av, ar, al)
 				$script = str_replace("ṛ", "ar", $script);		//ra
 				$script = str_replace("ḷ", "al", $script);		//al
-				$script = str_replace("āy", "y", $script);		//ay
-				$script = str_replace("āv", "v", $script);		//av
-				$script = str_replace("ār", "ar", $script);		//ra
-				$script = str_replace("āl", "al", $script);		//al
+
 				$script = str_replace("ā", "a", $script);		//ā
+
 				break;
 			case Sanskrit_Common::$VRIDDHI:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
-				$script = mb_ereg_replace("([bcdghjklmnpst])n", "\\1ān", $script);		//na
-				$script = mb_ereg_replace("([bcdghjklmnpst])ṅ", "\\1āṅ", $script);		//ṅa
-				$script = mb_ereg_replace("([bcdghjklmnpst])ṇ", "\\1aṇ", $script);		//ña
-				$script = mb_ereg_replace("([bcdghjklmnpst])m", "\\1ām", $script);		//ma					
-				$script = str_replace("an", "ān", $script);		//nā
-				$script = str_replace("aṅ", "āṅ", $script);		//ṅā
-				$script = str_replace("aṇ", "aṇ", $script);		//ñā
-				$script = str_replace("am", "ām", $script);		//mā
-				$script = str_replace("ra", "rā", $script);		//rā
-				$script = str_replace("ya", "yā", $script);		//yā
-				$script = str_replace("va", "vā", $script);		//vā
+				$script = preg_replace("/([bcdghjklmnpst])([nṅṇmṃ])/u", "\\1ā\\2", $script);		//an, aṅ, añ, am				
 
 				// 文字を変換(ai, au)
 				$script = str_replace("i", "ai", $script);		//ai
@@ -1324,10 +1289,8 @@ class Sanskrit_Common extends Common_IE{
 				// 文字を変換(ay, av, ar, al)
 				$script = str_replace("ṛ", "ār", $script);		//ra
 				$script = str_replace("ḷ", "āl", $script);		//al
-				$script = str_replace("ay", "āy", $script);		//ay
-				$script = str_replace("av", "āv", $script);		//av
-				$script = str_replace("ar", "ār", $script);		//ra
-				$script = str_replace("al", "āl", $script);		//al
+
+				$script = preg_replace("/a([lrvy])/u", "ā\\1", $script);		//al, ar, av, ay
 				$script = str_replace("a", "ā", $script);		//ā
 				break;	
 			default:

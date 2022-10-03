@@ -3274,7 +3274,10 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected $deponent_future = "";	
 
 	// 追加語幹
-	protected $add_stem = "";	
+	protected $add_stem = "";
+
+	// 受動態語尾
+	protected $passive_suffix = "ya";
 
     /*=====================================
     コンストラクタ
@@ -3445,7 +3448,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 
 			// 受動態
-			$this->present_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$ZERO_GRADE), "ya", true, false), "māma");			
+			$this->present_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::$ZERO_GRADE), $this->passive_suffix, true, false), "māma");			
 		}
 
 		// 名詞起源動詞以外の場合は
@@ -3659,7 +3662,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在分詞
 		$this->present_causative_participle_active = $prefix.$common_causative_stem."ay"."at";			// 能動態
 		$this->present_causative_participle_middle = $prefix.$this->present_causative_stem."māma";		// 中動態
-		$this->present_causative_participle_passive = $prefix.$common_causative_stem."ya"."māma";		// 受動態
+		$this->present_causative_participle_passive = $prefix.$common_causative_stem.$this->passive_suffix."māma";		// 受動態
 
 		// 完了体分詞
 		$this->aorist_causative_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_causative_stem, "at");			// 能動態
@@ -3739,7 +3742,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在分詞
 		$this->present_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1), "at");				// 能動態
 		$this->present_desiderative_participle_middle = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1), "māma");				// 中動態
-		$this->present_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1)."ya", "māma");		// 受動態
+		$this->present_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_desiderative_stem, 0, -1).$this->passive_suffix, "māma");		// 受動態
 
 		// 完了体分詞
 		$this->aorist_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_desiderative_stem, "at");		// 能動態
@@ -3804,7 +3807,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在分詞
 		$this->present_intensive_participle_active = $prefix.$this->present_intensive_stem."at";				// 能動態
 		$this->present_intensive_participle_middle = $prefix.$this->present_intensive_stem."māma";				// 中動態
-		$this->present_intensive_participle_passive = $prefix.$this->present_intensive_stem."ya"."māma";		// 受動態
+		$this->present_intensive_participle_passive = $prefix.$this->present_intensive_stem.$this->passive_suffix."māma";		// 受動態
 
 		// 完了体分詞
 		$this->aorist_intensive_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_intensive_stem, "at");			// 能動態
@@ -3870,7 +3873,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在分詞
 		$this->present_causative_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_causative_desiderative_stem, 0, -1), "at");				// 能動態
 		$this->present_causative_desiderative_participle_middle = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_causative_desiderative_stem, 0, -1), "māma");				// 中動態
-		$this->present_causative_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_causative_desiderative_stem, 0, -1)."ya", "māma");		// 受動態
+		$this->present_causative_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_causative_desiderative_stem, 0, -1).$this->passive_suffix, "māma");		// 受動態
 
 		// 完了体分詞
 		$this->aorist_causative_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_desiderative_stem, "at");			// 能動態
@@ -3937,7 +3940,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在分詞
 		$this->present_intensive_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_intensive_desiderative_stem, 0, -1), "at");				// 能動態
 		$this->present_intensive_desiderative_participle_middle = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_intensive_desiderative_stem, 0, -1), "māma");				// 中動態
-		$this->present_intensive_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_intensive_desiderative_stem, 0, -1)."ya", "māma");		// 受動態
+		$this->present_intensive_desiderative_participle_passive = $prefix.Sanskrit_Common::sandhi_engine(mb_substr($this->present_intensive_desiderative_stem, 0, -1).$this->passive_suffix, "māma");		// 受動態
 
 		// 完了体分詞
 		$this->aorist_intensive_desiderative_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_intensive_desiderative_stem, "at");		// 能動態
@@ -3982,7 +3985,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 現在分詞
 		$this->present_desiderative_causative_participle_active = $prefix.$common_desiderative_causative_stem."at";					// 能動態
 		$this->present_desiderative_causative_participle_middle = $prefix.$this->present_desiderative_causative_stem."māma";			// 中動態
-		$this->present_desiderative_causative_participle_passive = $prefix.$this->present_desiderative_stem."māma";		// 受動態
+		$this->present_desiderative_causative_participle_passive = $prefix.$this->present_desiderative_stem.$this->passive_suffix."māma";		// 受動態
 
 		// 完了体分詞
 		$this->aorist_desiderative_causative_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_desiderative_causative_stem, "at");			// 能動態
@@ -4457,7 +4460,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}			
 		} else if($tense_mood == Commons::$IMPERATIVE){
 			// 命令法			
-			if(preg_match('(1sg|1du|1pl)', $person)){
+			if(preg_match('/(1sg|1du|1pl)/u', $person)){
 				// 1人称の場合は接続法にする。
 				$verb_stem = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
 				$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);	
