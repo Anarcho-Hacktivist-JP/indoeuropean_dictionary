@@ -1404,6 +1404,7 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/(i|ī)(i|ī)/u", "ī", $script);
 		$script = preg_replace("/(u|ū)(u|ū)/u", "ū", $script);
 
+		// 母音の子音化
 		$script = preg_replace("/([iī])([aāuūeoṛṝ])/u", "y\\2", $script);
 		$script = preg_replace("/([uū])([aāiīeoṛṝ])/u", "v\\2", $script);
 		$script = preg_replace("/([ṛṝ])([aāiīuūeo])/u", "r\\2", $script);
@@ -1422,10 +1423,6 @@ class Sanskrit_Common extends Common_IE{
 			$script = preg_replace("/([a])([ī])/u", "e", $script);
 			$script = preg_replace("/([a])([ū])/u", "o", $script);			
 		}
-
-		// 母音の子音化
-		$script = preg_replace("/([uū])([aā])/u", "v\\2", $script);
-		$script = preg_replace("/([iī])([aā])/u", "y\\2", $script);
 
 		// 結果を返す。
 		return $script;
