@@ -119,7 +119,7 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" id="input_adjective" class="form-control">
         <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn" for="btn-search">検索</label>
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="adjective-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>

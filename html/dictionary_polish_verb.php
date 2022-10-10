@@ -141,10 +141,10 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       <h1>ポーランド語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="" id="input_verb">
+        <input type="text" name="input_verb" class="form-control" id="input_verb">
         <input type="submit" class="btn-check" id="btn-generate">
-        <label class="btn" for="btn-generate">検索</label>
-        <select class="" id="verb-selection" aria-label="Default select example">
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+        <select class="form-select" id="verb-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($conjugations); ?>
         </select>

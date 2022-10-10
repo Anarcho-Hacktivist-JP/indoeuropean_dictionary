@@ -4654,19 +4654,11 @@ class Vedic_Verb extends Verb_Common_IE{
 		} else if($aspect == Commons::$START_VERB && $this->root_type != Commons::$NOUN_VERB){
 			// 始動相
 			// 第10類・名詞起源動詞以外は追加する。
-			$verb_stem = $this->inchorative_stem;
-			// 受動態はyaを加える。
-			if($voice == Commons::$PASSIVE_VOICE){
-				$verb_stem = $verb_stem.$this->passive_suffix;
-			}			
+			$verb_stem = $this->inchorative_stem;	
 		} else if($aspect == "resultative" && $this->root_type != Commons::$NOUN_VERB){
 			// 結果相
 			// 第10類・名詞起源動詞以外は追加する。
-			$verb_stem = $this->resultative_stem;
-			// 受動態はyaを加える。
-			if($voice == Commons::$PASSIVE_VOICE){
-				$verb_stem = $verb_stem.$this->passive_suffix;
-			}						
+			$verb_stem = $this->resultative_stem;				
 		} else if($aspect == Commons::$AORIST_ASPECT && $this->deponent_aorist != Commons::$TRUE){
 			// 完了体
 			// 中動態は語幹を変更
@@ -5480,7 +5472,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 一次動詞の活用を作成する。
-	protected function get_primary_verb_conjugation(){
+	protected function get_primary_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5498,9 +5490,35 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態は存在しないため、処理を飛ばす。
+							continue;
+						} else if($aspect == Commons::$START_VERB && $voice == Commons::$PASSIVE_VOICE){
+							// 始動動詞の受動態は存在しないため、処理を飛ばす。
+							continue;
+						} else if($aspect == "resultative" && $voice == Commons::$PASSIVE_VOICE){
+							// 結果動詞の受動態は存在しないため、処理を飛ばす。
 							continue;
 						} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood == Commons::$PRESENT_TENSE){
 							// アオリストの現在時制は存在しないため、ハイフンを入れる。
@@ -5565,7 +5583,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 使役動詞の活用を作成する。
-	protected function get_causative_verb_conjugation(){
+	protected function get_causative_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5584,6 +5602,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -5644,7 +5682,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 願望動詞の活用を作成する。
-	protected function get_desiderative_verb_conjugation(){
+	protected function get_desiderative_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5663,6 +5701,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -5727,7 +5785,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 強意動詞の活用を作成する。
-	protected function get_intensive_verb_conjugation(){
+	protected function get_intensive_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5746,6 +5804,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -5805,7 +5883,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 使役+願望動詞の活用を作成する。
-	protected function get_causative_desiderative_verb_conjugation(){
+	protected function get_causative_desiderative_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5824,6 +5902,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -5888,7 +5986,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 強意+願望動詞の活用を作成する。
-	protected function get_intensive_desiderative_verb_conjugation(){
+	protected function get_intensive_desiderative_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5907,6 +6005,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -5971,7 +6089,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 願望+使役動詞の活用を作成する。
-	protected function get_desiderative_causative_verb_conjugation(){
+	protected function get_desiderative_causative_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -5990,6 +6108,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -6054,7 +6192,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	}
 
 	// 強意+使役動詞の活用を作成する。
-	protected function get_intensive_causative_verb_conjugation(){
+	protected function get_intensive_causative_verb_conjugation($classic_flag){
 
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::$START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
@@ -6073,6 +6211,26 @@ class Vedic_Verb extends Verb_Common_IE{
 				foreach ($tense_mood_array as $tense_mood){
 					// 全ての人称			
 					foreach ($person_array as $person){
+						// 古典フラグ
+						if($classic_flag){
+							// 接続法は使わない
+							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+								continue;
+							}
+							// 完了形は現在形以外存在しない。
+							if($aspect == Commons::$PERFECT_ASPECT && $tense_mood_array != Commons::$PRESENT_TENSE){
+								continue;
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PAST_TENSE || $tense_mood_array != "injunc" || $tense_mood_array != "bend")){
+								// アオリストは指令法、希求法、祈願法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && ($tense_mood_array != Commons::$PRESENT_TENSE || $tense_mood_array != Commons::$PAST_TENSE)){
+								// 未来形は現在形・条件法以外存在しない。
+								continue;								
+							} else if($aspect == Commons::$AORIST_ASPECT && $tense_mood_array != "injunc"){
+								// 現在形は指令法は存在しない。
+								continue;								
+							}
+						}
 						// 態と人称で場合分けする。
 						if($aspect == Commons::$PERFECT_ASPECT && $voice == Commons::$PASSIVE_VOICE){
 							// 完了形の受動態と中動態は同じ
@@ -6147,7 +6305,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 初期化
 		$conjugation = array();
 		// タイトル情報を挿入
-		$conjugation["title"] = $this->get_title($this->root);
+		$conjugation["title"] = $this->get_title($this->add_stem.$this->root);
 		// 辞書見出しを入れる。
 		$conjugation["dic_title"] = $this->get_root();
 		// 種別を入れる。
@@ -6157,28 +6315,28 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 一次動詞
-		$conjugation["primary"] = $this->get_primary_verb_conjugation();
+		$conjugation["primary"] = $this->get_primary_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 使役動詞
-		$conjugation[Commons::$MAKE_VERB] = $this->get_causative_verb_conjugation();
+		$conjugation[Commons::$MAKE_VERB] = $this->get_causative_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 願望動詞
-		$conjugation[Commons::$WANT_VERB] = $this->get_desiderative_verb_conjugation();
+		$conjugation[Commons::$WANT_VERB] = $this->get_desiderative_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 強意動詞
-		$conjugation[Commons::$INTENSE_VERB] = $this->get_intensive_verb_conjugation();
+		$conjugation[Commons::$INTENSE_VERB] = $this->get_intensive_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 使役+願望動詞
-		$conjugation[Commons::$MAKE_VERB."-".Commons::$WANT_VERB] = $this->get_causative_desiderative_verb_conjugation();
+		$conjugation[Commons::$MAKE_VERB."-".Commons::$WANT_VERB] = $this->get_causative_desiderative_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 強意+願望動詞
-		$conjugation[Commons::$INTENSE_VERB."-".Commons::$WANT_VERB] = $this->get_intensive_desiderative_verb_conjugation();
+		$conjugation[Commons::$INTENSE_VERB."-".Commons::$WANT_VERB] = $this->get_intensive_desiderative_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 願望+使役動詞
-		$conjugation[Commons::$WANT_VERB."-".Commons::$MAKE_VERB] = $this->get_desiderative_causative_verb_conjugation();
+		$conjugation[Commons::$WANT_VERB."-".Commons::$MAKE_VERB] = $this->get_desiderative_causative_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 強意+使役動詞
-		$conjugation[Commons::$INTENSE_VERB."-".Commons::$MAKE_VERB] = $this->get_intensive_causative_verb_conjugation();
+		$conjugation[Commons::$INTENSE_VERB."-".Commons::$MAKE_VERB] = $this->get_intensive_causative_verb_conjugation(false);
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 
 		// 結果を返す。

@@ -74,7 +74,7 @@ if($input_noun != ""){
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_noun" id="input_noun" class="form-control">
         <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn" for="btn-search">検索</label>
+        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>

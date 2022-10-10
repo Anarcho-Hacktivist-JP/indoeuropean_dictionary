@@ -174,7 +174,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb">
-        <select name="input_verb_type">
+        <select class="form-select" name="input_verb_type">
           <option selected>動詞の種別</option>
           <option value="">通常</option>          
           <option value="inchorative">始動動詞</option>
