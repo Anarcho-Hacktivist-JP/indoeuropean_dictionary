@@ -95,6 +95,7 @@ class Input_Botton {
         });  
     }
 
+    // ラテン語のボタン
     static LatinBotton(inputId){
 	    // ボタン入力
 	    $('#button-a').click( function(){
@@ -129,6 +130,7 @@ class Input_Botton {
         }); 
     }
 
+    // ポーランド語のボタン
     static PolishBotton(inputId){
         // ボタン入力
         $('#button-a').click( function(){

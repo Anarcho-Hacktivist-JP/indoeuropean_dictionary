@@ -4141,7 +4141,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				return $this->root."u";
 		        break;
 		    case 9:
-				return $this->root."nā";
+				return $this->root."nī";
 		        break;			
 			default:
 				return $this->present_stem;
@@ -4964,8 +4964,11 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 結果を返す。
 		if($this->conjugation_present_type == Commons::$NOUN_VERB){
-			// 名詞起源動詞場合
-			return $verb_conjugation;	
+			// 名詞起源動詞の場合
+			// 連音を適用
+			$verb_conjugation = Sanskrit_Common::change_sound_to_vedic($verb_conjugation, true);
+			// 結果を返す。
+			return Sanskrit_Common::change_sound_to_vedic($verb_conjugation, true);	
 		} else {
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
 		}
@@ -5009,7 +5012,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 結果を返す。
 		if($this->conjugation_present_type == Commons::$NOUN_VERB){
 			// 名詞起源動詞の場合
-			return Sanskrit_Common::sandhi_engine("", $verb_conjugation, true, true);
+			// 連音を適用
+			$verb_conjugation = Sanskrit_Common::change_sound_to_vedic($verb_conjugation, true);
+			// 結果を返す。
+			return Sanskrit_Common::change_sound_to_vedic($verb_conjugation, true);
 		} else {
 			// それ以外の場合
 			return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, true, true);
