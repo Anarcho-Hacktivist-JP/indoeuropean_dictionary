@@ -1,5 +1,5 @@
 <?php
-set_time_limit(240);
+set_time_limit(600);
 
 // インドヨーロッパ語動詞クラス
 class Verb_Common_IE {
@@ -218,7 +218,7 @@ class Verb_Common_IE {
 	}
 	
 	// 動詞作成
-	public function get_PIE_verb($person, $number, $voice, $mood, $aspect, $tense){
+	public function get_PIE_verb($person, $voice, $mood, $aspect, $tense){
 		//動詞の語幹を取得
 		$verb_stem = "";
 		if($aspect == Commons::$PRESENT_ASPECT){
@@ -241,22 +241,22 @@ class Verb_Common_IE {
 			$verb_stem = $verb_stem.$this->ind;
 			// 時制を分ける。
 			if($tense == "present") {
-				$verb_stem = $this->get_primary_suffix($verb_stem, $number, $voice, $person);
+				$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
 			} else {
-				$verb_stem = $this->get_secondary_suffix($verb_stem, $number, $voice, $person);
+				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}
 		} else if($mood == Commons::$OPTATIVE){
 			// 希求法
 			$verb_stem = $verb_stem.$this->opt;
-			$verb_stem = $this->get_secondary_suffix($verb_stem, $number, $voice, $person);
+			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 		} else if($mood == "subj"){
 			// 接続法
 			$verb_stem = $verb_stem.$this->subj;
-			$verb_stem = $this->get_primary_suffix($verb_stem, $number, $voice, $person);
+			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
 		} else if($mood == "imper"){
 			// 命令法
 			$verb_stem = $verb_stem.$this->imper;
-			$verb_stem = $this->get_imperative_suffix($verb_stem, $number, $voice, $person);
+			$verb_stem = $this->get_imperative_suffix($verb_stem, $voice, $person);
 		}
 		
 		// 結果を返す。
@@ -8106,6 +8106,277 @@ class Polish_Verb_Root3 extends Polish_Verb {
 		// 結果を返す。
 		return $verb_conjugation;
 	}
+
+}
+
+// ギリシア語動詞クラス
+class Koine_Verb extends Verb_Common_IE {
+
+	// 一次人称接尾辞(現在、接続用)
+	protected $primary_number = 
+	[		
+		"active" => 
+		[
+			"1sg" => "ω",
+			"2sg" => "ς", 
+			"3sg" => "",
+			"1pl" => "μεν",
+			"2pl" => "τε", 
+			"3pl" => "σιν",			
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "μαι",
+			"2sg" => "", 
+			"3sg" => "ται",
+			"1pl" => "μεθα",
+			"2pl" => "σθε", 
+			"3pl" => "νται",			
+		],
+	];
+	
+	// 二次人称接尾辞(過去、願望用)
+	protected $secondary_number = 
+	[		
+		"active" => 
+		[
+			"1sg" => "m",
+			"2sg" => "s", 
+			"3sg" => "t",
+			"1pl" => "me",
+			"2pl" => "te", 
+			"3pl" => "nt",		
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "o",
+			"2sg" => "tho", 
+			"3sg" => "to",
+			"1pl" => "medh",
+			"2pl" => "dhwo", 
+			"3pl" => "nto",
+		],
+	];
+
+	// 命令人称接尾辞
+	protected $imperative_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "",
+			"2sg" => "ν", 
+			"3sg" => "τω",
+			"1pl" => "",
+			"2pl" => "τε", 
+			"3pl" => "ούντων",	
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "",
+			"2sg" => "ου", 
+			"3sg" => "σθω",
+			"1pl" => "",
+			"2pl" => "σθε", 
+			"3pl" => "σθων",	
+		],
+
+	];
+	
+	// 完了人称接尾辞
+	protected $perfect_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "e",
+			"2sg" => "ς", 
+			"3sg" => "ν",
+			"1pl" => "μεν",
+			"2pl" => "τε", 
+			"3pl" => "ν",	
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "μην",
+			"2sg" => "ω", 
+			"3sg" => "το",
+			"1pl" => "μεθα",
+			"2pl" => "σθε", 
+			"3pl" => "ντο",	
+		],
+	];
+
+	// 未然動詞
+	protected $future_stem = "";
+
+	// 未来能動分詞
+	protected $future_participle_active = "";
+	// 未来受動分詞
+	protected $future_participle_passive = "";
+	// 未来中動分詞
+	protected $future_participle_middle = "";
+	
+	// 直接法
+	protected $ind = "ει";
+	protected $ind2 = "ού";
+	// 命令法
+	protected $imper = "";
+	// 希求法
+	protected $opt = "οι";
+	// 接続法
+	protected $subj = "η";
+	protected $subj2 = "ώ";
+
+	// 活用種別
+	protected $class = "";
+
+	// 受動態接尾辞
+	protected $passive_suffix = "θή";
+	// 未来接尾辞
+	protected $future_suffix = "σ";
+
+	// 活用種別名
+	protected $class_name = "";	
+	// 活用種別-語根種別
+	protected $root_type = "";
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct() {
+        $a = func_get_args();
+        $i = func_num_args();
+        //引数に応じて別々のコンストラクタを似非的に呼び出す
+        if (method_exists($this,$f='__construct_koine'.$i)) {			
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    function __construct_koine1($dictionary_stem) {
+    	// 動詞情報を取得
+		$this->get_verb_data($dictionary_stem);
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    function __construct_koine3($present_stem, $aorist_stem, $perfect_stem) {
+    	$this->present_stem = $present_stem;		//現在相
+    	$this->aorist_stem = $aorist_stem;			//完結相
+    	$this->perfect_stem = $perfect_stem;		//完了相
+    }
+
+    // 動詞情報を取得
+    protected function get_verb_data($verb){
+    	// 動詞情報を取得
+		$word_info = $this->get_verb_from_DB($verb, "verb_pie");
+		// データがある場合は
+		if($word_info){
+			// データを挿入
+			$this->present_stem = $word_info["present_stem"];		//現在相
+			$this->aorist_stem = $word_info["aorist_stem"];			//完結相
+			$this->perfect_stem = $word_info["perfect_stem"];		//完了相
+			$this->future_stem = $this->present_stem.$this->future_suffix;			//未来相
+
+			// 訳
+			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語
+			$this->english_translation = $word_info["english_translation"];			// 英語
+			// 欠如フラグ
+			$this->deponent_active = $word_info["deponent_active"];					// 能動
+			$this->deponent_mediopassive = $word_info["deponent_mediopassive"];		// 中受動
+			$this->deponent_present = $word_info["deponent_present"];				// 現在
+			$this->deponent_aorist = $word_info["deponent_aorist"];					// アオリスト
+			$this->deponent_perfect = $word_info["deponent_perfect"];				// 完了
+			$this->deponent_future = $word_info["deponent_future"];					// 未来
+
+		} else {
+			// データを挿入
+			$this->present_stem = $verb;		//現在相
+			$this->aorist_stem = $verb;			//完結相
+			$this->perfect_stem = $verb;		//完了相			
+		}
+    }
+
+	
+	// 動詞作成
+	public function get_PIE_verb($person, $voice, $mood, $aspect, $tense){
+		//動詞の語幹を取得
+		$verb_stem = "";
+		if($aspect == Commons::$PRESENT_ASPECT){
+			// 不完了形
+			$verb_stem = $this->present_stem;
+		} else if($aspect == Commons::$AORIST_ASPECT){
+			// 完了形
+			$verb_stem = $this->aorist_stem;
+		} else if($aspect == Commons::$PERFECT_ASPECT){
+			// 状態動詞
+			$verb_stem = $this->perfect_stem;
+		} else if($aspect == Commons::$FUTURE_TENSE){
+			// 未来形
+			$verb_stem = $this->future_stem;			
+		} else {
+			// ハイフンを返す。
+			return "-";
+		} 
+		
+		//法を取得
+		if($mood == Commons::$INDICATIVE){
+			// 直説法
+			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
+				$verb_stem = $verb_stem.$this->ind2;
+			} else {
+				$verb_stem = $verb_stem.$this->ind;
+			}
+			// 時制を分ける。
+			if($tense == Commons::$PRESENT_TENSE) {
+				$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
+			} else {
+				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
+			}
+		} else if($mood == Commons::$OPTATIVE){
+			// 希求法
+			$verb_stem = $verb_stem.$this->opt;
+			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
+		} else if($mood == Commons::$SUBJUNCTIVE){
+			// 接続法
+			$verb_stem = $verb_stem.$this->subj;
+			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
+		} else if($mood == Commons::$IMPERATIVE){
+			// 命令法
+			$verb_stem = $verb_stem.$this->imper;
+			$verb_stem = $this->get_imperative_suffix($verb_stem, $voice, $person);
+		}
+		
+		// 結果を返す。
+		return $verb_stem;
+
+	}
+
+
+    // 動詞のタイトルを取得
+    protected function get_title($dic_form){
+
+		// タイトルを作成
+		$verb_script = $dic_form;
+
+		// 英語訳がある場合は
+		if ($this->english_translation != ""){
+			// 訳を入れる。
+			$verb_script = $verb_script." 英語：".$this->english_translation."";
+		}
+		
+		// 日本語訳がある場合は
+		if ($this->japanese_translation != ""){
+			// 訳を入れる。
+			$verb_script = $verb_script." 日本語：".$this->japanese_translation."";
+		}
+
+    	// 結果を返す。
+    	return $verb_script;
+	}
+
 
 }
 
