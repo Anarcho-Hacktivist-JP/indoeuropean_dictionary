@@ -8341,7 +8341,11 @@ class Koine_Verb extends Verb_Common_IE {
 			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 		} else if($mood == Commons::$SUBJUNCTIVE){
 			// 接続法
-			$verb_stem = $verb_stem.$this->subj;
+			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
+				$verb_stem = $verb_stem.$this->subj2;
+			} else {
+				$verb_stem = $verb_stem.$this->subj;
+			}
 			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
 		} else if($mood == Commons::$IMPERATIVE){
 			// 命令法
