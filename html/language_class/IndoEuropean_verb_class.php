@@ -8112,7 +8112,7 @@ class Polish_Verb_Root3 extends Polish_Verb {
 // ギリシア語動詞クラス
 class Koine_Verb extends Verb_Common_IE {
 
-	// 一次人称接尾辞(現在、接続用)
+	// 一次人称接尾辞(現在・接続・未来用)
 	protected $primary_number = 
 	[		
 		"active" => 
@@ -8135,7 +8135,7 @@ class Koine_Verb extends Verb_Common_IE {
 		],
 	];
 	
-	// 二次人称接尾辞(過去、願望用)
+	// 二次人称接尾辞(過去進行・大過去)
 	protected $secondary_number = 
 	[		
 		"active" => 
@@ -8155,6 +8155,29 @@ class Koine_Verb extends Verb_Common_IE {
 			"1pl" => "medh",
 			"2pl" => "dhwo", 
 			"3pl" => "nto",
+		],
+	];
+
+	// 希求法人称接尾辞
+	protected $optative_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "μι",
+			"2sg" => "ς", 
+			"3sg" => "",
+			"1pl" => "μεν",
+			"2pl" => "τε", 
+			"3pl" => "εν",	
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "μην",
+			"2sg" => "ο", 
+			"3sg" => "το",
+			"1pl" => "μεθα",
+			"2pl" => "σθε", 
+			"3pl" => "ντο",	
 		],
 	];
 
@@ -8179,15 +8202,14 @@ class Koine_Verb extends Verb_Common_IE {
 			"2pl" => "σθε", 
 			"3pl" => "σθων",	
 		],
-
 	];
 	
-	// 完了人称接尾辞
+	// 完了人称接尾辞(アオリスト・完了)
 	protected $perfect_number = 
 	[
 		"active" => 
 		[
-			"1sg" => "e",
+			"1sg" => "",
 			"2sg" => "ς", 
 			"3sg" => "ν",
 			"1pl" => "μεν",
@@ -8218,6 +8240,13 @@ class Koine_Verb extends Verb_Common_IE {
 	// 直接法
 	protected $ind = "ει";
 	protected $ind2 = "ού";
+
+	// 過去
+	protected $aor_past = "α";
+
+	// 大過去
+	protected $perf_past = "ει";
+
 	// 命令法
 	protected $imper = "";
 	// 希求法
@@ -8324,15 +8353,31 @@ class Koine_Verb extends Verb_Common_IE {
 		//法を取得
 		if($mood == Commons::$INDICATIVE){
 			// 直説法
-			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
-				$verb_stem = $verb_stem.$this->ind2;
-			} else {
-				$verb_stem = $verb_stem.$this->ind;
-			}
 			// 時制を分ける。
-			if($tense == Commons::$PRESENT_TENSE) {
+			if($tense == Commons::$PRESENT_TENSE && ($aspect == Commons::$PRESENT_ASPECT || $aspect == Commons::$FUTURE_TENSE)) {
+				// 人称によって分ける
+				if($person == "1sg" || $person == "1pl" || $person == "3pl"){
+					$verb_stem = $verb_stem.$this->ind2;
+				} else {
+					$verb_stem = $verb_stem.$this->ind;
+				}
+				// 人称を付ける
 				$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
+			} else if($aspect == Commons::$AORIST_ASPECT && $tense == Commons::$PAST_TENSE){
+				// アオリスト
+				// 人称を付ける
+				$verb_stem = $this->get_greek_perfect_suffix($verb_stem, $voice, $person);
+			} else if($aspect == Commons::$PERFECT_ASPECT){
+				// 完了形
+				// 人称を付ける
+				$verb_stem = $this->get_greek_perfect_suffix($verb_stem, $voice, $person);
 			} else {
+				// 人称によって分ける
+				// 三人称単数以外は接尾辞を付ける
+				if($person != "3sg"){;
+					$verb_stem = $verb_stem.$this->ind;
+				}
+				// 人称を付ける
 				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}
 		} else if($mood == Commons::$OPTATIVE){
@@ -8358,7 +8403,6 @@ class Koine_Verb extends Verb_Common_IE {
 
 	}
 
-
     // 動詞のタイトルを取得
     protected function get_title($dic_form){
 
@@ -8381,6 +8425,22 @@ class Koine_Verb extends Verb_Common_IE {
     	return $verb_script;
 	}
 
+	// 完了語尾
+	protected function get_greek_perfect_suffix($verb_conjugation, $voice, $person){
+		// 語尾を取得
+		if($voice == Commons::$ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
+			// 能動態
+			$verb_conjugation = $verb_conjugation.$this->perfect_number[$voice][$person];
+		} else if($voice == Commons::$MEDIOPASSIVE_VOICE && $this->deponent_mediopassive != Commons::$TRUE){
+			// 中受動態
+			$verb_conjugation = $verb_conjugation.$this->perfect_number[$voice][$person];
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}  
+		// 結果を返す。
+		return $verb_conjugation;
+	}
 
 }
 

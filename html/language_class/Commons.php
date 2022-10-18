@@ -185,6 +185,12 @@ class Commons {
 		return $result;
 	} 
 
+	// 曲用可能チェック
+	public static function is_word_declensionable($word_category){
+		// 結果を返す(名詞・形容詞はtrue)。
+		return preg_match('(noun|adjective)', $word_category);
+	}
+
 }
 
 class Common_IE {

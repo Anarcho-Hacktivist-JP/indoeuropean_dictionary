@@ -894,7 +894,7 @@ class Latin_Common extends Common_IE{
 						}
 					}
 					// 名詞や形容詞の造語の場合は
-					if(preg_match('(noun|adjective)', $word_category)){
+					if(Commons::is_word_declensionable($word_category)){
 						for ($j = 0; $j < count($last_words); $j++) {
 							// 現在分詞に変更
 							$last_words[$j] = mb_substr($last_words[$j], 0, -2)."ns";

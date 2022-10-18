@@ -498,48 +498,75 @@ class Sanskrit_Common extends Common_IE{
 		// SQLを作成 
 		$query = "SELECT
 					case
-		  			 when `noun_type` = '1' then CONCAT(`stem`, 'm')
-					 when `noun_type` = '2' then CONCAT(`stem`, 'm')
-					 when `noun_type` = '3i' then CONCAT(`stem`, 'm')
-					 when `noun_type` = '3ilong' then CONCAT(`stem`, 'm')
-					 when `noun_type` = '4u' then CONCAT(`stem`, 'm')
-					 when `noun_type` = '4ulong' then CONCAT(`stem`, 'm')
-					 when `noun_type` = '3n' then CONCAT(`stem`, 'am')
-		  			 else CONCAT(`stem`, 'am')
+		  			 when `noun_type` = '1' then CONCAT(t1.`stem`, 'm')
+					 when `noun_type` = '2' then CONCAT(t1.`stem`, 'm')
+					 when `noun_type` = '3i' then CONCAT(t1.`stem`, 'm')
+					 when `noun_type` = '3ilong' then CONCAT(t1.`stem`, 'm')
+					 when `noun_type` = '4u' then CONCAT(t1.`stem`, 'm')
+					 when `noun_type` = '4ulong' then CONCAT(t1.`stem`, 'm')
+					 when `noun_type` = '3n' then CONCAT(t1.`stem`, 'am')
+		  			 else CONCAT(t1.`stem`, 'am')
 					end as `adverb` 
-					FROM `".Sanskrit_Common::$DB_NOUN."` WHERE ";
+					FROM `".Sanskrit_Common::$DB_NOUN."` t1 WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
-			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
+			$query = $query." t1.`japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
 		} else {
 			// それ以外は
-			$query = $query." ( `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
-			`japanese_translation` LIKE '".$japanese_translation."、%' OR 
-			`japanese_translation` LIKE '%、".$japanese_translation."' OR 
-			`japanese_translation` = '".$japanese_translation."')";
-		}		
+			$query = $query." ( t1.`japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+			t1.`japanese_translation` LIKE '".$japanese_translation."、%' OR 
+			t1.`japanese_translation` LIKE '%、".$japanese_translation."' OR 
+			t1.`japanese_translation` = '".$japanese_translation."')";
+		}
 
-		// SQLを作成 
+		// 形容詞や副詞のテーブルにある単語は除く
+		$query = $query."
+			AND NOT EXISTS(
+				SELECT 
+			 	 1
+				FROM `adjective_sanskrit` t2
+				WHERE
+			 	 t1.stem = t2.stem
+				)
+			AND NOT EXISTS(
+				SELECT 
+				 1
+				FROM `adverb_sanskrit` t3
+				WHERE
+				 t3.adverb = CONCAT(t1.`stem`, 'm')
+				)";
+
+		// SQLを作成(形容詞)
 		$query = $query." UNION SELECT
 							case
-							 when `adjective_type` = '1' then CONCAT(`stem`, 'm')
-							 when `adjective_type` = '2' then CONCAT(`stem`, 'm')
-							 when `adjective_type` = '3i' then CONCAT(`stem`, 'm')
-							 when `adjective_type` = '4u' then CONCAT(`stem`, 'm')
-							 when `adjective_type` = '3n' then CONCAT(`stem`, 'am')
-							 else CONCAT(`stem`, 'am')
+							 when `adjective_type` = '1' then CONCAT(t1.`stem`, 'm')
+							 when `adjective_type` = '2' then CONCAT(t1.`stem`, 'm')
+							 when `adjective_type` = '3i' then CONCAT(t1.`stem`, 'm')
+							 when `adjective_type` = '4u' then CONCAT(t1.`stem`, 'm')
+							 when `adjective_type` = '3n' then CONCAT(t1.`stem`, 'am')
+							 else CONCAT(t1.`stem`, 'am')
 							end as `adverb` 
-							FROM `".Sanskrit_Common::$DB_ADJECTIVE."` WHERE ";
+							FROM `".Sanskrit_Common::$DB_ADJECTIVE."` t1 WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
-			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
+			$query = $query." t1.`japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
 		} else {
 			// それ以外は
-			$query = $query." ( `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
-			`japanese_translation` LIKE '".$japanese_translation."、%' OR 
-			`japanese_translation` LIKE '%、".$japanese_translation."' OR 
-			`japanese_translation` = '".$japanese_translation."')";
+			$query = $query." ( t1.`japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+			t1.`japanese_translation` LIKE '".$japanese_translation."、%' OR 
+			t1.`japanese_translation` LIKE '%、".$japanese_translation."' OR 
+			t1.`japanese_translation` = '".$japanese_translation."')";
 		}
+
+		// 副詞のテーブルにある単語は除く
+		$query = $query."
+			AND NOT EXISTS(
+				SELECT 
+				 1
+				FROM `adverb_sanskrit` t2
+				WHERE
+				 t2.adverb = CONCAT(t1.`stem`, 'm')
+				)";
 
 		$query = $query." UNION SELECT `adverb` FROM `adverb_sanskrit` WHERE ";
 		// 検索条件に*を含む場合は
@@ -551,7 +578,7 @@ class Sanskrit_Common extends Common_IE{
 			`japanese_translation` LIKE '".$japanese_translation."、%' OR 
 			`japanese_translation` LIKE '%、".$japanese_translation."' OR 
 			`japanese_translation` = '".$japanese_translation."')";
-		}	
+		}
 
 		// SQLを実行
 		$stmt = $db_host->query($query);
@@ -938,7 +965,7 @@ class Sanskrit_Common extends Common_IE{
 						// 接尾辞を直前の名詞に結合する。
 						$sanskrit_words[count($sanskrit_words) - 1][0] = $sanskrit_words[count($sanskrit_words) - 1][0]."sāt"; 
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "as";
 							$last_words[] = "bhū";
@@ -958,7 +985,7 @@ class Sanskrit_Common extends Common_IE{
 						}															
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "に"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "bhū";
 						} else {
@@ -967,7 +994,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "と"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "bhū";
 							$last_words[] = "gam";
@@ -985,7 +1012,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "なる"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "as";
 							$last_words[] = "bhū";
@@ -1005,7 +1032,7 @@ class Sanskrit_Common extends Common_IE{
 						}	
 					} else if($target_word == "変わる" && $input_words[$i - 1][0] == "に"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "nī";
 						} else {
@@ -1014,7 +1041,7 @@ class Sanskrit_Common extends Common_IE{
 						}	
 					} else if($target_word == "変わる" && $input_words[$i - 1][0] == "へ"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "i";
 							$last_words[] = "ya";
@@ -1025,7 +1052,7 @@ class Sanskrit_Common extends Common_IE{
 						}															
 					} else if($target_word == "する" && $input_words[$i - 1][0] == "に"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "kṛ";	
 						} else {
@@ -1034,7 +1061,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "する" && $input_words[$i - 1][0] == "を"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "kṛ";
 							$last_words[] = "dhā";
@@ -1045,7 +1072,7 @@ class Sanskrit_Common extends Common_IE{
 						}											
 					} else if($target_word == "する"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "kṛ";
 						} else {
@@ -1054,7 +1081,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "作る" && $input_words[$i - 1][0] == "を"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "kṛ";
 						} else {
@@ -1064,7 +1091,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "びる"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "kṛ";
 							$last_words[] = "bhū";
@@ -1075,7 +1102,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "ある"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "as";
 						} else {
@@ -1086,7 +1113,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 					} else if($target_word == "欲す" || $target_word == "求める"){
 						// 最終単語
-						if(preg_match('(noun|adjective)', $word_category)){
+						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "īṣ";
 						} else {
@@ -1103,7 +1130,7 @@ class Sanskrit_Common extends Common_IE{
 						// 新しい配列に詰め替え
 						foreach ($last_words_data as $last_word_data){	
 							// 最終単語
-							if(preg_match('(noun|adjective)', $word_category)){
+							if(Commons::is_word_declensionable($word_category)){
 								// 名詞や形容詞の場合は語根
 								$last_words[] = $last_word_data["root"];	
 							} else {
