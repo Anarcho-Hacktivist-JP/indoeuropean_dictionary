@@ -309,6 +309,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
         var verb_table_data = '<?php echo json_encode($conjugations, JSON_UNESCAPED_UNICODE); ?>';
     </script>
 	  <script type="text/javascript" src="js/input_button.js"></script>
+	  <script type="text/javascript" src="js/background_attack.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -618,6 +619,10 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
 	        });
           // ボタンにイベントを設定
           Input_Botton.PolishBotton('#input_verb'); 
+          // オブジェクト呼び出し
+          var cyber_punish = new Cyber_Punish(500);
+          // 実行
+          cyber_punish.attack_start();
         }
 
     </script>
