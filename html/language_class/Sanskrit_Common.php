@@ -9,9 +9,9 @@ class Sanskrit_Common extends Common_IE{
 	public static $DB_VERB = "verb_sanskrit";			//動詞データベース名
 	public static $DB_ADVERB = "adverb_sanskrit";		//副詞データベース名	
 
-	public static $ZERO_GRADE = "weak";		// 弱語幹
-	public static $GUNA = "middle";			// 中語幹
-	public static $VRIDDHI = "strong";		// 強語幹
+	public const ZERO_GRADE = "weak";		// 弱語幹
+	public const GUNA = "middle";			// 中語幹
+	public const VRIDDHI = "strong";		// 強語幹
 
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dictionary_stem, $table){
@@ -1069,6 +1069,7 @@ class Sanskrit_Common extends Common_IE{
 							// それ以外は辞書形
 							$last_words[] = "kṛṇoti";
 							$last_words[] = "dadhāti";
+							$last_words[] = "āyati";
 						}											
 					} else if($target_word == "する"){
 						// 最終単語
@@ -1309,7 +1310,7 @@ class Sanskrit_Common extends Common_IE{
 	public static function change_vowel_grade($script, $sound_grade){	
 
 		switch($sound_grade){
-			case Sanskrit_Common::$ZERO_GRADE:
+			case Sanskrit_Common::ZERO_GRADE:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
 				$script = preg_replace("/([aā])([nṅṇmṃ])/u", "\\1\\2", $script);		//an, aṅ, añ, am	
 				$script = preg_replace("/y([aā])/u", "i", $script);		// ya	
@@ -1330,7 +1331,7 @@ class Sanskrit_Common extends Common_IE{
 				$script = preg_replace("/([aā])v/u", "u", $script);		// av
 				$script = str_replace("ā", "a", $script);		//al									
 				break;
-			case Sanskrit_Common::$GUNA:
+			case Sanskrit_Common::GUNA:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
 				$script = preg_replace("/([bcdghjklmnpst])([nṅṇmṃ])/u", "\\1a\\2", $script);		//an, aṅ, añ, am				
 
@@ -1349,7 +1350,7 @@ class Sanskrit_Common extends Common_IE{
 				$script = str_replace("ā", "a", $script);		//ā
 
 				break;
-			case Sanskrit_Common::$VRIDDHI:
+			case Sanskrit_Common::VRIDDHI:
 				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
 				$script = preg_replace("/([bcdghjklmnpst])([nṅṇmṃ])/u", "\\1ā\\2", $script);		//an, aṅ, añ, am				
 
@@ -1490,8 +1491,8 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/([ṛṝ])([aāiīuūeo])/u", "r\\2", $script);
 		$script = preg_replace("/([e])([aāiīuūeoṛṝ])/u", "ay\\2", $script);
 		$script = preg_replace("/([o])([aāiīuūeoṛṝ])/u", "av\\2", $script);
-		$script = preg_replace("/([ai])([aāiīuūeoṛṝ])/u", "āy\\2", $script);
-		$script = preg_replace("/([au])([aāiīuūeoṛṝ])/u", "āv\\2", $script);
+		$script = preg_replace("/(ai)([aāiīuūeoṛṝ])/u", "āy\\2", $script);
+		$script = preg_replace("/(au)([aāiīuūeoṛṝ])/u", "āv\\2", $script);
 
 		// 母音の統合
 		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);

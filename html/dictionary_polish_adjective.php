@@ -263,9 +263,9 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
           // ボタンにイベントを設定
           Input_Botton.PolishBotton('#input_adjective'); 
           // オブジェクト呼び出し
-          var cyber_punish = new Cyber_Punish(500);
+          var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
           // 実行
-          cyber_punish.attack_start();
+          cyber_punish_kacap.attack_start();
         }
     </script>
   <footer class="">
