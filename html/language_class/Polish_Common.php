@@ -3,10 +3,10 @@ header('Content-Type: text/html; charset=UTF-8');
 
 class Polish_Common extends Common_IE{
 
-	public static $DB_NOUN = "noun_polish";				// 名詞データベース名
-	public static $DB_ADJECTIVE = "adjective_polish";	// 形容詞データベース名
-	public static $DB_VERB = "verb_polish";				// 動詞データベース名
-	public static $DB_ADVERB = "adverb_polish";			// 副詞データベース名		
+	public const DB_NOUN = "noun_polish";				// 名詞データベース名
+	public const DB_ADJECTIVE = "adjective_polish";	// 形容詞データベース名
+	public const DB_VERB = "verb_polish";				// 動詞データベース名
+	public const DB_ADVERB = "adverb_polish";			// 副詞データベース名		
 
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dic_stem, $table){
@@ -62,7 +62,7 @@ class Polish_Common extends Common_IE{
 		}
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Polish_Common::$DB_NOUN && $gender != ""){
+		if($table == Polish_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -110,7 +110,7 @@ class Polish_Common extends Common_IE{
 		}
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Polish_Common::$DB_NOUN && $gender != ""){
+		if($table == Polish_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -153,7 +153,7 @@ class Polish_Common extends Common_IE{
 				 `japanese_translation` = '".$japanese_translation."')";
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Polish_Common::$DB_NOUN && $gender != ""){
+		if($table == Polish_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -187,7 +187,7 @@ class Polish_Common extends Common_IE{
 		$db_host = set_DB_session();
 
 		// SQLを作成 
-		$query = "SELECT * FROM `".Polish_Common::$DB_VERB."` WHERE ";
+		$query = "SELECT * FROM `".Polish_Common::DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -233,7 +233,7 @@ class Polish_Common extends Common_IE{
 		$db_host = set_DB_session();
 
 		// SQLを作成 
-		$query = "SELECT * FROM `".Polish_Common::$DB_VERB."` WHERE ";
+		$query = "SELECT * FROM `".Polish_Common::DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($english_translation, Commons::$LIKE_MARK)){
 			$query = $query." `english_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $english_translation)."%'";
@@ -277,7 +277,7 @@ class Polish_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Polish_Common::$DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
+		$query = "SELECT * FROM `".Polish_Common::DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -308,29 +308,29 @@ class Polish_Common extends Common_IE{
 				 `japanese_translation` = '".$japanese_translation."')";
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Polish_Common::$DB_NOUN && $gender != ""){
+		if($table == Polish_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
-							SELECT * FROM `".Polish_Common::$DB_VERB."`
-							WHERE `".Polish_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'ować') 
+							SELECT * FROM `".Polish_Common::DB_VERB."`
+							WHERE `".Polish_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'ować') 
 						  )";
 
 		// SQLを作成 
 		$query = $query." UNION SELECT
-							`".Polish_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
+							`".Polish_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
    						  FROM `".$table."`
-   						  LEFT JOIN  `".Polish_Common::$DB_VERB."`
-   					      ON `".Polish_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'ować')
+   						  LEFT JOIN  `".Polish_Common::DB_VERB."`
+   					      ON `".Polish_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'ować')
    						  WHERE ( 
 							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
 							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
 							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
 							`".$table."`.`japanese_translation` = '".$japanese_translation."')
    						  AND 
-							 `".Polish_Common::$DB_VERB."`.`dictionary_stem` is not null;";
+							 `".Polish_Common::DB_VERB."`.`dictionary_stem` is not null;";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -362,7 +362,7 @@ class Polish_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'eć') as `strong_stem`  FROM `".Polish_Common::$DB_ADJECTIVE."` WHERE (
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'eć') as `strong_stem`  FROM `".Polish_Common::DB_ADJECTIVE."` WHERE (
 				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
@@ -370,23 +370,23 @@ class Polish_Common extends Common_IE{
 
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
-							SELECT * FROM `".Polish_Common::$DB_VERB."`
-							WHERE `".Polish_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Polish_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć') 
+							SELECT * FROM `".Polish_Common::DB_VERB."`
+							WHERE `".Polish_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Polish_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć') 
 						  )";
 
 		// SQLを作成 
 		$query = $query." UNION SELECT
-							`".Polish_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
-   						  FROM `".Polish_Common::$DB_ADJECTIVE."`
-   						  LEFT JOIN  `".Polish_Common::$DB_VERB."`
-   					      ON `".Polish_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Polish_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć')
+							`".Polish_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
+   						  FROM `".Polish_Common::DB_ADJECTIVE."`
+   						  LEFT JOIN  `".Polish_Common::DB_VERB."`
+   					      ON `".Polish_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Polish_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć')
    						  WHERE ( 
-							`".Polish_Common::$DB_ADJECTIVE."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
-							`".Polish_Common::$DB_ADJECTIVE."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
-							`".Polish_Common::$DB_ADJECTIVE."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
-							`".Polish_Common::$DB_ADJECTIVE."`.`japanese_translation` = '".$japanese_translation."')
+							`".Polish_Common::DB_ADJECTIVE."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`".Polish_Common::DB_ADJECTIVE."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`".Polish_Common::DB_ADJECTIVE."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`".Polish_Common::DB_ADJECTIVE."`.`japanese_translation` = '".$japanese_translation."')
    						  AND 
-							 `".Polish_Common::$DB_VERB."`.`dictionary_stem` is not null;";
+							 `".Polish_Common::DB_VERB."`.`dictionary_stem` is not null;";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -469,7 +469,7 @@ class Polish_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Polish_Common::$DB_NOUN."` WHERE `location_name` != '1'";
+		$query = "SELECT * FROM `".Polish_Common::DB_NOUN."` WHERE `location_name` != '1'";
 		// 名詞の場合で性別の指定がある場合は追加する。
 		if($gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
@@ -501,7 +501,7 @@ class Polish_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Polish_Common::$DB_ADJECTIVE."` WHERE `location_name` != '1'";
+		$query = "SELECT * FROM `".Polish_Common::DB_ADJECTIVE."` WHERE `location_name` != '1'";
 		// 活用種別
 		if($adjective_type != ""){
 			$query = $query."AND `adjective_type` LIKE '%".$adjective_type."%'";
@@ -527,7 +527,7 @@ class Polish_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Polish_Common::$DB_VERB."` WHERE `deponent_personal` != '1'";
+		$query = "SELECT * FROM `".Polish_Common::DB_VERB."` WHERE `deponent_personal` != '1'";
 		// 活用種別
 		if($verb_type != ""){
 			$query = $query."AND `verb_type` LIKE '%".$verb_type."%'";
@@ -863,5 +863,42 @@ class Polish_Common extends Common_IE{
 		return $button_html_code.'</section>';
 
 	}
+
+	// ポーランド語の連音変化
+	public static function polish_sandhi($word){
+
+		// 変換
+		$word = mb_ereg_replace("([bcfhlłmnprswz])k\b", "\\1ek", $word);
+		$word = mb_ereg_replace("([dgkt])k\b", "\\1iek", $word);
+
+		$word = mb_ereg_replace("([^y])ni\b", "\\1ń", $word);
+		$word = preg_replace("/si$/", "s", $word);		
+		$word = preg_replace("/zi$/", "ź", $word);
+		$word = preg_replace("/l$/", "ł", $word);				
+		$word = preg_replace("/di$/", "dzi", $word);
+		$word = preg_replace("/ti$/", "ci", $word);
+		$word = preg_replace("/ri$/", "rzy", $word);
+
+		$word = preg_replace("/be$/", "bie", $word);
+		$word = preg_replace("/pe$/", "pie", $word);	
+		$word = preg_replace("/me$/", "mie", $word);
+		$word = preg_replace("/ne$/", "nie", $word);
+		$word = preg_replace("/re$/", "rze", $word);
+		$word = preg_replace("/tie$/", "cie", $word);
+		$word = preg_replace("/te$/", "cie", $word);
+		$word = preg_replace("/de$/", "dzie", $word);
+		$word = preg_replace("/ke$/", "ce", $word);
+		$word = preg_replace("/kem$/", "kiem", $word);		
+		$word = preg_replace("/ge$/", "dzie", $word);
+
+		$word = preg_replace("/ry$/", "rzy", $word);
+		$word = preg_replace("/dy$/", "dzy", $word);
+		$word = preg_replace("/ky$/", "cy", $word);
+		$word = preg_replace("/gy$/", "dzy", $word);
+
+		// 最後の音節のoは短音になる。但し単音節の単語は除く
+		$word = mb_ereg_replace("(.{2})o([^aiueoąęó])\b", "\\1ó\\2", $word);
+	}
+
 
 }

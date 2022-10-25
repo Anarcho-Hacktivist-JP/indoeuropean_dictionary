@@ -23,7 +23,7 @@ $question_word = Polish_Common::get_random_adjective($declension);
 // 読み込み
 $adjective_polish = new Polish_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::$ADJ_GRADE_POSITIVE);
+$question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, $number, $gender, Commons::ADJ_GRADE_POSITIVE);
 ?>
 <!doctype html>
 <html lang="ja">

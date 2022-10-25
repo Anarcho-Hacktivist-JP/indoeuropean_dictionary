@@ -4,10 +4,10 @@ header('Content-Type: text/html; charset=UTF-8');
 
 class Sanskrit_Common extends Common_IE{
 
-	public static $DB_NOUN = "noun_sanskrit";			// 名詞データベース名
-	public static $DB_ADJECTIVE = "adjective_sanskrit";	// 形容詞データベース名
-	public static $DB_VERB = "verb_sanskrit";			//動詞データベース名
-	public static $DB_ADVERB = "adverb_sanskrit";		//副詞データベース名	
+	public const DB_NOUN = "noun_sanskrit";			// 名詞データベース名
+	public const DB_ADJECTIVE = "adjective_sanskrit";	// 形容詞データベース名
+	public const DB_VERB = "verb_sanskrit";			//動詞データベース名
+	public const DB_ADVERB = "adverb_sanskrit";		//副詞データベース名	
 
 	public const ZERO_GRADE = "weak";		// 弱語幹
 	public const GUNA = "middle";			// 中語幹
@@ -66,7 +66,7 @@ class Sanskrit_Common extends Common_IE{
 			`japanese_translation` = '".$japanese_translation."')";
 		}
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Sanskrit_Common::$DB_NOUN && $gender != ""){
+		if($table == Sanskrit_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}		
 		// SQLを取得
@@ -116,7 +116,7 @@ class Sanskrit_Common extends Common_IE{
 		}
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Sanskrit_Common::$DB_NOUN && $gender != ""){
+		if($table == Sanskrit_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -158,7 +158,7 @@ class Sanskrit_Common extends Common_IE{
 				 `japanese_translation` = '".$japanese_translation."')";
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Sanskrit_Common::$DB_NOUN && $gender != ""){
+		if($table == Sanskrit_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -350,7 +350,7 @@ class Sanskrit_Common extends Common_IE{
 		$db_host = set_DB_session();
 
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE ";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -393,7 +393,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE ";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($english_translation, Commons::$LIKE_MARK)){
 			$query = $query." `english_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $english_translation)."%'";
@@ -435,7 +435,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -454,7 +454,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE `root` = '".$root."'";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_VERB."` WHERE `root` = '".$root."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -507,7 +507,7 @@ class Sanskrit_Common extends Common_IE{
 					 when `noun_type` = '3n' then CONCAT(t1.`stem`, 'am')
 		  			 else CONCAT(t1.`stem`, 'am')
 					end as `adverb` 
-					FROM `".Sanskrit_Common::$DB_NOUN."` t1 WHERE ";
+					FROM `".Sanskrit_Common::DB_NOUN."` t1 WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." t1.`japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -546,7 +546,7 @@ class Sanskrit_Common extends Common_IE{
 							 when `adjective_type` = '3n' then CONCAT(t1.`stem`, 'am')
 							 else CONCAT(t1.`stem`, 'am')
 							end as `adverb` 
-							FROM `".Sanskrit_Common::$DB_ADJECTIVE."` t1 WHERE ";
+							FROM `".Sanskrit_Common::DB_ADJECTIVE."` t1 WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." t1.`japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -649,7 +649,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_NOUN."` WHERE 1 = '1' ";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_NOUN."` WHERE 1 = '1' ";
 		// 名詞の場合で性別の指定がある場合は追加する。
 		if($gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
@@ -679,7 +679,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_ADJECTIVE."` WHERE 1 = '1' ";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_ADJECTIVE."` WHERE 1 = '1' ";
 		// 活用種別
 		if($adjective_type != ""){
 			$query = $query."AND `adjective_type` LIKE '%".$adjective_type."%'";
@@ -705,7 +705,7 @@ class Sanskrit_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Sanskrit_Common::$DB_VERB."` WHERE `root_type` != 'denomitive'";
+		$query = "SELECT * FROM `".Sanskrit_Common::DB_VERB."` WHERE `root_type` != 'denomitive'";
 
 		// 未完成データ除く
 		$query = $query."AND `dictionary_stem` != ''";
@@ -756,7 +756,7 @@ class Sanskrit_Common extends Common_IE{
 		// 種別に応じて単語を生成
 		if($word_category == "noun"){		
 			// 名詞の情報を取得
-			$sanskrit_words = Sanskrit_Common::get_dictionary_stem_by_japanese($input_word, Sanskrit_Common::$DB_NOUN);		
+			$sanskrit_words = Sanskrit_Common::get_dictionary_stem_by_japanese($input_word, Sanskrit_Common::DB_NOUN);		
   			// 名詞の情報が取得できた場合は
   			if($sanskrit_words){
 				// 新しい配列に詰め替え
@@ -771,7 +771,7 @@ class Sanskrit_Common extends Common_IE{
 			}
 		} else if($word_category == "adjective"){
 			// 形容詞の情報を取得
-			$sanskrit_words = Sanskrit_Common::get_dictionary_stem_by_japanese($input_word, Sanskrit_Common::$DB_ADJECTIVE);		
+			$sanskrit_words = Sanskrit_Common::get_dictionary_stem_by_japanese($input_word, Sanskrit_Common::DB_ADJECTIVE);		
   			// 形容詞の情報が取得できた場合は
   			if($sanskrit_words){
 				// 新しい配列に詰め替え
@@ -868,16 +868,16 @@ class Sanskrit_Common extends Common_IE{
 			// 品詞判定
 			if($word_type == "名詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Sanskrit_Common::$DB_NOUN;			// テーブル取得先
+				$table = Sanskrit_Common::DB_NOUN;			// テーブル取得先
 			} else if($word_type  == "形容詞" || $word_type  == "連体詞" || $word_type  == "形容動詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Sanskrit_Common::$DB_ADJECTIVE;		// テーブル取得先
+				$table = Sanskrit_Common::DB_ADJECTIVE;		// テーブル取得先
 			} else if($word_type  == "動詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Sanskrit_Common::$DB_VERB;			// テーブル取得先
+				$table = Sanskrit_Common::DB_VERB;			// テーブル取得先
 			} else if($word_type  == "副詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Sanskrit_Common::$DB_ADVERB;		// テーブル取得先
+				$table = Sanskrit_Common::DB_ADVERB;		// テーブル取得先
 			} else if($word_type  == "助詞"){				
 				// 日本語訳を入れる。
 				$japanese_translation = $japanese_translation.$target_word;
@@ -887,7 +887,7 @@ class Sanskrit_Common extends Common_IE{
 				if($i == count($input_words) - 1){
 					// 形容詞
 					// データベースから訳語の単語を取得する。
-					$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::$DB_ADJECTIVE, "");
+					$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_ADJECTIVE, "");
 					// 形容詞が取得できた場合は追加する。
 					if($last_words_adjective){
 						// 最終単語
@@ -915,7 +915,7 @@ class Sanskrit_Common extends Common_IE{
 						$word_datas = Sanskrit_Common::get_sanskrit_adverb($target_word);
 					} else {
 						// 形容詞の単語を取得する
-						$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, Sanskrit_Common::$DB_ADJECTIVE);
+						$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, Sanskrit_Common::DB_ADJECTIVE);
 					}
 					// データベースが取得できた場合は
 					if($word_datas){
@@ -959,7 +959,7 @@ class Sanskrit_Common extends Common_IE{
 					$noun_compound_flag = false;
 				}				
 				// 動詞の場合
-				if($table == Sanskrit_Common::$DB_VERB){
+				if($table == Sanskrit_Common::DB_VERB){
 					// 「する」や派生動詞の場合は動詞接尾辞も追加
 					if($target_word == "する" && preg_match('/化$/u', $input_words[$i - 1][0])){
 						// 接尾辞を直前の名詞に結合する。
@@ -1159,7 +1159,7 @@ class Sanskrit_Common extends Common_IE{
 						// それ以外の場合は
 						// 名詞
 						// データベースから訳語の単語を取得する。
-						$last_words_noun = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::$DB_NOUN, "");			
+						$last_words_noun = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_NOUN, "");			
 						// 名詞が取得できた場合は追加する。
 						if($last_words_noun){
 							// 最終単語
@@ -1167,7 +1167,7 @@ class Sanskrit_Common extends Common_IE{
 						}
 						// 形容詞
 						// データベースから訳語の単語を取得する。
-						$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::$DB_ADJECTIVE, "");
+						$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_ADJECTIVE, "");
 						// 形容詞が取得できた場合は追加する。
 						if($last_words_adjective){
 							// 最終単語
@@ -1195,7 +1195,7 @@ class Sanskrit_Common extends Common_IE{
 					$noun_compound_flag = false;
 				}
 				// 品詞ごとに分ける。
-				if($table == Sanskrit_Common::$DB_VERB){
+				if($table == Sanskrit_Common::DB_VERB){
 					// 動詞の場合
 					// データベースから訳語の語幹を取得する。
 					$verbs_data = Sanskrit_Common::get_verb_by_japanese($target_word);
@@ -1205,9 +1205,9 @@ class Sanskrit_Common extends Common_IE{
 						// 語根のみ配列に挿入
 						$word_datas[] = $verb_data["root"];	
 					}			
-				} else if($table == Sanskrit_Common::$DB_ADVERB || 
+				} else if($table == Sanskrit_Common::DB_ADVERB || 
 				          (preg_match('/verb/', $word_category) && 
-						  ($table == Sanskrit_Common::$DB_NOUN || $table == Sanskrit_Common::$DB_ADJECTIVE) && 
+						  ($table == Sanskrit_Common::DB_NOUN || $table == Sanskrit_Common::DB_ADJECTIVE) && 
 						  $input_words[count($input_words) - 1][0] != "する")){
 					// 動詞造語および副詞の場合
 					// データベースから訳語の語幹を取得する。

@@ -3422,37 +3422,8 @@ class Polish_Noun extends Noun_Common_IE{
 			$noun = trim($this->third_stem.$case_suffix);					
 		}
 
-		// 変換
-		$noun = mb_ereg_replace("([bcfhlłmnprswz])k\b", "\\1ek", $noun);
-		$noun = mb_ereg_replace("([dgkt])k\b", "\\1iek", $noun);
-
-		$noun = mb_ereg_replace("([^y])ni\b", "\\1ń", $noun);
-		$noun = preg_replace("/si$/", "s", $noun);		
-		$noun = preg_replace("/zi$/", "ź", $noun);
-		$noun = preg_replace("/l$/", "ł", $noun);				
-		$noun = preg_replace("/di$/", "dzi", $noun);
-		$noun = preg_replace("/ti$/", "ci", $noun);
-		$noun = preg_replace("/ri$/", "rzy", $noun);
-
-		$noun = preg_replace("/be$/", "bie", $noun);
-		$noun = preg_replace("/pe$/", "pie", $noun);	
-		$noun = preg_replace("/me$/", "mie", $noun);
-		$noun = preg_replace("/ne$/", "nie", $noun);
-		$noun = preg_replace("/re$/", "rze", $noun);
-		$noun = preg_replace("/tie$/", "cie", $noun);
-		$noun = preg_replace("/te$/", "cie", $noun);
-		$noun = preg_replace("/de$/", "dzie", $noun);
-		$noun = preg_replace("/ke$/", "ce", $noun);
-		$noun = preg_replace("/kem$/", "kiem", $noun);		
-		$noun = preg_replace("/ge$/", "dzie", $noun);
-
-		$noun = preg_replace("/ry$/", "rzy", $noun);
-		$noun = preg_replace("/dy$/", "dzy", $noun);
-		$noun = preg_replace("/ky$/", "cy", $noun);
-		$noun = preg_replace("/gy$/", "dzy", $noun);
-
-		// 最後の音節のoは短音になる。但し単音節の単語は除く
-		$noun = mb_ereg_replace("(.{2})o([^aiueoąęó])\b", "\\1ó\\2", $noun);
+		// 連音処理
+		$noun = Polish_Common::polish_sandhi($noun);
 
 		// 結果を返す
 		return $noun;

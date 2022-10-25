@@ -66,9 +66,9 @@ class Commons {
 	public static $LOCATIVE = "loc";						// 地格
 	public static $VOCATIVE = "voc";						// 呼格
 	
-	public static $ADJ_GRADE_POSITIVE = "positive";			// 形容詞比較級 - 原級
-	public static $ADJ_GRADE_COMPERATIVE = "comp";			// 形容詞比較級 - 比較級
-	public static $ADJ_GRADE_SUPERATIVE = "super";			// 形容詞比較級 - 最上級
+	public const ADJ_GRADE_POSITIVE = "positive";			// 形容詞比較級 - 原級
+	public const ADJ_GRADE_COMPERATIVE = "comp";			// 形容詞比較級 - 比較級
+	public const ADJ_GRADE_SUPERATIVE = "super";			// 形容詞比較級 - 最上級
 
 	// 長音変換
 	public static function vowel_short_to_long($sound){

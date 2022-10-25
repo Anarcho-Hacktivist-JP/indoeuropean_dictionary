@@ -17,7 +17,7 @@ $question_word = Latin_Common::get_random_adjective($declension);
 // 読み込み
 $adjective_latin = new Latin_Adjective($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $adjective_latin->get_form_by_number_case_gender_grade("", "", "", Commons::$ADJ_GRADE_POSITIVE);
+$question_data = $adjective_latin->get_form_by_number_case_gender_grade("", "", "", Commons::ADJ_GRADE_POSITIVE);
 ?>
 <!doctype html>
 <html lang="ja">

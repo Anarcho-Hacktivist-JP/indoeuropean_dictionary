@@ -708,7 +708,7 @@ class Adjective_Common_IE {
 		// 名詞クラス配列
 		$gender_array = array(Commons::$MASCULINE_GENDER, Commons::$FEMINE_GENDER, Commons::$NEUTER_GENDER);
 		// 形容詞級
-		$grande_array = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);
+		$grande_array = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);
 
 		// 全ての級
 		foreach ($grande_array as $grade){
@@ -1312,9 +1312,9 @@ class Latin_Adjective extends Adjective_Common_IE {
 		$this->get_comp_super_stem($this->third_stem);
 		
 		// 活用語尾を取得
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);		// 比較級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);		// 最上級
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);		// 最上級
     }
     
     /*=====================================
@@ -1331,9 +1331,9 @@ class Latin_Adjective extends Adjective_Common_IE {
 		// 比較級・最上級を作成
 		$this->get_comp_super_stem($this->third_stem);			
 		// 活用語尾を取得
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);			// 比較級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);			// 最上級
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);			// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);			// 最上級
 
 		// 日本語訳を書き換え
 		$this->japanese_translation = $translation;		// 日本語訳
@@ -1459,11 +1459,11 @@ class Latin_Adjective extends Adjective_Common_IE {
 	// 形容詞活用取得
 	private function get_adj_declension($grade){
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			$adjective_type = $this->adjective_type;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$adjective_type = "3pri";
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$adjective_type = "1-2";
 		}
 
@@ -1524,13 +1524,13 @@ class Latin_Adjective extends Adjective_Common_IE {
 		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $neuter_declension["pl_voc"];
 		
 		// 活用を挿入
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			// 活用種別名
 			$this->adjective_type_name = $masculine_declension["adjective_type_name"];				
 			$this->case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$this->comparative_case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$this->superlative_case_suffix = $case_suffixes;
 		}		
 	}
@@ -1634,7 +1634,7 @@ class Latin_Adjective extends Adjective_Common_IE {
 		// 初期化
 		$adverb = "";
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			// 原級
 			// 活用種別で分岐
 			if(preg_match("/(1-2|1-2r|1-2gr1)$/", $this->adjective_type)){
@@ -1644,10 +1644,10 @@ class Latin_Adjective extends Adjective_Common_IE {
 				// それ以外の場合
 				$adverb = $this->third_stem.$this->adverb_suffix_3;
 			}			
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			// 比較級
 			$adverb = $this->comparative_third_stem.$this->adverb_suffix_3;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			// 最上級
 			$adverb = $this->superlative_third_stem.$this->adverb_suffix_12;
 		}
@@ -1668,9 +1668,9 @@ class Latin_Adjective extends Adjective_Common_IE {
 		// 曲用を取得
 		$word_chart = $this->make_adjective_declension($word_chart);
 		// 副詞の情報を入れる。
-		$word_chart[commons::$ADJ_GRADE_POSITIVE]["adverb"] = $this->get_adverb(commons::$ADJ_GRADE_POSITIVE);
-		$word_chart[commons::$ADJ_GRADE_COMPERATIVE]["adverb"] = $this->get_adverb(commons::$ADJ_GRADE_COMPERATIVE);
-		$word_chart[Commons::$ADJ_GRADE_SUPERATIVE]["adverb"] = $this->get_adverb(Commons::$ADJ_GRADE_SUPERATIVE);
+		$word_chart[Commons::ADJ_GRADE_POSITIVE]["adverb"] = $this->get_adverb(Commons::ADJ_GRADE_POSITIVE);
+		$word_chart[Commons::ADJ_GRADE_COMPERATIVE]["adverb"] = $this->get_adverb(Commons::ADJ_GRADE_COMPERATIVE);
+		$word_chart[Commons::ADJ_GRADE_SUPERATIVE]["adverb"] = $this->get_adverb(Commons::ADJ_GRADE_SUPERATIVE);
 
 		// 結果を返す。
 		return $word_chart;
@@ -1719,7 +1719,7 @@ class Latin_Adjective extends Adjective_Common_IE {
 		// 形容詞の級に指定がない場合は
 		if($grade == ""){
 			// 全ての級を対象にする。
-			$ary = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);	// 初期化
+			$ary = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$grade = $ary[$key];			
@@ -2320,9 +2320,9 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 比較級・最上級を作成
 		$this->get_comp_super_stem();   
 	    // 活用表を挿入
-	    $this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
-	    $this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
-	    $this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
+	    $this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);
+	    $this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);
+	    $this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);
    }
 
     /*=====================================
@@ -2346,9 +2346,9 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		$this->english_translation = "";			// 英語訳
 		
 		// 活用表を挿入
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);
     }
 
     /*=====================================
@@ -2381,9 +2381,9 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 比較級・最上級を作成
 		$this->get_comp_super_stem();		
 		// 活用語尾を取得
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);		// 比較級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);		// 最上級
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);		// 最上級
     }
 
     /*=====================================
@@ -2399,9 +2399,9 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 比較級・最上級を作成
 		$this->get_comp_super_stem();		
 		// 活用語尾を取得
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);		// 比較級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);		// 最上級
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);		// 最上級
     }
     
     /*=====================================
@@ -2420,11 +2420,11 @@ class Vedic_Adjective extends Adjective_Common_IE {
     private function get_adj_declension($grade = "positive"){
 
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			$adjective_type = $this->adjective_type;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$adjective_type = "1-2";
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$adjective_type = "1-2";
 		}
 		// 曲用を取得
@@ -2526,13 +2526,13 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $neuter_declension["pl_voc"];
 
 		// 活用を挿入
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			// 活用種別名
 			$this->adjective_type_name = $masculine_declension["adjective_type_name"];				
 			$this->case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$this->comparative_case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$this->superlative_case_suffix = $case_suffixes;
 		}	
     }
@@ -2790,11 +2790,11 @@ class Vedic_Adjective extends Adjective_Common_IE {
 	// 語幹を取得
 	public function get_second_stem($grade = "positive"){
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			return $this->second_stem;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			return $this->comparative_second_stem;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			return $this->superlative_second_stem;
 		}
 	}
@@ -2802,7 +2802,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
     // 曲用表を取得
 	private function get_adverb_chart($word_chart){
 		// 形容詞級
-		$grande_array = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);
+		$grande_array = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);
 		// 全ての級
 		foreach ($grande_array as $grade){
 
@@ -2901,7 +2901,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 形容詞の級に指定がない場合は
 		if($grade == ""){
 			// 全ての級を対象にする。
-			$ary = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);	// 初期化
+			$ary = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$grade = $ary[$key];			
@@ -3103,9 +3103,9 @@ class Polish_Adjective extends Adjective_Common_IE {
 		$this->get_comp_super_stem($this->third_stem);
 		
 		// 活用語尾を取得
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);			// 比較級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);			// 最上級
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);			// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);			// 最上級
     }
 
     /*=====================================
@@ -3191,6 +3191,7 @@ class Polish_Adjective extends Adjective_Common_IE {
 				$this->comparative_third_stem = "twardsz";		// 比較級強語幹
 				break;				
 			default:
+				// 通常処理の場合
 				if(preg_match('/[^aiueoąę][^aiueoąę]$/', $stem) && !preg_match('/kk$/', $stem)){
 					$stem = preg_replace("/ł$/", "l", $stem);
 					$stem = preg_replace("/st$/", "ści", $stem);					
@@ -3223,11 +3224,11 @@ class Polish_Adjective extends Adjective_Common_IE {
 	// 形容詞活用取得
 	private function get_adj_declension($grade){
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			$adjective_type = $this->adjective_type;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$adjective_type = "1-2";
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$adjective_type = "1-2";
 		}
 
@@ -3321,13 +3322,13 @@ class Polish_Adjective extends Adjective_Common_IE {
 		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $neuter_declension["pl_voc"];
 		
 		// 活用を挿入
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			// 活用種別名
 			$this->adjective_type_name = $masculine_declension["adjective_type_name"];				
 			$this->case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$this->comparative_case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$this->superlative_case_suffix = $case_suffixes;
 		}		
 	}
@@ -3365,30 +3366,9 @@ class Polish_Adjective extends Adjective_Common_IE {
 			$adjective = $this->third_stem;
 		}
 
-		// 変換処理
-		$adjective = trim($adjective.$case_suffix);			
-		$adjective = preg_replace("/di$/", "dzi", $adjective);
-		$adjective = preg_replace("/ti$/", "cy", $adjective);
-		$adjective = preg_replace("/ri$/", "rzy", $adjective);
-
-		$adjective = preg_replace("/be$/", "bie", $adjective);
-		$adjective = preg_replace("/pe$/", "pie", $adjective);	
-		$adjective = preg_replace("/me$/", "mie", $adjective);
-		$adjective = preg_replace("/ne$/", "nie", $adjective);
-		$adjective = preg_replace("/re$/", "rze", $adjective);
-		$adjective = preg_replace("/te$/", "cie", $adjective);
-		$adjective = preg_replace("/de$/", "dzie", $adjective);
-		$adjective = preg_replace("/ke$/", "ce", $adjective);
-		$adjective = preg_replace("/kem$/", "kiem", $adjective);		
-		$adjective = preg_replace("/ge$/", "dzie", $adjective);
-
-		$adjective = preg_replace("/ry$/", "rzy", $adjective);
-		$adjective = preg_replace("/dy$/", "dzy", $adjective);
-		$adjective = preg_replace("/ky$/", "cy", $adjective);
-		$adjective = preg_replace("/gy$/", "dzy", $adjective);
-
-		// 最後の音節のoは短音になる。但し単音節の単語は除く
-		$adjective = preg_replace("/[aiueo]{1}.o([^aiueoąęó])$/u", "ó\\1", $adjective);
+		// 連音処理
+		$adjective = trim($adjective.$case_suffix);				// 下処理
+		$adjective = Polish_Common::polish_sandhi($adjective);
 
 		// 結果を返す
 		return $adjective;
@@ -3445,14 +3425,14 @@ class Polish_Adjective extends Adjective_Common_IE {
 		// 初期化
 		$adverb = "";
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			// 原級
 			// 活用種別で分岐
 			$adverb = $this->third_stem."e";			
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			// 比較級
 			$adverb = $this->comparative_third_stem."ej";
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			// 最上級
 			$adverb = $this->superlative_third_stem."ej";
 		}
@@ -3473,9 +3453,9 @@ class Polish_Adjective extends Adjective_Common_IE {
 		// 曲用を取得
 		$word_chart = $this->make_adjective_declension($word_chart);
 		// 副詞の情報を入れる。
-		$word_chart[commons::$ADJ_GRADE_POSITIVE]["adverb"] = $this->get_adverb(commons::$ADJ_GRADE_POSITIVE);
-		$word_chart[commons::$ADJ_GRADE_COMPERATIVE]["adverb"] = $this->get_adverb(commons::$ADJ_GRADE_COMPERATIVE);
-		$word_chart[Commons::$ADJ_GRADE_SUPERATIVE]["adverb"] = $this->get_adverb(Commons::$ADJ_GRADE_SUPERATIVE);
+		$word_chart[Commons::ADJ_GRADE_POSITIVE]["adverb"] = $this->get_adverb(Commons::ADJ_GRADE_POSITIVE);
+		$word_chart[Commons::ADJ_GRADE_COMPERATIVE]["adverb"] = $this->get_adverb(Commons::ADJ_GRADE_COMPERATIVE);
+		$word_chart[Commons::ADJ_GRADE_SUPERATIVE]["adverb"] = $this->get_adverb(Commons::ADJ_GRADE_SUPERATIVE);
 
 		// 結果を返す。
 		return $word_chart;
@@ -3524,7 +3504,7 @@ class Polish_Adjective extends Adjective_Common_IE {
 		// 形容詞の級に指定がない場合は
 		if($grade == ""){
 			// 全ての級を対象にする。
-			$ary = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);	// 初期化
+			$ary = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$grade = $ary[$key];			
@@ -3837,9 +3817,9 @@ class Koinw_Adjective extends Adjective_Common_IE {
 		$this->english_translation = "";			// 英語訳
 		
 		// 活用表を挿入
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);
     }
 
     /*=====================================
@@ -3855,9 +3835,9 @@ class Koinw_Adjective extends Adjective_Common_IE {
 		// 比較級・最上級を作成
 		$this->get_comp_super_stem();		
 		// 活用語尾を取得
-		$this->get_adj_declension(Commons::$ADJ_GRADE_POSITIVE);		// 原級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_COMPERATIVE);		// 比較級
-		$this->get_adj_declension(Commons::$ADJ_GRADE_SUPERATIVE);		// 最上級
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);		// 最上級
     }
     
     /*=====================================
@@ -3876,11 +3856,11 @@ class Koinw_Adjective extends Adjective_Common_IE {
     private function get_adj_declension($grade = "positive"){
 
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			$adjective_type = $this->adjective_type;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$adjective_type = "1-2";
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$adjective_type = "1-2";
 		}
 		// 曲用を取得
@@ -3955,13 +3935,13 @@ class Koinw_Adjective extends Adjective_Common_IE {
 		$case_suffixes[Commons::$NEUTER_GENDER][Commons::$PLURAL][Commons::$VOCATIVE] = $neuter_declension["pl_voc"];
 
 		// 活用を挿入
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			// 活用種別名
 			$this->adjective_type_name = $masculine_declension["adjective_type_name"];				
 			$this->case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$this->comparative_case_suffix = $case_suffixes;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$this->superlative_case_suffix = $case_suffixes;
 		}	
     }
@@ -4168,11 +4148,11 @@ class Koinw_Adjective extends Adjective_Common_IE {
 	// 語幹を取得
 	public function get_second_stem($grade = "positive"){
 		// 形容詞の程度で分岐する。
-		if($grade == Commons::$ADJ_GRADE_POSITIVE){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			return $this->second_stem;
-		} else if($grade == Commons::$ADJ_GRADE_COMPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			return $this->comparative_second_stem;
-		} else if($grade == Commons::$ADJ_GRADE_SUPERATIVE){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			return $this->superlative_second_stem;
 		}
 	}
@@ -4180,7 +4160,7 @@ class Koinw_Adjective extends Adjective_Common_IE {
     // 曲用表を取得
 	private function get_adverb_chart($word_chart){
 		// 形容詞級
-		$grande_array = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);
+		$grande_array = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);
 		// 全ての級
 		foreach ($grande_array as $grade){
 
@@ -4279,7 +4259,7 @@ class Koinw_Adjective extends Adjective_Common_IE {
 		// 形容詞の級に指定がない場合は
 		if($grade == ""){
 			// 全ての級を対象にする。
-			$ary = array(Commons::$ADJ_GRADE_POSITIVE, Commons::$ADJ_GRADE_COMPERATIVE, Commons::$ADJ_GRADE_SUPERATIVE);	// 初期化
+			$ary = array(Commons::ADJ_GRADE_POSITIVE, Commons::ADJ_GRADE_COMPERATIVE, Commons::ADJ_GRADE_SUPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$grade = $ary[$key];			

@@ -3,10 +3,10 @@ header('Content-Type: text/html; charset=UTF-8');
 
 class Latin_Common extends Common_IE{
 
-	public static $DB_NOUN = "noun_latin";				// 名詞データベース名
-	public static $DB_ADJECTIVE = "adjective_latin";	// 形容詞データベース名
-	public static $DB_VERB = "verb_latin";				// 動詞データベース名
-	public static $DB_ADVERB = "adverb_latin";			// 副詞データベース名		
+	public const DB_NOUN = "noun_latin";				// 名詞データベース名
+	public const DB_ADJECTIVE = "adjective_latin";	// 形容詞データベース名
+	public const DB_VERB = "verb_latin";				// 動詞データベース名
+	public const DB_ADVERB = "adverb_latin";			// 副詞データベース名		
 
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dic_stem, $table){
@@ -62,7 +62,7 @@ class Latin_Common extends Common_IE{
 		}
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Latin_Common::$DB_NOUN && $gender != ""){
+		if($table == Latin_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -109,7 +109,7 @@ class Latin_Common extends Common_IE{
 		}
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Latin_Common::$DB_NOUN && $gender != ""){
+		if($table == Latin_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -151,7 +151,7 @@ class Latin_Common extends Common_IE{
 				 `japanese_translation` = '".$japanese_translation."')";
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Latin_Common::$DB_NOUN && $gender != ""){
+		if($table == Latin_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		}
 		// SQLを実行
@@ -193,7 +193,7 @@ class Latin_Common extends Common_IE{
 		  			 when `adjective_type` = '1-2' then concat(REPLACE(`strong_stem`,'-',''), 'e')
 		  			 else concat(REPLACE(`strong_stem`,'-',''), 'iter')
 					end as `adverb` 
-	  			  FROM `".Latin_Common::$DB_ADJECTIVE."` WHERE";
+	  			  FROM `".Latin_Common::DB_ADJECTIVE."` WHERE";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -205,7 +205,7 @@ class Latin_Common extends Common_IE{
 			`japanese_translation` = '".$japanese_translation."')";
 		}
 		// SQLを作成 
-		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'atim') as `adverb` FROM `".Latin_Common::$DB_NOUN."` WHERE ";
+		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'atim') as `adverb` FROM `".Latin_Common::DB_NOUN."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -302,7 +302,7 @@ class Latin_Common extends Common_IE{
 		$db_host = set_DB_session();
 
 		// SQLを作成 
-		$query = "SELECT * FROM `".Latin_Common::$DB_VERB."` WHERE ";
+		$query = "SELECT * FROM `".Latin_Common::DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -346,7 +346,7 @@ class Latin_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Latin_Common::$DB_VERB."` WHERE ";
+		$query = "SELECT * FROM `".Latin_Common::DB_VERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($english_translation, Commons::$LIKE_MARK)){
 			$query = $query." `english_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $english_translation)."%'";
@@ -389,7 +389,7 @@ class Latin_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Latin_Common::$DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
+		$query = "SELECT * FROM `".Latin_Common::DB_VERB."` WHERE `dictionary_stem` = '".$dictionary_stem."'";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -420,29 +420,29 @@ class Latin_Common extends Common_IE{
 				 `japanese_translation` = '".$japanese_translation."')";
 
 		// 名詞の場合で性別の指定がある場合は追加する。
-		if($table == Latin_Common::$DB_NOUN && $gender != ""){
+		if($table == Latin_Common::DB_NOUN && $gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
 		} 
 
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
-							SELECT * FROM `".Latin_Common::$DB_VERB."`
-							WHERE `".Latin_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'āre') 
+							SELECT * FROM `".Latin_Common::DB_VERB."`
+							WHERE `".Latin_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'āre') 
 						  )";
 
 		// SQLを作成 
 		$query = $query." UNION SELECT
-							`".Latin_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
+							`".Latin_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
    						  FROM `".$table."`
-   						  LEFT JOIN  `".Latin_Common::$DB_VERB."`
-   					      ON `".Latin_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'āre')
+   						  LEFT JOIN  `".Latin_Common::DB_VERB."`
+   					      ON `".Latin_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'āre')
    						  WHERE ( 
 							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
 							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
 							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
 							`".$table."`.`japanese_translation` = '".$japanese_translation."')
    						  AND 
-							 `".Latin_Common::$DB_VERB."`.`dictionary_stem` is not null;";
+							 `".Latin_Common::DB_VERB."`.`dictionary_stem` is not null;";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -474,7 +474,7 @@ class Latin_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'ēre') as `strong_stem`  FROM `".Latin_Common::$DB_ADJECTIVE."` WHERE (
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'ēre') as `strong_stem`  FROM `".Latin_Common::DB_ADJECTIVE."` WHERE (
 				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
@@ -482,23 +482,23 @@ class Latin_Common extends Common_IE{
 
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
-							SELECT * FROM `".Latin_Common::$DB_VERB."`
-							WHERE `".Latin_Common::$DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Latin_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre') 
+							SELECT * FROM `".Latin_Common::DB_VERB."`
+							WHERE `".Latin_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Latin_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre') 
 						  )";
 
 		// SQLを作成 
 		$query = $query." UNION SELECT
-							`".Latin_Common::$DB_VERB."`.`dictionary_stem` as `strong_stem` 
-   						  FROM `".Latin_Common::$DB_ADJECTIVE."`
-   						  LEFT JOIN  `".Latin_Common::$DB_VERB."`
-   					      ON `".Latin_Common::$DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Latin_Common::$DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre')
+							`".Latin_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
+   						  FROM `".Latin_Common::DB_ADJECTIVE."`
+   						  LEFT JOIN  `".Latin_Common::DB_VERB."`
+   					      ON `".Latin_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Latin_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre')
    						  WHERE ( 
-							`".Latin_Common::$DB_ADJECTIVE."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
-							`".Latin_Common::$DB_ADJECTIVE."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
-							`".Latin_Common::$DB_ADJECTIVE."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
-							`".Latin_Common::$DB_ADJECTIVE."`.`japanese_translation` = '".$japanese_translation."')
+							`".Latin_Common::DB_ADJECTIVE."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`".Latin_Common::DB_ADJECTIVE."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`".Latin_Common::DB_ADJECTIVE."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`".Latin_Common::DB_ADJECTIVE."`.`japanese_translation` = '".$japanese_translation."')
    						  AND 
-							 `".Latin_Common::$DB_VERB."`.`dictionary_stem` is not null;";
+							 `".Latin_Common::DB_VERB."`.`dictionary_stem` is not null;";
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -525,7 +525,7 @@ class Latin_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Latin_Common::$DB_NOUN."` WHERE `location_name` != '1'";
+		$query = "SELECT * FROM `".Latin_Common::DB_NOUN."` WHERE `location_name` != '1'";
 		// 名詞の場合で性別の指定がある場合は追加する。
 		if($gender != ""){
 			$query = $query."AND `gender` LIKE '%".$gender."%'";
@@ -555,7 +555,7 @@ class Latin_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Latin_Common::$DB_ADJECTIVE."` WHERE `location_name` != '1'";
+		$query = "SELECT * FROM `".Latin_Common::DB_ADJECTIVE."` WHERE `location_name` != '1'";
 		// 活用種別
 		if($adjective_type != ""){
 			$query = $query."AND `adjective_type` LIKE '%".$adjective_type."%'";
@@ -581,7 +581,7 @@ class Latin_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT * FROM `".Latin_Common::$DB_VERB."` WHERE `deponent_personal` != '1'";
+		$query = "SELECT * FROM `".Latin_Common::DB_VERB."` WHERE `deponent_personal` != '1'";
 		// 活用種別
 		if($verb_type != ""){
 			$query = $query."AND `verb_type` LIKE '%".$verb_type."%'";
@@ -674,7 +674,7 @@ class Latin_Common extends Common_IE{
 		// 種別に応じて単語を生成
 		if($word_category == "noun"){		
 			// 名詞の情報を取得
-			$latin_words = Latin_Common::get_dictionary_stem_by_japanese($input_word, Latin_Common::$DB_NOUN);		
+			$latin_words = Latin_Common::get_dictionary_stem_by_japanese($input_word, Latin_Common::DB_NOUN);		
   			// 名詞の情報が取得できた場合は
   			if($latin_words){
 				// 新しい配列に詰め替え
@@ -689,7 +689,7 @@ class Latin_Common extends Common_IE{
 			}
 		} else if($word_category == "adjective"){
 			// 形容詞の情報を取得
-			$latin_words = Latin_Common::get_dictionary_stem_by_japanese($input_word, Latin_Common::$DB_ADJECTIVE);		
+			$latin_words = Latin_Common::get_dictionary_stem_by_japanese($input_word, Latin_Common::DB_ADJECTIVE);		
   			// 形容詞の情報が取得できた場合は
   			if($latin_words){
 				// 新しい配列に詰め替え
@@ -783,16 +783,16 @@ class Latin_Common extends Common_IE{
 			// 品詞判定
 			if($word_type == "名詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Latin_Common::$DB_NOUN;			// テーブル取得先
+				$table = Latin_Common::DB_NOUN;			// テーブル取得先
 			} else if($word_type  == "形容詞" || $word_type  == "連体詞" || $word_type  == "形容動詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Latin_Common::$DB_ADJECTIVE;		// テーブル取得先
+				$table = Latin_Common::DB_ADJECTIVE;		// テーブル取得先
 			} else if($word_type  == "動詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Latin_Common::$DB_VERB;			// テーブル取得先
+				$table = Latin_Common::DB_VERB;			// テーブル取得先
 			} else if($word_type  == "副詞"){
 				// 単語の種別と取得先を変更する。
-				$table = Latin_Common::$DB_ADVERB;		// テーブル取得先
+				$table = Latin_Common::DB_ADVERB;		// テーブル取得先
 			} else if($word_type  == "助動詞"){
 				// 日本語訳を入れる。
 				$japanese_translation = $japanese_translation.$target_word;
@@ -823,7 +823,7 @@ class Latin_Common extends Common_IE{
 						// データベースから訳語の語幹を取得する。
 						$word_datas = Latin_Common::get_latin_adverb($target_word);
 					} else {
-						$word_datas = Latin_Common::get_latin_strong_stem($target_word, Latin_Common::$DB_ADJECTIVE);
+						$word_datas = Latin_Common::get_latin_strong_stem($target_word, Latin_Common::DB_ADJECTIVE);
 					}
 					// データベースが取得できた場合は
 					if($word_datas){
@@ -866,7 +866,7 @@ class Latin_Common extends Common_IE{
 					$noun_compound_flag = false;
 				}		
 				// 動詞の場合
-				if($table == Latin_Common::$DB_VERB){
+				if($table == Latin_Common::DB_VERB){
 					// 「する」や派生動詞の場合は動詞接尾辞も追加
 					if($target_word == "する" && preg_match('/化$/u', $input_words[$i - 1][0])){
 						$last_words[] = "zāre";
@@ -900,7 +900,7 @@ class Latin_Common extends Common_IE{
 							$last_words[$j] = mb_substr($last_words[$j], 0, -2)."ns";
 						}
 					}
-				} else if($table == Latin_Common::$DB_NOUN){				
+				} else if($table == Latin_Common::DB_NOUN){				
 					// 名詞
 					// 動詞の造語の場合は
 					if(preg_match('/verb/', $word_category)){
@@ -915,7 +915,7 @@ class Latin_Common extends Common_IE{
 						// データベースから訳語の単語を取得する。
 						$last_words = Latin_Common::get_dictionary_stem_by_japanese($target_word, $table);						
 					}				
-				} else if($table == Latin_Common::$DB_ADJECTIVE){					
+				} else if($table == Latin_Common::DB_ADJECTIVE){					
 					// 形容詞
 					// 動詞の造語の場合は
 					if(preg_match('/verb/', $word_category)){
@@ -936,7 +936,7 @@ class Latin_Common extends Common_IE{
 					return $result_data;
 				}		
 			} else {
-				if($table == Latin_Common::$DB_VERB){
+				if($table == Latin_Common::DB_VERB){
 					// 動詞の場合
 					// データベースから訳語の語幹を取得する。
 					$verbs_data = Latin_Common::get_verb_by_japanese($target_word);
@@ -957,8 +957,8 @@ class Latin_Common extends Common_IE{
 					if(!$latin_words[$i]){
 						return null;
 					}								
-				} else if($table == Latin_Common::$DB_ADVERB || 
-				  (preg_match('/verb/', $word_category) && ($table == Latin_Common::$DB_NOUN || $table == Latin_Common::$DB_ADJECTIVE))){
+				} else if($table == Latin_Common::DB_ADVERB || 
+				  (preg_match('/verb/', $word_category) && ($table == Latin_Common::DB_NOUN || $table == Latin_Common::DB_ADJECTIVE))){
 					// 副詞または動詞複合語の場合
 					// データベースから接尾辞を取得する。
 					$adverb_array = Latin_Common::get_latin_prefix($target_word);			
