@@ -38,16 +38,16 @@ class Commons {
 	public static $MIDDLE_VOICE = "middle";					// 中動態		
 	public static $PASSIVE_VOICE = "passive";				// 受動態	
 
-	public static $INDICATIVE = "ind";						// 直接法
-	public static $SUBJUNCTIVE = "subj";					// 接続法	
-	public static $OPTATIVE = "opt";						// 希求法
-	public static $IMPERATIVE = "imper";					// 命令法
+	public const INDICATIVE = "ind";						// 直接法
+	public const SUBJUNCTIVE = "subj";					// 接続法	
+	public const OPTATIVE = "opt";						// 希求法
+	public const IMPERATIVE = "imper";					// 命令法
 
 	public const START_VERB = "inchorative";				// 始動動詞
 	public const STRONG_VERB = "frequentive";				// 頻度動詞
 	public const WANT_VERB = "desiderative";				// 願望動詞
 	public const MAKE_VERB = "causative";					// 使役動詞
-	public const NOUN_VERB = "denomitive";				// 名詞起源動詞
+	public const NOUN_VERB = "denomitive";					// 名詞起源動詞
 	public const INTENSE_VERB = "intensive";				// 強意動詞
 
 	public static $SINGULAR = "sg";							// 単数

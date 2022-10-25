@@ -842,11 +842,11 @@ class Polish_Common extends Common_IE{
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future2">未来形2</label>
           </div> 
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::$SUBJUNCTIVE.'">
+            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::SUBJUNCTIVE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">仮定法</label>
           </div>	  
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::$IMPERATIVE.'">
+            <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::IMPERATIVE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
           </div>';
 

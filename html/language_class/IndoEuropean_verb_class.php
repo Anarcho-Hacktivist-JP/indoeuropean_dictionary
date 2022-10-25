@@ -236,7 +236,7 @@ class Verb_Common_IE {
 		} 
 		
 		//法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 直説法
 			$verb_stem = $verb_stem.$this->ind;
 			// 時制を分ける。
@@ -245,7 +245,7 @@ class Verb_Common_IE {
 			} else {
 				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}
-		} else if($mood == Commons::$OPTATIVE){
+		} else if($mood == Commons::OPTATIVE){
 			// 希求法
 			$verb_stem = $verb_stem.$this->opt;
 			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
@@ -523,7 +523,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// 親の呼び出し
     	parent::__construct($dic_stem);
     	// 動詞情報を取得
-		$word_info = $this->get_verb_from_DB($dic_stem, Latin_Common::$DB_VERB);
+		$word_info = $this->get_verb_from_DB($dic_stem, Latin_Common::DB_VERB);
 		// データの取得確認
 		if($word_info){
 			// データを挿入
@@ -546,7 +546,7 @@ class Latin_Verb extends Verb_Common_IE {
 			// 使役動詞の場合は
 			$primary_stem = mb_substr($dic_stem, 0, -6)."re";
     		// 動詞情報を取得
-			$word_info = $this->get_verb_from_DB($primary_stem, Latin_Common::$DB_VERB);
+			$word_info = $this->get_verb_from_DB($primary_stem, Latin_Common::DB_VERB);
 			// データがある場合は
 			if($word_info){
 				// 共通語幹
@@ -564,7 +564,7 @@ class Latin_Verb extends Verb_Common_IE {
 			// 始動動詞の場合は
 			$primary_stem = mb_substr($dic_stem, 0, -5)."re";
     		// 動詞情報を取得
-			$word_info = $this->get_verb_from_DB($primary_stem, Latin_Common::$DB_VERB);
+			$word_info = $this->get_verb_from_DB($primary_stem, Latin_Common::DB_VERB);
 			// データがある場合は
 			if($word_info){
 				// データを挿入
@@ -761,7 +761,7 @@ class Latin_Verb extends Verb_Common_IE {
 		}
 
     	// 動詞情報を取得
-		$word_info = $this->get_verb_from_DB($original_verb, Latin_Common::$DB_VERB);
+		$word_info = $this->get_verb_from_DB($original_verb, Latin_Common::DB_VERB);
 
 		// 結果を返す。
 		return $word_info;
@@ -770,7 +770,7 @@ class Latin_Verb extends Verb_Common_IE {
 	// 追加情報を取得
 	protected function get_add_info($dic_stem){
     	// 動詞情報を取得
-		$word_info = $this->get_verb_from_DB($dic_stem, Latin_Common::$DB_VERB);
+		$word_info = $this->get_verb_from_DB($dic_stem, Latin_Common::DB_VERB);
 		// データの取得確認
 		if($word_info){
 			$this->deponent_active = $word_info["deponent_active"];					// 欠如-能動形
@@ -989,7 +989,7 @@ class Latin_Verb extends Verb_Common_IE {
 		} 
 		
 		//法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT && $this->deponent_present != Commons::$TRUE){
 				// 進行相
@@ -1049,7 +1049,7 @@ class Latin_Verb extends Verb_Common_IE {
 				// ハイフンを返す。
 				return "-";
 			}
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT && $this->deponent_present != Commons::$TRUE){
@@ -1102,7 +1102,7 @@ class Latin_Verb extends Verb_Common_IE {
 				// ハイフンを返す。
 				return "-";
 			}
-		} else if($mood == Commons::$IMPERATIVE){
+		} else if($mood == Commons::IMPERATIVE){
 			// 命令形語幹を作成
 			$verb_conjugation = mb_substr($this->infinitive, 0, -3).$this->imper;
 			// 時制を分ける。
@@ -1267,7 +1267,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// コピュラの呼び出し
 		$verb_sum = new Latin_Verb_Sum();		
 		// 結果を返す。
-		return $sigmatic_aorist_stem.$verb_sum->get_latin_verb($person, Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PRESENT_ASPECT, Commons::$PRESENT_TENSE);
+		return $sigmatic_aorist_stem.$verb_sum->get_latin_verb($person, Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PRESENT_ASPECT, Commons::$PRESENT_TENSE);
 	}
 	
 	// 未来形
@@ -1357,7 +1357,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// 配列を作成
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE);						//態
 		$tense_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, Commons::$FUTURE_TENSE);	//時制
-		$mood_array = array(Commons::$INDICATIVE, Commons::$SUBJUNCTIVE, Commons::$IMPERATIVE);			//法
+		$mood_array = array(Commons::INDICATIVE, Commons::SUBJUNCTIVE, Commons::IMPERATIVE);			//法
 		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");								//人称
 
 		// 活用表を挿入(現在相)
@@ -1412,25 +1412,25 @@ class Latin_Verb extends Verb_Common_IE {
 		// 共通変化部分の動詞の活用を取得
 		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
 		// 能動態完了相を入れる。
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = $this->get_latin_verb("1sg", Commons::$ACTIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = $this->get_latin_verb("2sg", Commons::$ACTIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = $this->get_latin_verb("3sg", Commons::$ACTIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = $this->get_latin_verb("1pl", Commons::$ACTIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = $this->get_latin_verb("2pl", Commons::$ACTIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = $this->get_latin_verb("3pl", Commons::$ACTIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1sg"] = $this->get_latin_verb("1sg", Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2sg"] = $this->get_latin_verb("2sg", Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3sg"] = $this->get_latin_verb("3sg", Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1pl"] = $this->get_latin_verb("1pl", Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2pl"] = $this->get_latin_verb("2pl", Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3pl"] = $this->get_latin_verb("3pl", Commons::$ACTIVE_VOICE, Commons::$SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = $this->get_latin_verb("1sg", Commons::$ACTIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = $this->get_latin_verb("2sg", Commons::$ACTIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = $this->get_latin_verb("3sg", Commons::$ACTIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = $this->get_latin_verb("1pl", Commons::$ACTIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = $this->get_latin_verb("2pl", Commons::$ACTIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = $this->get_latin_verb("3pl", Commons::$ACTIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1sg"] = $this->get_latin_verb("1sg", Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2sg"] = $this->get_latin_verb("2sg", Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3sg"] = $this->get_latin_verb("3sg", Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1pl"] = $this->get_latin_verb("1pl", Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2pl"] = $this->get_latin_verb("2pl", Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3pl"] = $this->get_latin_verb("3pl", Commons::$ACTIVE_VOICE, Commons::SUBJUNCTIVE, Commons::$PERFECT_ASPECT, "timeless");
 		// 能動態完了相を入れる。
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = $this->get_latin_verb("1sg", Commons::$MEDIOPASSIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = $this->get_latin_verb("2sg", Commons::$MEDIOPASSIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = $this->get_latin_verb("3sg", Commons::$MEDIOPASSIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = $this->get_latin_verb("1pl", Commons::$MEDIOPASSIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = $this->get_latin_verb("2pl", Commons::$MEDIOPASSIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = $this->get_latin_verb("3pl", Commons::$MEDIOPASSIVE_VOICE, Commons::$INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = $this->get_latin_verb("1sg", Commons::$MEDIOPASSIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = $this->get_latin_verb("2sg", Commons::$MEDIOPASSIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = $this->get_latin_verb("3sg", Commons::$MEDIOPASSIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = $this->get_latin_verb("1pl", Commons::$MEDIOPASSIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = $this->get_latin_verb("2pl", Commons::$MEDIOPASSIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = $this->get_latin_verb("3pl", Commons::$MEDIOPASSIVE_VOICE, Commons::INDICATIVE, Commons::$PERFECT_ASPECT, "future2");
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
@@ -1482,7 +1482,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// 法がない場合
 		if($mood == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::$INDICATIVE, Commons::$SUBJUNCTIVE);			// 初期化
+			$ary = array(Commons::INDICATIVE, Commons::SUBJUNCTIVE);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$mood = $ary[$key];			
@@ -1607,7 +1607,7 @@ class Latin_Verb_Sum extends Latin_Verb {
 		}
 
 		// 法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
 				// 進行相
@@ -1642,7 +1642,7 @@ class Latin_Verb_Sum extends Latin_Verb {
 				// ハイフンを返す。
 				return "-";
 			} 
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
@@ -1671,7 +1671,7 @@ class Latin_Verb_Sum extends Latin_Verb {
 				// ハイフンを返す。
 				return "-";
 			} 
-		} else if($mood = Commons::$IMPERATIVE){
+		} else if($mood = Commons::IMPERATIVE){
 			// 時制を分ける。
 			if($tense == Commons::$PRESENT_TENSE) {
 				// 命令法
@@ -1705,25 +1705,25 @@ class Latin_Verb_Sum extends Latin_Verb {
 		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
 
 		// 能動態を入れる。
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3pl"] = "-";
 		// 受動態を入れる。
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
@@ -1820,7 +1820,7 @@ class Latin_Verb_Fio extends Latin_Verb {
 		// 初期化
 		$verb_conjugation = "";
 		// 法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
 				// 進行相
@@ -1852,7 +1852,7 @@ class Latin_Verb_Fio extends Latin_Verb {
 					$verb_conjugation = $this->get_primary_infix($this->perfect_stem, $aspect, $tense, Commons::$ACTIVE_VOICE, $person, self::ind_perf_future_suffix);
 				}
 			}
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
@@ -1878,7 +1878,7 @@ class Latin_Verb_Fio extends Latin_Verb {
 					$verb_conjugation = $this->perfect_stem."i".mb_substr($verb_sum->get_latin_verb($person, Commons::$ACTIVE_VOICE, $mood, Commons::$PRESENT_ASPECT, $tense), 1);
 				} 
 			}
-		} else if($mood = Commons::$IMPERATIVE){
+		} else if($mood = Commons::IMPERATIVE){
 			// 時制を分ける。
 			if($tense == Commons::$PRESENT_TENSE) {
 				// 命令法
@@ -1909,25 +1909,25 @@ class Latin_Verb_Fio extends Latin_Verb {
 		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
 
 		// 能動態を入れる。
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3pl"] = "-";
 		// 受動態を入れる。
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
@@ -2020,7 +2020,7 @@ class Latin_Verb_Volo extends Latin_Verb {
 		// 初期化
 		$verb_conjugation = "";
 		// 法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
 				// 進行相
@@ -2058,7 +2058,7 @@ class Latin_Verb_Volo extends Latin_Verb {
 					return "-";
 				}
 			}
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
@@ -2087,7 +2087,7 @@ class Latin_Verb_Volo extends Latin_Verb {
 					return "-";
 				} 
 			}
-		} else if($mood = Commons::$IMPERATIVE){
+		} else if($mood = Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->present_stem.$this->imper;
 			// 時制を分ける。
@@ -2126,25 +2126,25 @@ class Latin_Verb_Volo extends Latin_Verb {
 		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
 
 		// 能動態を入れる。
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3pl"] = "-";
 		// 受動態を入れる。
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
@@ -2282,7 +2282,7 @@ class Latin_Verb_Fero extends Latin_Verb {
 		} 
 		
 		//法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
 				// 進行相
@@ -2336,7 +2336,7 @@ class Latin_Verb_Fero extends Latin_Verb {
 				// ハイフンを返す。
 				return "-";
 			}
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
@@ -2386,7 +2386,7 @@ class Latin_Verb_Fero extends Latin_Verb {
 				// ハイフンを返す。
 				return "-";
 			}
-		} else if($mood == Commons::$IMPERATIVE){
+		} else if($mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $verb_conjugation.$this->imper;
 			// 時制を分ける。
@@ -2425,25 +2425,25 @@ class Latin_Verb_Fero extends Latin_Verb {
 		// 共通変化部分の動詞の活用を取得
 		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
 		// 能動態を入れる。
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3pl"] = "-";
 		// 受動態を入れる。
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
@@ -2620,7 +2620,7 @@ class Latin_Verb_Eo extends Latin_Verb {
 		} 
 		
 		//法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
 				// 進行相
@@ -2673,7 +2673,7 @@ class Latin_Verb_Eo extends Latin_Verb {
 				// ハイフンを返す。
 				return "-";
 			}
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			// 相で分ける
 			if($aspect == Commons::$PRESENT_ASPECT){
@@ -2723,7 +2723,7 @@ class Latin_Verb_Eo extends Latin_Verb {
 				// ハイフンを返す。
 				return "-";
 			}
-		} else if($mood == Commons::$IMPERATIVE){
+		} else if($mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $verb_conjugation.$this->imper;
 			// 時制を分ける。
@@ -2762,25 +2762,25 @@ class Latin_Verb_Eo extends Latin_Verb {
 		// 共通変化部分の動詞の活用を取得
 		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
 		// 能動態を入れる。
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3sg"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["1pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["2pl"] = "-";
-		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::$SUBJUNCTIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3sg"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["1pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["2pl"] = "-";
+		$conjugation[Commons::$ACTIVE_VOICE]["timeless"][Commons::SUBJUNCTIVE]["3pl"] = "-";
 		// 受動態を入れる。
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3sg"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["1pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["2pl"] = "-";
-		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::$INDICATIVE]["3pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3sg"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["1pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["2pl"] = "-";
+		$conjugation[Commons::$MEDIOPASSIVE_VOICE]["future_perfect2"][Commons::INDICATIVE]["3pl"] = "-";
 
 		// 分詞を挿入
 		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
@@ -3372,7 +3372,8 @@ class Vedic_Verb extends Verb_Common_IE{
     // 動詞情報を取得
     protected function get_verb_data($dic_stem){
     	// 名詞情報を取得
-		$word_info = $this->get_verb_from_DB($dic_stem, Sanskrit_Common::$DB_VERB);
+		$word_info = $this->get_verb_from_DB($dic_stem, Sanskrit_Common::DB_VERB);
+
 		// データがある場合は
 		if($word_info){
 			// 語根を取得
@@ -4449,11 +4450,11 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 不完了体・完了形・未来形は親クラスで処理
 				$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}  			
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			$verb_stem = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
 			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
-		} else if($tense_mood == Commons::$OPTATIVE){
+		} else if($tense_mood == Commons::OPTATIVE){
 			// 希求法
 			// 三人称複数の場合
 			if(preg_match('/(3pl)/', $person)){
@@ -4489,7 +4490,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = Sanskrit_Common::sandhi_engine(mb_substr($desiderative_stem, 0 , -1), self::aorist_is_suffix);
 				$verb_conjugation = $this->get_middle_benedictive_conjugation($verb_stem, $voice, $person);			
 			}			
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法			
 			if(preg_match('/(1sg|1du|1pl)/u', $person)){
 				// 1人称の場合は接続法にする。
@@ -4542,11 +4543,11 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 不完了体・完了形・未来形は親クラスで処理
 				$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}  			
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			$verb_stem = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
 			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
-		} else if($tense_mood == Commons::$OPTATIVE){			
+		} else if($tense_mood == Commons::OPTATIVE){			
 			// 希求法
 			// 三人称複数の場合
 			if(preg_match('/(3pl)/', $person)){
@@ -4585,7 +4586,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = Sanskrit_Common::sandhi_engine(mb_substr($desiderative_stem, 0 , -1), self::aorist_is_suffix);
 				$verb_conjugation = $this->get_middle_benedictive_conjugation($verb_stem, $voice, $person);					
 			}						
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法			
 			if(preg_match('/(1sg|1du|1pl)/', $person)){
 				// 1人称の場合は接続法にする。
@@ -4628,13 +4629,13 @@ class Vedic_Verb extends Verb_Common_IE{
 				}
 			} else if(preg_match('(opt|imper)', $tense_mood)){
 				// 命令法能動態3人称単数は強語幹
-				if($tense_mood == Commons::$IMPERATIVE && $person == "3sg" || ($voice == Commons::$ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE)){
+				if($tense_mood == Commons::IMPERATIVE && $person == "3sg" || ($voice == Commons::$ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE)){
 					$verb_stem = $this->present_stem;						
 				} else {
 					// それ以外の希求法・命令法は全て弱語幹
 					$verb_stem = $this->get_weak_present_stem();
 				}
-			} else if($tense_mood == Commons::$SUBJUNCTIVE){
+			} else if($tense_mood == Commons::SUBJUNCTIVE){
 				// 接続法はすべて強語幹
 				$verb_stem = $this->present_stem;							
 			} else {
@@ -4775,11 +4776,11 @@ class Vedic_Verb extends Verb_Common_IE{
 		} else if($tense_mood == "injunc"){
 			// 不完全接続法
 			$verb_conjugation = $this->get_primary_verb_secondary_conjugation($verb_stem, $aspect, $voice, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			$verb_stem = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
 			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
-		} else if($tense_mood == Commons::$OPTATIVE){
+		} else if($tense_mood == Commons::OPTATIVE){
 			// 希求法
 			// 三人称複数の場合
 			if(preg_match('/(3pl)/', $person)){
@@ -4847,7 +4848,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				// ハイフンを返す。
 				return "-";				
 			}			
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法			
 			if(preg_match('/(1sg|1du|1pl)/', $person)){
 				// 1人称の場合は接続法にする。
@@ -5129,11 +5130,11 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 不完了体・完了形・未来形は親クラスで処理
 				$verb_conjugation = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}  			
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 接続法
 			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
 			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
-		} else if($tense_mood == Commons::$OPTATIVE){
+		} else if($tense_mood == Commons::OPTATIVE){
 			// 希求法
 			// 三人称複数の場合
 			if(preg_match('/(3pl)/', $person)){
@@ -5176,7 +5177,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = Sanskrit_Common::sandhi_engine($this->present_intensive_stem, self::aorist_is_suffix);
 				$verb_conjugation = $this->get_middle_benedictive_conjugation($verb_stem, $voice, $person);					
 			}			
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法			
 			if(preg_match('(1sg|1du|1pl)', $person)){
 				// 1人称の場合は接続法にする。
@@ -5510,7 +5511,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, Commons::$OPTATIVE, "bend", Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, Commons::OPTATIVE, "bend", Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -5526,7 +5527,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -5621,7 +5622,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -5638,7 +5639,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -5720,7 +5721,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -5737,7 +5738,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -5823,7 +5824,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -5840,7 +5841,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -5921,7 +5922,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -5938,7 +5939,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -6024,7 +6025,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -6041,7 +6042,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -6127,7 +6128,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -6144,7 +6145,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -6230,7 +6231,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 配列を作成
 		$aspect_array = array(Commons::$PRESENT_ASPECT, Commons::START_VERB, "resultative", Commons::$AORIST_ASPECT, Commons::$PERFECT_ASPECT, Commons::$FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::$ACTIVE_VOICE, Commons::$MEDIOPASSIVE_VOICE, Commons::$PASSIVE_VOICE);								// 態
-		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, "bend", Commons::$OPTATIVE, Commons::$IMPERATIVE);	//時制と法
+		$tense_mood_array = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, "bend", Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
@@ -6247,7 +6248,7 @@ class Vedic_Verb extends Verb_Common_IE{
 						// 古典フラグ
 						if($classic_flag){
 							// 接続法は使わない
-							if($tense_mood_array != Commons::$SUBJUNCTIVE){
+							if($tense_mood_array != Commons::SUBJUNCTIVE){
 								continue;
 							}
 							// 完了形は現在形以外存在しない。
@@ -6400,7 +6401,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 法がない場合
 		if($mood == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::$SUBJUNCTIVE, Commons::$OPTATIVE, Commons::$IMPERATIVE);	// 初期化
+			$ary = array(Commons::$PRESENT_TENSE, Commons::$PAST_TENSE, "injunc", Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$mood = $ary[$key];			
@@ -6464,7 +6465,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = $this->add_stem.$this->present_causative_stem;
 			} else if($suffix["stem_type"] == Commons::WANT_VERB){
 				$verb_stem = $this->add_stem.$this->present_desiderative_stem;
-			} else if($suffix["stem_type"] == "intensive"){
+			} else if($suffix["stem_type"] == Commons::INTENSE_VERB){
 				$verb_stem = $this->add_stem.$this->present_intensive_stem;
 			} else if($suffix["stem_type"] == Commons::$PRESENT_ASPECT){
 				$verb_stem = $this->add_stem.$this->present_stem;
@@ -6528,7 +6529,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = $this->add_stem.$this->present_causative_stem;
 			} else if($suffix["stem_type"] == Commons::WANT_VERB){
 				$verb_stem = $this->add_stem.$this->present_desiderative_stem;
-			} else if($suffix["stem_type"] == "intensive"){
+			} else if($suffix["stem_type"] == Commons::INTENSE_VERB){
 				$verb_stem = $this->add_stem.$this->present_intensive_stem;
 			} else if($suffix["stem_type"] == Commons::$PRESENT_ASPECT){
 				$verb_stem = $this->add_stem.$this->present_stem;
@@ -6798,7 +6799,7 @@ class Polish_Verb extends Verb_Common_IE {
 		// 親の呼び出し
     	parent::__construct($dic_stem);
     	// 動詞情報を取得
-		$word_info = $this->get_verb_from_DB($dic_stem, Polish_Common::$DB_VERB);
+		$word_info = $this->get_verb_from_DB($dic_stem, Polish_Common::DB_VERB);
 		// データの取得確認	
 		if($word_info){
 			// データを挿入
@@ -7078,13 +7079,13 @@ class Polish_Verb extends Verb_Common_IE {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->present_stem2.$this->opt.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -7216,9 +7217,9 @@ class Polish_Verb extends Verb_Common_IE {
 								  Commons::$PERFECT_ASPECT, 
 								  Commons::$PAST_TENSE."_".Commons::$PERFECT_ASPECT,
 								  Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT,
-								  Commons::$SUBJUNCTIVE, 
-								  Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT,
-								  Commons::$IMPERATIVE);										//時制・法
+								  Commons::SUBJUNCTIVE, 
+								  Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT,
+								  Commons::IMPERATIVE);										//時制・法
 		$person_array = array("1sg", "2sg", "3sg", "1du", "2du", "3du", "1pl", "2pl", "3pl");	//人称
 
 		// 活用表を挿入(現在相)
@@ -7284,8 +7285,8 @@ class Polish_Verb extends Verb_Common_IE {
 						 Commons::$FUTURE_TENSE, 
 						 Commons::$PERFECT_ASPECT, 
 						 Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT,
-						 Commons::$SUBJUNCTIVE, 
-						 Commons::$IMPERATIVE);																				
+						 Commons::SUBJUNCTIVE, 
+						 Commons::IMPERATIVE);																				
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$tense_mood = $ary[$key];			
@@ -7304,7 +7305,7 @@ class Polish_Verb extends Verb_Common_IE {
 		// 人称と数がない場合は
 		if($person == ""){	
 			// 命令形とそれ以外で分ける。
-			if($tense_mood == Commons::$IMPERATIVE){
+			if($tense_mood == Commons::IMPERATIVE){
 				$ary = array("2sg", "1pl", "2pl"); // 初期化
 			} else {
 				$ary = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl"); // 初期化
@@ -7430,13 +7431,13 @@ class Polish_Verb_Byc extends Polish_Verb {
 		} else if($tense_mood == Commons::$FUTURE_TENSE."_".Commons::$PERFECT_ASPECT){
 			// 未来完了形
 			$verb_conjugation = $this->future_number[Commons::$ACTIVE_VOICE][$person];							
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->aorist_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);									
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -7536,13 +7537,13 @@ class Polish_Verb_Isc extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -7641,13 +7642,13 @@ class Polish_Verb_Brac extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -7745,13 +7746,13 @@ class Polish_Verb_Wziac extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -7850,13 +7851,13 @@ class Polish_Verb_Miec extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -7938,13 +7939,13 @@ class Polish_Verb_Root extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -8026,13 +8027,13 @@ class Polish_Verb_Root2 extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -8114,13 +8115,13 @@ class Polish_Verb_Root3 extends Polish_Verb {
 			$auxiliary_byc = new Polish_Verb_Byc();
 			// 結合
 			$verb_conjugation = $auxiliary_byc->get_polish_verb($person, Commons::$FUTURE_TENSE, $gender)." ".$this->get_past_conditional_stem($gender, $person);
-		} else if($tense_mood == Commons::$SUBJUNCTIVE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 仮定法
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person];
-		} else if($tense_mood == Commons::$SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
+		} else if($tense_mood == Commons::SUBJUNCTIVE."_".Commons::$PERFECT_ASPECT){
 			// 仮定法過去形
 			$verb_conjugation = $this->get_past_conditional_stem($gender, $person).$this->subj.$this->secondary_number[Commons::$ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);								
-		} else if($tense_mood == Commons::$IMPERATIVE){
+		} else if($tense_mood == Commons::IMPERATIVE){
 			// 命令法
 			$verb_conjugation = $this->imperative_stem.$this->imperative_number[Commons::$ACTIVE_VOICE][$person];	
 		} else {
@@ -8160,26 +8161,26 @@ class Koine_Verb extends Verb_Common_IE {
 		],
 	];
 	
-	// 二次人称接尾辞(過去進行・大過去)
+	// 二次人称接尾辞(未完了過去、過去完了)
 	protected $secondary_number = 
 	[		
 		"active" => 
 		[
-			"1sg" => "m",
-			"2sg" => "s", 
-			"3sg" => "t",
-			"1pl" => "me",
-			"2pl" => "te", 
-			"3pl" => "nt",		
+			"1sg" => "ν",
+			"2sg" => "ς", 
+			"3sg" => "",
+			"1pl" => "μεν",
+			"2pl" => "τε", 
+			"3pl" => "ν",		
 		],
 		"mediopassive" => 
 		[
-			"1sg" => "o",
-			"2sg" => "tho", 
-			"3sg" => "to",
-			"1pl" => "medh",
-			"2pl" => "dhwo", 
-			"3pl" => "nto",
+			"1sg" => "μην",
+			"2sg" => "", 
+			"3sg" => "το",
+			"1pl" => "μεθα",
+			"2pl" => "σθε", 
+			"3pl" => "ντο",
 		],
 	];
 
@@ -8269,6 +8270,10 @@ class Koine_Verb extends Verb_Common_IE {
 	// 過去
 	protected $aor_past = "α";
 
+	// 未完了
+	protected $imper_past = "ά";
+	protected $imper_past2 = "ώ";
+
 	// 大過去
 	protected $perf_past = "ει";
 
@@ -8276,6 +8281,7 @@ class Koine_Verb extends Verb_Common_IE {
 	protected $imper = "";
 	// 希求法
 	protected $opt = "οι";
+
 	// 接続法
 	protected $subj = "η";
 	protected $subj2 = "ώ";
@@ -8376,7 +8382,7 @@ class Koine_Verb extends Verb_Common_IE {
 		} 
 		
 		//法を取得
-		if($mood == Commons::$INDICATIVE){
+		if($mood == Commons::INDICATIVE){
 			// 直説法
 			// 時制を分ける。
 			if($tense == Commons::$PRESENT_TENSE && ($aspect == Commons::$PRESENT_ASPECT || $aspect == Commons::$FUTURE_TENSE)) {
@@ -8386,8 +8392,34 @@ class Koine_Verb extends Verb_Common_IE {
 				} else {
 					$verb_stem = $verb_stem.$this->ind;
 				}
+
 				// 人称を付ける
 				$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
+			} else if($aspect == Commons::$PRESENT_ASPECT && $tense == Commons::$PAST_TENSE){
+				// 未完了過去
+				// 態によって分ける。
+				if($voice = Commons::$ACTIVE_VOICE){
+					// 能動態の場合
+					// 人称によって分ける
+					if($person == "1sg" || $person == "1pl" || $person == "3pl"){
+						$verb_stem = $verb_stem.$this->ind2;
+					} else {
+						$verb_stem = $verb_stem.$this->ind;
+					}
+				} else {
+					// 中受動態の場合
+					// 人称によって分ける
+					if($person == "1sg" || $person == "2sg" || $person == "1pl" || $person == "3pl"){
+						$verb_stem = $verb_stem.$this->ind2;
+					} else {
+						$verb_stem = $verb_stem.$this->ind;
+					}
+				}
+			} else if($aspect == Commons::$PERFECT_ASPECT && $tense == Commons::$PAST_TENSE){
+				// 大過去
+				$verb_stem = $verb_stem.$this->perf_past;
+				// 人称を付ける
+				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			} else if($aspect == Commons::$AORIST_ASPECT && $tense == Commons::$PAST_TENSE){
 				// アオリスト
 				// 人称を付ける
@@ -8405,21 +8437,35 @@ class Koine_Verb extends Verb_Common_IE {
 				// 人称を付ける
 				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 			}
-		} else if($mood == Commons::$OPTATIVE){
+		} else if($mood == Commons::OPTATIVE){
 			// 希求法
-			$verb_stem = $verb_stem.$this->opt;
+			// 態によって分ける。
+			if($aspect == Commons::$AORIST_ASPECT && $voice = Commons::$PASSIVE_VOICE){
+				// アオリストの受動態の場合
+				if($person == "1sg" || $person == "2sg" || $person == "3sg"){
+					$verb_stem = $verb_stem."ίη";
+				} else {
+					$verb_stem = $verb_stem."η";
+				}
+			} else {
+				// それ以外
+				$verb_stem = $verb_stem.$this->opt;
+			}
+			// 人称を付ける
 			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
-		} else if($mood == Commons::$SUBJUNCTIVE){
+		} else if($mood == Commons::SUBJUNCTIVE && !$aspect == Commons::$FUTURE_TENSE){
 			// 接続法
 			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
 				$verb_stem = $verb_stem.$this->subj2;
 			} else {
 				$verb_stem = $verb_stem.$this->subj;
 			}
+			// 人称を付ける
 			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
-		} else if($mood == Commons::$IMPERATIVE){
+		} else if($mood == Commons::IMPERATIVE && !$aspect == Commons::$FUTURE_TENSE){
 			// 命令法
 			$verb_stem = $verb_stem.$this->imper;
+			// 人称を付ける
 			$verb_stem = $this->get_imperative_suffix($verb_stem, $voice, $person);
 		}
 		
@@ -8448,6 +8494,23 @@ class Koine_Verb extends Verb_Common_IE {
 
     	// 結果を返す。
     	return $verb_script;
+	}
+
+	// 希求法語尾
+	protected function get_greek_optative_suffix($verb_conjugation, $voice, $person){
+		// 語尾を取得
+		if($voice == Commons::$ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
+			// 能動態
+			$verb_conjugation = $verb_conjugation.$this->optative_number[$voice][$person];
+		} else if($voice == Commons::$MEDIOPASSIVE_VOICE && $this->deponent_mediopassive != Commons::$TRUE){
+			// 中受動態
+			$verb_conjugation = $verb_conjugation.$this->optative_number[$voice][$person];
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}  
+		// 結果を返す。
+		return $verb_conjugation;
 	}
 
 	// 完了語尾

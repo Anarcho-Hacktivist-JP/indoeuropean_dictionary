@@ -2214,7 +2214,7 @@ class Sanskrit_Common extends Common_IE{
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-injunc">指令法</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="subj">
+            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::SUBJUNCTIVE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">接続法/未来形</label>
           </div> 
           <div class="col-md-3">
@@ -2226,7 +2226,7 @@ class Sanskrit_Common extends Common_IE{
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-bend">祈願法</label>
           </div>		  
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="imper">
+            <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::IMPERATIVE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
           </div>';
 
