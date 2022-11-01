@@ -59,7 +59,7 @@ function get_verb_conjugation_chart($word, $verb_genre){
 function get_conjugation_by_noun($word, $verb_genre){
 
 	// 名詞の語幹を取得
-	$latin_verbs = Latin_Common::get_latin_denomitive_verb($word, Latin_Common::$DB_NOUN);
+	$latin_verbs = Latin_Common::get_latin_denomitive_verb($word, Latin_Common::DB_NOUN);
   // 名詞の情報が取得できない場合は
   if(!$latin_verbs){
     // 空を返す。
@@ -89,7 +89,7 @@ function get_conjugation_by_noun($word, $verb_genre){
 // 形容詞から活用表を取得する。
 function get_conjugation_by_adjective($word, $verb_genre){
 	// 形容詞の語幹を取得
-	$latin_verbs = Latin_Common::get_latin_denomitive_verb($word, Latin_Common::$DB_ADJECTIVE);
+	$latin_verbs = Latin_Common::get_latin_denomitive_verb($word, Latin_Common::DB_ADJECTIVE);
   // 形容詞の情報が取得できない場合は
   if(!$latin_verbs){
     // 空を返す。

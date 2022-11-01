@@ -12,14 +12,14 @@ include(dirname(__FILE__) . "/language_class/Latin_Common.php");
 // 活用表を取得する。
 function get_adjective_declension_chart($word){
 	// 形容詞の情報を取得
-	$adjective_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::$DB_ADJECTIVE);
+	$adjective_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::DB_ADJECTIVE);
   // 取得できない場合は
   if(!$adjective_words && Latin_Common::is_alphabet_or_not($word)){
     // 英語で取得する。
-    $adjective_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::$DB_ADJECTIVE);  
+    $adjective_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_ADJECTIVE);  
     if(!$adjective_words){
       // 単語から直接取得する
-      $adjective_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::$DB_ADJECTIVE);
+      $adjective_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_ADJECTIVE);
       // 取得できない場合は
       if(!$adjective_words){
         // その単語を入れる

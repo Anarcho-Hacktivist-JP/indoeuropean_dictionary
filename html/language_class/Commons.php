@@ -27,21 +27,22 @@ class Commons {
 
 
 	// 用語集
-	public static $PRESENT_ASPECT = "present";				// 進行相
-	public static $AORIST_ASPECT = "aorist";				// 完結相
-	public static $PERFECT_ASPECT = "perfect";				// 完了相
-	public static $PRESENT_TENSE = "present";				// 現在形
-	public static $PAST_TENSE = "past";						// 過去形
-	public static $FUTURE_TENSE = "future";					// 未来形
-	public static $ACTIVE_VOICE = "active";					// 能動態
-	public static $MEDIOPASSIVE_VOICE = "mediopassive";		// 中受動態	
-	public static $MIDDLE_VOICE = "middle";					// 中動態		
-	public static $PASSIVE_VOICE = "passive";				// 受動態	
+	public const PRESENT_ASPECT = "present";				// 進行相
+	public const AORIST_ASPECT = "aorist";					// 完結相
+	public const PERFECT_ASPECT = "perfect";				// 完了相
+	public const PRESENT_TENSE = "present";					// 現在形
+	public const PAST_TENSE = "past";						// 過去形
+	public const FUTURE_TENSE = "future";					// 未来形
+	public const ACTIVE_VOICE = "active";					// 能動態
+	public const MEDIOPASSIVE_VOICE = "mediopassive";		// 中受動態	
+	public const MIDDLE_VOICE = "middle";					// 中動態		
+	public const PASSIVE_VOICE = "passive";					// 受動態	
 
 	public const INDICATIVE = "ind";						// 直接法
-	public const SUBJUNCTIVE = "subj";					// 接続法	
-	public const OPTATIVE = "opt";						// 希求法
-	public const IMPERATIVE = "imper";					// 命令法
+	public const SUBJUNCTIVE = "subj";						// 接続法	
+	public const OPTATIVE = "opt";							// 希求法
+	public const IMPERATIVE = "imper";						// 命令法
+	public const IMJUNCTIVE = "injunc";						// 指令法
 
 	public const START_VERB = "inchorative";				// 始動動詞
 	public const STRONG_VERB = "frequentive";				// 頻度動詞
@@ -49,22 +50,23 @@ class Commons {
 	public const MAKE_VERB = "causative";					// 使役動詞
 	public const NOUN_VERB = "denomitive";					// 名詞起源動詞
 	public const INTENSE_VERB = "intensive";				// 強意動詞
+	public const RESULTATIBE = "resultative";				// 結果動詞
 
-	public static $SINGULAR = "sg";							// 単数
-	public static $DUAL = "du";								// 双数
-	public static $PLURAL = "pl";							// 複数
-	public static $MASCULINE_GENDER = "masc";				// 男性
-	public static $FEMINE_GENDER = "fem";					// 女性
-	public static $NEUTER_GENDER = "neu";					// 中性
+	public const SINGULAR = "sg";							// 単数
+	public const DUAL = "du";								// 双数
+	public const PLURAL = "pl";								// 複数
+	public const MASCULINE_GENDER = "masc";					// 男性
+	public const FEMINE_GENDER = "fem";						// 女性
+	public const NEUTER_GENDER = "neu";						// 中性
 
-	public static $NOMINATIVE = "nom";						// 主格
-	public static $GENETIVE = "gen";						// 属格
-	public static $DATIVE = "dat";							// 与格
-	public static $ACCUSATIVE = "acc";						// 対格
-	public static $ABLATIVE = "abl";						// 奪格
-	public static $INSTRUMENTAL = "ins";					// 具格
-	public static $LOCATIVE = "loc";						// 地格
-	public static $VOCATIVE = "voc";						// 呼格
+	public const NOMINATIVE = "nom";						// 主格
+	public const GENETIVE = "gen";							// 属格
+	public const DATIVE = "dat";							// 与格
+	public const ACCUSATIVE = "acc";						// 対格
+	public const ABLATIVE = "abl";							// 奪格
+	public const INSTRUMENTAL = "ins";						// 具格
+	public const LOCATIVE = "loc";							// 地格
+	public const VOCATIVE = "voc";							// 呼格
 	
 	public const ADJ_GRADE_POSITIVE = "positive";			// 形容詞比較級 - 原級
 	public const ADJ_GRADE_COMPERATIVE = "comp";			// 形容詞比較級 - 比較級
@@ -241,15 +243,15 @@ class Common_IE {
 		<h3>性別</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::$MASCULINE_GENDER.'">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::MASCULINE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::$FEMINE_GENDER.'">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::FEMINE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::$NEUTER_GENDER.'">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::NEUTER_GENDER.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
 		  </div>';
 		
@@ -274,11 +276,11 @@ class Common_IE {
 		<h3>数</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::$SINGULAR.'">
+			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::$PLURAL.'">
+			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::PLURAL.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
 		  </div>';
 

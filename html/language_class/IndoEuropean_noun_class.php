@@ -212,34 +212,34 @@ class Noun_Common_IE {
 
 		// 活用表を挿入
 		// 単数
-		$this->case_suffix[Commons::$SINGULAR][Commons::$NOMINATIVE] = $declension["sg_nom"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$GENETIVE] = $declension["sg_gen"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$DATIVE] = $declension["sg_dat"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ACCUSATIVE] = $declension["sg_acc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ABLATIVE] = $declension["sg_abl"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $declension["sg_ins"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$LOCATIVE] = $declension["sg_loc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$VOCATIVE] = $declension["sg_voc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::NOMINATIVE] = $declension["sg_nom"];
+		$this->case_suffix[Commons::SINGULAR][Commons::GENETIVE] = $declension["sg_gen"];
+		$this->case_suffix[Commons::SINGULAR][Commons::DATIVE] = $declension["sg_dat"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ACCUSATIVE] = $declension["sg_acc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ABLATIVE] = $declension["sg_abl"];
+		$this->case_suffix[Commons::SINGULAR][Commons::INSTRUMENTAL] = $declension["sg_ins"];
+		$this->case_suffix[Commons::SINGULAR][Commons::LOCATIVE] = $declension["sg_loc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::VOCATIVE] = $declension["sg_voc"];
 		
 		// 双数
-		$this->case_suffix[Commons::$DUAL][Commons::$NOMINATIVE] = $declension["du_nom"];
-		$this->case_suffix[Commons::$DUAL][Commons::$GENETIVE] = $declension["du_gen"];
-		$this->case_suffix[Commons::$DUAL][Commons::$DATIVE] = $declension["du_dat"];
-		$this->case_suffix[Commons::$DUAL][Commons::$ACCUSATIVE] = $declension["du_acc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$ABLATIVE] = $declension["du_abl"];
-		$this->case_suffix[Commons::$DUAL][Commons::$INSTRUMENTAL] = $declension["du_ins"];
-		$this->case_suffix[Commons::$DUAL][Commons::$LOCATIVE] = $declension["du_loc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$VOCATIVE] = $declension["du_voc"];
+		$this->case_suffix[Commons::DUAL][Commons::NOMINATIVE] = $declension["du_nom"];
+		$this->case_suffix[Commons::DUAL][Commons::GENETIVE] = $declension["du_gen"];
+		$this->case_suffix[Commons::DUAL][Commons::DATIVE] = $declension["du_dat"];
+		$this->case_suffix[Commons::DUAL][Commons::ACCUSATIVE] = $declension["du_acc"];
+		$this->case_suffix[Commons::DUAL][Commons::ABLATIVE] = $declension["du_abl"];
+		$this->case_suffix[Commons::DUAL][Commons::INSTRUMENTAL] = $declension["du_ins"];
+		$this->case_suffix[Commons::DUAL][Commons::LOCATIVE] = $declension["du_loc"];
+		$this->case_suffix[Commons::DUAL][Commons::VOCATIVE] = $declension["du_voc"];
 		
 		// 複数
-		$this->case_suffix[Commons::$PLURAL][Commons::$NOMINATIVE] = $declension["pl_nom"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$GENETIVE] = $declension["pl_gen"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$DATIVE] = $declension["pl_dat"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ACCUSATIVE] = $declension["pl_acc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ABLATIVE] = $declension["pl_abl"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$INSTRUMENTAL] = $declension["pl_ins"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$LOCATIVE] = $declension["pl_loc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$VOCATIVE] = $declension["pl_voc"];
+		$this->case_suffix[Commons::PLURAL][Commons::NOMINATIVE] = $declension["pl_nom"];
+		$this->case_suffix[Commons::PLURAL][Commons::GENETIVE] = $declension["pl_gen"];
+		$this->case_suffix[Commons::PLURAL][Commons::DATIVE] = $declension["pl_dat"];
+		$this->case_suffix[Commons::PLURAL][Commons::ACCUSATIVE] = $declension["pl_acc"];
+		$this->case_suffix[Commons::PLURAL][Commons::ABLATIVE] = $declension["pl_abl"];
+		$this->case_suffix[Commons::PLURAL][Commons::INSTRUMENTAL] = $declension["pl_ins"];
+		$this->case_suffix[Commons::PLURAL][Commons::LOCATIVE] = $declension["pl_loc"];
+		$this->case_suffix[Commons::PLURAL][Commons::VOCATIVE] = $declension["pl_voc"];
 
 		// 活用種別名
 		$this->noun_type_name = $declension["noun_type_name"];
@@ -253,7 +253,7 @@ class Noun_Common_IE {
 		$case_suffix = $this->case_suffix[$number][$case];
 		
 		// 名詞と結合
-		if($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE || $case == Commons::$ACCUSATIVE){
+		if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE || $case == Commons::ACCUSATIVE){
 			// 第一語幹の場合
 			$noun = $this->first_stem.$case_suffix;
 		} else {
@@ -314,9 +314,9 @@ class Noun_Common_IE {
 	// 曲用表を作成
 	protected function make_noun_declension($word_chart){
 		// 格変化配列
-		$case_array = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$ABLATIVE, Commons::$INSTRUMENTAL, Commons::$LOCATIVE, Commons::$VOCATIVE);
+		$case_array = array(Commons::NOMINATIVE, Commons::GENETIVE, Commons::DATIVE, Commons::ACCUSATIVE, Commons::ABLATIVE, Commons::INSTRUMENTAL, Commons::LOCATIVE, Commons::VOCATIVE);
 		// 数配列
-		$number_array = array(Commons::$SINGULAR, Commons::$DUAL, Commons::$PLURAL);
+		$number_array = array(Commons::SINGULAR, Commons::DUAL, Commons::PLURAL);
 
 		// 全ての数		
 		foreach ($number_array as $number){
@@ -334,9 +334,9 @@ class Noun_Common_IE {
 	// 曲用表を作成(動名詞用)
 	protected function make_infinitive_declension($word_chart){
 		// 格変化配列
-		$case_array = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$ABLATIVE, Commons::$INSTRUMENTAL, Commons::$LOCATIVE, Commons::$VOCATIVE);
+		$case_array = array(Commons::NOMINATIVE, Commons::GENETIVE, Commons::DATIVE, Commons::ACCUSATIVE, Commons::ABLATIVE, Commons::INSTRUMENTAL, Commons::LOCATIVE, Commons::VOCATIVE);
 		// 数配列
-		$number_array = array(Commons::$SINGULAR);
+		$number_array = array(Commons::SINGULAR);
 
 		// 全ての数		
 		foreach ($number_array as $number){
@@ -1156,24 +1156,24 @@ class Latin_Noun extends Noun_Common_IE {
 		$declension = $this->get_noun_case_suffix($this->noun_type, $this->gender);
 		
 		// 単数
-		$this->case_suffix[Commons::$SINGULAR][Commons::$NOMINATIVE] = $declension["sg_nom"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$GENETIVE] = $declension["sg_gen"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$DATIVE] = $declension["sg_dat"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ACCUSATIVE] = $declension["sg_acc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ABLATIVE] = $declension["sg_abl"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $declension["sg_ins"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$LOCATIVE] = $declension["sg_loc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$VOCATIVE] = $declension["sg_voc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::NOMINATIVE] = $declension["sg_nom"];
+		$this->case_suffix[Commons::SINGULAR][Commons::GENETIVE] = $declension["sg_gen"];
+		$this->case_suffix[Commons::SINGULAR][Commons::DATIVE] = $declension["sg_dat"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ACCUSATIVE] = $declension["sg_acc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ABLATIVE] = $declension["sg_abl"];
+		$this->case_suffix[Commons::SINGULAR][Commons::INSTRUMENTAL] = $declension["sg_ins"];
+		$this->case_suffix[Commons::SINGULAR][Commons::LOCATIVE] = $declension["sg_loc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::VOCATIVE] = $declension["sg_voc"];
 		
 		// 複数
-		$this->case_suffix[Commons::$PLURAL][Commons::$NOMINATIVE] = $declension["pl_nom"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$GENETIVE] = $declension["pl_gen"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$DATIVE] = $declension["pl_dat"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ACCUSATIVE] = $declension["pl_acc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ABLATIVE] = $declension["pl_abl"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$INSTRUMENTAL] = $declension["pl_ins"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$LOCATIVE] = $declension["pl_loc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$VOCATIVE] = $declension["pl_voc"];
+		$this->case_suffix[Commons::PLURAL][Commons::NOMINATIVE] = $declension["pl_nom"];
+		$this->case_suffix[Commons::PLURAL][Commons::GENETIVE] = $declension["pl_gen"];
+		$this->case_suffix[Commons::PLURAL][Commons::DATIVE] = $declension["pl_dat"];
+		$this->case_suffix[Commons::PLURAL][Commons::ACCUSATIVE] = $declension["pl_acc"];
+		$this->case_suffix[Commons::PLURAL][Commons::ABLATIVE] = $declension["pl_abl"];
+		$this->case_suffix[Commons::PLURAL][Commons::INSTRUMENTAL] = $declension["pl_ins"];
+		$this->case_suffix[Commons::PLURAL][Commons::LOCATIVE] = $declension["pl_loc"];
+		$this->case_suffix[Commons::PLURAL][Commons::VOCATIVE] = $declension["pl_voc"];
 
 		// 活用種別名
 		$this->noun_type_name = $declension["noun_type_name"];
@@ -1269,10 +1269,10 @@ class Latin_Noun extends Noun_Common_IE {
 		// 格語尾を取得
 		$case_suffix = "";
 		//曲用語尾を取得(単数の複数の有無をチェック)
-		if($number == Commons::$SINGULAR && $this->deponent_singular != Commons::$TRUE){
+		if($number == Commons::SINGULAR && $this->deponent_singular != Commons::$TRUE){
 			// 単数
 			$case_suffix = $this->case_suffix[$number][$case];
-		} else if($number == Commons::$PLURAL && ($this->deponent_plural != Commons::$TRUE && $this->location_name != Commons::$TRUE)){
+		} else if($number == Commons::PLURAL && ($this->deponent_plural != Commons::$TRUE && $this->location_name != Commons::$TRUE)){
 			// 複数
 			$case_suffix = $this->case_suffix[$number][$case];
 		} else {
@@ -1286,10 +1286,10 @@ class Latin_Noun extends Noun_Common_IE {
 			$noun = $this->third_stem;		
 		} else {
 			// それ以外は単数の主格と呼格は弱語幹
-			if(($case == Commons::$NOMINATIVE && $number == Commons::$SINGULAR) || ($case == Commons::$VOCATIVE && $number == Commons::$SINGULAR)){
+			if(($case == Commons::NOMINATIVE && $number == Commons::SINGULAR) || ($case == Commons::VOCATIVE && $number == Commons::SINGULAR)){
 				// ここで結果を返す。
 				return $this->first_stem;					
-			} else if($case == Commons::$ACCUSATIVE && $this->gender == self::PIE_INANIMATE && $number == Commons::$SINGULAR){
+			} else if($case == Commons::ACCUSATIVE && $this->gender == self::PIE_INANIMATE && $number == Commons::SINGULAR){
 				// 中性の単数対格は主格と同じ
 				// ここで結果を返す。
 				return $this->first_stem;
@@ -1334,7 +1334,7 @@ class Latin_Noun extends Noun_Common_IE {
 		// 格がない場合
 		if($case == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$ABLATIVE, Commons::$LOCATIVE, Commons::$VOCATIVE);	// 初期化
+			$ary = array(Commons::NOMINATIVE, Commons::GENETIVE, Commons::DATIVE, Commons::ACCUSATIVE, Commons::ABLATIVE, Commons::LOCATIVE, Commons::VOCATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$case = $ary[$key];			
@@ -1343,7 +1343,7 @@ class Latin_Noun extends Noun_Common_IE {
 		// 数がない場合
 		if($number == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$SINGULAR, Commons::$PLURAL);			// 初期化
+			$ary = array(Commons::SINGULAR, Commons::PLURAL);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$number = $ary[$key];			
@@ -2097,34 +2097,34 @@ class Vedic_Noun extends Noun_Common_IE {
 
 		// 活用表を挿入	
 		// 単数
-		$this->case_suffix[Commons::$SINGULAR][Commons::$NOMINATIVE] = $declension["sg_nom"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$GENETIVE] = $declension["sg_gen"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$DATIVE] = $declension["sg_dat"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ACCUSATIVE] = $declension["sg_acc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ABLATIVE] = $declension["sg_abl"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $declension["sg_ins"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$LOCATIVE] = $declension["sg_loc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$VOCATIVE] = $declension["sg_voc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::NOMINATIVE] = $declension["sg_nom"];
+		$this->case_suffix[Commons::SINGULAR][Commons::GENETIVE] = $declension["sg_gen"];
+		$this->case_suffix[Commons::SINGULAR][Commons::DATIVE] = $declension["sg_dat"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ACCUSATIVE] = $declension["sg_acc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ABLATIVE] = $declension["sg_abl"];
+		$this->case_suffix[Commons::SINGULAR][Commons::INSTRUMENTAL] = $declension["sg_ins"];
+		$this->case_suffix[Commons::SINGULAR][Commons::LOCATIVE] = $declension["sg_loc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::VOCATIVE] = $declension["sg_voc"];
 		
 		// 双数
-		$this->case_suffix[Commons::$DUAL][Commons::$NOMINATIVE] = $declension["du_nom"];
-		$this->case_suffix[Commons::$DUAL][Commons::$GENETIVE] = $declension["du_gen"];
-		$this->case_suffix[Commons::$DUAL][Commons::$DATIVE] = $declension["du_dat"];
-		$this->case_suffix[Commons::$DUAL][Commons::$ACCUSATIVE] = $declension["du_acc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$ABLATIVE] = $declension["du_abl"];
-		$this->case_suffix[Commons::$DUAL][Commons::$INSTRUMENTAL] = $declension["du_ins"];
-		$this->case_suffix[Commons::$DUAL][Commons::$LOCATIVE] = $declension["du_loc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$VOCATIVE] = $declension["du_voc"];
+		$this->case_suffix[Commons::DUAL][Commons::NOMINATIVE] = $declension["du_nom"];
+		$this->case_suffix[Commons::DUAL][Commons::GENETIVE] = $declension["du_gen"];
+		$this->case_suffix[Commons::DUAL][Commons::DATIVE] = $declension["du_dat"];
+		$this->case_suffix[Commons::DUAL][Commons::ACCUSATIVE] = $declension["du_acc"];
+		$this->case_suffix[Commons::DUAL][Commons::ABLATIVE] = $declension["du_abl"];
+		$this->case_suffix[Commons::DUAL][Commons::INSTRUMENTAL] = $declension["du_ins"];
+		$this->case_suffix[Commons::DUAL][Commons::LOCATIVE] = $declension["du_loc"];
+		$this->case_suffix[Commons::DUAL][Commons::VOCATIVE] = $declension["du_voc"];
 		
 		// 複数
-		$this->case_suffix[Commons::$PLURAL][Commons::$NOMINATIVE] = $declension["pl_nom"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$GENETIVE] = $declension["pl_gen"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$DATIVE] = $declension["pl_dat"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ACCUSATIVE] = $declension["pl_acc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ABLATIVE] = $declension["pl_abl"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$INSTRUMENTAL] = $declension["pl_ins"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$LOCATIVE] = $declension["pl_loc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$VOCATIVE] = $declension["pl_voc"];
+		$this->case_suffix[Commons::PLURAL][Commons::NOMINATIVE] = $declension["pl_nom"];
+		$this->case_suffix[Commons::PLURAL][Commons::GENETIVE] = $declension["pl_gen"];
+		$this->case_suffix[Commons::PLURAL][Commons::DATIVE] = $declension["pl_dat"];
+		$this->case_suffix[Commons::PLURAL][Commons::ACCUSATIVE] = $declension["pl_acc"];
+		$this->case_suffix[Commons::PLURAL][Commons::ABLATIVE] = $declension["pl_abl"];
+		$this->case_suffix[Commons::PLURAL][Commons::INSTRUMENTAL] = $declension["pl_ins"];
+		$this->case_suffix[Commons::PLURAL][Commons::LOCATIVE] = $declension["pl_loc"];
+		$this->case_suffix[Commons::PLURAL][Commons::VOCATIVE] = $declension["pl_voc"];
 
 		// 活用種別名
 		$this->noun_type_name = $declension["noun_type_name"];
@@ -2389,44 +2389,44 @@ class Vedic_Noun extends Noun_Common_IE {
 		// 性・数・格に応じて語幹を生成
 		// 男性および女性
 		if($this->gender == self::PIE_ANIMATE || $this->gender == self::PIE_ACTION){
-			if($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE){
+			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE){
 				$stem = $this->third_stem;
-			} else if($case == Commons::$ACCUSATIVE && ($number == Commons::$SINGULAR || $number == Commons::$DUAL)){
+			} else if($case == Commons::ACCUSATIVE && ($number == Commons::SINGULAR || $number == Commons::DUAL)){
 				$stem = $this->third_stem;
-			} else if($case == Commons::$INSTRUMENTAL && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
+			} else if($case == Commons::INSTRUMENTAL && ($number == Commons::DUAL || $number == Commons::PLURAL)){
 				$stem = $this->second_stem;
-			} else if($case == Commons::$DATIVE && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
+			} else if($case == Commons::DATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
 				$stem = $this->second_stem;
-			} else if($case == Commons::$ABLATIVE && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
+			} else if($case == Commons::ABLATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
 				$stem = $this->second_stem;	
-			} else if($case == Commons::$LOCATIVE && $number == Commons::$PLURAL){
+			} else if($case == Commons::LOCATIVE && $number == Commons::PLURAL){
 				$stem = $this->second_stem;							
 			} else {
 				$stem = $this->first_stem;
 			}
 		} else if($this->gender == self::PIE_INANIMATE){
-			if($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE || $case == Commons::$ACCUSATIVE){
+			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE || $case == Commons::ACCUSATIVE){
 				switch($number){
-					case Commons::$SINGULAR:
+					case Commons::SINGULAR:
 						$stem = $this->second_stem;							
 						break;
-					case Commons::$DUAL:
+					case Commons::DUAL:
 						$stem = $this->first_stem;							
 						break;
-					case Commons::$PLURAL:
+					case Commons::PLURAL:
 						$stem = $this->third_stem;							
 						break;
 					default:
 						$stem = $this->third_stem;				
 						break;			
 				}
-			} else if($case == Commons::$INSTRUMENTAL && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
+			} else if($case == Commons::INSTRUMENTAL && ($number == Commons::DUAL || $number == Commons::PLURAL)){
 				$stem = $this->second_stem;
-			} else if($case == Commons::$DATIVE && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
+			} else if($case == Commons::DATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
 				$stem = $this->second_stem;
-			} else if($case == Commons::$ABLATIVE && ($number == Commons::$DUAL || $number == Commons::$PLURAL)){
+			} else if($case == Commons::ABLATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
 				$stem = $this->second_stem;	
-			} else if($case == Commons::$LOCATIVE && $number == Commons::$PLURAL){
+			} else if($case == Commons::LOCATIVE && $number == Commons::PLURAL){
 				$stem = $this->second_stem;							
 			} else {
 				$stem = $this->first_stem;
@@ -2497,16 +2497,16 @@ class Vedic_Noun extends Noun_Common_IE {
 		$word_chart = $this->make_noun_declension($word_chart);
 
 		// 副詞(拡張格)
-		$word_chart[Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "tas", true);
-		$word_chart[Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($this->second_stem, "trā", true);
-		$word_chart[Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dha", true);		
-		$word_chart[Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "thā", true);		
-		$word_chart[Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dhā", true);	
-		$word_chart[Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "vat", true);	
-		$word_chart[Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sāt", true);		
-		$word_chart[Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dā", true);	
-		$word_chart[Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "ac", true);	
-		$word_chart[Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sas", true);	
+		$word_chart[Commons::SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "tas", true);
+		$word_chart[Commons::SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($this->second_stem, "trā", true);
+		$word_chart[Commons::SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dha", true);		
+		$word_chart[Commons::SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "thā", true);		
+		$word_chart[Commons::SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dhā", true);	
+		$word_chart[Commons::SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "vat", true);	
+		$word_chart[Commons::SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sāt", true);		
+		$word_chart[Commons::SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dā", true);	
+		$word_chart[Commons::SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "ac", true);	
+		$word_chart[Commons::SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sas", true);	
 		
 		// 結果を返す。
 		return $word_chart;
@@ -2522,16 +2522,16 @@ class Vedic_Noun extends Noun_Common_IE {
 		$word_chart = $this->make_infinitive_declension($word_chart);
 
 		// 副詞(拡張格)
-		$word_chart[Commons::$SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "tas", true);
-		$word_chart[Commons::$SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($this->second_stem, "trā", true);
-		$word_chart[Commons::$SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dha", true);		
-		$word_chart[Commons::$SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "thā", true);		
-		$word_chart[Commons::$SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dhā", true);	
-		$word_chart[Commons::$SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "vat", true);	
-		$word_chart[Commons::$SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sāt", true);		
-		$word_chart[Commons::$SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dā", true);	
-		$word_chart[Commons::$SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "ac", true);	
-		$word_chart[Commons::$SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sas", true);	
+		$word_chart[Commons::SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "tas", true);
+		$word_chart[Commons::SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($this->second_stem, "trā", true);
+		$word_chart[Commons::SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dha", true);		
+		$word_chart[Commons::SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "thā", true);		
+		$word_chart[Commons::SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dhā", true);	
+		$word_chart[Commons::SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "vat", true);	
+		$word_chart[Commons::SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sāt", true);		
+		$word_chart[Commons::SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($this->second_stem, "dā", true);	
+		$word_chart[Commons::SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($this->second_stem, "ac", true);	
+		$word_chart[Commons::SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($this->second_stem, "sas", true);	
 		
 		// 結果を返す。
 		return $word_chart;
@@ -2543,7 +2543,7 @@ class Vedic_Noun extends Noun_Common_IE {
 		// 格がない場合
 		if($case == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$ABLATIVE, Commons::$INSTRUMENTAL, Commons::$LOCATIVE, Commons::$VOCATIVE);	// 初期化
+			$ary = array(Commons::NOMINATIVE, Commons::GENETIVE, Commons::DATIVE, Commons::ACCUSATIVE, Commons::ABLATIVE, Commons::INSTRUMENTAL, Commons::LOCATIVE, Commons::VOCATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$case = $ary[$key];			
@@ -2552,7 +2552,7 @@ class Vedic_Noun extends Noun_Common_IE {
 		// 数がない場合
 		if($number == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$SINGULAR, Commons::$DUAL, Commons::$PLURAL);			// 初期化
+			$ary = array(Commons::SINGULAR, Commons::DUAL, Commons::PLURAL);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$number = $ary[$key];			
@@ -3359,31 +3359,31 @@ class Polish_Noun extends Noun_Common_IE{
 
 		// 活用表を挿入	
 		// 単数
-		$this->case_suffix[Commons::$SINGULAR][Commons::$NOMINATIVE] = $declension["sg_nom"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$GENETIVE] = $declension["sg_gen"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$DATIVE] = $declension["sg_dat"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ACCUSATIVE] = $declension["sg_acc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $declension["sg_ins"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$LOCATIVE] = $declension["sg_loc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$VOCATIVE] = $declension["sg_voc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::NOMINATIVE] = $declension["sg_nom"];
+		$this->case_suffix[Commons::SINGULAR][Commons::GENETIVE] = $declension["sg_gen"];
+		$this->case_suffix[Commons::SINGULAR][Commons::DATIVE] = $declension["sg_dat"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ACCUSATIVE] = $declension["sg_acc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::INSTRUMENTAL] = $declension["sg_ins"];
+		$this->case_suffix[Commons::SINGULAR][Commons::LOCATIVE] = $declension["sg_loc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::VOCATIVE] = $declension["sg_voc"];
 		
 		// 双数
-		$this->case_suffix[Commons::$DUAL][Commons::$NOMINATIVE] = $declension["du_nom"];
-		$this->case_suffix[Commons::$DUAL][Commons::$GENETIVE] = $declension["du_gen"];
-		$this->case_suffix[Commons::$DUAL][Commons::$DATIVE] = $declension["du_dat"];
-		$this->case_suffix[Commons::$DUAL][Commons::$ACCUSATIVE] = $declension["du_acc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$INSTRUMENTAL] = $declension["du_ins"];
-		$this->case_suffix[Commons::$DUAL][Commons::$LOCATIVE] = $declension["du_loc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$VOCATIVE] = $declension["du_voc"];
+		$this->case_suffix[Commons::DUAL][Commons::NOMINATIVE] = $declension["du_nom"];
+		$this->case_suffix[Commons::DUAL][Commons::GENETIVE] = $declension["du_gen"];
+		$this->case_suffix[Commons::DUAL][Commons::DATIVE] = $declension["du_dat"];
+		$this->case_suffix[Commons::DUAL][Commons::ACCUSATIVE] = $declension["du_acc"];
+		$this->case_suffix[Commons::DUAL][Commons::INSTRUMENTAL] = $declension["du_ins"];
+		$this->case_suffix[Commons::DUAL][Commons::LOCATIVE] = $declension["du_loc"];
+		$this->case_suffix[Commons::DUAL][Commons::VOCATIVE] = $declension["du_voc"];
 		
 		// 複数
-		$this->case_suffix[Commons::$PLURAL][Commons::$NOMINATIVE] = $declension["pl_nom"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$GENETIVE] = $declension["pl_gen"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$DATIVE] = $declension["pl_dat"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ACCUSATIVE] = $declension["pl_acc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$INSTRUMENTAL] = $declension["pl_ins"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$LOCATIVE] = $declension["pl_loc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$VOCATIVE] = $declension["pl_voc"];
+		$this->case_suffix[Commons::PLURAL][Commons::NOMINATIVE] = $declension["pl_nom"];
+		$this->case_suffix[Commons::PLURAL][Commons::GENETIVE] = $declension["pl_gen"];
+		$this->case_suffix[Commons::PLURAL][Commons::DATIVE] = $declension["pl_dat"];
+		$this->case_suffix[Commons::PLURAL][Commons::ACCUSATIVE] = $declension["pl_acc"];
+		$this->case_suffix[Commons::PLURAL][Commons::INSTRUMENTAL] = $declension["pl_ins"];
+		$this->case_suffix[Commons::PLURAL][Commons::LOCATIVE] = $declension["pl_loc"];
+		$this->case_suffix[Commons::PLURAL][Commons::VOCATIVE] = $declension["pl_voc"];
 
 		// 活用種別名
 		$this->noun_type_name = $declension["noun_type_name"];
@@ -3395,13 +3395,13 @@ class Polish_Noun extends Noun_Common_IE{
 		// 格語尾を取得
 		$case_suffix = "";
 		//曲用語尾を取得(単数の複数の有無をチェック)
-		if($number == Commons::$SINGULAR && $this->deponent_singular != Commons::$TRUE){
+		if($number == Commons::SINGULAR && $this->deponent_singular != Commons::$TRUE){
 			// 単数
 			$case_suffix = $this->case_suffix[$number][$case];
-		} else if($number == Commons::$DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+		} else if($number == Commons::DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
 			// 双数
 			$case_suffix = $this->case_suffix[$number][$case];			
-		} else if($number == Commons::$PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+		} else if($number == Commons::PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
 			// 複数
 			$case_suffix = $this->case_suffix[$number][$case];
 		} else {
@@ -3410,10 +3410,10 @@ class Polish_Noun extends Noun_Common_IE{
 		}
 
 		// 語幹を取得
-		if(($number == Commons::$SINGULAR && $this->gender == "Neuter") && ($case == Commons::$VOCATIVE || $case == Commons::$NOMINATIVE)){
+		if(($number == Commons::SINGULAR && $this->gender == "Neuter") && ($case == Commons::VOCATIVE || $case == Commons::NOMINATIVE)){
 			// ここで結果を返す。
 			return $this->first_stem;					
-		} else if($case == Commons::$ACCUSATIVE && $this->gender == "Neuter" && $number == Commons::$SINGULAR){
+		} else if($case == Commons::ACCUSATIVE && $this->gender == "Neuter" && $number == Commons::SINGULAR){
 			// 中性の単数対格は主格と同じ
 			// ここで結果を返す。
 			return $this->first_stem;
@@ -3460,7 +3460,7 @@ class Polish_Noun extends Noun_Common_IE{
 		// 格がない場合
 		if($case == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$INSTRUMENTAL, Commons::$LOCATIVE, Commons::$VOCATIVE);	// 初期化
+			$ary = array(Commons::NOMINATIVE, Commons::GENETIVE, Commons::DATIVE, Commons::ACCUSATIVE, Commons::INSTRUMENTAL, Commons::LOCATIVE, Commons::VOCATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$case = $ary[$key];			
@@ -3469,7 +3469,7 @@ class Polish_Noun extends Noun_Common_IE{
 		// 数がない場合
 		if($number == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$SINGULAR, Commons::$PLURAL);			// 初期化
+			$ary = array(Commons::SINGULAR, Commons::PLURAL);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$number = $ary[$key];			
@@ -3932,25 +3932,25 @@ class Koine_Noun extends Noun_Common_IE {
 
 		// 活用表を挿入	
 		// 単数
-		$this->case_suffix[Commons::$SINGULAR][Commons::$NOMINATIVE] = $declension["sg_nom"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$GENETIVE] = $declension["sg_gen"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$DATIVE] = $declension["sg_dat"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$ACCUSATIVE] = $declension["sg_acc"];
-		$this->case_suffix[Commons::$SINGULAR][Commons::$VOCATIVE] = $declension["sg_voc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::NOMINATIVE] = $declension["sg_nom"];
+		$this->case_suffix[Commons::SINGULAR][Commons::GENETIVE] = $declension["sg_gen"];
+		$this->case_suffix[Commons::SINGULAR][Commons::DATIVE] = $declension["sg_dat"];
+		$this->case_suffix[Commons::SINGULAR][Commons::ACCUSATIVE] = $declension["sg_acc"];
+		$this->case_suffix[Commons::SINGULAR][Commons::VOCATIVE] = $declension["sg_voc"];
 		
 		// 双数
-		$this->case_suffix[Commons::$DUAL][Commons::$NOMINATIVE] = $declension["du_nom"];
-		$this->case_suffix[Commons::$DUAL][Commons::$GENETIVE] = $declension["du_gen"];
-		$this->case_suffix[Commons::$DUAL][Commons::$DATIVE] = $declension["du_dat"];
-		$this->case_suffix[Commons::$DUAL][Commons::$ACCUSATIVE] = $declension["du_acc"];
-		$this->case_suffix[Commons::$DUAL][Commons::$VOCATIVE] = $declension["du_voc"];
+		$this->case_suffix[Commons::DUAL][Commons::NOMINATIVE] = $declension["du_nom"];
+		$this->case_suffix[Commons::DUAL][Commons::GENETIVE] = $declension["du_gen"];
+		$this->case_suffix[Commons::DUAL][Commons::DATIVE] = $declension["du_dat"];
+		$this->case_suffix[Commons::DUAL][Commons::ACCUSATIVE] = $declension["du_acc"];
+		$this->case_suffix[Commons::DUAL][Commons::VOCATIVE] = $declension["du_voc"];
 		
 		// 複数
-		$this->case_suffix[Commons::$PLURAL][Commons::$NOMINATIVE] = $declension["pl_nom"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$GENETIVE] = $declension["pl_gen"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$DATIVE] = $declension["pl_dat"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$ACCUSATIVE] = $declension["pl_acc"];
-		$this->case_suffix[Commons::$PLURAL][Commons::$VOCATIVE] = $declension["pl_voc"];
+		$this->case_suffix[Commons::PLURAL][Commons::NOMINATIVE] = $declension["pl_nom"];
+		$this->case_suffix[Commons::PLURAL][Commons::GENETIVE] = $declension["pl_gen"];
+		$this->case_suffix[Commons::PLURAL][Commons::DATIVE] = $declension["pl_dat"];
+		$this->case_suffix[Commons::PLURAL][Commons::ACCUSATIVE] = $declension["pl_acc"];
+		$this->case_suffix[Commons::PLURAL][Commons::VOCATIVE] = $declension["pl_voc"];
 
 		// 活用種別名
 		$this->noun_type_name = $declension["noun_type_name"];
@@ -4081,13 +4081,13 @@ class Koine_Noun extends Noun_Common_IE {
 		// 格語尾を取得
 		$case_suffix = "";
 		//曲用語尾を取得(単数の複数の有無をチェック)
-		if($number == Commons::$SINGULAR && $this->deponent_singular != Commons::$TRUE){
+		if($number == Commons::SINGULAR && $this->deponent_singular != Commons::$TRUE){
 			// 単数
 			$case_suffix = $this->case_suffix[$number][$case];
-		} else if($number == Commons::$DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+		} else if($number == Commons::DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
 			// 双数
 			$case_suffix = $this->case_suffix[$number][$case];			
-		} else if($number == Commons::$PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
+		} else if($number == Commons::PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
 			// 複数
 			$case_suffix = $this->case_suffix[$number][$case];
 		} else {
@@ -4099,13 +4099,13 @@ class Koine_Noun extends Noun_Common_IE {
 		$stem = "";
 
 		// 性・数・格に応じて語幹を生成
-		if($number == Commons::$SINGULAR && ($case == Commons::$NOMINATIVE || $case == Commons::$VOCATIVE)){
+		if($number == Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
 			// 単数主格・呼格
 			$stem = $this->first_stem;
-		} else if($number == Commons::$SINGULAR && $this->gender == "Neuter" && $case == Commons::$ACCUSATIVE){
+		} else if($number == Commons::SINGULAR && $this->gender == "Neuter" && $case == Commons::ACCUSATIVE){
 			// 単数対格(中性)
 			$stem = $this->first_stem;	
-		} else if ($number == Commons::$PLURAL && $case == Commons::$DATIVE){
+		} else if ($number == Commons::PLURAL && $case == Commons::DATIVE){
 			// 複数与格
 			$stem = $this->third_stem;	
 		} else {
@@ -4146,35 +4146,18 @@ class Koine_Noun extends Noun_Common_IE {
 		$word_chart = $this->make_noun_declension($word_chart);
 
 		// 副詞(拡張格)
-		$word_chart[Commons::$SINGULAR]["allative"] = $this->second_stem."δε";
-		$word_chart[Commons::$SINGULAR]["allative2"] = $this->second_stem."σε";
-		$word_chart[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $this->second_stem."δον";
-		$word_chart[Commons::$SINGULAR][Commons::$ABLATIVE] = $this->second_stem."θεν";
-		$word_chart[Commons::$SINGULAR][Commons::$LOCATIVE] = $this->second_stem."θι";
+		$word_chart[Commons::SINGULAR]["allative"] = $this->second_stem."δε";
+		$word_chart[Commons::SINGULAR]["allative2"] = $this->second_stem."σε";
+		$word_chart[Commons::SINGULAR][Commons::INSTRUMENTAL] = $this->second_stem."δον";
+		$word_chart[Commons::SINGULAR][Commons::ABLATIVE] = $this->second_stem."θεν";
+		$word_chart[Commons::SINGULAR][Commons::LOCATIVE] = $this->second_stem."θι";
+		$word_chart[Commons::PLURAL][Commons::INSTRUMENTAL] = $this->second_stem."φι";
+		$word_chart[Commons::PLURAL][Commons::ABLATIVE] = $this->second_stem."φι";
+		$word_chart[Commons::PLURAL][Commons::LOCATIVE] = $this->second_stem."φι";
 
 		// 結果を返す。
 		return $word_chart;
 	}
-
-	// 動名詞を取得
-	public function get_infinitive(){
-		
-		// 初期化
-		$word_chart = array();
-
-		// 曲用を入れる。
-		$word_chart = $this->make_infinitive_declension($word_chart);
-
-		// 副詞(拡張格)
-		$word_chart[Commons::$SINGULAR]["allative"] = $this->second_stem."δε";
-		$word_chart[Commons::$SINGULAR]["allative2"] = $this->second_stem."σε";
-		$word_chart[Commons::$SINGULAR][Commons::$INSTRUMENTAL] = $this->second_stem."δον";
-		$word_chart[Commons::$SINGULAR][Commons::$ABLATIVE] = $this->second_stem."θεν";
-		$word_chart[Commons::$SINGULAR][Commons::$LOCATIVE] = $this->second_stem."θι";
-		
-		// 結果を返す。
-		return $word_chart;
-	}	
 
 	// 特定の格変化を取得する(ない場合はランダム)。
 	public function get_form_by_number_case($case = "", $number = ""){
@@ -4182,7 +4165,7 @@ class Koine_Noun extends Noun_Common_IE {
 		// 格がない場合
 		if($case == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$NOMINATIVE, Commons::$GENETIVE, Commons::$DATIVE, Commons::$ACCUSATIVE, Commons::$VOCATIVE);	// 初期化
+			$ary = array(Commons::NOMINATIVE, Commons::GENETIVE, Commons::DATIVE, Commons::ACCUSATIVE, Commons::VOCATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$case = $ary[$key];			
@@ -4191,7 +4174,7 @@ class Koine_Noun extends Noun_Common_IE {
 		// 数がない場合
 		if($number == ""){
 			// 単数・複数の中からランダムで選択
-			$ary = array(Commons::$SINGULAR, Commons::$DUAL, Commons::$PLURAL);			// 初期化
+			$ary = array(Commons::SINGULAR, Commons::DUAL, Commons::PLURAL);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$number = $ary[$key];			

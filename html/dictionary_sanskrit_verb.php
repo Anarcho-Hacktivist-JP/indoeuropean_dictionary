@@ -63,7 +63,7 @@ function get_verb_chart($word){
 function get_conjugation_by_noun($word){
 
 	// 名詞の語幹を取得
-	$sanskrit_verbs = Sanskrit_Common::get_sanskrit_strong_stem($word, Sanskrit_Common::$DB_NOUN);
+	$sanskrit_verbs = Sanskrit_Common::get_sanskrit_strong_stem($word, Sanskrit_Common::DB_NOUN);
   // 名詞の情報が取得できない場合は
   if(!$sanskrit_verbs){
     // 空を返す。
@@ -93,7 +93,7 @@ function get_conjugation_by_noun($word){
 // 形容詞から活用表を取得する。
 function get_conjugation_by_adjective($word){
 	// 形容詞の語幹を取得
-	$sanskrit_verbs = Sanskrit_Common::get_sanskrit_strong_stem($word, Sanskrit_Common::$DB_ADJECTIVE);
+	$sanskrit_verbs = Sanskrit_Common::get_sanskrit_strong_stem($word, Sanskrit_Common::DB_ADJECTIVE);
   // 名詞の情報が取得できない場合は
   if(!$sanskrit_verbs){
     // 空を返す。

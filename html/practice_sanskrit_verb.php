@@ -23,13 +23,15 @@ $voice = trim(filter_input(INPUT_POST, 'voice'));
 $aspect = trim(filter_input(INPUT_POST, 'aspect'));
 // 挿入データ－法－
 $mood = trim(filter_input(INPUT_POST, 'mood'));
+// 挿入データ－動詞の形態－
+$mood = trim(filter_input(INPUT_POST, 'verb_genre'));
 
 // 単語取得
 $question_word = Sanskrit_Common::get_random_verb($verb_type, $root_type, $laryngeal_type);
 // 読み込み
 $sanskrit_verb = new Vedic_Verb($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person, $voice, $mood, $aspect);
+$question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person, $voice, $mood, $aspect, $verb_genre);
 ?>
 <!doctype html>
 <html lang="ja">

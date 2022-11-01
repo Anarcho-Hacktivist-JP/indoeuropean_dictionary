@@ -14,14 +14,14 @@ include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
 // 活用表を取得する。
 function get_adjective_declension_chart($word){
 	// 形容詞の情報を取得
-	$adjective_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::$DB_ADJECTIVE, "");
+	$adjective_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::DB_ADJECTIVE, "");
   // 取得できない場合は
   if(!$adjective_words){
     // 英語で取得する。
-    $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::$DB_ADJECTIVE);
+    $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_ADJECTIVE);
     if(!$adjective_words && Sanskrit_Common::is_alphabet_or_not($word)){
       // 単語から直接取得する
-      $adjective_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::$DB_ADJECTIVE);      
+      $adjective_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_ADJECTIVE);      
       // 取得できない場合は
       if(!$adjective_words){
         $adjective_words[] = $word;
