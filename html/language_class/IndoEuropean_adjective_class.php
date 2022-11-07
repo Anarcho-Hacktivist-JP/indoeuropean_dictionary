@@ -3799,7 +3799,7 @@ class Koine_Adjective extends Adjective_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct_sanskrit3($compound, $last_word, $translation) {
+    public function __construct_koine3($compound, $last_word, $translation) {
     	// 親クラス初期化
 		parent::__construct();
 		// 形容詞情報をセット
@@ -3825,7 +3825,38 @@ class Koine_Adjective extends Adjective_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
-    public function __construct_sanskrit1($adjective) {
+    public function __construct_koine2($adjective, $flag) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 比較級フラグ
+		$this->comp_type = Commons::$FALSE;
+		// 文字列の最後で判断
+		if(preg_match('/ος$/',$adjective)){		
+			// 形容詞の種別で活用が決定する。		
+			$this->adjective_type = "1-2";           						// 名詞種別
+			$this->second_stem = mb_substr($adjective, 0, -2);				// 第二語幹
+		} else if(preg_match('/ων$/',$adjective)){
+			$this->adjective_type = "3nt";									// 名詞種別
+			$this->second_stem = $adjective;								// 第二語幹		
+		} else {		
+			// 形容詞の種別で活用が決定する。													
+			$this->adjective_type = "3s";									// 名詞種別
+			$this->second_stem = $adjective;								// 第二語幹
+		}
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 比較級・最上級を作成
+		$this->get_comp_super_stem();		
+		// 活用語尾を取得
+		$this->get_adj_declension(Commons::ADJ_GRADE_POSITIVE);		// 原級
+		$this->get_adj_declension(Commons::ADJ_GRADE_COMPERATIVE);		// 比較級
+		$this->get_adj_declension(Commons::ADJ_GRADE_SUPERATIVE);		// 最上級
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_koine1($adjective) {
     	// 親クラス初期化
 		parent::__construct();
 		// 形容詞情報をセット
@@ -3847,7 +3878,7 @@ class Koine_Adjective extends Adjective_Common_IE {
         $a = func_get_args();
         $i = func_num_args();
         //引数に応じて別々のコンストラクタを似非的に呼び出す
-        if (method_exists($this,$f='__construct_sanskrit'.$i)) {
+        if (method_exists($this,$f='__construct_koine'.$i)) {
             call_user_func_array(array($this,$f),$a);
         }
     }
@@ -3968,15 +3999,15 @@ class Koine_Adjective extends Adjective_Common_IE {
 		} else if(preg_match('/^(3at)/',$this->noun_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."τ";
 		} else if(preg_match('/^(3nt)/',$this->noun_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."ντ";
 		} else if(preg_match('/^(3n)/',$this->noun_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."ν";
 		} else {
 			// それ以外の活用の場合				
 			$this->first_stem = $this->second_stem;			// 弱語幹

@@ -3978,15 +3978,15 @@ class Koine_Noun extends Noun_Common_IE {
 		} else if(preg_match('/^(3at)/',$this->noun_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."τ";
 		} else if(preg_match('/^(3nt)/',$this->noun_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."ντ";
 		} else if(preg_match('/^(3n)/',$this->noun_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
-			$this->third_stem = mb_substr($this->second_stem, 0, -1)."σ";
+			$this->third_stem = mb_substr($this->second_stem, 0, -1)."ν";
 		} else {
 			// それ以外の活用の場合				
 			$this->first_stem = $this->second_stem;			// 弱語幹
