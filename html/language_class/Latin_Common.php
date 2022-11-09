@@ -882,6 +882,8 @@ class Latin_Common extends Common_IE{
 						$last_words[] = "scere";
 					} else if($target_word == "続ける" && $input_words[$i - 1][1] == "動詞"){
 						$last_words[] = "āre";
+					} else if($target_word == "たい" && $input_words[$i - 1][1] == "動詞"){
+						$last_words[] = "urīre";
 					} else if($target_word == "させる" || $target_word == "せる"){
 						$last_words[] = "ficāre";				
 					} else {

@@ -3,10 +3,10 @@ header('Content-Type: text/html; charset=UTF-8');
 
 class Koine_Common extends Common_IE{
 
-	public const DB_NOUN = "noun_latin";				// 名詞データベース名
-	public const DB_ADJECTIVE = "adjective_latin";	// 形容詞データベース名
-	public const DB_VERB = "verb_latin";				// 動詞データベース名
-	public const DB_ADVERB = "adverb_latin";			// 副詞データベース名		
+	public const DB_NOUN = "noun_greek";				// 名詞データベース名
+	public const DB_ADJECTIVE = "adjective_greek";	// 形容詞データベース名
+	public const DB_VERB = "verb_greek";				// 動詞データベース名
+	public const DB_ADVERB = "adverb_greek";			// 副詞データベース名		
 
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dic_stem, $table){
@@ -188,12 +188,7 @@ class Koine_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT
-					case
-		  			 when `adjective_type` = '1-2' then concat(REPLACE(`strong_stem`,'-',''), 'e')
-		  			 else concat(REPLACE(`strong_stem`,'-',''), 'iter')
-					end as `adverb` 
-	  			  FROM `".Koine_Common::DB_ADJECTIVE."` WHERE";
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'α') as `adverb` FROM `".Koine_Common::DB_ADJECTIVE."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -205,7 +200,7 @@ class Koine_Common extends Common_IE{
 			`japanese_translation` = '".$japanese_translation."')";
 		}
 		// SQLを作成 
-		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'atim') as `adverb` FROM `".Koine_Common::DB_NOUN."` WHERE ";
+		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'ᾰ́κῐς') as `adverb` FROM `".Koine_Common::DB_ADJECTIVE."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -217,7 +212,20 @@ class Koine_Common extends Common_IE{
 			`japanese_translation` = '".$japanese_translation."')";
 		}
 
-		$query = $query." UNION SELECT`adverb` FROM `adverb_latin` WHERE ";
+		// SQLを作成 
+		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'ως') as `adverb` FROM `".Koine_Common::DB_ADJECTIVE."` WHERE ";
+		// 検索条件に*を含む場合は
+		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
+			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
+		} else {
+			// それ以外は
+			$query = $query." ( `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+			`japanese_translation` LIKE '".$japanese_translation."、%' OR 
+			`japanese_translation` LIKE '%、".$japanese_translation."' OR 
+			`japanese_translation` = '".$japanese_translation."')";
+		}
+
+		$query = $query." UNION SELECT `adverb` FROM `".Koine_Common::DB_ADVERB."` WHERE ";
 		// 検索条件に*を含む場合は
 		if(strpos($japanese_translation, Commons::$LIKE_MARK)){
 			$query = $query." `japanese_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $japanese_translation)."%'";
@@ -326,10 +334,9 @@ class Koine_Common extends Common_IE{
 			foreach ($table_data as $row_data ) {
 				// 動詞の語幹格納配列
 				$verb_stem_array = array();
+				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];
 				$verb_stem_array["present_stem"] = $row_data["present_stem"];
-				$verb_stem_array["infinitive_stem"] = $row_data["infinitive_stem"];
-				$verb_stem_array["perfect_stem"] = $row_data["perfect_stem"];
-				$verb_stem_array["perfect_participle"] = $row_data["perfect_participle"];
+				$verb_stem_array["aorist_stem"] = $row_data["aorist_stem"];
 				$verb_stem_array["verb_type"] = $row_data["verb_type"];							
 				array_push($new_table_data, $verb_stem_array);
 			}
@@ -369,10 +376,9 @@ class Koine_Common extends Common_IE{
 			foreach ($table_data as $row_data ) {
 				// 動詞の語幹格納配列
 				$verb_stem_array = array();
+				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];
 				$verb_stem_array["present_stem"] = $row_data["present_stem"];
-				$verb_stem_array["infinitive_stem"] = $row_data["infinitive_stem"];
-				$verb_stem_array["perfect_stem"] = $row_data["perfect_stem"];
-				$verb_stem_array["perfect_participle"] = $row_data["perfect_participle"];
+				$verb_stem_array["aorist_stem"] = $row_data["aorist_stem"];
 				$verb_stem_array["verb_type"] = $row_data["verb_type"];							
 				array_push($new_table_data, $verb_stem_array);
 			}
@@ -413,7 +419,7 @@ class Koine_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'āre') as `strong_stem`  FROM `".$table."` WHERE (
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'ᾰ́ω') as `strong_stem`  FROM `".$table."` WHERE (
 				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
@@ -427,7 +433,7 @@ class Koine_Common extends Common_IE{
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
 							SELECT * FROM `".Koine_Common::DB_VERB."`
-							WHERE `".Koine_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'āre') 
+							WHERE `".Koine_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'ᾰ́ω') 
 						  )";
 
 		// SQLを作成 
@@ -435,7 +441,7 @@ class Koine_Common extends Common_IE{
 							`".Koine_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
    						  FROM `".$table."`
    						  LEFT JOIN  `".Koine_Common::DB_VERB."`
-   					      ON `".Koine_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'āre')
+   					      ON `".Koine_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'ᾰ́ω')
    						  WHERE ( 
 							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
 							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
@@ -474,7 +480,7 @@ class Koine_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'ēre') as `strong_stem`  FROM `".Koine_Common::DB_ADJECTIVE."` WHERE (
+		$query = "SELECT concat(REPLACE(`strong_stem`,'-',''), 'έω') as `strong_stem`  FROM `".Koine_Common::DB_ADJECTIVE."` WHERE (
 				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
@@ -483,7 +489,7 @@ class Koine_Common extends Common_IE{
 		// 動詞の条件と被らないようにする。
 		$query = $query." AND NOT EXISTS(
 							SELECT * FROM `".Koine_Common::DB_VERB."`
-							WHERE `".Koine_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Koine_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre') 
+							WHERE `".Koine_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Koine_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'έω') 
 						  )";
 
 		// SQLを作成 
@@ -491,7 +497,7 @@ class Koine_Common extends Common_IE{
 							`".Koine_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
    						  FROM `".Koine_Common::DB_ADJECTIVE."`
    						  LEFT JOIN  `".Koine_Common::DB_VERB."`
-   					      ON `".Koine_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Koine_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'ēre')
+   					      ON `".Koine_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".Koine_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'έω')
    						  WHERE ( 
 							`".Koine_Common::DB_ADJECTIVE."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
 							`".Koine_Common::DB_ADJECTIVE."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
@@ -604,64 +610,16 @@ class Koine_Common extends Common_IE{
 		}
 	}
 	
-	// ラテン語の動詞を取得
-	public static function get_verb_conjugation($koine_verb, $verb_genre){
-
+	// ギリシア語の動詞を取得
+	public static function get_verb_conjugation($koine_verb){
 		// 配列を初期化
 		$conjugations = array();
-
-		// 活用種別で分ける。
-		if($koine_verb["verb_type"] == "5sum"){
-		    // 読み込み
-		    //$verb_data = new koine_Verb_Sum();
-        	//$verb_data->add_stem($koine_verb["infinitive_stem"]);
-		    // 活用表生成、配列に格納
-		    //$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
-			// メモリを解放
-			unset($verb_data);
-      	} else if($koine_verb["verb_type"] == "5volo"){
-		    // 読み込み
-		    //$verb_data = new koine_Verb_Volo();
-        	//$verb_data->add_stem($koine_verb["infinitive_stem"]);
-		    // 活用表生成、配列に格納
-		    //$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
-			// メモリを解放
-			unset($verb_data);
-      	} else if($koine_verb["verb_type"] == "5fer"){
-        	// 読み込み
-        	//$verb_data = new koine_Verb_Fero();
-       	 	//$verb_data->add_stem($koine_verb["infinitive_stem"]);
-        	// 活用表生成、配列に格納
-        	//$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
-			// メモリを解放
-			unset($verb_data);
-      	} else if($koine_verb["verb_type"] == "5eo"){
-        	// 読み込み
-        	//$verb_data = new koine_Verb_Eo();
-        	//$verb_data->add_stem($koine_verb["infinitive_stem"]);
-        	// 活用表生成、配列に格納
-        	//$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();  
-			// メモリを解放
-			//unset($verb_data);
-      	} else {
-        	// 動詞の種別が指定されている場合はそちらを優先
-        	if($verb_genre != ""){
-		      	// 読み込み
-		      	$verb_data = new koine_Verb($koine_verb["infinitive_stem"], $verb_genre);
-		      	// 活用表生成、配列に格納
-		      	//$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
-				// メモリを解放
-				unset($verb_data);
-        	} else {
-		      	// 読み込み
-		     	$verb_data = new koine_Verb($koine_verb["present_stem"], $koine_verb["infinitive_stem"], $koine_verb["perfect_stem"], $koine_verb["perfect_participle"]);
-		      	// 活用表生成、配列に格納
-		      	//$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
-				// メモリを解放
-				unset($verb_data);
-        	}
-      	}
-
+		// 読み込み
+		$verb_data = new koine_Verb($koine_verb["dictionary_stem"]);
+		// 活用表生成、配列に格納
+		//$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		// メモリを解放
+		unset($verb_data);
 		// 結果を返す。	  
 		return $conjugations;
 	}
@@ -877,8 +835,10 @@ class Koine_Common extends Common_IE{
 						$last_words[] = "σκω";
 					} else if($target_word == "続ける" && $input_words[$i - 1][1] == "動詞"){
 						$last_words[] = "ᾰ́ζω";
-					} else if($target_word == "させる" || $target_word == "せる"){
-						$last_words[] = "όω";				
+					} else if(($target_word == "させる" || $target_word == "せる") && $input_words[$i - 1][1] == "動詞"){
+						$last_words[] = "έω";		
+					} else if(($target_word == "させる" || $target_word == "せる") && $input_words[$i - 1][1] == "名詞"){
+						$last_words[] = "όω";
 					} else {
 						// データベースから訳語の語幹を取得する。
 						$last_words_data = Koine_Common::get_verb_by_japanese($target_word);
@@ -937,16 +897,8 @@ class Koine_Common extends Common_IE{
 					$verbs_data = Koine_Common::get_verb_by_japanese($target_word);
 					// 新しい配列に詰め替え
 					foreach ($verbs_data as $verb_data){
-						// 派生動詞とそれ以外で分ける。
-						if($input_words[$i + 1][0] == "たい" || $input_words[$i + 1][0] == "続ける"){
-							// 派生動詞の場合
-							// 語根を配列に追加
-							$koine_words[$i][] = mb_substr($verb_data["perfect_participle"], 0, -2);	
-						} else {
-							// それ以外の場合
-							// 語幹を配列に追加
-							$koine_words[$i][] = mb_substr($verb_data["infinitive_stem"], 0, -2);		
-						}
+						// 語幹を配列に追加
+						$koine_words[$i][] = mb_substr($verb_data["present_stem"], 0, -3);	
 					}
 					// 単語が取得できない場合は、何も返さない。
 					if(!$koine_words[$i]){
