@@ -619,10 +619,10 @@ class Latin_Verb extends Verb_Common_IE {
 		} else if(preg_match('/(are|āre)$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -3));
-		} else if(preg_match('/ēre/',$dic_stem)){	
+		} else if(preg_match('/ēre$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb2(mb_substr($dic_stem, 0, -3));
-		} else if(preg_match('/ere/',$dic_stem)){	
+		} else if(preg_match('/ere$/',$dic_stem)){	
 			// 不明動詞の対応
 			$this->generate_uknown_verb3(mb_substr($dic_stem, 0, -3));			
 		} else if(preg_match('/(ire|īre)$/',$dic_stem)){	
@@ -693,7 +693,20 @@ class Latin_Verb extends Verb_Common_IE {
 				$infinitive = mb_substr($infinitive, 0, -2)."turīre";
 				break;
 			case Commons::MAKE_VERB:
-				$infinitive = mb_substr($infinitive, 0, -2)."ficāre";
+				// 使役動詞
+				if(preg_match('/(are|āre)$/',$infinitive)){	
+					// 第一活用(名詞起源動詞)
+					$infinitive = mb_substr($infinitive, 0, -2)."ficāre";
+				} else if(preg_match('/ēre$/',$infinitive)){
+					// 第二活用(状態動詞)
+					$infinitive = mb_substr($infinitive, 0, -3)."iāre";
+				} else if(preg_match('/ere$/',$infinitive)){	
+					// 第三活用(語根動詞)
+					$infinitive = mb_substr($infinitive, 0, -3)."ēre";	
+				} else if(preg_match('/(ire|īre)$/',$infinitive)){	
+					// 第四活用(形容詞起源動詞)
+					$infinitive = mb_substr($infinitive, 0, -3)."iāre";
+				}
 				break;				
 			default:
 				break;
@@ -8296,29 +8309,30 @@ class Koine_Verb extends Verb_Common_IE {
 	protected $future_participle_middle = "";
 
 	// 不完了体能動不定詞
-	protected $causative_present_infinitive_active = "";
+	protected $present_infinitive_active = "";
 	// 不完了体中動不定詞
-	protected $causative_present_infinitive_middle = "";	
+	protected $present_infinitive_middle = "";	
 	// 完了体能動不定詞
-	protected $causative_aorist_infinitive_active = "";
+	protected $aorist_infinitive_active = "";
 	// 完了体受動不定詞
-	protected $causative_aorist_infinitive_passive = "";
+	protected $aorist_infinitive_passive = "";
 	// 完了体中動不定詞
-	protected $causative_aorist_infinitive_middle = "";	
+	protected $aorist_infinitive_middle = "";	
 	// 状態動詞能動不定詞
-	protected $causative_perfect_infinitive_active = "";
+	protected $perfect_infinitive_active = "";
 	// 状態動詞中動不定詞
-	protected $causative_perfect_infinitive_middle = "";
-	// 使役未来能動不定詞
-	protected $causative_future_infinitive_active = "";
-	// 使役未来受動不定詞
-	protected $causative_future_infinitive_passive = "";
-	// 使役未来中動不定詞
-	protected $causative_future_infinitive_middle = "";
-
+	protected $perfect_infinitive_middle = "";
+	// 未来能動不定詞
+	protected $future_infinitive_active = "";
+	// 未来受動不定詞
+	protected $future_infinitive_passive = "";
+	// 未来中動不定詞
+	protected $future_infinitive_middle = "";
 
 	// 使役不完了体
 	protected $causative_present_stem = "";
+	// 使役始動動詞
+	protected $causative_inchoative_stem = "";
 	// 使役完了体
 	protected $causative_aorist_stem = "";
 	// 使役状態動詞
@@ -8326,23 +8340,23 @@ class Koine_Verb extends Verb_Common_IE {
 	// 使役未然動詞
 	protected $causative_future_stem = "";
 
-	// 不完了体能動分詞
+	// 使役不完了体能動分詞
 	protected $causative_present_participle_active = "";
-	// 不完了体受動分詞
+	// 使役不完了体受動分詞
 	protected $causative_present_participle_passive = "";
-	// 不完了体中動分詞
+	// 使役不完了体中動分詞
 	protected $causative_present_participle_middle = "";	
-	// 完了体能動分詞
+	// 使役完了体能動分詞
 	protected $causative_aorist_participle_active = "";
-	// 完了体受動分詞
+	// 使役完了体受動分詞
 	protected $causative_aorist_participle_passive = "";
-	// 完了体中動分詞
+	// 使役完了体中動分詞
 	protected $causative_aorist_participle_middle = "";	
-	// 状態動詞能動分詞
+	// 使役状態動詞能動分詞
 	protected $causative_perfect_participle_active = "";
-	// 状態動詞受動分詞
+	// 使役状態動詞受動分詞
 	protected $causative_perfect_participle_passive = "";
-	// 状態動詞中動分詞
+	// 使役状態動詞中動分詞
 	protected $causative_perfect_participle_middle = "";
 	// 使役未来能動分詞
 	protected $causative_future_participle_active = "";
@@ -8351,6 +8365,85 @@ class Koine_Verb extends Verb_Common_IE {
 	// 使役未来中動分詞
 	protected $causative_future_participle_middle = "";
 	
+	// 使役不完了体能動不定詞
+	protected $causative_present_infinitive_active = "";
+	// 使役不完了体中動不定詞
+	protected $causative_present_infinitive_middle = "";	
+	// 使役完了体能動不定詞
+	protected $causative_aorist_infinitive_active = "";
+	// 使役完了体受動不定詞
+	protected $causative_aorist_infinitive_passive = "";
+	// 使役完了体中動不定詞
+	protected $causative_aorist_infinitive_middle = "";	
+	// 使役状態動詞能動不定詞
+	protected $causative_perfect_infinitive_active = "";
+	// 使役状態動詞中動不定詞
+	protected $causative_perfect_infinitive_middle = "";
+	// 使役未来能動不定詞
+	protected $causative_future_infinitive_active = "";
+	// 使役未来受動不定詞
+	protected $causative_future_infinitive_passive = "";
+	// 使役未来中動不定詞
+	protected $causative_future_infinitive_middle = "";
+
+	// 強意不完了体
+	protected $intensive_present_stem = "";
+	// 強意始動動詞
+	protected $intensive_inchoative_stem = "";
+	// 強意完了体
+	protected $intensive_aorist_stem = "";
+	// 強意状態動詞
+	protected $intensive_perfect_stem = "";
+	// 強意未然動詞
+	protected $intensive_future_stem = "";
+
+	// 使役不完了体能動分詞
+	protected $intensive_present_participle_active = "";
+	// 使役不完了体受動分詞
+	protected $intensive_present_participle_passive = "";
+	// 使役不完了体中動分詞
+	protected $intensive_present_participle_middle = "";	
+	// 使役完了体能動分詞
+	protected $intensive_aorist_participle_active = "";
+	// 使役完了体受動分詞
+	protected $intensive_aorist_participle_passive = "";
+	// 使役完了体中動分詞
+	protected $intensive_aorist_participle_middle = "";	
+	// 使役状態動詞能動分詞
+	protected $intensive_perfect_participle_active = "";
+	// 使役状態動詞受動分詞
+	protected $intensive_perfect_participle_passive = "";
+	// 使役状態動詞中動分詞
+	protected $intensive_perfect_participle_middle = "";
+	// 使役未来能動分詞
+	protected $intensive_future_participle_active = "";
+	// 使役未来受動分詞
+	protected $intensive_future_participle_passive = "";
+	// 使役未来中動分詞
+	protected $intensive_future_participle_middle = "";
+
+	// 強意不完了体能動不定詞
+	protected $intensive_present_infinitive_active = "";
+	// 強意不完了体中動不定詞
+	protected $intensive_present_infinitive_middle = "";	
+	// 強意完了体能動不定詞
+	protected $intensive_aorist_infinitive_active = "";
+	// 強意完了体受動不定詞
+	protected $intensive_aorist_infinitive_passive = "";
+	// 強意完了体中動不定詞
+	protected $intensive_aorist_infinitive_middle = "";	
+	// 強意状態動詞能動不定詞
+	protected $intensive_perfect_infinitive_active = "";
+	// 強意状態動詞中動不定詞
+	protected $intensive_perfect_infinitive_middle = "";
+	// 強意未来能動不定詞
+	protected $intensive_future_infinitive_active = "";
+	// 強意未来受動不定詞
+	protected $intensive_future_infinitive_passive = "";
+	// 強意未来中動不定詞
+	protected $intensive_future_infinitive_middle = "";
+
+
 	// 直接法
 	protected $ind = "ει";
 	protected $ind2 = "ού";
@@ -8381,6 +8474,8 @@ class Koine_Verb extends Verb_Common_IE {
 	protected const passive_suffix = "θή";
 	// 完結接尾辞
 	protected const aorist_suffix = "σ";
+	// 完了形
+	protected const perfect_suffix = "κ";
 	// 未来接尾辞
 	protected const future_suffix = "σ";
 
@@ -8398,6 +8493,16 @@ class Koine_Verb extends Verb_Common_IE {
 	// 完結受動分詞接尾辞
 	protected const passive_participle_suffix = "ίς";
 
+	// 能動態不定詞
+	protected const active_infinitive_suffix = "ειν";
+	// 能動態完結不定詞
+	protected const active_infinitive_suffix2 = "αι";
+	// 能動態完了不定詞
+	protected const active_infinitive_suffix3 = "έναι";
+	// 中受動態不定詞
+	protected const middle_infinitive_suffix = "εσθαι";
+	// 中受動態不定詞2
+	protected const middle_infinitive_suffix2 = "ναι";
 
 	// 活用種別名
 	protected $class_name = "";	
@@ -8421,16 +8526,29 @@ class Koine_Verb extends Verb_Common_IE {
     ======================================*/
     function __construct_koine1($dictionary_stem) {
     	// 動詞情報を取得
+		// 一次動詞
 		$this->get_verb_data($dictionary_stem);
+		// 使役動詞
+		$this->make_causative_stem();
+		// 強意動詞
+		$this->make_intensive_stem();
     }
 
     /*=====================================
     コンストラクタ
     ======================================*/
-    function __construct_koine3($present_stem, $aorist_stem, $perfect_stem) {
-    	$this->present_stem = $present_stem;		//現在相
-    	$this->aorist_stem = $aorist_stem;			//完結相
-    	$this->perfect_stem = $perfect_stem;		//完了相
+    function __construct_koine3($word, $stem_type, $japanese_translation) {
+    	// 動詞情報を取得
+		// 一次動詞
+		if($stem_type == "noun"){
+			$this->get_verb_data($word."αω");
+		} else if($stem_type == "adjective"){
+			$this->get_verb_data($word."εω");
+		}
+		// 使役動詞
+		$this->make_causative_stem();
+		// 強意動詞
+		$this->make_intensive_stem();	
     }
 
     // 動詞情報を取得
@@ -8497,8 +8615,9 @@ class Koine_Verb extends Verb_Common_IE {
 		}
 
 		// 残りの相
-		$this->perfect_stem = $this->make_perfect_stem($verb);	// 完了形
-		$this->future_stem = $this->make_future_stem($verb);	// 未来形
+		$this->inchoative_stem = $this->make_inchoative_stem($verb);	// 始動相
+		$this->perfect_stem = $this->make_perfect_stem($verb);			// 完了形
+		$this->future_stem = $this->make_future_stem($verb);			// 未来形
 
 		// 分詞を作成
 		$this->present_participle_active = $this->present_stem.self::active_participle_suffix;		// 現在能動
@@ -8508,30 +8627,66 @@ class Koine_Verb extends Verb_Common_IE {
 		$this->aorist_participle_active = $this->aorist_stem.self::active_participle_suffix2;		// 完結能動
 		$this->aorist_participle_middle = $this->aorist_stem.self::middle_participle_suffix2;		// 完結中動
 		$this->aorist_participle_passive = $this->aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
+		$this->perfect_participle_active = $this->present_stem.self::active_participle_suffix;		// 完了能動
+		$this->perfect_participle_middle = $this->present_stem.self::middle_participle_suffix;		// 完了中受動
 		$this->future_participle_active = $this->aorist_stem.self::active_participle_suffix;		// 未来能動
 		$this->future_participle_middle = $this->aorist_stem.self::middle_participle_suffix;		// 未来中動
 		$this->future_participle_passive = $this->aorist_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
 
+		// 不定詞を作成
+		$this->present_infinitive_active = $this->present_stem.self::active_infinitive_suffix;		// 現在能動
+		$this->present_infinitive_middle = $this->present_stem.self::middle_infinitive_suffix;		// 現在中受動
+		$this->inchoative_infinitive_active = $this->present_stem.self::active_infinitive_suffix;	// 始動能動
+		$this->inchoative_infinitive_middle = $this->present_stem.self::middle_infinitive_suffix;	// 始動中受動
+		$this->aorist_infinitive_active = $this->aorist_stem.self::active_infinitive_suffix2;		// 完結能動
+		$this->aorist_infinitive_middle = $this->aorist_stem.self::middle_infinitive_suffix;		// 完結中動
+		$this->aorist_infinitive_passive = $this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
+		$this->perfect_infinitive_active = $this->present_stem.self::active_infinitive_suffix3;		// 完了能動
+		$this->perfect_infinitive_middle = $this->present_stem.self::middle_infinitive_suffix2;		// 完了中受動
+		$this->future_infinitive_active = $this->aorist_stem.self::active_infinitive_suffix;		// 未来能動
+		$this->future_infinitive_middle = $this->aorist_stem.self::middle_infinitive_suffix;		// 未来中動
+		$this->future_infinitive_passive = $this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
     }
+
+	// 始動形を作成
+	private function make_inchoative_stem($verb){
+		// 始動相
+		if(preg_match("/σκω$/u", $verb)){
+			// それ以外
+			return mb_substr($verb, 0, -1);
+		} else if(preg_match("/(α|ε)ω$/u", $verb)){
+			// 第10活用1
+			return $verb."σκ";
+		} else if(preg_match("/οω$/u", $verb)){
+			// 第10活用2
+			return $verb."σκ";
+		} else {
+			// それ以外
+			return $verb."έ"."σκ";
+		}
+	}
 
 	// 完了形を作成
 	private function make_perfect_stem($verb){
 		// 完了相
 		if(preg_match("/^θ/u", $verb)){
-			$perfect_stem = "τέ".$verb;
-		} else if(preg_match("/^θ/u", $verb)){
-			$perfect_stem = "τέ".$verb;
-		} else if(preg_match("/^θ/u", $verb)){
-			$perfect_stem = "τέ".$verb;
+			$perfect_stem = "τέ".$verb."η".self::perfect_suffix;
+		} else if(preg_match("/^φ/u", $verb)){
+			$perfect_stem = "πέ".$verb."η".self::perfect_suffix;
+		} else if(preg_match("/^χ/u", $verb)){
+			$perfect_stem = "κέ".$verb."η".self::perfect_suffix;
 		} else if(preg_match("/σκω$/u", $verb)){
 			// 始動相
-			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -3);
+			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -3).self::perfect_suffix;
 		} else if(preg_match("/(α|ί)ζω$/u", $verb)){
-			// 
-			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2);			
+			// 反復動詞
+			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2)."η".self::perfect_suffix;
+		} else if(preg_match("/(α|ε|ο)ω$/u", $verb)){
+			// 使役動詞
+			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2)."η".self::perfect_suffix;			
 		} else {
 			// それ以外
-			$perfect_stem = mb_substr($verb, 0, 1)."έ".$verb;
+			$perfect_stem = mb_substr($verb, 0, 1)."έ".$verb.self::perfect_suffix;;
 		}
 
 		// 結果を返す。
@@ -8570,14 +8725,97 @@ class Koine_Verb extends Verb_Common_IE {
 
 	// 使役動詞を作成
 	protected function make_causative_stem(){
+		// 動詞の種別ごとに分ける。
+		if(preg_match("/(α|ε)ω$/u", $this->present_stem)){
+			// 第10活用
+			$this->causative_present_stem = mb_substr($this->present_stem, 0, -1)."ο";	// 現在相
+			$this->causative_aorist_stem = $this->present_stem."ωσ";					// 完結相
+		} else {
+			// それ以外
+			$this->causative_present_stem = $this->present_stem."έ";	// 現在相
+			$this->causative_aorist_stem = $this->present_stem."ησ";	// 完結相
+		}
 
-		// 使役動詞
-		$this->causative_present_stem = $this->present_stem."έ";	// 現在相
-		$this->causative_aorist_stem = $this->present_stem."ησ";	// 完結相
-		$this->causative_aorist_stem = $this->present_stem."ηκ";	// 完了相
-		$this->causative_future_stem = $this->present_stem."έ".self::future_suffix;			//未来相
+		// それ以外の相
+		$this->causative_inchoative_stem = $this->make_inchoative_stem($this->causative_present_stem."ω");	// 始動相
+		$this->causative_aorist_stem = $this->make_perfect_stem($this->causative_present_stem."ω");		// 完了相
+		$this->causative_future_stem = $this->make_future_stem($this->causative_present_stem."ω");		// 未来形
+
+		// 分詞を作成
+		$this->causative_present_participle_active = $this->causative_present_stem.self::active_participle_suffix;		// 現在能動
+		$this->causative_present_participle_middle = $this->causative_present_stem.self::middle_participle_suffix;		// 現在中受動
+		$this->causative_inchoative_participle_active = $this->causative_present_stem.self::active_participle_suffix;	// 始動能動
+		$this->causative_inchoative_participle_middle = $this->causative_present_stem.self::middle_participle_suffix;	// 始動中受動
+		$this->causative_aorist_participle_active = $this->causative_aorist_stem.self::active_participle_suffix2;		// 完結能動
+		$this->causative_aorist_participle_middle = $this->causative_aorist_stem.self::middle_participle_suffix2;		// 完結中動
+		$this->causative_aorist_participle_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
+		$this->causative_perfect_participle_active = $this->causative_present_stem.self::active_participle_suffix;		// 完了能動
+		$this->causative_perfect_participle_middle = $this->causative_present_stem.self::middle_participle_suffix;		// 完了中受動
+		$this->causative_future_participle_active = $this->causative_aorist_stem.self::active_participle_suffix;		// 未来能動
+		$this->causative_future_participle_middle = $this->causative_aorist_stem.self::middle_participle_suffix;		// 未来中動
+		$this->causative_future_participle_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
+
+		// 不定詞を作成
+		$this->causative_present_infinitive_active = $this->causative_present_stem.self::active_infinitive_suffix;		// 現在能動
+		$this->causative_present_infinitive_middle = $this->causative_present_stem.self::middle_infinitive_suffix;		// 現在中受動
+		$this->causative_inchoative_infinitive_active = $this->causative_present_stem.self::active_infinitive_suffix;	// 始動能動
+		$this->causative_inchoative_infinitive_middle = $this->causative_present_stem.self::middle_infinitive_suffix;	// 始動中受動
+		$this->causative_aorist_infinitive_active = $this->causative_aorist_stem.self::active_infinitive_suffix2;		// 完結能動
+		$this->causative_aorist_infinitive_middle = $this->causative_aorist_stem.self::middle_infinitive_suffix;		// 完結中動
+		$this->causative_aorist_infinitive_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
+		$this->causative_perfect_infinitive_active = $this->causative_present_stem.self::active_infinitive_suffix3;		// 完了能動
+		$this->causative_perfect_infinitive_middle = $this->causative_present_stem.self::middle_infinitive_suffix2;		// 完了中受動
+		$this->causative_future_infinitive_active = $this->causative_aorist_stem.self::active_infinitive_suffix;		// 未来能動
+		$this->causative_future_infinitive_middle = $this->causative_aorist_stem.self::middle_infinitive_suffix;		// 未来中動
+		$this->causative_future_infinitive_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
 	}
 
+	// 強意動詞を作成
+	protected function make_intensive_stem(){
+		// 動詞の種別ごとに分ける。
+		if(preg_match("/(α|ε)ω$/u", $this->present_stem)){
+			// 第10活用
+			$this->intensive_present_stem = mb_substr($this->present_stem, 0, -1)."ο";	// 現在相
+			$this->intensive_aorist_stem = $this->present_stem."ωσ";					// 完結相
+		} else {
+			// それ以外
+			$this->intensive_present_stem = $this->present_stem."έ";	// 現在相
+			$this->intensive_aorist_stem = $this->present_stem."ησ";	// 完結相
+		}
+
+		// それ以外の相
+		$this->causative_inchoative_stem = $this->make_inchoative_stem($this->intensive_present_stem."ω");	// 始動相
+		$this->intensive_aorist_stem = $this->make_perfect_stem($this->intensive_present_stem."ω");		// 完了相
+		$this->intensive_future_stem = $this->make_future_stem($this->intensive_present_stem."ω");		// 未来形
+
+		// 分詞を作成
+		$this->intensive_present_participle_active = $this->intensive_present_stem.self::active_participle_suffix;		// 現在能動
+		$this->intensive_present_participle_middle = $this->intensive_present_stem.self::middle_participle_suffix;		// 現在中受動
+		$this->intensive_inchoative_participle_active = $this->intensive_present_stem.self::active_participle_suffix;	// 始動能動
+		$this->intensive_inchoative_participle_middle = $this->intensive_present_stem.self::middle_participle_suffix;	// 始動中受動
+		$this->intensive_aorist_participle_active = $this->intensive_aorist_stem.self::active_participle_suffix2;		// 完結能動
+		$this->intensive_aorist_participle_middle = $this->intensive_aorist_stem.self::middle_participle_suffix2;		// 完結中動
+		$this->intensive_aorist_participle_passive = $this->intensive_aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
+		$this->intensive_perfect_participle_active = $this->intensive_present_stem.self::active_participle_suffix;		// 完了能動
+		$this->intensive_perfect_participle_middle = $this->intensive_present_stem.self::middle_participle_suffix;		// 完了中受動
+		$this->intensive_future_participle_active = $this->intensive_future_stem.self::active_participle_suffix;		// 未来能動
+		$this->intensive_future_participle_middle = $this->intensive_future_stem.self::middle_participle_suffix;		// 未来中動
+		$this->intensive_future_participle_passive = $this->intensive_future_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
+
+		// 不定詞を作成
+		$this->intensive_present_infinitive_active = $this->intensive_present_stem.self::active_infinitive_suffix;		// 現在能動
+		$this->intensive_present_infinitive_middle = $this->intensive_present_stem.self::middle_infinitive_suffix;		// 現在中受動
+		$this->intensive_inchoative_infinitive_active = $this->intensive_present_stem.self::active_infinitive_suffix;	// 始動能動
+		$this->intensive_inchoative_infinitive_middle = $this->intensive_present_stem.self::middle_infinitive_suffix;	// 始動中受動
+		$this->intensive_aorist_infinitive_active = $this->intensive_aorist_stem.self::active_infinitive_suffix2;		// 完結能動
+		$this->intensive_aorist_infinitive_middle = $this->intensive_aorist_stem.self::middle_infinitive_suffix;		// 完結中動
+		$this->intensive_aorist_infinitive_passive = $this->intensive_aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
+		$this->intensive_perfect_infinitive_active = $this->intensive_present_stem.self::active_infinitive_suffix3;		// 完了能動
+		$this->intensive_perfect_infinitive_middle = $this->intensive_present_stem.self::middle_infinitive_suffix2;		// 完了中受動
+		$this->intensive_future_infinitive_active = $this->intensive_future_stem.self::active_infinitive_suffix;		// 未来能動
+		$this->intensive_future_infinitive_middle = $this->intensive_future_stem.self::middle_infinitive_suffix;		// 未来中動
+		$this->intensive_future_infinitive_passive = $this->intensive_future_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
+	}
 
 	// 分詞の曲用表を返す。	
 	protected function get_participle($participle_stem){

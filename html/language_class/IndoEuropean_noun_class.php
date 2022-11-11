@@ -4151,6 +4151,9 @@ class Koine_Noun extends Noun_Common_IE {
 		$word_chart[Commons::SINGULAR][Commons::INSTRUMENTAL] = $this->second_stem."δον";
 		$word_chart[Commons::SINGULAR][Commons::ABLATIVE] = $this->second_stem."θεν";
 		$word_chart[Commons::SINGULAR][Commons::LOCATIVE] = $this->second_stem."θι";
+		$word_chart[Commons::DUAL][Commons::INSTRUMENTAL] = $this->second_stem."φι";
+		$word_chart[Commons::DUAL][Commons::ABLATIVE] = $this->second_stem."φι";
+		$word_chart[Commons::DUAL][Commons::LOCATIVE] = $this->second_stem."φι";
 		$word_chart[Commons::PLURAL][Commons::INSTRUMENTAL] = $this->second_stem."φι";
 		$word_chart[Commons::PLURAL][Commons::ABLATIVE] = $this->second_stem."φι";
 		$word_chart[Commons::PLURAL][Commons::LOCATIVE] = $this->second_stem."φι";

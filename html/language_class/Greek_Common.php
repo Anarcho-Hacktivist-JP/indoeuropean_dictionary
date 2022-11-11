@@ -1071,24 +1071,12 @@ class Koine_Common extends Common_IE{
 			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>			
 			<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			';
 	}	
-
-	// 特殊文字入力ボタンを配置する。
-	public static function input_special_button(){
-
-		return '      
-		<div class="d-grid gap-2 d-md-block">
-        	<button class="btn btn-primary" type="button" id="button-a" value="ā">ā</button>
-        	<button class="btn btn-primary" type="button" id="button-i" value="ī">ī</button>
-        	<button class="btn btn-primary" type="button" id="button-u" value="ū">ū</button>
-        	<button class="btn btn-primary" type="button" id="button-e" value="ē">ē</button> 
-        	<button class="btn btn-primary" type="button" id="button-o" value="ō">ō</button>
-      	</div> ';
-	}
 
 	// アルファベット判定をする。
 	public static function is_alphabet_or_not($word){
@@ -1099,6 +1087,23 @@ class Koine_Common extends Common_IE{
 
 		// それ以外はfalse
 		return false;
+	}
+
+	// 特殊文字入力ボタンを配置する。
+	public static function input_special_button(){
+
+		return '      
+		<div class="d-grid gap-2 d-md-block">
+        	<button class="btn btn-primary" type="button" id="button-a" value="ą">ą</button>
+        	<button class="btn btn-primary" type="button" id="button-c" value="ć">ć</button>			
+        	<button class="btn btn-primary" type="button" id="button-e" value="ę">ę</button>
+        	<button class="btn btn-primary" type="button" id="button-l" value="ł">ł</button>
+        	<button class="btn btn-primary" type="button" id="button-n" value="ń">ń</button>
+        	<button class="btn btn-primary" type="button" id="button-o" value="ó">ó</button>
+        	<button class="btn btn-primary" type="button" id="button-s" value="ś">ś</button> 
+        	<button class="btn btn-primary" type="button" id="button-z1" value="ź">ź</button> 
+        	<button class="btn btn-primary" type="button" id="button-z2" value="ż">ż</button> 			
+      	</div> ';
 	}
 
 	// 名詞活用種別ボタンの生成

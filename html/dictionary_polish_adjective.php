@@ -92,7 +92,7 @@ $janome_result = Commons::convert_compound_array($janome_result);
 
 // 対象が入力されていれば処理を実行
 if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] == "名詞" && !Polish_Common::is_alphabet_or_not($input_adjective)){
-  // 動詞の場合は動詞で形容詞を取得
+  // 名詞の場合は名詞で形容詞を取得
 	$declensions = get_noun_declension_chart($input_adjective);
 } else if($input_adjective != ""){
 	$declensions = get_adjective_declension_chart($input_adjective);
