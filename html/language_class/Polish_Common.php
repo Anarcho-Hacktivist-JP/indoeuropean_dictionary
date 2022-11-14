@@ -898,6 +898,9 @@ class Polish_Common extends Common_IE{
 
 		// 最後の音節のoは短音になる。但し単音節の単語は除く
 		$word = mb_ereg_replace("(.{2})o([^aiueoąęó])\b", "\\1ó\\2", $word);
+
+		// 結果を返す。
+		return $word;
 	}
 
 

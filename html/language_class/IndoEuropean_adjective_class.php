@@ -608,11 +608,11 @@ class Adjective_Common_IE {
 		// 初期化
 		$adjective = "";
 		// 形容詞の程度で分岐する。
-		if($grade == "positive"){
+		if($grade == Commons::ADJ_GRADE_POSITIVE){
 			$adjective = $this->generate_positive($case, $number, $gender);
-		} else if($grade == "comp"){
+		} else if($grade == Commons::ADJ_GRADE_COMPERATIVE){
 			$adjective = $this->generate_comp($case, $number, $gender);
-		} else if($grade == "super"){
+		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$adjective = $this->generate_super($case, $number, $gender);
 		}
 
@@ -1356,7 +1356,7 @@ class Latin_Adjective extends Adjective_Common_IE {
     private function set_adj_data($adjective){
 
     	// 形容詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, Latin_Common::$DB_ADJECTIVE);
+		$word_info = $this->get_adjective_from_DB($adjective, Latin_Common::DB_ADJECTIVE);
 		// データの取得確認
 		if($word_info){
 			// データを挿入
@@ -2589,7 +2589,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
     // 形容詞情報を取得
     private function set_adj_data($adjective){
     	// 名詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, Sanskrit_Common::$DB_ADJECTIVE, false);
+		$word_info = $this->get_adjective_from_DB($adjective, Sanskrit_Common::DB_ADJECTIVE, false);
 		// データがある場合は
 		if($word_info){
 			// データを挿入
@@ -3124,7 +3124,7 @@ class Polish_Adjective extends Adjective_Common_IE {
     private function set_adj_data($adjective){
 
     	// 形容詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, Polish_Common::$DB_ADJECTIVE);
+		$word_info = $this->get_adjective_from_DB($adjective, Polish_Common::DB_ADJECTIVE);
 		// データの取得確認
 		if($word_info){
 			// データを挿入

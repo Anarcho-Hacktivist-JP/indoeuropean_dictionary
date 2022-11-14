@@ -2939,7 +2939,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		],
 		"mediopassive" => 
 		[
-			"1sg" => "am",
+			"1sg" => "m",
 			"2sg" => "thās", 
 			"3sg" => "ta",
 			"1du" => "vahi",
@@ -8558,6 +8558,7 @@ class Koine_Verb extends Verb_Common_IE {
 		// データがある場合は
 		if($word_info){
 			// データを挿入
+			
 			$this->present_stem = $word_info["present_stem"];						// 現在相
 			$this->aorist_stem = $word_info["aorist_stem"];							// 完結相
 			// 訳
@@ -8773,20 +8774,20 @@ class Koine_Verb extends Verb_Common_IE {
 	// 強意動詞を作成
 	protected function make_intensive_stem(){
 		// 動詞の種別ごとに分ける。
-		if(preg_match("/(α|ε)ω$/u", $this->present_stem)){
+		if(preg_match("/(α|ε|ο)ω$/u", $this->present_stem)){
 			// 第10活用
-			$this->intensive_present_stem = mb_substr($this->present_stem, 0, -1)."ο";	// 現在相
-			$this->intensive_aorist_stem = $this->present_stem."ωσ";					// 完結相
+			$this->intensive_present_stem = mb_substr($this->present_stem, 0, -1)."ᾰ́ζ";	// 現在相
+			$this->intensive_aorist_stem = $this->present_stem."ᾰ́σ";					   	// 完結相
 		} else {
 			// それ以外
-			$this->intensive_present_stem = $this->present_stem."έ";	// 現在相
-			$this->intensive_aorist_stem = $this->present_stem."ησ";	// 完結相
+			$this->intensive_present_stem = $this->present_stem."ᾰ́ζ";	// 現在相
+			$this->intensive_aorist_stem = $this->present_stem."ᾰ́σ";	// 完結相
 		}
 
 		// それ以外の相
-		$this->causative_inchoative_stem = $this->make_inchoative_stem($this->intensive_present_stem."ω");	// 始動相
-		$this->intensive_aorist_stem = $this->make_perfect_stem($this->intensive_present_stem."ω");		// 完了相
-		$this->intensive_future_stem = $this->make_future_stem($this->intensive_present_stem."ω");		// 未来形
+		$this->intensive_inchoative_stem = $this->make_inchoative_stem($this->intensive_present_stem."ω");	    // 始動相
+		$this->intensive_aorist_stem = $this->make_perfect_stem(mb_substr($this->present_stem, 0, -1)."κ");		// 完了相
+		$this->intensive_future_stem = $this->make_future_stem(mb_substr($this->present_stem, 0, -1))."ᾰ́σ";	 // 未来形
 
 		// 分詞を作成
 		$this->intensive_present_participle_active = $this->intensive_present_stem.self::active_participle_suffix;		// 現在能動
@@ -8836,6 +8837,9 @@ class Koine_Verb extends Verb_Common_IE {
 		if($aspect == Commons::PRESENT_ASPECT){
 			// 不完了形
 			$verb_stem = $this->present_stem;
+		} else if($aspect == Commons::START_VERB){
+			// 始動相
+			$verb_stem = $this->inchoative_stem;
 		} else if($aspect == Commons::AORIST_ASPECT){
 			// 完了形
 			$verb_stem = $this->aorist_stem;
@@ -8850,6 +8854,68 @@ class Koine_Verb extends Verb_Common_IE {
 			return "-";
 		} 
 		
+		// 活用作成
+		return $this->make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem);
+	}
+
+	// 使役動詞作成
+	public function get_koine_causative_verb($person, $voice, $tense_mood, $aspect){
+		//動詞の語幹を取得
+		$verb_stem = "";
+		if($aspect == Commons::PRESENT_ASPECT){
+			// 不完了形
+			$verb_stem = $this->causative_present_stem;
+		} else if($aspect == Commons::START_VERB){
+			// 始動相
+			$verb_stem = $this->causative_inchoative_stem;
+		} else if($aspect == Commons::AORIST_ASPECT){
+			// 完了形
+			$verb_stem = $this->causative_aorist_stem;
+		} else if($aspect == Commons::PERFECT_ASPECT){
+			// 状態動詞
+			$verb_stem = $this->causative_perfect_stem;
+		} else if($aspect == Commons::FUTURE_TENSE){
+			// 未来形
+			$verb_stem = $this->causative_future_stem;			
+		} else {
+			// ハイフンを返す。
+			return "-";
+		} 
+		
+		// 活用作成
+		return $this->make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem);
+	}
+
+	// 強意動詞作成
+	public function get_koine_intensive_verb($person, $voice, $tense_mood, $aspect){
+		//動詞の語幹を取得
+		$verb_stem = "";
+		if($aspect == Commons::PRESENT_ASPECT){
+			// 不完了形
+			$verb_stem = $this->intensive_present_stem;
+		} else if($aspect == Commons::START_VERB){
+			// 始動相
+			$verb_stem = $this->intensive_inchoative_stem;
+		} else if($aspect == Commons::AORIST_ASPECT){
+			// 完了形
+			$verb_stem = $this->intensive_aorist_stem;
+		} else if($aspect == Commons::PERFECT_ASPECT){
+			// 状態動詞
+			$verb_stem = $this->intensive_perfect_stem;
+		} else if($aspect == Commons::FUTURE_TENSE){
+			// 未来形
+			$verb_stem = $this->intensive_future_stem;			
+		} else {
+			// ハイフンを返す。
+			return "-";
+		} 
+		
+		// 活用作成
+		return $this->make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem);
+	}
+
+	// 活用作成
+	public function make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem){
 		// 直説法
 		// 時制を分ける。
 		if($tense_mood == Commons::PRESENT_TENSE && ($aspect == Commons::PRESENT_ASPECT || $aspect == Commons::FUTURE_TENSE)) {
@@ -8931,119 +8997,6 @@ class Koine_Verb extends Verb_Common_IE {
 		return $verb_stem;
 	}
 
-	// 使役動詞作成
-	public function get_koine_causative_verb($person, $voice, $mood, $aspect, $tense){
-		//動詞の語幹を取得
-		$verb_stem = "";
-		if($aspect == Commons::PRESENT_ASPECT){
-			// 不完了形
-			$verb_stem = $this->causative_present_stem;
-		} else if($aspect == Commons::AORIST_ASPECT){
-			// 完了形
-			$verb_stem = $this->causative_aorist_stem;
-		} else if($aspect == Commons::PERFECT_ASPECT){
-			// 状態動詞
-			$verb_stem = $this->causative_perfect_stem;
-		} else if($aspect == Commons::FUTURE_TENSE){
-			// 未来形
-			$verb_stem = $this->causative_future_stem;			
-		} else {
-			// ハイフンを返す。
-			return "-";
-		} 
-		
-		//法を取得
-		if($mood == Commons::INDICATIVE){
-			// 直説法
-			// 時制を分ける。
-			if($tense == Commons::PRESENT_TENSE && ($aspect == Commons::PRESENT_ASPECT || $aspect == Commons::FUTURE_TENSE)) {
-				// 人称によって分ける
-				if($person == "1sg" || $person == "1pl" || $person == "3pl"){
-					$verb_stem = $verb_stem.$this->ind2;
-				} else {
-					$verb_stem = $verb_stem.$this->ind;
-				}
-
-				// 人称を付ける
-				$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
-			} else if($aspect == Commons::PRESENT_ASPECT && $tense == Commons::PAST_TENSE){
-				// 未完了過去
-				// 態によって分ける。
-				if($voice = Commons::ACTIVE_VOICE){
-					// 能動態の場合
-					// 人称によって分ける
-					if($person == "1sg" || $person == "1pl" || $person == "3pl"){
-						$verb_stem = $verb_stem.$this->ind2;
-					} else {
-						$verb_stem = $verb_stem.$this->ind;
-					}
-				} else {
-					// 中受動態の場合
-					// 人称によって分ける
-					if($person == "1sg" || $person == "2sg" || $person == "1pl" || $person == "3pl"){
-						$verb_stem = $verb_stem.$this->ind2;
-					} else {
-						$verb_stem = $verb_stem.$this->ind;
-					}
-				}
-			} else if($aspect == Commons::PERFECT_ASPECT && $tense == Commons::PAST_TENSE){
-				// 大過去
-				$verb_stem = $verb_stem.self::perf_past;
-				// 人称を付ける
-				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
-			} else if($aspect == Commons::AORIST_ASPECT && $tense == Commons::PAST_TENSE){
-				// アオリスト
-				// 人称を付ける
-				$verb_stem = $this->get_greek_perfect_suffix($verb_stem, $voice, $person);
-			} else if($aspect == Commons::PERFECT_ASPECT){
-				// 完了形
-				// 人称を付ける
-				$verb_stem = $this->get_greek_perfect_suffix($verb_stem, $voice, $person);
-			} else {
-				// 人称によって分ける
-				// 三人称単数以外は接尾辞を付ける
-				if($person != "3sg"){;
-					$verb_stem = $verb_stem.$this->ind;
-				}
-				// 人称を付ける
-				$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
-			}
-		} else if($mood == Commons::OPTATIVE){
-			// 希求法
-			// 態によって分ける。
-			if($aspect == Commons::AORIST_ASPECT && $voice = Commons::PASSIVE_VOICE){
-				// アオリストの受動態の場合
-				if($person == "1sg" || $person == "2sg" || $person == "3sg"){
-					$verb_stem = $verb_stem."ίη";
-				} else {
-					$verb_stem = $verb_stem."η";
-				}
-			} else {
-				// それ以外
-				$verb_stem = $verb_stem.$this->opt;
-			}
-			// 人称を付ける
-			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
-		} else if($mood == Commons::SUBJUNCTIVE && !$aspect == Commons::FUTURE_TENSE){
-			// 接続法
-			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
-				$verb_stem = $verb_stem.$this->subj2;
-			} else {
-				$verb_stem = $verb_stem.$this->subj;
-			}
-			// 人称を付ける
-			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
-		} else if($mood == Commons::IMPERATIVE && !$aspect == Commons::FUTURE_TENSE){
-			// 命令法
-			$verb_stem = $verb_stem.$this->imper;
-			// 人称を付ける
-			$verb_stem = $this->get_imperative_suffix($verb_stem, $voice, $person);
-		}
-		
-		// 結果を返す。
-		return $verb_stem;
-	}
-
     // 動詞のタイトルを取得
     protected function get_title($dic_form){
 
@@ -9104,7 +9057,7 @@ class Koine_Verb extends Verb_Common_IE {
 	protected function get_primary_verb_conjugation(){
 
 		// 配列を作成
-		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
+		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::START_VERB, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
 		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");												// 人称
@@ -9134,24 +9087,204 @@ class Koine_Verb extends Verb_Common_IE {
 		}
 		// 分詞を入れる。
 		// 現在分詞・不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->present_participle_active);			// 能動
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->present_participle_middle);			// 中動
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"];
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"];
+		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->present_participle_active);			// 能動分詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->present_participle_middle);			// 中受動分詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->present_infinitive_active;									// 能動不定詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->present_infinitive_middle;									// 中動不定詞
 
 		// 完了体分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_active);			// 能動
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_middle);			// 中動
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_passive);			// 受動
+		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_active);			// 能動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_middle);			// 中動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_passive);		// 受動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->aorist_infinitive_active;								// 能動不定詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->aorist_infinitive_middle;								// 中動不定詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["infinitive"] = $this->aorist_infinitive_passive;								// 受動不定詞
 
 		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_participle_active);			// 能動
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->perfect_participle_middle);	// 中受動
+		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_participle_active);		// 能動分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->perfect_participle_middle);		// 中受動分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->perfect_infinitive_active;								// 能動不定詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->perfect_infinitive_middle;								// 中動不定詞
 
 		// 未来分詞
 		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_participle_active);			// 能動
 		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->future_participle_middle);			// 中動
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->future_participle_passive);			// 受動
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->future_participle_passive);		// 受動
+		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["infinitive"] = $this->future_infinitive_active;									// 能動不定詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["infinitive"] = $this->future_infinitive_middle;									// 中動不定詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["infinitive"] = $this->future_infinitive_passive;								// 受動不定詞
+
+
+		// 結果を返す。
+		return $conjugation;
+	}
+
+	// 使役動詞の活用を作成する。
+	protected function get_causative_verb_conjugation(){
+
+		// 配列を作成
+		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::START_VERB, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
+		$voice_array = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);								// 態
+		$tense_mood_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
+		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");												// 人称
+
+		// 初期化
+		$conjugation = array();
+		// 全ての法
+		foreach ($aspect_array as $aspect){	
+			// 全ての態			
+			foreach ($voice_array as $voice){
+				// 全ての法			
+				foreach ($tense_mood_array as $tense_mood){
+					// 全ての人称			
+					foreach ($person_array as $person){
+						// 態と人称で場合分けする。
+						if($aspect == Commons::AORIST_ASPECT && $tense_mood == Commons::PRESENT_TENSE){
+							// アオリストの現在時制は存在しないため、ハイフンを入れる。
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";										
+						} else {
+							// 態・時制・法・人称に応じて多次元配列を作成		
+							$conjugation[$aspect][$voice][$tense_mood][$person] = $this->get_koine_causative_verb($person, $voice, $tense_mood, $aspect);	
+						}					
+					}
+				}
+
+			}
+		}
+		// 分詞を入れる。
+		// 現在分詞・不定詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_active);		// 能動分詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_middle);		// 中受動分詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_present_infinitive_active;							// 能動不定詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_present_infinitive_middle;							// 中動不定詞
+
+		// 現在分詞・不定詞
+		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_active);		// 能動分詞
+		$conjugation[Commons::START_VERB][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_middle);		// 中受動分詞
+		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_present_infinitive_active;							// 能動不定詞
+		$conjugation[Commons::START_VERB][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_present_infinitive_middle;							// 中動不定詞
+
+		// 完了体分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_active);		// 能動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_middle);		// 中動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_passive);		// 受動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_active;								// 能動不定詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_middle;								// 中動不定詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_passive;							// 受動不定詞
+
+		// 完了形分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_perfect_participle_active);		// 能動分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_perfect_participle_middle);		// 中受動分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_perfect_infinitive_active;							// 能動不定詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_perfect_infinitive_middle;							// 中動不定詞
+
+		// 未来分詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_active);		// 能動
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_middle);		// 中動
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_passive);		// 受動
+		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_future_infinitive_active;								// 能動不定詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_future_infinitive_middle;								// 中動不定詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["infinitive"] = $this->causative_future_infinitive_passive;								// 受動不定詞
+
+		// 結果を返す。
+		return $conjugation;
+	}
+
+	// 強意動詞の活用を作成する。
+	protected function get_intensive_verb_conjugation(){
+
+		// 配列を作成
+		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::START_VERB, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
+		$voice_array = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);								// 態
+		$tense_mood_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
+		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");												// 人称
+
+		// 初期化
+		$conjugation = array();
+		// 全ての法
+		foreach ($aspect_array as $aspect){	
+			// 全ての態			
+			foreach ($voice_array as $voice){
+				// 全ての法			
+				foreach ($tense_mood_array as $tense_mood){
+					// 全ての人称			
+					foreach ($person_array as $person){
+						// 態と人称で場合分けする。
+						if($aspect == Commons::AORIST_ASPECT && $tense_mood == Commons::PRESENT_TENSE){
+							// アオリストの現在時制は存在しないため、ハイフンを入れる。
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";										
+						} else {
+							// 態・時制・法・人称に応じて多次元配列を作成		
+							$conjugation[$aspect][$voice][$tense_mood][$person] = $this->get_koine_intensive_verb($person, $voice, $tense_mood, $aspect);	
+						}					
+					}
+				}
+
+			}
+		}
+		// 分詞を入れる。
+		// 現在分詞・不定詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_active);		// 能動分詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_middle);		// 中受動分詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_present_infinitive_active;							// 能動不定詞
+		$conjugation[Commons::PRESENT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_present_infinitive_middle;							// 中動不定詞
+
+		// 現在分詞・不定詞
+		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_active);		// 能動分詞
+		$conjugation[Commons::START_VERB][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_middle);		// 中受動分詞
+		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_present_infinitive_active;							// 能動不定詞
+		$conjugation[Commons::START_VERB][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_present_infinitive_middle;							// 中動不定詞
+
+		// 完了体分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_active);		// 能動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_middle);		// 中動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_passive);		// 受動分詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_active;								// 能動不定詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_middle;								// 中動不定詞
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_passive;							// 受動不定詞
+
+		// 完了形分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_perfect_participle_active);		// 能動分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_perfect_participle_middle);		// 中受動分詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_perfect_infinitive_active;							// 能動不定詞
+		$conjugation[Commons::PERFECT_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_perfect_infinitive_middle;							// 中動不定詞
+
+		// 未来分詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_active);		// 能動
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_middle);		// 中動
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_passive);		// 受動
+		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_future_infinitive_active;								// 能動不定詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_future_infinitive_middle;								// 中動不定詞
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["infinitive"] = $this->causative_future_infinitive_passive;								// 受動不定詞
+
+		// 結果を返す。
+		return $conjugation;
+	}
+
+	// 活用表を取得する。
+	public function get_chart(){
+
+		// 初期化
+		$conjugation = array();
+		// タイトル情報を挿入
+		$conjugation["title"] = $this->get_title($this->add_stem.$this->root);
+		// 辞書見出しを入れる。
+		$conjugation["dic_title"] = $this->root;
+		// 種別を入れる。
+		$conjugation["category"] = "動詞";
+		// 活用種別
+		$conjugation["type"] = $this->conjugation_present_type;	
+
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		// 一次動詞
+		$conjugation["primary"] = $this->get_primary_verb_conjugation(false);
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		// 使役動詞
+		$conjugation[Commons::MAKE_VERB] = $this->get_causative_verb_conjugation(false);
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
+		// 強意動詞
+		$conjugation[Commons::INTENSE_VERB] = $this->get_intensive_verb_conjugation(false);
+		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 
 		// 結果を返す。
 		return $conjugation;

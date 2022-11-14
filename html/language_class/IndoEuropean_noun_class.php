@@ -1182,7 +1182,7 @@ class Latin_Noun extends Noun_Common_IE {
     // 名詞情報を取得
     private function set_data($noun){
     	// 名詞情報を取得
-		$word_info = $this->get_noun_from_DB($noun, Latin_Common::$DB_NOUN);
+		$word_info = $this->get_noun_from_DB($noun, Latin_Common::DB_NOUN);
 		// データがある場合は
 		if($word_info){
 			// データを挿入
@@ -2188,7 +2188,7 @@ class Vedic_Noun extends Noun_Common_IE {
     // 名詞情報を取得
     private function set_data($noun, $noun_genre){
     	// 名詞情報を取得
-		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::$DB_NOUN, false);
+		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::DB_NOUN, false);
 		// データがある場合は
 		if($word_info){
 			// データを挿入
@@ -3267,7 +3267,7 @@ class Polish_Noun extends Noun_Common_IE{
     // 名詞情報を取得
     private function set_data($noun, $noun_genre){
     	// 名詞情報を取得
-		$word_info = $this->get_noun_from_DB($noun, Polish_Common::$DB_NOUN);
+		$word_info = $this->get_noun_from_DB($noun, Polish_Common::DB_NOUN);
 		// データがある場合は
 		if($word_info){
 			// データを挿入
