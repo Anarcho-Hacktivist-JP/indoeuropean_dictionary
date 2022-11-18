@@ -469,87 +469,87 @@ class Adjective_Common_IE {
 		$this->set_adj_data($adjective);
 
 		// 初期化
-		$masculine_declensioninfo = $this->get_adjective_case_suffix($this->adjective_type, "Masculine");
-		$feminine_declensioninfo = $this->get_adjective_case_suffix($this->adjective_type, "Feminine");
-		$neuter_declensioninfo = $this->get_adjective_case_suffix($this->adjective_type, "Neuter");
+		$masculine_declensioninfo = $this->get_adjective_case_suffix($this->adjective_type, Commons::MASCULINE_GENDER);
+		$feminine_declensioninfo = $this->get_adjective_case_suffix($this->adjective_type, Commons::FEMINE_GENDER);
+		$neuter_declensioninfo = $this->get_adjective_case_suffix($this->adjective_type, Commons::NEUTER_GENDER);
 
 		// 活用表を挿入(男性)
-		$this->case_suffix["masc"]["sg"]["nom"] = $masculine_declensioninfo["sg_nom"];
-		$this->case_suffix["masc"]["sg"]["gen"] = $masculine_declensioninfo["sg_gen"];
-		$this->case_suffix["masc"]["sg"]["dat"] = $masculine_declensioninfo["sg_dat"];
-		$this->case_suffix["masc"]["sg"]["acc"] = $masculine_declensioninfo["sg_acc"];
-		$this->case_suffix["masc"]["sg"]["abl"] = $masculine_declensioninfo["sg_abl"];
-		$this->case_suffix["masc"]["sg"]["ins"] = $masculine_declensioninfo["sg_ins"];
-		$this->case_suffix["masc"]["sg"]["loc"] = $masculine_declensioninfo["sg_loc"];
-		$this->case_suffix["masc"]["sg"]["voc"] = $masculine_declensioninfo["sg_voc"];
-		$this->case_suffix["masc"]["du"]["nom"] = $masculine_declensioninfo["du_nom"];
-		$this->case_suffix["masc"]["du"]["gen"] = $masculine_declensioninfo["du_gen"];
-		$this->case_suffix["masc"]["du"]["dat"] = $masculine_declensioninfo["du_dat"];
-		$this->case_suffix["masc"]["du"]["acc"] = $masculine_declensioninfo["du_acc"];
-		$this->case_suffix["masc"]["du"]["abl"] = $masculine_declensioninfo["du_abl"];
-		$this->case_suffix["masc"]["du"]["ins"] = $masculine_declensioninfo["du_ins"];
-		$this->case_suffix["masc"]["du"]["loc"] = $masculine_declensioninfo["du_loc"];
-		$this->case_suffix["masc"]["du"]["voc"] = $masculine_declensioninfo["du_voc"];
-		$this->case_suffix["masc"]["pl"]["nom"] = $masculine_declensioninfo["pl_nom"];
-		$this->case_suffix["masc"]["pl"]["gen"] = $masculine_declensioninfo["pl_gen"];
-		$this->case_suffix["masc"]["pl"]["dat"] = $masculine_declensioninfo["pl_dat"];
-		$this->case_suffix["masc"]["pl"]["acc"] = $masculine_declensioninfo["pl_acc"];
-		$this->case_suffix["masc"]["pl"]["abl"] = $masculine_declensioninfo["pl_abl"];
-		$this->case_suffix["masc"]["pl"]["ins"] = $masculine_declensioninfo["pl_ins"];
-		$this->case_suffix["masc"]["pl"]["loc"] = $masculine_declensioninfo["pl_loc"];
-		$this->case_suffix["masc"]["pl"]["voc"] = $masculine_declensioninfo["pl_voc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::NOMINATIVE] = $masculine_declensioninfo["sg_nom"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::GENETIVE] = $masculine_declensioninfo["sg_gen"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::DATIVE] = $masculine_declensioninfo["sg_dat"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::ACCUSATIVE] = $masculine_declensioninfo["sg_acc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::ABLATIVE] = $masculine_declensioninfo["sg_abl"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::INSTRUMENTAL] = $masculine_declensioninfo["sg_ins"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $masculine_declensioninfo["sg_loc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::VOCATIVE] = $masculine_declensioninfo["sg_voc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::NOMINATIVE] = $masculine_declensioninfo["du_nom"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::GENETIVE] = $masculine_declensioninfo["du_gen"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::DATIVE] = $masculine_declensioninfo["du_dat"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::ACCUSATIVE] = $masculine_declensioninfo["du_acc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::ABLATIVE] = $masculine_declensioninfo["du_abl"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::INSTRUMENTAL] = $masculine_declensioninfo["du_ins"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::LOCATIVE] = $masculine_declensioninfo["du_loc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::DUAL][Commons::VOCATIVE] = $masculine_declensioninfo["du_voc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::NOMINATIVE] = $masculine_declensioninfo["pl_nom"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::GENETIVE] = $masculine_declensioninfo["pl_gen"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::DATIVE] = $masculine_declensioninfo["pl_dat"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::ACCUSATIVE] = $masculine_declensioninfo["pl_acc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $masculine_declensioninfo["pl_abl"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $masculine_declensioninfo["pl_ins"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $masculine_declensioninfo["pl_loc"];
+		$this->case_suffix[Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::VOCATIVE] = $masculine_declensioninfo["pl_voc"];
 
 		// 活用表を挿入(女性)
-		$this->case_suffix["fem"]["sg"]["nom"] = $feminine_declensioninfo["sg_nom"];
-		$this->case_suffix["fem"]["sg"]["gen"] = $feminine_declensioninfo["sg_gen"];
-		$this->case_suffix["fem"]["sg"]["dat"] = $feminine_declensioninfo["sg_dat"];
-		$this->case_suffix["fem"]["sg"]["acc"] = $feminine_declensioninfo["sg_acc"];
-		$this->case_suffix["fem"]["sg"]["abl"] = $feminine_declensioninfo["sg_abl"];
-		$this->case_suffix["fem"]["sg"]["ins"] = $feminine_declensioninfo["sg_ins"];
-		$this->case_suffix["fem"]["sg"]["loc"] = $feminine_declensioninfo["sg_loc"];
-		$this->case_suffix["fem"]["sg"]["voc"] = $feminine_declensioninfo["sg_voc"];
-		$this->case_suffix["fem"]["du"]["nom"] = $feminine_declensioninfo["du_nom"];
-		$this->case_suffix["fem"]["du"]["gen"] = $feminine_declensioninfo["du_gen"];
-		$this->case_suffix["fem"]["du"]["dat"] = $feminine_declensioninfo["du_dat"];
-		$this->case_suffix["fem"]["du"]["acc"] = $feminine_declensioninfo["du_acc"];
-		$this->case_suffix["fem"]["du"]["abl"] = $feminine_declensioninfo["du_abl"];
-		$this->case_suffix["fem"]["du"]["ins"] = $feminine_declensioninfo["du_ins"];
-		$this->case_suffix["fem"]["du"]["loc"] = $feminine_declensioninfo["du_loc"];
-		$this->case_suffix["fem"]["du"]["voc"] = $feminine_declensioninfo["du_voc"];
-		$this->case_suffix["fem"]["pl"]["nom"] = $feminine_declensioninfo["pl_nom"];
-		$this->case_suffix["fem"]["pl"]["gen"] = $feminine_declensioninfo["pl_gen"];
-		$this->case_suffix["fem"]["pl"]["dat"] = $feminine_declensioninfo["pl_dat"];
-		$this->case_suffix["fem"]["pl"]["acc"] = $feminine_declensioninfo["pl_acc"];
-		$this->case_suffix["fem"]["pl"]["abl"] = $feminine_declensioninfo["pl_abl"];
-		$this->case_suffix["fem"]["pl"]["ins"] = $feminine_declensioninfo["pl_ins"];
-		$this->case_suffix["fem"]["pl"]["loc"] = $feminine_declensioninfo["pl_loc"];
-		$this->case_suffix["fem"]["pl"]["voc"] = $feminine_declensioninfo["pl_voc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::NOMINATIVE] = $feminine_declensioninfo["sg_nom"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::GENETIVE] = $feminine_declensioninfo["sg_gen"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::DATIVE] = $feminine_declensioninfo["sg_dat"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::ACCUSATIVE] = $feminine_declensioninfo["sg_acc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::ABLATIVE] = $feminine_declensioninfo["sg_abl"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::INSTRUMENTAL] = $feminine_declensioninfo["sg_ins"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $feminine_declensioninfo["sg_loc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::VOCATIVE] = $feminine_declensioninfo["sg_voc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::NOMINATIVE] = $feminine_declensioninfo["du_nom"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::GENETIVE] = $feminine_declensioninfo["du_gen"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::DATIVE] = $feminine_declensioninfo["du_dat"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::ACCUSATIVE] = $feminine_declensioninfo["du_acc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::ABLATIVE] = $feminine_declensioninfo["du_abl"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::INSTRUMENTAL] = $feminine_declensioninfo["du_ins"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::LOCATIVE] = $feminine_declensioninfo["du_loc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::DUAL][Commons::VOCATIVE] = $feminine_declensioninfo["du_voc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::NOMINATIVE] = $feminine_declensioninfo["pl_nom"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::GENETIVE] = $feminine_declensioninfo["pl_gen"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::DATIVE] = $feminine_declensioninfo["pl_dat"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::ACCUSATIVE] = $feminine_declensioninfo["pl_acc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $feminine_declensioninfo["pl_abl"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $feminine_declensioninfo["pl_ins"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $feminine_declensioninfo["pl_loc"];
+		$this->case_suffix[Commons::FEMINE_GENDER][Commons::PLURAL][Commons::VOCATIVE] = $feminine_declensioninfo["pl_voc"];
 		
 		// 活用表を挿入(中性)
-		$this->case_suffix["neu"]["sg"]["nom"] = $neuter_declensioninfo["sg_nom"];
-		$this->case_suffix["neu"]["sg"]["gen"] = $neuter_declensioninfo["sg_gen"];
-		$this->case_suffix["neu"]["sg"]["dat"] = $neuter_declensioninfo["sg_dat"];
-		$this->case_suffix["neu"]["sg"]["acc"] = $neuter_declensioninfo["sg_acc"];
-		$this->case_suffix["neu"]["sg"]["abl"] = $neuter_declensioninfo["sg_abl"];
-		$this->case_suffix["neu"]["sg"]["ins"] = $neuter_declensioninfo["sg_ins"];
-		$this->case_suffix["neu"]["sg"]["loc"] = $neuter_declensioninfo["sg_loc"];
-		$this->case_suffix["neu"]["sg"]["voc"] = $neuter_declensioninfo["sg_voc"];
-		$this->case_suffix["neu"]["du"]["nom"] = $neuter_declensioninfo["du_nom"];
-		$this->case_suffix["neu"]["du"]["gen"] = $neuter_declensioninfo["du_gen"];
-		$this->case_suffix["neu"]["du"]["dat"] = $neuter_declensioninfo["du_dat"];
-		$this->case_suffix["neu"]["du"]["acc"] = $neuter_declensioninfo["du_acc"];
-		$this->case_suffix["neu"]["du"]["abl"] = $neuter_declensioninfo["du_abl"];
-		$this->case_suffix["neu"]["du"]["ins"] = $neuter_declensioninfo["du_ins"];
-		$this->case_suffix["neu"]["du"]["loc"] = $neuter_declensioninfo["du_loc"];
-		$this->case_suffix["neu"]["du"]["voc"] = $neuter_declensioninfo["du_voc"];
-		$this->case_suffix["neu"]["pl"]["nom"] = $neuter_declensioninfo["pl_nom"];
-		$this->case_suffix["neu"]["pl"]["gen"] = $neuter_declensioninfo["pl_gen"];
-		$this->case_suffix["neu"]["pl"]["dat"] = $neuter_declensioninfo["pl_dat"];
-		$this->case_suffix["neu"]["pl"]["acc"] = $neuter_declensioninfo["pl_acc"];
-		$this->case_suffix["neu"]["pl"]["abl"] = $neuter_declensioninfo["pl_abl"];
-		$this->case_suffix["neu"]["pl"]["ins"] = $neuter_declensioninfo["pl_ins"];
-		$this->case_suffix["neu"]["pl"]["loc"] = $neuter_declensioninfo["pl_loc"];
-		$this->case_suffix["neu"]["pl"]["voc"] = $neuter_declensioninfo["pl_voc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::NOMINATIVE] = $neuter_declensioninfo["sg_nom"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::GENETIVE] = $neuter_declensioninfo["sg_gen"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::DATIVE] = $neuter_declensioninfo["sg_dat"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::ACCUSATIVE] = $neuter_declensioninfo["sg_acc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::ABLATIVE] = $neuter_declensioninfo["sg_abl"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::INSTRUMENTAL] = $neuter_declensioninfo["sg_ins"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $neuter_declensioninfo["sg_loc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::VOCATIVE] = $neuter_declensioninfo["sg_voc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::NOMINATIVE] = $neuter_declensioninfo["du_nom"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::GENETIVE] = $neuter_declensioninfo["du_gen"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::DATIVE] = $neuter_declensioninfo["du_dat"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::ACCUSATIVE] = $neuter_declensioninfo["du_acc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::ABLATIVE] = $neuter_declensioninfo["du_abl"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::INSTRUMENTAL] = $neuter_declensioninfo["du_ins"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::LOCATIVE] = $neuter_declensioninfo["du_loc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::DUAL][Commons::VOCATIVE] = $neuter_declensioninfo["du_voc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::NOMINATIVE] = $neuter_declensioninfo["pl_nom"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::GENETIVE] = $neuter_declensioninfo["pl_gen"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::DATIVE] = $neuter_declensioninfo["pl_dat"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::ACCUSATIVE] = $neuter_declensioninfo["pl_acc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $neuter_declensioninfo["pl_abl"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $neuter_declensioninfo["pl_ins"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $neuter_declensioninfo["pl_loc"];
+		$this->case_suffix[Commons::NEUTER_GENDER][Commons::PLURAL][Commons::VOCATIVE] = $neuter_declensioninfo["pl_voc"];
     }
 
 	// 形容詞の格変化を取得する。
@@ -4018,7 +4018,7 @@ class Koine_Adjective extends Adjective_Common_IE {
     // 形容詞情報を取得
     private function set_adj_data($adjective){
     	// 名詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, Sanskrit_Common::$DB_ADJECTIVE, false);
+		$word_info = $this->get_adjective_from_DB($adjective, Koine_Common::DB_ADJECTIVE, false);
 		// データがある場合は
 		if($word_info){
 			// データを挿入

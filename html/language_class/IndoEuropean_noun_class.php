@@ -3997,7 +3997,7 @@ class Koine_Noun extends Noun_Common_IE {
     // 名詞情報を取得
     private function set_data($noun){
     	// 名詞情報を取得
-		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::$DB_NOUN, false);
+		$word_info = $this->get_noun_from_DB($noun, Koine_Common::DB_NOUN, false);
 		// データがある場合は
 		if($word_info){
 			// データを挿入

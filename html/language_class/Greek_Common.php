@@ -617,7 +617,7 @@ class Koine_Common extends Common_IE{
 		// 読み込み
 		$verb_data = new koine_Verb($koine_verb["dictionary_stem"]);
 		// 活用表生成、配列に格納
-		//$conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+		$conjugations[$verb_data->get_dic_stem()] = $verb_data->get_chart();
 		// メモリを解放
 		unset($verb_data);
 		// 結果を返す。	  
