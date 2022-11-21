@@ -1081,7 +1081,7 @@ class Koine_Common extends Common_IE{
 	// アルファベット判定をする。
 	public static function is_alphabet_or_not($word){
 		// アルファベットの場合はtrue
-		if(ctype_alnum($word) || preg_match('(ā|ī|ū|ē|ō)',$word)){
+		if(ctype_alnum($word) || preg_match('(α|β|γ|δ|ε|ζ|η|θ|ι|κ|λ|μ|ν|ξ|ο|π|ρ|σ|τ|υ|φ|χ|ψ|ω)',$word)){
 			return true;		
 		}
 
@@ -1094,15 +1094,30 @@ class Koine_Common extends Common_IE{
 
 		return '      
 		<div class="d-grid gap-2 d-md-block">
-        	<button class="btn btn-primary" type="button" id="button-a" value="ą">ą</button>
-        	<button class="btn btn-primary" type="button" id="button-c" value="ć">ć</button>			
-        	<button class="btn btn-primary" type="button" id="button-e" value="ę">ę</button>
-        	<button class="btn btn-primary" type="button" id="button-l" value="ł">ł</button>
-        	<button class="btn btn-primary" type="button" id="button-n" value="ń">ń</button>
-        	<button class="btn btn-primary" type="button" id="button-o" value="ó">ó</button>
-        	<button class="btn btn-primary" type="button" id="button-s" value="ś">ś</button> 
-        	<button class="btn btn-primary" type="button" id="button-z1" value="ź">ź</button> 
-        	<button class="btn btn-primary" type="button" id="button-z2" value="ż">ż</button> 			
+        	<button class="btn btn-primary" type="button" id="button-a" value="α">α</button>
+        	<button class="btn btn-primary" type="button" id="button-b" value="β">β</button>
+        	<button class="btn btn-primary" type="button" id="button-g" value="γ">γ</button>			
+        	<button class="btn btn-primary" type="button" id="button-d" value="δ">δ</button>
+        	<button class="btn btn-primary" type="button" id="button-e" value="ε">ε</button>
+        	<button class="btn btn-primary" type="button" id="button-z" value="ζ">ζ</button>
+        	<button class="btn btn-primary" type="button" id="button-ee" value="η">η</button>
+			<button class="btn btn-primary" type="button" id="button-th" value="θ">θ</button>
+        	<button class="btn btn-primary" type="button" id="button-i" value="ι">ι</button>
+        	<button class="btn btn-primary" type="button" id="button-k" value="κ">κ</button>	
+        	<button class="btn btn-primary" type="button" id="button-l" value="λ">λ</button>	
+        	<button class="btn btn-primary" type="button" id="button-m" value="μ">μ</button>	
+        	<button class="btn btn-primary" type="button" id="button-n" value="ν">ν</button>	
+        	<button class="btn btn-primary" type="button" id="button-ks" value="ξ">ξ</button>	
+        	<button class="btn btn-primary" type="button" id="button-o" value="ο">ο</button>	
+        	<button class="btn btn-primary" type="button" id="button-p" value="π">π</button>	
+        	<button class="btn btn-primary" type="button" id="button-r" value="ρ">ρ</button>	
+        	<button class="btn btn-primary" type="button" id="button-s" value="σ">σ</button>	
+        	<button class="btn btn-primary" type="button" id="button-t" value="τ">τ</button>	
+        	<button class="btn btn-primary" type="button" id="button-y" value="υ">υ</button>	
+        	<button class="btn btn-primary" type="button" id="button-ph" value="φ">φ</button>	
+        	<button class="btn btn-primary" type="button" id="button-kh" value="χ">χ</button>	
+        	<button class="btn btn-primary" type="button" id="button-ps" value="ψ">ψ</button>	
+        	<button class="btn btn-primary" type="button" id="button-oo" value="ω">ω</button>	
       	</div> ';
 	}
 
@@ -1282,23 +1297,15 @@ class Koine_Common extends Common_IE{
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb1">第一変化</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb1">o変化動詞</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb2" autocomplete="off" value="2">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb2">第二変化</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb2">nemi変化動詞</label>
           </div>       
           <div class="col-md-3">
-            <input type="radio" name="verb-type" class="btn-check" id="btn-verb3a" autocomplete="off" value="3a">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb3a">第三変化i型</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="verb-type" class="btn-check" id="btn-verb3" autocomplete="off" value="3">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb3">第三変化</label>
-          </div>
-          <div class="col-md-3">
-            <input type="radio" name="verb-type" class="btn-check" id="btn-verb4" autocomplete="off" value="4">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb4">第四変化</label>
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb3a" autocomplete="off" value="3">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb3a">numi変化動詞</label>
           </div>		  
           <div class="col-md-3">
             <input type="radio" name="verb-type" class="btn-check" id="btn-all-conjugation" autocomplete="off" value="" checked="checked">

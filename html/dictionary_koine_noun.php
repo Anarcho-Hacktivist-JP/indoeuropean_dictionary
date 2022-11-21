@@ -176,11 +176,7 @@ if($input_noun != ""){
             output_table_data();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.PolishBotton('#input_noun'); 
-          // オブジェクト呼び出し
-          var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
-          // 実行
-          cyber_punish_kacap.attack_start();
+          Input_Botton.GreekBotton('#input_noun'); 
         }
     </script>    
   </body>

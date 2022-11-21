@@ -52,7 +52,7 @@ $question_data = $polish_verb->get_conjugation_form_by_each_condition($person, $
       <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
       <script>
         var storage = new FormStorage('.js-form-storage',{
-          name: 'form-storage-lat-verb',
+          name: 'form-storage-pol-verb',
           checkbox: '.js-persist'
         });
       </script>       

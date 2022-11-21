@@ -189,6 +189,155 @@ class Input_Botton {
         });
     }
 
+    // ギリシア語のボタン
+    static GreekBotton(inputId){
+        // ボタン入力
+        $('#button-a').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-b').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-g').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        }); 
+        $('#button-d').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-e').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-z').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-ee').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-th').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        }); 
+        $('#button-i').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-k').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-l').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-m').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-n').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-ks').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-o').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-p').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-r').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-s').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-t').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-y').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-ph').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-kh').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-ps').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+        $('#button-oo').click( function(){
+            // カーソル位置
+            var selIdx = $(inputId).get(0).selectionStart;
+            // 挿入
+            Input_Botton.add_chara($(this).val(), selIdx, inputId);
+        });
+    }
+
     // 入力ボックスに文字の挿入
     static add_chara(str, selIdx, inputId)
     {

