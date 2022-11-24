@@ -3335,7 +3335,7 @@ class Polish_Noun extends Noun_Common_IE{
 			}
 
 			// 男性名詞の場合は
-			if($this->gender == "Masculine"){
+			if($this->gender == self::PIE_ANIMATE){
 				// 名詞の分類で活用を分ける。	
 				if($noun_genre == "animate"){
 					// 生物
@@ -3876,6 +3876,9 @@ class Koine_Noun extends Noun_Common_IE {
 		],
 	];
     
+	// 副詞種別
+	protected const adverb_suffix = "θι";
+
     /*=====================================
     コンストラクタ
     ======================================*/
@@ -4032,7 +4035,7 @@ class Koine_Noun extends Noun_Common_IE {
 			$this->gender = "Masculine";						// 名詞区分
 			$this->noun_type = 2;								// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
-		} else if(preg_match('/(ος)$/',$noun)){		
+		} else if(preg_match('/(οσ)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
 			$this->gender = "Masculine";						// 名詞区分
 			$this->noun_type = 2;								// 名詞種別
@@ -4041,7 +4044,7 @@ class Koine_Noun extends Noun_Common_IE {
 			// 名詞の種別で性別・活用が決定する。		
 			$this->gender = "Neuter";							// 名詞区分
 			$this->noun_type = 2;								// 名詞種別
-			$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(υ)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
 			$this->gender = "Masculine";						// 名詞区分
@@ -4151,12 +4154,12 @@ class Koine_Noun extends Noun_Common_IE {
 		$word_chart[Commons::SINGULAR][Commons::INSTRUMENTAL] = $this->second_stem."δον";
 		$word_chart[Commons::SINGULAR][Commons::ABLATIVE] = $this->second_stem."θεν";
 		$word_chart[Commons::SINGULAR][Commons::LOCATIVE] = $this->second_stem."θι";
-		$word_chart[Commons::DUAL][Commons::INSTRUMENTAL] = $this->second_stem."φι";
-		$word_chart[Commons::DUAL][Commons::ABLATIVE] = $this->second_stem."φι";
-		$word_chart[Commons::DUAL][Commons::LOCATIVE] = $this->second_stem."φι";
-		$word_chart[Commons::PLURAL][Commons::INSTRUMENTAL] = $this->second_stem."φι";
-		$word_chart[Commons::PLURAL][Commons::ABLATIVE] = $this->second_stem."φι";
-		$word_chart[Commons::PLURAL][Commons::LOCATIVE] = $this->second_stem."φι";
+		$word_chart[Commons::DUAL][Commons::INSTRUMENTAL] = $this->second_stem.self::adverb_suffix;
+		$word_chart[Commons::DUAL][Commons::ABLATIVE] = $this->second_stem.self::adverb_suffix;
+		$word_chart[Commons::DUAL][Commons::LOCATIVE] = $this->second_stem.self::adverb_suffix;
+		$word_chart[Commons::PLURAL][Commons::INSTRUMENTAL] = $this->second_stem.self::adverb_suffix;
+		$word_chart[Commons::PLURAL][Commons::ABLATIVE] = $this->second_stem.self::adverb_suffix;
+		$word_chart[Commons::PLURAL][Commons::LOCATIVE] = $this->second_stem.self::adverb_suffix;
 
 		// 結果を返す。
 		return $word_chart;

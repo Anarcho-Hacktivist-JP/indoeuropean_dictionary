@@ -3796,6 +3796,9 @@ class Koine_Adjective extends Adjective_Common_IE {
 	// 比較級種別
 	protected $comp_type = "";
 
+	// 副詞種別
+	protected const adverb_suffix = "θι";
+
     /*=====================================
     コンストラクタ
     ======================================*/
@@ -4046,7 +4049,7 @@ class Koine_Adjective extends Adjective_Common_IE {
 				// 形容詞の種別で性別・活用が決定する。		
 				$this->adjective_type = "1-2";								// 名詞種別
 				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
-			} else if(preg_match('/(ος)$/',$adjective)){		
+			} else if(preg_match('/(οσ)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。		
 				$this->adjective_type = "1-2";								// 名詞種別
 				$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
@@ -4161,7 +4164,7 @@ class Koine_Adjective extends Adjective_Common_IE {
 		// 格語尾を取得
 		$case_suffix = $this->comparative_case_suffix[$gender][$number][$case];
 		// 形容詞と結合		
-		$adjective = Sanskrit_Common::sandhi_engine($this->comparative_third_stem, $case_suffix, true, true);
+		$adjective = $this->comparative_second_stem.$case_suffix;
 		// 結果を返す
 		return $adjective;
 	}
@@ -4171,7 +4174,7 @@ class Koine_Adjective extends Adjective_Common_IE {
 		// 格語尾を取得
 		$case_suffix = $this->superlative_case_suffix[$gender][$number][$case];
 		// 形容詞と結合
-		$adjective = Sanskrit_Common::sandhi_engine($this->superlative_third_stem, $case_suffix, true, true);	
+		$adjective = $this->superlative_second_stem.$case_suffix;	
 		// 結果を返す
 		return $adjective;
 	}
@@ -4197,7 +4200,7 @@ class Koine_Adjective extends Adjective_Common_IE {
 
 			// 名詞クラスごとに語幹を取得
 			$masc_stem = $this->get_second_stem($grade);
-			$fem_stem = Sanskrit_Common::sandhi_engine($masc_stem, $this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::NOMINATIVE]);
+			$fem_stem = $masc_stem.$this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::NOMINATIVE];
 
 			// 副詞(拡張格)
 			$word_chart[$grade]["adverb"] = $masc_stem."ως";
@@ -4205,28 +4208,37 @@ class Koine_Adjective extends Adjective_Common_IE {
 			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["allative2"] = $masc_stem."σε";
 			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::INSTRUMENTAL] = $masc_stem."δον";
 			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::ABLATIVE] = $masc_stem."θεν";		
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $masc_stem."θι";		
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $masc_stem."φι";
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $masc_stem."φι";
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $masc_stem."φι";
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $masc_stem."θι";
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::DUAL][Commons::INSTRUMENTAL] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::DUAL][Commons::ABLATIVE] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::DUAL][Commons::LOCATIVE] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $masc_stem.self::adverb_suffix;
 
 			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["allative"] = $fem_stem."δε";
 			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["allative2"] = $fem_stem."σε";
 			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::INSTRUMENTAL] = $fem_stem."δον";
 			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::ABLATIVE] = $fem_stem."θεν";		
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $fem_stem."θι";		
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $fem_stem."φι";
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $fem_stem."φι";
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $fem_stem."φι";
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $fem_stem."θι";
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::DUAL][Commons::INSTRUMENTAL] = $fem_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::DUAL][Commons::ABLATIVE] = $fem_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::DUAL][Commons::LOCATIVE] = $fem_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $fem_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $fem_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $fem_stem.self::adverb_suffix;
 	
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR]["allative"] = $masc_stem."δε";
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR]["allative2"] = $masc_stem."σε";
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::INSTRUMENTAL] = $masc_stem."δον";
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::ABLATIVE] = $masc_stem."θεν";		
-			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $masc_stem."θι";		
-			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $masc_stem."φι";
-			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $masc_stem."φι";
-			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $masc_stem."φι";
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR][Commons::LOCATIVE] = $masc_stem."θι";
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::DUAL][Commons::INSTRUMENTAL] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::DUAL][Commons::ABLATIVE] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::DUAL][Commons::LOCATIVE] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::PLURAL][Commons::ABLATIVE] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::PLURAL][Commons::INSTRUMENTAL] = $masc_stem.self::adverb_suffix;
+			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::PLURAL][Commons::LOCATIVE] = $masc_stem.self::adverb_suffix;
 
 		}	
 		// 結果を返す。

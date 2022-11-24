@@ -1044,22 +1044,26 @@ class Koine_Common extends Common_IE{
 
 		// タイトルを入れて表を返す。
 		return '
-			<thead>
-				<tr>
-				<th class="text-center" scope="row" style="width:10%">'.$title.'</th>
-				<th class="text-center" scope="col" colspan="3" style="width:45%">単数</th>
-				<th class="text-center" scope="col" colspan="3" style="width:45%">複数</th>
-				</tr>
-				<tr>
-				<th class="text-center" scope="row" style="width:10%">格</th>
-				<th class="text-center" scope="col" style="width:15%">男性</th>
-				<th class="text-center" scope="col" style="width:15%">女性</th>
-				<th class="text-center" scope="col" style="width:15%">中性</th>
-				<th class="text-center" scope="col" style="width:15%">男性</th>
-				<th class="text-center" scope="col" style="width:15%">女性</th>
-				<th class="text-center" scope="col" style="width:15%">中性</th>
-				</tr>
-	  		</thead>';
+        <thead>
+          <tr>
+            <th class="text-center" scope="row" style="width:19%">'.$title.'</th>
+            <th class="text-center" scope="col" colspan="3" style="width:27%">単数</th>
+            <th class="text-center" scope="col" colspan="3" style="width:27%">双数</th>            
+            <th class="text-center" scope="col" colspan="3" style="width:27%">複数</th>
+          </tr>
+          <tr>
+            <th class="text-center" scope="row" style="width:19%">格</th>
+            <th class="text-center" scope="col" style="width:9%">男性</th>
+            <th class="text-center" scope="col" style="width:9%">女性</th>
+            <th class="text-center" scope="col" style="width:9%">中性</th>
+            <th class="text-center" scope="col" style="width:9%">男性</th>
+            <th class="text-center" scope="col" style="width:9%">女性</th>
+            <th class="text-center" scope="col" style="width:9%">中性</th>            
+            <th class="text-center" scope="col" style="width:9%">男性</th>
+            <th class="text-center" scope="col" style="width:9%">女性</th>
+            <th class="text-center" scope="col" style="width:9%">中性</th>
+          </tr>
+        </thead>';
 	}
 
 	// 形容詞の活用表を作る。
@@ -1067,14 +1071,39 @@ class Koine_Common extends Common_IE{
 
 		// 表を返す。
 		return '
-			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>			
-			<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row" colspan="10">原級</th></tr>		
+		<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">出格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center" scope="row">出格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center" scope="row" colspan="10">比較級</th></tr>
+		<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">出格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center" scope="row">出格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center" scope="row" colspan="10">最上級</th></tr>
+		<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><th class="text-center" scope="row">出格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center" scope="row">出格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
 			';
 	}	
 
