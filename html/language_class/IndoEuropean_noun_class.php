@@ -3515,7 +3515,7 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_voc" => "αι"
 		],
 		[
-			"noun_type" => "1a",
+			"noun_type" => "1as",
 			"noun_type_name" => "as-変化名詞",			
 			"gender" => "Masculine",
 			"sg_nom" => "ᾱς",
@@ -3555,7 +3555,7 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_voc" => "αί"
 		],
 		[
-			"noun_type" => "1e",
+			"noun_type" => "1es",
 			"noun_type_name" => "ēs-変化名詞",			
 			"gender" => "Masculine",
 			"sg_nom" => "ής",
@@ -3595,7 +3595,7 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_voc" => "οι"
 		],
 		[
-			"noun_type" => "2",
+			"noun_type" => "2on",
 			"noun_type_name" => "on-変化名詞",			
 			"gender" => "Neuter",
 			"sg_nom" => "ον",
@@ -3815,6 +3815,46 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_voc" => "ῖς"
 		],
 		[
+			"noun_type" => "o-long",
+			"noun_type_name" => "ō-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "ώ",
+			"sg_gen" => "οῦς",
+			"sg_dat" => "οῖ",
+			"sg_acc" => "ώ",
+			"sg_voc" => "οῖ",
+			"du_nom" => "ωε",
+			"du_gen" => "ωοιν",
+			"du_dat" => "ωοιν",
+			"du_acc" => "ωε",
+			"du_voc" => "ωε",
+			"pl_nom" => "ωες",
+			"pl_gen" => "ωων",
+			"pl_dat" => "ωσι",
+			"pl_acc" => "ωας",
+			"pl_voc" => "ωες"
+		],
+		[
+			"noun_type" => "os-long",
+			"noun_type_name" => "ō-変化名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "ως",
+			"sg_gen" => "ωος",
+			"sg_dat" => "ωι",
+			"sg_acc" => "ωα",
+			"sg_voc" => "ως",
+			"du_nom" => "ωε",
+			"du_gen" => "ωοιν",
+			"du_dat" => "ωοιν",
+			"du_acc" => "ωε",
+			"du_voc" => "ωε",
+			"pl_nom" => "ωες",
+			"pl_gen" => "ωων",
+			"pl_dat" => "ωσι",
+			"pl_acc" => "ωας",
+			"pl_voc" => "ωες"
+		],
+		[
 			"noun_type" => "3r",
 			"noun_type_name" => "r-変化名詞",
 			"gender" => "Feminine/Masculine",
@@ -3877,7 +3917,7 @@ class Koine_Noun extends Noun_Common_IE {
 	];
     
 	// 副詞種別
-	protected const adverb_suffix = "θι";
+	protected const adverb_suffix = "φῐ";
 
     /*=====================================
     コンストラクタ
@@ -4030,21 +4070,41 @@ class Koine_Noun extends Noun_Common_IE {
 			$this->gender = "Feminine";    						// 名詞区分
 			$this->noun_type = "1a";           					// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+		} else if(preg_match('/(ή|η)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。		
+			$this->gender = "Feminine";									// 名詞区分
+			$this->noun_type = "1e";									// 名詞種別
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
+		} else if(preg_match('/(ασ|ας|ᾱσ|ᾱς)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。		
+			$this->gender = "Masculine";								// 名詞区分
+			$this->noun_type = "1as";									// 名詞種別
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
+		} else if(preg_match('/(ή|η)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。		
+			$this->gender = "Feminine";									// 名詞区分
+			$this->noun_type = "1e";									// 名詞種別
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
+		} else if(preg_match('/(ήσ|ής|ησ|ης)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。		
+			$this->gender = "Masculine";								// 名詞区分
+			$this->noun_type = "1as";									// 名詞種別
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
+		} else if(preg_match('/(οσ|ος)$/',$noun)){		
+			// 名詞の種別で性別・活用が決定する。		
+			$this->gender = "Masculine";								// 名詞区分
+			$this->noun_type = 2;										// 名詞種別
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(ο)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";						// 名詞区分
-			$this->noun_type = 2;								// 名詞種別
+			$this->gender = "Neuter";									// 名詞区分
+			$this->noun_type = "2on";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
-		} else if(preg_match('/(οσ)$/',$noun)){		
-			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";						// 名詞区分
-			$this->noun_type = 2;								// 名詞種別
-			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(ον)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Neuter";							// 名詞区分
-			$this->noun_type = 2;								// 名詞種別
-			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
+			$this->gender = "Neuter";									// 名詞区分
+			$this->noun_type = "2on";									// 名詞種別
+			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹		
 		} else if(preg_match('/(υ)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
 			$this->gender = "Masculine";						// 名詞区分

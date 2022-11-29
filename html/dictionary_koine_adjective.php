@@ -18,6 +18,8 @@ function get_adjective_declension_chart($word){
     // 英語で取得する。
     $adjective_words = Koine_Common::get_dictionary_stem_by_english($word, Koine_Common::DB_ADJECTIVE);  
     if(!$adjective_words){
+      // ラテン文字をギリシア文字に変換する。
+      $word = Commons::latin_to_greek($word, false);
       // 取得できない場合は
       if(!$adjective_words && !Koine_Common::is_alphabet_or_not($word)){
         // 空を返す。

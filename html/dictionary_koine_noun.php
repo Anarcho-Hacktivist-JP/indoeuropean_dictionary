@@ -11,6 +11,9 @@ include(dirname(__FILE__) . "/language_class/Greek_Common.php");
 
 // 活用表を取得する。
 function get_noun_declension_chart($word){
+
+
+  
 	// 名詞の情報を取得
 	$noun_words = Koine_Common::get_dictionary_stem_by_japanese($word, Koine_Common::DB_NOUN, "");
   // 取得できない場合は
@@ -18,7 +21,9 @@ function get_noun_declension_chart($word){
     // 英語で取得する。
     $noun_words = Koine_Common::get_dictionary_stem_by_english($word, Koine_Common::DB_NOUN);    
     // 取得できない場合は
-    if(!$noun_words){    
+    if(!$noun_words){
+      // ラテン文字をギリシア文字に変換する。
+      $word = Commons::latin_to_greek($word, false);
       // 単語から直接取得する
       $noun_words = Koine_Common::get_wordstem_from_DB($word, Koine_Common::DB_NOUN);
       // 取得できない場合は

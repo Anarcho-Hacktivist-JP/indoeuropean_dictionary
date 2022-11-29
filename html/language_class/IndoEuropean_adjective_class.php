@@ -3592,8 +3592,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "root",
-			"noun_type_name" => "語根形容詞",	
+			"adjective_type" => "root",
+			"adjective_type_name" => "語根形容詞",	
 			"gender" => "Feminine/Masculine",
 			"sg_nom" => "",
 			"sg_gen" => "ος",
@@ -3612,8 +3612,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ες"
 		],
 		[
-			"noun_type" => "root",
-			"noun_type_name" => "語根形容詞",	
+			"adjective_type" => "root",
+			"adjective_type_name" => "語根形容詞",	
 			"gender" => "Neuter",
 			"sg_nom" => "ξ",
 			"sg_gen" => "ος",
@@ -3632,8 +3632,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3t",
-			"noun_type_name" => "t-変化形容詞",
+			"adjective_type" => "3t",
+			"adjective_type_name" => "t-変化形容詞",
 			"gender" => "Feminine/Masculine",
 			"sg_nom" => "ς",
 			"sg_gen" => "ος",
@@ -3652,8 +3652,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3nt",
-			"noun_type_name" => "t-変化形容詞",
+			"adjective_type" => "3nt",
+			"adjective_type_name" => "t-変化形容詞",
 			"gender" => "Feminine/Masculine",
 			"sg_nom" => "ς",
 			"sg_gen" => "ος",
@@ -3672,8 +3672,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3at",
-			"noun_type_name" => "t-変化形容詞",
+			"adjective_type" => "3at",
+			"adjective_type_name" => "t-変化形容詞",
 			"gender" => "Neuter",
 			"sg_nom" => "α",
 			"sg_gen" => "ος",
@@ -3692,8 +3692,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3n",
-			"noun_type_name" => "n-変化形容詞",
+			"adjective_type" => "3n",
+			"adjective_type_name" => "n-変化形容詞",
 			"gender" => "Masculine/Feminine",
 			"sg_nom" => "",
 			"sg_gen" => "ος",
@@ -3712,8 +3712,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ες"
 		],
 		[
-			"noun_type" => "3n",
-			"noun_type_name" => "n-変化形容詞",
+			"adjective_type" => "3n",
+			"adjective_type_name" => "n-変化形容詞",
 			"gender" => "Neuter",
 			"sg_nom" => "",
 			"sg_gen" => "ος",
@@ -3732,8 +3732,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3con",
-			"noun_type_name" => "子音変化形容詞",
+			"adjective_type" => "3con",
+			"adjective_type_name" => "子音変化形容詞",
 			"gender" => "Masculine/Feminine",
 			"sg_nom" => "",
 			"sg_gen" => "ος",
@@ -3752,8 +3752,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ες"
 		],
 		[
-			"noun_type" => "3con",
-			"noun_type_name" => "子音変化形容詞",
+			"adjective_type" => "3con",
+			"adjective_type_name" => "子音変化形容詞",
 			"gender" => "Neuter",
 			"sg_nom" => "",
 			"sg_gen" => "ος",
@@ -3772,8 +3772,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_voc" => "ᾰ"
 		],
 		[
-			"noun_type" => "3r",
-			"noun_type_name" => "r-変化形容詞",
+			"adjective_type" => "3r",
+			"adjective_type_name" => "r-変化形容詞",
 			"gender" => "Feminine/Masculine",
 			"sg_nom" => "",
 			"sg_gen" => "ος",
@@ -3791,13 +3791,53 @@ class Koine_Adjective extends Adjective_Common_IE {
 			"pl_acc" => "ας",
 			"pl_voc" => "ες"
 		],
+		[
+			"adjective_type" => "o-long",
+			"adjective_type_name" => "ō-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "ώ",
+			"sg_gen" => "οῦς",
+			"sg_dat" => "οῖ",
+			"sg_acc" => "ώ",
+			"sg_voc" => "οῖ",
+			"du_nom" => "ωε",
+			"du_gen" => "ωοιν",
+			"du_dat" => "ωοιν",
+			"du_acc" => "ωε",
+			"du_voc" => "ωε",
+			"pl_nom" => "ωες",
+			"pl_gen" => "ωων",
+			"pl_dat" => "ωσι",
+			"pl_acc" => "ωας",
+			"pl_voc" => "ωες"
+		],
+		[
+			"adjective_type" => "os-long",
+			"adjective_type_name" => "ō-変化名詞",
+			"gender" => "Masculine/Neuter",
+			"sg_nom" => "ως",
+			"sg_gen" => "ωος",
+			"sg_dat" => "ωι",
+			"sg_acc" => "ωα",
+			"sg_voc" => "ως",
+			"du_nom" => "ωε",
+			"du_gen" => "ωοιν",
+			"du_dat" => "ωοιν",
+			"du_acc" => "ωε",
+			"du_voc" => "ωε",
+			"pl_nom" => "ωες",
+			"pl_gen" => "ωων",
+			"pl_dat" => "ωσι",
+			"pl_acc" => "ωας",
+			"pl_voc" => "ωες"
+		],
 	];
 
 	// 比較級種別
 	protected $comp_type = "";
 
 	// 副詞種別
-	protected const adverb_suffix = "θι";
+	protected const adverb_suffix = "φῐ";
 
     /*=====================================
     コンストラクタ
@@ -3896,6 +3936,8 @@ class Koine_Adjective extends Adjective_Common_IE {
 			$adjective_type = "1-2";
 		} else if($grade == Commons::ADJ_GRADE_SUPERATIVE){
 			$adjective_type = "1-2";
+		} else {
+			$adjective_type = "1-2";		
 		}
 		// 曲用を取得
 		$masculine_declension = $this->get_adjective_case_suffix($adjective_type, "Masculine");
@@ -4045,18 +4087,22 @@ class Koine_Adjective extends Adjective_Common_IE {
 				// 形容詞の種別で性別・活用が決定する。		
 				$this->adjective_type = "1-2";           					// 形容詞種別
 				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+			} else if(preg_match('/(ή|η)$/',$adjective)){
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->adjective_type = "1-2";           					// 形容詞種別
+				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+			} else if(preg_match('/(ήσ|ής|ησ|ης|οσ|ος)$/',$adjective)){		
+				// 形容詞の種別で性別・活用が決定する。		
+				$this->adjective_type = "1-2";								// 名詞種別
+				$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 			} else if(preg_match('/(ο)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。		
 				$this->adjective_type = "1-2";								// 名詞種別
 				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
-			} else if(preg_match('/(οσ)$/',$adjective)){		
-				// 形容詞の種別で性別・活用が決定する。		
-				$this->adjective_type = "1-2";								// 名詞種別
-				$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 			} else if(preg_match('/(ον)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。		
 				$this->adjective_type = "1-2";								// 名詞種別
-				$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
+				$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 			} else if(preg_match('/(υ)$/',$adjective)){		
 				// 形容詞の種別で性別・活用が決定する。		
 				$this->adjective_type = 4;								// 名詞種別
@@ -4126,13 +4172,13 @@ class Koine_Adjective extends Adjective_Common_IE {
 		//曲用語尾を取得(単数の複数の有無をチェック)
 		if($number == Commons::SINGULAR && $this->deponent_singular != Commons::$TRUE){
 			// 単数
-			$case_suffix = $this->case_suffix[$number][$case];
+			$case_suffix = $this->case_suffix[$gender][$number][$case];
 		} else if($number == Commons::DUAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
 			// 双数
-			$case_suffix = $this->case_suffix[$number][$case];			
+			$case_suffix = $this->case_suffix[$gender][$number][$case];			
 		} else if($number == Commons::PLURAL && ($this->deponent_plural != Commons::$TRUE || $this->location_name != Commons::$TRUE)){
 			// 複数
-			$case_suffix = $this->case_suffix[$number][$case];
+			$case_suffix = $this->case_suffix[$gender][$number][$case];
 		} else {
 			// ハイフンを返す。
 			return "-";

@@ -135,6 +135,72 @@ class Commons {
 		return false;
 	}
 
+	// ギリシア文字に変換
+	public static function latin_to_greek($sentence, $flag){
+
+		// 古代文字フラグがONの場合は
+		if($flag){
+			// 古代文字
+			$sentence = preg_replace("w", "Ϝ", $sentence);
+			$sentence = preg_replace("st", "Ϛ", $sentence);
+			$sentence = preg_replace("h", "Ͱ", $sentence);
+			$sentence = preg_replace("kw", "ϙ", $sentence);
+			$sentence = preg_replace("q", "ϙ", $sentence);
+			$sentence = preg_replace("ss", "ϡ", $sentence);	
+			$sentence = preg_replace("sh", "ϸ", $sentence);		
+		}
+
+		// 気音対応
+		$sentence = preg_replace("/th/u", "θ", $sentence);
+		$sentence = preg_replace("/ph/u", "φ", $sentence);
+		$sentence = preg_replace("/f/u", "φ", $sentence);
+		$sentence = preg_replace("/kh/u", "χ", $sentence);
+		$sentence = preg_replace("/h/u", "χ", $sentence);
+
+
+		// 二重子音
+		$sentence = preg_replace("/ps/u", "ψ", $sentence);
+		$sentence = preg_replace("/ks/u", "ξ", $sentence);
+		$sentence = preg_replace("/x/u", "ξ", $sentence);
+		$sentence = preg_replace("/dz/u", "ζ", $sentence);
+
+		// 二重母音
+		$sentence = preg_replace("/au/u", "αυ", $sentence);
+		$sentence = preg_replace("/eeu/u", "ηυ", $sentence);
+		$sentence = preg_replace("/ēu/u", "ηυ", $sentence);
+		$sentence = preg_replace("/eu/u", "ευ", $sentence);
+		$sentence = preg_replace("/ou/u", "ου", $sentence);
+		$sentence = preg_replace("/ui/u", "υι", $sentence);
+
+		// 長音
+		$sentence = preg_replace("/ee/u", "η", $sentence);
+		$sentence = preg_replace("/ē/u", "η", $sentence);
+		$sentence = preg_replace("/ō/u", "ω", $sentence);
+		$sentence = preg_replace("/oo/u", "ω", $sentence);	
+
+		// その他
+		$sentence = preg_replace("/a/u", "α", $sentence);
+		$sentence = preg_replace("/b/u", "β", $sentence);
+		$sentence = preg_replace("/g/u", "γ", $sentence);
+		$sentence = preg_replace("/d/u", "δ", $sentence);
+		$sentence = preg_replace("/e/u", "ε", $sentence);
+		$sentence = preg_replace("/z/u", "ζ", $sentence);
+		$sentence = preg_replace("/i/u", "ι", $sentence);
+		$sentence = preg_replace("/k/u", "κ", $sentence);
+		$sentence = preg_replace("/l/u", "λ", $sentence);
+		$sentence = preg_replace("/m/u", "μ", $sentence);
+		$sentence = preg_replace("/n/u", "ν", $sentence);
+		$sentence = preg_replace("/p/u", "π", $sentence);
+		$sentence = preg_replace("/r/u", "ρ", $sentence);
+		$sentence = preg_replace("/s$/u", "ς", $sentence);
+		$sentence = preg_replace("/s/u", "σ", $sentence);
+		$sentence = preg_replace("/t/u", "τ", $sentence);
+		$sentence = preg_replace("/y/u", "υ", $sentence);
+
+		// 結果を返す。
+		return $sentence;
+	}
+
 	// 最大文字数制限
 	public static function cut_words($sentence, $length){
 		// 不正コード対策
