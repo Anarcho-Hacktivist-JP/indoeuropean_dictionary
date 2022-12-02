@@ -9096,38 +9096,38 @@ class Koine_Verb extends Verb_Common_IE {
 		}
 		// 分詞を入れる。
 		// 現在分詞・不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->present_participle_active);			// 能動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->present_participle_middle);		// 中受動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->present_infinitive_active;									// 能動不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->present_infinitive_middle;							// 中動不定詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->present_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->present_participle_middle);		// 中受動分詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->present_infinitive_active;									// 能動不定詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->present_infinitive_middle;							// 中動不定詞
 
 		// 始動分詞・不定詞
-		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->inchoative_participle_active);			// 能動分詞
-		$conjugation[Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->inchoative_participle_middle);		// 中受動分詞
-		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["infinitive"] = $this->inchoative_infinitive_active;									// 能動不定詞
-		$conjugation[Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->inchoative_infinitive_middle;								// 中動不定詞
+		$conjugation["participle"][Commons::START_VERB][Commons::ACTIVE_VOICE] = $this->get_participle($this->inchoative_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->inchoative_participle_middle);		// 中受動分詞
+		$conjugation["infinitive"][Commons::START_VERB][Commons::ACTIVE_VOICE] = $this->inchoative_infinitive_active;									// 能動不定詞
+		$conjugation["infinitive"][Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE] = $this->inchoative_infinitive_middle;								// 中動不定詞
 
 		// 完了体分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_active);			// 能動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_middle);			// 中動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_participle_passive);		// 受動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->aorist_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->aorist_infinitive_middle;								// 中動不定詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["infinitive"] = $this->aorist_infinitive_passive;								// 受動不定詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->aorist_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE] = $this->get_participle($this->aorist_participle_middle);			// 中動分詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE] = $this->get_participle($this->aorist_participle_passive);		// 受動分詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE] = $this->aorist_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE] = $this->aorist_infinitive_middle;								// 中動不定詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE] = $this->aorist_infinitive_passive;								// 受動不定詞
 
 		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_participle_active);		// 能動分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->perfect_participle_middle);	// 中受動分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->perfect_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->perfect_infinitive_middle;						// 中動不定詞
+		$conjugation["participle"][Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->perfect_participle_active);		// 能動分詞
+		$conjugation["participle"][Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->perfect_participle_middle);	// 中受動分詞
+		$conjugation["infinitive"][Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE] = $this->perfect_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->perfect_infinitive_middle;						// 中動不定詞
 
 		// 未来分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_participle_active);			// 能動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->future_participle_middle);			// 中動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->future_participle_passive);		// 受動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["infinitive"] = $this->future_infinitive_active;									// 能動不定詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["infinitive"] = $this->future_infinitive_middle;									// 中動不定詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["infinitive"] = $this->future_infinitive_passive;								// 受動不定詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE] = $this->get_participle($this->future_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE] = $this->get_participle($this->future_participle_middle);			// 中動分詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE] = $this->get_participle($this->future_participle_passive);		// 受動分詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE] = $this->future_infinitive_active;									// 能動不定詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE] = $this->future_infinitive_middle;									// 中動不定詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE] = $this->future_infinitive_passive;								// 受動不定詞
 
 
 		// 結果を返す。
@@ -9168,38 +9168,38 @@ class Koine_Verb extends Verb_Common_IE {
 		}
 		// 分詞を入れる。
 		// 現在分詞・不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_active);			// 能動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_present_participle_middle);	// 中受動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_present_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->causative_present_infinitive_middle;							// 中動不定詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->causative_present_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->causative_present_participle_middle);	// 中受動分詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->causative_present_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->causative_present_infinitive_middle;							// 中動不定詞
 
 		// 始動分詞・不定詞
-		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_inchoative_participle_active);			// 能動分詞
-		$conjugation[Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_inchoative_participle_middle);	// 中受動分詞
-		$conjugation[Commons::START_VERB][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_inchoative_infinitive_active;									// 能動不定詞
-		$conjugation[Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->causative_inchoative_infinitive_middle;							// 中動不定詞
+		$conjugation["participle"][Commons::START_VERB][Commons::ACTIVE_VOICE] = $this->get_participle($this->causative_inchoative_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->causative_inchoative_participle_middle);	// 中受動分詞
+		$conjugation["infinitive"][Commons::START_VERB][Commons::ACTIVE_VOICE] = $this->causative_inchoative_infinitive_active;									// 能動不定詞
+		$conjugation["infinitive"][Commons::START_VERB][Commons::MEDIOPASSIVE_VOICE] = $this->causative_inchoative_infinitive_middle;							// 中動不定詞
 
 		// 完了体分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_active);		// 能動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_middle);		// 中動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_aorist_participle_passive);		// 受動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_middle;								// 中動不定詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["infinitive"] = $this->causative_aorist_infinitive_passive;							// 受動不定詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->causative_aorist_participle_active);		// 能動分詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE] = $this->get_participle($this->causative_aorist_participle_middle);		// 中動分詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE] = $this->get_participle($this->causative_aorist_participle_passive);		// 受動分詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE] = $this->causative_aorist_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE] = $this->causative_aorist_infinitive_middle;								// 中動不定詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE] = $this->causative_aorist_infinitive_passive;							// 受動不定詞
 
 		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_perfect_participle_active);			// 能動分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_perfect_participle_middle);	// 中受動分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_perfect_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->causative_perfect_infinitive_middle;							// 中動不定詞
+		$conjugation["participle"][Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->causative_perfect_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->causative_perfect_participle_middle);	// 中受動分詞
+		$conjugation["infinitive"][Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE] = $this->causative_perfect_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->causative_perfect_infinitive_middle;							// 中動不定詞
 
 		// 未来分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_active);		// 能動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_middle);		// 中動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->causative_future_participle_passive);		// 受動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["infinitive"] = $this->causative_future_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["infinitive"] = $this->causative_future_infinitive_middle;								// 中動不定詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["infinitive"] = $this->causative_future_infinitive_passive;								// 受動不定詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE] = $this->get_participle($this->causative_future_participle_active);		// 能動分詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE] = $this->get_participle($this->causative_future_participle_middle);		// 中動分詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE] = $this->get_participle($this->causative_future_participle_passive);		// 受動分詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE] = $this->causative_future_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE] = $this->causative_future_infinitive_middle;								// 中動不定詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE] = $this->causative_future_infinitive_passive;								// 受動不定詞
 
 		// 結果を返す。
 		return $conjugation;
@@ -9239,38 +9239,38 @@ class Koine_Verb extends Verb_Common_IE {
 		}
 		// 分詞を入れる。
 		// 現在分詞・不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->intensive_present_participle_active);				// 能動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->intensive_present_participle_middle);		// 中受動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->intensive_present_infinitive_active;									// 能動不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->intensive_present_infinitive_middle;								// 中動不定詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->intensive_present_participle_active);				// 能動分詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->intensive_present_participle_middle);		// 中受動分詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->intensive_present_infinitive_active;									// 能動不定詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->intensive_present_infinitive_middle;								// 中動不定詞
 
 		// 始動分詞・不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->intensive_inchoative_participle_active);			// 能動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->intensive_inchoative_participle_middle);	// 中受動分詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->intensive_inchoative_infinitive_active;									// 能動不定詞
-		$conjugation[Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->intensive_inchoative_infinitive_middle;							// 中動不定詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->intensive_inchoative_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->intensive_inchoative_participle_middle);	// 中受動分詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::ACTIVE_VOICE] = $this->intensive_inchoative_infinitive_active;									// 能動不定詞
+		$conjugation["infinitive"][Commons::PRESENT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->intensive_inchoative_infinitive_middle;							// 中動不定詞
 
 		// 完了体分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->intensive_aorist_participle_active);		// 能動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->intensive_aorist_participle_middle);		// 中動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->intensive_aorist_participle_passive);		// 受動分詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->intensive_aorist_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["infinitive"] = $this->intensive_aorist_infinitive_middle;								// 中動不定詞
-		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["infinitive"] = $this->intensive_aorist_infinitive_passive;							// 受動不定詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->intensive_aorist_participle_active);		// 能動分詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE] = $this->get_participle($this->intensive_aorist_participle_middle);		// 中動分詞
+		$conjugation["participle"][Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE] = $this->get_participle($this->intensive_aorist_participle_passive);		// 受動分詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE] = $this->intensive_aorist_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE] = $this->intensive_aorist_infinitive_middle;								// 中動不定詞
+		$conjugation["infinitive"][Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE] = $this->intensive_aorist_infinitive_passive;							// 受動不定詞
 
 		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->intensive_perfect_participle_active);			// 能動分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->intensive_perfect_participle_middle);	// 中受動分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["infinitive"] = $this->intensive_perfect_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["infinitive"] = $this->intensive_perfect_infinitive_middle;							// 中動不定詞
+		$conjugation["participle"][Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE] = $this->get_participle($this->intensive_perfect_participle_active);			// 能動分詞
+		$conjugation["participle"][Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->get_participle($this->intensive_perfect_participle_middle);	// 中受動分詞
+		$conjugation["infinitive"][Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE] = $this->intensive_perfect_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE] = $this->intensive_perfect_infinitive_middle;							// 中動不定詞
 
 		// 未来分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->intensive_future_participle_active);		// 能動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->intensive_future_participle_middle);		// 中動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->intensive_future_participle_passive);		// 受動分詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["infinitive"] = $this->intensive_future_infinitive_active;								// 能動不定詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["infinitive"] = $this->intensive_future_infinitive_middle;								// 中動不定詞
-		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["infinitive"] = $this->intensive_future_infinitive_passive;								// 受動不定詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE] = $this->get_participle($this->intensive_future_participle_active);		// 能動分詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE] = $this->get_participle($this->intensive_future_participle_middle);		// 中動分詞
+		$conjugation["participle"][Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE] = $this->get_participle($this->intensive_future_participle_passive);		// 受動分詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE] = $this->intensive_future_infinitive_active;								// 能動不定詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE] = $this->intensive_future_infinitive_middle;								// 中動不定詞
+		$conjugation["infinitive"][Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE] = $this->intensive_future_infinitive_passive;								// 受動不定詞
 
 		// 結果を返す。
 		return $conjugation;
