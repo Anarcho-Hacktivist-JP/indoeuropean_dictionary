@@ -878,6 +878,7 @@ class Polish_Common extends Common_IE{
 		$word = preg_replace("/di$/", "dzi", $word);
 		$word = preg_replace("/ti$/", "ci", $word);
 		$word = preg_replace("/ri$/", "rzy", $word);
+		$word = preg_replace("/chi$/", "chy", $word);
 
 		$word = preg_replace("/be$/", "bie", $word);
 		$word = preg_replace("/pe$/", "pie", $word);	
@@ -889,7 +890,9 @@ class Polish_Common extends Common_IE{
 		$word = preg_replace("/de$/", "dzie", $word);
 		$word = preg_replace("/ke$/", "ce", $word);
 		$word = preg_replace("/kem$/", "kiem", $word);		
-		$word = preg_replace("/ge$/", "dzie", $word);
+		$word = preg_replace("/ge$/", "dze", $word);
+		$word = preg_replace("/gie$/", "dze", $word);
+		$word = preg_replace("/che$/", "sze", $word);
 
 		$word = preg_replace("/ry$/", "rzy", $word);
 		$word = preg_replace("/dy$/", "dzy", $word);

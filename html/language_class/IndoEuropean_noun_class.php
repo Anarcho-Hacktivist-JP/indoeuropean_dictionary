@@ -2629,6 +2629,32 @@ class Polish_Noun extends Noun_Common_IE{
 			"pl_voc" => "y"
 		],
 		[
+			"noun_type" => "1k",
+			"noun_type_name" => "a-変化名詞",
+			"gender" => "Feminine/Masculine-Animate/Masculine-Inanimate",
+			"sg_nom" => "a",
+			"sg_gen" => "i",
+			"sg_dat" => "e",
+			"sg_acc" => "ę",
+			"sg_ins" => "ą",
+			"sg_loc" => "e",
+			"sg_voc" => "o",
+			"du_nom" => "e",
+			"du_gen" => "u",
+			"du_dat" => "ama",
+			"du_acc" => "e",
+			"du_ins" => "ama",
+			"du_loc" => "u",
+			"du_voc" => "e",
+			"pl_nom" => "i",
+			"pl_gen" => "",
+			"pl_dat" => "om",
+			"pl_acc" => "i",
+			"pl_ins" => "ami",
+			"pl_loc" => "ach",
+			"pl_voc" => "i"
+		],
+		[
 			"noun_type" => "1i",
 			"noun_type_name" => "ia-変化名詞",
 			"gender" => "Feminine",
@@ -3290,7 +3316,10 @@ class Polish_Noun extends Noun_Common_IE{
 			$this->english_translation = "loanword";
 			
 			// 文字列の最後で判断
-			if(preg_match("/a$/", $noun)){				
+			if(preg_match("/(k|g|ch)a$/", $noun)){						
+				$this->gender = self::PIE_ACTION;    				// 性別
+				$this->noun_type = "1k";           					// 名詞種別
+			} else if(preg_match("/a$/", $noun)){				
 				$this->gender = self::PIE_ACTION;					// 性別
 				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更						
 				$this->noun_type = 1;								// 名詞種別
@@ -3311,7 +3340,7 @@ class Polish_Noun extends Noun_Common_IE{
 				$this->gender = self::PIE_ANIMATE;    					// 性別
 				$this->noun_type = 2;           					// 名詞種別
 			} else if(preg_match("/(k|g|ch)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    					// 性別
+				$this->gender = self::PIE_ANIMATE;    				// 性別
 				$this->noun_type = "2k";           					// 名詞種別
 			} else if(preg_match("/(o)$/", $noun)){						
 				$this->gender = "Neuter";    						// 性別

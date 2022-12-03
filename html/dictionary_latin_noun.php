@@ -27,7 +27,7 @@ function get_noun_declension_chart($word){
         $noun_words[] = $word;
       }    
     }
-  } else if(!Latin_Common::is_alphabet_or_not($word)){
+  } else if(!$noun_words && !Latin_Common::is_alphabet_or_not($word)){
     // 空を返す。
     return array();   
   }

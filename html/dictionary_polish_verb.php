@@ -57,7 +57,6 @@ function get_verb_conjugation_chart($word){
 
 // 名詞から活用表を取得する。
 function get_conjugation_by_noun($word){
-
 	// 名詞の語幹を取得
 	$polish_verbs = Polish_Common::get_polish_denomitive_verb($word, Polish_Common::DB_NOUN);
   // 名詞の情報が取得できない場合は
@@ -130,7 +129,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>印欧語活用辞典：ラテン語辞書</title>
+    <title>印欧語活用辞典：ポーランド語辞書</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
@@ -620,9 +619,9 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
           // ボタンにイベントを設定
           Input_Botton.PolishBotton('#input_verb'); 
           // オブジェクト呼び出し
-          var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
+          //var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
           // 実行
-          cyber_punish_kacap.attack_start();
+          //cyber_punish_kacap.attack_start();
         }
 
     </script>

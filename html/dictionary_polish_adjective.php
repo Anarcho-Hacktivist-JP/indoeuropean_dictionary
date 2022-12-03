@@ -107,7 +107,7 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>印欧語活用辞典：梵語辞書</title>
+    <title>印欧語活用辞典：ポーランド辞書</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
@@ -263,9 +263,9 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
           // ボタンにイベントを設定
           Input_Botton.PolishBotton('#input_adjective'); 
           // オブジェクト呼び出し
-          var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
+          //var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
           // 実行
-          cyber_punish_kacap.attack_start();
+          //cyber_punish_kacap.attack_start();
         }
     </script>
   <footer class="">
