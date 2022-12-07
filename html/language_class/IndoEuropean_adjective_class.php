@@ -1562,10 +1562,10 @@ class Latin_Adjective extends Adjective_Common_IE {
 			$adjective = $this->third_stem;		
 		} else {
 			// それ以外は単数の主格と呼格は弱語幹
-			if($this->gender == Commons::MASCULINE_GENDER && Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
+			if($gender == Commons::MASCULINE_GENDER && $number == Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
 				// ここで結果を返す。
 				return $this->first_stem;					
-			} else if($case == Commons::ACCUSATIVE && $this->gender == Commons::NEUTER_GENDER && $number == Commons::SINGULAR){
+			} else if($gender == Commons::NEUTER_GENDER && $number == Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::ACCUSATIVE || $case == Commons::VOCATIVE)){
 				// 中性の単数対格は主格と同じ
 				// ここで結果を返す。
 				return $this->first_stem;
