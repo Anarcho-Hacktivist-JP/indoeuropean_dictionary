@@ -291,6 +291,9 @@ h5 {
   background-color:#ffead5;
   padding: 10px;
 }
+.table-archaic {
+  color: grey !important;
+}
   /* ----------- iPad mini ----------- */
 
 /* Portrait and Landscape */

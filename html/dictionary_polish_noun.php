@@ -63,7 +63,8 @@ if($input_noun != ""){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
@@ -81,22 +82,22 @@ if($input_noun != ""){
         </select>
       </form>
       <?php echo Polish_Common::input_special_button(); ?>     
-      <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
+      <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="noun-table" style="overflow: auto;">
         <thead>
-          <tr><th scope="row" style="width:10%">格</th>
-          <th scope="col" style="width:30%">単数</th>
-          <th scope="col" style="width:30%">双数</th>
-          <th scope="col" style="width:30%">複数</th>
+          <tr><th scope="row" class="text-center" sstyle="width:10%">格</th>
+          <th scope="col" class="text-center" style="width:30%">単数</th>
+          <th scope="col" class="table-archaic text-center" style="width:30%">双数</th>
+          <th scope="col" class="text-center" style="width:30%">複数</th>
         </tr>
       </thead>
         <tbody>
-          <tr><th scope="row">主格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">属格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">与格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">対格</th><td></td><td></td><td></td></tr>
-          <tr><th scope="row">具格</th><td></td><td></td><td></td></tr>          
-          <tr><th scope="row">地格</th><td></td><td></td><td></td></tr>          
-          <tr><th scope="row">呼格</th><td></td><td></td><td></td></tr>                 
+          <tr><th class="text-center" scope="row">主格</th><td></td><td class="table-archaic"></td><td></td></tr>
+          <tr><th class="text-center" scope="row">属格</th><td></td><td class="table-archaic"></td><td></td></tr>
+          <tr><th class="text-center" scope="row">与格</th><td></td><td class="table-archaic"></td><td></td></tr>
+          <tr><th class="text-center" scope="row">対格</th><td></td><td class="table-archaic"></td><td></td></tr>
+          <tr><th class="text-center" scope="row">具格</th><td></td><td class="table-archaic"></td><td></td></tr>          
+          <tr><th class="text-center" scope="row">地格</th><td></td><td class="table-archaic"></td><td></td></tr>          
+          <tr><th class="text-center" scope="row">呼格</th><td></td><td class="table-archaic"></td><td></td></tr>                 
         </tbody>
       </table>
     </div>

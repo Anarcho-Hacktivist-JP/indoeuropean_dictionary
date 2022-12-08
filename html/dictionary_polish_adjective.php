@@ -109,6 +109,7 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド辞書</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
@@ -126,7 +127,7 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
         </select>
       </form>
       <?php echo Polish_Common::input_special_button(); ?>     
-      <table class="table table-success table-bordered table-striped table-hover" id="adjective-table">
+      <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="adjective-table" style="overflow: auto;">
         <?php echo Polish_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>
           <?php echo Polish_Common::make_adjective_chart(); ?>     
@@ -230,11 +231,11 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
               return true;
             } else if(adjective_decl_data[i - 2][0] == ""){
               if(i == 2){
-                rows[i].cells[0].innerText = "原級 " + $('#adjective-selection').val();
+                //rows[i].cells[0].innerText = "原級 " + $('#adjective-selection').val();
               } else if(i == 20){
-                rows[i].cells[0].innerText = "比較級 " + $('#adjective-selection').val();
+                //rows[i].cells[0].innerText = "比較級 " + $('#adjective-selection').val();
               } else if(i == 38){
-                rows[i].cells[0].innerText = "最上級 " + $('#adjective-selection').val();
+                //rows[i].cells[0].innerText = "最上級 " + $('#adjective-selection').val();
               }
               // 説明行も除外
               return true;

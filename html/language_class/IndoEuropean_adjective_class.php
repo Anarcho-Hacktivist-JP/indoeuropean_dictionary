@@ -3192,7 +3192,23 @@ class Polish_Adjective extends Adjective_Common_IE {
 				break;				
 			default:
 				// 通常処理の場合
-				if(preg_match('/[^aiueoąę][^aiueoąę]$/', $stem) && !preg_match('/kk$/', $stem)){
+				if(preg_match('/sk$/', $stem)) {
+					$stem = preg_replace("/sk$/", "ż", $stem);
+					$this->comparative_first_stem = $stem."szy";		// 比較級弱語幹
+					$this->comparative_third_stem = $stem."sz";			// 比較級強語幹
+				} else if(preg_match('/k$/', $stem) && !preg_match('/kk$/', $stem)) {
+					// ki形容詞
+					$this->comparative_first_stem = mb_substr($stem, 0, -1)."szy";		// 比較級弱語幹
+					$this->comparative_third_stem = mb_substr($stem, 0, -1)."sz";		// 比較級強語幹
+				} else if(preg_match('/n$/', $stem)) {
+					// ny形容詞
+					$this->comparative_first_stem = mb_substr($stem, 0, -1)."iejszy";		// 比較級弱語幹
+					$this->comparative_third_stem = mb_substr($stem, 0, -1)."iejsz";		// 比較級強語幹
+				} else if(preg_match('/ow$/', $stem)) {
+					// owy形容詞
+					$this->comparative_first_stem = "bardziej ".$stem."y";	// 比較級弱語幹
+					$this->comparative_third_stem = "bardziej ".$stem;		// 比較級強語幹
+				} else if(preg_match('/[^aiueoąę][^aiueoąę]$/', $stem) && !preg_match('/kk$/', $stem)){
 					$stem = preg_replace("/ł$/", "l", $stem);
 					$stem = preg_replace("/st$/", "ści", $stem);					
 					$stem = preg_replace("/w$/", "wi", $stem);

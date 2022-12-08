@@ -563,22 +563,22 @@ class Polish_Common extends Common_IE{
 		return '
         <thead>
           <tr>
-            <th scope="row" style="width:19%">'.$title.'</th>
-            <th scope="col" colspan="3" style="width:27%">単数</th>
-            <th scope="col" colspan="3" style="width:27%">双数</th>            
-            <th scope="col" colspan="3" style="width:27%">複数</th>
+            <th scope="row" class="text-center" sstyle="width:19%">'.$title.'</th>
+            <th scope="col" class="text-center" colspan="3" style="width:27%">単数</th>
+            <th scope="col" class="table-archaic text-center" colspan="3" style="width:27%">双数</th>            
+            <th scope="col" class="text-center" colspan="3" style="width:27%">複数</th>
           </tr>
           <tr>
-            <th scope="row" style="width:19%">格</th>
-            <th scope="col" style="width:9%">男性</th>
-            <th scope="col" style="width:9%">女性</th>
-            <th scope="col" style="width:9%">中性</th>
-            <th scope="col" style="width:9%">男性</th>
-            <th scope="col" style="width:9%">女性</th>
-            <th scope="col" style="width:9%">中性</th>            
-            <th scope="col" style="width:9%">男性</th>
-            <th scope="col" style="width:9%">女性</th>
-            <th scope="col" style="width:9%">中性</th>
+            <th scope="row" class="text-center" sstyle="width:19%">格</th>
+            <th scope="col" class="text-center" style="width:9%">男性</th>
+            <th scope="col" class="text-center" style="width:9%">女性</th>
+            <th scope="col" class="text-center" style="width:9%">中性</th>
+            <th scope="col" class="table-archaic text-center" style="width:9%">男性</th>
+            <th scope="col" class="table-archaic text-center" style="width:9%">女性</th>
+            <th scope="col" class="table-archaic text-center" style="width:9%">中性</th>            
+            <th scope="col" class="text-center" style="width:9%">男性</th>
+            <th scope="col" class="text-center" style="width:9%">女性</th>
+            <th scope="col" class="text-center" style="width:9%">中性</th>
           </tr>
         </thead>';
 	}
@@ -589,30 +589,30 @@ class Polish_Common extends Common_IE{
 		// 表を返す。
 		// 表を返す。
 		return '
-			<tr><th scope="row" colspan="10">原級</th></tr>		
-			<tr><th scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row" colspan="10">比較級</th></tr>
-			<tr><th scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row" colspan="10">最上級</th></tr>
-			<tr><th scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>								
+			<tr><th class="text-center" scope="row" colspan="10">原級</th></tr>		
+			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row" colspan="10">比較級</th></tr>
+			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row" colspan="10">最上級</th></tr>
+			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>								
 			';
 	}	
 

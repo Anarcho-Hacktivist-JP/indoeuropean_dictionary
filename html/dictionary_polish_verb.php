@@ -130,7 +130,8 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> 
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
@@ -151,115 +152,115 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       <?php echo Polish_Common::input_special_button(); ?>     
       <details>
         <summary>動詞の活用</summary>      
-        <table class="table-bordered" id="conjugation-table" style="overflow: auto;">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="conjugation-table" style="overflow: auto;">
         <thead>
           <tr>
-            <th scope="row" style="width:10%">態</th>
-            <th scope="col" style="width:45%">能動</th>
-            <th scope="col" style="width:45%">中動</th>               
+            <th class="text-center" scope="row" style="width:10%">態</th>
+            <th class="text-center" scope="col" style="width:45%">能動</th>
+            <th class="text-center" scope="col" style="width:45%">中動</th>               
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row" colspan="3">現在時制</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">完了形</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">過去完了</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>            
-          <tr><th scope="row" colspan="3">未来時制</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>       
-          <tr><th scope="row" colspan="3">未来完了形</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">仮定法</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr> 
-          <tr><th scope="row" colspan="3">仮定法過去</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">命令法</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">未完了過去</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row" colspan="3">単純過去</th></tr>
-          <tr><th scope="row">1人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称単数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称双数</th><td></td><td></td></tr>
-          <tr><th scope="row">1人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">2人称複数</th><td></td><td></td></tr>
-          <tr><th scope="row">3人称複数</th><td></td><td></td></tr>         
+          <tr><th class="text-center" scope="row" colspan="3">現在時制</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row" colspan="3">完了形</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row" colspan="3">過去完了</th></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>          
+          <tr><th class="text-center" scope="row" colspan="3">未来時制</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr>       
+          <tr><th class="text-center" scope="row" colspan="3">未来完了形</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row" colspan="3">仮定法</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr> 
+          <tr><th class="text-center table-archaic" scope="row" colspan="3">仮定法過去</th></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>  
+          <tr><th class="text-center" scope="row" colspan="3">命令法</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr>
+          <tr><th class="text-center table-archaic" scope="row" colspan="3">未完了過去</th></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>  
+          <tr><th class="text-center table-archaic" scope="row" colspan="3">単純過去</th></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称双数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+          <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>         
         </tbody>
         </table>
       </details><br>
@@ -286,20 +287,20 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
         <table class="table-bordered" id="verbal-noun-table">
           <thead>
             <tr><th scope="row" style="width:10%">格</th>
-            <th scope="col" style="width:30%">単数</th>
-            <th scope="col" style="width:30%">双数</th>
-            <th scope="col" style="width:30%">複数</th>
-          </tr>
-        </thead>
-          <tbody>
-            <tr><th scope="row">主格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">属格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">与格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">対格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">具格</th><td></td><td></td><td></td></tr>          
-            <tr><th scope="row">地格</th><td></td><td></td><td></td></tr>          
-            <tr><th scope="row">呼格</th><td></td><td></td><td></td></tr>                 
-          </tbody>
+              <th scope="col" class="text-center" style="width:30%">単数</th>
+              <th scope="col" class="table-archaic text-center" style="width:30%">双数</th>
+              <th scope="col" class="text-center" style="width:30%">複数</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr><th class="text-center" scope="row">主格</th><td></td><td class="table-archaic"></td><td></td></tr>
+              <tr><th class="text-center" scope="row">属格</th><td></td><td class="table-archaic"></td><td></td></tr>
+              <tr><th class="text-center" scope="row">与格</th><td></td><td class="table-archaic"></td><td></td></tr>
+              <tr><th class="text-center" scope="row">対格</th><td></td><td class="table-archaic"></td><td></td></tr>
+              <tr><th class="text-center" scope="row">具格</th><td></td><td class="table-archaic"></td><td></td></tr>          
+              <tr><th class="text-center" scope="row">地格</th><td></td><td class="table-archaic"></td><td></td></tr>          
+              <tr><th class="text-center" scope="row">呼格</th><td></td><td class="table-archaic"></td><td></td></tr>                 
+            </tbody>
         </table>
       </details><br>  
     </div>
