@@ -60,7 +60,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
       </script>      
       <p><?php echo $question_data['question_sentence']; ?></p>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer">
+        <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" id="button-answer">Button</button>
         </div>       

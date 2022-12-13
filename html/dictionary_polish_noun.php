@@ -73,7 +73,7 @@ if($input_noun != ""){
     <div class="container item table-striped">
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control">
+        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)">
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
@@ -84,7 +84,7 @@ if($input_noun != ""){
       <?php echo Polish_Common::input_special_button(); ?>     
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="noun-table" style="overflow: auto;">
         <thead>
-          <tr><th scope="row" class="text-center" sstyle="width:10%">格</th>
+          <tr><th scope="row" class="text-center" style="width:10%">格</th>
           <th scope="col" class="text-center" style="width:30%">単数</th>
           <th scope="col" class="table-archaic text-center" style="width:30%">双数</th>
           <th scope="col" class="text-center" style="width:30%">複数</th>

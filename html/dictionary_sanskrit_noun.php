@@ -122,7 +122,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
     <div class="container item table-striped">
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control">
+        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・サンスクリット)">
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
