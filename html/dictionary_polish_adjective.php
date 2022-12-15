@@ -116,7 +116,7 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
   <?php require_once("header.php"); ?>
   <body>
     <div class="container item table-striped">   
-      <p>あいまい検索は+</p>
+      <p>あいまい検索は+ ※(薄文字の部分は現在は使わない)<</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" id="input_adjective" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)">
         <input type="submit" class="btn-check" id="btn-search">

@@ -636,7 +636,7 @@ class Polish_Common extends Common_IE{
 	// アルファベット判定をする。
 	public static function is_alphabet_or_not($word){
 		// アルファベットの場合はtrue
-		if(ctype_alnum($word) || preg_match('(ą|ć|ę|ł|ń|ó|ś|ź|ż)',$word)){
+		if(ctype_alnum($word) || (preg_match("/[a-zA-Z]/", $word) || preg_match('(ą|ć|ę|ł|ń|ó|ś|ź|ż)',$word))){
 			return true;		
 		}
 

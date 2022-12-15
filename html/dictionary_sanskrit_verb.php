@@ -21,14 +21,19 @@ function get_conjugation($word){
   if(!$vedic_verbs){
     // アルファベット以外は処理しない。
     if(Sanskrit_Common::is_alphabet_or_not($word)){
-	    // 動詞の情報を語根から取得
-	    $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
+	    // 英語で動詞の情報を取得
+	    $vedic_verbs = Sanskrit_Common::get_verb_by_english($word);
       // 取得できなかった場合は
       if(!$vedic_verbs){
-		    // 活用表生成、配列に格納
-		    $conjugations = array_merge(get_verb_chart($word), $conjugations);
-        // 結果を返す。
-	      return $conjugations;
+        // 動詞の情報を語根から取得
+        $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
+        // 取得できなかった場合は
+        if(!$vedic_verbs){
+          // 活用表生成、配列に格納
+          $conjugations = array_merge(get_verb_chart($word), $conjugations);
+          // 結果を返す。
+          return $conjugations;
+        }
       }
     } else {
       // 空を返す。
@@ -137,18 +142,22 @@ $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
 $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
-if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+
+
+if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
   // 複合語の場合
   $conjugations = get_compound_verb_word($janome_result, $input_verb);
 } else if($input_verb != "" && $janome_result[0][1] == "名詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得
 	$conjugations = get_conjugation_by_noun($input_verb);
+  echo $input_verb;
 } else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
 	$conjugations = get_conjugation_by_adjective($input_verb);  
 } else if($input_verb != ""){
   // 処理を実行
   $conjugations = get_conjugation($input_verb);
+
 }
 
 ?>
@@ -221,40 +230,40 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-infinitive-table">
           <thead>
             <tr>
-              <th scope="row" style="width:12%">不定詞</th>
-              <th scope="col" style="width:11%">語根</th>
-              <th scope="col" style="width:11%">語根dhi(中動)</th>
-              <th scope="col" style="width:11%">語根tu不定詞</th>
-              <th scope="col" style="width:11%">不完了体tu不定詞</th>
-              <th scope="col" style="width:11%">始動動詞tu不定詞</th>
-              <th scope="col" style="width:11%">結果動詞tu不定詞</th>
-              <th scope="col" style="width:11%">語根ti不定詞</th>
-              <th scope="col" style="width:11%">不完了体ti不定詞</th>
-              <th scope="col" style="width:11%">始動動詞ti不定詞</th>
-              <th scope="col" style="width:11%">結果動詞ti不定詞</th>           
-              <th scope="col" style="width:11%">as不定詞</th>
-              <th scope="col" style="width:11%">as完結相</th>           
+              <th scope="row" class="text-center" style="width:12%">不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">語根</th>
+              <th scope="col" class="text-center" style="width:11%">語根dhi(中動)</th>
+              <th scope="col" class="text-center" style="width:11%">語根tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">始動動詞tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">結果動詞tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">語根ti不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体ti不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">始動動詞ti不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">結果動詞ti不定詞</th>           
+              <th scope="col" class="text-center" style="width:11%">as不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">as完結相</th>           
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>          
-            <tr><th scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">出格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格1(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格2(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">共格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">乗法格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">様格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">変格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">時格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">入格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
-            <tr><th scope="row">分配格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
+            <tr><th scope="row" class="text-center">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>          
+            <tr><th scope="row" class="text-center">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">出格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格1(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格2(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">共格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">乗法格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">様格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">変格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">時格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">入格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
+            <tr><th scope="row" class="text-center">分配格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
           </tbody>
         </table>
       </details><br>
@@ -331,36 +340,36 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-infinitive-table">
           <thead>
             <tr>
-              <th scope="row" style="width:12%">使役動詞不定詞</th>
-              <th scope="col" style="width:11%">語根</th>
-              <th scope="col" style="width:11%">語根+dhi(中動)</th>
-              <th scope="col" style="width:11%">語根itu</th>
-              <th scope="col" style="width:11%">不完了体itu不定詞</th>
-              <th scope="col" style="width:11%">語根ti不定詞</th>
-              <th scope="col" style="width:11%">不完了体ti不定詞</th>
-              <th scope="col" style="width:11%">as不定詞</th>
-              <th scope="col" style="width:11%">as完結相</th>                 
+              <th scope="row" class="text-center" style="width:12%">使役動詞不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">語根</th>
+              <th scope="col" class="text-center" style="width:11%">語根+dhi(中動)</th>
+              <th scope="col" class="text-center" style="width:11%">語根itu</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体itu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">語根ti不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体ti不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">as不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">as完結相</th>                 
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>          
-            <tr><th scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">出格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格1(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格2(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">共格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">乗法格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">様格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">変格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">時格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">入格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
-            <tr><th scope="row">分配格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+            <tr><th scope="row" class="text-center">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>          
+            <tr><th scope="row" class="text-center">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">出格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格1(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格2(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">共格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">乗法格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">様格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">変格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">時格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">入格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
+            <tr><th scope="row" class="text-center">分配格(副詞)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
           </tbody>
         </table>
       </details><br>
@@ -427,31 +436,31 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-infinitive-table">
           <thead>
             <tr>
-              <th scope="row" style="width:12%">願望動詞不定詞</th>
-              <th scope="col" style="width:11%">語根tu不定詞</th>
-              <th scope="col" style="width:11%">不完了体tu不定詞</th>
-              <th scope="col" style="width:11%">不完了体ti不定詞</th>            
+              <th scope="row" class="text-center" style="width:12%">願望動詞不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">語根tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体ti不定詞</th>            
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">主格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">属格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">与格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">対格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">奪格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">具格</th><td></td><td></td><td></td></tr>          
-            <tr><th scope="row">地格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">呼格</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">出格(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格1(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格2(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">共格(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">乗法格(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">様格(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">変格(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">時格(副詞)</th><td></td><td></td><td></td></tr>
-            <tr><th scope="row">入格(副詞)</th><td></td><td></td><td></td></tr> 
-            <tr><th scope="row">分配格(副詞)</th><td></td><td></td><td></td></tr>   
+            <tr><th scope="row" class="text-center">主格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">属格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">与格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">対格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">奪格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">具格</th><td></td><td></td><td></td></tr>          
+            <tr><th scope="row" class="text-center">地格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">呼格</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">出格(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格1(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格2(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">共格(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">乗法格(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">様格(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">変格(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">時格(副詞)</th><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">入格(副詞)</th><td></td><td></td><td></td></tr> 
+            <tr><th scope="row" class="text-center">分配格(副詞)</th><td></td><td></td><td></td></tr>   
           </tbody>
         </table>
       </details><br>
@@ -518,32 +527,32 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-infinitive-table">
           <thead>
             <tr>
-              <th scope="row" style="width:12%">強意動詞不定詞</th>
-              <th scope="col" style="width:11%">語根</th>
-              <th scope="col" style="width:11%">語根tu不定詞</th>
-              <th scope="col" style="width:11%">不完了体tu不定詞</th>
-              <th scope="col" style="width:11%">不完了体ti不定詞</th>
+              <th scope="row" class="text-center" style="width:12%">強意動詞不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">語根</th>
+              <th scope="col" class="text-center" style="width:11%">語根tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体tu不定詞</th>
+              <th scope="col" class="text-center" style="width:11%">不完了体ti不定詞</th>
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">主格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">属格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">与格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">対格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">奪格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">具格</th><td></td><td></td><td></td><td></td></tr>          
-            <tr><th scope="row">地格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">呼格</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">出格(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格1(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">内格2(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">共格(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">乗法格(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">様格(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">変格(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">時格(副詞)</th><td></td><td></td><td></td><td></td></tr>
-            <tr><th scope="row">入格(副詞)</th><td></td><td></td><td></td><td></td></tr> 
-            <tr><th scope="row">分配格(副詞)</th><td></td><td></td><td></td><td></td></tr>      
+            <tr><th scope="row" class="text-center">主格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">属格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">与格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">対格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">奪格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">具格</th><td></td><td></td><td></td><td></td></tr>          
+            <tr><th scope="row" class="text-center">地格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">呼格</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">出格(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格1(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">内格2(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">共格(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">乗法格(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">様格(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">変格(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">時格(副詞)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row" class="text-center">入格(副詞)</th><td></td><td></td><td></td><td></td></tr> 
+            <tr><th scope="row" class="text-center">分配格(副詞)</th><td></td><td></td><td></td><td></td></tr>      
           </tbody>
         </table>
       </details><br>

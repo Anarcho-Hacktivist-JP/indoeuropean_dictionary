@@ -141,13 +141,13 @@ class Commons {
 		// 古代文字フラグがONの場合は
 		if($flag){
 			// 古代文字
-			$sentence = preg_replace("w", "Ϝ", $sentence);
-			$sentence = preg_replace("st", "Ϛ", $sentence);
-			$sentence = preg_replace("h", "Ͱ", $sentence);
-			$sentence = preg_replace("kw", "ϙ", $sentence);
-			$sentence = preg_replace("q", "ϙ", $sentence);
-			$sentence = preg_replace("ss", "ϡ", $sentence);	
-			$sentence = preg_replace("sh", "ϸ", $sentence);		
+			$sentence = preg_replace("/w/u", "Ϝ", $sentence);
+			$sentence = preg_replace("/st/u", "Ϛ", $sentence);
+			$sentence = preg_replace("/h/u", "Ͱ", $sentence);
+			$sentence = preg_replace("/kw/u", "ϙ", $sentence);
+			$sentence = preg_replace("/q/u", "ϙ", $sentence);
+			$sentence = preg_replace("/ss/u", "ϡ", $sentence);	
+			$sentence = preg_replace("/sh/u", "ϸ", $sentence);		
 		}
 
 		// 気音対応

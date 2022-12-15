@@ -8183,8 +8183,10 @@ class Koine_Verb extends Verb_Common_IE {
 		"active" => 
 		[
 			"1sg" => "ω",
-			"2sg" => "ς", 
-			"3sg" => "",
+			"2sg" => "ις", 
+			"3sg" => "ι",
+			"2du" => "τον",
+			"3du" => "τον", 
 			"1pl" => "μεν",
 			"2pl" => "τε", 
 			"3pl" => "σιν",			
@@ -8194,6 +8196,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "μαι",
 			"2sg" => "", 
 			"3sg" => "ται",
+			"2du" => "εσθον",
+			"3du" => "εσθον", 
 			"1pl" => "μεθα",
 			"2pl" => "σθε", 
 			"3pl" => "νται",			
@@ -8220,6 +8224,33 @@ class Koine_Verb extends Verb_Common_IE {
 			"1pl" => "μεθα",
 			"2pl" => "σθε", 
 			"3pl" => "ντο",
+		],
+	];
+
+	// 接続法接尾辞
+	protected $subjunctive_number = 
+	[		
+		"active" => 
+		[
+			"1sg" => "",
+			"2sg" => "ς", 
+			"3sg" => "",
+			"2du" => "τον",
+			"3du" => "τον", 
+			"1pl" => "μεν",
+			"2pl" => "τε", 
+			"3pl" => "σιν",			
+		],
+		"mediopassive" => 
+		[
+			"1sg" => "μαι",
+			"2sg" => "", 
+			"3sg" => "ται",
+			"2du" => "εσθον",
+			"3du" => "εσθον", 
+			"1pl" => "μεθα",
+			"2pl" => "σθε", 
+			"3pl" => "νται",			
 		],
 	];
 
@@ -8445,7 +8476,7 @@ class Koine_Verb extends Verb_Common_IE {
 
 
 	// 直接法
-	protected $ind = "ει";
+	protected $ind = "ε";
 	protected $ind2 = "ού";
 
 	// 過去
@@ -8574,6 +8605,8 @@ class Koine_Verb extends Verb_Common_IE {
 			$this->deponent_present = $word_info["deponent_present"];				// 現在
 			$this->deponent_aorist = $word_info["deponent_aorist"];					// アオリスト
 			$this->deponent_perfect = $word_info["deponent_perfect"];				// 完了
+			// 追加語幹
+			$this->add_stem	= $word_info["add_stem"];
 		} else {
 			// データを挿入
 			// 現在相
@@ -8617,45 +8650,45 @@ class Koine_Verb extends Verb_Common_IE {
 			$this->japanese_translation = "借用";					// 日本語
 			$this->english_translation = "borrowed";				// 英語
 			// 欠如フラグ
-			$this->deponent_active = Commons::$TRUE;				// 能動
-			$this->deponent_mediopassive = Commons::$TRUE;			// 中受動
-			$this->deponent_present = Commons::$TRUE;				// 現在
-			$this->deponent_aorist = Commons::$TRUE;				// アオリスト
-			$this->deponent_perfect = Commons::$TRUE;				// 完了
+			$this->deponent_active = Commons::$FALSE;				// 能動
+			$this->deponent_mediopassive = Commons::$FALSE;			// 中受動
+			$this->deponent_present = Commons::$FALSE;				// 現在
+			$this->deponent_aorist = Commons::$FALSE;				// アオリスト
+			$this->deponent_perfect = Commons::$FALSE;				// 完了
 		}
 
 		// 残りの相
-		$this->inchoative_stem = $this->make_inchoative_stem($verb);	// 始動相
-		$this->perfect_stem = $this->make_perfect_stem($verb);			// 完了形
-		$this->future_stem = $this->make_future_stem($verb);			// 未来形
+		$this->inchoative_stem = $this->add_stem.$this->make_inchoative_stem($verb);	// 始動相
+		$this->perfect_stem = $this->add_stem.$this->make_perfect_stem($verb);			// 完了形
+		$this->future_stem = $this->add_stem.$this->make_future_stem($verb);			// 未来形
 
 		// 分詞を作成
-		$this->present_participle_active = $this->present_stem.self::active_participle_suffix;		// 現在能動
-		$this->present_participle_middle = $this->present_stem.self::middle_participle_suffix;		// 現在中受動
-		$this->inchoative_participle_active = $this->present_stem.self::active_participle_suffix;	// 始動能動
-		$this->inchoative_participle_middle = $this->present_stem.self::middle_participle_suffix;	// 始動中受動
-		$this->aorist_participle_active = $this->aorist_stem.self::active_participle_suffix2;		// 完結能動
-		$this->aorist_participle_middle = $this->aorist_stem.self::middle_participle_suffix2;		// 完結中動
-		$this->aorist_participle_passive = $this->aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
-		$this->perfect_participle_active = $this->present_stem.self::active_participle_suffix;		// 完了能動
-		$this->perfect_participle_middle = $this->present_stem.self::middle_participle_suffix;		// 完了中受動
-		$this->future_participle_active = $this->aorist_stem.self::active_participle_suffix;		// 未来能動
-		$this->future_participle_middle = $this->aorist_stem.self::middle_participle_suffix;		// 未来中動
-		$this->future_participle_passive = $this->aorist_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
+		$this->present_participle_active = $this->add_stem.$this->present_stem.self::active_participle_suffix;		// 現在能動
+		$this->present_participle_middle = $this->add_stem.$this->present_stem.self::middle_participle_suffix;		// 現在中受動
+		$this->inchoative_participle_active = $this->add_stem.$this->present_stem.self::active_participle_suffix;	// 始動能動
+		$this->inchoative_participle_middle = $this->add_stem.$this->present_stem.self::middle_participle_suffix;	// 始動中受動
+		$this->aorist_participle_active = $this->add_stem.$this->aorist_stem.self::active_participle_suffix2;		// 完結能動
+		$this->aorist_participle_middle = $this->add_stem.$this->aorist_stem.self::middle_participle_suffix2;		// 完結中動
+		$this->aorist_participle_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
+		$this->perfect_participle_active = $this->add_stem.$this->present_stem.self::active_participle_suffix;		// 完了能動
+		$this->perfect_participle_middle = $this->add_stem.$this->present_stem.self::middle_participle_suffix;		// 完了中受動
+		$this->future_participle_active = $this->add_stem.$this->aorist_stem.self::active_participle_suffix;		// 未来能動
+		$this->future_participle_middle = $this->add_stem.$this->aorist_stem.self::middle_participle_suffix;		// 未来中動
+		$this->future_participle_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
 
 		// 不定詞を作成
-		$this->present_infinitive_active = $this->present_stem.self::active_infinitive_suffix;		// 現在能動
-		$this->present_infinitive_middle = $this->present_stem.self::middle_infinitive_suffix;		// 現在中受動
-		$this->inchoative_infinitive_active = $this->present_stem.self::active_infinitive_suffix;	// 始動能動
-		$this->inchoative_infinitive_middle = $this->present_stem.self::middle_infinitive_suffix;	// 始動中受動
-		$this->aorist_infinitive_active = $this->aorist_stem.self::active_infinitive_suffix2;		// 完結能動
-		$this->aorist_infinitive_middle = $this->aorist_stem.self::middle_infinitive_suffix;		// 完結中動
-		$this->aorist_infinitive_passive = $this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
-		$this->perfect_infinitive_active = $this->present_stem.self::active_infinitive_suffix3;		// 完了能動
-		$this->perfect_infinitive_middle = $this->present_stem.self::middle_infinitive_suffix2;		// 完了中受動
-		$this->future_infinitive_active = $this->aorist_stem.self::active_infinitive_suffix;		// 未来能動
-		$this->future_infinitive_middle = $this->aorist_stem.self::middle_infinitive_suffix;		// 未来中動
-		$this->future_infinitive_passive = $this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
+		$this->present_infinitive_active = $this->add_stem.$this->present_stem.self::active_infinitive_suffix;		// 現在能動
+		$this->present_infinitive_middle = $this->add_stem.$this->present_stem.self::middle_infinitive_suffix;		// 現在中受動
+		$this->inchoative_infinitive_active = $this->add_stem.$this->present_stem.self::active_infinitive_suffix;	// 始動能動
+		$this->inchoative_infinitive_middle = $this->add_stem.$this->present_stem.self::middle_infinitive_suffix;	// 始動中受動
+		$this->aorist_infinitive_active = $this->add_stem.$this->aorist_stem.self::active_infinitive_suffix2;		// 完結能動
+		$this->aorist_infinitive_middle = $this->add_stem.$this->aorist_stem.self::middle_infinitive_suffix;		// 完結中動
+		$this->aorist_infinitive_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
+		$this->perfect_infinitive_active = $this->add_stem.$this->present_stem.self::active_infinitive_suffix3;		// 完了能動
+		$this->perfect_infinitive_middle = $this->add_stem.$this->present_stem.self::middle_infinitive_suffix2;		// 完了中受動
+		$this->future_infinitive_active = $this->add_stem.$this->aorist_stem.self::active_infinitive_suffix;		// 未来能動
+		$this->future_infinitive_middle = $this->add_stem.$this->aorist_stem.self::middle_infinitive_suffix;		// 未来中動
+		$this->future_infinitive_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
     }
 
 	// 始動形を作成
@@ -8862,6 +8895,14 @@ class Koine_Verb extends Verb_Common_IE {
 			// ハイフンを返す。
 			return "-";
 		} 
+
+		// 受動態は専用の接尾辞を追加
+		if($voice == Commons::PASSIVE_VOICE){
+			// 受動態接尾辞
+			$verb_stem = $verb_stem.self::passive_suffix;
+			// 中動態に読み替え
+			$voice = Commons::MEDIOPASSIVE_VOICE;
+		}
 		
 		// 活用作成
 		return $this->make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem);
@@ -8927,17 +8968,16 @@ class Koine_Verb extends Verb_Common_IE {
 	public function make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem){
 		// 直説法
 		// 時制を分ける。
-		if($tense_mood == Commons::PRESENT_TENSE && ($aspect == Commons::PRESENT_ASPECT || $aspect == Commons::FUTURE_TENSE)) {
+		if ($tense_mood == Commons::PRESENT_TENSE && ($aspect == Commons::PRESENT_ASPECT || $aspect == Commons::START_VERB || $aspect == Commons::FUTURE_TENSE)) {
 			// 人称によって分ける
 			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
 				$verb_stem = $verb_stem.$this->ind2;
 			} else {
 				$verb_stem = $verb_stem.$this->ind;
 			}
-
 			// 人称を付ける
 			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
-		} else if($aspect == Commons::PRESENT_ASPECT && $tense_mood == Commons::PAST_TENSE){
+		} else if(($aspect == Commons::PRESENT_TENSE || $aspect == Commons::START_VERB) && $tense_mood == Commons::PAST_TENSE){
 			// 未完了過去
 			// 態によって分ける。
 			if($voice = Commons::ACTIVE_VOICE){
@@ -8957,6 +8997,8 @@ class Koine_Verb extends Verb_Common_IE {
 					$verb_stem = $verb_stem.$this->ind;
 				}
 			}
+			// 人称を付ける
+			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
 		} else if($aspect == Commons::PERFECT_ASPECT && $tense_mood == Commons::PAST_TENSE){
 			// 大過去
 			$verb_stem = $verb_stem.self::perf_past;
@@ -8973,7 +9015,7 @@ class Koine_Verb extends Verb_Common_IE {
 		} else if($tense_mood == Commons::OPTATIVE){
 			// 希求法
 			// 態によって分ける。
-			if($aspect == Commons::AORIST_ASPECT && $voice = Commons::PASSIVE_VOICE){
+			if($aspect == Commons::AORIST_ASPECT && $voice == Commons::PASSIVE_VOICE){
 				// アオリストの受動態の場合
 				if($person == "1sg" || $person == "2sg" || $person == "3sg"){
 					$verb_stem = $verb_stem."ίη";
@@ -8986,7 +9028,7 @@ class Koine_Verb extends Verb_Common_IE {
 			}
 			// 人称を付ける
 			$verb_stem = $this->get_secondary_suffix($verb_stem, $voice, $person);
-		} else if($tense_mood == Commons::SUBJUNCTIVE && !$aspect == Commons::FUTURE_TENSE){
+		} else if($tense_mood == Commons::SUBJUNCTIVE && $aspect != Commons::FUTURE_TENSE){
 			// 接続法
 			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
 				$verb_stem = $verb_stem.$this->subj2;
@@ -8994,8 +9036,8 @@ class Koine_Verb extends Verb_Common_IE {
 				$verb_stem = $verb_stem.$this->subj;
 			}
 			// 人称を付ける
-			$verb_stem = $this->get_primary_suffix($verb_stem, $voice, $person);
-		} else if($tense_mood == Commons::IMPERATIVE && !$aspect == Commons::FUTURE_TENSE){
+			$verb_stem = $this->get_greek_subjunctive_suffix($verb_stem, $voice, $person);
+		} else if($tense_mood == Commons::IMPERATIVE && $aspect != Commons::FUTURE_TENSE){
 			// 命令法
 			$verb_stem = $verb_stem.$this->imper;
 			// 人称を付ける
@@ -9026,6 +9068,23 @@ class Koine_Verb extends Verb_Common_IE {
 
     	// 結果を返す。
     	return $verb_script;
+	}
+
+	// 接続法語尾
+	protected function get_greek_subjunctive_suffix($verb_conjugation, $voice, $person){
+		// 語尾を取得
+		if($voice == Commons::ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
+			// 能動態
+			$verb_conjugation = $verb_conjugation.$this->subjunctive_number[$voice][$person];
+		} else if($voice == Commons::MEDIOPASSIVE_VOICE && $this->deponent_mediopassive != Commons::$TRUE){
+			// 中受動態
+			$verb_conjugation = $verb_conjugation.$this->subjunctive_number[$voice][$person];
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}  
+		// 結果を返す。
+		return $verb_conjugation;
 	}
 
 	// 希求法語尾
@@ -9069,7 +9128,7 @@ class Koine_Verb extends Verb_Common_IE {
 		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::START_VERB, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
-		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");												// 人称
+		$person_array = array("1sg", "2sg", "3sg", "2du", "3du", "1pl", "2pl", "3pl");												// 人称
 
 		// 初期化
 		$conjugation = array();
@@ -9084,7 +9143,10 @@ class Koine_Verb extends Verb_Common_IE {
 						// 態と人称で場合分けする。
 						if($aspect == Commons::AORIST_ASPECT && $tense_mood == Commons::PRESENT_TENSE){
 							// アオリストの現在時制は存在しないため、ハイフンを入れる。
-							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";										
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";			
+						} else if($aspect == Commons::FUTURE_TENSE && ($tense_mood != Commons::PRESENT_TENSE && $tense_mood != Commons::OPTATIVE)){
+							// 現在形・希求法以外のの時制や法は存在しないため、ハイフンを入れる。
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";					
 						} else {
 							// 態・時制・法・人称に応じて多次元配列を作成		
 							$conjugation[$aspect][$voice][$tense_mood][$person] = $this->get_koine_verb($person, $voice, $tense_mood, $aspect);	
@@ -9141,7 +9203,7 @@ class Koine_Verb extends Verb_Common_IE {
 		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::START_VERB, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
-		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");												// 人称
+		$person_array = array("1sg", "2sg", "3sg", "2du", "3du", "1pl", "2pl", "3pl");														// 人称
 
 		// 初期化
 		$conjugation = array();
@@ -9212,7 +9274,7 @@ class Koine_Verb extends Verb_Common_IE {
 		$aspect_array = array(Commons::PRESENT_ASPECT, Commons::START_VERB, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);			// 相
 		$voice_array = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);								// 態
 		$tense_mood_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	//時制と法
-		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");												// 人称
+		$person_array = array("1sg", "2sg", "3sg", "2du", "3du", "1pl", "2pl", "3pl");														// 人称
 
 		// 初期化
 		$conjugation = array();

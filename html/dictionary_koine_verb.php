@@ -16,19 +16,26 @@ function get_conjugation($word){
   // 配列を宣言
 	$conjugations = array();
 	// 動詞の情報を取得
-	$vedic_verbs = Koine_Common::get_verb_by_japanese($word);
+	$koine_verbs = Koine_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
-  if(!$vedic_verbs){
+  if(!$koine_verbs){
     // アルファベット以外は処理しない。
     if(Koine_Common::is_alphabet_or_not($word)){
 	    // 動詞の情報を語根から取得
-	    $vedic_verbs = Koine_Common::get_verb_from_DB($word);
+	    $koine_verbs = Koine_Common::get_verb_by_english($word);
       // 取得できなかった場合は
-      if(!$vedic_verbs){
-		    // 活用表生成、配列に格納
-		    $conjugations = array_merge(get_verb_chart($word), $conjugations);
-        // 結果を返す。
-	      return $conjugations;
+      if(!$koine_verbs){
+        // ラテン文字をギリシア文字に変換する。
+        $word = Commons::latin_to_greek($word, true);
+	      // 動詞の情報を語根から取得
+	      $koine_verbs = Koine_Common::get_verb_from_DB($word);
+        // 取得できなかった場合は
+        if(!$koine_verbs){
+		      // 活用表生成、配列に格納
+		      $conjugations = array_merge(get_verb_chart($word), $conjugations);
+          // 結果を返す。
+	        return $conjugations;
+        }
       }
     } else {
       // 空を返す。
@@ -36,9 +43,9 @@ function get_conjugation($word){
     }
   }
 	// 新しい配列に詰め替え
-	foreach ($vedic_verbs as $vedic_verb) {
+	foreach ($koine_verbs as $koine_verb) {
 	  // 活用表生成、配列に格納
-	  $conjugations = array_merge(get_verb_chart($vedic_verb["dictionary_stem"]), $conjugations);
+	  $conjugations = array_merge(get_verb_chart($koine_verb["dictionary_stem"]), $conjugations);
 	}
 
   // 結果を返す。

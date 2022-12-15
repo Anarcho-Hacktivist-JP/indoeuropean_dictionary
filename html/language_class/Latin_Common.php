@@ -1148,7 +1148,7 @@ class Latin_Common extends Common_IE{
 	// アルファベット判定をする。
 	public static function is_alphabet_or_not($word){
 		// アルファベットの場合はtrue
-		if(ctype_alnum($word) || preg_match('(ā|ī|ū|ē|ō)',$word)){
+		if(ctype_alnum($word) || (preg_match("/[a-zA-Z]/", $word) || preg_match('(ā|ī|ū|ē|ō)',$word))){
 			return true;		
 		}
 
