@@ -453,8 +453,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           
           // 格納データを作成
           var adj_table = [
-            ["", "", "", "", "", "", "", "", "", ""],
-            ["", "", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""],
             [positive_masc_sg["nom"], positive_fem_sg["nom"], positive_neu_sg["nom"], positive_masc_du["nom"], positive_fem_du["nom"], positive_neu_du["nom"], positive_masc_pl["nom"], positive_fem_pl["nom"], positive_neu_pl["nom"]],
             [positive_masc_sg["gen"], positive_fem_sg["gen"], positive_neu_sg["gen"], positive_masc_du["gen"], positive_fem_du["gen"], positive_neu_du["gen"], positive_masc_pl["gen"], positive_fem_pl["gen"], positive_neu_pl["gen"]],
             [positive_masc_sg["dat"], positive_fem_sg["dat"], positive_neu_sg["dat"], positive_masc_du["dat"], positive_fem_du["dat"], positive_neu_du["dat"], positive_masc_pl["dat"], positive_fem_pl["dat"], positive_neu_pl["dat"]],
@@ -463,16 +463,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
             [positive_masc_sg["ins"], positive_fem_sg["ins"], positive_neu_sg["ins"], positive_masc_du["ins"], positive_fem_du["ins"], positive_neu_du["ins"], positive_masc_pl["ins"], positive_fem_pl["ins"], positive_neu_pl["ins"]],            
             [positive_masc_sg["loc"], positive_fem_sg["loc"], positive_neu_sg["loc"], positive_masc_du["loc"], positive_fem_du["loc"], positive_neu_du["loc"], positive_masc_pl["loc"], positive_fem_pl["loc"], positive_neu_pl["loc"]],
             [positive_masc_sg["voc"], positive_fem_sg["voc"], positive_neu_sg["voc"], positive_masc_du["voc"], positive_fem_du["voc"], positive_neu_du["voc"], positive_masc_pl["voc"], positive_fem_pl["voc"], positive_neu_pl["voc"]],
-            [positive_masc_sg["elative"], positive_fem_sg["elative"], positive_neu_sg["elative"], "", "", "", ""],
-            [positive_masc_sg["inessive1"], positive_fem_sg["inessive1"], positive_neu_sg["inessive1"], "", "", "", ""],
-            [positive_masc_sg["inessive2"], positive_fem_sg["inessive2"], positive_neu_sg["inessive2"], "", "", "", ""],  
-            [positive_masc_sg["comitative"], positive_fem_sg["comitative"], positive_neu_sg["comitative"], "", "", "", ""],
-            [positive_masc_sg["multiplicative"], positive_fem_sg["multiplicative"], positive_neu_sg["multiplicative"], "", "", "", ""],
-            [positive_masc_sg["essive"], positive_fem_sg["essive"], positive_neu_sg["essive"], "", "", "", ""], 
-            [positive_masc_sg["translative"], positive_fem_sg["translative"], positive_neu_sg["translative"], "", "", "", ""],
-            [positive_masc_sg["temporal"], positive_fem_sg["temporal"], positive_neu_sg["temporal"], "", "", "", ""],
-            [positive_masc_sg["illative"], positive_fem_sg["illative"], positive_neu_sg["illative"], "", "", "", ""],
-            [positive_masc_sg["distributive"], positive_fem_sg["distributive"], positive_neu_sg["distributive"], "", "", "", ""],
+            [positive_masc_sg["allative"], positive_fem_sg["allative"], positive_neu_sg["allative"], "", "", "", ""],
+            [positive_masc_sg["allative2"], positive_fem_sg["allative2"], positive_neu_sg["allative2"], "", "", "", ""],
             ["", "", "", "", "", "", ""],
             [comp_masc_sg["nom"], comp_fem_sg["nom"], comp_neu_sg["nom"], comp_masc_du["nom"], comp_fem_du["nom"], comp_neu_du["nom"], comp_masc_pl["nom"], comp_fem_pl["nom"], comp_neu_pl["nom"]],
             [comp_masc_sg["gen"], comp_fem_sg["gen"], comp_neu_sg["gen"], comp_masc_du["gen"], comp_fem_du["gen"], comp_neu_du["gen"], comp_masc_pl["gen"], comp_fem_pl["gen"], comp_neu_pl["gen"]],
@@ -482,16 +474,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
             [comp_masc_sg["ins"], comp_fem_sg["ins"], comp_neu_sg["ins"], comp_masc_du["ins"], comp_fem_du["ins"], comp_neu_du["ins"], comp_masc_pl["ins"], comp_fem_pl["ins"], comp_neu_pl["ins"]],
             [comp_masc_sg["loc"], comp_fem_sg["loc"], comp_neu_sg["loc"], comp_masc_du["loc"], comp_fem_du["loc"], comp_neu_du["loc"], comp_masc_pl["loc"], comp_fem_pl["loc"], comp_neu_pl["loc"]],
             [comp_masc_sg["voc"], comp_fem_sg["voc"], comp_neu_sg["voc"], comp_masc_du["voc"], comp_fem_du["voc"], comp_neu_du["voc"], comp_masc_pl["voc"], comp_fem_pl["voc"], comp_neu_pl["voc"]],
-            [comp_masc_sg["elative"], comp_fem_sg["elative"], comp_neu_sg["elative"], "", "", "", ""],
-            [comp_masc_sg["inessive1"], comp_fem_sg["inessive1"], comp_neu_sg["inessive1"], "", "", "", ""],
-            [comp_masc_sg["inessive2"], comp_fem_sg["inessive2"], comp_neu_sg["inessive2"], "", "", "", ""],  
-            [comp_masc_sg["comitative"], comp_fem_sg["comitative"], comp_neu_sg["comitative"], "", "", "", ""],
-            [comp_masc_sg["multiplicative"], comp_fem_sg["multiplicative"], comp_neu_sg["multiplicative"], "", "", "", ""],
-            [comp_masc_sg["essive"], comp_fem_sg["essive"], comp_neu_sg["essive"], "", "", "", ""], 
-            [comp_masc_sg["translative"], comp_fem_sg["translative"], comp_neu_sg["translative"], "", "", "", ""],
-            [comp_masc_sg["temporal"], comp_fem_sg["temporal"], comp_neu_sg["temporal"], "", "", "", ""],
-            [comp_masc_sg["illative"], comp_fem_sg["illative"], comp_neu_sg["illative"], "", "", "", ""],
-            [comp_masc_sg["distributive"], comp_fem_sg["distributive"], comp_neu_sg["distributive"], "", "", "", ""],         
+            [comp_masc_sg["allative"], comp_fem_sg["allative"], comp_neu_sg["allative"], "", "", "", ""],
+            [comp_masc_sg["allative2"], comp_fem_sg["allative2"], comp_neu_sg["allative2"], "", "", "", ""],      
             ["", "", "", "", "", "", ""],
             [super_masc_sg["nom"], super_fem_sg["nom"], super_neu_sg["nom"], super_masc_du["nom"], super_fem_du["nom"], super_neu_du["nom"], super_masc_pl["nom"], super_fem_pl["nom"], super_neu_pl["nom"]],
             [super_masc_sg["gen"], super_fem_sg["gen"], super_neu_sg["gen"], super_masc_du["gen"], super_fem_du["gen"], super_neu_du["gen"], super_masc_pl["gen"], super_fem_pl["gen"], super_neu_pl["gen"]],
@@ -501,51 +485,12 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
             [super_masc_sg["ins"], super_fem_sg["ins"], super_neu_sg["ins"], super_masc_du["ins"], super_fem_du["ins"], super_neu_du["ins"], super_masc_pl["ins"], super_fem_pl["ins"], super_neu_pl["ins"]],            
             [super_masc_sg["loc"], super_fem_sg["loc"], super_neu_sg["loc"], super_masc_du["loc"], super_fem_du["loc"], super_neu_du["loc"], super_masc_pl["loc"], super_fem_pl["loc"], super_neu_pl["loc"]],
             [super_masc_sg["voc"], super_fem_sg["voc"], super_neu_sg["voc"], super_masc_du["voc"], super_fem_du["voc"], super_neu_du["voc"], super_masc_pl["voc"], super_fem_pl["voc"], super_neu_pl["voc"]],
-            [super_masc_sg["elative"], super_fem_sg["elative"], super_neu_sg["elative"], "", "", "", ""],
-            [super_masc_sg["inessive1"], super_fem_sg["inessive1"], super_neu_sg["inessive1"], "", "", "", ""],
-            [super_masc_sg["inessive2"], super_fem_sg["inessive2"], super_neu_sg["inessive2"], "", "", "", ""],  
-            [super_masc_sg["comitative"], super_fem_sg["comitative"], super_neu_sg["comitative"], "", "", "", ""],
-            [super_masc_sg["multiplicative"], super_fem_sg["multiplicative"], super_neu_sg["multiplicative"], "", "", "", ""],
-            [super_masc_sg["essive"], super_fem_sg["essive"], super_neu_sg["essive"], "", "", "", ""], 
-            [super_masc_sg["translative"], super_fem_sg["translative"], super_neu_sg["translative"], "", "", "", ""],
-            [super_masc_sg["temporal"], super_fem_sg["temporal"], super_neu_sg["temporal"], "", "", "", ""],
-            [super_masc_sg["illative"], super_fem_sg["illative"], super_neu_sg["illative"], "", "", "", ""],
-            [super_masc_sg["distributive"], super_fem_sg["distributive"], super_neu_sg["distributive"], "", "", "", ""],    
-          ];        
+            [super_masc_sg["allative"], super_fem_sg["allative"], super_neu_sg["allative"], "", "", "", ""],
+            [super_masc_sg["allative2"], super_fem_sg["allative2"], super_neu_sg["allative2"], "", "", "", ""],                 
+          ];
+
           // 結果を返す。
           return adj_table;
-        }
-
-        // 不定詞をテーブル用に変換にする。
-        function get_infinitive(table_data){
-
-          // 格変化情報を取得
-          var declension_sg = table_data["sg"];  //単数
-          
-          // 格納データを作成
-          var infinitive_table = [
-            [declension_sg["nom"]],
-            [declension_sg["gen"]],
-            [declension_sg["dat"]],
-            [declension_sg["acc"]],
-            [declension_sg["abl"]],
-            [declension_sg["ins"]],            
-            [declension_sg["loc"]],
-            [declension_sg["voc"]],            
-            [declension_sg["elative"]],
-            [declension_sg["inessive1"]],
-            [declension_sg["inessive2"]],  
-            [declension_sg["comitative"]],
-            [declension_sg["multiplicative"]],
-            [declension_sg["essive"]],             
-            [declension_sg["translative"]],
-            [declension_sg["temporal"]],
-            [declension_sg["illative"]],
-            [declension_sg["distributive"]],
-          ];
-          
-          // 結果を返す。
-          return infinitive_table;
         }
 
         // 分詞をテーブルにセット
@@ -588,8 +533,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
               return true;
             }
             // 格変化を挿入
-            for (let j = 0; j < infinitive_table.length; j++) {
-              rows[i].cells[j + 1].innerText = infinitive_table[j][i - 1]; // 単数(1行目)
+            for (let j = 0; j < infinitive_table[i - 1].length; j++) {
+              rows[i].cells[j + 1].innerText = infinitive_table[i - 1][j]; // 単数(1行目)
             }
           });
         }       
@@ -598,16 +543,18 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         function set_participle(json_participle, verb_type, table_id){
 
           // 各分詞を挿入
-          var active_present = json_participle["present"]["active"]["participle"];            //能動態不完了体
-          var middle_present = json_participle["present"]["mediopassive"]["participle"];      //中受動態不完了体
-          var active_aorist = json_participle["aorist"]["active"]["participle"];              //能動態完了体
-          var middle_aorist = json_participle["aorist"]["middle"]["participle"];              //中動態完了体
-          var passive_aorist = json_participle["aorist"]["passive"]["participle"];            //受動態完了体
-          var active_perfect = json_participle["perfect"]["active"]["participle"];            //能動態完了形
-          var middle_perfect = json_participle["perfect"]["mediopassive"]["participle"];      //中受動態完了形
-          var active_future = json_participle["future"]["active"]["participle"];              //能動態未来形
-          var middle_future = json_participle["future"]["middle"]["participle"];              //中動態未来形
-          var passive_future = json_participle["future"]["passive"]["participle"];            //受動態未来形
+          var active_present = json_participle["participle"]["present"]["active"];            //能動態不完了体
+          var middle_present = json_participle["participle"]["present"]["middle"];            //中受動態不完了体
+          var active_inchorative = json_participle["participle"]["inchorative"]["active"];        //能動態始動相
+          var middle_inchorative = json_participle["participle"]["inchorative"]["middle"];        //中受動態始動相
+          var active_aorist = json_participle["participle"]["aorist"]["active"];              //能動態完了体
+          var middle_aorist = json_participle["participle"]["aorist"]["middle"];              //中動態完了体
+          var passive_aorist = json_participle["participle"]["aorist"]["passive"];            //受動態完了体
+          var active_perfect = json_participle["participle"]["perfect"]["active"];            //能動態完了形
+          var middle_perfect = json_participle["participle"]["perfect"]["middle"];            //中受動態完了形
+          var active_future = json_participle["participle"]["future"]["active"];              //能動態未来形
+          var middle_future = json_participle["participle"]["future"]["middle"];              //中動態未来形
+          var passive_future = json_participle["participle"]["future"]["passive"];            //受動態未来形
 
           // 分詞
           var particple_table = [
@@ -616,16 +563,18 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
           ];
 
           // 分詞を配列にして連結する。
-          particple_table = particple_table.concat(get_adjective(active_present));     //能動態不完了体
-          particple_table = particple_table.concat(get_adjective(middle_present));     //中受動態不完了体
-          particple_table = particple_table.concat(get_adjective(active_aorist));      //能動態完了体
-          particple_table = particple_table.concat(get_adjective(middle_aorist));      //中動態完了体
-          particple_table = particple_table.concat(get_adjective(passive_aorist));     //受動態完了体
-          particple_table = particple_table.concat(get_adjective(active_perfect));     //能動態完了形
-          particple_table = particple_table.concat(get_adjective(middle_perfect));     //中受動態完了形
-          particple_table = particple_table.concat(get_adjective(active_future));      //能動態未来形
-          particple_table = particple_table.concat(get_adjective(middle_future));      //中動態未来形
-          particple_table = particple_table.concat(get_adjective(passive_future));     //受動態未来形
+          particple_table = particple_table.concat(get_adjective(active_present));        //能動態不完了体
+          particple_table = particple_table.concat(get_adjective(middle_present));        //中受動態不完了体
+          particple_table = particple_table.concat(get_adjective(active_inchorative));    //能動態始動相
+          particple_table = particple_table.concat(get_adjective(middle_inchorative));    //中受動態始動相    
+          particple_table = particple_table.concat(get_adjective(active_aorist));         //能動態完了体
+          particple_table = particple_table.concat(get_adjective(middle_aorist));         //中動態完了体
+          particple_table = particple_table.concat(get_adjective(passive_aorist));        //受動態完了体
+          particple_table = particple_table.concat(get_adjective(active_perfect));        //能動態完了形
+          particple_table = particple_table.concat(get_adjective(middle_perfect));        //中受動態完了形
+          particple_table = particple_table.concat(get_adjective(active_future));         //能動態未来形
+          particple_table = particple_table.concat(get_adjective(middle_future));         //中動態未来形
+          particple_table = particple_table.concat(get_adjective(passive_future));        //受動態未来形
 
           // テーブルにセットする。
           set_adjective_to_table(table_id, particple_table);
@@ -639,9 +588,9 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
 
           // 格納データを作成
           var infinitive_table = [
-            [json_inifinitive["present_active"], json_inifinitive["present_passive"]],
-            [json_inifinitive["perfect_active"], json_inifinitive["perfect_passive"]],
-            [json_inifinitive["future_active"], json_inifinitive["future_passive"]],
+            [json_infinitive["present"]["active"], json_infinitive["inchorative"]["active"], json_infinitive["aorist"]["active"], json_infinitive["perfect"]["active"], json_infinitive["future"]["active"]],
+            [json_infinitive["present"]["middle"], json_infinitive["inchorative"]["middle"], json_infinitive["aorist"]["middle"], json_infinitive["perfect"]["middle"], json_infinitive["future"]["middle"]],
+            [json_infinitive["present"]["passive"], json_infinitive["inchorative"]["passive"], json_infinitive["aorist"]["passive"], json_infinitive["perfect"]["passive"], json_infinitive["future"]["passive"]],
           ];
 
           // テーブルにセットする。

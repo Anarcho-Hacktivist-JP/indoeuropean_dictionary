@@ -366,7 +366,6 @@ class Koine_Common extends Common_IE{
 		}
 		// SQLを実行
 		$stmt = $db_host->query($query);
-		echo $query;
 		// 連想配列に整形
 		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		// 配列を宣言

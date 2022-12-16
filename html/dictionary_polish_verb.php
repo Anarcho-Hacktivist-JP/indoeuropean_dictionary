@@ -181,7 +181,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
           <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row" colspan="3">過去完了</th></tr>
+          <tr><th class="text-center table-archaic" scope="row" colspan="3">過去完了</th></tr>
           <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
           <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
           <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
@@ -266,7 +266,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       </details><br>
       <details>
         <summary>現在分詞 ※(薄文字の部分は現在は使わない)</summary>      
-        <table class="table-bordered" id="active-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="active-participle-table">
             <?php echo Polish_Common::make_adjective_column_chart("現在分詞"); ?>
           <tbody>
             <?php echo Polish_Common::make_adjective_chart(); ?>
@@ -275,7 +275,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       </details><br>
       <details>
         <summary>受動分詞 ※(薄文字の部分は現在は使わない)</summary>
-        <table class="table-bordered" id="passive-participle-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="passive-participle-table">
           <?php echo Polish_Common::make_adjective_column_chart("完了分詞"); ?>
           <tbody>
             <?php echo Polish_Common::make_adjective_chart(); ?>
@@ -284,7 +284,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       </details><br>
       <details>
         <summary>動名詞 ※(薄文字の部分は現在は使わない)</summary>      
-        <table class="table-bordered" id="verbal-noun-table">
+        <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="verbal-noun-table">
           <thead>
             <tr><th scope="row" style="width:10%">格</th>
               <th scope="col" class="text-center" style="width:30%">単数</th>

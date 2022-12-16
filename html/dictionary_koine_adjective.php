@@ -154,7 +154,7 @@ if($input_adjective != ""){
             [positive_masc_sg["ins"], positive_fem_sg["ins"], positive_neu_sg["ins"], positive_masc_du["ins"], positive_fem_du["ins"], positive_neu_du["ins"], positive_masc_pl["ins"], positive_fem_pl["ins"], positive_neu_pl["ins"]],            
             [positive_masc_sg["loc"], positive_fem_sg["loc"], positive_neu_sg["loc"], positive_masc_du["loc"], positive_fem_du["loc"], positive_neu_du["loc"], positive_masc_pl["loc"], positive_fem_pl["loc"], positive_neu_pl["loc"]],
             [positive_masc_sg["voc"], positive_fem_sg["voc"], positive_neu_sg["voc"], positive_masc_du["voc"], positive_fem_du["voc"], positive_neu_du["voc"], positive_masc_pl["voc"], positive_fem_pl["voc"], positive_neu_pl["voc"]],
-            [positive_masc_sg["allative1"], positive_fem_sg["allative1"], positive_neu_sg["allative1"], "", "", "", ""],
+            [positive_masc_sg["allative"], positive_fem_sg["allative"], positive_neu_sg["allative"], "", "", "", ""],
             [positive_masc_sg["allative2"], positive_fem_sg["allative2"], positive_neu_sg["allative2"], "", "", "", ""],
             ["", "", "", "", "", "", ""],
             [comp_masc_sg["nom"], comp_fem_sg["nom"], comp_neu_sg["nom"], comp_masc_du["nom"], comp_fem_du["nom"], comp_neu_du["nom"], comp_masc_pl["nom"], comp_fem_pl["nom"], comp_neu_pl["nom"]],
@@ -165,7 +165,7 @@ if($input_adjective != ""){
             [comp_masc_sg["ins"], comp_fem_sg["ins"], comp_neu_sg["ins"], comp_masc_du["ins"], comp_fem_du["ins"], comp_neu_du["ins"], comp_masc_pl["ins"], comp_fem_pl["ins"], comp_neu_pl["ins"]],
             [comp_masc_sg["loc"], comp_fem_sg["loc"], comp_neu_sg["loc"], comp_masc_du["loc"], comp_fem_du["loc"], comp_neu_du["loc"], comp_masc_pl["loc"], comp_fem_pl["loc"], comp_neu_pl["loc"]],
             [comp_masc_sg["voc"], comp_fem_sg["voc"], comp_neu_sg["voc"], comp_masc_du["voc"], comp_fem_du["voc"], comp_neu_du["voc"], comp_masc_pl["voc"], comp_fem_pl["voc"], comp_neu_pl["voc"]],
-            [comp_masc_sg["allative1"], comp_fem_sg["allative1"], comp_neu_sg["allative1"], "", "", "", ""],
+            [comp_masc_sg["allative"], comp_fem_sg["allative"], comp_neu_sg["allative"], "", "", "", ""],
             [comp_masc_sg["allative2"], comp_fem_sg["allative2"], comp_neu_sg["allative2"], "", "", "", ""],      
             ["", "", "", "", "", "", ""],
             [super_masc_sg["nom"], super_fem_sg["nom"], super_neu_sg["nom"], super_masc_du["nom"], super_fem_du["nom"], super_neu_du["nom"], super_masc_pl["nom"], super_fem_pl["nom"], super_neu_pl["nom"]],
@@ -176,7 +176,7 @@ if($input_adjective != ""){
             [super_masc_sg["ins"], super_fem_sg["ins"], super_neu_sg["ins"], super_masc_du["ins"], super_fem_du["ins"], super_neu_du["ins"], super_masc_pl["ins"], super_fem_pl["ins"], super_neu_pl["ins"]],            
             [super_masc_sg["loc"], super_fem_sg["loc"], super_neu_sg["loc"], super_masc_du["loc"], super_fem_du["loc"], super_neu_du["loc"], super_masc_pl["loc"], super_fem_pl["loc"], super_neu_pl["loc"]],
             [super_masc_sg["voc"], super_fem_sg["voc"], super_neu_sg["voc"], super_masc_du["voc"], super_fem_du["voc"], super_neu_du["voc"], super_masc_pl["voc"], super_fem_pl["voc"], super_neu_pl["voc"]],
-            [super_masc_sg["allative1"], super_fem_sg["allative1"], super_neu_sg["allative1"], "", "", "", ""],
+            [super_masc_sg["allative"], super_fem_sg["allative"], super_neu_sg["allative"], "", "", "", ""],
             [super_masc_sg["allative2"], super_fem_sg["allative2"], super_neu_sg["allative2"], "", "", "", ""],                 
           ];
           

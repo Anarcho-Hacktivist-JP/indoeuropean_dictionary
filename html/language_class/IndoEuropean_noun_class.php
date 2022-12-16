@@ -1721,10 +1721,10 @@ class Vedic_Noun extends Noun_Common_IE {
 			"gender" => "Neuter",
 			"sg_nom" => "ā",
 			"sg_gen" => "ur",
-			"sg_dat" => "e",
+			"sg_dat" => "re",
 			"sg_acc" => "āram",
 			"sg_abl" => "ur",
-			"sg_ins" => "ā",
+			"sg_ins" => "rā",
 			"sg_loc" => "ari",
 			"sg_voc" => "ar",
 			"du_nom" => "ṛṇī",
@@ -1750,10 +1750,10 @@ class Vedic_Noun extends Noun_Common_IE {
 			"gender" => "Masculine/Feminine",
 			"sg_nom" => "ā",
 			"sg_gen" => "ur",
-			"sg_dat" => "e",
+			"sg_dat" => "re",
 			"sg_acc" => "āram",
 			"sg_abl" => "ur",
-			"sg_ins" => "ā",
+			"sg_ins" => "rā",
 			"sg_loc" => "ari",
 			"sg_voc" => "ar",
 			"du_nom" => "arā",
@@ -2442,9 +2442,15 @@ class Vedic_Noun extends Noun_Common_IE {
 			// 格変化の語尾が母音で始まる場合は
 			if(Commons::is_vowel_or_not(mb_substr($case_suffix, 0, 1))){
 				// 最後の母音を削る
-				$stem = mb_substr($stem, 0, -1);				
-			}
+				$stem = mb_substr($stem, 0, -1);			 	
+			} 
 		}
+
+		// rで始まる場合は
+		if($this->noun_type == "3r" && preg_match('/ṛ$/', mb_substr($stem, -1))){
+			//常に語幹の最後の母音を削る
+			$stem = mb_substr($stem, 0, -1);				
+		}	
 
 		// 結果を生成
 		$noun = Sanskrit_Common::sandhi_engine($stem, $case_suffix, true, true);
