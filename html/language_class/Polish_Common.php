@@ -757,31 +757,31 @@ class Polish_Common extends Common_IE{
 		<h3>格</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="nom">
+			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="gen">
+			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="'.Commons::GENETIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="dat">
+			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="'.Commons::DATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格</label>
 		  </div>         
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="acc">
+			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="'.Commons::ACCUSATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格</label>
 		  </div>         
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-ins" autocomplete="off" value="ins">
+			<input type="radio" name="case" class="btn-check" id="btn-ins" autocomplete="off" value="'.Commons::INSTRUMENTAL.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ins">具格</label>
 		  </div>		  
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="loc">
+			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="'.Commons::LOCATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="voc">
+			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="'.Commons::VOCATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
 		  </div>';
 
@@ -805,11 +805,11 @@ class Polish_Common extends Common_IE{
         <h3>相</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="present" onclick="click_aspect_button()">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">不完了体</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="aorist" onclick="click_aspect_button()">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="'.Commons::AORIST_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完了体</label>
           </div>		     	  
           <div class="col-md-3">
@@ -826,15 +826,15 @@ class Polish_Common extends Common_IE{
         <h3>法</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="present">
+            <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-tense-past" autocomplete="off" value="perfect">
+            <input type="radio" name="mood" class="btn-check" id="btn-tense-past" autocomplete="off" value="'.Commons::PERFECT_ASPECT.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形</label>
           </div>		
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-future" autocomplete="off" value="future">
+            <input type="radio" name="mood" class="btn-check" id="btn-future" autocomplete="off" value="'.Commons::FUTURE_TENSE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future">未来形1</label>
           </div> 
           <div class="col-md-3">

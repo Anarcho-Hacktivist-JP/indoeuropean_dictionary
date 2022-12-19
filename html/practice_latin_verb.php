@@ -76,26 +76,214 @@ $question_data = $latin_verb->get_conjugation_form_by_each_condition($person, $v
   </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
-        var question_data = '<?php echo json_encode($question_data, JSON_UNESCAPED_UNICODE); ?>';
+      var question_data = '<?php echo json_encode($question_data, JSON_UNESCAPED_UNICODE); ?>';
     </script>
 	  <script type="text/javascript" src="js/input_button.js"></script>
     <script>
-        $(function(){
-          // イベントを設定
-          setEvents();
-        });
+      $(function(){
+        // イベントを設定
+        setEvents();
+      });
+      //選択制御(相)
+      function click_aspect_button(){
+      	// 現在形にチェックがある場合は
+      	if ($('#practice-condition [name=aspect]:checked').val() == "present"){
+      		// 命令法のdisabled属性を削除
+      		document.getElementById("btn-imper").removeAttribute("disabled", true);	            	       
+      	} else if($('#practice-condition [name=aspect]:checked').val() == "perfect"){
+      		// 完了相にチェックがある場合は
+      		// 命令法にdisableを付ける
+      		document.getElementById("btn-imper").setAttribute("disabled", true);	            
+      	} else {
+      		// すべてにチェックがある場合は
+      		// 命令法のdisabled属性を削除
+      		document.getElementById("btn-imper").removeAttribute("disabled", true);	              
+      	}
+      }
 
-        //イベントを設定
-        function setEvents(){
-	        // 回答ボタン選択時
-	        $('#button-answer').click( function(){
-            // 答えを出す
-            Language_Practice.answer_the_question();
-	        });
-          // ボタンにイベントを設定
-          Input_Botton.SanskritBotton('#input-answer');
-        }
+      //選択制御(法)
+      function click_mood_button(){
+      	// 直接法にチェックがある場合は
+      	if ($('#practice-condition [name=mood]:checked').val() == "ind"){
+      		// 全時制・法のdisabled属性を削除
+      		document.getElementById("btn-tense-present").removeAttribute("disabled", true);
+      		document.getElementById("btn-tense-past").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-tense-future").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-aspect-perfect").removeAttribute("disabled", true);
 
+        	// 全人称のdisaabled属性を削除
+      		document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+      	} else if($('#practice-condition [name=mood]:checked').val() == "subj"){
+      		// 接続法にチェックがある場合は
+      		// 未来形にdisableを付ける
+      		document.getElementById("btn-tense-present").removeAttribute("disabled", true);
+      		document.getElementById("btn-tense-past").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-tense-future").setAttribute("disabled", true);	 
+      		document.getElementById("btn-aspect-perfect").removeAttribute("disabled", true);
+
+          	// 全人称のdisaabled属性を削除
+      		document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+      	} else if($('#practice-condition [name=mood]:checked').val() == "imper"){
+      		// 命令法にチェックがある場合は
+      		// 過去形・完了形にdisableを付ける
+      		document.getElementById("btn-tense-present").removeAttribute("disabled", true);
+      		document.getElementById("btn-tense-past").setAttribute("disabled", true);	 
+      		document.getElementById("btn-tense-future").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-aspect-perfect").setAttribute("disabled", true);	
+
+          	// 1人称にdisableを付ける
+      		document.getElementById("btn-1sg").setAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").setAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	        
+
+          // 未来形にチェックがある場合は
+          if($('#practice-condition [name=tense]:checked').val() == "future"){
+            // 3人称のdisaabled属性を削除
+            document.getElementById("btn-3sg").removeAttribute("disabled", true);	
+            document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+          } else {
+            // それ以外は付与
+            document.getElementById("btn-3sg").setAttribute("disabled", true);	
+            document.getElementById("btn-3pl").setAttribute("disabled", true);	 
+          }
+      	} else {
+      		// すべてにチェックがある場合は
+      		// 全時制・法のdisabled属性を削除
+      		document.getElementById("btn-tense-present").removeAttribute("disabled", true);
+      		document.getElementById("btn-tense-past").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-tense-future").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-aspect-perfect").removeAttribute("disabled", true);
+          
+          	// 全人称のdisaabled属性を削除
+      		document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+      	}
+      }
+
+      //選択制御(時制)
+      function click_tense_button(){
+      	// 現在形にチェックがある場合は
+      	if ($('#practice-condition [name=tense]:checked').val() == "present"){
+      		// 全ての法のdisabled属性を削除
+      		document.getElementById("btn-ind").removeAttribute("disabled", true);
+      		document.getElementById("btn-subj").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-imper").removeAttribute("disabled", true);	 
+
+          // 全人称のdisaabled属性を削除
+      		document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	
+
+          // 命令法にチェックがある場合は
+          if($('#practice-condition [name=mood]:checked').val() == "imper"){
+            // 3人称のdisaabled属性を削除
+            document.getElementById("btn-1sg").setAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+            document.getElementById("btn-3sg").setAttribute("disabled", true);
+      		document.getElementById("btn-1pl").setAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+            document.getElementById("btn-3pl").setAttribute("disabled", true);	 
+          } else {
+            // それ以外は付与
+            document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	
+          }
+      	} else if($('#practice-condition [name=tense]:checked').val() == "past"){
+      		// 過去形にチェックがある場合は
+      		// 命令法にdisableを付ける
+      		document.getElementById("btn-ind").removeAttribute("disabled", true);
+      		document.getElementById("btn-subj").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-imper").setAttribute("disabled", true);	 
+
+          // 全人称のdisaabled属性を削除
+      		document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+
+      	} else if($('#practice-condition [name=tense]:checked').val() == "future"){
+      		// 未来形にチェックがある場合は
+      		// 命令法にdisableを付ける
+      		document.getElementById("btn-ind").removeAttribute("disabled", true);
+      		document.getElementById("btn-subj").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-imper").setAttribute("disabled", true);	 
+
+          // 1人称にdisableを付ける
+      		document.getElementById("btn-1sg").setAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").setAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	        
+
+          // 命令法にチェックがある場合は
+          if($('#practice-condition [name=mood]:checked').val() == "imper"){
+            // 3人称のdisaabled属性を削除
+            document.getElementById("btn-1sg").setAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+            document.getElementById("btn-3sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-1pl").setAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+            document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+          } else {
+            // それ以外は付与
+            document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	
+          }
+      	} else {
+      		// すべてにチェックがある場合は
+      		// 全時制・法のdisabled属性を削除
+      		document.getElementById("btn-tense-present").removeAttribute("disabled", true);
+      		document.getElementById("btn-tense-past").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-tense-future").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-aspect-perfect").removeAttribute("disabled", true);
+          
+          // 全人称のdisaabled属性を削除
+      		document.getElementById("btn-1sg").removeAttribute("disabled", true);
+      		document.getElementById("btn-2sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3sg").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-1pl").removeAttribute("disabled", true);
+      		document.getElementById("btn-2pl").removeAttribute("disabled", true);	 
+      		document.getElementById("btn-3pl").removeAttribute("disabled", true);	 
+      	}
+      }
+  
+      //イベントを設定
+      function setEvents(){
+	      // 回答ボタン選択時
+	      $('#button-answer').click( function(){
+          // 答えを出す
+          Language_Practice.answer_the_question();
+	      });
+        // ボタンにイベントを設定
+        Input_Botton.SanskritBotton('#input-answer');
+      }
     </script>      
     </script>
   </body>

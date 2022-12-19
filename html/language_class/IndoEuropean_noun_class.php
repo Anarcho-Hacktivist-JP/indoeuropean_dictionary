@@ -3552,7 +3552,7 @@ class Koine_Noun extends Noun_Common_IE {
 		[
 			"noun_type" => "1as",
 			"noun_type_name" => "as-変化名詞",			
-			"gender" => "Masculine",
+			"gender" => "Masculine/Feminine",
 			"sg_nom" => "ᾱς",
 			"sg_gen" => "ου",
 			"sg_dat" => "ᾳ",
@@ -3568,6 +3568,26 @@ class Koine_Noun extends Noun_Common_IE {
 			"pl_dat" => "αις",
 			"pl_acc" => "ᾱς",
 			"pl_voc" => "αι"			
+		],
+		[
+			"noun_type" => "1on",
+			"noun_type_name" => "on-変化名詞",			
+			"gender" => "Feminine",
+			"sg_nom" => "ον",
+			"sg_gen" => "ου",
+			"sg_dat" => "ῳ",
+			"sg_acc" => "ον",
+			"sg_voc" => "ον",
+			"du_nom" => "ω",
+			"du_gen" => "οιν",
+			"du_dat" => "οιν",
+			"du_acc" => "ω",
+			"du_voc" => "ω",
+			"pl_nom" => "ᾰ",
+			"pl_gen" => "ῶν",
+			"pl_dat" => "οις",
+			"pl_acc" => "ᾰ",
+			"pl_voc" => "ᾰ"
 		],
 		[
 			"noun_type" => "1e",
@@ -3592,7 +3612,7 @@ class Koine_Noun extends Noun_Common_IE {
 		[
 			"noun_type" => "1es",
 			"noun_type_name" => "ēs-変化名詞",			
-			"gender" => "Masculine",
+			"gender" => "Masculine/Feminine",
 			"sg_nom" => "ής",
 			"sg_gen" => "οῦ",
 			"sg_dat" => "ῇ",
@@ -4084,6 +4104,9 @@ class Koine_Noun extends Noun_Common_IE {
 			$this->noun_type = $word_info["noun_type"];							// 名詞タイプ			
 			$this->japanese_translation = $word_info["japanese_translation"];	// 日本語訳
 			$this->english_translation = $word_info["english_translation"];		// 英語訳
+			$this->deponent_singular = $word_info["deponent_singular"];			// 単数なし
+			$this->deponent_plural = $word_info["deponent_singular"];			// 複数なし
+			$this->location_name = $word_info["deponent_singular"];				// 地名・名前フラグ
 		} else {
 			// 見つからない場合は手動で設定
 			$this->set_data_manual($noun);

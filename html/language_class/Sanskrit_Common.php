@@ -1980,11 +1980,11 @@ class Sanskrit_Common extends Common_IE{
         <h3>語根種別</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="root-type" class="btn-check" id="btn-present" autocomplete="off" value="present" onclick="click_root_button()">
+            <input type="radio" name="root-type" class="btn-check" id="btn-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_root_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-present">不完了体語根</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="root-type" class="btn-check" id="btn-aorist" autocomplete="off" value="aorist" onclick="click_root_button()">
+            <input type="radio" name="root-type" class="btn-check" id="btn-aorist" autocomplete="off" value="'.Commons::AORIST_ASPECT.'" onclick="click_root_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aorist">完了体語根</label>
           </div>       
           <div class="col-md-3">
@@ -2000,11 +2000,11 @@ class Sanskrit_Common extends Common_IE{
         <h3>語根種別</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="laryngeal-type" class="btn-check" id="btn-sat" autocomplete="off" value="1">
+            <input type="radio" name="laryngeal-type" class="btn-check" id="btn-sat" autocomplete="off" value="'.Commons::$TRUE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sat">sat語根</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="laryngeal-type" class="btn-check" id="btn->anit" autocomplete="off" value="0">
+            <input type="radio" name="laryngeal-type" class="btn-check" id="btn->anit" autocomplete="off" value="'.Commons::$FALSE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn->anit">anit語根</label>
           </div>       
           <div class="col-md-3">
@@ -2131,15 +2131,15 @@ class Sanskrit_Common extends Common_IE{
         <h3>態</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="active">
+            <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="'.Commons::ACTIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="mediopassive">
+            <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="'.Commons::MEDIOPASSIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">中動態</label>
           </div>  		  
           <div class="col-md-3">
-            <input type="radio" name="voice" class="btn-check" id="btn-passive" autocomplete="off" value="passive">
+            <input type="radio" name="voice" class="btn-check" id="btn-passive" autocomplete="off" value="'.Commons::PASSIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-passive">受動態</label>
           </div>';
 
@@ -2164,19 +2164,19 @@ class Sanskrit_Common extends Common_IE{
         <h3>相</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="present" onclick="click_aspect_button()">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">現在相</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="aorist" onclick="click_aspect_button()">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="'.Commons::AORIST_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完結相</label>
           </div>		  
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-perfect" autocomplete="off" value="perfect" onclick="click_aspect_button()">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-perfect" autocomplete="off" value="'.Commons::PERFECT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-perfect">完了相</label>
           </div> 
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-future" autocomplete="off" value="future" onclick="click_aspect_button()">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-future" autocomplete="off" value="'.Commons::FUTURE_TENSE.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-future">未然相</label>
           </div>';
 

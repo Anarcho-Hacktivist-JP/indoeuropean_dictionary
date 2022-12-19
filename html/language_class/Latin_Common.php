@@ -1292,31 +1292,31 @@ class Latin_Common extends Common_IE{
 		<h3>格</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="nom">
+			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="gen">
+			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="'.Commons::GENETIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="dat">
+			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="'.Commons::DATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格</label>
 		  </div>         
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="acc">
+			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="'.Commons::ACCUSATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格</label>
 		  </div>         
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-abl" autocomplete="off" value="abl">
+			<input type="radio" name="case" class="btn-check" id="btn-abl" autocomplete="off" value="'.Commons::ABLATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-abl">奪格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="loc">
+			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="'.Commons::LOCATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="voc">
+			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="'.Commons::VOCATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
 		  </div>';
 
@@ -1372,11 +1372,11 @@ class Latin_Common extends Common_IE{
         <h3>態</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="active">
+            <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="'.Commons::ACTIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="mediopassive">
+            <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="'.Commons::MEDIOPASSIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">受動態</label>
           </div>';
 
@@ -1401,11 +1401,11 @@ class Latin_Common extends Common_IE{
         <h3>相</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="present">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">現在相</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-perfect" autocomplete="off" value="perfect">
+            <input type="radio" name="aspect" class="btn-check" id="btn-aspect-perfect" autocomplete="off" value="'.Commons::PERFECT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-perfect">完了相</label>
           </div>';
 
@@ -1413,7 +1413,7 @@ class Latin_Common extends Common_IE{
 		if($all_flag){
 			$button_html_code = $button_html_code.
 			'<div class="col-md-3">
-            	<input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked">
+            	<input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked" onclick="click_aspect_button()">
             	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて</label>
          	 </div>';
 		}
@@ -1429,15 +1429,15 @@ class Latin_Common extends Common_IE{
         <h3>時制</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="tense" class="btn-check" id="btn-tense-present" autocomplete="off" value="present">
+            <input type="radio" name="tense" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'" onclick="click_tense_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="tense" class="btn-check" id="btn-tense-past" autocomplete="off" value="past">
+            <input type="radio" name="tense" class="btn-check" id="btn-tense-past" autocomplete="off" value="'.Commons::PAST_TENSE.'" onclick="click_tense_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="tense" class="btn-check" id="btn-tense-future" autocomplete="off" value="future">
+            <input type="radio" name="tense" class="btn-check" id="btn-tense-future" autocomplete="off" value="'.Commons::FUTURE_TENSE.'" onclick="click_tense_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-future">未来形</label>
           </div>';
 
@@ -1445,7 +1445,7 @@ class Latin_Common extends Common_IE{
 		if($all_flag){
 			$button_html_code = $button_html_code.
 			'<div class="col-md-3">
-            	<input type="radio" name="tense" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked">
+            	<input type="radio" name="tense" class="btn-check" id="btn-all-tense" autocomplete="off" value="" checked="checked" onclick="click_tense_button()">
            	 	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-tense">すべて</label>
           	 </div>';
 		}
@@ -1462,19 +1462,23 @@ class Latin_Common extends Common_IE{
         <h3>法</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-ind" autocomplete="off" value="ind">
+            <input type="radio" name="mood" class="btn-check" id="btn-ind" autocomplete="off" value="'.Commons::INDICATIVE.'" onclick="click_mood_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ind">直接法</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="subj">
+            <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::SUBJUNCTIVE.'" onclick="click_mood_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">接続法</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::IMPERATIVE.'" onclick="click_mood_button()">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
 			'<div class="col-md-3">
-            	<input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
+            	<input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked" onclick="click_mood_button()">
             	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
           	 </div>';
 		}

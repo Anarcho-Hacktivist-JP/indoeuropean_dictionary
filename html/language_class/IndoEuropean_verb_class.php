@@ -1474,19 +1474,10 @@ class Latin_Verb extends Verb_Common_IE {
 	// 特定の活用を取得する(ない場合はランダム)。
 	public function get_conjugation_form_by_each_condition($person = "", $voice = "", $mood = "", $aspect = "", $tense = ""){
 
-		// 人称と数がない場合は
-		if($person == ""){
-			// 全ての人称の中からランダムで選択
-			$ary = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");	// 初期化
-			$key = array_rand($ary, 1);
-			// 選択したものを入れる。
-			$person = $ary[$key];			
-		}
-
 		// 態がない場合
 		if($voice == ""){
 			// 能動態・受動態の中からランダムで選択
-			$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE);			// 初期化
+			$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE);				// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$voice = $ary[$key];			
@@ -1495,7 +1486,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// 法がない場合
 		if($mood == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::INDICATIVE, Commons::SUBJUNCTIVE);			// 初期化
+			$ary = array(Commons::INDICATIVE, Commons::SUBJUNCTIVE, Commons::IMPERATIVE);	// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$mood = $ary[$key];			
@@ -1503,8 +1494,15 @@ class Latin_Verb extends Verb_Common_IE {
 
 		// 相がない場合
 		if($aspect == ""){
-			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::PRESENT_ASPECT, Commons::PERFECT_ASPECT);			// 初期化
+			// 命令形とそれ以外で分ける。
+			if($mood == Commons::IMPERATIVE){
+				// 命令法
+				$ary = array(Commons::PRESENT_ASPECT);	
+			} else {
+				// それ以外
+				$ary = array(Commons::PRESENT_ASPECT, Commons::PERFECT_ASPECT);	
+			}
+			// 全ての相の中からランダムで選択
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$aspect = $ary[$key];			
@@ -1512,12 +1510,42 @@ class Latin_Verb extends Verb_Common_IE {
 
 		// 時制がない場合
 		if($tense == ""){
-			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::FUTURE_TENSE);	// 初期化
+			// 直接法・接続法・命令法で分ける。
+			if($mood == Commons::IMPERATIVE){
+				// 命令法
+				$ary = array(Commons::PRESENT_TENSE, Commons::FUTURE_TENSE);	// 初期化
+			} else if($mood == Commons::SUBJUNCTIVE){
+				// 接続法
+				$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE);		// 初期化
+			} else {
+				// それ以外(直接法)
+				$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::FUTURE_TENSE);	// 初期化
+			}		
+			// 全ての時制の中からランダムで選択
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$tense = $ary[$key];			
-		}		
+		}	
+		
+		// 人称と数がない場合は
+		if($person == ""){
+			// 命令形とそれ以外で分ける。
+			if($mood == Commons::IMPERATIVE && $tense == Commons::PRESENT_TENSE){
+				// 現在命令
+				$ary = array("2sg", "3sg", "2pl", "3pl"); // 初期化
+			} else if($mood == Commons::IMPERATIVE && $tense == Commons::FUTURE_TENSE){
+				// 未来命令
+				$ary = array("2sg", "3sg", "2pl", "3pl"); // 初期化	
+			} else {
+				// それ以外
+				$ary = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl"); // 初期化
+			}
+			// 全ての人称からランダムで選択
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$person = $ary[$key];			
+		}
+
 
 		// 配列に格納
 		$question_data = array();
@@ -6403,6 +6431,50 @@ class Vedic_Verb extends Verb_Common_IE{
 	// 特定の活用を取得する(ない場合はランダム)。
 	public function get_conjugation_form_by_each_condition($person = "", $voice = "", $mood = "", $aspect = "", $verb_genre = ""){
 
+		// 相がない場合
+		if($aspect == ""){
+			// 全ての相の中からランダムで選択
+			$ary = array(Commons::PRESENT_ASPECT, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);				// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$aspect = $ary[$key];			
+		}
+
+		// 法がない場合
+		if($mood == ""){
+			// 完結相とそれ以外で分ける。
+			if($mood == Commons::AORIST_ASPECT){
+				// 完結相
+				$ary = array(Commons::PAST_TENSE, Commons::IMJUNCTIVE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, "bend", Commons::IMPERATIVE);
+			} else {
+				// それ以外		
+				$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::IMJUNCTIVE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	// 初期化
+			}
+			// 全ての法の中からランダムで選択		
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$mood = $ary[$key];			
+		}	
+
+		// 態がない場合
+		if($voice == ""){
+			// 能動態・中動態・受動態の中からランダムで選択
+			// 完了とそれ以外で分ける。
+			if($mood == Commons::AORIST_ASPECT){
+				// 完了形
+				$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE);
+			} else {
+				// それ以外		
+				$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);	// 初期化
+			}
+
+			// 全ての態からランダムで選択
+			$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);		// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$voice = $ary[$key];			
+		}
+
 		// 人称と数がない場合は
 		if($person == ""){
 			// 全ての人称の中からランダムで選択
@@ -6411,34 +6483,6 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 選択したものを入れる。
 			$person = $ary[$key];			
 		}
-
-		// 態がない場合
-		if($voice == ""){
-			// 能動態・受動態の中からランダムで選択
-			$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE);			// 初期化
-			$key = array_rand($ary, 1);
-			// 選択したものを入れる。
-			$voice = $ary[$key];			
-		}
-
-		// 法がない場合
-		if($mood == ""){
-			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::IMJUNCTIVE, Commons::SUBJUNCTIVE, Commons::OPTATIVE, Commons::IMPERATIVE);	// 初期化
-			$key = array_rand($ary, 1);
-			// 選択したものを入れる。
-			$mood = $ary[$key];			
-		}	
-
-		// 相がない場合
-		if($aspect == ""){
-			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::PRESENT_ASPECT, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);				// 初期化
-			$key = array_rand($ary, 1);
-			// 選択したものを入れる。
-			$aspect = $ary[$key];			
-		}
-
 
 		// 配列に格納
 		$question_data = array();

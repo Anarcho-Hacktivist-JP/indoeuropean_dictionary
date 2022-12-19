@@ -370,27 +370,27 @@ class Common_IE {
         <h3>人称</h3>
         <section class="row">
           <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg">
+            <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1sg">1人称単数</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-2sg" autocomplete="off" value="2sg">
+            <input type="radio" name="person" class="btn-check" id="btn-2sg" autocomplete="off" value="2sg" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2sg">2人称単数</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg">
+            <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3sg">3人称単数</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl">
+            <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1pl">1人称複数</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-2pl" autocomplete="off" value="2pl">
+            <input type="radio" name="person" class="btn-check" id="btn-2pl" autocomplete="off" value="2pl" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2pl">2人称複数</label>
           </div>
           <div class="col-md-3">
-            <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl">
+            <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3pl">3人称複数</label>
           </div>';
 
@@ -398,7 +398,7 @@ class Common_IE {
 		if($all_flag){
 			$button_html_code = $button_html_code.
 			'<div class="col-md-3">
-            	<input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked">
+            	<input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked" onclick="click_person_button()">
             	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
          	 </div>';
 		}
