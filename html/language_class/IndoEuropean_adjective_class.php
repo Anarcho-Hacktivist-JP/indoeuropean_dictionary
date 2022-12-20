@@ -2669,8 +2669,11 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 3語幹以上は中語幹、それ以外は弱語幹
 		if(mb_strlen($this->second_stem) > 7){
 			$comp_super_stem = $this->second_stem;
-		} else {
+		} else if($this->second_stem != ""){
 			$comp_super_stem = $this->first_stem;
+		} else {
+			// ない場合はここで処理を中断
+			return;
 		}
 
 		// 語幹を作成
@@ -2811,26 +2814,8 @@ class Vedic_Adjective extends Adjective_Common_IE {
 			$fem_stem = Sanskrit_Common::sandhi_engine($masc_stem, $this->case_suffix[Commons::FEMINE_GENDER][Commons::SINGULAR][Commons::NOMINATIVE]);
 
 			// 副詞(拡張格)
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($masc_stem, "tas");
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($masc_stem, "trā");
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($masc_stem, "dha");		
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($masc_stem, "thā");		
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($masc_stem, "dhā");	
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($masc_stem, "vat");	
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($masc_stem, "sāt");		
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($masc_stem, "dā");	
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($masc_stem, "ac");	
-			$word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($masc_stem, "sas");
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($fem_stem, "tas");
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($fem_stem, "trā");
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($fem_stem, "dha");		
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($fem_stem, "thā");		
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($fem_stem, "dhā");	
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($fem_stem, "vat");	
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($fem_stem, "sāt");		
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($fem_stem, "dā");	
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($fem_stem, "ac");	
-			$word_chart[$grade][Commons::FEMINE_GENDER][Commons::SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($fem_stem, "sas");
+			$word_chart = $this->make_adverb_form($word_chart, $masc_stem, $grade, Commons::MASCULINE_GENDER);
+			$word_chart = $this->make_adverb_form($word_chart, $masc_stem, $grade, Commons::FEMINE_GENDER);
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR]["elative"] = $word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["elative"];
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR]["inessive1"] = $word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["inessive1"];
 			$word_chart[$grade][Commons::NEUTER_GENDER][Commons::SINGULAR]["inessive2"] = $word_chart[$grade][Commons::MASCULINE_GENDER][Commons::SINGULAR]["inessive2"];		
@@ -2845,7 +2830,40 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 結果を返す。
 		return $word_chart;
 	}	
-	
+
+    // 副詞を作成
+	private function make_adverb_form($word_chart, $stem, $grade, $gender){
+		
+		// 各副詞を表に入れる。
+		// 語幹がない場合は作成しない。
+		if($stem == ""){
+			$word_chart[$grade][$gender][Commons::SINGULAR]["elative"] = "-";
+			$word_chart[$grade][$gender][Commons::SINGULAR]["inessive1"] = "-";
+			$word_chart[$grade][$gender][Commons::SINGULAR]["inessive2"] = "-";		
+			$word_chart[$grade][$gender][Commons::SINGULAR]["comitative"] = "-";		
+			$word_chart[$grade][$gender][Commons::SINGULAR]["multiplicative"] = "-";	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["essive"] = "-";	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["translative"] = "-";		
+			$word_chart[$grade][$gender][Commons::SINGULAR]["temporal"] = "-";	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["illative"] = "-";	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["distributive"] = "-";
+		} else {
+			$word_chart[$grade][$gender][Commons::SINGULAR]["elative"] = Sanskrit_Common::sandhi_engine($stem, "tas");
+			$word_chart[$grade][$gender][Commons::SINGULAR]["inessive1"] = Sanskrit_Common::sandhi_engine($stem, "trā");
+			$word_chart[$grade][$gender][Commons::SINGULAR]["inessive2"] = Sanskrit_Common::sandhi_engine($stem, "dha");		
+			$word_chart[$grade][$gender][Commons::SINGULAR]["comitative"] = Sanskrit_Common::sandhi_engine($stem, "thā");		
+			$word_chart[$grade][$gender][Commons::SINGULAR]["multiplicative"] = Sanskrit_Common::sandhi_engine($stem, "dhā");	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["essive"] = Sanskrit_Common::sandhi_engine($stem, "vat");	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["translative"] = Sanskrit_Common::sandhi_engine($stem, "sāt");		
+			$word_chart[$grade][$gender][Commons::SINGULAR]["temporal"] = Sanskrit_Common::sandhi_engine($stem, "dā");	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["illative"] = Sanskrit_Common::sandhi_engine($stem, "ac");	
+			$word_chart[$grade][$gender][Commons::SINGULAR]["distributive"] = Sanskrit_Common::sandhi_engine($stem, "sas");
+		}
+
+
+		// 結果を返す。
+		return $word_chart;
+	}
 	// 曲用表を取得
 	public function get_chart(){
 		
