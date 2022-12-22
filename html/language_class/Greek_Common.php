@@ -707,7 +707,7 @@ class Koine_Common extends Common_IE{
 					// 読み込み
 					$koine_verb = new koine_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
 					// 活用表生成、配列に格納
-					//$charts[$koine_verb->get_infinitive()] = $koine_verb->get_chart();
+					$charts[$koine_verb->get_dic_stem()] = $koine_verb->get_chart();
 					// メモリを解放
 					unset($koine_verb);
 				} 

@@ -13,6 +13,12 @@ class Sanskrit_Common extends Common_IE{
 	public const GUNA = "middle";			// 中語幹
 	public const VRIDDHI = "strong";		// 強語幹
 
+	public const DENOMITIVE_VERB1 = "ati";		// 名詞起源動詞1
+	public const DENOMITIVE_VERB2 = "ayati";	// 名詞起源動詞2
+	public const DENOMITIVE_VERB3 = "asyati";	// 名詞起源動詞3
+	public const DENOMITIVE_VERB4 = "yati";		// 名詞起源動詞4
+	public const DENOMITIVE_VERB5 = "āyati";	// 名詞起源動詞5
+
 	// 名詞・形容詞情報取得
 	public static function get_wordstem_from_DB($dictionary_stem, $table){
 		// 英文字以外は考慮しない
@@ -1003,7 +1009,7 @@ class Sanskrit_Common extends Common_IE{
 							$last_words[] = "nī";
 						} else {
 							// それ以外は辞書形
-							$last_words[] = "asati";
+							$last_words[] = "asti";
 							$last_words[] = "bhavati";
 							$last_words[] = "eti";
 							$last_words[] = "yāti";
@@ -1069,7 +1075,7 @@ class Sanskrit_Common extends Common_IE{
 							// それ以外は辞書形
 							$last_words[] = "kṛṇoti";
 							$last_words[] = "dadhāti";
-							$last_words[] = "āyati";
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB5;
 						}											
 					} else if($target_word == "する"){
 						// 最終単語
@@ -1078,7 +1084,7 @@ class Sanskrit_Common extends Common_IE{
 							$last_words[] = "kṛ";
 						} else {
 							// それ以外は辞書形
-							$last_words[] = "āyati";
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB5;
 						}
 					} else if($target_word == "作る" && $input_words[$i - 1][0] == "を"){
 						// 最終単語
@@ -1088,7 +1094,7 @@ class Sanskrit_Common extends Common_IE{
 						} else {
 							// それ以外は辞書形
 							$last_words[] = "kṛṇoti";
-							$last_words[] = "āyati";
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB5;
 						}
 					} else if($target_word == "びる"){
 						// 最終単語
@@ -1108,18 +1114,19 @@ class Sanskrit_Common extends Common_IE{
 							$last_words[] = "as";
 						} else {
 							// それ以外は辞書形
-							$last_words[] = "ati";
-							$last_words[] = "ayati";
-							$last_words[] = "asati";	// コピュラ√as
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB1;
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB2;
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB4;
+							$last_words[] = "asti";	// コピュラ√as
 						}
-					} else if($target_word == "欲す" || $target_word == "求める"){
+					} else if($target_word == "欲す" || $target_word == "欲しい" ||$target_word == "求める"){
 						// 最終単語
 						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
 							$last_words[] = "īṣ";
 						} else {
 							// それ以外は辞書形
-							$last_words[] = "asyati";
+							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB3;
 						}	
 					} else {
 						// データベースから訳語の語幹を取得する。

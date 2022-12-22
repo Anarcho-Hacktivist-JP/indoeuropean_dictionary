@@ -174,7 +174,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <h1>ラテン語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)">
+        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可">
         <select class="form-select" name="input_verb_type">
           <option selected>動詞の種別</option>
           <option value="">通常</option>          

@@ -64,6 +64,48 @@ function get_verb_chart($word){
   return $new_array;
 }
 
+// 体言起源動詞を作成
+function make_denomitive_verb($sanskrit_verbs, $word){
+  // 配列を宣言
+  $conjugations = array();   
+	// 新しい配列に詰め替え
+	foreach ($sanskrit_verbs as $sanskrit_verb) {
+	  // 読み込み
+	  $vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB1, $sanskrit_verb, $word."(動詞化)");
+	  // 活用表生成、配列に格納
+	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
+	  // メモリを解放
+	  unset($vedic_verb);
+	  // 読み込み
+	  $vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB2, $sanskrit_verb, $word."(動詞化)");
+	  // 活用表生成、配列に格納
+	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
+	  // メモリを解放
+	  unset($vedic_verb);
+	  // 読み込み
+	  $vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB3, $sanskrit_verb, $word."(動詞化)");
+	  // 活用表生成、配列に格納
+	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
+	  // メモリを解放
+	  unset($vedic_verb);
+	  // 読み込み
+	  $vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB4, $sanskrit_verb, $word."(動詞化)");
+	  // 活用表生成、配列に格納
+	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
+	  // メモリを解放
+	  unset($vedic_verb);
+	  // 読み込み
+	  $vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB5, $sanskrit_verb, $word."(動詞化)");
+	  // 活用表生成、配列に格納
+	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
+	  // メモリを解放
+	  unset($vedic_verb);
+	}
+
+  // 結果を返す。
+  return $conjugations;
+}
+
 // 名詞から活用表を取得する。
 function get_conjugation_by_noun($word){
 
@@ -74,25 +116,12 @@ function get_conjugation_by_noun($word){
     // 空を返す。
     return array();
   } 
-  // 配列を宣言
-  $conjugations = array();   
-	// 新しい配列に詰め替え
-	foreach ($sanskrit_verbs as $sanskrit_verb) {
-	  // 読み込み
-	  $vedic_verb = new Vedic_Verb($sanskrit_verb, "ati", "");
-	  // 活用表生成、配列に格納
-	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
-	  // メモリを解放
-	  unset($vedic_verb);
-	  // 読み込み
-	  $vedic_verb = new Vedic_Verb($sanskrit_verb, "ayati", "");
-	  // 活用表生成、配列に格納
-	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
-	  // メモリを解放
-	  unset($vedic_verb);
-	}
+
+  // 動詞を取得
+	$conjugations = make_denomitive_verb($sanskrit_verbs, $word);
+
   // 結果を返す。
-	return $conjugations;
+  return $conjugations;
 }
 
 // 形容詞から活用表を取得する。
@@ -104,25 +133,11 @@ function get_conjugation_by_adjective($word){
     // 空を返す。
     return array();
   } 
-  // 配列を宣言
-  $conjugations = array();   
-	// 新しい配列に詰め替え
-	foreach ($sanskrit_verbs as $sanskrit_verb) {
-	  // 読み込み
-	  $vedic_verb = new Vedic_Verb($sanskrit_verb, "ati", "");
-	  // 活用表生成、配列に格納
-	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
-	  // メモリを解放
-	  unset($vedic_verb);
-	  // 読み込み
-	  $vedic_verb = new Vedic_Verb($sanskrit_verb, "ayati", "");
-	  // 活用表生成、配列に格納
-	  $conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart();
-	  // メモリを解放
-	  unset($vedic_verb);
-	}
+
+  // 動詞を取得
+	$conjugations = make_denomitive_verb($sanskrit_verbs, $word);
   // 結果を返す。
-	return $conjugations;
+  return $conjugations;
 }
 
 //造語対応
@@ -142,8 +157,7 @@ $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
 $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
-
-
+// 場合分けをする。
 if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
   // 複合語の場合
   $conjugations = get_compound_verb_word($janome_result, $input_verb);
@@ -180,7 +194,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
       <h1>梵語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・サンスクリット)">
+        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・サンスクリット)、名詞や形容詞も可">
         <input type="submit" class="btn-check" id="btn-generate">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
         <select class="form-select" id="verb-selection" aria-label="Default select example">
