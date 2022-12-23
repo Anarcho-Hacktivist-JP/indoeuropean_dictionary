@@ -66,6 +66,7 @@ if($input_noun != ""){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：梵語辞書</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
@@ -96,12 +97,12 @@ if($input_noun != ""){
           <tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td></tr>  
-          <tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td></tr>          
-          <tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td></tr>          
           <tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row">出格1(副詞)</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">出格2(副詞)</th><td colspan="3"></td></tr>
+          <tr><th class="text-center table-optional" scope="row">奪格(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>  
+          <tr><th class="text-center table-optional" scope="row">具格(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>          
+          <tr><th class="text-center table-optional" scope="row">地格(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>          
+          <tr><th class="text-center table-optional" scope="row">出格1(副詞)</th><td colspan="3" class="table-optional"></td></tr>
+          <tr><th class="text-center table-optional" scope="row">出格2(副詞)</th><td colspan="3" class="table-optional"></td></tr>
         </tbody>
       </table>
     </div>
@@ -136,10 +137,10 @@ if($input_noun != ""){
             [declension_sg["gen"], declension_du["gen"], declension_pl["gen"]],
             [declension_sg["dat"], declension_du["dat"], declension_pl["dat"]],
             [declension_sg["acc"], declension_du["acc"], declension_pl["acc"]],
+            [declension_sg["voc"], declension_du["voc"], declension_pl["voc"]],
             [declension_sg["abl"], declension_du["abl"], declension_pl["abl"]],
             [declension_sg["ins"], declension_du["ins"], declension_pl["ins"]],            
             [declension_sg["loc"], declension_du["loc"], declension_pl["loc"]],
-            [declension_sg["voc"], declension_du["voc"], declension_pl["voc"]],
             [declension_sg["allative"]],
             [declension_sg["allative2"]],
           ];

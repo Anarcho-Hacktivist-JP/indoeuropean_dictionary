@@ -71,7 +71,7 @@ if($input_noun != ""){
   <?php require_once("header.php"); ?>
   <body>
     <div class="container item table-striped">
-      <p>あいまい検索は+ ※(薄文字の部分は現在は使わない)<</p>
+      <p>あいまい検索は+ ※(薄文字の部分は現在は使わない)</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
         <input type="submit" class="btn-check" id="btn-search">

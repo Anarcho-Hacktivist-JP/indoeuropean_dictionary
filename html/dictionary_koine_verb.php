@@ -70,24 +70,18 @@ function get_verb_chart($word){
 function get_conjugation_by_noun($word){
 
 	// 名詞の語幹を取得
-	$sanskrit_verbs = Koine_Common::get_koine_strong_stem($word, Koine_Common::DB_NOUN);
+	$koine_verbs = Koine_Common::get_koine_strong_stem($word, Koine_Common::DB_NOUN);
   // 名詞の情報が取得できない場合は
-  if(!$sanskrit_verbs){
+  if(!$koine_verbs){
     // 空を返す。
     return array();
   } 
   // 配列を宣言
   $conjugations = array();   
 	// 新しい配列に詰め替え
-	foreach ($sanskrit_verbs as $sanskrit_verb) {
+	foreach ($koine_verbs as $koine_verb) {
 	  // 読み込み
-	  $vedic_verb = new Koine_Verb($sanskrit_verb, "ati", "");
-	  // 活用表生成、配列に格納
-	  $conjugations[$vedic_verb->get_dic_stem()] = $vedic_verb->get_chart();
-	  // メモリを解放
-	  unset($vedic_verb);
-	  // 読み込み
-	  $vedic_verb = new Koine_Verb($sanskrit_verb, "ayati", "");
+	  $vedic_verb = new Koine_Verb($koine_verb, "noun", $word);
 	  // 活用表生成、配列に格納
 	  $conjugations[$vedic_verb->get_dic_stem()] = $vedic_verb->get_chart();
 	  // メモリを解放
@@ -100,24 +94,18 @@ function get_conjugation_by_noun($word){
 // 形容詞から活用表を取得する。
 function get_conjugation_by_adjective($word){
 	// 形容詞の語幹を取得
-	$sanskrit_verbs = Koine_Common::get_koine_strong_stem($word, Koine_Common::DB_ADJECTIVE);
+	$koine_verbs = Koine_Common::get_koine_strong_stem($word, Koine_Common::DB_ADJECTIVE);
   // 名詞の情報が取得できない場合は
-  if(!$sanskrit_verbs){
+  if(!$koine_verbs){
     // 空を返す。
     return array();
   } 
   // 配列を宣言
   $conjugations = array();   
 	// 新しい配列に詰め替え
-	foreach ($sanskrit_verbs as $sanskrit_verb) {
+	foreach ($koine_verbs as $koine_verb) {
 	  // 読み込み
-	  $vedic_verb = new Koine_Verb($sanskrit_verb, "ati", "");
-	  // 活用表生成、配列に格納
-	  $conjugations[$vedic_verb->get_dic_stem()] = $vedic_verb->get_chart();
-	  // メモリを解放
-	  unset($vedic_verb);
-	  // 読み込み
-	  $vedic_verb = new Koine_Verb($sanskrit_verb, "ayati", "");
+	  $vedic_verb = new Koine_Verb($koine_verb, "adjective", $word);
 	  // 活用表生成、配列に格納
 	  $conjugations[$vedic_verb->get_dic_stem()] = $vedic_verb->get_chart();
 	  // メモリを解放
@@ -306,7 +294,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb
         </table>
       </details><br>
       <details>
-        <summary>使役動詞不定詞</summary>      
+        <summary>強意動詞不定詞</summary>      
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-infinitive-table">
         <?php echo Koine_Common::make_infinitive_chart(); ?> 
         </table>

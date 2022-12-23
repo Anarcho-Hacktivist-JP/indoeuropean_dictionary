@@ -139,7 +139,7 @@ $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 条件分岐
-if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+if($input_verb != "" && count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 複合語の場合
   $conjugations = get_compound_verb_word($janome_result, $input_verb);
 } else if($input_verb != "" && $janome_result[0][1] == "名詞" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){

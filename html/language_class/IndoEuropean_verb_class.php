@@ -8569,6 +8569,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "ν",
 			"2sg" => "ς", 
 			"3sg" => "",
+			"2du" => "τον",
+			"3du" => "την", 
 			"1pl" => "μεν",
 			"2pl" => "τε", 
 			"3pl" => "ν",		
@@ -8578,6 +8580,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "μην",
 			"2sg" => "", 
 			"3sg" => "το",
+			"2du" => "σθον",
+			"3du" => "σθην", 
 			"1pl" => "μεθα",
 			"2pl" => "σθε", 
 			"3pl" => "ντο",
@@ -8619,6 +8623,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "μι",
 			"2sg" => "ς", 
 			"3sg" => "",
+			"2du" => "τον",
+			"3du" => "την", 
 			"1pl" => "μεν",
 			"2pl" => "τε", 
 			"3pl" => "εν",	
@@ -8628,6 +8634,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "μην",
 			"2sg" => "ο", 
 			"3sg" => "το",
+			"2du" => "σθον",
+			"3du" => "σθην", 
 			"1pl" => "μεθα",
 			"2pl" => "σθε", 
 			"3pl" => "ντο",	
@@ -8642,6 +8650,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "",
 			"2sg" => "ν", 
 			"3sg" => "τω",
+			"2du" => "τον",
+			"3du" => "των", 
 			"1pl" => "",
 			"2pl" => "τε", 
 			"3pl" => "ούντων",	
@@ -8651,6 +8661,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "",
 			"2sg" => "ου", 
 			"3sg" => "σθω",
+			"2du" => "σθον",
+			"3du" => "σθων", 
 			"1pl" => "",
 			"2pl" => "σθε", 
 			"3pl" => "σθων",	
@@ -8665,6 +8677,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "",
 			"2sg" => "ς", 
 			"3sg" => "ν",
+			"2du" => "τον",
+			"3du" => "τον", 
 			"1pl" => "μεν",
 			"2pl" => "τε", 
 			"3pl" => "ν",	
@@ -8674,6 +8688,8 @@ class Koine_Verb extends Verb_Common_IE {
 			"1sg" => "μην",
 			"2sg" => "ω", 
 			"3sg" => "το",
+			"2du" => "σθον",
+			"3du" => "σθον", 
 			"1pl" => "μεθα",
 			"2pl" => "σθε", 
 			"3pl" => "ντο",	
@@ -8938,7 +8954,9 @@ class Koine_Verb extends Verb_Common_IE {
 		// 使役動詞
 		$this->make_causative_stem();
 		// 強意動詞
-		$this->make_intensive_stem();	
+		$this->make_intensive_stem();
+		// 日本語訳
+		$this->japanese_translation = $japanese_translation."(動詞化)";
     }
 
     // 動詞情報を取得
@@ -9027,11 +9045,11 @@ class Koine_Verb extends Verb_Common_IE {
 		$this->aorist_participle_active = $this->add_stem.$this->aorist_stem.self::active_participle_suffix2;							// 完結能動
 		$this->aorist_participle_middle = $this->add_stem.$this->aorist_stem.self::middle_participle_suffix2;							// 完結中動
 		$this->aorist_participle_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
-		$this->perfect_participle_active = $this->add_stem.$this->present_stem.self::active_participle_suffix;							// 完了能動
-		$this->perfect_participle_middle = $this->add_stem.$this->present_stem.self::middle_participle_suffix;							// 完了中受動
-		$this->future_participle_active = $this->add_stem.$this->aorist_stem.self::active_participle_suffix;							// 未来能動
-		$this->future_participle_middle = $this->add_stem.$this->aorist_stem.self::middle_participle_suffix;							// 未来中動
-		$this->future_participle_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
+		$this->perfect_participle_active = $this->add_stem.$this->perfect_stem.self::active_participle_suffix;							// 完了能動
+		$this->perfect_participle_middle = $this->add_stem.$this->perfect_stem.self::middle_participle_suffix;							// 完了中受動
+		$this->future_participle_active = $this->add_stem.$this->future_stem.self::active_participle_suffix;							// 未来能動
+		$this->future_participle_middle = $this->add_stem.$this->future_stem.self::middle_participle_suffix;							// 未来中動
+		$this->future_participle_passive = $this->add_stem.$this->future_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
 
 		// 不定詞を作成
 		$this->present_infinitive_active = $this->add_stem.$this->present_stem.self::active_infinitive_suffix;							// 現在能動
@@ -9041,11 +9059,11 @@ class Koine_Verb extends Verb_Common_IE {
 		$this->aorist_infinitive_active = $this->add_stem.$this->aorist_stem.self::active_infinitive_suffix2;							// 完結能動
 		$this->aorist_infinitive_middle = $this->add_stem.$this->aorist_stem.self::middle_infinitive_suffix;							// 完結中動
 		$this->aorist_infinitive_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
-		$this->perfect_infinitive_active = $this->add_stem.$this->present_stem.self::active_infinitive_suffix3;							// 完了能動
-		$this->perfect_infinitive_middle = $this->add_stem.$this->present_stem.self::middle_infinitive_suffix2;							// 完了中受動
-		$this->future_infinitive_active = $this->add_stem.$this->aorist_stem.self::active_infinitive_suffix;							// 未来能動
-		$this->future_infinitive_middle = $this->add_stem.$this->aorist_stem.self::middle_infinitive_suffix;							// 未来中動
-		$this->future_infinitive_passive = $this->add_stem.$this->aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
+		$this->perfect_infinitive_active = $this->add_stem.$this->perfect_stem.self::active_infinitive_suffix3;							// 完了能動
+		$this->perfect_infinitive_middle = $this->add_stem.$this->perfect_stem.self::middle_infinitive_suffix2;							// 完了中受動
+		$this->future_infinitive_active = $this->add_stem.$this->future_stem.self::active_infinitive_suffix;							// 未来能動
+		$this->future_infinitive_middle = $this->add_stem.$this->future_stem.self::middle_infinitive_suffix;							// 未来中動
+		$this->future_infinitive_passive = $this->add_stem.$this->future_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
     }
 
 	// 始動形を作成
@@ -9138,19 +9156,19 @@ class Koine_Verb extends Verb_Common_IE {
 
 		// それ以外の相
 		$this->causative_inchoative_stem = $this->make_inchoative_stem($this->causative_present_stem."ω");	// 始動相
-		$this->causative_aorist_stem = $this->make_perfect_stem($this->causative_present_stem."ω");		// 完了相
+		$this->causative_perfect_stem = $this->make_perfect_stem($this->causative_present_stem."ω");		// 完了相
 		$this->causative_future_stem = $this->make_future_stem($this->causative_present_stem."ω");		// 未来形
 
 		// 分詞を作成
 		$this->causative_present_participle_active = $this->causative_present_stem.self::active_participle_suffix;		// 現在能動
 		$this->causative_present_participle_middle = $this->causative_present_stem.self::middle_participle_suffix;		// 現在中受動
-		$this->causative_inchoative_participle_active = $this->causative_present_stem.self::active_participle_suffix;	// 始動能動
-		$this->causative_inchoative_participle_middle = $this->causative_present_stem.self::middle_participle_suffix;	// 始動中受動
+		$this->causative_inchoative_participle_active = $this->causative_inchoative_stem.self::active_participle_suffix;	// 始動能動
+		$this->causative_inchoative_participle_middle = $this->causative_inchoative_stem.self::middle_participle_suffix;	// 始動中受動
 		$this->causative_aorist_participle_active = $this->causative_aorist_stem.self::active_participle_suffix2;		// 完結能動
 		$this->causative_aorist_participle_middle = $this->causative_aorist_stem.self::middle_participle_suffix2;		// 完結中動
 		$this->causative_aorist_participle_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
-		$this->causative_perfect_participle_active = $this->causative_present_stem.self::active_participle_suffix;		// 完了能動
-		$this->causative_perfect_participle_middle = $this->causative_present_stem.self::middle_participle_suffix;		// 完了中受動
+		$this->causative_perfect_participle_active = $this->causative_perfect_stem.self::active_participle_suffix;		// 完了能動
+		$this->causative_perfect_participle_middle = $this->causative_perfect_stem.self::middle_participle_suffix;		// 完了中受動
 		$this->causative_future_participle_active = $this->causative_aorist_stem.self::active_participle_suffix;		// 未来能動
 		$this->causative_future_participle_middle = $this->causative_aorist_stem.self::middle_participle_suffix;		// 未来中動
 		$this->causative_future_participle_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
@@ -9158,13 +9176,13 @@ class Koine_Verb extends Verb_Common_IE {
 		// 不定詞を作成
 		$this->causative_present_infinitive_active = $this->causative_present_stem.self::active_infinitive_suffix;		// 現在能動
 		$this->causative_present_infinitive_middle = $this->causative_present_stem.self::middle_infinitive_suffix;		// 現在中受動
-		$this->causative_inchoative_infinitive_active = $this->causative_present_stem.self::active_infinitive_suffix;	// 始動能動
-		$this->causative_inchoative_infinitive_middle = $this->causative_present_stem.self::middle_infinitive_suffix;	// 始動中受動
+		$this->causative_inchoative_infinitive_active = $this->causative_inchoative_stem.self::active_infinitive_suffix;	// 始動能動
+		$this->causative_inchoative_infinitive_middle = $this->causative_inchoative_stem.self::middle_infinitive_suffix;	// 始動中受動
 		$this->causative_aorist_infinitive_active = $this->causative_aorist_stem.self::active_infinitive_suffix2;		// 完結能動
 		$this->causative_aorist_infinitive_middle = $this->causative_aorist_stem.self::middle_infinitive_suffix;		// 完結中動
 		$this->causative_aorist_infinitive_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
-		$this->causative_perfect_infinitive_active = $this->causative_present_stem.self::active_infinitive_suffix3;		// 完了能動
-		$this->causative_perfect_infinitive_middle = $this->causative_present_stem.self::middle_infinitive_suffix2;		// 完了中受動
+		$this->causative_perfect_infinitive_active = $this->causative_perfect_stem.self::active_infinitive_suffix3;		// 完了能動
+		$this->causative_perfect_infinitive_middle = $this->causative_perfect_stem.self::middle_infinitive_suffix2;		// 完了中受動
 		$this->causative_future_infinitive_active = $this->causative_aorist_stem.self::active_infinitive_suffix;		// 未来能動
 		$this->causative_future_infinitive_middle = $this->causative_aorist_stem.self::middle_infinitive_suffix;		// 未来中動
 		$this->causative_future_infinitive_passive = $this->causative_aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
@@ -9185,19 +9203,19 @@ class Koine_Verb extends Verb_Common_IE {
 
 		// それ以外の相
 		$this->intensive_inchoative_stem = $this->make_inchoative_stem($this->intensive_present_stem."ω");	    // 始動相
-		$this->intensive_aorist_stem = $this->make_perfect_stem(mb_substr($this->present_stem, 0, -1)."κ");		// 完了相
+		$this->intensive_perfect_stem = $this->make_perfect_stem(mb_substr($this->present_stem, 0, -1)."κ");		// 完了相
 		$this->intensive_future_stem = $this->make_future_stem(mb_substr($this->present_stem, 0, -1))."ᾰ́σ";	 // 未来形
 
 		// 分詞を作成
 		$this->intensive_present_participle_active = $this->intensive_present_stem.self::active_participle_suffix;		// 現在能動
 		$this->intensive_present_participle_middle = $this->intensive_present_stem.self::middle_participle_suffix;		// 現在中受動
-		$this->intensive_inchoative_participle_active = $this->intensive_present_stem.self::active_participle_suffix;	// 始動能動
-		$this->intensive_inchoative_participle_middle = $this->intensive_present_stem.self::middle_participle_suffix;	// 始動中受動
+		$this->intensive_inchoative_participle_active = $this->intensive_inchoative_stem.self::active_participle_suffix;	// 始動能動
+		$this->intensive_inchoative_participle_middle = $this->intensive_inchoative_stem.self::middle_participle_suffix;	// 始動中受動
 		$this->intensive_aorist_participle_active = $this->intensive_aorist_stem.self::active_participle_suffix2;		// 完結能動
 		$this->intensive_aorist_participle_middle = $this->intensive_aorist_stem.self::middle_participle_suffix2;		// 完結中動
 		$this->intensive_aorist_participle_passive = $this->intensive_aorist_stem.self::passive_suffix.self::middle_participle_suffix2;		// 完結受動
-		$this->intensive_perfect_participle_active = $this->intensive_present_stem.self::active_participle_suffix;		// 完了能動
-		$this->intensive_perfect_participle_middle = $this->intensive_present_stem.self::middle_participle_suffix;		// 完了中受動
+		$this->intensive_perfect_participle_active = $this->intensive_perfect_stem.self::active_participle_suffix;		// 完了能動
+		$this->intensive_perfect_participle_middle = $this->intensive_perfect_stem.self::middle_participle_suffix;		// 完了中受動
 		$this->intensive_future_participle_active = $this->intensive_future_stem.self::active_participle_suffix;		// 未来能動
 		$this->intensive_future_participle_middle = $this->intensive_future_stem.self::middle_participle_suffix;		// 未来中動
 		$this->intensive_future_participle_passive = $this->intensive_future_stem.self::passive_suffix.self::middle_participle_suffix;		// 未来受動
@@ -9205,13 +9223,13 @@ class Koine_Verb extends Verb_Common_IE {
 		// 不定詞を作成
 		$this->intensive_present_infinitive_active = $this->intensive_present_stem.self::active_infinitive_suffix;		// 現在能動
 		$this->intensive_present_infinitive_middle = $this->intensive_present_stem.self::middle_infinitive_suffix;		// 現在中受動
-		$this->intensive_inchoative_infinitive_active = $this->intensive_present_stem.self::active_infinitive_suffix;	// 始動能動
-		$this->intensive_inchoative_infinitive_middle = $this->intensive_present_stem.self::middle_infinitive_suffix;	// 始動中受動
+		$this->intensive_inchoative_infinitive_active = $this->intensive_inchoative_stem.self::active_infinitive_suffix;	// 始動能動
+		$this->intensive_inchoative_infinitive_middle = $this->intensive_inchoative_stem.self::middle_infinitive_suffix;	// 始動中受動
 		$this->intensive_aorist_infinitive_active = $this->intensive_aorist_stem.self::active_infinitive_suffix2;		// 完結能動
 		$this->intensive_aorist_infinitive_middle = $this->intensive_aorist_stem.self::middle_infinitive_suffix;		// 完結中動
 		$this->intensive_aorist_infinitive_passive = $this->intensive_aorist_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 完結受動
-		$this->intensive_perfect_infinitive_active = $this->intensive_present_stem.self::active_infinitive_suffix3;		// 完了能動
-		$this->intensive_perfect_infinitive_middle = $this->intensive_present_stem.self::middle_infinitive_suffix2;		// 完了中受動
+		$this->intensive_perfect_infinitive_active = $this->intensive_perfect_stem.self::active_infinitive_suffix3;		// 完了能動
+		$this->intensive_perfect_infinitive_middle = $this->intensive_perfect_stem.self::middle_infinitive_suffix2;		// 完了中受動
 		$this->intensive_future_infinitive_active = $this->intensive_future_stem.self::active_infinitive_suffix;		// 未来能動
 		$this->intensive_future_infinitive_middle = $this->intensive_future_stem.self::middle_infinitive_suffix;		// 未来中動
 		$this->intensive_future_infinitive_passive = $this->intensive_future_stem.self::passive_suffix.self::middle_infinitive_suffix;		// 未来受動
@@ -9295,6 +9313,14 @@ class Koine_Verb extends Verb_Common_IE {
 			// ハイフンを返す。
 			return "-";
 		} 
+
+		// 受動態は専用の接尾辞を追加
+		if($voice == Commons::PASSIVE_VOICE){
+			// 受動態接尾辞
+			$verb_stem = $verb_stem.self::passive_suffix;
+			// 中動態に読み替え
+			$voice = Commons::MEDIOPASSIVE_VOICE;
+		}
 		
 		// 活用作成
 		return $this->make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem);
@@ -9323,6 +9349,14 @@ class Koine_Verb extends Verb_Common_IE {
 			// ハイフンを返す。
 			return "-";
 		} 
+
+		// 受動態は専用の接尾辞を追加
+		if($voice == Commons::PASSIVE_VOICE){
+			// 受動態接尾辞
+			$verb_stem = $verb_stem.self::passive_suffix;
+			// 中動態に読み替え
+			$voice = Commons::MEDIOPASSIVE_VOICE;
+		}
 		
 		// 活用作成
 		return $this->make_conjugation($person, $voice, $tense_mood, $aspect, $verb_stem);
@@ -9591,7 +9625,10 @@ class Koine_Verb extends Verb_Common_IE {
 						// 態と人称で場合分けする。
 						if($aspect == Commons::AORIST_ASPECT && $tense_mood == Commons::PRESENT_TENSE){
 							// アオリストの現在時制は存在しないため、ハイフンを入れる。
-							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";										
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";
+						} else if($aspect == Commons::FUTURE_TENSE && ($tense_mood != Commons::PRESENT_TENSE && $tense_mood != Commons::OPTATIVE)){
+							// 現在形・希求法以外のの時制や法は存在しないため、ハイフンを入れる。
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";							
 						} else {
 							// 態・時制・法・人称に応じて多次元配列を作成		
 							$conjugation[$aspect][$voice][$tense_mood][$person] = $this->get_koine_causative_verb($person, $voice, $tense_mood, $aspect);	
@@ -9668,7 +9705,10 @@ class Koine_Verb extends Verb_Common_IE {
 						// 態と人称で場合分けする。
 						if($aspect == Commons::AORIST_ASPECT && $tense_mood == Commons::PRESENT_TENSE){
 							// アオリストの現在時制は存在しないため、ハイフンを入れる。
-							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";										
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";
+						} else if($aspect == Commons::FUTURE_TENSE && ($tense_mood != Commons::PRESENT_TENSE && $tense_mood != Commons::OPTATIVE)){
+							// 現在形・希求法以外のの時制や法は存在しないため、ハイフンを入れる。
+							$conjugation[$aspect][$voice][$tense_mood][$person] = "-";								
 						} else {
 							// 態・時制・法・人称に応じて多次元配列を作成		
 							$conjugation[$aspect][$voice][$tense_mood][$person] = $this->get_koine_intensive_verb($person, $voice, $tense_mood, $aspect);	

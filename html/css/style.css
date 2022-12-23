@@ -294,6 +294,9 @@ h5 {
 .table-archaic {
   color: grey !important;
 }
+.table-optional {
+  color: grey !important;
+}
   /* ----------- iPad mini ----------- */
 
 /* Portrait and Landscape */

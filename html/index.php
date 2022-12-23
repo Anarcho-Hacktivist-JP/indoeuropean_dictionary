@@ -26,8 +26,68 @@ header("Content-type: text/html; charset=utf-8");
         <table border="1" align="center" class="table table-success table-bordered table-striped table-hover">
             <tbody>
                 <tr>
-                    <th>2022/12/03</th>
-                    <th>Ver 1.00</th>
+                    <th style="width:10%" class="text-center">2022/12/23</th>
+                    <th style="width:10%" class="text-center">Ver 1.13</th>
+                    <td>・ギリシア語の名詞と形容詞の表レイアウトを修正<br>・ギリシア語の動詞の処理を修正<br>・ラテン語の動詞の検索処理を修正</td>
+                </tr> 
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/22</th>
+                    <th style="width:10%" class="text-center">Ver 1.12</th>
+                    <td>・ラテン語の動詞データベースを更新</td>
+                </tr> 
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/21</th>
+                    <th style="width:10%" class="text-center">Ver 1.10</th>
+                    <td>・梵語の動詞データベースを更新<br>・梵語の欠如動詞の出力を修正<br>・梵語の名詞起源動詞の処理を修正</td>
+                </tr> 
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/20</th>
+                    <th style="width:10%" class="text-center">Ver 1.09</th>
+                    <td>・梵語の動詞データベースを更新<br>・梵語とラテン語の欠如動詞の出力を修正</td>
+                </tr> 
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/19</th>
+                    <th style="width:10%" class="text-center">Ver 1.08</th>
+                    <td>・梵語の動詞データベースを更新<br>・梵語の欠如動詞の出力を修正<br>・梵語の形容詞で語幹がない場合の処理を修正</td>
+                </tr>     
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/17</th>
+                    <th style="width:10%" class="text-center">Ver 1.07</th>
+                    <td>・動詞の練習問題の処理を修正</td>
+                </tr>  
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/15</th>
+                    <th style="width:10%" class="text-center">Ver 1.06</th>
+                    <td>・ギリシア語の動詞処理を修正<br>・ギリシア語の文字変換処理を修正</td>
+                </tr>    
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/15</th>
+                    <th style="width:10%" class="text-center">Ver 1.05</th>
+                    <td>・英語検索の処理を修正</td>
+                </tr>                
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/12</th>
+                    <th style="width:10%" class="text-center">Ver 1.04</th>
+                    <td>・入力欄に入力内容の説明を記載</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/08</th>
+                    <th style="width:10%" class="text-center">Ver 1.03</th>
+                    <td>・ポーランド語で古い形式の活用をグレーアウト<br>・ポーランド語で比較級の生成方法を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/07</th>
+                    <th style="width:10%" class="text-center">Ver 1.02</th>
+                    <td>・ラテン語の形容詞に英訳を追加<br>・その他指摘を受けて修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/04</th>
+                    <th style="width:10%" class="text-center">Ver 1.01</th>
+                    <td>・ポーランド語に新しい名詞活用区分を作成</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2022/12/03</th>
+                    <th style="width:10%" class="text-center">Ver 1.00</th>
                     <td>・初版リリース<br>・サーバー環境に合わせて一部処理を修正<br>
                         ・ポーランド語のデータベースを更新<br>・更新履歴を作成
                     </td>

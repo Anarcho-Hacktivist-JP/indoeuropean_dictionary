@@ -144,7 +144,7 @@ class Koine_Common extends Common_IE{
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
-		$query = "SELECT `strong_stem`  FROM `".$table."` WHERE (
+		$query = "SELECT `stem`  FROM `".$table."` WHERE (
 				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
 				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
@@ -164,7 +164,7 @@ class Koine_Common extends Common_IE{
 		if($table_data){
 			// 新しい配列に詰め替え
 			foreach ($table_data as $row_data ) {
-				array_push($new_table_data, substr($row_data["strong_stem"], 0, -1));
+				array_push($new_table_data, $row_data["stem"]);
 			}
 		} else {
 			// 何も返さない。
@@ -1076,34 +1076,34 @@ class Koine_Common extends Common_IE{
 		<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">出格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-		<tr><th class="text-center" scope="row">出格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">奪格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">具格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">地格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">出格1(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td colspan="6" class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">出格2(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td colspan="6" class="table-optional"></td></tr>
 		<tr><th class="text-center" scope="row" colspan="10">比較級</th></tr>
 		<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">出格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-		<tr><th class="text-center" scope="row">出格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">奪格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">具格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">地格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">出格1(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td colspan="6" class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">出格2(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td colspan="6" class="table-optional"></td></tr>
 		<tr><th class="text-center" scope="row" colspan="10">最上級</th></tr>
 		<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><th class="text-center" scope="row">出格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-		<tr><th class="text-center" scope="row">出格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">奪格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">具格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">地格</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">出格1(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td colspan="6" class="table-optional"></td></tr>
+		<tr><th class="text-center table-optional" scope="row">出格2(副詞)</th><td class="table-optional"></td><td class="table-optional"></td><td class="table-optional"></td><td colspan="6" class="table-optional"></td></tr>
 			';
 	}	
 
