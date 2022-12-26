@@ -225,10 +225,6 @@ class Polish_Common extends Common_IE{
 
 	// 動詞の情報を取得する。
 	public static function get_verb_by_english($english_translation){	
-		// 英数字以外は考慮しない
-		if(!ctype_alnum($english_translation)){
-			return null;
-		}
 		//DBに接続
 		$db_host = set_DB_session();
 
@@ -906,5 +902,18 @@ class Polish_Common extends Common_IE{
 		return $word;
 	}
 
+	// 検索言語コンボボックスの精製
+	public static function language_select_box(){
+		// ボタンを生成
+		$button_html_code = '
+        <select class="form-select" name="input_search_lang"> 
+          <option value="japanese">日本語(Japanese)</option>
+          <option value="english">英語(English)</option>
+          <option value="polish">ポーランド語(Polish)</option>     
+        </select> ';
+
+		// 結果を返す。
+		return $button_html_code;
+	}	
 
 }

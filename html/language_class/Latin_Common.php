@@ -1486,4 +1486,19 @@ class Latin_Common extends Common_IE{
 		return $button_html_code.'</section>';
 	}
 
+	// 検索言語コンボボックスの精製
+	public static function language_select_box(){
+		// ボタンを生成
+		$button_html_code = '
+        <select class="form-select" name="input_search_lang"> 
+          <option value="japanese">日本語(Japanese)</option>
+          <option value="english">英語(English)</option>
+          <option value="latin">ラテン語(Latin)</option>     
+        </select> ';
+
+		// 結果を返す。
+		return $button_html_code;
+	}
+
+
 }

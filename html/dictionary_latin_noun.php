@@ -14,20 +14,7 @@ function get_noun_declension_chart($word){
 	// 名詞の情報を取得
 	$noun_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::DB_NOUN);
   // 取得できない場合は
-  if(!$noun_words && Latin_Common::is_alphabet_or_not($word)){
-    // 英語で取得する。
-    $noun_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_NOUN);    
-    // 取得できない場合は
-    if(!$noun_words){
-      // 単語から直接取得する
-      $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN);
-      // 取得できない場合は
-      if(!$noun_words){
-        // その単語を入れる        
-        $noun_words[] = $word;
-      }    
-    }
-  } else if(!$noun_words && !Latin_Common::is_alphabet_or_not($word)){
+  if(!$noun_words){
     // 空を返す。
     return array();   
   }
@@ -43,6 +30,52 @@ function get_noun_declension_chart($word){
   // 結果を返す。
 	return $declensions;
 }
+
+// 活用表を取得する。
+function get_noun_declension_chart_by_english($word){
+
+  // 英語で取得する。
+  $noun_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_NOUN);    
+  // 取得できない場合は
+  if(!$noun_words){
+    // その単語を入れる        
+    $noun_words[] = $word;
+  }    
+ 	// 配列を宣言
+  $declensions = array(); 
+	// 新しい配列に詰め替え
+	foreach ($noun_words as $noun_word) {
+		// 読み込み
+		$latin_noun = new Latin_Noun($noun_word);
+		// 配列に格納
+		$declensions[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+// 活用表を取得する。
+function get_noun_declension_chart_by_latin($word){
+  // 単語から直接取得する
+  $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN);
+  // 取得できない場合は
+  if(!$noun_words){
+    // その単語を入れる        
+    $noun_words[] = $word;
+  }   
+ 	// 配列を宣言
+  $declensions = array(); 
+	// 新しい配列に詰め替え
+	foreach ($noun_words as $noun_word) {
+		// 読み込み
+		$latin_noun = new Latin_Noun($noun_word);
+		// 配列に格納
+		$declensions[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
 
 // 動詞から活用表を取得する。
 function get_noun_declension_chart_by_verb($word){
@@ -89,7 +122,9 @@ function get_compound_noun_word($janome_result, $input_noun)
 }
 
 // 挿入データ－対象－
-$input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
+$input_noun = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_noun')), 128);
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_noun);
@@ -104,7 +139,13 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
 } else if($input_noun != "" && $janome_result[0][1] == "動詞"){
   // 動詞の場合は動詞で名詞を取得
 	$declensions = get_noun_declension_chart_by_verb($input_noun);
-} else if($input_noun != ""){
+} else if($input_noun != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_noun)){
+  // 対象が入力されていれば処理を実行
+	$declensions = get_noun_declension_chart_by_latin($input_noun);
+} else if($input_noun != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_noun)){
+  // 対象が入力されていれば処理を実行
+	$declensions = get_noun_declension_chart_by_english($input_noun);
+} else if($input_noun != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart($input_noun);
 }
@@ -130,7 +171,8 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun
     <div class="container item table-striped">
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4 form-search" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">           
+        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">
+        <?php echo Latin_Common::language_select_box(); ?>      
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">

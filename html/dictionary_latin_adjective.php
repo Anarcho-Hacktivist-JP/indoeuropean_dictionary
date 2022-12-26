@@ -14,22 +14,56 @@ function get_adjective_declension_chart($word){
 	// 形容詞の情報を取得
 	$adjective_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::DB_ADJECTIVE);
   // 取得できない場合は
-  if(!$adjective_words && Latin_Common::is_alphabet_or_not($word)){
-    // 英語で取得する。
-    $adjective_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_ADJECTIVE);  
-    if(!$adjective_words){
-      // 単語から直接取得する
-      $adjective_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_ADJECTIVE);
-      // 取得できない場合は
-      if(!$adjective_words){
-        // その単語を入れる
-        $adjective_words[] = $word;
-      } 
-    }
-  } else if(!$adjective_words && !Latin_Common::is_alphabet_or_not($word)){
+  if(!$adjective_words){
     // 空を返す。
     return array();   
   }
+	// 配列を宣言
+	$declensions = array();  
+	// 新しい配列に詰め替え
+	foreach ($adjective_words as $adjective_word) {
+		// 読み込み
+		$latin_adjective = new Latin_Adjective($adjective_word);
+		// 活用表生成
+		$declensions[$latin_adjective->get_first_stem()] = $latin_adjective->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+// 活用表を取得する。
+function get_adjective_declension_chart_by_english($word){
+	// 形容詞の情報を取得
+  // 英語で取得する。
+  $adjective_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_ADJECTIVE);  
+  // 取得できない場合は
+  if(!$adjective_words){
+    // その単語を入れる        
+    $adjective_words[] = $word;
+  }    
+	// 配列を宣言
+	$declensions = array();  
+	// 新しい配列に詰め替え
+	foreach ($adjective_words as $adjective_word) {
+		// 読み込み
+		$latin_adjective = new Latin_Adjective($adjective_word);
+		// 活用表生成
+		$declensions[$latin_adjective->get_first_stem()] = $latin_adjective->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+// 活用表を取得する。
+function get_adjective_declension_chart_by_latin($word){
+	// 形容詞の情報を取得
+  // 単語から直接取得する
+  $adjective_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_ADJECTIVE);
+  // 取得できない場合は
+  if(!$adjective_words){
+    // その単語を入れる
+    $adjective_words[] = $word;
+  } 
 	// 配列を宣言
 	$declensions = array();  
 	// 新しい配列に詰め替え
@@ -76,7 +110,6 @@ function get_adjective_declension_chart_by_verb($word){
 	return $declensions;
 }
 
-
 //造語対応
 function get_compound_adjective_word($janome_result, $input_adjective)
 {
@@ -88,6 +121,9 @@ function get_compound_adjective_word($janome_result, $input_adjective)
 
 // 挿入データ－対象－
 $input_adjective = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_adjective')), 128);
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
+
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_adjective);
 $janome_result = Commons::convert_compound_array($janome_result);
@@ -101,9 +137,15 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
 } else if($input_adjective != "" && $janome_result[0][1] == "動詞"){
   // 動詞の場合は動詞で形容詞を取得
 	$declensions = get_adjective_declension_chart_by_verb($input_adjective);
-} else if($input_adjective != ""){
+} else if($input_adjective != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_adjective)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart($input_adjective);
+} else if($input_adjective != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_adjective)){
+  // 対象が入力されていれば処理を実行
+	$declensions = get_adjective_declension_chart_by_english($input_adjective);
+} else if($input_adjective != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_adjective)){
+  // 対象が入力されていれば処理を実行
+	$declensions = get_adjective_declension_chart_by_latin($input_adjective);
 }
 
 ?>
@@ -126,6 +168,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・ラテン語)">
+        <?php echo Latin_Common::language_select_box(); ?> 
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="adjective-selection" aria-label="Default select example">

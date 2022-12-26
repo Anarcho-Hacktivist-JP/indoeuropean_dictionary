@@ -19,37 +19,57 @@ function get_verb_conjugation_chart($word, $verb_genre){
 	$latin_verbs = Latin_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
   if(!$latin_verbs && Latin_Common::is_alphabet_or_not($word)){
-	  // 英語で動詞の情報を取得
-	  $latin_verbs = Latin_Common::get_verb_by_english($word);
-    // 動詞の情報が取得できない場合は
-    if(!$latin_verbs){
-      // 動詞の情報を取得
-	    $latin_verb = Latin_Common::get_verb_from_DB($word);
-      // 動詞が取得できたか確認する。
-      if($latin_verb){
-        // 動詞が取得できた場合
-        $conjugations = array_merge(Latin_Common::get_verb_conjugation($latin_verb[0], $verb_genre), $conjugations);
-      } else {
-		    // 動詞が取得できない場合
-        // 動詞を生成
-		    $verb_latin = new Latin_Verb($word, $verb_genre);
-		    // 活用表生成、配列に格納
-		    $conjugations[$verb_latin->get_infinitive()] = $verb_latin->get_chart();
-      }
-    } else {
-      // 新しい配列に詰め替え
-	    foreach ($latin_verbs as $latin_verb) {
-        $conjugations = array_merge(Latin_Common::get_verb_conjugation($latin_verb, $verb_genre), $conjugations);
-	    }
-    }
-  } else if(!$latin_verbs && !Latin_Common::is_alphabet_or_not($word)){
     // 空を返す。
     return array();   
+  }
+
+	// 新しい配列に詰め替え
+	foreach ($latin_verbs as $latin_verb) {
+    $conjugations = array_merge(Latin_Common::get_verb_conjugation($latin_verb, $verb_genre), $conjugations);
+	}
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 活用表を取得する。
+function get_verb_conjugation_chart_by_english($word, $verb_genre){
+  // 配列を宣言
+	$conjugations = array();
+	// 英語で動詞の情報を取得
+	$latin_verbs = Latin_Common::get_verb_by_english($word);
+  // 動詞の情報が取得できない場合は
+  if(!$latin_verbs){
+	  // 動詞が取得できない場合
+    // 動詞を生成
+	  $verb_latin = new Latin_Verb($word, $verb_genre);
+	  // 活用表生成、配列に格納
+	  $conjugations[$verb_latin->get_infinitive()] = $verb_latin->get_chart();
   } else {
-	  // 新しい配列に詰め替え
+    // 新しい配列に詰め替え
 	  foreach ($latin_verbs as $latin_verb) {
       $conjugations = array_merge(Latin_Common::get_verb_conjugation($latin_verb, $verb_genre), $conjugations);
 	  }
+  }
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 活用表を取得する。
+function get_verb_conjugation_chart_by_latin($word, $verb_genre){
+  // 配列を宣言
+	$conjugations = array();
+  // 動詞の情報を取得
+	$latin_verb = Latin_Common::get_verb_from_DB($word);
+  // 動詞が取得できたか確認する。
+  if($latin_verb){
+    // 動詞が取得できた場合
+    $conjugations = Latin_Common::get_verb_conjugation($latin_verb[0], $verb_genre);
+  } else {
+	  // 動詞が取得できない場合
+    // 動詞を生成
+	  $verb_latin = new Latin_Verb($word, $verb_genre);
+	  // 活用表生成、配列に格納
+	  $conjugations[$verb_latin->get_infinitive()] = $verb_latin->get_chart();
   }
   // 結果を返す。
 	return $conjugations;
@@ -133,6 +153,8 @@ function get_compound_verb_word($janome_result, $input_verb)
 $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
 // 挿入データ－動詞種別－
 $input_verb_type = trim(filter_input(INPUT_POST, 'input_verb_type'));
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_verb);
@@ -147,10 +169,16 @@ if($input_verb != "" && count($janome_result) > 1 && !ctype_alnum($input_verb) &
 	$conjugations = get_conjugation_by_noun($input_verb, $input_verb_type);
 } else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
-	$conjugations = get_conjugation_by_adjective($input_verb, $input_verb_type);    
-} else if($input_verb != ""){
-  // 処理を実行
-  $conjugations = get_verb_conjugation_chart($input_verb, $input_verb_type);
+	$conjugations = get_conjugation_by_adjective($input_verb, $input_verb_type);
+} else if($input_verb != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_verb)){
+  // 対象が入力されていれば処理を実行
+	$conjugations = get_verb_conjugation_chart_by_latin($input_verb, $input_verb_type);
+} else if($input_verb != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_verb)){
+  // 対象が入力されていれば処理を実行
+	$conjugations = get_verb_conjugation_chart_by_english($input_verb, $input_verb_type);
+} else if($input_verb != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb)){
+  // 対象が入力されていれば処理を実行
+	$conjugations = get_verb_conjugation_chart($input_verb, $input_verb_type);
 }
 
 ?>
@@ -175,9 +203,9 @@ if($input_verb != "" && count($janome_result) > 1 && !ctype_alnum($input_verb) &
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可">
+        <?php echo Latin_Common::language_select_box(); ?> 
         <select class="form-select" name="input_verb_type">
-          <option selected>動詞の種別</option>
-          <option value="">通常</option>          
+          <option value="">動詞の種別 - 通常</option>          
           <option value="inchorative">始動動詞</option>
           <option value="causative">使役動詞</option>
           <option value="desiderative">願望動詞</option>

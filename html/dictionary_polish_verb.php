@@ -19,37 +19,58 @@ function get_verb_conjugation_chart($word){
 	$polish_verbs = Polish_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
   if(!$polish_verbs && Polish_Common::is_alphabet_or_not($word)){
-	  // 英語で動詞の情報を取得
-	  $polish_verbs = Polish_Common::get_verb_by_english($word);
-    // 動詞の情報が取得できない場合は
-    if(!$polish_verbs){
-      // 動詞の情報を取得
-	    $polish_verb = Polish_Common::get_verb_from_DB($word);
-      // 動詞が取得できたか確認する。
-      if($polish_verb){
-        // 動詞が取得できた場合
-        $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
-      } else {
-		    // 動詞が取得できない場合
-        // 動詞を生成
-		    $verb_polish = new Polish_Verb($word);
-		    // 活用表生成、配列に格納
-		    $conjugations[$verb_polish->get_infinitive()] = $verb_polish->get_chart();
-      }
-    } else {
-      // 新しい配列に詰め替え
-	    foreach ($polish_verbs as $polish_verb) {
-        $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
-	    }
-    }
-  } else if(!$polish_verbs && !Polish_Common::is_alphabet_or_not($word)){
     // 空を返す。
-    return array();   
+    return array();  
+  }
+
+	// 新しい配列に詰め替え
+	foreach ($polish_verbs as $polish_verb) {
+    $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
+	}
+
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 活用表を取得する。
+function get_verb_conjugation_chart_by_english($word){
+  // 配列を宣言
+	$conjugations = array();
+	// 英語で動詞の情報を取得
+	$polish_verbs = Polish_Common::get_verb_by_english($word);
+  // 動詞の情報が取得できない場合は
+  if(!$polish_verbs){
+	  // 動詞が取得できない場合
+    // 動詞を生成
+	  $verb_polish = new Polish_Verb($word."ować");
+	  // 活用表生成、配列に格納
+	  $conjugations[$verb_polish->get_infinitive()] = $verb_polish->get_chart();
   } else {
-	  // 新しい配列に詰め替え
+    // 新しい配列に詰め替え
 	  foreach ($polish_verbs as $polish_verb) {
       $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
 	  }
+  }
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 活用表を取得する。
+function get_verb_conjugation_chart_by_polish($word){
+  // 配列を宣言
+	$conjugations = array();
+	// ポーランド語で動詞の情報を取得
+	$polish_verb = Polish_Common::get_verb_from_DB($word);
+  // 動詞が取得できたか確認する。
+  if($polish_verb){
+    // 動詞が取得できた場合
+    $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
+  } else {
+	  // 動詞が取得できない場合
+    // 動詞を生成
+	  $verb_polish = new Polish_Verb($word);
+	  // 活用表生成、配列に格納
+	  $conjugations[$verb_polish->get_infinitive()] = $verb_polish->get_chart();
   }
   // 結果を返す。
 	return $conjugations;
@@ -103,6 +124,8 @@ function get_conjugation_by_adjective($word){
 
 // 挿入データ－対象－
 $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_verb);
@@ -114,8 +137,14 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
 	$conjugations = get_conjugation_by_noun($input_verb);
 } else if($input_verb != "" && $janome_result[0][1] == "形容詞" && count($janome_result) == 1 && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
-	$conjugations = get_conjugation_by_adjective($input_verb);    
-} else if($input_verb != ""){
+	$conjugations = get_conjugation_by_adjective($input_verb);
+} else if($input_verb != "" && $search_lang == "polish" && Polish_Common::is_alphabet_or_not($input_verb)){
+  // 処理を実行
+  $conjugations = get_verb_conjugation_chart_by_polish($input_verb);
+} else if($input_verb != "" && $search_lang == "english" && Polish_Common::is_alphabet_or_not($input_verb)){
+  // 処理を実行
+  $conjugations = get_verb_conjugation_chart_by_english($input_verb);
+} else if($input_verb != "" && $search_lang == "japanese" && !Polish_Common::is_alphabet_or_not($input_verb)){
   // 処理を実行
   $conjugations = get_verb_conjugation_chart($input_verb);
 }
@@ -142,6 +171,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ポーランド語)、名詞や形容詞も可">
+        <?php echo Polish_Common::language_select_box(); ?>  
         <input type="submit" class="btn-check" id="btn-generate">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
         <select class="form-select" id="verb-selection" aria-label="Default select example">

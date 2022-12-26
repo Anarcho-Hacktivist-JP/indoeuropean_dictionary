@@ -15,20 +15,8 @@ function get_noun_declension_chart($word){
 	$noun_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::DB_NOUN, "");
   // 取得できない場合は
   if(!$noun_words){
-    // 英語で取得する。
-    $noun_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::DB_NOUN);    
-    // 取得できない場合は
-    if(!$noun_words){    
-      // 単語から直接取得する
-      $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::DB_NOUN);
-      // 取得できない場合は
-      if(!$noun_words && !Polish_Common::is_alphabet_or_not($word)){
-        // 空を返す。
-        return array();
-      } else if(Polish_Common::is_alphabet_or_not($word)){
-        $noun_words[] = $word;
-      }
-    }
+    // 空を返す。
+    return array();
   }
  	// 配列を宣言
   $declensions = array(); 
@@ -43,16 +31,119 @@ function get_noun_declension_chart($word){
 	return $declensions;
 }
 
+// 活用表を取得する。
+function get_noun_declension_chart_by_english($word){
+  // 英語で取得する。
+  $noun_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::DB_NOUN);    
+  // 取得できない場合は
+  if(!$noun_words && !Polish_Common::is_alphabet_or_not($word)){    
+    // 空を返す。
+    return array();
+  } else {
+    $noun_words[] = $word;
+  }
+ 	// 配列を宣言
+  $declensions = array(); 
+	// 新しい配列に詰め替え
+	foreach ($noun_words as $noun_word) {
+		// 読み込み
+		$polish_noun = new Polish_Noun($noun_word);
+		// 配列に格納
+		$declensions[$polish_noun->get_first_stem()] = $polish_noun->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+// 活用表を取得する。
+function get_noun_declension_chart_by_polish($word){
+	// 名詞の情報を取得
+  // 単語から直接取得する
+  $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::DB_NOUN);
+  // 取得できない場合は
+  if(!$noun_words){
+    $noun_words[] = $word;
+  } else if(Polish_Common::is_alphabet_or_not($word)){
+    $noun_words[] = $word;
+  }
+ 	// 配列を宣言
+  $declensions = array(); 
+	// 新しい配列に詰め替え
+	foreach ($noun_words as $noun_word) {
+		// 読み込み
+		$polish_noun = new Polish_Noun($noun_word);
+		// 配列に格納
+		$declensions[$polish_noun->get_first_stem()] = $polish_noun->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+// 形容詞から名詞の活用表を取得する。
+function get_adjective_declension_chart($word){
+	// 形容詞の情報を取得
+	$adjective_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::DB_ADJECTIVE, "");
+  // 取得できない場合は
+  if(!$adjective_words){
+    // 英語で取得する。
+    $adjective_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::DB_ADJECTIVE);  
+    if(!$adjective_words){
+      // 取得できない場合は
+      if(!$adjective_words && !Polish_Common::is_alphabet_or_not($word)){
+        // 空を返す。
+        return array();
+      } else if(Polish_Common::is_alphabet_or_not($word)){
+        $adjective_words[] = $word;
+      }
+    }
+  }
+
+  // 名詞化配列を生成
+  $noun_suffix = array("ość", "ota", "stwo");
+
+	// 配列を宣言
+	$declensions = array();  
+	// 新しい配列に詰め替え
+	foreach ($adjective_words as $adjective_word) {
+    // 形容詞化
+    foreach($noun_suffix as $suffix){
+		  // 読み込み
+		  $polish_noun= new Polish_Noun(mb_substr($adjective_word, 0, -1).$suffix);
+		  // 活用表生成
+		  $declensions[$polish_noun->get_first_stem()] = $polish_noun->get_chart();
+    }
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
 // 挿入データ－対象－
-$input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
+$input_noun = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_noun')), 128);
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 
 // 検索結果の配列
 $declensions = array();
 
+// AIによる造語対応
+$janome_result = Commons::get_multiple_words_detail($input_adjective);
+$janome_result = Commons::convert_compound_array($janome_result);
+
 // 対象が入力されていれば処理を実行
-if($input_noun != ""){
-  $declensions = get_noun_declension_chart($input_noun);
+if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "形容詞" && !Polish_Common::is_alphabet_or_not($input_noun)){
+  // 形容詞の場合は形容詞で名詞を取得
+	$declensions = get_adjective_declension_chart($input_noun);
+} else if($input_noun != "" && $search_lang == "polish" && Polish_Common::is_alphabet_or_not($input_noun)){
+  // ポーランド語
+  $declensions = get_noun_declension_chart_by_polish($input_noun);
+} else if($input_noun != "" && $search_lang == "english" && Polish_Common::is_alphabet_or_not($input_noun)){
+  // 英語
+	$declensions = get_noun_declension_chart_by_english($input_noun);
+} else if($input_noun != "" && $search_lang == "japanese" && !Polish_Common::is_alphabet_or_not($input_noun)){
+  // 日本語
+	$declensions = get_noun_declension_chart($input_noun);
 }
+
 ?>
 <!doctype html>
 <html lang="ja">
@@ -74,6 +165,7 @@ if($input_noun != ""){
       <p>あいまい検索は+ ※(薄文字の部分は現在は使わない)</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
+        <?php echo Polish_Common::language_select_box(); ?>      
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
