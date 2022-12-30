@@ -70,6 +70,8 @@ function get_verb_conjugation_chart_by_latin($word, $verb_genre){
 	  $verb_latin = new Latin_Verb($word, $verb_genre);
 	  // 活用表生成、配列に格納
 	  $conjugations[$verb_latin->get_infinitive()] = $verb_latin->get_chart();
+	  // メモリを解放
+	  unset($verb_data);
   }
   // 結果を返す。
 	return $conjugations;
@@ -95,11 +97,15 @@ function get_conjugation_by_noun($word, $verb_genre){
 	    $verb_data = new Latin_Verb($latin_verb, $verb_genre);
 	    // 活用表生成、配列に格納
 	    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+	    // メモリを解放
+	    unset($verb_data);
     } else {
 	    // 読み込み
 	    $verb_data = new Latin_Verb($latin_verb);
 	    // 活用表生成、配列に格納
 	    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+	    // メモリを解放
+	    unset($verb_data);
     }
 	}
   // 結果を返す。
@@ -127,11 +133,15 @@ function get_conjugation_by_adjective($word, $verb_genre){
 	    $verb_data = new Latin_Verb($latin_verb, $verb_genre);
 	    // 活用表生成、配列に格納
 	    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+	    // メモリを解放
+	    unset($verb_data);
     } else {
 	    // 読み込み
 	    $verb_data = new Latin_Verb($latin_verb);
 	    // 活用表生成、配列に格納
 	    $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
+	    // メモリを解放
+	    unset($verb_data);
     }
 	}
   // 結果を返す。
@@ -139,8 +149,7 @@ function get_conjugation_by_adjective($word, $verb_genre){
 }
 
 //造語対応
-function get_compound_verb_word($janome_result, $input_verb)
-{ 
+function get_compound_verb_word($janome_result, $input_verb){ 
   // 配列を宣言
 	$conjugations = array();
   // データを取得(男性)
@@ -160,24 +169,24 @@ $search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
-// 条件分岐
-if($input_verb != "" && count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
-  // 複合語の場合
+// 条件ごとに判定して単語を検索して取得する
+if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+  // 複合語の場合(日本語のみ)
   $conjugations = get_compound_verb_word($janome_result, $input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "名詞" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
-  // 名詞の場合は名詞で動詞を取得
+} else if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+  // 名詞の場合は名詞で動詞を取得(日本語のみ)
 	$conjugations = get_conjugation_by_noun($input_verb, $input_verb_type);
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
-  // 形容詞の場合は形容詞で動詞を取得
+} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+  // 形容詞の場合は形容詞で動詞を取得(日本語のみ)
 	$conjugations = get_conjugation_by_adjective($input_verb, $input_verb_type);
 } else if($input_verb != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_verb)){
-  // 対象が入力されていれば処理を実行
+  // 対象が入力されていればラテン語処理を実行
 	$conjugations = get_verb_conjugation_chart_by_latin($input_verb, $input_verb_type);
 } else if($input_verb != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_verb)){
-  // 対象が入力されていれば処理を実行
+  // 対象が入力されていれば英語で処理を実行
 	$conjugations = get_verb_conjugation_chart_by_english($input_verb, $input_verb_type);
 } else if($input_verb != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb)){
-  // 対象が入力されていれば処理を実行
+  // 対象が入力されていれば日本語で処理を実行
 	$conjugations = get_verb_conjugation_chart($input_verb, $input_verb_type);
 }
 

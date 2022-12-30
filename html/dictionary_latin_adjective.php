@@ -111,8 +111,7 @@ function get_adjective_declension_chart_by_verb($word){
 }
 
 //造語対応
-function get_compound_adjective_word($janome_result, $input_adjective)
-{
+function get_compound_adjective_word($janome_result, $input_adjective){
   // データを取得
 	$declensions = Latin_Common::make_compound_chart($janome_result, "adjective", $input_adjective);
 	// 結果を返す。
@@ -131,11 +130,12 @@ $janome_result = Commons::convert_compound_array($janome_result);
 // 検索結果の配列
 $declensions = array();
 
-if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
-  // 複合語の場合
+// 条件ごとに判定して単語を検索して取得する
+if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
+  // 複合語の場合(日本語のみ)
   $declensions = get_compound_adjective_word($janome_result, $input_adjective);
-} else if($input_adjective != "" && $janome_result[0][1] == "動詞"){
-  // 動詞の場合は動詞で形容詞を取得
+} else if($input_adjective != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
+  // 動詞の場合は動詞で形容詞を取得(日本語のみ)
 	$declensions = get_adjective_declension_chart_by_verb($input_adjective);
 } else if($input_adjective != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_adjective)){
   // 対象が入力されていれば処理を実行

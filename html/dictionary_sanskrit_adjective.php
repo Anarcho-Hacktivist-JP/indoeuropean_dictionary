@@ -13,41 +13,96 @@ include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
 
 // 活用表を取得する。
 function get_adjective_declension_chart($word){
+	// 名詞の情報を取得
+	$noun_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::DB_NOUN, "");
 	// 形容詞の情報を取得
 	$adjective_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::DB_ADJECTIVE, "");
   // 取得できない場合は
-  if(!$adjective_words){
-    // 英語で取得する。
-    $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_ADJECTIVE);
-    if(!$adjective_words && Sanskrit_Common::is_alphabet_or_not($word)){
-      // 単語から直接取得する
-      $adjective_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_ADJECTIVE);      
-      // 取得できない場合は
-      if(!$adjective_words){
-        $adjective_words[] = $word;
-      }
-    } else if(!Sanskrit_Common::is_alphabet_or_not($word)){
-      // 空を返す。
-      return array();      
-    }
+  if(!$noun_words && !$adjective_words){
+    // 空を返す。
+    return array();
   }
+  
 	// 配列を宣言
-	$declensions = array();  
-	// 新しい配列に詰め替え
-	foreach ($adjective_words as $adjective_word) {
-		// 読み込み
-		$vedic_adjective = new Vedic_Adjective($adjective_word);
-		// 活用表生成
-		$declensions[$vedic_adjective->get_second_stem()] = $vedic_adjective->get_chart();
-	}
+	$declensions = set_adjective_table_data($noun_words, $adjective_words);
+
   // 結果を返す。
 	return $declensions;
+}
+
+// 形容詞を梵語で取得する。
+function get_adjective_declension_chart_by_sanskrit($word){
+
+  // 単語から直接取得する
+  $adjective_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_ADJECTIVE);     
+  // 取得できない場合は
+  if(!$adjective_words && Sanskrit_Common::is_alphabet_or_not($word)){
+    // アルファベットの場合は単語を入れる。
+    $adjective_words[] = $word;
+  }
+
+  // 名詞のデータを取得
+  $declensions = set_noun_table_data(array(), $adjective_words);
+  // 結果を返す。
+  return $declensions;
+}
+
+// 形容詞を英語を取得する。
+function get_adjective_declension_chart_by_english($word){
+  // 英語で取得する。
+  // 名詞の情報を取得
+  $noun_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_NOUN);
+	// 形容詞の情報を取得
+  $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_ADJECTIVE);   
+  // 取得できない場合は
+  if(!$noun_words && !$adjective_words && Sanskrit_Common::is_alphabet_or_not($word)){
+    // アルファベットの場合は単語を入れる。
+    $noun_words[] = $word;
+  }
   
+	// 配列を宣言
+	$declensions = set_adjective_table_data($noun_words, $adjective_words);
+
+  // 結果を返す。
+	return $declensions;
+}
+
+// 形容詞のデータをセットする。
+function set_adjective_table_data($noun_words, $adjective_words){
+	// 配列を宣言
+	$declensions = array(); 
+  // 形容詞がある場合は名詞を新しい配列に詰め替え
+  if($adjective_words){
+	  // 新しい配列に詰め替え
+	  foreach ($adjective_words as $adjective_word) {
+	  	// 読み込み
+	  	$vedic_adjective = new Vedic_Adjective($adjective_word);
+	  	// 活用表生成
+	  	$declensions[$vedic_adjective->get_second_stem()] = $vedic_adjective->get_chart();
+	    // メモリを解放
+	    unset($vedic_adjective);
+	  }
+  }
+
+  // 名詞がある場合は名詞を新しい配列に詰め替え
+  if($noun_words){
+	  // 新しい配列に詰め替え
+	  foreach ($noun_words as $noun_word) {
+	  	// 読み込み
+	  	$vedic_adjective = new Vedic_Adjective($noun_word);
+	  	// 活用表生成
+	  	$declensions[$vedic_adjective->get_second_stem()] = $vedic_adjective->get_chart();
+	    // メモリを解放
+	    unset($vedic_adjective);
+	  }
+  }
+
+  // 結果を返す。
+	return $declensions;
 }
 
 //造語対応
-function get_compound_adjective_word($janome_result, $input_adjective)
-{
+function get_compound_adjective_word($janome_result, $input_adjective){
   // データを取得
 	$declensions = Sanskrit_Common::make_compound_chart($janome_result, "adjective", $input_adjective);
 	// 結果を返す。
@@ -56,6 +111,8 @@ function get_compound_adjective_word($janome_result, $input_adjective)
 
 // 挿入データ－対象－
 $input_adjective = trim(filter_input(INPUT_POST, 'input_adjective'));
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_adjective);
@@ -64,13 +121,22 @@ $janome_result = Commons::convert_compound_array($janome_result);
 // 検索結果の配列
 $declensions = array();
 
-if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
-  // 複合語の場合
+// 条件ごとに判定して単語を検索して取得する
+if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
+  // 複合語の場合(日本語のみ)
   $declensions = get_compound_adjective_word($janome_result, $input_adjective);
-} else if($input_adjective != "" && $janome_result[0][1] == "動詞"){
-  // 動詞の場合
+} else if($input_adjective != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
+  // 動詞の場合(日本語のみ)
   $declensions = Sanskrit_Common::get_adjective_from_verb($input_adjective);
-} else if($input_adjective != ""){
+} else if($input_adjective != "" && $search_lang == "sanskrit" && Sanskrit_Common::is_alphabet_or_not($input_adjective)){
+  // 梵語
+  // 対象が入力されていれば処理を実行
+	$declensions = get_adjective_declension_chart_by_sanskrit($input_adjective);
+} else if($input_adjective != "" && $search_lang == "english" && Sanskrit_Common::is_alphabet_or_not($input_adjective)){
+  // 英語
+  // 対象が入力されていれば処理を実行
+	$declensions = get_adjective_declension_chart_by_english($input_adjective);
+} else if($input_adjective != "" && $search_lang == "japanese" && !Sanskrit_Common::is_alphabet_or_not($input_adjective)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart($input_adjective);
 }
@@ -96,6 +162,7 @@ if(count($janome_result) > 1 && !ctype_alnum($input_adjective) && !strpos($input
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・サンスクリット)">
         <input type="submit" class="btn-check" id="btn-search">
+        <?php echo Sanskrit_Common::language_select_box(); ?>
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="adjective-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>

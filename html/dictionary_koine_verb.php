@@ -132,6 +132,7 @@ $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
 $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
+// 条件ごとに判定して単語を検索して取得する
 if(count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 複合語の場合
   $conjugations = get_compound_verb_word($janome_result, $input_verb);

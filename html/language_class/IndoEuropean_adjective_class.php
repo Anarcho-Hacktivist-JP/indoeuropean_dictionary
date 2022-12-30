@@ -2864,6 +2864,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
 		// 結果を返す。
 		return $word_chart;
 	}
+	
 	// 曲用表を取得
 	public function get_chart(){
 		

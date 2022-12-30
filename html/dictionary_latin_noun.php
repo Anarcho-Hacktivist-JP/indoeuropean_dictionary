@@ -113,8 +113,7 @@ function get_noun_declension_chart_by_verb($word){
 }
 
 //造語対応
-function get_compound_noun_word($janome_result, $input_noun)
-{
+function get_compound_noun_word($janome_result, $input_noun){
   // データを取得(男性)
 	$declensions = Latin_Common::make_compound_chart($janome_result, "noun", $input_noun);
 	// 結果を返す。
@@ -133,11 +132,12 @@ $janome_result = Commons::convert_compound_array($janome_result);
 // 検索結果の配列
 $declensions = array();
 
-if(count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
-  // 複合語の場合
+// 条件ごとに判定して単語を検索して取得する
+if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
+  // 複合語の場合(日本語のみ)
   $declensions = get_compound_noun_word($janome_result, $input_noun);
-} else if($input_noun != "" && $janome_result[0][1] == "動詞"){
-  // 動詞の場合は動詞で名詞を取得
+} else if($input_noun != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
+  // 動詞の場合は動詞で名詞を取得(日本語のみ)
 	$declensions = get_noun_declension_chart_by_verb($input_noun);
 } else if($input_noun != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行

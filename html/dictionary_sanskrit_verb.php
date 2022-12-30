@@ -11,7 +11,7 @@ include(dirname(__FILE__) . "/language_class/Commons.php");
 include(dirname(__FILE__) . "/language_class/Sanskrit_Common.php");
 
 // 活用表を取得する。
-function get_conjugation($word){
+function get_verb_conjugation_chart($word){
 
   // 配列を宣言
 	$conjugations = array();
@@ -19,27 +19,57 @@ function get_conjugation($word){
 	$vedic_verbs = Sanskrit_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
   if(!$vedic_verbs){
-    // アルファベット以外は処理しない。
-    if(Sanskrit_Common::is_alphabet_or_not($word)){
-	    // 英語で動詞の情報を取得
-	    $vedic_verbs = Sanskrit_Common::get_verb_by_english($word);
-      // 取得できなかった場合は
-      if(!$vedic_verbs){
-        // 動詞の情報を語根から取得
-        $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
-        // 取得できなかった場合は
-        if(!$vedic_verbs){
-          // 活用表生成、配列に格納
-          $conjugations = array_merge(get_verb_chart($word), $conjugations);
-          // 結果を返す。
-          return $conjugations;
-        }
-      }
-    } else {
-      // 空を返す。
-      return array();
-    }
+    // 空を返す。
+    return array();
   }
+	// 新しい配列に詰め替え
+	foreach ($vedic_verbs as $vedic_verb) {
+	  // 活用表生成、配列に格納
+	  $conjugations = array_merge(get_verb_chart($vedic_verb["dictionary_stem"]), $conjugations);
+	}
+
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 梵語で活用表を取得する。
+function get_verb_conjugation_chart_by_sanskrit($word){
+  // 配列を宣言
+	$conjugations = array();
+  // 動詞の情報を語根から取得
+  $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
+  // 取得できなかった場合は
+  if(!$vedic_verbs){
+    // 活用表生成、配列に格納
+    $conjugations = get_verb_chart($word);
+    // 結果を返す。
+    return $conjugations;
+  } 
+
+	// 新しい配列に詰め替え
+	foreach ($vedic_verbs as $vedic_verb) {
+	  // 活用表生成、配列に格納
+	  $conjugations = array_merge(get_verb_chart($vedic_verb["dictionary_stem"]), $conjugations);
+	}
+
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 英語で活用表を取得する。
+function get_verb_conjugation_chart_by_english($word){
+  // 配列を宣言
+	$conjugations = array();
+  // 動詞の情報を語根から取得
+  $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
+  // 取得できなかった場合は
+  if(!$vedic_verbs){
+    // 活用表生成、配列に格納
+    $conjugations = get_verb_chart($word);
+    // 結果を返す。
+    return $conjugations;
+  } 
+
 	// 新しい配列に詰め替え
 	foreach ($vedic_verbs as $vedic_verb) {
 	  // 活用表生成、配列に格納
@@ -107,7 +137,7 @@ function make_denomitive_verb($sanskrit_verbs, $word){
 }
 
 // 名詞から活用表を取得する。
-function get_conjugation_by_noun($word){
+function get_verb_conjugation_chart_by_noun($word){
 
 	// 名詞の語幹を取得
 	$sanskrit_verbs = Sanskrit_Common::get_sanskrit_strong_stem($word, Sanskrit_Common::DB_NOUN);
@@ -125,7 +155,7 @@ function get_conjugation_by_noun($word){
 }
 
 // 形容詞から活用表を取得する。
-function get_conjugation_by_adjective($word){
+function get_verb_conjugation_chart_by_adjective($word){
 	// 形容詞の語幹を取得
 	$sanskrit_verbs = Sanskrit_Common::get_sanskrit_strong_stem($word, Sanskrit_Common::DB_ADJECTIVE);
   // 名詞の情報が取得できない場合は
@@ -141,8 +171,7 @@ function get_conjugation_by_adjective($word){
 }
 
 //造語対応
-function get_compound_verb_word($janome_result, $input_verb)
-{ 
+function get_compound_verb_word($janome_result, $input_verb){ 
   // 配列を宣言
 	$conjugations = array();
   // データを取得(男性)
@@ -153,25 +182,32 @@ function get_compound_verb_word($janome_result, $input_verb)
 
 // 挿入データ－対象－
 $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
+
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
-// 場合分けをする。
-if($input_verb != "" && count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
-  // 複合語の場合
+// 条件ごとに判定して単語を検索して取得する
+if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
+  // 複合語の場合(日本語のみ)
   $conjugations = get_compound_verb_word($janome_result, $input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "名詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
-  // 名詞の場合は名詞で動詞を取得
-	$conjugations = get_conjugation_by_noun($input_verb);
-  echo $input_verb;
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
-  // 形容詞の場合は形容詞で動詞を取得
-	$conjugations = get_conjugation_by_adjective($input_verb);  
-} else if($input_verb != ""){
-  // 処理を実行
-  $conjugations = get_conjugation($input_verb);
-
+} else if($input_verb != "" && $search_lang == "japanese" && $janome_result[0][1] == "名詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+  // 名詞の場合は名詞で動詞を取得(日本語のみ)
+	$conjugations = get_verb_conjugation_chart_by_noun($input_verb);
+} else if($input_verb != "" && $search_lang == "japanese" && $janome_result[0][1] == "形容詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+  // 形容詞の場合は形容詞で動詞を取得(日本語のみ)
+	$conjugations = get_verb_conjugation_chart_by_adjective($input_verb);
+} else if($input_verb != "" && $search_lang == "english" && Sanskrit_Common::is_alphabet_or_not($input_verb)){
+  // 梵語で処理を実行
+  $conjugations = get_verb_conjugation_chart_by_english($input_verb);
+} else if($input_verb != "" && $search_lang == "sanskrit" && Sanskrit_Common::is_alphabet_or_not($english)){
+  // 英語で処理を実行
+  $conjugations = get_verb_conjugation_chart_by_sanskrit($input_verb);
+} else if($input_verb != "" && $search_lang == "japanese" && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
+  // 日本語で処理を実行
+  $conjugations = get_verb_conjugation_chart($input_verb);
 }
 
 ?>
@@ -196,6 +232,7 @@ if($input_verb != "" && count($janome_result) > 1 && !ctype_alnum($input_verb) &
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・サンスクリット)、名詞や形容詞も可">
         <input type="submit" class="btn-check" id="btn-generate">
+        <?php echo Sanskrit_Common::language_select_box(); ?>
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
         <select class="form-select" id="verb-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
