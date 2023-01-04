@@ -204,7 +204,6 @@ class Sanskrit_Common extends Common_IE{
 			$roots = Sanskrit_Common::get_verb_by_japanese($word);
 		}
 
-
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
@@ -988,7 +987,7 @@ class Sanskrit_Common extends Common_IE{
 							$last_words[] = "nayati";
 							$last_words[] = "gacchati";	
 							$last_words[] = "ganti";
-						}															
+						}
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "に"){
 						// 最終単語
 						if(Commons::is_word_declensionable($word_category)){
@@ -1119,7 +1118,7 @@ class Sanskrit_Common extends Common_IE{
 							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB4;
 							$last_words[] = "asti";	// コピュラ√as
 						}
-					} else if($target_word == "欲す" || $target_word == "欲しい" ||$target_word == "求める"){
+					} else if($target_word == "欲す" || $target_word == "欲しい" ||$target_word == "求める" || $target_word == "がる"){
 						// 最終単語
 						if(Commons::is_word_declensionable($word_category)){
 							// 名詞や形容詞の場合は語根
@@ -1127,7 +1126,16 @@ class Sanskrit_Common extends Common_IE{
 						} else {
 							// それ以外は辞書形
 							$last_words[] = Sanskrit_Common::DENOMITIVE_VERB3;
-						}	
+						}
+					} else if($target_word == "きる" && $input_words[$i - 1][1] == "動詞"){
+						// 最終単語
+						if(Commons::is_word_declensionable($word_category)){
+							// 名詞や形容詞の場合は語根
+							$last_words[] = "dhā";
+						} else {
+							// それ以外は辞書形
+							$last_words[] = "dadhāti";
+						}
 					} else {
 						// データベースから訳語の語幹を取得する。
 						$last_words_data = Sanskrit_Common::get_verb_by_japanese($target_word);
@@ -1572,16 +1580,16 @@ class Sanskrit_Common extends Common_IE{
 			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">出格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">内格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">内格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">共格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">乗法格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">様格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">変格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">時格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">入格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr> 
-			<tr><th class="text-center" scope="row">分配格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">起点の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">場所の副詞1</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">場所の副詞2</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">状態や方法の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">種類や回数の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">様態の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">性質や付加状況の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">時の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">方向の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr> 
+			<tr><th class="text-center" scope="row">配分や量や方法の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
 			<tr><th class="text-center" scope="row" colspan="10">比較級</th></tr>
 			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1591,16 +1599,16 @@ class Sanskrit_Common extends Common_IE{
 			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">出格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">内格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">内格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">共格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">乗法格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">様格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">変格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">時格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">入格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr> 
-			<tr><th class="text-center" scope="row">分配格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">起点の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">場所の副詞1</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">場所の副詞2</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">状態や方法の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">種類や回数の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">様態の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">性質や付加状況の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">時の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">方向の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr> 
+			<tr><th class="text-center" scope="row">配分や量や方法の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
 			<tr><th class="text-center" scope="row" colspan="10">最上級</th></tr>
 			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1610,16 +1618,16 @@ class Sanskrit_Common extends Common_IE{
 			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">出格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">内格1(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">内格2(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">共格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">乗法格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">様格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">変格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">時格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>
-			<tr><th class="text-center" scope="row">入格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr> 
-			<tr><th class="text-center" scope="row">分配格(副詞)</th><td></td><td></td><td></td><td colspan="6"></td></tr>									
+			<tr><th class="text-center" scope="row">起点の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">場所の副詞1</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">場所の副詞2</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">状態や方法の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">種類や回数の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">様態の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">性質や付加状況の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">時の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>
+			<tr><th class="text-center" scope="row">方向の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr> 
+			<tr><th class="text-center" scope="row">配分や量や方法の副詞</th><td></td><td></td><td></td><td colspan="6"></td></tr>								
 			';
 	}
 
@@ -1677,7 +1685,7 @@ class Sanskrit_Common extends Common_IE{
           <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row" colspan="16">指令法(不定仮定法)</th></tr
+          <tr><th class="text-center" scope="row" colspan="16">仮定法1</th></tr>
           <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1687,7 +1695,7 @@ class Sanskrit_Common extends Common_IE{
           <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row" colspan="16">接続法/未来時制</th></tr>
+          <tr><th class="text-center" scope="row" colspan="16">未来時制</th></tr>
           <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1697,7 +1705,7 @@ class Sanskrit_Common extends Common_IE{
           <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row" colspan="16">仮定法/希求法</th></tr>
+          <tr><th class="text-center" scope="row" colspan="16">仮定法2</th></tr>
           <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1707,7 +1715,7 @@ class Sanskrit_Common extends Common_IE{
           <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row" colspan="16">仮定法/祈願法</th></tr>
+          <tr><th class="text-center" scope="row" colspan="16">仮定法(祈願法)</th></tr>
           <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1751,16 +1759,16 @@ class Sanskrit_Common extends Common_IE{
 	  	  <tr><th scope="row">具格</th><td></td><td></td></tr>          
 	  	  <tr><th scope="row">地格</th><td></td><td></td></tr>
 	  	  <tr><th scope="row">呼格</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">出格(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">内格1(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">内格2(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">共格(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">乗法格(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">様格(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">変格(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">時格(副詞)</th><td></td><td></td></tr>
-	  	  <tr><th scope="row">入格(副詞)</th><td></td><td></td></tr> 
-	  	  <tr><th scope="row">分配格(副詞)</th><td></td><td></td></tr>   
+	  	  <tr><th scope="row">起点の副詞</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">場所の副詞1</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">場所の副詞2</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">状態や方法の副詞</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">種類や回数の副詞</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">様態の副詞</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">性質や付加状況の副詞</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">時の副詞</th><td></td><td></td></tr>
+	  	  <tr><th scope="row">方向の副詞</th><td></td><td></td></tr> 
+	  	  <tr><th scope="row">配分や量や方法の副詞</th><td></td><td></td></tr>   
 	    </tbody>						
 		';
 	}

@@ -6668,7 +6668,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			$ary = array(Commons::PRESENT_ASPECT, Commons::AORIST_ASPECT, Commons::PERFECT_ASPECT, Commons::FUTURE_TENSE);				
 			// 欠如動詞対応
 			// 進行相なし
-			if($this->deponent_present != Commons::$TRUE){
+			if($this->deponent_present == Commons::$TRUE){
 				//削除実行
 				$ary = array_diff($ary, array(Commons::PRESENT_ASPECT));
 				//indexを詰める
@@ -6676,7 +6676,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			} 
 
 			// 完結相なし
-			if($this->deponent_aorist != Commons::$TRUE){
+			if($this->deponent_aorist == Commons::$TRUE){
 				//削除実行
 				$ary = array_diff($ary, array(Commons::AORIST_ASPECT));
 				//indexを詰める
@@ -6684,7 +6684,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 			
 			// 完了相なし
-			if($this->deponent_perfect != Commons::$TRUE){
+			if($this->deponent_perfect == Commons::$TRUE){
 				//削除実行
 				$ary = array_diff($ary, array(Commons::PERFECT_ASPECT));
 				//indexを詰める
@@ -6692,7 +6692,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 
 			// 未来相なし
-			if($this->deponent_future != Commons::$TRUE){
+			if($this->deponent_future == Commons::$TRUE){
 				//削除実行
 				$ary = array_diff($ary, array(Commons::FUTURE_TENSE));
 				//indexを詰める
