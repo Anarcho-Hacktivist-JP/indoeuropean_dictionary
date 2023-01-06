@@ -3574,7 +3574,6 @@ class Vedic_Verb extends Verb_Common_IE{
 					$add_stem = mb_ereg_replace("k", "c", $add_stem);
 					$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);				
 					$this->present_stem = mb_substr($add_stem, 0, 1)."i".$root;
-					echo $this->conjugation_present_type."<br>".$this->present_stem;		
 			        break;
 			    case 3:
 					$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
@@ -5603,7 +5602,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 		} else if($aspect == Commons::PERFECT_ASPECT){
 			// 状態動詞		
-			$verb_stem = $this->perfect_causative_stem;				
+			$verb_stem = $this->perfect_desiderative_causative_stem;				
 		} else if($aspect == Commons::FUTURE_TENSE){
 			// 未然相
 			// 受動態は専用の語幹を使用
@@ -5659,7 +5658,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 		} else if($aspect == Commons::PERFECT_ASPECT){
 			// 状態動詞		
-			$verb_stem = $this->perfect_causative_stem;				
+			$verb_stem = $this->perfect_intensive_causative_stem;				
 		} else if($aspect == Commons::FUTURE_TENSE){
 			// 未然相
 			// 受動態は専用の語幹を使用
@@ -6733,13 +6732,13 @@ class Vedic_Verb extends Verb_Common_IE{
 			}
 
 			// 欠如動詞対応
-			if($this->deponent_active != Commons::$TRUE){
+			if($this->deponent_active == Commons::$TRUE){
 				// 能動態なし
 				// 削除実行
 				$ary = array_diff($ary, array(Commons::ACTIVE_VOICE));
 				//indexを詰める
 				$ary = array_values($ary);	
-			} else if($this->deponent_mediopassive != Commons::$TRUE){
+			} else if($this->deponent_mediopassive == Commons::$TRUE){
 				// 中動態なし
 				// 削除実行
 				$ary = array_diff($ary, array(Commons::MEDIOPASSIVE_VOICE, Commons::PASSIVE_VOICE));

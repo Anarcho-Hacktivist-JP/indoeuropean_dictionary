@@ -804,19 +804,21 @@ class Latin_Common extends Common_IE{
 				continue;
 			} else if($word_type  == "助詞"){				
 				// 日本語訳を入れる。
-				$japanese_translation = $japanese_translation.$target_word;
+				$japanese_translation = $japanese_translation.$remain_word.$target_word;
 				// 名詞複合化フラグがある場合は
 				if($noun_compound_flag){
 					// 単語を結合する。
 					$target_word = $remain_word.$target_word;
 					// データベースから接尾辞を取得する。
-					$word_datas = Latin_Common::get_latin_prefix($target_word);	
+					$word_datas = Latin_Common::get_latin_prefix($target_word);
 					// データベースが取得できた場合は
 					if($word_datas){
 						// 挿入する。
 						$latin_words[] = $word_datas;
 						// フラグをfalseにする。
 						$noun_compound_flag = false;
+						// 次に移動
+						continue;
 					}
 					// 形容詞の単語を取得する(動詞の場合は副詞から)
 					if((preg_match('/verb/', $word_category))){
@@ -967,6 +969,8 @@ class Latin_Common extends Common_IE{
 					// 接尾辞がある場合はそちらを優先。
 					if($adverb_array){
 						$latin_words[$i] = $adverb_array;
+			            // 日本語訳を入れる。
+			            $japanese_translation = $japanese_translation.$target_word;	
 						continue;
 					}					
 					// データベースから訳語の語幹を取得する。

@@ -202,7 +202,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
 } else if($input_verb != "" && $search_lang == "english" && Sanskrit_Common::is_alphabet_or_not($input_verb)){
   // 梵語で処理を実行
   $conjugations = get_verb_conjugation_chart_by_english($input_verb);
-} else if($input_verb != "" && $search_lang == "sanskrit" && Sanskrit_Common::is_alphabet_or_not($english)){
+} else if($input_verb != "" && $search_lang == "sanskrit" && Sanskrit_Common::is_alphabet_or_not($input_verb)){
   // 英語で処理を実行
   $conjugations = get_verb_conjugation_chart_by_sanskrit($input_verb);
 } else if($input_verb != "" && $search_lang == "japanese" && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
