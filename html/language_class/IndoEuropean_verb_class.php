@@ -150,6 +150,11 @@ class Verb_Common_IE {
 	protected $class_name = "";	
 	// 活用種別-語根種別
 	protected $root_type = "";
+	// 活用種別-同志種別
+	protected $verb_type = "";
+
+	// 追加語幹
+	protected $add_stem = "";
 
     /*=====================================
     コンストラクタ
@@ -570,7 +575,7 @@ class Latin_Verb extends Verb_Common_IE {
 			$this->deponent_present = $word_info["deponent_present"];				// 欠如-現在形
 			$this->deponent_perfect = $word_info["deponent_perfect"];				// 欠如-完了形
 			$this->deponent_personal = $word_info["deponent_personal"];				// 非人称のみ
-			$this->verb_type= $word_info["verb_type"];							// 活用種別
+			$this->verb_type = $word_info["verb_type"];							// 活用種別
 		} else if(preg_match('/(ficāre|ficare)$/',$dic_stem)){
 			// 使役動詞の場合は
 			$primary_stem = mb_substr($dic_stem, 0, -6)."re";
@@ -3316,7 +3321,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	// 願望+使役動詞完了体中動分詞
 	protected $aorist_desiderative_causative_participle_middle = "";	
 	// 願望+使役動詞状態動詞能動分詞
-	protected $perfect_desiderative_ausative_participle_active = "";
+	protected $perfect_desiderative_causative_participle_active = "";
 	// 願望+使役動詞状態動詞受動分詞
 	protected $perfect_desiderative_causative_participle_passive = "";
 	// 願望+使役動詞状態動詞中動分詞
@@ -3636,7 +3641,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 中動分詞
 			if($this->deponent_mediopassive != Commons::$TRUE){
 				$this->present_participle_middle = Sanskrit_Common::sandhi_engine($common_participle_stme, self::middle_participle_suffix2);		// 中動態
-				$this->present_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::ZERO_GRADE), $this->passive_suffix, true, false), "māma");	// 受動態
+				$this->present_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::ZERO_GRADE), self::passive_suffix, true, false), "māma");	// 受動態
 			}				
 		}
 
@@ -3687,7 +3692,7 @@ class Vedic_Verb extends Verb_Common_IE{
 
 				// 中動分詞
 				if($this->deponent_mediopassive != Commons::$TRUE){
-					$this->inchorative_participle_middle = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->inchorative_stem, self::middle_participle_suffix1);		// 中動態
+					$this->inchoative_participle_middle = $this->add_stem.Sanskrit_Common::change_vowel_grade($this->inchorative_stem, self::middle_participle_suffix1);		// 中動態
 				}
 			}
 
@@ -3934,7 +3939,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix, $common_causative_stem);					// 語根		
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mn]$/u", "", $this->present_causative_stem), "dhi");		// dhi(中動態)不定詞		
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "tu");				// 語根tu不定詞
-		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem.$this->causative_suffix, "itu");		// 不完了体tu不定詞
+		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem.self::causative_suffix, "itu");		// 不完了体tu不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mn]$/u", "", $this->present_causative_stem), "ti");		// 不完了体tiスラブ式不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "as");				// 語根asギリシア・ラテン式不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$this->aorist_causative_stem, "as");		// 完了体asギリシア・ラテン式不定詞		
@@ -4045,9 +4050,9 @@ class Vedic_Verb extends Verb_Common_IE{
 		$this->future_intensive_stem = Sanskrit_Common::sandhi_engine($common_intensive_stem, self::future_suffix2, true, false);		//未然相
 
 		// 現在分詞
-		$this->present_intensive_participle_active = $prefix.$this->present_intensive_stem.$this->active_participle_suffix1;				// 能動態
-		$this->present_intensive_participle_middle = $prefix.$this->present_intensive_stem.$this->middle_participle_suffix1;				// 中動態
-		$this->present_intensive_participle_passive = $prefix.$this->present_intensive_stem.$this->passive_suffix.self::middle_participle_suffix1;		// 受動態
+		$this->present_intensive_participle_active = $prefix.$this->present_intensive_stem.self::active_participle_suffix1;				// 能動態
+		$this->present_intensive_participle_middle = $prefix.$this->present_intensive_stem.self::middle_participle_suffix1;				// 中動態
+		$this->present_intensive_participle_passive = $prefix.$this->present_intensive_stem.self::passive_suffix.self::middle_participle_suffix1;		// 受動態
 
 		// 完了体分詞
 		$this->aorist_intensive_participle_active = $prefix.Sanskrit_Common::sandhi_engine($this->aorist_intensive_stem, self::active_participle_suffix1);			// 能動態
@@ -4212,7 +4217,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 初期化
 		$prefix = "";
 		// 使役用語幹
-		$common_desiderative_causative_stem = $this->present_desiderative_stem.$this->causative_suffix;		
+		$common_desiderative_causative_stem = $this->present_desiderative_stem.self::causative_suffix;		
 		// 現在相
 		$this->present_desiderative_causative_stem = Sanskrit_Common::sandhi_engine($common_desiderative_causative_stem, "a", false, false);
 		
@@ -4878,7 +4883,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 名詞起源動詞の場合は
 				if($this->root_type == Commons::NOUN_VERB){
 					// yaをそのまま追加する。
-					$verb_stem = $this->denomitive_suffix.self::passive_suffix;
+					$verb_stem = self::denomitive_suffix.self::passive_suffix;
 				} else {
 					// それ以外はsandhiを通す。
 					$verb_stem = Sanskrit_Common::sandhi_engine(Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::ZERO_GRADE), self::passive_suffix, false, false);
@@ -5385,10 +5390,10 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 未完了は二次語尾
 			if($aspect == Commons::AORIST_ASPECT){
 				// isアオリストは連音処理入り
-				$verb_conjugation = $this->and_then_prefix.$this->get_is_aorist_indcative_conjugation($verb_stem, $voice, $person, mb_substr($this->present_intensive_stem, 0 , -1));				
+				$verb_conjugation = self::and_then_prefix.$this->get_is_aorist_indcative_conjugation($verb_stem, $voice, $person, mb_substr($this->present_intensive_stem, 0 , -1));				
 			} else {
 				// 不完了体・完了形・未来形は親クラスで処理
-				$verb_conjugation = $this->and_then_prefix.$this->get_secondary_suffix($verb_stem, $voice, $person);
+				$verb_conjugation = self::and_then_prefix.$this->get_secondary_suffix($verb_stem, $voice, $person);
 			} 
 		} else if($tense_mood == Commons::IMJUNCTIVE){
 			// 未完了は二次語尾
@@ -6070,10 +6075,6 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_desiderative_participle_active);				// 能動
 		$conjugation[Commons::AORIST_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_desiderative_participle_middle);		// 中受動
 
-		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_desiderative_participle_active);			// 能動
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->perfect_desiderative_participle_middle);		// 中受動
-
 		// 未来分詞
 		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_desiderative_participle_active);				// 能動
 		$conjugation[Commons::FUTURE_TENSE][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->future_desiderative_participle_middle);			// 中動
@@ -6271,10 +6272,6 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_causative_desiderative_participle_active);				// 能動
 		$conjugation[Commons::AORIST_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_causative_desiderative_participle_middle);		// 中受動
 
-		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_causative_desiderative_participle_active);			// 能動
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->perfect_causative_desiderative_participle_middle);		// 中受動
-
 		// 未来分詞
 		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_causative_desiderative_participle_active);				// 能動
 		$conjugation[Commons::FUTURE_TENSE][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->future_causative_desiderative_participle_middle);			// 中動
@@ -6374,10 +6371,6 @@ class Vedic_Verb extends Verb_Common_IE{
 		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_intensive_desiderative_participle_active);				// 能動
 		$conjugation[Commons::AORIST_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_intensive_desiderative_participle_middle);		// 中受動
 
-		// 完了形分詞
-		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_intensive_desiderative_participle_active);			// 能動
-		$conjugation[Commons::PERFECT_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->perfect_intensive_desiderative_participle_middle);		// 中受動
-
 		// 未来分詞
 		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_intensive_desiderative_participle_active);				// 能動
 		$conjugation[Commons::FUTURE_TENSE][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->future_intensive_desiderative_participle_middle);			// 中動
@@ -6475,7 +6468,8 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 完了体分詞
 		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_desiderative_causative_participle_active);				// 能動
-		$conjugation[Commons::AORIST_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_desiderative_causative_participle_middle);		// 中受動
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->aorist_desiderative_causative_participle_middle);				// 中動
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_desiderative_causative_participle_passive);			// 受動
 
 		// 完了形分詞
 		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_desiderative_causative_participle_active);			// 能動
@@ -6483,7 +6477,8 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 未来分詞
 		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_desiderative_causative_participle_active);				// 能動
-		$conjugation[Commons::FUTURE_TENSE][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->future_desiderative_causative_participle_middle);			// 中動
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->future_desiderative_causative_participle_middle);				// 中動
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->future_desiderative_causative_participle_passive);				// 受動
 
 		// 過去分詞
 		$conjugation[Commons::PAST_TENSE][Commons::ACTIVE_VOICE]["na-participle"] = $this->get_participle($this->past_desiderative_causative_na_participle_active);				// na-能動
@@ -6578,7 +6573,8 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 完了体分詞
 		$conjugation[Commons::AORIST_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->aorist_intensive_causative_participle_active);				// 能動
-		$conjugation[Commons::AORIST_ASPECT][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_intensive_causative_participle_middle);		// 中受動
+		$conjugation[Commons::AORIST_ASPECT][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->aorist_intensive_causative_participle_middle);				// 中動
+		$conjugation[Commons::AORIST_ASPECT][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->aorist_intensive_causative_participle_passive);			// 受動
 
 		// 完了形分詞
 		$conjugation[Commons::PERFECT_ASPECT][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->perfect_intensive_causative_participle_active);			// 能動
@@ -6586,11 +6582,12 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 未来分詞
 		$conjugation[Commons::FUTURE_TENSE][Commons::ACTIVE_VOICE]["participle"] = $this->get_participle($this->future_intensive_causative_participle_active);				// 能動
-		$conjugation[Commons::FUTURE_TENSE][Commons::MEDIOPASSIVE_VOICE]["participle"] = $this->get_participle($this->future_intensive_causative_participle_middle);			// 中動
+		$conjugation[Commons::FUTURE_TENSE][Commons::MIDDLE_VOICE]["participle"] = $this->get_participle($this->future_intensive_causative_participle_middle);				// 中動
+		$conjugation[Commons::FUTURE_TENSE][Commons::PASSIVE_VOICE]["participle"] = $this->get_participle($this->future_intensive_causative_participle_passive);			// 受動
 
 		// 過去分詞
-		$conjugation[Commons::PAST_TENSE][Commons::ACTIVE_VOICE]["na-participle"] = $this->get_participle($this->past_intensive_causative_na_participle_active);				// na-能動
-		$conjugation[Commons::PAST_TENSE][Commons::ACTIVE_VOICE]["ta-participle"] = $this->get_participle($this->past_intensive_causative_ta_participle_active);				// ta-能動
+		$conjugation[Commons::PAST_TENSE][Commons::ACTIVE_VOICE]["na-participle"] = $this->get_participle($this->past_intensive_causative_na_participle_active);			// na-能動
+		$conjugation[Commons::PAST_TENSE][Commons::ACTIVE_VOICE]["ta-participle"] = $this->get_participle($this->past_intensive_causative_ta_participle_active);			// ta-能動
 		$conjugation[Commons::PAST_TENSE][Commons::PASSIVE_VOICE]["na-participle"] = $this->get_participle($this->past_intensive_causative_na_participle_passive);			// na-受動
 		$conjugation[Commons::PAST_TENSE][Commons::PASSIVE_VOICE]["ta-participle"] = $this->get_participle($this->past_intensive_causative_ta_participle_passive);			// ta-受動
 
@@ -6967,12 +6964,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 願望動詞完了体分詞
 		$words[$this->aorist_desiderative_participle_active] = $this->get_participle($this->aorist_desiderative_participle_active);		// 能動
 		$words[$this->aorist_desiderative_participle_middle] = $this->get_participle($this->aorist_desiderative_participle_middle);		// 中動
-		$words[$this->aorist_desiderative_participle_passive] = $this->get_participle($this->aorist_desiderative_participle_passive);		// 受動
 
 		// 願望動詞未来分詞
 		$words[$this->future_desiderative_participle_active] = $this->get_participle($this->future_desiderative_participle_active);		// 能動
 		$words[$this->future_desiderative_participle_middle] = $this->get_participle($this->future_desiderative_participle_middle);		// 中動
-		$words[$this->future_desiderative_participle_passive] = $this->get_participle($this->future_desiderative_participle_passive);		// 受動
 
 		// 願望動詞過去分詞
 		$words[$this->past_desiderative_na_participle_active] = $this->get_participle($this->past_desiderative_na_participle_active);		// na-能動
@@ -6988,12 +6983,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		// 強意動詞完了体分詞
 		$words[$this->aorist_intensive_participle_active] = $this->get_participle($this->aorist_intensive_participle_active);		// 能動
 		$words[$this->aorist_intensive_participle_middle] = $this->get_participle($this->aorist_intensive_participle_middle);		// 中動
-		$words[$this->aorist_intensive_participle_passive] = $this->get_participle($this->aorist_intensive_participle_passive);		// 受動
 
 		// 強意動詞未来分詞
 		$words[$this->future_intensive_participle_active] = $this->get_participle($this->future_intensive_participle_active);		// 能動
 		$words[$this->future_intensive_participle_middle] = $this->get_participle($this->future_intensive_participle_middle);		// 中動
-		$words[$this->future_intensive_participle_passive] = $this->get_participle($this->future_intensive_participle_passive);		// 受動
 
 		// 強意動詞過去分詞
 		$words[$this->past_intensive_na_participle_active] = $this->get_participle($this->past_intensive_na_participle_active);		// na-能動
@@ -7186,6 +7179,8 @@ class Polish_Verb extends Verb_Common_IE {
 	// 動名詞
 	protected $verbal_noun = "";
 
+	// 非人称動詞フラグ
+	protected $deponent_personal = "";
 
     /*=====================================
     コンストラクタ
@@ -8715,6 +8710,10 @@ class Koine_Verb extends Verb_Common_IE {
 	protected $present_infinitive_active = "";
 	// 不完了体中動不定詞
 	protected $present_infinitive_middle = "";	
+	// 始動能動分詞
+	protected $inchoative_infinitive_active = "";
+	// 始動中動分詞
+	protected $inchoative_infinitive_middle = "";
 	// 完了体能動不定詞
 	protected $aorist_infinitive_active = "";
 	// 完了体受動不定詞
@@ -8748,7 +8747,11 @@ class Koine_Verb extends Verb_Common_IE {
 	// 使役不完了体受動分詞
 	protected $causative_present_participle_passive = "";
 	// 使役不完了体中動分詞
-	protected $causative_present_participle_middle = "";	
+	protected $causative_present_participle_middle = "";
+	// 使役始動能動分詞
+	protected $causative_inchoative_participle_active = "";
+	// 使役始動中動分詞
+	protected $causative_inchoative_participle_middle = "";
 	// 使役完了体能動分詞
 	protected $causative_aorist_participle_active = "";
 	// 使役完了体受動分詞
@@ -8771,7 +8774,11 @@ class Koine_Verb extends Verb_Common_IE {
 	// 使役不完了体能動不定詞
 	protected $causative_present_infinitive_active = "";
 	// 使役不完了体中動不定詞
-	protected $causative_present_infinitive_middle = "";	
+	protected $causative_present_infinitive_middle = "";
+	// 使役始動能動不定詞
+	protected $causative_inchoative_infinitive_active = "";
+	// 使役始動中動不定詞
+	protected $causative_inchoative_infinitive_middle = "";
 	// 使役完了体能動不定詞
 	protected $causative_aorist_infinitive_active = "";
 	// 使役完了体受動不定詞
@@ -8800,35 +8807,43 @@ class Koine_Verb extends Verb_Common_IE {
 	// 強意未然動詞
 	protected $intensive_future_stem = "";
 
-	// 使役不完了体能動分詞
+	// 強意不完了体能動分詞
 	protected $intensive_present_participle_active = "";
-	// 使役不完了体受動分詞
+	// 強意不完了体受動分詞
 	protected $intensive_present_participle_passive = "";
-	// 使役不完了体中動分詞
-	protected $intensive_present_participle_middle = "";	
-	// 使役完了体能動分詞
+	// 強意不完了体中動分詞
+	protected $intensive_present_participle_middle = "";
+	// 強意始動能動分詞
+	protected $intensive_inchoative_participle_active = "";
+	// 強意始動中動分詞
+	protected $intensive_inchoative_participle_middle = "";
+	// 強意完了体能動分詞
 	protected $intensive_aorist_participle_active = "";
-	// 使役完了体受動分詞
+	// 強意完了体受動分詞
 	protected $intensive_aorist_participle_passive = "";
-	// 使役完了体中動分詞
+	// 強意完了体中動分詞
 	protected $intensive_aorist_participle_middle = "";	
-	// 使役状態動詞能動分詞
+	// 強意状態動詞能動分詞
 	protected $intensive_perfect_participle_active = "";
-	// 使役状態動詞受動分詞
+	// 強意状態動詞受動分詞
 	protected $intensive_perfect_participle_passive = "";
-	// 使役状態動詞中動分詞
+	// 強意状態動詞中動分詞
 	protected $intensive_perfect_participle_middle = "";
-	// 使役未来能動分詞
+	// 強意未来能動分詞
 	protected $intensive_future_participle_active = "";
-	// 使役未来受動分詞
+	// 強意未来受動分詞
 	protected $intensive_future_participle_passive = "";
-	// 使役未来中動分詞
+	// 強意未来中動分詞
 	protected $intensive_future_participle_middle = "";
 
 	// 強意不完了体能動不定詞
 	protected $intensive_present_infinitive_active = "";
 	// 強意不完了体中動不定詞
-	protected $intensive_present_infinitive_middle = "";	
+	protected $intensive_present_infinitive_middle = "";
+	// 使役始動能動不定詞
+	protected $intensive_inchoative_infinitive_active = "";
+	// 使役始動中動不定詞
+	protected $intensive_inchoative_infinitive_middle = "";
 	// 強意完了体能動不定詞
 	protected $intensive_aorist_infinitive_active = "";
 	// 強意完了体受動不定詞
@@ -8846,6 +8861,8 @@ class Koine_Verb extends Verb_Common_IE {
 	// 強意未来中動不定詞
 	protected $intensive_future_infinitive_middle = "";
 
+	// 欠如-未来形
+	protected $deponent_future = "";	
 
 	// 直接法
 	protected $ind = "ε";
@@ -9774,7 +9791,7 @@ class Koine_Verb extends Verb_Common_IE {
 		// 種別を入れる。
 		$conjugation["category"] = "動詞";
 		// 活用種別
-		$conjugation["type"] = $this->conjugation_present_type;	
+		$conjugation["type"] = $this->verb_type;	
 
 		//echo date("H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 3)."<br>";
 		// 一次動詞

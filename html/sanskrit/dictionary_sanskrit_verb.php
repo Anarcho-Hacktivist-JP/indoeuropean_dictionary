@@ -354,7 +354,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>使役動詞</summary>      
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("使役動詞");?>   
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("使役動詞");?>   
         </table>
       </details><br>
       <details>
@@ -458,7 +458,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>願望動詞</summary>           
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("願望動詞");?>  
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("願望動詞");?>  
         </table>
       </details><br>
       <details>
@@ -549,7 +549,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>強意動詞</summary>
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("強意動詞");?>  
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("強意動詞");?>  
         </table>
       </details><br>
       <details>
@@ -641,7 +641,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>使役+願望動詞</summary>           
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="causative-desiderative-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("使役+願望動詞");?>  
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("使役+願望動詞");?>  
         </table>
       </details><br>
       <details>
@@ -705,7 +705,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>強意+願望動詞</summary>           
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-desiderative-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("強意+願望動詞");?>  
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("強意+願望動詞");?>  
         </table>
       </details><br>
       <details>
@@ -769,7 +769,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>願望+使役動詞</summary>           
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="desiderative-causative-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("願望+使役動詞");?>  
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("願望+使役動詞");?>  
         </table>
       </details><br>
       <details>
@@ -833,7 +833,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <details>
         <summary>強意+使役動詞</summary>           
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="intensive-causative-conjugation-table">
-          <?php echo Sanskrit_Common::make_verbal_chart("強意+使役動詞");?>  
+          <?php echo Sanskrit_Common::make_secondary_verbal_chart("強意+使役動詞");?>  
         </table>
       </details><br>
       <details>
@@ -908,7 +908,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
         });
 
         // 動詞の配列をテーブル用に変換にする。
-        function get_verb(json_verb, verb_type, table_id){
+        function set_verb(json_verb, verb_type, table_id){
 
           // 活用情報を取得
           var active_present = json_verb["present"]["active"];                  //能動態不完了体
@@ -1028,6 +1028,122 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
             rows[i].cells[13].innerText = verb_table[i - 2][12];    // 未来形能動
             rows[i].cells[14].innerText = verb_table[i - 2][13];    // 未来形中動
             rows[i].cells[15].innerText = verb_table[i - 2][14];    // 未来形受動            
+          });
+        }
+
+        // 派生動詞の配列をテーブル用に変換にする。
+        function set_secondary_verb(json_verb, verb_type, table_id){
+
+          // 活用情報を取得
+          var active_present = json_verb["present"]["active"];                  //能動態不完了体
+          var middle_present = json_verb["present"]["mediopassive"];            //中動態不完了体
+          var passive_present = json_verb["present"]["passive"];                //受動態不完了体           
+          var active_aorist = json_verb["aorist"]["active"];                    //能動態完了体
+          var middle_aorist = json_verb["aorist"]["mediopassive"];              //中動態完了体
+          var passive_aorist = json_verb["aorist"]["passive"];                  //受動態完了体
+          var active_perfect = json_verb["perfect"]["active"];                  //能動態完了体
+          var middle_perfect = json_verb["perfect"]["mediopassive"];            //中受動態完了体
+          var active_future = json_verb["future"]["active"];                    //能動態未来形
+          var middle_future = json_verb["future"]["mediopassive"];              //中動態未来形
+          var passive_future = json_verb["future"]["passive"];                  //受動態未来形
+
+          // 格納データを作成
+          var verb_table = [
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["present"]["1sg"], middle_present["present"]["1sg"], passive_present["present"]["1sg"], active_aorist["present"]["1sg"], middle_aorist["present"]["1sg"], passive_aorist["present"]["1sg"], active_perfect["present"]["1sg"], middle_perfect["present"]["1sg"], active_future["present"]["1sg"], middle_future["present"]["1sg"], passive_future["present"]["1sg"]],
+            [active_present["present"]["2sg"], middle_present["present"]["2sg"], passive_present["present"]["2sg"], active_aorist["present"]["2sg"], middle_aorist["present"]["2sg"], passive_aorist["present"]["2sg"], active_perfect["present"]["2sg"], middle_perfect["present"]["2sg"], active_future["present"]["2sg"], middle_future["present"]["2sg"], passive_future["present"]["2sg"]],
+            [active_present["present"]["3sg"], middle_present["present"]["3sg"], passive_present["present"]["3sg"], active_aorist["present"]["3sg"], middle_aorist["present"]["3sg"], passive_aorist["present"]["3sg"], active_perfect["present"]["3sg"], middle_perfect["present"]["3sg"], active_future["present"]["3sg"], middle_future["present"]["3sg"], passive_future["present"]["3sg"]],
+            [active_present["present"]["1du"], middle_present["present"]["1du"], passive_present["present"]["1du"], active_aorist["present"]["1du"], middle_aorist["present"]["1du"], passive_aorist["present"]["1du"], active_perfect["present"]["1du"], middle_perfect["present"]["1du"], active_future["present"]["1du"], middle_future["present"]["1du"], passive_future["present"]["1du"]],
+            [active_present["present"]["2du"], middle_present["present"]["2du"], passive_present["present"]["2du"], active_aorist["present"]["2du"], middle_aorist["present"]["2du"], passive_aorist["present"]["2du"], active_perfect["present"]["2du"], middle_perfect["present"]["2du"], active_future["present"]["2du"], middle_future["present"]["2du"], passive_future["present"]["2du"]],
+            [active_present["present"]["3du"], middle_present["present"]["3du"], passive_present["present"]["3du"], active_aorist["present"]["3du"], middle_aorist["present"]["3du"], passive_aorist["present"]["3du"], active_perfect["present"]["3du"], middle_perfect["present"]["3du"], active_future["present"]["3du"], middle_future["present"]["3du"], passive_future["present"]["3du"]],
+            [active_present["present"]["1pl"], middle_present["present"]["1pl"], passive_present["present"]["1pl"], active_aorist["present"]["1pl"], middle_aorist["present"]["1pl"], passive_aorist["present"]["1pl"], active_perfect["present"]["1pl"], middle_perfect["present"]["1pl"], active_future["present"]["1pl"], middle_future["present"]["1pl"], passive_future["present"]["1pl"]],
+            [active_present["present"]["2pl"], middle_present["present"]["2pl"], passive_present["present"]["2pl"], active_aorist["present"]["2pl"], middle_aorist["present"]["2pl"], passive_aorist["present"]["2pl"], active_perfect["present"]["2pl"], middle_perfect["present"]["2pl"], active_future["present"]["2pl"], middle_future["present"]["2pl"], passive_future["present"]["2pl"]],
+            [active_present["present"]["3pl"], middle_present["present"]["3pl"], passive_present["present"]["3pl"], active_aorist["present"]["3pl"], middle_aorist["present"]["3pl"], passive_aorist["present"]["3pl"], active_perfect["present"]["3pl"], middle_perfect["present"]["3pl"], active_future["present"]["3pl"], middle_future["present"]["3pl"], passive_future["present"]["3pl"]],
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["past"]["1sg"], middle_present["past"]["1sg"], passive_present["past"]["1sg"], active_aorist["past"]["1sg"], middle_aorist["past"]["1sg"], passive_aorist["past"]["1sg"], active_perfect["past"]["1sg"], middle_perfect["past"]["1sg"], active_future["past"]["1sg"], middle_future["past"]["1sg"], passive_future["past"]["1sg"]],
+            [active_present["past"]["2sg"], middle_present["past"]["2sg"], passive_present["past"]["2sg"], active_aorist["past"]["2sg"], middle_aorist["past"]["2sg"], passive_aorist["past"]["2sg"], active_perfect["past"]["2sg"], middle_perfect["past"]["2sg"], active_future["past"]["2sg"], middle_future["past"]["2sg"], passive_future["past"]["2sg"]],
+            [active_present["past"]["3sg"], middle_present["past"]["3sg"], passive_present["past"]["3sg"], active_aorist["past"]["3sg"], middle_aorist["past"]["3sg"], passive_aorist["past"]["3sg"], active_perfect["past"]["3sg"], middle_perfect["past"]["3sg"], active_future["past"]["3sg"], middle_future["past"]["3sg"], passive_future["past"]["3sg"]],
+            [active_present["past"]["1du"], middle_present["past"]["1du"], passive_present["past"]["1du"], active_aorist["past"]["1du"], middle_aorist["past"]["1du"], passive_aorist["past"]["1du"], active_perfect["past"]["1du"], middle_perfect["past"]["1du"], active_future["past"]["1du"], middle_future["past"]["1du"], passive_future["past"]["1du"]],
+            [active_present["past"]["2du"], middle_present["past"]["2du"], passive_present["past"]["2du"], active_aorist["past"]["2du"], middle_aorist["past"]["2du"], passive_aorist["past"]["2du"], active_perfect["past"]["2du"], middle_perfect["past"]["2du"], active_future["past"]["2du"], middle_future["past"]["2du"], passive_future["past"]["2du"]],
+            [active_present["past"]["3du"], middle_present["past"]["3du"], passive_present["past"]["3du"], active_aorist["past"]["3du"], middle_aorist["past"]["3du"], passive_aorist["past"]["3du"], active_perfect["past"]["3du"], middle_perfect["past"]["3du"], active_future["past"]["3du"], middle_future["past"]["3du"], passive_future["past"]["3du"]],
+            [active_present["past"]["1pl"], middle_present["past"]["1pl"], passive_present["past"]["1pl"], active_aorist["past"]["1pl"], middle_aorist["past"]["1pl"], passive_aorist["past"]["1pl"], active_perfect["past"]["1pl"], middle_perfect["past"]["1pl"], active_future["past"]["1pl"], middle_future["past"]["1pl"], passive_future["past"]["1pl"]],
+            [active_present["past"]["2pl"], middle_present["past"]["2pl"], passive_present["past"]["2pl"], active_aorist["past"]["2pl"], middle_aorist["past"]["2pl"], passive_aorist["past"]["2pl"], active_perfect["past"]["2pl"], middle_perfect["past"]["2pl"], active_future["past"]["2pl"], middle_future["past"]["2pl"], passive_future["past"]["2pl"]],
+            [active_present["past"]["3pl"], middle_present["past"]["3pl"], passive_present["past"]["3pl"], active_aorist["past"]["3pl"], middle_aorist["past"]["3pl"], passive_aorist["past"]["3pl"], active_perfect["past"]["3pl"], middle_perfect["past"]["3pl"], active_future["past"]["3pl"], middle_future["past"]["3pl"], passive_future["past"]["3pl"]],
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["injunc"]["1sg"], middle_present["injunc"]["1sg"], passive_present["injunc"]["1sg"], active_aorist["injunc"]["1sg"], middle_aorist["injunc"]["1sg"], passive_aorist["injunc"]["1sg"], active_perfect["injunc"]["1sg"], middle_perfect["injunc"]["1sg"], active_future["injunc"]["1sg"], middle_future["injunc"]["1sg"], passive_future["injunc"]["1sg"]],
+            [active_present["injunc"]["2sg"], middle_present["injunc"]["2sg"], passive_present["injunc"]["2sg"], active_aorist["injunc"]["2sg"], middle_aorist["injunc"]["2sg"], passive_aorist["injunc"]["2sg"], active_perfect["injunc"]["2sg"], middle_perfect["injunc"]["2sg"], active_future["injunc"]["2sg"], middle_future["injunc"]["2sg"], passive_future["injunc"]["2sg"]],
+            [active_present["injunc"]["3sg"], middle_present["injunc"]["3sg"], passive_present["injunc"]["3sg"], active_aorist["injunc"]["3sg"], middle_aorist["injunc"]["3sg"], passive_aorist["injunc"]["3sg"], active_perfect["injunc"]["3sg"], middle_perfect["injunc"]["3sg"], active_future["injunc"]["3sg"], middle_future["injunc"]["3sg"], passive_future["injunc"]["3sg"]],
+            [active_present["injunc"]["1du"], middle_present["injunc"]["1du"], passive_present["injunc"]["1du"], active_aorist["injunc"]["1du"], middle_aorist["injunc"]["1du"], passive_aorist["injunc"]["1du"], active_perfect["injunc"]["1du"], middle_perfect["injunc"]["1du"], active_future["injunc"]["1du"], middle_future["injunc"]["1du"], passive_future["injunc"]["1du"]],
+            [active_present["injunc"]["2du"], middle_present["injunc"]["2du"], passive_present["injunc"]["2du"], active_aorist["injunc"]["2du"], middle_aorist["injunc"]["2du"], passive_aorist["injunc"]["2du"], active_perfect["injunc"]["2du"], middle_perfect["injunc"]["2du"], active_future["injunc"]["2du"], middle_future["injunc"]["2du"], passive_future["injunc"]["2du"]],
+            [active_present["injunc"]["3du"], middle_present["injunc"]["3du"], passive_present["injunc"]["3du"], active_aorist["injunc"]["3du"], middle_aorist["injunc"]["3du"], passive_aorist["injunc"]["3du"], active_perfect["injunc"]["3du"], middle_perfect["injunc"]["3du"], active_future["injunc"]["3du"], middle_future["injunc"]["3du"], passive_future["injunc"]["3du"]],
+            [active_present["injunc"]["1pl"], middle_present["injunc"]["1pl"], passive_present["injunc"]["1pl"], active_aorist["injunc"]["1pl"], middle_aorist["injunc"]["1pl"], passive_aorist["injunc"]["1pl"], active_perfect["injunc"]["1pl"], middle_perfect["injunc"]["1pl"], active_future["injunc"]["1pl"], middle_future["injunc"]["1pl"], passive_future["injunc"]["1pl"]],
+            [active_present["injunc"]["2pl"], middle_present["injunc"]["2pl"], passive_present["injunc"]["2pl"], active_aorist["injunc"]["2pl"], middle_aorist["injunc"]["2pl"], passive_aorist["injunc"]["2pl"], active_perfect["injunc"]["2pl"], middle_perfect["injunc"]["2pl"], active_future["injunc"]["2pl"], middle_future["injunc"]["2pl"], passive_future["injunc"]["2pl"]],
+            [active_present["injunc"]["3pl"], middle_present["injunc"]["3pl"], passive_present["injunc"]["3pl"], active_aorist["injunc"]["3pl"], middle_aorist["injunc"]["3pl"], passive_aorist["injunc"]["3pl"], active_perfect["injunc"]["3pl"], middle_perfect["injunc"]["3pl"], active_future["injunc"]["3pl"], middle_future["injunc"]["3pl"], passive_future["injunc"]["3pl"]],
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["subj"]["1sg"], middle_present["subj"]["1sg"], passive_present["subj"]["1sg"], active_aorist["subj"]["1sg"], middle_aorist["subj"]["1sg"], passive_aorist["subj"]["1sg"], active_perfect["subj"]["1sg"], middle_perfect["subj"]["1sg"], active_future["subj"]["1sg"], middle_future["subj"]["1sg"], passive_future["subj"]["1sg"]],
+            [active_present["subj"]["2sg"], middle_present["subj"]["2sg"], passive_present["subj"]["2sg"], active_aorist["subj"]["2sg"], middle_aorist["subj"]["2sg"], passive_aorist["subj"]["2sg"], active_perfect["subj"]["2sg"], middle_perfect["subj"]["2sg"], active_future["subj"]["2sg"], middle_future["subj"]["2sg"], passive_future["subj"]["2sg"]],
+            [active_present["subj"]["3sg"], middle_present["subj"]["3sg"], passive_present["subj"]["3sg"], active_aorist["subj"]["3sg"], middle_aorist["subj"]["3sg"], passive_aorist["subj"]["3sg"], active_perfect["subj"]["3sg"], middle_perfect["subj"]["3sg"], active_future["subj"]["3sg"], middle_future["subj"]["3sg"], passive_future["subj"]["3sg"]],
+            [active_present["subj"]["1du"], middle_present["subj"]["1du"], passive_present["subj"]["1du"], active_aorist["subj"]["1du"], middle_aorist["subj"]["1du"], passive_aorist["subj"]["1du"], active_perfect["subj"]["1du"], middle_perfect["subj"]["1du"], active_future["subj"]["1du"], middle_future["subj"]["1du"], passive_future["subj"]["1du"]],
+            [active_present["subj"]["2du"], middle_present["subj"]["2du"], passive_present["subj"]["2du"], active_aorist["subj"]["2du"], middle_aorist["subj"]["2du"], passive_aorist["subj"]["2du"], active_perfect["subj"]["2du"], middle_perfect["subj"]["2du"], active_future["subj"]["2du"], middle_future["subj"]["2du"], passive_future["subj"]["2du"]],
+            [active_present["subj"]["3du"], middle_present["subj"]["3du"], passive_present["subj"]["3du"], active_aorist["subj"]["3du"], middle_aorist["subj"]["3du"], passive_aorist["subj"]["3du"], active_perfect["subj"]["3du"], middle_perfect["subj"]["3du"], active_future["subj"]["3du"], middle_future["subj"]["3du"], passive_future["subj"]["3du"]],
+            [active_present["subj"]["1pl"], middle_present["subj"]["1pl"], passive_present["subj"]["1pl"], active_aorist["subj"]["1pl"], middle_aorist["subj"]["1pl"], passive_aorist["subj"]["1pl"], active_perfect["subj"]["1pl"], middle_perfect["subj"]["1pl"], active_future["subj"]["1pl"], middle_future["subj"]["1pl"], passive_future["subj"]["1pl"]],
+            [active_present["subj"]["2pl"], middle_present["subj"]["2pl"], passive_present["subj"]["2pl"], active_aorist["subj"]["2pl"], middle_aorist["subj"]["2pl"], passive_aorist["subj"]["2pl"], active_perfect["subj"]["2pl"], middle_perfect["subj"]["2pl"], active_future["subj"]["2pl"], middle_future["subj"]["2pl"], passive_future["subj"]["2pl"]],
+            [active_present["subj"]["3pl"], middle_present["subj"]["3pl"], passive_present["subj"]["3pl"], active_aorist["subj"]["3pl"], middle_aorist["subj"]["3pl"], passive_aorist["subj"]["3pl"], active_perfect["subj"]["3pl"], middle_perfect["subj"]["3pl"], active_future["subj"]["3pl"], middle_future["subj"]["3pl"], passive_future["subj"]["3pl"]],
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["opt"]["1sg"], middle_present["opt"]["1sg"], passive_present["opt"]["1sg"], active_aorist["opt"]["1sg"], middle_aorist["opt"]["1sg"], passive_aorist["opt"]["1sg"], active_perfect["opt"]["1sg"], middle_perfect["opt"]["1sg"], active_future["opt"]["1sg"], middle_future["opt"]["1sg"], passive_future["opt"]["1sg"]],
+            [active_present["opt"]["2sg"], middle_present["opt"]["2sg"], passive_present["opt"]["2sg"], active_aorist["opt"]["2sg"], middle_aorist["opt"]["2sg"], passive_aorist["opt"]["2sg"], active_perfect["opt"]["2sg"], middle_perfect["opt"]["2sg"], active_future["opt"]["2sg"], middle_future["opt"]["2sg"], passive_future["opt"]["2sg"]],
+            [active_present["opt"]["3sg"], middle_present["opt"]["3sg"], passive_present["opt"]["3sg"], active_aorist["opt"]["3sg"], middle_aorist["opt"]["3sg"], passive_aorist["opt"]["3sg"], active_perfect["opt"]["3sg"], middle_perfect["opt"]["3sg"], active_future["opt"]["3sg"], middle_future["opt"]["3sg"], passive_future["opt"]["3sg"]],
+            [active_present["opt"]["1du"], middle_present["opt"]["1du"], passive_present["opt"]["1du"], active_aorist["opt"]["1du"], middle_aorist["opt"]["1du"], passive_aorist["opt"]["1du"], active_perfect["opt"]["1du"], middle_perfect["opt"]["1du"], active_future["opt"]["1du"], middle_future["opt"]["1du"], passive_future["opt"]["1du"]],
+            [active_present["opt"]["2du"], middle_present["opt"]["2du"], passive_present["opt"]["2du"], active_aorist["opt"]["2du"], middle_aorist["opt"]["2du"], passive_aorist["opt"]["2du"], active_perfect["opt"]["2du"], middle_perfect["opt"]["2du"], active_future["opt"]["2du"], middle_future["opt"]["2du"], passive_future["opt"]["2du"]],
+            [active_present["opt"]["3du"], middle_present["opt"]["3du"], passive_present["opt"]["3du"], active_aorist["opt"]["3du"], middle_aorist["opt"]["3du"], passive_aorist["opt"]["3du"], active_perfect["opt"]["3du"], middle_perfect["opt"]["3du"], active_future["opt"]["3du"], middle_future["opt"]["3du"], passive_future["opt"]["3du"]],
+            [active_present["opt"]["1pl"], middle_present["opt"]["1pl"], passive_present["opt"]["1pl"], active_aorist["opt"]["1pl"], middle_aorist["opt"]["1pl"], passive_aorist["opt"]["1pl"], active_perfect["opt"]["1pl"], middle_perfect["opt"]["1pl"], active_future["opt"]["1pl"], middle_future["opt"]["1pl"], passive_future["opt"]["1pl"]],
+            [active_present["opt"]["2pl"], middle_present["opt"]["2pl"], passive_present["opt"]["2pl"], active_aorist["opt"]["2pl"], middle_aorist["opt"]["2pl"], passive_aorist["opt"]["2pl"], active_perfect["opt"]["2pl"], middle_perfect["opt"]["2pl"], active_future["opt"]["2pl"], middle_future["opt"]["2pl"], passive_future["opt"]["2pl"]],
+            [active_present["opt"]["3pl"], middle_present["opt"]["3pl"], passive_present["opt"]["3pl"], active_aorist["opt"]["3pl"], middle_aorist["opt"]["3pl"], passive_aorist["opt"]["3pl"], active_perfect["opt"]["3pl"], middle_perfect["opt"]["3pl"], active_future["opt"]["3pl"], middle_future["opt"]["3pl"], passive_future["opt"]["3pl"]],
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["bend"]["1sg"], middle_present["bend"]["1sg"], passive_present["bend"]["1sg"], active_aorist["bend"]["1sg"], middle_aorist["bend"]["1sg"], passive_aorist["bend"]["1sg"], active_perfect["bend"]["1sg"], middle_perfect["bend"]["1sg"], active_future["bend"]["1sg"], middle_future["bend"]["1sg"], passive_future["bend"]["1sg"]],
+            [active_present["bend"]["2sg"], middle_present["bend"]["2sg"], passive_present["bend"]["2sg"], active_aorist["bend"]["2sg"], middle_aorist["bend"]["2sg"], passive_aorist["bend"]["2sg"], active_perfect["bend"]["2sg"], middle_perfect["bend"]["2sg"], active_future["bend"]["2sg"], middle_future["bend"]["2sg"], passive_future["bend"]["2sg"]],
+            [active_present["bend"]["3sg"], middle_present["bend"]["3sg"], passive_present["bend"]["3sg"], active_aorist["bend"]["3sg"], middle_aorist["bend"]["3sg"], passive_aorist["bend"]["3sg"], active_perfect["bend"]["3sg"], middle_perfect["bend"]["3sg"], active_future["bend"]["3sg"], middle_future["bend"]["3sg"], passive_future["bend"]["3sg"]],
+            [active_present["bend"]["1du"], middle_present["bend"]["1du"], passive_present["bend"]["1du"], active_aorist["bend"]["1du"], middle_aorist["bend"]["1du"], passive_aorist["bend"]["1du"], active_perfect["bend"]["1du"], middle_perfect["bend"]["1du"], active_future["bend"]["1du"], middle_future["bend"]["1du"], passive_future["bend"]["1du"]],
+            [active_present["bend"]["2du"], middle_present["bend"]["2du"], passive_present["bend"]["2du"], active_aorist["bend"]["2du"], middle_aorist["bend"]["2du"], passive_aorist["bend"]["2du"], active_perfect["bend"]["2du"], middle_perfect["bend"]["2du"], active_future["bend"]["2du"], middle_future["bend"]["2du"], passive_future["bend"]["2du"]],
+            [active_present["bend"]["3du"], middle_present["bend"]["3du"], passive_present["bend"]["3du"], active_aorist["bend"]["3du"], middle_aorist["bend"]["3du"], passive_aorist["bend"]["3du"], active_perfect["bend"]["3du"], middle_perfect["bend"]["3du"], active_future["bend"]["3du"], middle_future["bend"]["3du"], passive_future["bend"]["3du"]],
+            [active_present["bend"]["1pl"], middle_present["bend"]["1pl"], passive_present["bend"]["1pl"], active_aorist["bend"]["1pl"], middle_aorist["bend"]["1pl"], passive_aorist["bend"]["1pl"], active_perfect["bend"]["1pl"], middle_perfect["bend"]["1pl"], active_future["bend"]["1pl"], middle_future["bend"]["1pl"], passive_future["bend"]["1pl"]],
+            [active_present["bend"]["2pl"], middle_present["bend"]["2pl"], passive_present["bend"]["2pl"], active_aorist["bend"]["2pl"], middle_aorist["bend"]["2pl"], passive_aorist["bend"]["2pl"], active_perfect["bend"]["2pl"], middle_perfect["bend"]["2pl"], active_future["bend"]["2pl"], middle_future["bend"]["2pl"], passive_future["bend"]["2pl"]],
+            [active_present["bend"]["3pl"], middle_present["bend"]["3pl"], passive_present["bend"]["3pl"], active_aorist["bend"]["3pl"], middle_aorist["bend"]["3pl"], passive_aorist["bend"]["3pl"], active_perfect["bend"]["3pl"], middle_perfect["bend"]["3pl"], active_future["bend"]["3pl"], middle_future["bend"]["3pl"], passive_future["bend"]["3pl"]],
+            ["", "", "", "", "", "", "", "", "", "", ""],
+            [active_present["imper"]["1sg"], middle_present["imper"]["1sg"], passive_present["imper"]["1sg"], active_aorist["imper"]["1sg"], middle_aorist["imper"]["1sg"], passive_aorist["imper"]["1sg"], active_perfect["imper"]["1sg"], middle_perfect["imper"]["1sg"], active_future["imper"]["1sg"], middle_future["imper"]["1sg"], passive_future["imper"]["1sg"]],
+            [active_present["imper"]["2sg"], middle_present["imper"]["2sg"], passive_present["imper"]["2sg"], active_aorist["imper"]["2sg"], middle_aorist["imper"]["2sg"], passive_aorist["imper"]["2sg"], active_perfect["imper"]["2sg"], middle_perfect["imper"]["2sg"], active_future["imper"]["2sg"], middle_future["imper"]["2sg"], passive_future["imper"]["2sg"]],
+            [active_present["imper"]["3sg"], middle_present["imper"]["3sg"], passive_present["imper"]["3sg"], active_aorist["imper"]["3sg"], middle_aorist["imper"]["3sg"], passive_aorist["imper"]["3sg"], active_perfect["imper"]["3sg"], middle_perfect["imper"]["3sg"], active_future["imper"]["3sg"], middle_future["imper"]["3sg"], passive_future["imper"]["3sg"]],
+            [active_present["imper"]["1du"], middle_present["imper"]["1du"], passive_present["imper"]["1du"], active_aorist["imper"]["1du"], middle_aorist["imper"]["1du"], passive_aorist["imper"]["1du"], active_perfect["imper"]["1du"], middle_perfect["imper"]["1du"], active_future["imper"]["1du"], middle_future["imper"]["1du"], passive_future["imper"]["1du"]],
+            [active_present["imper"]["2du"], middle_present["imper"]["2du"], passive_present["imper"]["2du"], active_aorist["imper"]["2du"], middle_aorist["imper"]["2du"], passive_aorist["imper"]["2du"], active_perfect["imper"]["2du"], middle_perfect["imper"]["2du"], active_future["imper"]["2du"], middle_future["imper"]["2du"], passive_future["imper"]["2du"]],
+            [active_present["imper"]["3du"], middle_present["imper"]["3du"], passive_present["imper"]["3du"], active_aorist["imper"]["3du"], middle_aorist["imper"]["3du"], passive_aorist["imper"]["3du"], active_perfect["imper"]["3du"], middle_perfect["imper"]["3du"], active_future["imper"]["3du"], middle_future["imper"]["3du"], passive_future["imper"]["3du"]],
+            [active_present["imper"]["1pl"], middle_present["imper"]["1pl"], passive_present["imper"]["1pl"], active_aorist["imper"]["1pl"], middle_aorist["imper"]["1pl"], passive_aorist["imper"]["1pl"], active_perfect["imper"]["1pl"], middle_perfect["imper"]["1pl"], active_future["imper"]["1pl"], middle_future["imper"]["1pl"], passive_future["imper"]["1pl"]],
+            [active_present["imper"]["2pl"], middle_present["imper"]["2pl"], passive_present["imper"]["2pl"], active_aorist["imper"]["2pl"], middle_aorist["imper"]["2pl"], passive_aorist["imper"]["2pl"], active_perfect["imper"]["2pl"], middle_perfect["imper"]["2pl"], active_future["imper"]["2pl"], middle_future["imper"]["2pl"], passive_future["imper"]["2pl"]],
+            [active_present["imper"]["3pl"], middle_present["imper"]["3pl"], passive_present["imper"]["3pl"], active_aorist["imper"]["3pl"], middle_aorist["imper"]["3pl"], passive_aorist["imper"]["3pl"], active_perfect["imper"]["3pl"], middle_perfect["imper"]["3pl"], active_future["imper"]["3pl"], middle_future["imper"]["3pl"], passive_future["imper"]["3pl"]],
+          ];
+
+          // 行オブジェクトの取得
+          var rows = $(table_id)[0].rows;
+          // 各行をループ処理
+          $.each(rows, function(i){
+            // タイトル行は除外する。
+            if(i <= 1){
+              return true;
+            } else if(i % 10 == 2){
+              // 説明行も除外
+              return true;
+            }
+            // 活用を挿入
+            rows[i].cells[1].innerText = verb_table[i - 2][0];      // 進行相能動
+            rows[i].cells[2].innerText = verb_table[i - 2][1];      // 進行相中動
+            rows[i].cells[3].innerText = verb_table[i - 2][2];      // 進行相受動
+            rows[i].cells[4].innerText = verb_table[i - 2][3];     // 完結相能動
+            rows[i].cells[5].innerText = verb_table[i - 2][4];    // 完結相中動 
+            rows[i].cells[6].innerText = verb_table[i - 2][5];    // 完結相受動
+            rows[i].cells[7].innerText = verb_table[i - 2][6];    // 完了相能動
+            rows[i].cells[8].innerText = verb_table[i - 2][7];    // 完了相受動             
+            rows[i].cells[9].innerText = verb_table[i - 2][8];    // 未来形能動
+            rows[i].cells[10].innerText = verb_table[i - 2][9];    // 未来形中動
+            rows[i].cells[11].innerText = verb_table[i - 2][10];    // 未来形受動            
           });
         }
 
@@ -1369,31 +1485,45 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
 
         // 動詞ごとにテーブルを出力する。
         function verb_output_by_verb_type(verb_data, verb_type){
-          // 動詞をテーブルに入れる。
-          get_verb(verb_data, verb_type, '#' + verb_type + '-conjugation-table');         
-          // 不定詞をセットする。
-          set_infinitive(verb_data, verb_type, '#' + verb_type + '-infinitive-table');
-          // 過去分詞をテーブルを入れる。
-          set_past_particple(verb_data, verb_type, '#' + verb_type + '-past-participle-table');  
+      
+
           // 一次動詞とそれ以外で場合分け
           if(verb_type == "primary"){
+            // 動詞をテーブルに入れる。
+            set_verb(verb_data, verb_type, '#' + verb_type + '-conjugation-table');   
             // 通常の分詞をテーブルを入れる。
             set_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
             // 動形容詞をテーブルに入れる。
             set_primary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
           } else if(verb_type == "causative"){
             // 使役動詞
+            // 動詞をテーブルに入れる。
+            set_secondary_verb(verb_data, verb_type, '#' + verb_type + '-conjugation-table');   
+            // 通常の分詞をテーブルを入れる。
+            set_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
+            // 動形容詞をテーブルに入れる。
+            set_secondary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
+          } else if(verb_type.indexOf('causative') != -1 && verb_type.indexOf('causative') != 0){
+            // 使役動詞
+            // 動詞をテーブルに入れる。
+            set_secondary_verb(verb_data, verb_type, '#' + verb_type + '-conjugation-table');   
             // 通常の分詞をテーブルを入れる。
             set_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
             // 動形容詞をテーブルに入れる。
             set_secondary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
           } else {
             // 二次動詞以降
+            // 動詞をテーブルに入れる。
+            set_secondary_verb(verb_data, verb_type, '#' + verb_type + '-conjugation-table');   
             // 通常の分詞をテーブルを入れる。
             set_socondary_participle(verb_data, verb_type, '#' + verb_type + '-participle-table'); 
             // 動形容詞をテーブルに入れる。
             set_secondary_adjective_particple(verb_data, verb_type, '#' + verb_type + '-verbal-adjective-table');
           }
+          // 不定詞をセットする。
+          set_infinitive(verb_data, verb_type, '#' + verb_type + '-infinitive-table');
+          // 過去分詞をテーブルを入れる。
+          set_past_particple(verb_data, verb_type, '#' + verb_type + '-past-participle-table');  
         }
 
         // 単語選択後の処理
