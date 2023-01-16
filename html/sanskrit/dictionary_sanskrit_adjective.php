@@ -42,7 +42,7 @@ function get_adjective_declension_chart_by_sanskrit($word){
   }
 
   // 名詞のデータを取得
-  $declensions = set_noun_table_data(array(), $adjective_words);
+  $declensions = set_adjective_table_data(array(), $adjective_words);
   // 結果を返す。
   return $declensions;
 }

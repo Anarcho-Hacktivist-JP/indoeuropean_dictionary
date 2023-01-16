@@ -131,6 +131,13 @@ class Noun_Common_IE {
 	protected const PIE_INANIMATE = "Neuter";		// 中性
 	protected const PIE_ACTION = "Feminine";		// 女性
 
+	// 日本語訳
+	protected $japanese_translation = "";
+	// 英語訳
+	protected $english_translation = "";
+
+	// 地名フラグ
+	protected $location_name = "";
 
     /*=====================================
     コンストラクタ

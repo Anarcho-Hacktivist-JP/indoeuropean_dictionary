@@ -449,6 +449,9 @@ class Adjective_Common_IE {
 		],
 	];
 
+	// 地名フラグ
+	protected $location_name = "";
+
     /*=====================================
     コンストラクタ
     ======================================*/
@@ -1599,7 +1602,7 @@ class Latin_Adjective extends Adjective_Common_IE {
 		if(($case == Commons::NOMINATIVE && $number == Commons::SINGULAR) || ($case == Commons::VOCATIVE && $number == Commons::SINGULAR)){
 			// ここで結果を返す。
 			return $this->comparative_first_stem;					
-		} else if($case == Commons::ACCUSATIVE && $this->gender == Commons::NEUTER_GENDER && $number == Commons::SINGULAR){
+		} else if($case == Commons::ACCUSATIVE && $gender == Commons::NEUTER_GENDER && $number == Commons::SINGULAR){
 			// 中性の単数対格は主格と同じ
 			// ここで結果を返す。
 			return $this->comparative_first_stem;
@@ -3389,10 +3392,10 @@ class Polish_Adjective extends Adjective_Common_IE {
 
 		// 語幹を取得
 		// それ以外は単数の主格と呼格は弱語幹
-		if($this->gender == Commons::MASCULINE_GENDER && Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
+		if($gender == Commons::MASCULINE_GENDER && Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
 			// ここで結果を返す。
 			return $this->first_stem;					
-		} else if($case == Commons::ACCUSATIVE && $this->gender == Commons::NEUTER_GENDER && $number == Commons::SINGULAR){
+		} else if($case == Commons::ACCUSATIVE && $gender == Commons::NEUTER_GENDER && $number == Commons::SINGULAR){
 			// 中性の単数対格は主格と同じ
 			// ここで結果を返す。
 			return $this->first_stem;
@@ -4060,11 +4063,11 @@ class Koine_Adjective extends Adjective_Common_IE {
 	// 語幹を作成
 	private function make_other_stem(){
 		// 活用種別に合わせて語幹を作る。
-		if(preg_match('/^(1-2)/',$this->noun_type)){
+		if(preg_match('/^(1-2)/',$this->adjective_type)){
 			// 第一・第二変化活用の場合
 			$this->first_stem = $this->second_stem;		// 弱語幹
 			$this->third_stem = $this->second_stem;		// 強語幹
-		} else if(preg_match('/^(root|3t|3con)/',$this->noun_type)){
+		} else if(preg_match('/^(root|3t|3con)/',$this->adjective_type)){
 			// 子音活用の場合			
 			if(preg_match('/(τ|δ|θ)$/',$this->second_stem)){				
 				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
@@ -4076,15 +4079,15 @@ class Koine_Adjective extends Adjective_Common_IE {
 				$this->first_stem = mb_substr($this->second_stem, 0, -1);			
 				$this->third_stem = mb_substr($this->second_stem, 0, -1)."ψ";	
 			}
-		} else if(preg_match('/^(3at)/',$this->noun_type)){
+		} else if(preg_match('/^(3at)/',$this->adjective_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
 			$this->third_stem = mb_substr($this->second_stem, 0, -1)."τ";
-		} else if(preg_match('/^(3nt)/',$this->noun_type)){
+		} else if(preg_match('/^(3nt)/',$this->adjective_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
 			$this->third_stem = mb_substr($this->second_stem, 0, -1)."ντ";
-		} else if(preg_match('/^(3n)/',$this->noun_type)){
+		} else if(preg_match('/^(3n)/',$this->adjective_type)){
 			// 子音活用の場合			
 			$this->first_stem = mb_substr($this->second_stem, 0, -1);			
 			$this->third_stem = mb_substr($this->second_stem, 0, -1)."ν";
@@ -4226,7 +4229,7 @@ class Koine_Adjective extends Adjective_Common_IE {
 		if($number == Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
 			// 単数主格・呼格
 			$stem = $this->first_stem;
-		} else if($number == Commons::SINGULAR && $this->gender == Commons::NEUTER_GENDER && $case == Commons::ACCUSATIVE){
+		} else if($number == Commons::SINGULAR && $gender == Commons::NEUTER_GENDER && $case == Commons::ACCUSATIVE){
 			// 単数対格(中性)
 			$stem = $this->first_stem;	
 		} else if ($number == Commons::PLURAL && $case == Commons::DATIVE){

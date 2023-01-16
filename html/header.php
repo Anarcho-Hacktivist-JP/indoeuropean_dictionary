@@ -1,8 +1,8 @@
     <div class="container item">
-      <h1>ラテン語辞書</h1>
+      <h1>辞書一覧(印欧語)</h1>
         <section class="row">
           <div class="col-md-1 mb-0">
-            <a class="btn btn-primary" href="latin/dictionary_latin_noun.php">名詞</a>
+            <a class="btn btn-primary" href="latin/latin_index.php">ラテン語</a>
           </div>
           <div class="col-md-1">
             <a class="btn btn-primary" href="latin/dictionary_latin_adjective.php">形容詞</a>
@@ -31,98 +31,5 @@
         </section>
     </div>
     <div class="container item">
-      <h1>梵語辞書</h1>
-        <section class="row">
-          <div class="col-md-1 mb-0">
-            <a class="btn btn-primary" href="sanskrit/dictionary_sanskrit_noun.php">名詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/dictionary_sanskrit_adjective.php">形容詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/dictionary_sanskrit_verb.php">動詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/practice_sanskrit_noun.php">問題集<br>(名詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/practice_sanskrit_adjective.php">問題集<br>(形容詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/practice_sanskrit_verb.php">問題集<br>(動詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/practice_sanskrit_noun2.php">問題集<br>(名詞)2</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/practice_sanskrit_adjective2.php">問題集<br>(形容詞)2</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="sanskrit/practice_sanskrit_verb2.php">問題集<br>(動詞)2</a>
-          </div>
-        </section>
-    </div>
-    <div class="container item">
-      <h1>ポーランド語</h1>
-        <section class="row">
-          <div class="col-md-1 mb-0">
-            <a class="btn btn-primary" href="polish/dictionary_polish_noun.php">名詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/dictionary_polish_adjective.php">形容詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/dictionary_polish_verb.php">動詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/practice_polish_noun.php">問題集<br>(名詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/practice_polish_adjective.php">問題集<br>(形容詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/practice_polish_verb.php">問題集<br>(動詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/practice_polish_noun2.php">問題集<br>(名詞)2</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/practice_polish_adjective2.php">問題集<br>(形容詞)2</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="polish/practice_polish_verb2.php">問題集<br>(動詞)2</a>
-          </div>
-        </section>
-    </div>
-    <div class="container item">
-      <h1>ギリシア語(コイネー)</h1>
-        <section class="row">
-          <div class="col-md-1 mb-0">
-            <a class="btn btn-primary" href="koine/dictionary_koine_noun.php">名詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/dictionary_koine_adjective.php">形容詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/dictionary_koine_verb.php">動詞</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/practice_koine_noun.php">問題集<br>(名詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/practice_koine_adjective.php">問題集<br>(形容詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/practice_koine_verb.php">問題集<br>(動詞)</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/practice_koine_noun2.php">問題集<br>(名詞)2</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/practice_koine_adjective2.php">問題集<br>(形容詞)2</a>
-          </div>
-          <div class="col-md-1">
-            <a class="btn btn-primary" href="koine/practice_koine_verb2.php">問題集<br>(動詞)2</a>
-          </div>
-        </section>
+      <h1>辞書一覧(非印欧語)</h1>
     </div>  

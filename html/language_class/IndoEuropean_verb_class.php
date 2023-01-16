@@ -3635,7 +3635,14 @@ class Vedic_Verb extends Verb_Common_IE{
 
 			// 能動分詞
 			if($this->deponent_active != Commons::$TRUE){
-				$this->present_participle_active = Sanskrit_Common::sandhi_engine($common_participle_stme, self::active_participle_suffix1);		// 能動態
+				// 現在分詞
+				if(preg_match('(2|3|5|7|8|9)',$this->conjugation_present_type)){
+					// 子音活用動詞	
+					$this->present_participle_active = Sanskrit_Common::sandhi_engine($common_participle_stme, self::active_participle_suffix1);
+				} else {
+					// 母音活用動詞
+					$this->present_participle_active = Sanskrit_Common::sandhi_engine($common_participle_stme, self::active_participle_suffix2);
+				}
 			}
 			
 			// 中動分詞
