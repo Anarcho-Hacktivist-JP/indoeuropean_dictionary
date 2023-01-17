@@ -682,35 +682,37 @@ class Koine_Common extends Common_IE{
 		$result_data = Koine_Common::get_compound_data($input_words, $word_category);
 		//var_dump($result_data);
 		// 単語が習得できない場合は
-		if($result_data != null && count($result_data["koine_words"]) > 0 && count($charts) == 0){
-			// 造語データを取得
-			$compund_words = Koine_Common::make_compound($result_data["koine_words"], $result_data["last_words"]);
-			//var_dump($compund_words);			
-			// 配列から単語を作成
-			for ($i = 0; $i < count($compund_words["compund"]); $i++) {
-				// 種別に応じて単語を生成
-				if($word_category == "noun"){
-					// 読み込み
-					$koine_noun = new koine_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$koine_noun->get_second_stem()] = $koine_noun->get_chart();
-					// メモリを解放
-					unset($koine_noun);
-				} else if($word_category == "adjective"){
-					// 読み込み
-					$koine_adjective = new koine_Adjective($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$koine_adjective->get_second_stem()] = $koine_adjective->get_chart();
-					// メモリを解放
-					unset($koine_adjective);
-				} else if($word_category == "verb"){
-					// 読み込み
-					$koine_verb = new koine_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
-					// 活用表生成、配列に格納
-					$charts[$koine_verb->get_dic_stem()] = $koine_verb->get_chart();
-					// メモリを解放
-					unset($koine_verb);
-				} 
+		if($result_data != null){
+			if(count($result_data["koine_words"]) > 0 && count($charts) == 0){
+				// 造語データを取得
+				$compund_words = Koine_Common::make_compound($result_data["koine_words"], $result_data["last_words"]);
+				//var_dump($compund_words);			
+				// 配列から単語を作成
+				for ($i = 0; $i < count($compund_words["compund"]); $i++) {
+					// 種別に応じて単語を生成
+					if($word_category == "noun"){
+						// 読み込み
+						$koine_noun = new koine_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$koine_noun->get_second_stem()] = $koine_noun->get_chart();
+						// メモリを解放
+						unset($koine_noun);
+					} else if($word_category == "adjective"){
+						// 読み込み
+						$koine_adjective = new koine_Adjective($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$koine_adjective->get_second_stem()] = $koine_adjective->get_chart();
+						// メモリを解放
+						unset($koine_adjective);
+					} else if($word_category == "verb"){
+						// 読み込み
+						$koine_verb = new koine_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
+						// 活用表生成、配列に格納
+						$charts[$koine_verb->get_dic_stem()] = $koine_verb->get_chart();
+						// メモリを解放
+						unset($koine_verb);
+					} 
+				}
 			}
 		}
 
@@ -898,7 +900,7 @@ class Koine_Common extends Common_IE{
 					// 新しい配列に詰め替え
 					foreach ($verbs_data as $verb_data){
 						// 語幹を配列に追加
-						$koine_words[$i][] = mb_substr($verb_data["present_stem"], 0, -3);	
+						$koine_words[$i][] = mb_substr($verb_data["present_stem"], 0, -1);	
 					}
 					// 単語が取得できない場合は、何も返さない。
 					if(!$koine_words[$i]){

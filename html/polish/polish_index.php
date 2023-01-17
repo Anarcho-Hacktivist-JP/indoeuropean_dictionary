@@ -23,7 +23,7 @@ header("Content-type: text/html; charset=utf-8");
     <div class="container item table-striped">
         <h1 align="center">概要</h1>
         <p class="text-center">このページはポーランド語の辞書および学習ができるサイトです。</p>
-        <p class="text-center">日本人に論理的で性格なインドヨーロッパ語を手軽に学習できるように作りました。</p>
+        <p class="text-center">日本人に論理的で正確なインドヨーロッパ語を手軽に学習できるように作りました。</p>
         <p class="text-center">全てのコンテンツは無料です。ぜひご自由にお使いください。</p>
         <h1 align="center">文章例</h1>
     </div>

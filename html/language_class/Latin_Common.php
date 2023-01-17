@@ -724,35 +724,37 @@ class Latin_Common extends Common_IE{
 		$result_data = Latin_Common::get_compound_data($input_words, $word_category);
 		//var_dump($result_data);
 		// 単語が習得できない場合は
-		if($result_data != null && count($result_data["latin_words"]) > 0 && count($charts) == 0){
-			// 造語データを取得
-			$compund_words = Latin_Common::make_compound($result_data["latin_words"], $result_data["last_words"]);
-			//var_dump($compund_words);			
-			// 配列から単語を作成
-			for ($i = 0; $i < count($compund_words["compund"]); $i++) {
-				// 種別に応じて単語を生成
-				if($word_category == "noun"){
-					// 読み込み
-					$latin_noun = new Latin_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
-					// メモリを解放
-					unset($latin_noun);
-				} else if($word_category == "adjective"){
-					// 読み込み
-					$latin_adjective = new Latin_Adjective($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$latin_adjective->get_first_stem()] = $latin_adjective->get_chart();
-					// メモリを解放
-					unset($latin_adjective);
-				} else if($word_category == "verb"){
-					// 読み込み
-					$latin_verb = new Latin_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
-					// 活用表生成、配列に格納
-					$charts[$latin_verb->get_infinitive()] = $latin_verb->get_chart();
-					// メモリを解放
-					unset($latin_verb);
-				} 
+		if($result_data != null){
+			if(count($result_data["latin_words"]) > 0 && count($charts) == 0){
+				// 造語データを取得
+				$compund_words = Latin_Common::make_compound($result_data["latin_words"], $result_data["last_words"]);
+				//var_dump($compund_words);			
+				// 配列から単語を作成
+				for ($i = 0; $i < count($compund_words["compund"]); $i++) {
+					// 種別に応じて単語を生成
+					if($word_category == "noun"){
+						// 読み込み
+						$latin_noun = new Latin_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
+						// メモリを解放
+						unset($latin_noun);
+					} else if($word_category == "adjective"){
+						// 読み込み
+						$latin_adjective = new Latin_Adjective($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$latin_adjective->get_first_stem()] = $latin_adjective->get_chart();
+						// メモリを解放
+						unset($latin_adjective);
+					} else if($word_category == "verb"){
+						// 読み込み
+						$latin_verb = new Latin_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
+						// 活用表生成、配列に格納
+						$charts[$latin_verb->get_infinitive()] = $latin_verb->get_chart();
+						// メモリを解放
+						unset($latin_verb);
+					} 
+				}
 			}
 		}
 
@@ -870,7 +872,7 @@ class Latin_Common extends Common_IE{
 				// 動詞の場合
 				if($table == Latin_Common::DB_VERB){
 					// 「する」や派生動詞の場合は動詞接尾辞も追加
-					if($target_word == "する" && preg_match('/化$/u', $input_words[$i - 1][0])){
+					if($target_word == "化する"){
 						$last_words[] = "zāre";
 					} else if($target_word == "なる" && $input_words[$i - 1][0] == "に"){
 						$last_words[] = "zāre";						
@@ -880,7 +882,7 @@ class Latin_Common extends Common_IE{
 						$last_words[] = "āre";
 						$last_words[] = "gāre";
 						$last_words[] = "facere";									
-					} else if($target_word == "始める" && $input_words[$i - 2][1] == "動詞"){
+					} else if($target_word == "始める" && $input_words[$i - 1][1] == "動詞"){
 						$last_words[] = "scere";
 					} else if($target_word == "続ける" && $input_words[$i - 1][1] == "動詞"){
 						$last_words[] = "āre";
@@ -906,6 +908,7 @@ class Latin_Common extends Common_IE{
 					}
 				} else if($table == Latin_Common::DB_NOUN){				
 					// 名詞
+					echo $target_word;
 					// 動詞の造語の場合は
 					if(preg_match('/verb/', $word_category)){
 						// 名詞の語幹を取得
@@ -915,6 +918,29 @@ class Latin_Common extends Common_IE{
 							// 第一変化動詞に変更
 							$last_words[$j] = $last_words[$j]."āre";
 						}
+					} else if(preg_match('/^行為$/u', $target_word) && $input_words[$i - 1][1] == "動詞"){
+						// ~行為という単語の場合は
+						$last_words[] = "tiō";
+					} else if(preg_match('/^こと$/u', $target_word) && $input_words[$i - 1][1] == "動詞"){
+						// ~行為という単語の場合は
+						$last_words[] = "tiō";
+						$last_words[] = "ns";
+						$last_words[] = "ndum";
+					} else if(preg_match('/^化$/u', $target_word)){
+						// ~化という単語の場合は
+						$last_words[] = "zatiō";
+					} else if(preg_match('/^学$/u', $target_word)){
+						// ~学という単語の場合は
+						$last_words[] = "logia";
+					} else if(preg_match('/^心$/u', $target_word)){
+						// ~心という単語の場合は
+						$last_words[] = "mentum";
+					} else if(preg_match('/^的$/u', $target_word)){
+						// ~心という単語の場合は
+						$last_words[] = "alis";
+					} else if(preg_match('/^主義$/u', $target_word)){
+						// ~心という単語の場合は
+						$last_words[] = "smus";
 					} else {
 						// データベースから訳語の単語を取得する。
 						$last_words = Latin_Common::get_dictionary_stem_by_japanese($target_word, $table);						
@@ -976,7 +1002,6 @@ class Latin_Common extends Common_IE{
 					// データベースから訳語の語幹を取得する。
 					$adverb_array = Latin_Common::get_latin_adverb($target_word);
 					// 単語が取得できない場合は、何も返さない。
-					// 単語が取得できない場合は、何も返さない。
 					if(!$adverb_array && $i == count($input_words) - 2 && count($latin_words) == 0){
 						return null;								
 					} else if(!$adverb_array){
@@ -995,54 +1020,74 @@ class Latin_Common extends Common_IE{
 				} else {
 					// 一部の単語はここで処理を終了
 					if(preg_match('/^化$/u', $target_word)){
+						// ~化という単語の場合は
 						// 日本語訳を入れる。
 						$japanese_translation = $japanese_translation.$target_word;
-						// 次に移動							
-						continue;
-					} 					
-					// 一部の単語は事前処理
-					if(preg_match('/^.+化$/u', $target_word)){
-						$target_word = mb_ereg_replace("化", "", $target_word);
-					} 
-					// 名詞複合化フラグ
-					if($noun_compound_flag){
-						// 前の名詞とつなげる。
-						// 助詞などの場合はさらに後ろにつなげる。
-						if($input_words[$i - 1][1] != "名詞" &&
-						   $input_words[$i - 1][1] != "形容詞"){
-							$target_word = $remain_word.$input_words[$i - 1][0].$target_word;
-						} else {
-							$target_word = $remain_word.$target_word;
-						}
-						// フラグをfalseにする。
-						$noun_compound_flag = false;
-					}
-					// データベースから訳語の語幹を取得する。
-					$word_datas = Latin_Common::get_latin_strong_stem($target_word, $table);
-					// 単語が取得できない場合は、何も返さない。
-					if(!$word_datas && $i == count($input_words) - 2 && count($latin_words) == 0){
-						return null;								
-					} else if(!$word_datas){
-						// 単語が取得できない場合は
-						// 名詞複合化フラグをONにする。
-						$noun_compound_flag = true;
-						$remain_word = $remain_word.$input_word[0];
-						// 次に移動															
-						continue;
+						// 単語を入れる
+						$insert_words[] = "zation";
+					} else if(preg_match('/^学$/u', $target_word)){
+						// ~学という単語の場合は
+						// 日本語訳を入れる。
+						$japanese_translation = $japanese_translation.$target_word;
+						// 単語を入れる
+						$insert_words[] = "logi";
+					} else if(preg_match('/^心$/u', $target_word)){
+						// ~心という単語の場合は
+						// 日本語訳を入れる。
+						$japanese_translation = $japanese_translation.$target_word;
+						// 単語を入れる
+						$last_words[] = "ment";
+					} else if(preg_match('/^主義$/u', $target_word)){
+						// ~主義という単語の場合は
+						// 日本語訳を入れる。
+						$japanese_translation = $japanese_translation.$target_word;
+						// 単語を入れる
+						$last_words[] = "sm";
 					} else {
-						// 見つかったら初期化する。
-						$remain_word = "";
-					}
-					// 挿入配列を初期化
-					$insert_words = array();
-					// 後ろにiを付けて、配列に詰め替え
-					foreach ($word_datas as $word_data) {
-						// 母音が後ろにある場合はiに弱化する。
-						if(Commons::is_vowel_or_not(mb_substr($word_data, -1, 1))){
-							$insert_words[] = mb_substr($word_data, 0, -1)."i";
+						// 一部の単語は事前処理
+						if(preg_match('/^.+化$/u', $target_word)){
+							$target_word = mb_ereg_replace("化", "", $target_word);
+						} 
+						// 名詞複合化フラグ
+						if($noun_compound_flag){
+							// 前の名詞とつなげる。
+							// 助詞などの場合はさらに後ろにつなげる。
+							if($input_words[$i - 1][1] != "名詞" &&
+							   $input_words[$i - 1][1] != "形容詞"){
+								$target_word = $remain_word.$input_words[$i - 1][0].$target_word;
+							} else {
+								$target_word = $remain_word.$target_word;
+							}
+							// フラグをfalseにする。
+							$noun_compound_flag = false;
+						}
+						// データベースから訳語の語幹を取得する。
+						$word_datas = Latin_Common::get_latin_strong_stem($target_word, $table);
+						// 単語が取得できない場合は、何も返さない。
+						if(!$word_datas && $i == count($input_words) - 2 && count($latin_words) == 0){
+							return null;								
+						} else if(!$word_datas){
+							// 単語が取得できない場合は
+							// 名詞複合化フラグをONにする。
+							$noun_compound_flag = true;
+							$remain_word = $remain_word.$input_word[0];
+							// 次に移動															
+							continue;
 						} else {
-							// それ以外はiを付ける。
-							$insert_words[] = $word_data."i";
+							// 見つかったら初期化する。
+							$remain_word = "";
+						}
+						// 挿入配列を初期化
+						$insert_words = array();
+						// 後ろにiを付けて、配列に詰め替え
+						foreach ($word_datas as $word_data) {
+							// 母音が後ろにある場合はiに弱化する。
+							if(Commons::is_vowel_or_not(mb_substr($word_data, -1, 1))){
+								$insert_words[] = mb_substr($word_data, 0, -1)."i";
+							} else {
+								// それ以外はiを付ける。
+								$insert_words[] = $word_data."i";
+							}
 						}
 					}
 					// 挿入する。
@@ -1057,7 +1102,7 @@ class Latin_Common extends Common_IE{
 		$result_data = array();
 		$result_data["last_words"] = $last_words;						// 最後の単語(単語生成用)
 		$result_data["latin_words"] = $latin_words;						// 単語リスト
-		$result_data["japanese_translation"] = $japanese_translation;			// 日本語訳
+		$result_data["japanese_translation"] = $japanese_translation;	// 日本語訳
 
 		// 結果を返す。
 		return $result_data;

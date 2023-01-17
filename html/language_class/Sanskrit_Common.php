@@ -816,36 +816,39 @@ class Sanskrit_Common extends Common_IE{
 		// 複合語情報を取得
 		$result_data = Sanskrit_Common::get_compound_data($input_words, $word_category);
 		// 単語が習得できない場合は
-		if($result_data != null && count($result_data["sanskrit_words"]) > 0){
-			// 造語データを取得
-			$compund_words = Sanskrit_Common::make_compound_word_data($result_data["sanskrit_words"], $result_data["last_words"]);
-			// 配列から単語を作成
-			for ($i = 0; $i < count($compund_words["stem"]); $i++) {
-				// 種別に応じて単語を生成
-				if($word_category == "noun"){
-					// 読み込み
-					$sanskrit_noun = new Vedic_Noun($compund_words["stem"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
-					// メモリを解放
-					unset($sanskrit_noun);
-				} else if($word_category == "adjective"){
-					// 読み込み
-					$sanskrit_adjective = new Vedic_Adjective($compund_words["stem"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$sanskrit_adjective->get_second_stem()] = $sanskrit_adjective->get_chart();
-					// メモリを解放
-					unset($sanskrit_adjective);
-				} else if($word_category == "verb"){
-					// 読み込み
-					$sanskrit_verb = new Vedic_Verb($compund_words["last_word"][$i], $compund_words["stem"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
-					// 活用表生成
-					$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart();
-					// メモリを解放
-					unset($sanskrit_verb);
-				} 
+		if($result_data != null){
+			if(count($result_data["sanskrit_words"]) > 0){
+				// 造語データを取得
+				$compund_words = Sanskrit_Common::make_compound_word_data($result_data["sanskrit_words"], $result_data["last_words"]);
+				// 配列から単語を作成
+				for ($i = 0; $i < count($compund_words["stem"]); $i++) {
+					// 種別に応じて単語を生成
+					if($word_category == "noun"){
+						// 読み込み
+						$sanskrit_noun = new Vedic_Noun($compund_words["stem"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
+						// メモリを解放
+						unset($sanskrit_noun);
+					} else if($word_category == "adjective"){
+						// 読み込み
+						$sanskrit_adjective = new Vedic_Adjective($compund_words["stem"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$sanskrit_adjective->get_second_stem()] = $sanskrit_adjective->get_chart();
+						// メモリを解放
+						unset($sanskrit_adjective);
+					} else if($word_category == "verb"){
+						// 読み込み
+						$sanskrit_verb = new Vedic_Verb($compund_words["last_word"][$i], $compund_words["stem"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart();
+						// メモリを解放
+						unset($sanskrit_verb);
+					} 
+				}
 			}
 		}
+
 
 		//結果を返す。
 		return $charts;
@@ -1231,10 +1234,27 @@ class Sanskrit_Common extends Common_IE{
 					if(preg_match('/^.+化$/u', $target_word)){
 						$target_word = mb_ereg_replace("化", "", $target_word);
 					} 
-					// データベースから訳語の語幹を取得する。
-					$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, $table);				
+					// 品詞判定
+					if($word_category == "noun"){
+						// データベースから名詞接頭辞を取得する。
+						$suffix_datas = Sanskrit_Common::get_second_noun_suffix($target_word);
+					} else if($word_category == "adjective"){
+						// データベースから形容詞接頭辞を取得する。
+						$suffix_datas = Sanskrit_Common::get_second_adjective_suffix($target_word);
+					}
+					// 新しい配列に詰め替え
+					$word_datas = array();
+					// データベースが取得できた場合は
+					if($suffix_datas){
+						// 新しい配列に詰め替え
+						foreach ($suffix_datas as $suffix_data){	
+							$word_datas[] = $suffix_data["suffix"];	
+						}
+					} else {
+						// データベースから訳語の語幹を取得する。
+						$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, $table);
+					}
 				}
-
 				// 単語が取得できない場合は、何も返さない。
 				if(!$word_datas && $i == count($input_words) - 2 && count($sanskrit_words) == 0){
 					return null;
