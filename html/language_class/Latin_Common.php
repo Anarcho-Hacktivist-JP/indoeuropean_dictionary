@@ -520,6 +520,38 @@ class Latin_Common extends Common_IE{
 		return $new_table_data;
 	}
 
+	// 名詞接尾辞を取得
+	public static function get_noun_adjective_suffix($suffix_word = "", $word_category = ""){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `suffix_latin` WHERE `genre` = '".$word_category."' ";
+		// 条件がある場合は追加
+		if($suffix_word != ""){
+			$query = $query." AND (
+				`mean` LIKE '%、".$suffix_word."、%' OR 
+				`mean` LIKE '".$suffix_word."、%' OR 
+				`mean` LIKE '%、".$suffix_word."' OR 
+				`mean` = '".$suffix_word."')";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			$new_table_data = $table_data;
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
 	// ランダムな名詞を取得
 	public static function get_random_noun($gender = "", $noun_type = ""){
 		//DBに接続
@@ -966,6 +998,21 @@ class Latin_Common extends Common_IE{
 					return $result_data;
 				}		
 			} else {
+				// 名詞複合化フラグ
+				if($noun_compound_flag){
+					// 前の名詞とつなげる。
+					// 助詞などの場合はさらに後ろにつなげる。
+					if($input_words[$i - 1][1] != "名詞" &&
+					   $input_words[$i - 1][1] != "形容詞"){
+						$target_word = $remain_word.$input_words[$i - 1][0].$target_word;
+					} else {
+						$target_word = $remain_word.$target_word;
+					}
+					// フラグをfalseにする。
+					$noun_compound_flag = false;
+				}
+
+				// 単語ごとに分ける。
 				if($table == Latin_Common::DB_VERB){
 					// 動詞の場合
 					// データベースから訳語の語幹を取得する。
@@ -1023,44 +1070,24 @@ class Latin_Common extends Common_IE{
 						// ~化という単語の場合は
 						// 日本語訳を入れる。
 						$japanese_translation = $japanese_translation.$target_word;
-						// 単語を入れる
-						$insert_words[] = "zation";
-					} else if(preg_match('/^学$/u', $target_word)){
-						// ~学という単語の場合は
-						// 日本語訳を入れる。
-						$japanese_translation = $japanese_translation.$target_word;
-						// 単語を入れる
-						$insert_words[] = "logi";
-					} else if(preg_match('/^心$/u', $target_word)){
-						// ~心という単語の場合は
-						// 日本語訳を入れる。
-						$japanese_translation = $japanese_translation.$target_word;
-						// 単語を入れる
-						$last_words[] = "ment";
-					} else if(preg_match('/^主義$/u', $target_word)){
-						// ~主義という単語の場合は
-						// 日本語訳を入れる。
-						$japanese_translation = $japanese_translation.$target_word;
-						// 単語を入れる
-						$last_words[] = "sm";
-					} else {
-						// 一部の単語は事前処理
-						if(preg_match('/^.+化$/u', $target_word)){
-							$target_word = mb_ereg_replace("化", "", $target_word);
-						} 
-						// 名詞複合化フラグ
-						if($noun_compound_flag){
-							// 前の名詞とつなげる。
-							// 助詞などの場合はさらに後ろにつなげる。
-							if($input_words[$i - 1][1] != "名詞" &&
-							   $input_words[$i - 1][1] != "形容詞"){
-								$target_word = $remain_word.$input_words[$i - 1][0].$target_word;
-							} else {
-								$target_word = $remain_word.$target_word;
-							}
-							// フラグをfalseにする。
-							$noun_compound_flag = false;
+						// 次に移動							
+						continue;
+					} 
+					// 一部の単語は事前処理
+					if(preg_match('/^.+化$/u', $target_word)){
+						$target_word = mb_ereg_replace("化", "", $target_word);
+					}
+					// データベースから接頭辞を取得する。
+					$suffix_datas = Latin_Common::get_noun_adjective_suffix($target_word, $word_category);
+					// 挿入配列を初期化
+					$insert_words = array();
+					// 最初の単語以外で、データベースが取得できた場合は
+					if($suffix_datas && $i != 0){
+						// 新しい配列に詰め替え
+						foreach ($suffix_datas as $suffix_data){	
+							$insert_words[] = $suffix_data["suffix"];	
 						}
+					} else {
 						// データベースから訳語の語幹を取得する。
 						$word_datas = Latin_Common::get_latin_strong_stem($target_word, $table);
 						// 単語が取得できない場合は、何も返さない。

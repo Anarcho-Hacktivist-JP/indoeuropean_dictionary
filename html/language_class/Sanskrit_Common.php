@@ -282,7 +282,7 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	// 名詞接尾辞を生成
+	// 名詞接尾辞を取得
 	public static function get_second_noun_suffix($suffix_word = ""){
 		//DBに接続
 		$db_host = set_DB_session();
@@ -314,12 +314,77 @@ class Sanskrit_Common extends Common_IE{
 		return $new_table_data;
 	}
 
-	// 形容詞接尾辞を生成
+	// 形容詞接尾辞を取得
 	public static function get_second_adjective_suffix($suffix_word = ""){
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
 		$query = "SELECT * FROM `suffix_sanskrit` WHERE (`type` = 'taddhita' OR `type` = 'taddhita-unadi') AND `genre` = 'adjective' ";
+		// 条件がある場合は追加
+		if($suffix_word != ""){
+			$query = $query." AND (
+				`mean` LIKE '%、".$suffix_word."、%' OR 
+				`mean` LIKE '".$suffix_word."、%' OR 
+				`mean` LIKE '%、".$suffix_word."' OR 
+				`mean` = '".$suffix_word."')";
+		}
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			$new_table_data = $table_data;
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}
+
+	// 名詞接尾辞を取得
+	public static function get_other_noun_suffix($suffix_word = ""){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `suffix_sanskrit` WHERE `type` = 'others' AND `genre` != 'adjective' ";
+		// 条件がある場合は追加
+		if($suffix_word != ""){
+			$query = $query." AND (
+				`mean` LIKE '%、".$suffix_word."、%' OR 
+				`mean` LIKE '".$suffix_word."、%' OR 
+				`mean` LIKE '%、".$suffix_word."' OR 
+				`mean` = '".$suffix_word."')";
+		}
+		echo $query;
+		// SQLを実行
+		$stmt = $db_host->query($query);
+		// 連想配列に整形
+		$table_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		// 配列を宣言
+		$new_table_data = array();
+		// 結果がある場合は
+		if($table_data){
+			$new_table_data = $table_data;
+		} else {
+			// 何も返さない。
+			return null;
+		}
+		
+		//結果を返す。
+		return $new_table_data;
+	}	
+
+	// 形容詞接尾辞を取得
+	public static function get_other_adjective_suffix($suffix_word = ""){
+		//DBに接続
+		$db_host = set_DB_session();
+		// SQLを作成 
+		$query = "SELECT * FROM `suffix_sanskrit` WHERE `type` = 'others' AND `genre` = 'adjective' ";
 		// 条件がある場合は追加
 		if($suffix_word != ""){
 			$query = $query." AND (
@@ -1166,22 +1231,38 @@ class Sanskrit_Common extends Common_IE{
 							$last_words[] = $suffix_data["suffix"];	
 						}
 					} else {
-						// それ以外の場合は
-						// 名詞
-						// データベースから訳語の単語を取得する。
-						$last_words_noun = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_NOUN, "");			
-						// 名詞が取得できた場合は追加する。
-						if($last_words_noun){
-							// 最終単語
-							$last_words = array_merge($last_words, $last_words_noun);
+						// 品詞判定
+						if($word_category == "noun"){
+							// データベースから名詞接頭辞(その他)を取得する。
+							$suffix_datas = Sanskrit_Common::get_other_noun_suffix($target_word);
+						} else if($word_category == "adjective"){
+							// データベースから形容詞接頭辞(その他)を取得する。
+							$suffix_datas = Sanskrit_Common::get_other_adjective_suffix($target_word);
 						}
-						// 形容詞
-						// データベースから訳語の単語を取得する。
-						$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_ADJECTIVE, "");
-						// 形容詞が取得できた場合は追加する。
-						if($last_words_adjective){
-							// 最終単語
-							$last_words = array_merge($last_words, $last_words_adjective);
+						// データベースが取得できた場合は
+						if($suffix_datas){
+							// 新しい配列に詰め替え
+							foreach ($suffix_datas as $suffix_data){	
+								$last_words[] = $suffix_data["suffix"];	
+							}
+						} else {
+							// それ以外の場合は
+							// 名詞
+							// データベースから訳語の単語を取得する。
+							$last_words_noun = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_NOUN, "");			
+							// 名詞が取得できた場合は追加する。
+							if($last_words_noun){
+								// 最終単語
+								$last_words = array_merge($last_words, $last_words_noun);
+							}
+							// 形容詞
+							// データベースから訳語の単語を取得する。
+							$last_words_adjective = Sanskrit_Common::get_dictionary_stem_by_japanese($target_word, Sanskrit_Common::DB_ADJECTIVE, "");
+							// 形容詞が取得できた場合は追加する。
+							if($last_words_adjective){
+								// 最終単語
+								$last_words = array_merge($last_words, $last_words_adjective);
+							}
 						}
 					}
 				}
@@ -1244,15 +1325,31 @@ class Sanskrit_Common extends Common_IE{
 					}
 					// 新しい配列に詰め替え
 					$word_datas = array();
-					// データベースが取得できた場合は
-					if($suffix_datas){
+					// 最初の単語以外で、データベースが取得できた場合は
+					if($suffix_datas && $i != 0){
 						// 新しい配列に詰め替え
 						foreach ($suffix_datas as $suffix_data){	
 							$word_datas[] = $suffix_data["suffix"];	
 						}
 					} else {
-						// データベースから訳語の語幹を取得する。
-						$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, $table);
+						// 品詞判定
+						if($word_category == "noun"){
+							// データベースから名詞接頭辞(その他)を取得する。
+							$suffix_datas = Sanskrit_Common::get_other_noun_suffix($target_word);
+						} else if($word_category == "adjective"){
+							// データベースから形容詞接頭辞(その他)を取得する。
+							$suffix_datas = Sanskrit_Common::get_other_adjective_suffix($target_word);
+						}
+						// 最初の単語以外で、データベースが取得できた場合は
+						if($suffix_datas && $i != 0){
+							// 新しい配列に詰め替え
+							foreach ($suffix_datas as $suffix_data){	
+								$word_datas[] = $suffix_data["suffix"];	
+							}
+						} else {
+							// データベースから訳語の語幹を取得する。
+							$word_datas = Sanskrit_Common::get_sanskrit_strong_stem($target_word, $table);
+						}
 					}
 				}
 				// 単語が取得できない場合は、何も返さない。

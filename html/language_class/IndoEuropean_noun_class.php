@@ -1193,15 +1193,15 @@ class Latin_Noun extends Noun_Common_IE {
 		// データがある場合は
 		if($word_info){
 			// データを挿入
-			$this->first_stem = $word_info["weak_stem"];							//第一語幹
+			$this->first_stem = $word_info["weak_stem"];						//第一語幹
 			$this->third_stem = mb_substr($word_info["strong_stem"], 0, -1);	//第三語幹
 			$this->gender = $word_info["gender"];								//性別
 			$this->noun_type = $word_info["noun_type"];							//名詞タイプ
 			$this->japanese_translation = $word_info["japanese_translation"];	//日本語訳
 			$this->english_translation = $word_info["english_translation"];		//英語訳
-			$this->deponent_singular = $word_info["deponent_singular"];	//単数のみフラグ
-			$this->deponent_plural = $word_info["deponent_plural"];		//複数のみフラグ
-			$this->location_name = $word_info["location_name"];			//地名フラグ
+			$this->deponent_singular = $word_info["deponent_singular"];			//単数のみフラグ
+			$this->deponent_plural = $word_info["deponent_plural"];				//複数のみフラグ
+			$this->location_name = $word_info["location_name"];					//地名フラグ
 		} else {
 			// 第一語幹・第三語幹生成
 			$this->first_stem = $noun;
@@ -1214,58 +1214,78 @@ class Latin_Noun extends Noun_Common_IE {
 			
 			// 文字列の最後で判断
 			if(preg_match("/a$/", $noun)){				
-				$this->gender = self::PIE_ACTION;						//性別
-				$this->noun_type = 1;							//名詞種別
+				$this->gender = self::PIE_ACTION;					// 性別
+				$this->noun_type = 1;								// 名詞種別
+			} else if(preg_match("/(ās)$/", $noun)){		
+				$this->gender = self::PIE_ANIMATE;    				//性別
+				$this->noun_type = "1gr1";           				//名詞種別
+				$this->first_stem = mb_substr($noun, 0, -2)."ās";	//第三語幹				
+				$this->third_stem = mb_substr($noun, 0, -2);		//第三語幹
+			} else if(preg_match("/(ēs)$/", $noun)){		
+				$this->gender = self::PIE_ANIMATE;    				//性別
+				$this->noun_type = "1gr2";           				//名詞種別
+				$this->first_stem = mb_substr($noun, 0, -2)."ēs";	//第三語幹				
+				$this->third_stem = mb_substr($noun, 0, -2);		//第三語幹
+			} else if(preg_match("/(ē)$/", $noun)){		
+				$this->gender = self::PIE_ANIMATE;    				//性別
+				$this->noun_type = "1gr3";           				//名詞種別
+				$this->first_stem = mb_substr($noun, 0, -2)."ē";	//第三語幹				
+				$this->third_stem = mb_substr($noun, 0, -2);		//第三語幹
 			} else if(preg_match("/u$/", $noun)){						
 				$this->gender = self::PIE_ANIMATE;    				//性別
-				$this->noun_type = 2;           				//名詞種別
-				$this->first_stem = $noun."s";					//第一語幹
-				$this->third_stem = mb_substr($noun, 0, -1);	//第三語幹						
-			} else if(preg_match("/(us|os)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    					//性別
+				$this->noun_type = 2;           					//名詞種別
+				$this->first_stem = $noun."s";						//第一語幹
+				$this->third_stem = mb_substr($noun, 0, -1);		//第三語幹						
+			} else if(preg_match("/(us)$/", $noun)){						
+				$this->gender = self::PIE_ANIMATE;    				//性別
 				$this->noun_type = 2;           					//名詞種別
 				$this->first_stem = mb_substr($noun, 0, -2)."us";	//第三語幹				
 				$this->third_stem = mb_substr($noun, 0, -2);		//第三語幹
-			} else if(preg_match("/(um|on)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    					//性別
-				$this->noun_type = "2um";           				//名詞種別
-				$this->first_stem = mb_substr($noun, 0, -2)."um";	//第三語幹				
-				$this->third_stem = mb_substr($noun, 0, -2);	//第三語幹		
+			} else if(preg_match("/(ōs|os)$/", $noun)){						
+				$this->gender = self::PIE_ANIMATE;    				//性別
+				$this->noun_type = "2gr1";           				//名詞種別
+				$this->first_stem = mb_substr($noun, 0, -2)."ōs";	//第三語幹				
+				$this->third_stem = mb_substr($noun, 0, -2);		//第三語幹
+			} else if(preg_match("/(on)$/", $noun)){						
+				$this->gender = self::PIE_INANIMATE;    			//性別
+				$this->noun_type = "2gr3";           				//名詞種別
+				$this->first_stem = mb_substr($noun, 0, -2)."on";	//第三語幹				
+				$this->third_stem = mb_substr($noun, 0, -2);		//第三語幹
 			} else if(preg_match("/(is|es)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;       				//性別
-				$this->noun_type = "3i";        				//名詞種別
-				$this->third_stem = mb_substr($noun, 0, -2);	//第三語幹
+				$this->gender = self::PIE_ANIMATE;       			// 性別
+				$this->noun_type = "3i";        					// 名詞種別
+				$this->third_stem = mb_substr($noun, 0, -2);		// 第三語幹
 			} else if(preg_match("/(o|ō)$/", $noun)){						
-				$this->gender = self::PIE_INANIMATE;       				//性別
-				$this->noun_type = "3n";        				//名詞種別
-				$this->third_stem = $noun."n";					//第三語幹
+				$this->gender = self::PIE_ACTION;       			// 性別
+				$this->noun_type = "3n";        					// 名詞種別
+				$this->third_stem = $noun."n";						// 第三語幹
 			} else if(preg_match("/(ns)$/", $noun)){
-				$this->gender = self::PIE_ANIMATE;    				//性別				
+				$this->gender = self::PIE_ANIMATE;    				// 性別				
 				$this->noun_type = "3con";          				// 名詞種別			
 				$this->third_stem = mb_substr($noun, 0, -2)."nt";	// 強語幹を変更
 				$this->first_stem = $noun;							// 弱語幹を変更	
 			} else if(preg_match("/(tor)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    					//性別
-				$this->noun_type = "3r";        					//名詞種別
-				$this->third_stem = $noun;							//第三語幹
+				$this->gender = self::PIE_ANIMATE;    				// 性別
+				$this->noun_type = "3r";        					// 名詞種別
+				$this->third_stem = $noun;							// 第三語幹
 				$this->third_stem = mb_substr($noun, 0, -2)."ōr";	// 強語幹を変更											
 			} else if(preg_match("/(er|or)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    				//性別
-				$this->noun_type = "3r";        				//名詞種別
-				$this->third_stem = $noun;						//第三語幹
+				$this->gender = self::PIE_ANIMATE;    				// 性別
+				$this->noun_type = "3r";        					// 名詞種別
+				$this->third_stem = $noun;							// 第三語幹
 			} else if(preg_match("/s$/", $noun)){						
-				$this->gender = self::PIE_ACTION;    						//性別
-				$this->noun_type = "3s";        					//名詞種別
-				$this->third_stem = mb_substr($noun, 0, -1);		//第三語幹				
+				$this->gender = self::PIE_ACTION;    				// 性別
+				$this->noun_type = "3s";        					// 名詞種別
+				$this->third_stem = mb_substr($noun, 0, -1);		// 第三語幹				
 			} else if(preg_match("/x$/", $noun)){						
-				$this->gender = self::PIE_ACTION;    						//性別
-				$this->noun_type = "3s";        					//名詞種別
-				$this->third_stem = mb_substr($noun, 0, -1)."c";	//第三語幹
+				$this->gender = self::PIE_ACTION;    				// 性別
+				$this->noun_type = "3s";        					// 名詞種別
+				$this->third_stem = mb_substr($noun, 0, -1)."c";	// 第三語幹
 			} else {											
-				$this->gender = self::PIE_ANIMATE;    				//性別
-				$this->noun_type = 2;           				//名詞種別
-				$this->first_stem = $noun."us";					//第一語幹
-				$this->third_stem = $noun;						//第三語幹
+				$this->gender = self::PIE_ANIMATE;    				// 性別
+				$this->noun_type = 2;           					// 名詞種別
+				$this->first_stem = $noun."us";						// 第一語幹
+				$this->third_stem = $noun;							// 第三語幹
 			}
 		}
     }
