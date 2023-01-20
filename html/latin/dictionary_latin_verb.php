@@ -228,6 +228,7 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" 
         </select>
       </form>
       <?php echo Latin_Common::input_special_button(); ?>    
+      <?php echo Commons::noun_archaic_button(); ?>
       <details>
         <summary>動詞の活用 ※(薄文字の部分は古風な用法)</summary>      
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="conjugation-table" style="overflow: auto;">
@@ -282,19 +283,19 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" 
             <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
             <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
             <tr><th class="text-center table-archaic" scope="row" colspan="11">未来形2</th></tr>
-            <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
             <tr><th class="text-center table-archaic" scope="row" colspan="11">無時制</th></tr>
-            <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="table-archaic"></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="table-archaic"></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="table-archaic"></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="table-archaic"></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="table-archaic"></td><td></td></tr>
-            <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="table-archaic"></td><td></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">1人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">2人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">3人称単数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">1人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">2人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
+            <tr><th class="text-center table-archaic" scope="row">3人称複数</th><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td></tr>
           </tbody>
         </table>
       </details><br>
@@ -618,6 +619,10 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" 
 	        });
           // ボタンにイベントを設定
           Input_Botton.LatinBotton('#input_verb'); 
+          // 古形隠しボタン
+          Input_Botton.HiddenArchaicBotton();
+          // 初期状態は古形の表示を隠す。
+          $(".table-archaic").css("display", "none");
         }
 
     </script>

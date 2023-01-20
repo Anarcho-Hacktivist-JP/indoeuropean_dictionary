@@ -184,7 +184,8 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <?php echo Polish_Common::input_special_button(); ?>     
+      <?php echo Polish_Common::input_special_button(); ?> 
+      <?php echo Commons::noun_archaic_button(); ?>   
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="adjective-table" style="overflow: auto;">
         <?php echo Polish_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>
@@ -321,6 +322,10 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
 	        });
           // ボタンにイベントを設定
           Input_Botton.PolishBotton('#input_adjective'); 
+          // 古形隠しボタン
+          Input_Botton.HiddenArchaicBotton();
+          // 初期状態は古形の表示を隠す。
+          $(".table-archaic").css("display", "none");
           // オブジェクト呼び出し
           //var cyber_punish_kacap = new Cyber_Punish_Kacap(500);
           // 実行

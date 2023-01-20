@@ -355,6 +355,26 @@ class Input_Botton {
         return res;
     };
 
+    // 隠しボタンのイベントを作る。
+    static HiddenArchaicBotton(){
+
+        // 古形表示を隠すボタン
+        $("#btn-archaic-off").click(function() {
+            // 表示を隠す。
+            $(".table-archaic").css("display", "none");
+        });
+
+        // 古形表示を出すボタン
+        $("#btn-archaic-on").click(function() {
+            // 表示を出す。
+            $(".table-archaic").css("display", "block");
+            // 行を出す
+            $(".table-archaic").css("display", "table-row");
+            // セルとタイトルを出す
+            $(".table-archaic").css("display", "table-cell");
+        });
+    };
+
 }
 
 class Language_Practice{

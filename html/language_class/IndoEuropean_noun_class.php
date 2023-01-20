@@ -1378,7 +1378,7 @@ class Latin_Noun extends Noun_Common_IE {
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_noun_title()."の".$number." ".$case."を答えよ";
+		$question_data['question_sentence'] = $this->get_noun_title()."の".Commons::change_gramatical_words($number).Commons::change_gramatical_words($case)."を答えよ";
 		$question_data['answer'] = $this->get_declensioned_noun($case, $number);
 		$question_data['question_sentence2'] = $question_data['answer']."の数と格を答えよ";
 		$question_data['case'] = $case;
@@ -2593,7 +2593,7 @@ class Vedic_Noun extends Noun_Common_IE {
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_noun_title()."の".$number." ".$case."を答えよ";
+		$question_data['question_sentence'] = $this->get_noun_title()."の".Commons::change_gramatical_words($number).Commons::change_gramatical_words($case)."を答えよ";
 		$question_data['answer'] = $this->get_declensioned_noun($case, $number);
 		$question_data['question_sentence2'] = $question_data['answer']."の数と格を答えよ";
 		$question_data['case'] = $case;
@@ -3350,50 +3350,50 @@ class Polish_Noun extends Noun_Common_IE{
 			
 			// 文字列の最後で判断
 			if(preg_match("/(k|g|ch)a$/", $noun)){						
-				$this->gender = self::PIE_ACTION;    				// 性別
-				$this->noun_type = "1k";           					// 名詞種別
-			} else if(preg_match("/a$/", $noun)){				
-				$this->gender = self::PIE_ACTION;					// 性別
-				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更						
-				$this->noun_type = 1;								// 名詞種別
-			} else if(preg_match("/ść$/", $noun)){						
-				$this->gender = self::PIE_ACTION;    				// 性別
-				$this->noun_type = "3i";        					// 名詞種別
-				$this->third_stem = mb_substr($noun, 0, -1);		// 第三語幹					
-			} else if(preg_match("/ół/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    				// 性別
-				$this->noun_type = "2p1";           				// 名詞種別
+				$this->gender = self::PIE_ACTION;    						// 性別
+				$this->noun_type = "1k";           							// 名詞種別
+			} else if(preg_match("/a$/", $noun)){						
+				$this->gender = self::PIE_ACTION;							// 性別
+				$this->third_stem = mb_substr($noun, 0, -1);				// 強語幹を変更						
+				$this->noun_type = 1;										// 名詞種別
+			} else if(preg_match("/ść$/", $noun)){								
+				$this->gender = self::PIE_ACTION;    						// 性別
+				$this->noun_type = "3i";        							// 名詞種別
+				$this->third_stem = mb_substr($noun, 0, -1);				// 第三語幹					
+			} else if(preg_match("/ół/", $noun)){								
+				$this->gender = self::PIE_ANIMATE;    						// 性別
+				$this->noun_type = "2p1";           						// 名詞種別
 			} else if(preg_match("/(ć|dź|ń|ś|ź|l|j)$/", $noun)){	
-				$this->gender = self::PIE_ANIMATE;    					// 性別
-				$this->noun_type = "2p";           					// 名詞種別
+				$this->gender = self::PIE_ANIMATE;    						// 性別
+				$this->noun_type = "2p";           							// 名詞種別
 			} else if(preg_match("/(c|cz|dz|dż|rz|sz|ż)$/", $noun)){	
-				$this->gender = self::PIE_ANIMATE;    					// 性別
-				$this->noun_type = "2p1";           				// 名詞種別				
+				$this->gender = self::PIE_ANIMATE;    						// 性別
+				$this->noun_type = "2p1";           						// 名詞種別				
 			} else if(preg_match("/(d|f|ł|n|r|s|t|z|p|b|m|w)$/", $noun)){	
-				$this->gender = self::PIE_ANIMATE;    					// 性別
-				$this->noun_type = 2;           					// 名詞種別
+				$this->gender = self::PIE_ANIMATE;    						// 性別
+				$this->noun_type = 2;           							// 名詞種別
 			} else if(preg_match("/(k|g|ch)$/", $noun)){						
-				$this->gender = self::PIE_ANIMATE;    				// 性別
-				$this->noun_type = "2k";           					// 名詞種別
-			} else if(preg_match("/(o)$/", $noun)){						
-				$this->gender = "Neuter";    						// 性別
-				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更
-				$this->noun_type = "2o";           					// 名詞種別	
-			} else if(preg_match("/(e)$/", $noun)){						
-				$this->gender = "Neuter";    						// 性別
-				$this->third_stem = mb_substr($noun, 0, -1);		// 強語幹を変更
-				$this->noun_type = "2e";           					// 名詞種別	
-			} else if(preg_match("/(um)$/", $noun)){						
-				$this->gender = "Neuter";    						// 性別
-				$this->third_stem = mb_substr($noun, 0, -2);		// 強語幹を変更
-				$this->noun_type = "2um";           				// 名詞種別									
+				$this->gender = self::PIE_ANIMATE;    						// 性別
+				$this->noun_type = "2k";           							// 名詞種別
+			} else if(preg_match("/(o)$/", $noun)){								
+				$this->gender = self::PIE_INANIMATE;    					// 性別
+				$this->third_stem = mb_substr($noun, 0, -1);				// 強語幹を変更
+				$this->noun_type = "2o";           							// 名詞種別	
+			} else if(preg_match("/(e)$/", $noun)){								
+				$this->gender = self::PIE_INANIMATE;    					// 性別
+				$this->third_stem = mb_substr($noun, 0, -1);				// 強語幹を変更
+				$this->noun_type = "2e";           							// 名詞種別	
+			} else if(preg_match("/(um)$/", $noun)){								
+				$this->gender = self::PIE_INANIMATE;    					// 性別
+				$this->third_stem = mb_substr($noun, 0, -2);				// 強語幹を変更
+				$this->noun_type = "2um";           						// 名詞種別									
 			} else if(preg_match("/(ę)$/", $noun)){
-				$this->gender = "Neuter";    						// 性別				
-				$this->noun_type = "3con";          				// 名詞種別			
-				$this->third_stem = mb_substr($noun, 0, -2)."n";	// 強語幹を変更
+				$this->gender = self::PIE_INANIMATE;    					// 性別				
+				$this->noun_type = "3con";          						// 名詞種別			
+				$this->third_stem = mb_substr($noun, 0, -2)."n";			// 強語幹を変更
 			} else {											
-				$this->gender = self::PIE_ANIMATE;    				// 性別
-				$this->noun_type = 2;           				// 名詞種別
+				$this->gender = self::PIE_ANIMATE;    						// 性別
+				$this->noun_type = 2;           							// 名詞種別
 			}
 
 			// 男性名詞の場合は
@@ -3472,10 +3472,10 @@ class Polish_Noun extends Noun_Common_IE{
 		}
 
 		// 語幹を取得
-		if(($number == Commons::SINGULAR && $this->gender == "Neuter") && ($case == Commons::VOCATIVE || $case == Commons::NOMINATIVE)){
+		if(($number == Commons::SINGULAR && $this->gender == self::PIE_INANIMATE) && ($case == Commons::VOCATIVE || $case == Commons::NOMINATIVE)){
 			// ここで結果を返す。
 			return $this->first_stem;					
-		} else if($case == Commons::ACCUSATIVE && $this->gender == "Neuter" && $number == Commons::SINGULAR){
+		} else if($case == Commons::ACCUSATIVE && $this->gender == self::PIE_INANIMATE && $number == Commons::SINGULAR){
 			// 中性の単数対格は主格と同じ
 			// ここで結果を返す。
 			return $this->first_stem;
@@ -3539,7 +3539,7 @@ class Polish_Noun extends Noun_Common_IE{
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_noun_title()."の".$number." ".$case."を答えよ";
+		$question_data['question_sentence'] = $this->get_noun_title()."の".Commons::change_gramatical_words($number).Commons::change_gramatical_words($case)."を答えよ";
 		$question_data['answer'] = $this->get_declensioned_noun($case, $number);
 		$question_data['question_sentence2'] = $question_data['answer']."の数と格を答えよ";
 		$question_data['case'] = $case;
@@ -4152,68 +4152,68 @@ class Koine_Noun extends Noun_Common_IE {
 		// 文字列の最後で判断
 		if(preg_match('/(α|ᾱ)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Feminine";    						// 名詞区分
-			$this->noun_type = "1a";           					// 名詞種別
+			$this->gender = self::PIE_ACTION;    						// 名詞区分
+			$this->noun_type = "1a";           							// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
 		} else if(preg_match('/(ή|η)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Feminine";									// 名詞区分
+			$this->gender = self::PIE_ACTION;							// 名詞区分
 			$this->noun_type = "1e";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(ασ|ας|ᾱσ|ᾱς)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";								// 名詞区分
+			$this->gender = self::PIE_ANIMATE;							// 名詞区分
 			$this->noun_type = "1as";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(ή|η)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Feminine";									// 名詞区分
+			$this->gender = self::PIE_ACTION;							// 名詞区分
 			$this->noun_type = "1e";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(ήσ|ής|ησ|ης)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";								// 名詞区分
+			$this->gender = self::PIE_ANIMATE;							// 名詞区分
 			$this->noun_type = "1as";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(οσ|ος)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";								// 名詞区分
+			$this->gender = self::PIE_ANIMATE;							// 名詞区分
 			$this->noun_type = 2;										// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹
 		} else if(preg_match('/(ο)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Neuter";									// 名詞区分
+			$this->gender = self::PIE_INANIMATE;						// 名詞区分
 			$this->noun_type = "2on";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -1);	// 第二語幹
 		} else if(preg_match('/(ον)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Neuter";									// 名詞区分
+			$this->gender = self::PIE_INANIMATE;						// 名詞区分
 			$this->noun_type = "2on";									// 名詞種別
 			$this->second_stem = mb_substr($this->second_stem, 0, -2);	// 第二語幹		
 		} else if(preg_match('/(υ)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";						// 名詞区分
+			$this->gender = self::PIE_ANIMATE;					// 名詞区分
 			$this->noun_type = 4;								// 名詞種別
 		} else if(preg_match('/(ι)$/',$noun)){		
 			// 名詞の種別で性別・活用が決定する。								
-			$this->gender = "Masculine";						// 名詞区分
+			$this->gender = self::PIE_ANIMATE;					// 名詞区分
 			$this->noun_type = "3i";							// 名詞種別
 		} else if(preg_match('/(η)$/',$noun)){
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Feminine";    						// 名詞区分
+			$this->gender = self::PIE_ACTION;    				// 名詞区分
 			$this->noun_type = "1e";           					// 名詞種別
 		} else if(preg_match('/(λ|ρ)$/',$noun)){
-			$this->gender = "Masculine";						// 名詞区分
+			$this->gender = self::PIE_ANIMATE;					// 名詞区分
 			$this->noun_type = "3r";							// 名詞種別				
 		} else if(preg_match('/(τ|ς)$/',$noun)){
-			$this->gender = "Masculine";						// 名詞区分
+			$this->gender = self::PIE_ANIMATE;					// 名詞区分
 			$this->noun_type = "3con";							// 名詞種別	
 		} else if(preg_match('/(ν)$/',$noun)){
-			$this->gender = "Masculine";						// 名詞区分
+			$this->gender = self::PIE_ANIMATE;					// 名詞区分
 			$this->noun_type = "3n";							// 名詞種別										
 		} else {														
 			// 名詞の種別で性別・活用が決定する。		
-			$this->gender = "Masculine";						// 名詞区分
+			$this->gender = self::PIE_ANIMATE;					// 名詞区分
 			$this->noun_type = 2;								// 名詞種別
 		}
 	}
@@ -4250,7 +4250,7 @@ class Koine_Noun extends Noun_Common_IE {
 		if($number == Commons::SINGULAR && ($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE)){
 			// 単数主格・呼格
 			$stem = $this->first_stem;
-		} else if($number == Commons::SINGULAR && $this->gender == "Neuter" && $case == Commons::ACCUSATIVE){
+		} else if($number == Commons::SINGULAR && $this->gender == self::PIE_INANIMATE && $case == Commons::ACCUSATIVE){
 			// 単数対格(中性)
 			$stem = $this->first_stem;	
 		} else if ($number == Commons::PLURAL && $case == Commons::DATIVE){
@@ -4333,7 +4333,7 @@ class Koine_Noun extends Noun_Common_IE {
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_noun_title()."の".$number." ".$case."を答えよ";
+		$question_data['question_sentence'] = $this->get_noun_title()."の".Commons::change_gramatical_words($number).Commons::change_gramatical_words($case)."を答えよ";
 		$question_data['answer'] = $this->get_declensioned_noun($case, $number);
 		$question_data['question_sentence2'] = $question_data['answer']."の数と格を答えよ";
 		$question_data['case'] = $case;

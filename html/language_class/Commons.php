@@ -259,6 +259,88 @@ class Commons {
 		return preg_match('(noun|adjective)', $word_category);
 	}
 
+	// 古形ボタンの生成
+	public static function noun_archaic_button(){
+
+		// ボタンを生成
+		$button_html_code = '
+		<div class="d-grid gap-2 d-md-block">
+			<input type="button" name="archaic" class="btn-check" id="btn-archaic-off" autocomplete="off" value="true">
+			<label class="btn btn-primary" for="btn-archaic-off">古形を非表示</label>
+			<input type="button" name="archaic" class="btn-check" id="btn-archaic-on" autocomplete="off" value="false">
+			<label class="btn btn-primary" for="btn-archaic-on">古形を表示</label>
+		</div>';
+
+		// 結果を返す。
+		return $button_html_code;
+	}
+
+	// 文法用語の変換関数
+	public static function change_gramatical_words($word){
+
+		// 用語変換
+		switch($word){
+			// 名詞・形容詞の格変化を日本語名に変換する。
+			case self::NOMINATIVE:
+				return "主格";
+				break;
+			case self::GENETIVE:
+				return "属格";
+				break;
+			case self::DATIVE:
+				return "与格";
+				break;		
+			case self::ACCUSATIVE:
+				return "対格";
+				break;
+			case self::ABLATIVE:
+				return "奪格";
+				break;
+			case self::INSTRUMENTAL:
+				return "具格";
+				break;
+			case self::LOCATIVE:
+				return "地格";
+				break;	
+			case self::VOCATIVE:
+				return "呼格";
+				break;
+			// 名詞・形容詞・動詞の数を変換する。
+			case self::SINGULAR:
+				return "単数";
+				break;
+			case self::DUAL:
+				return "双数";
+				break;	
+			case self::PLURAL:
+				return "複数";
+				break;
+			// 形容詞・動詞の性別を変換する。
+			case self::MASCULINE_GENDER:
+				return "男性";
+				break;
+			case self::FEMINE_GENDER:
+				return "女性";
+				break;	
+			case self::NEUTER_GENDER:
+				return "中性";
+				break;
+			// 形容詞比較級を変換する。
+			case self::ADJ_GRADE_POSITIVE:
+				return "原級";
+				break;
+			case self::ADJ_GRADE_COMPERATIVE:
+				return "比較級";
+				break;	
+			case self::ADJ_GRADE_SUPERATIVE:
+				return "最上級";
+				break;
+			default:
+				return "";
+				break;
+		}
+	}
+
 }
 
 class Common_IE {
@@ -405,8 +487,6 @@ class Common_IE {
 
 		// 結果を返す。
 		return $button_html_code.'</section>';
-
-
 	}
 
 }

@@ -559,13 +559,13 @@ class Polish_Common extends Common_IE{
 		return '
         <thead>
           <tr>
-            <th scope="row" class="text-center" sstyle="width:19%">'.$title.'</th>
+            <th scope="row" class="text-center" style="width:19%">'.$title.'</th>
             <th scope="col" class="text-center" colspan="3" style="width:27%">単数</th>
             <th scope="col" class="table-archaic text-center" colspan="3" style="width:27%">双数</th>            
             <th scope="col" class="text-center" colspan="3" style="width:27%">複数</th>
           </tr>
           <tr>
-            <th scope="row" class="text-center" sstyle="width:19%">格</th>
+            <th scope="row" class="text-center" style="width:19%">格</th>
             <th scope="col" class="text-center" style="width:9%">男性</th>
             <th scope="col" class="text-center" style="width:9%">女性</th>
             <th scope="col" class="text-center" style="width:9%">中性</th>
@@ -582,7 +582,6 @@ class Polish_Common extends Common_IE{
 	// 形容詞の活用表を作る。
 	public static function make_adjective_chart(){
 
-		// 表を返す。
 		// 表を返す。
 		return '
 			<tr><th class="text-center" scope="row" colspan="10">原級</th></tr>		

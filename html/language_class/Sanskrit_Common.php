@@ -360,7 +360,6 @@ class Sanskrit_Common extends Common_IE{
 				`mean` LIKE '%、".$suffix_word."' OR 
 				`mean` = '".$suffix_word."')";
 		}
-		echo $query;
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
