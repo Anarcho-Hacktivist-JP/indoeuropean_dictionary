@@ -7458,7 +7458,7 @@ class Polish_Verb extends Verb_Common_IE {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -7466,7 +7466,7 @@ class Polish_Verb extends Verb_Common_IE {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -7528,33 +7528,33 @@ class Polish_Verb extends Verb_Common_IE {
 
 	// 過去・仮定法語幹を作る
 	protected function get_past_conditional_stem($gender, $person){
-		if($gender == Commons::MASCULINE_GENDER && preg_match("/sg$/", $person)){
+		if($gender == Commons::ANIMATE_GENDER && preg_match("/sg$/", $person)){
 			return $this->past_stem;
-		} else if($gender == Commons::FEMINE_GENDER && preg_match("/sg$/", $person)){
+		} else if($gender == Commons::ACTION_GENDER && preg_match("/sg$/", $person)){
 			// ąc動詞は語幹を変更して返す。
 			if($this->verb_type == "3an"){
 				return $this->present_stem."ęła";
 			}
 			return $this->past_stem."a";
-		} else if($gender == Commons::NEUTER_GENDER && preg_match("/sg$/", $person)){
+		} else if($gender == Commons::INANIMATE_GENDER && preg_match("/sg$/", $person)){
 			// ąc動詞は語幹を変更して返す。
 			if($this->verb_type == "3an"){
 				return $this->present_stem."ęło";
 			}			
 			return $this->past_stem."o";
-		} else if($gender == Commons::MASCULINE_GENDER && preg_match("/(du|pl)$/", $person)){
+		} else if($gender == Commons::ANIMATE_GENDER && preg_match("/(du|pl)$/", $person)){
 			// ąc動詞は語幹を変更して返す。
 			if($this->verb_type == "3an"){
 				return $this->present_stem."ęły";
 			}			
 			return $this->past_stem."y";		
-		} else if($gender == Commons::FEMINE_GENDER && preg_match("/(du|pl)$/", $person)){
+		} else if($gender == Commons::ACTION_GENDER && preg_match("/(du|pl)$/", $person)){
 			// ąc動詞は語幹を変更して返す。
 			if($this->verb_type == "3an"){
 				return $this->present_stem."ęłi";
 			}
 			return $this->past_stem."i";
-		} else if($gender == Commons::NEUTER_GENDER && preg_match("/(du|pl)$/", $person)){
+		} else if($gender == Commons::INANIMATE_GENDER && preg_match("/(du|pl)$/", $person)){
 			// ąc動詞は語幹を変更して返す。
 			if($this->verb_type == "3an"){
 				return $this->present_stem."ęłi";
@@ -7569,17 +7569,17 @@ class Polish_Verb extends Verb_Common_IE {
 	// 過去完了・仮定法接辞を作る
 	protected function get_pluperfect_stem($gender, $person){
 		// 性別・数に分けて返す
-		if($gender == Commons::MASCULINE_GENDER && preg_match("/sg$/", $person)){
+		if($gender == Commons::ANIMATE_GENDER && preg_match("/sg$/", $person)){
 			return "był";
-		} else if($gender == Commons::FEMINE_GENDER && preg_match("/sg$/", $person)){
+		} else if($gender == Commons::ACTION_GENDER && preg_match("/sg$/", $person)){
 			return $this->subj."ła";
-		} else if($gender == Commons::NEUTER_GENDER && preg_match("/sg$/", $person)){
+		} else if($gender == Commons::INANIMATE_GENDER && preg_match("/sg$/", $person)){
 			return $this->subj."ło";
-		} else if($gender == Commons::MASCULINE_GENDER && preg_match("/(du|pl)$/", $person)){	
+		} else if($gender == Commons::ANIMATE_GENDER && preg_match("/(du|pl)$/", $person)){	
 			return $this->subj."ły";		
-		} else if($gender == Commons::FEMINE_GENDER && preg_match("/(du|pl)$/", $person)){
+		} else if($gender == Commons::ACTION_GENDER && preg_match("/(du|pl)$/", $person)){
 			return $this->subj."łi";
-		} else if($gender == Commons::NEUTER_GENDER && preg_match("/(du|pl)$/", $person)){		
+		} else if($gender == Commons::INANIMATE_GENDER && preg_match("/(du|pl)$/", $person)){		
 			return $this->subj."łi";			
 		} else {
 			// ハイフンを返す。
@@ -7606,7 +7606,7 @@ class Polish_Verb extends Verb_Common_IE {
 	// 通常変化部分の動詞の活用を作成する。
 	protected function make_common_standard_verb_conjugation($conjugation){
 		// 配列を作成
-		$gender_array = array(Commons::MASCULINE_GENDER, Commons::FEMINE_GENDER, Commons::NEUTER_GENDER);	//性別
+		$gender_array = array(Commons::ANIMATE_GENDER, Commons::ACTION_GENDER, Commons::INANIMATE_GENDER);	//性別
 		$tense_mood_array = array(Commons::PRESENT_TENSE, 
 								  Commons::PAST_TENSE, 
 								  Commons::AORIST_ASPECT, 
@@ -7693,7 +7693,7 @@ class Polish_Verb extends Verb_Common_IE {
 		// 性別がない場合
 		if($gender == ""){
 			// 全ての性別の中からランダムで選択
-			$ary = array(Commons::MASCULINE_GENDER, Commons::FEMINE_GENDER, Commons::NEUTER_GENDER);			// 初期化
+			$ary = array(Commons::ANIMATE_GENDER, Commons::ACTION_GENDER, Commons::INANIMATE_GENDER);			// 初期化
 			$key = array_rand($ary, 1);
 			// 選択したものを入れる。
 			$gender = $ary[$key];			
@@ -7916,7 +7916,7 @@ class Polish_Verb_Isc extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -7924,7 +7924,7 @@ class Polish_Verb_Isc extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -8021,7 +8021,7 @@ class Polish_Verb_Brac extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -8029,7 +8029,7 @@ class Polish_Verb_Brac extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -8125,7 +8125,7 @@ class Polish_Verb_Wziac extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -8133,7 +8133,7 @@ class Polish_Verb_Wziac extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -8230,7 +8230,7 @@ class Polish_Verb_Miec extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -8238,7 +8238,7 @@ class Polish_Verb_Miec extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -8318,7 +8318,7 @@ class Polish_Verb_Root extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -8326,7 +8326,7 @@ class Polish_Verb_Root extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -8406,7 +8406,7 @@ class Polish_Verb_Root2 extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -8414,7 +8414,7 @@ class Polish_Verb_Root2 extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);
@@ -8494,7 +8494,7 @@ class Polish_Verb_Root3 extends Polish_Verb {
 			// 過去形(完了)	
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person];						
@@ -8502,7 +8502,7 @@ class Polish_Verb_Root3 extends Polish_Verb {
 			// 過去完了形
 			$past_stem = $this->get_past_conditional_stem($gender, $person);
 			// 男性形単数のみ特例処理
-			if($gender == Commons::MASCULINE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
+			if($gender == Commons::ANIMATE_GENDER && preg_match("/(1sg|2sg)$/", $person)){
 				$past_stem = $past_stem."e";
 			}						
 			$verb_conjugation = $past_stem.$this->secondary_number[Commons::ACTIVE_VOICE][$person]." ".$this->get_pluperfect_stem($gender, $person);

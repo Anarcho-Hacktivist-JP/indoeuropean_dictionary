@@ -4012,9 +4012,9 @@ class Koine_Noun extends Noun_Common_IE {
 		// 残りの語幹を作成
 		$this->make_other_stem();
 		// 語幹を変更
-		$this->first_stem = Sanskrit_Common::sandhi_engine($compound, $this->first_stem);		// 第一語幹
-		$this->second_stem = Sanskrit_Common::sandhi_engine($compound, $this->second_stem);		// 第二語幹		
-		$this->third_stem = Sanskrit_Common::sandhi_engine($compound, $this->third_stem);		// 第三語幹
+		$this->first_stem = $compound.$this->first_stem;		// 第一語幹
+		$this->second_stem = $compound.$this->second_stem;		// 第二語幹		
+		$this->third_stem = $compound.$this->third_stem;		// 第三語幹
 		// 日本語訳を書き換え
 		$this->japanese_translation = $translation;			// 日本語訳
 		$this->english_translation = "";			// 英語訳

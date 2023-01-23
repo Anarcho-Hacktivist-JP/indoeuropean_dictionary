@@ -1120,6 +1120,17 @@ class Koine_Common extends Common_IE{
 		return false;
 	}
 
+	// アルファベット判定をする。
+	public static function is_latin_alphabet_or_not($word){
+		// アルファベットの場合はtrue
+		if(ctype_alnum($word) || (preg_match("/[a-zA-Z]/", $word) || preg_match('(ā|ī|ū|ē|ō)',$word))){
+			return true;		
+		}
+
+		// それ以外はfalse
+		return false;
+	}
+
 	// 特殊文字入力ボタンを配置する。
 	public static function input_special_button(){
 
@@ -1573,6 +1584,20 @@ class Koine_Common extends Common_IE{
           <tr><th class="text-center" scope="row">中動</th><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">受動</th><td></td><td></td><td></td><td></td><td></td></tr>
         </tbody>';
+	}
+
+	// 検索言語コンボボックスの精製
+	public static function language_select_box(){
+		// ボタンを生成
+		$button_html_code = '
+        <select class="form-select" name="input_search_lang"> 
+          <option value="japanese">日本語(Japanese)</option>
+          <option value="english">英語(English)</option>
+          <option value="koine">ギリシア語(Greek)</option>     
+        </select> ';
+
+		// 結果を返す。
+		return $button_html_code;
 	}
 
 }

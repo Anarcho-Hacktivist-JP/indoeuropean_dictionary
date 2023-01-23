@@ -11,23 +11,12 @@ include(dirname(__FILE__) . "/../language_class/Greek_Common.php");
 
 // 活用表を取得する。
 function get_adjective_declension_chart($word){
-	// 形容詞の情報を取得
+	// 名詞の情報を取得
 	$adjective_words = Koine_Common::get_dictionary_stem_by_japanese($word, Koine_Common::DB_ADJECTIVE, "");
   // 取得できない場合は
   if(!$adjective_words){
-    // 英語で取得する。
-    $adjective_words = Koine_Common::get_dictionary_stem_by_english($word, Koine_Common::DB_ADJECTIVE);  
-    if(!$adjective_words){
-      // ラテン文字をギリシア文字に変換する。
-      $word = Commons::latin_to_greek($word, true);
-      // 取得できない場合は
-      if(!$adjective_words && !Koine_Common::is_alphabet_or_not($word)){
-        // 空を返す。
-        return array();
-      } else if(Koine_Common::is_alphabet_or_not($word)){
-        $adjective_words[] = $word;
-      }
-    }
+    // 空を返す。
+    return array();   
   }
 	// 配列を宣言
 	$declensions = array();  
@@ -42,8 +31,63 @@ function get_adjective_declension_chart($word){
 	return $declensions;
 }
 
+// 活用表を取得する。
+function get_adjective_declension_chart_by_english($word){
+	// 形容詞の情報を取得
+  // 英語で取得する。
+  $adjective_words = Koine_Common::get_dictionary_stem_by_english($word, Koine_Common::DB_ADJECTIVE);  
+  // 取得できない場合は
+  if(!$adjective_words){
+    // その単語を入れる        
+    $adjective_words[] = $word;
+  }    
+	// 配列を宣言
+	$declensions = array();  
+	// 新しい配列に詰め替え
+	foreach ($adjective_words as $adjective_word) {
+		// 読み込み
+		$polish_adjective = new Koine_Adjective($adjective_word);
+		// 活用表生成
+		$declensions[$polish_adjective->get_second_stem()] = $polish_adjective->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+// 活用表を取得する。
+function get_adjective_declension_chart_by_greek($word){
+  // 単語から直接取得する
+  $adjective_words = Koine_Common::get_wordstem_from_DB($word, Koine_Common::DB_ADJECTIVE);
+  // 取得できない場合は
+  if(!$adjective_words){
+    // その単語を入れる        
+    $adjective_words[] = $word;
+  }   
+	// 配列を宣言
+	$declensions = array();  
+	// 新しい配列に詰め替え
+	foreach ($adjective_words as $adjective_word) {
+		// 読み込み
+		$polish_adjective = new Koine_Adjective($adjective_word);
+		// 活用表生成
+		$declensions[$polish_adjective->get_second_stem()] = $polish_adjective->get_chart();
+	}
+  // 結果を返す。
+	return $declensions;
+}
+
+//造語対応
+function get_compound_noun_word($janome_result, $input_noun){
+  // データを取得(男性)
+	$declensions = Koine_Common::make_compound_chart($janome_result, "adjective", $input_noun);
+	// 結果を返す。
+	return $declensions;
+}
+
 // 挿入データ－対象－
 $input_adjective = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_adjective')), 128);
+// 挿入データ－言語－
+$search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 
 // 検索結果の配列
 $declensions = array();
@@ -52,10 +96,21 @@ $declensions = array();
 $janome_result = Commons::get_multiple_words_detail($input_adjective);
 $janome_result = Commons::convert_compound_array($janome_result);
 
-// 対象が入力されていれば処理を実行
-if($input_adjective != ""){
+// 条件ごとに判定して単語を検索して取得する
+if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
+  // 複合語の場合(日本語のみ)
+  $declensions = get_compound_adjective_word($janome_result, $input_adjective);
+} else if($input_adjective != "" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_adjective)){
+  // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart($input_adjective);
+} else if($input_adjective != "" && $search_lang == "english" && Koine_Common::is_alphabet_or_not($input_adjective)){
+  // 対象が入力されていれば処理を実行
+	$declensions = get_adjective_declension_chart_by_english($input_adjective);
+} else if($input_adjective != "" && $search_lang == "greek" && Koine_Common::is_alphabet_or_not($input_adjective)){
+  // 対象が入力されていれば処理を実行
+	$declensions = get_adjective_declension_chart_by_latin($input_adjective);
 }
+
 
 ?>
 <!doctype html>
@@ -78,6 +133,7 @@ if($input_adjective != ""){
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" id="input_adjective" class="form-control" placeholder="検索語句(日本語・英語・ギリシア語)">
+        <?php echo Koine_Common::language_select_box(); ?>  
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="adjective-selection" aria-label="Default select example">

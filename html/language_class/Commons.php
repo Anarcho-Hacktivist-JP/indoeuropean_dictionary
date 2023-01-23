@@ -55,9 +55,9 @@ class Commons {
 	public const SINGULAR = "sg";							// 単数
 	public const DUAL = "du";								// 双数
 	public const PLURAL = "pl";								// 複数
-	public const MASCULINE_GENDER = "masc";					// 男性
-	public const FEMINE_GENDER = "fem";						// 女性
-	public const NEUTER_GENDER = "neu";						// 中性
+	public const ANIMATE_GENDER = "masc";					// 男性
+	public const ACTION_GENDER = "fem";						// 女性
+	public const INANIMATE_GENDER = "neu";					// 中性
 
 	public const NOMINATIVE = "nom";						// 主格
 	public const GENETIVE = "gen";							// 属格
@@ -316,13 +316,13 @@ class Commons {
 				return "複数";
 				break;
 			// 形容詞・動詞の性別を変換する。
-			case self::MASCULINE_GENDER:
+			case self::ANIMATE_GENDER:
 				return "男性";
 				break;
-			case self::FEMINE_GENDER:
+			case self::ACTION_GENDER:
 				return "女性";
 				break;	
-			case self::NEUTER_GENDER:
+			case self::INANIMATE_GENDER:
 				return "中性";
 				break;
 			// 形容詞比較級を変換する。
@@ -391,15 +391,15 @@ class Common_IE {
 		<h3>性別</h3>
 		<section class="row">
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::MASCULINE_GENDER.'">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::ANIMATE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::FEMINE_GENDER.'">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::ACTION_GENDER.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
 		  </div>
 		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::NEUTER_GENDER.'">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::INANIMATE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
 		  </div>';
 		
