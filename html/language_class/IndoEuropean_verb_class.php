@@ -3599,13 +3599,13 @@ class Vedic_Verb extends Verb_Common_IE{
 					$this->present_stem = mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1m\\2", $root);
 			        break;
 			    case 7:
-					$this->present_stem = mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1na\\2", $root);
+					$this->present_stem = mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1na\\2", mb_ereg_replace("^(.+)(n|ñ|ṅ)", "\\1", $root));
 			        break;
 			    case 8:
 					$this->present_stem = $root."o";
 			        break;
 			    case 9:
-					$this->present_stem = mb_ereg_replace("n|ñ|ṅ", "", $root)."nā";
+					$this->present_stem = mb_ereg_replace("^(.+)(n|ñ|ṅ)", "\\1", $root)."nā";
 			        break;
 			    case 10:
 					// 子音が連続している場合はそのまま
@@ -3849,7 +3849,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 
 		// 過去分詞
-		$this->past_ta_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(preg_replace("/[mn]$/u", "", $root), self::past_participle_suffix1);
+		$this->past_ta_participle_passive = $this->add_stem.Sanskrit_Common::sandhi_engine(preg_replace("/[mnṅñṃṇ]$/u", "", $root), self::past_participle_suffix1);
 		$this->past_na_participle_passive  = $this->add_stem.Sanskrit_Common::sandhi_engine($root, self::past_participle_suffix2);		
 		$this->past_ta_participle_active = $this->past_ta_participle_passive.self::past_participle_add_suffix;
 		$this->past_na_participle_active  = $this->past_na_participle_passive.self::past_participle_add_suffix;
@@ -3864,13 +3864,13 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem, $root);														// 語根
-		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $root), "dhi");					// 語根dhi(中動態)不定詞		
+		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mnṅñṃṇ]$/u", "", $root), "dhi");				// 語根dhi(中動態)不定詞		
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "tu");													// 語根tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->present_stem, "itu");									// 不完了体tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->inchorative_stem, "tu");								// 始動動詞tu不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->resultative_stem, "tu");								// 結果動詞tu不定詞
-		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $root), "ti");					// 語根tiスラブ式不定詞
-		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mn]$/u", "", $this->present_stem), "ti");		// 不完了体tiスラブ式不定詞
+		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mnṅñṃṇ]$/u", "", $root), "ti");					// 語根tiスラブ式不定詞
+		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.preg_replace("/[mnṅñṃṇ]$/u", "", $this->present_stem), "ti");		// 不完了体tiスラブ式不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->inchorative_stem, "ti");								// 始動動詞tiスラブ式不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$this->resultative_stem, "ti");								// 結果動詞tiスラブ式不定詞
 		$this->primary_infinitives[] = Sanskrit_Common::sandhi_engine($this->add_stem.$root, "as");													// 語根asギリシア・ラテン式不定詞
@@ -3944,10 +3944,10 @@ class Vedic_Verb extends Verb_Common_IE{
 		
 		// 不定詞	
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix, $common_causative_stem);					// 語根		
-		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mn]$/u", "", $this->present_causative_stem), "dhi");		// dhi(中動態)不定詞		
+		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mnṅñṃṇ]$/u", "", $this->present_causative_stem), "dhi");		// dhi(中動態)不定詞		
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "tu");				// 語根tu不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem.self::causative_suffix, "itu");		// 不完了体tu不定詞
-		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mn]$/u", "", $this->present_causative_stem), "ti");		// 不完了体tiスラブ式不定詞
+		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.preg_replace("/[mnṅñṃṇ]$/u", "", $this->present_causative_stem), "ti");		// 不完了体tiスラブ式不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$common_causative_stem, "as");				// 語根asギリシア・ラテン式不定詞
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$this->aorist_causative_stem, "as");		// 完了体asギリシア・ラテン式不定詞		
 		$this->causative_infinitives[] = Sanskrit_Common::sandhi_engine($prefix.$this->perfect_causative_stem, "as");		// 完了形asギリシア・ラテン式不定詞	
@@ -4353,7 +4353,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				return $this->root."nu";
 		        break;
 		    case 7:
-				return mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1n\\2", $this->root);
+				return mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1n\\2", mb_ereg_replace("^(.+)(n|ñ|ṅ)", "\\1", $this->root));
 		        break;
 		    case 8:
 				return $this->root."u";
@@ -4908,8 +4908,8 @@ class Vedic_Verb extends Verb_Common_IE{
 				$verb_stem = $this->present_stem;							
 			} else {
 				// それ以外
-				if(preg_match('/(1sg|2sg|3sg)/', $person)){
-					// 単数はすべて強語幹
+				if(preg_match('/(1sg|2sg|3sg)/', $person) && $voice != Commons::MEDIOPASSIVE_VOICE){
+					// 能動態単数はすべて強語幹
 					$verb_stem = $this->present_stem;						
 				} else {
 					// それ以外はすべて弱語幹

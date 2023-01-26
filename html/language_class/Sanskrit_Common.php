@@ -1558,6 +1558,10 @@ class Sanskrit_Common extends Common_IE{
 	// 連音変換
 	public static function apply_sandhi($script, $word_flag){
 		// 内連声対応
+		$script = preg_replace("/śt/u", "ṣṭ", $script);	
+		$script = preg_replace("/śd/u", "ṣḍ", $script);	
+
+
 		$script = preg_replace("/(ṃ|ḥ)s/u", "\\1ṣ", $script);	
 		$script = preg_replace("/([bp]|[bp]h)s/u", "pṣ", $script);			
 		$script = preg_replace("/([dt]|[dt]h)s/u", "tṣ", $script);		
@@ -1573,20 +1577,23 @@ class Sanskrit_Common extends Common_IE{
 		$script = preg_replace("/t([ḍdgbj])/u", "d\\1", $script);
 		$script = preg_replace("/ṭ([ḍdgbj])/u", "ḍ\\1", $script);
 		$script = preg_replace("/p([ḍdgbj])/u", "b\\1", $script);
-		$script = preg_replace("/c([ḍdgbj])/u", "j\\1", $script);		
+		$script = preg_replace("/c([ḍdgbj])/u", "g\\1", $script);		
 		$script = preg_replace("/k([ḍdgbj])/u", "g\\1", $script);
 
 		$script = preg_replace("/d([ṭtpck])/u", "t\\1", $script);
 		$script = preg_replace("/ḍ([ṭtpck])/u", "ṭ\\1", $script);
 		$script = preg_replace("/b([ṭtpck])/u", "p\\1", $script);
-		$script = preg_replace("/j([ṭtpck])/u", "c\\1", $script);		
+		$script = preg_replace("/j([ṭtpck])/u", "k\\1", $script);		
 		$script = preg_replace("/g([ṭtpck])/u", "k\\1", $script);
 
 		// m対応
-		$script = preg_replace("/([ñṅn])([pb]|[pb]h)/u", "m\\2", $script);				
-		$script = preg_replace("/([ñmn])([kg]|[kg]h)/u", "ṅ\\2", $script);
-		$script = preg_replace("/([ṅmn])([cj]|[cj]h)/u", "ñ\\2", $script);
-		$script = preg_replace("/([mṅñ])([td]|[td]h)/u", "n\\2", $script);
+		$script = preg_replace("/([ñṅnṇ])([pb]|[pb]h)/u", "m\\2", $script);				
+		$script = preg_replace("/([ñnṇ])([kg]|[kg]h)/u", "ṅ\\2", $script);
+		$script = preg_replace("/([ṅnṇ])([j]|[j]h)/u", "ñ\\2", $script);
+		$script = preg_replace("/([ṅñṇ])([ṭt]|[ṭt]h)/u", "ṃs", $script);
+		$script = preg_replace("/([ṅñṇ])([dḍ]|[dḍ]h)/u", "ṇ\\2", $script);
+		$script = preg_replace("/([ṅñṇ])([j]|[j]h)/u", "ñ\\2", $script);
+		$script = preg_replace("/([m])([bpkghcjtdḍṭ]|[bpkghcjtdḍṭ]h)/u", "ṃ\\2", $script);
 
 		// 最後の子音が連続する場合は
 		if($word_flag){		
@@ -1595,10 +1602,12 @@ class Sanskrit_Common extends Common_IE{
 		}
 		
 		// n対応
-		$script = preg_replace("/([bpkghcjlrtdḍṭv])n/u", "\\1ñ", $script);
-		$script = preg_replace("/([bpkghcjlrtdḍṭv])m/u", "\\1n", $script);
+		$script = preg_replace("/([cjkg])n/u", "\\1ṅ", $script);
+		$script = preg_replace("/([cjkg])hn/u", "\\1ṅ", $script);
+		$script = preg_replace("/([śpb])m/u", "\\1n", $script);
+		$script = preg_replace("/([pb])hm/u", "\\1n", $script);
+		$script = preg_replace("/([ṣḍṭ])[nm]/u", "\\1ṇ", $script);
 		$script = preg_replace("/([śṣs])([mn])/u", "\\1n", $script);
-		$script = preg_replace("/([mn])([bpkghcjlrtdḍṭmnṅñṃṇśṣs])/u", "n\\2", $script);
 
 		// r対応
 		$script = preg_replace("/([kghcjlrtdḍṭśṣsy])ṝ([a-z])/u", "\\1īr\\2", $script);
