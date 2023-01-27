@@ -212,6 +212,7 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" 
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可">
+        <?php echo Latin_Common::input_special_button(); ?>    
         <?php echo Latin_Common::language_select_box(); ?> 
         <select class="form-select" name="input_verb_type">
           <option value="">動詞の種別 - 通常</option>          
@@ -227,8 +228,7 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" 
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
-      <?php echo Latin_Common::input_special_button(); ?>    
-      <?php echo Commons::noun_archaic_button(); ?>
+      <?php echo Commons::archaic_button(); ?>
       <details>
         <summary>動詞の活用 ※(薄文字の部分は古風な用法)</summary>      
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="conjugation-table" style="overflow: auto;">

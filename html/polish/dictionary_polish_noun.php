@@ -10,9 +10,9 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Polish_Common.php");
 
 // 活用表を取得する。
-function get_noun_declension_chart($word){
+function get_noun_declension_chart($word, $gender){
 	// 名詞の情報を取得
-	$noun_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::DB_NOUN, "");
+	$noun_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::DB_NOUN, "", $gender);
   // 取得できない場合は
   if(!$noun_words){
     // 空を返す。
@@ -32,9 +32,9 @@ function get_noun_declension_chart($word){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_english($word){
+function get_noun_declension_chart_by_english($word, $gender){
   // 英語で取得する。
-  $noun_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::DB_NOUN);    
+  $noun_words = Polish_Common::get_dictionary_stem_by_english($word, Polish_Common::DB_NOUN, $gender);    
   // 取得できない場合は
   if(!$noun_words && !Polish_Common::is_alphabet_or_not($word)){    
     // 空を返す。
@@ -56,10 +56,10 @@ function get_noun_declension_chart_by_english($word){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_polish($word){
+function get_noun_declension_chart_by_polish($word, $gender){
 	// 名詞の情報を取得
   // 単語から直接取得する
-  $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::DB_NOUN);
+  $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::DB_NOUN, $gender);
   // 取得できない場合は
   if(!$noun_words){
     $noun_words[] = $word;
@@ -121,6 +121,8 @@ function get_adjective_declension_chart($word){
 $input_noun = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_noun')), 128);
 // 挿入データ－言語－
 $search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
+// 挿入データ－性別－
+$gender = trim(filter_input(INPUT_POST, 'gender'));
 
 // 検索結果の配列
 $declensions = array();
@@ -135,13 +137,13 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
 	$declensions = get_adjective_declension_chart($input_noun);
 } else if($input_noun != "" && $search_lang == "polish" && Polish_Common::is_alphabet_or_not($input_noun)){
   // ポーランド語
-  $declensions = get_noun_declension_chart_by_polish($input_noun);
+  $declensions = get_noun_declension_chart_by_polish($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "english" && Polish_Common::is_alphabet_or_not($input_noun)){
   // 英語
-	$declensions = get_noun_declension_chart_by_english($input_noun);
+	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "japanese" && !Polish_Common::is_alphabet_or_not($input_noun)){
   // 日本語
-	$declensions = get_noun_declension_chart($input_noun);
+	$declensions = get_noun_declension_chart($input_noun, $gender);
 }
 
 ?>
@@ -162,10 +164,12 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
     <?php require_once("polish_header.php"); ?>
   <body>
     <div class="container item table-striped">
-      <p>あいまい検索は+ ※(薄文字の部分は現在は使わない)</p>
+      <p>あいまい検索は+<br>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
-        <?php echo Polish_Common::language_select_box(); ?>      
+        <?php echo Polish_Common::input_special_button(); ?>
+        <?php echo Polish_Common::language_select_box(); ?>
+        <?php echo Polish_Common::search_gender_selection_button(); ?>      
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
@@ -173,8 +177,7 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <?php echo Polish_Common::input_special_button(); ?>
-      <?php echo Commons::noun_archaic_button(); ?>
+      <?php echo Commons::archaic_button(); ?>
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="noun-table" style="overflow: auto;">
         <thead>
           <tr><th scope="row" class="text-center" style="width:10%">格</th>

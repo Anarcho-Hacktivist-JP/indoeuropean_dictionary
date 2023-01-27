@@ -232,6 +232,7 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・サンスクリット)、名詞や形容詞も可">
+        <?php echo Sanskrit_Common::input_special_button(); ?> 
         <input type="submit" class="btn-check" id="btn-generate">
         <?php echo Sanskrit_Common::language_select_box(); ?>
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
@@ -240,7 +241,6 @@ if($input_verb != "" && $search_lang == "japanese" && count($janome_result) > 1 
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
-      <?php echo Sanskrit_Common::input_special_button(); ?>         
       <details>
         <summary>一次動詞</summary>
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-conjugation-table">

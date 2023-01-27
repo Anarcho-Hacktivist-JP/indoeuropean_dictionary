@@ -819,14 +819,14 @@ class Sanskrit_Common extends Common_IE{
 	}
 	
 	// 複合語の活用表を作成
-	public static function make_compound_chart($input_words, $word_category, $input_word){
+	public static function make_compound_chart($input_words, $word_category, $input_word, $gender = ""){
 		// 初期化
 		$charts = array();		
 		// 既存の辞書にあるかチェックする。
 		// 種別に応じて単語を生成
 		if($word_category == "noun"){		
 			// 名詞の情報を取得
-			$sanskrit_words = Sanskrit_Common::get_dictionary_stem_by_japanese($input_word, Sanskrit_Common::DB_NOUN);		
+			$sanskrit_words = Sanskrit_Common::get_dictionary_stem_by_japanese($input_word, Sanskrit_Common::DB_NOUN, $gender);		
   			// 名詞の情報が取得できた場合は
   			if($sanskrit_words){
 				// 新しい配列に詰め替え
@@ -834,7 +834,7 @@ class Sanskrit_Common extends Common_IE{
 					// 読み込み
 					$sanskrit_noun = new Vedic_Noun($noun_word);
 					// 配列に格納
-					$charts[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
+					$charts[$sanskrit_noun->get_nominative()] = $sanskrit_noun->get_chart();
 					// メモリを解放
 					unset($sanskrit_noun);
 		  		}
@@ -891,7 +891,7 @@ class Sanskrit_Common extends Common_IE{
 						// 読み込み
 						$sanskrit_noun = new Vedic_Noun($compund_words["stem"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
 						// 活用表生成
-						$charts[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
+						$charts[$sanskrit_noun->get_nominative()] = $sanskrit_noun->get_chart();
 						// メモリを解放
 						unset($sanskrit_noun);
 					} else if($word_category == "adjective"){

@@ -173,9 +173,10 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
     <?php require_once("polish_header.php"); ?>
   <body>
     <div class="container item table-striped">   
-      <p>あいまい検索は+ ※(薄文字の部分は現在は使わない)</p>
+      <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" id="input_adjective" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、名詞も可">
+        <?php echo Polish_Common::input_special_button(); ?> 
         <?php echo Polish_Common::language_select_box(); ?>  
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
@@ -184,8 +185,8 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <?php echo Polish_Common::input_special_button(); ?> 
-      <?php echo Commons::noun_archaic_button(); ?>   
+
+      <?php echo Commons::archaic_button(); ?>   
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="adjective-table" style="overflow: auto;">
         <?php echo Polish_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>

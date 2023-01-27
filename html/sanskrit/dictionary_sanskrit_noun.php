@@ -12,9 +12,9 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Sanskrit_Common.php");
 
 // 活用表を取得する。
-function get_noun_declension_chart($word){
+function get_noun_declension_chart($word, $gender){
 	// 名詞の情報を取得
-	$noun_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::DB_NOUN, "");
+	$noun_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::DB_NOUN, $gender);
 	// 形容詞の情報を取得
 	$adjective_words = Sanskrit_Common::get_dictionary_stem_by_japanese($word, Sanskrit_Common::DB_ADJECTIVE, "");
   // 取得できない場合は
@@ -24,16 +24,16 @@ function get_noun_declension_chart($word){
   }
 
   // 名詞のデータを取得
-  $declensions = set_noun_table_data($noun_words, $adjective_words);
+  $declensions = set_noun_table_data($noun_words, $adjective_words, $gender);
   // 結果を返す。
   return $declensions;
 }
 
 // 名詞を梵語で取得する。
-function get_noun_declension_chart_by_sanskrit($word){
+function get_noun_declension_chart_by_sanskrit($word, $gender){
 
   // 単語から直接取得する
-  $noun_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_NOUN);
+  $noun_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_NOUN, $gender);
   // 取得できない場合は
   if(!$noun_words && Sanskrit_Common::is_alphabet_or_not($word)){
     // アルファベットの場合は単語を入れる。
@@ -41,16 +41,16 @@ function get_noun_declension_chart_by_sanskrit($word){
   }
 
   // 名詞のデータを取得
-  $declensions = set_noun_table_data($noun_words, array());
+  $declensions = set_noun_table_data($noun_words, array(), $gender);
   // 結果を返す。
   return $declensions;
 }
 
 // 名詞を英語で取得する。
-function get_noun_declension_chart_by_english($word){
+function get_noun_declension_chart_by_english($word, $gender){
   // 英語で取得する。
   // 名詞の情報を取得
-  $noun_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_NOUN);
+  $noun_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_NOUN, $gender);
 	// 形容詞の情報を取得
   $adjective_words = Sanskrit_Common::get_dictionary_stem_by_english($word, Sanskrit_Common::DB_ADJECTIVE);   
   // 取得できない場合は
@@ -60,13 +60,13 @@ function get_noun_declension_chart_by_english($word){
   }
 
   // 名詞のデータを取得
-  $declensions = set_noun_table_data($noun_words, $adjective_words);
+  $declensions = set_noun_table_data($noun_words, $adjective_words, $gender);
   // 結果を返す。
   return $declensions;
 }
 
 // 名詞のデータをセットする。
-function set_noun_table_data($noun_words, $adjective_words){
+function set_noun_table_data($noun_words, $adjective_words, $gender = ""){
  	// 配列を宣言
    $declensions = array(); 
    // 名詞がある場合は名詞を新しい配列に詰め替え
@@ -75,7 +75,7 @@ function set_noun_table_data($noun_words, $adjective_words){
        // 読み込み
        $sanskrit_noun = new Vedic_Noun($noun_word);
        // 配列に格納
-       $declensions[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
+       $declensions[$sanskrit_noun->get_nominative()] = $sanskrit_noun->get_chart();
        // メモリを解放
        unset($sanskrit_noun);
      }
@@ -83,29 +83,41 @@ function set_noun_table_data($noun_words, $adjective_words){
  
    // 形容詞がある場合は名詞を新しい配列に詰め替え
    if($adjective_words){
-     // 名詞区分のセット
-     $noun_genres = array("animate", "action");
-     // 形容詞を新しい配列に詰め替え
-     foreach ($adjective_words as $adjective_word) {
-       // 全ての名詞区分の名詞を取得する。
-       foreach ($noun_genres as $noun_genre) {
-         // 読み込み
-         $sanskrit_noun = new Vedic_Noun($adjective_word, $noun_genre);
-         // 配列に格納
-         $declensions[$sanskrit_noun->get_second_stem()] = $sanskrit_noun->get_chart();
-         // メモリを解放
-         unset($sanskrit_noun);
-       }
-     }
-   }
+    // 名詞区分のセット
+    if($gender == "Masculine"){
+      // 男性は生物
+      $noun_genres = array("animate");
+    } else if($gender == "Feminine"){
+      // 女性は行動・抽象
+      $noun_genres = array("action");
+    } else if($gender == "Neuter"){
+      // 中性は無生物
+      $noun_genres = array("inanimate");
+    } else {
+      // 指定なし
+      $noun_genres = array("animate", "inanimate", "action");
+    }
+    // 形容詞を新しい配列に詰め替え
+    foreach ($adjective_words as $adjective_word) {
+      // 全ての名詞区分の名詞を取得する。
+      foreach ($noun_genres as $noun_genre) {
+        // 読み込み
+        $sanskrit_noun = new Vedic_Noun($adjective_word, $noun_genre);
+        // 配列に格納
+        $declensions[$sanskrit_noun->get_nominative()] = $sanskrit_noun->get_chart();
+        // メモリを解放
+        unset($sanskrit_noun);
+      }
+    }
+  }
    // 結果を返す。
    return $declensions;
 }
 
 //造語対応
-function get_compound_noun_word($janome_result, $input_noun){
+function get_compound_noun_word($janome_result, $input_noun, $gender){
   // データを取得(男性)
-	$declensions = Sanskrit_Common::make_compound_chart($janome_result, "noun", $input_noun);
+	$declensions = Sanskrit_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender);
 	// 結果を返す。
 	return $declensions;
 }
@@ -114,6 +126,8 @@ function get_compound_noun_word($janome_result, $input_noun){
 $input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
 // 挿入データ－言語－
 $search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
+// 挿入データ－性別－
+$gender = trim(filter_input(INPUT_POST, 'gender'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_noun);
@@ -125,21 +139,21 @@ $declensions = array();
 // 条件ごとに判定して単語を検索して取得する
 if($search_lang == "japanese" && count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 複合語の場合(日本語のみ)
-  $declensions = get_compound_noun_word($janome_result, $input_noun);
+  $declensions = get_compound_noun_word($janome_result, $input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
   // 動詞の場合の場合(日本語のみ)
   $declensions = Sanskrit_Common::get_noun_from_verb($input_noun);
 } else if($input_noun != "" && $search_lang == "sanskrit" && Sanskrit_Common::is_alphabet_or_not($input_noun)){
   // 梵語
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_sanskrit($input_noun);
+	$declensions = get_noun_declension_chart_by_sanskrit($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "english" && Sanskrit_Common::is_alphabet_or_not($input_noun)){
   // 英語
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_english($input_noun);
+	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "japanese" && !Sanskrit_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart($input_noun);
+	$declensions = get_noun_declension_chart($input_noun, $gender);
 }
 
 
@@ -161,18 +175,19 @@ if($search_lang == "japanese" && count($janome_result) > 1 && !ctype_alnum($inpu
     <?php require_once("sanskrit_header.php"); ?>
   <body>
     <div class="container item table-striped">
-      <p>あいまい検索は+</p>
+      <p>あいまい検索は+<br>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・サンスクリット)">
+        <?php echo Sanskrit_Common::input_special_button(); ?>  
         <input type="submit" class="btn-check" id="btn-search">
         <?php echo Sanskrit_Common::language_select_box(); ?>
+        <?php echo Sanskrit_Common::search_gender_selection_button(); ?>   
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
-      </form>
-      <?php echo Sanskrit_Common::input_special_button(); ?>              
+      </form>      
       <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
           <tr>

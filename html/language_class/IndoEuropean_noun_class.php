@@ -1213,7 +1213,10 @@ class Latin_Noun extends Noun_Common_IE {
 			$this->english_translation = "loanword";
 			
 			// 文字列の最後で判断
-			if(preg_match("/a$/", $noun)){				
+			if(preg_match("/cola$/", $noun)){				
+				$this->gender = self::PIE_ANIMATE;					// 性別
+				$this->noun_type = 1;								// 名詞種別
+			} else if(preg_match("/a$/", $noun)){				
 				$this->gender = self::PIE_ACTION;					// 性別
 				$this->noun_type = 1;								// 名詞種別
 			} else if(preg_match("/(ās)$/", $noun)){		
@@ -2084,7 +2087,7 @@ class Vedic_Noun extends Noun_Common_IE {
 		$this->third_stem = Sanskrit_Common::sandhi_engine($compound, $this->third_stem);		// 第三語幹
 		// 日本語訳を書き換え
 		$this->japanese_translation = $translation;			// 日本語訳
-		$this->english_translation = "";			// 英語訳
+		$this->english_translation = "";					// 英語訳
 		
 		// 活用表を挿入
 		$this->get_noun_declension();
@@ -2495,6 +2498,11 @@ class Vedic_Noun extends Noun_Common_IE {
 	public function get_third_stem(){
 		return $this->third_stem;
 	}
+
+	// 語幹を取得
+	public function get_nominative(){
+		return $this->get_declensioned_noun(Commons::NOMINATIVE, Commons::SINGULAR);
+	}
 	
 	// 性別の名称を返す
 	public function get_gender_name(){
@@ -2519,7 +2527,7 @@ class Vedic_Noun extends Noun_Common_IE {
 		// タイトル情報を挿入
 		$word_chart['title'] = $this->get_noun_title();
 		// 辞書見出しを入れる。
-		$word_chart['dic_title'] = $this->get_second_stem();
+		$word_chart['dic_title'] = $this->get_nominative();
 		// 種別を入れる。
 		$word_chart['category'] = "名詞";
 		// 活用種別を入れる。

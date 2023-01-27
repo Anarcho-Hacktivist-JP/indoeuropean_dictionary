@@ -169,6 +169,7 @@ if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($inpu
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・ラテン語)">
+        <?php echo Latin_Common::input_special_button(); ?>
         <?php echo Latin_Common::language_select_box(); ?> 
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
@@ -177,7 +178,6 @@ if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($inpu
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <?php echo Latin_Common::input_special_button(); ?>
       <table class="table table-success table-bordered table-striped table-hover" id="adjective-table">
         <?php echo Latin_Common::make_adjective_column_chart(); ?>
         <tbody>

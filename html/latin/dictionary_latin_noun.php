@@ -10,9 +10,9 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Latin_Common.php");
 
 // 活用表を取得する。
-function get_noun_declension_chart($word){
+function get_noun_declension_chart($word, $gender){
 	// 名詞の情報を取得
-	$noun_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::DB_NOUN);
+	$noun_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::DB_NOUN, $gender);
   // 取得できない場合は
   if(!$noun_words){
     // 空を返す。
@@ -32,10 +32,10 @@ function get_noun_declension_chart($word){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_english($word){
+function get_noun_declension_chart_by_english($word, $gender){
 
   // 英語で取得する。
-  $noun_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_NOUN);    
+  $noun_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_NOUN, $gender);    
   // 取得できない場合は
   if(!$noun_words){
     // その単語を入れる        
@@ -55,9 +55,9 @@ function get_noun_declension_chart_by_english($word){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_latin($word){
+function get_noun_declension_chart_by_latin($word, $gender){
   // 単語から直接取得する
-  $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN);
+  $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN, $gender);
   // 取得できない場合は
   if(!$noun_words){
     // その単語を入れる        
@@ -113,9 +113,9 @@ function get_noun_declension_chart_by_verb($word){
 }
 
 //造語対応
-function get_compound_noun_word($janome_result, $input_noun){
+function get_compound_noun_word($janome_result, $input_noun, $gender){
   // データを取得(男性)
-	$declensions = Latin_Common::make_compound_chart($janome_result, "noun", $input_noun);
+	$declensions = Latin_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender);
 	// 結果を返す。
 	return $declensions;
 }
@@ -124,6 +124,8 @@ function get_compound_noun_word($janome_result, $input_noun){
 $input_noun = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_noun')), 128);
 // 挿入データ－言語－
 $search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
+// 挿入データ－性別－
+$gender = trim(filter_input(INPUT_POST, 'gender'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_noun);
@@ -135,19 +137,19 @@ $declensions = array();
 // 条件ごとに判定して単語を検索して取得する
 if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 複合語の場合(日本語のみ)
-  $declensions = get_compound_noun_word($janome_result, $input_noun);
+  $declensions = get_compound_noun_word($janome_result, $input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
   // 動詞の場合は動詞で名詞を取得(日本語のみ)
 	$declensions = get_noun_declension_chart_by_verb($input_noun);
 } else if($input_noun != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_latin($input_noun);
+	$declensions = get_noun_declension_chart_by_latin($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_english($input_noun);
+	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart($input_noun);
+	$declensions = get_noun_declension_chart($input_noun, $gender);
 }
 
 ?>
@@ -169,10 +171,12 @@ if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($inpu
   <?php require_once("latin_header.php"); ?>
   <body>
     <div class="container item table-striped">
-      <p>あいまい検索は+</p>
+      <p>あいまい検索は<br>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4 form-search" id="form-search">
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">
-        <?php echo Latin_Common::language_select_box(); ?>      
+        <?php echo Latin_Common::input_special_button(); ?>
+        <?php echo Latin_Common::language_select_box(); ?>
+        <?php echo Latin_Common::search_gender_selection_button(); ?>   
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
@@ -180,7 +184,6 @@ if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($inpu
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <?php echo Latin_Common::input_special_button(); ?>       
       <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
           <tr>

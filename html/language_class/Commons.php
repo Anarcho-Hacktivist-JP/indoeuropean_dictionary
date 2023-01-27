@@ -260,7 +260,7 @@ class Commons {
 	}
 
 	// 古形ボタンの生成
-	public static function noun_archaic_button(){
+	public static function archaic_button(){
 
 		// ボタンを生成
 		$button_html_code = '
@@ -382,6 +382,30 @@ class Common_IE {
 		// 結果を返す。
 		return $button_html_code.'</section>';
 	}
+
+	// 性別選択ボタンの生成(検索用)
+	public static function search_gender_selection_button(){
+		// ボタンを生成
+		return '
+		<section class="row">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+		 </div>';
+	}
+
 
 	// 性別選択ボタンの生成
 	public static function adjective_gender_selection_button($all_flag = false){

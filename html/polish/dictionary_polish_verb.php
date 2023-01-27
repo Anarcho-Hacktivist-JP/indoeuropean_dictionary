@@ -171,6 +171,7 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
         <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ポーランド語)、名詞や形容詞も可">
+        <?php echo Polish_Common::input_special_button(); ?>
         <?php echo Polish_Common::language_select_box(); ?>  
         <input type="submit" class="btn-check" id="btn-generate">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
@@ -179,10 +180,10 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
-      <?php echo Polish_Common::input_special_button(); ?>
-      <?php echo Commons::noun_archaic_button(); ?>
+
+      <?php echo Commons::archaic_button(); ?>
       <details>
-        <summary>動詞の活用 ※(薄文字の部分は現在は使わない)</summary>      
+        <summary>動詞の活用</summary>      
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="conjugation-table" style="overflow: auto;">
         <thead>
           <tr>
