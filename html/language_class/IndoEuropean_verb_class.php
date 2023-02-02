@@ -497,7 +497,7 @@ class Latin_Verb extends Verb_Common_IE {
 			"3sg" => "it",
 			"1pl" => "imus",
 			"2pl" => "istis", 
-			"3pl" => "erent",	
+			"3pl" => "ērent",	
 		]
 	];
 	
@@ -3575,15 +3575,15 @@ class Vedic_Verb extends Verb_Common_IE{
 					$this->present_stem = Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::GUNA);
 			        break;
 			    case "3t":
-					$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-					$add_stem = mb_ereg_replace("k", "c", $add_stem);
-					$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);				
+					// 重複語幹作成
+					$add_stem = $this->make_redumplicatation_addtion($root);
+					// 語頭の子音を取り出して、重複語幹を作成			
 					$this->present_stem = mb_substr($add_stem, 0, 1)."i".$root;
 			        break;
 			    case 3:
-					$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-					$add_stem = mb_ereg_replace("k", "c", $add_stem);
-					$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);				
+					// 重複語幹作成
+					$add_stem = $this->make_redumplicatation_addtion($root);
+					// 語頭の子音を取り出して、重複語幹を作成				
 					$this->present_stem = mb_substr($add_stem, 0, 1).preg_replace("/[ṛṝ]/u", "i", $this->get_vowel_in_root()).Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::GUNA);
 			        break;
 			    case 4:
@@ -3657,9 +3657,8 @@ class Vedic_Verb extends Verb_Common_IE{
 
 			// 完了形
 			if($this->deponent_present != Commons::$TRUE){
-				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-				$add_stem = mb_ereg_replace("k", "c", $add_stem);
-				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+				// 重複語幹作成
+				$add_stem = $this->make_redumplicatation_addtion($root);
 				$add_stem = mb_substr($add_stem, 0, 2);		
 				// 強語幹で重複する。
 				$add_stem = Sanskrit_Common::change_vowel_grade(mb_ereg_replace("[ṛṝ]", "a", $add_stem), Sanskrit_Common::ZERO_GRADE);	
@@ -3749,9 +3748,8 @@ class Vedic_Verb extends Verb_Common_IE{
 			} else if($this->conjugation_present_type == Commons::NOUN_VERB) {
 				// 名詞起源動詞
 				// 完了相(重複アオリスト)
-				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
-				$add_stem = mb_ereg_replace("k", "c", $add_stem);
-				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+				// 重複語幹作成
+				$add_stem = $this->make_redumplicatation_addtion($this->add_stem);
 				$add_stem = mb_substr($add_stem, 0, 1);				
 				// 語幹を作成
 				$this->perfect_stem = $add_stem."i".$this->add_stem;
@@ -3770,9 +3768,8 @@ class Vedic_Verb extends Verb_Common_IE{
 			} else if($this->root_type == Commons::NOUN_VERB) {
 				// 名詞起源動詞(語根から)
 				// 完結相(重複アオリスト)
-				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->add_stem);
-				$add_stem = mb_ereg_replace("k", "c", $add_stem);
-				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+				// 重複語幹作成
+				$add_stem = $this->make_redumplicatation_addtion($this->add_stem);
 				$add_stem = mb_substr($add_stem, 0, 1);
 				$this->aorist_stem = $add_stem."i".$this->add_stem;
 			} else if($this->root_type == Commons::AORIST_ASPECT) {
@@ -3967,9 +3964,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			$prefix = $this->add_stem;
 		}
 		// 重複語幹を作る。
-		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-		$add_stem = mb_ereg_replace("k", "c", $add_stem);
-		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);			
+		$add_stem = $this->make_redumplicatation_addtion($root);		
 		// iで重複する。
 		$add_stem = mb_substr($add_stem, 0, 1).mb_ereg_replace("[ū]", "u", mb_ereg_replace("[aieoāīṛṝ]", "i", $this->get_vowel_in_root()));
 
@@ -4036,9 +4031,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 
 		// 重複語幹を作る。
-		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-		$add_stem = mb_ereg_replace("k", "c", $add_stem);
-		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);		
+		$add_stem = $this->make_redumplicatation_addtion($root);	
 		// 強語幹で重複する。
 		$add_stem = mb_substr($add_stem, 0, 1).Sanskrit_Common::change_vowel_grade($this->get_vowel_in_root(), Sanskrit_Common::VRIDDHI);
 
@@ -4102,9 +4095,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			$prefix = $this->add_stem;
 		}
 		// 重複語幹を作る。
-		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-		$add_stem = mb_ereg_replace("k", "c", $add_stem);
-		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);			
+		$add_stem = $this->make_redumplicatation_addtion($root);			
 		// iで重複する。
 		$add_stem = mb_substr($add_stem, 0, 1).mb_ereg_replace("[ū]", "u", mb_ereg_replace("[aieoāīṛṝ]", "i", $this->get_vowel_in_root()));
 
@@ -4166,9 +4157,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			$prefix = $this->add_stem;
 		}
 		// 重複語幹を作る。
-		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-		$add_stem = mb_ereg_replace("k", "c", $add_stem);
-		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);			
+		$add_stem = $this->make_redumplicatation_addtion($root);			
 		// iで重複する。
 		$add_stem = mb_substr($add_stem, 0, 1).mb_ereg_replace("[ū]", "u", mb_ereg_replace("[aieoāīṛṝ]", "i", $this->get_vowel_in_root()));
 
@@ -4344,9 +4333,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				return $this->root;
 		        break;
 		    case 3:
-				$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->root);
-				$add_stem = mb_ereg_replace("k", "c", $add_stem);
-				$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);						
+				$add_stem = $this->make_redumplicatation_addtion($this->root);							
 				return mb_substr($add_stem, 0, 1).mb_ereg_replace("[ṛṝ]", "i", $this->get_vowel_in_root()).Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::ZERO_GRADE);
 		        break;
 		    case 5:
@@ -4371,9 +4358,7 @@ class Vedic_Verb extends Verb_Common_IE{
 	private function get_weak_perfect_stem($sound_grade){
 
 		// 完了形
-		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $this->root);
-		$add_stem = mb_ereg_replace("k", "c", $add_stem);
-		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+		$add_stem = $this->make_redumplicatation_addtion($this->root);
 		$add_stem = mb_substr($add_stem, 0, 2);		
 		// 強語幹で重複する。
 		$add_stem = Sanskrit_Common::change_vowel_grade(mb_ereg_replace("[ṛṝ]", "a", $add_stem), Sanskrit_Common::ZERO_GRADE);
@@ -4403,6 +4388,18 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 	}
 
+	// 重複語幹を返す。
+	private function make_redumplicatation_addtion($root){
+		// グラスマンの法則
+		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
+		// サテム言語処理1
+		$add_stem = mb_ereg_replace("k", "c", $add_stem);
+		// サテム言語処理2
+		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);
+		// 結果を返す。
+		return $add_stem;
+	}
+
 	// 強意動詞完了形語幹を返す。
 	private function get_weak_intensive_perfect_stem($sound_grade){
 
@@ -4420,9 +4417,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 
 		// 重複語幹を作る。
-		$add_stem = mb_ereg_replace("([bpkgcjtd])h", "\\1", $root);
-		$add_stem = mb_ereg_replace("k", "c", $add_stem);
-		$add_stem = mb_ereg_replace("[hg]", "j", $add_stem);		
+		$add_stem = $this->make_redumplicatation_addtion($root);	
 		// 強語幹で重複する。
 		$add_stem = mb_substr($add_stem, 0, 1).Sanskrit_Common::change_vowel_grade($this->get_vowel_in_root(), Sanskrit_Common::VRIDDHI);
 
@@ -8970,7 +8965,15 @@ class Koine_Verb extends Verb_Common_IE {
     	// 動詞情報を取得
 		// 一次動詞
 		if($stem_type == "noun"){
-			$this->get_verb_data($word."αω");
+			if(preg_match("/(υ)$/u", $word)){
+				$this->get_verb_data($word."εω");
+			} else if(preg_match("/(ᾰν)$/u", $word)){
+				$this->get_verb_data(mb_substr($word, 0, -2)."αίνω");
+			} else if(preg_match("/(ε)$/u", $word)){
+				$this->get_verb_data($word."ύω");
+			} else {
+				$this->get_verb_data($word."αω");		
+			}
 		} else if($stem_type == "adjective"){
 			$this->get_verb_data($word."εω");
 		}
@@ -8994,6 +8997,8 @@ class Koine_Verb extends Verb_Common_IE {
 			// データを挿入			
 			$this->present_stem = $word_info["present_stem"];						// 現在相
 			$this->aorist_stem = $word_info["aorist_stem"];							// 完結相
+			// 動詞種別
+
 			// 訳
 			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語
 			$this->english_translation = $word_info["english_translation"];			// 英語
@@ -9098,7 +9103,7 @@ class Koine_Verb extends Verb_Common_IE {
 		} else if(preg_match("/(α|ε)ω$/u", $verb)){
 			// 第10活用1
 			return $verb."σκ";
-		} else if(preg_match("/οω$/u", $verb)){
+		} else if(preg_match("/(ο|ό)ω$/u", $verb)){
 			// 第10活用2
 			return $verb."σκ";
 		} else {
@@ -9124,7 +9129,10 @@ class Koine_Verb extends Verb_Common_IE {
 			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2)."η".self::perfect_suffix;
 		} else if(preg_match("/(α|ε|ο)ω$/u", $verb)){
 			// 使役動詞
-			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2)."η".self::perfect_suffix;			
+			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2)."η".self::perfect_suffix;
+		} else if(preg_match("/(ο|ό)ω$/u", $verb)){
+			// 名詞起源動詞
+			$perfect_stem = mb_substr($verb, 0, 1)."έ".mb_substr($verb, 0, -2)."ω".self::perfect_suffix;		
 		} else {
 			// それ以外
 			$perfect_stem = mb_substr($verb, 0, 1)."έ".$verb.self::perfect_suffix;;

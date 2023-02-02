@@ -939,8 +939,6 @@ class Latin_Common extends Common_IE{
 						}
 					}
 				} else if($table == Latin_Common::DB_NOUN){				
-					// 名詞
-					echo $target_word;
 					// 動詞の造語の場合は
 					if(preg_match('/verb/', $word_category)){
 						// 名詞の語幹を取得

@@ -253,6 +253,18 @@ class Commons {
 		return $result;
 	} 
 
+	// 英単語を分析する。
+	public static function get_multiple_english_words_detail($check_words){
+		// AIによる造語対応
+		// 実行先を指定
+		$command = "python3 /var/www/html/python/NLTK/NLTK.py 2>&1 $check_words";
+		// 実行し、その結果を取得する。
+		exec($command , $result);
+		var_dump($result);
+		// 結果を返す。
+		return $result;
+	} 
+
 	// 曲用可能チェック
 	public static function is_word_declensionable($word_category){
 		// 結果を返す(名詞・形容詞はtrue)。

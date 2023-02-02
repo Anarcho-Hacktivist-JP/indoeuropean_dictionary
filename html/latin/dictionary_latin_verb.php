@@ -148,16 +148,6 @@ function get_conjugation_by_adjective($word, $verb_genre){
 	return $conjugations;
 }
 
-//造語対応
-function get_compound_verb_word($janome_result, $input_verb){ 
-  // 配列を宣言
-	$conjugations = array();
-  // データを取得(男性)
-	$conjugations = Latin_Common::make_compound_chart($janome_result, "verb", $input_verb);
-	// 結果を返す。
-	return $conjugations;
-}
-
 // 挿入データ－対象－
 $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
 // 挿入データ－動詞種別－
@@ -172,7 +162,7 @@ $janome_result = Commons::convert_compound_array($janome_result);
 // 条件ごとに判定して単語を検索して取得する
 if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 複合語の場合(日本語のみ)
-  $conjugations = get_compound_verb_word($janome_result, $input_verb);
+	$conjugations = Latin_Common::make_compound_chart($janome_result, "verb", $input_verb);
 } else if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得(日本語のみ)
 	$conjugations = get_conjugation_by_noun($input_verb, $input_verb_type);

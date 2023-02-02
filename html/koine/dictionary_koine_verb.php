@@ -11,7 +11,7 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Greek_Common.php");
 
 // 活用表を取得する。
-function get_conjugation($word){
+function get_verb_conjugation_chart($word){
 
   // 配列を宣言
 	$conjugations = array();
@@ -19,28 +19,8 @@ function get_conjugation($word){
 	$koine_verbs = Koine_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
   if(!$koine_verbs){
-    // アルファベット以外は処理しない。
-    if(Koine_Common::is_alphabet_or_not($word)){
-	    // 動詞の情報を語根から取得
-	    $koine_verbs = Koine_Common::get_verb_by_english($word);
-      // 取得できなかった場合は
-      if(!$koine_verbs){
-        // ラテン文字をギリシア文字に変換する。
-        $word = Commons::latin_to_greek($word, true);
-	      // 動詞の情報を語根から取得
-	      $koine_verbs = Koine_Common::get_verb_from_DB($word);
-        // 取得できなかった場合は
-        if(!$koine_verbs){
-		      // 活用表生成、配列に格納
-		      $conjugations = array_merge(get_verb_chart($word), $conjugations);
-          // 結果を返す。
-	        return $conjugations;
-        }
-      }
-    } else {
       // 空を返す。
       return array();
-    }
   }
 	// 新しい配列に詰め替え
 	foreach ($koine_verbs as $koine_verb) {
@@ -48,6 +28,52 @@ function get_conjugation($word){
 	  $conjugations = array_merge(get_verb_chart($koine_verb["dictionary_stem"]), $conjugations);
 	}
 
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 活用表を取得する。
+function get_verb_conjugation_chart_by_english($word, $verb_genre){
+  // 配列を宣言
+	$conjugations = array();
+	// 英語で動詞の情報を取得
+	$latin_verbs = Koine_Common::get_verb_by_english($word);
+  // 動詞の情報が取得できない場合は
+  if(!$latin_verbs){
+	  // 動詞が取得できない場合
+    // 動詞を生成
+	  $verb_koine = new Koine_Verb($word, $verb_genre);
+	  // 活用表生成、配列に格納
+	  $conjugations[$verb_koine->get_dic_stem()] = $verb_koine->get_chart();
+  } else {
+    // 新しい配列に詰め替え
+	  foreach ($latin_verbs as $latin_verb) {
+      $conjugations = array_merge(Koine_Common::get_verb_conjugation($latin_verb, $verb_genre), $conjugations);
+	  }
+  }
+  // 結果を返す。
+	return $conjugations;
+}
+
+// 活用表を取得する。
+function get_verb_conjugation_chart_by_koine($word, $verb_genre){
+  // 配列を宣言
+	$conjugations = array();
+  // 動詞の情報を取得
+	$koine_verb = Koine_Common::get_verb_from_DB($word);
+  // 動詞が取得できたか確認する。
+  if($koine_verb){
+    // 動詞が取得できた場合
+    $conjugations = Koine_Common::get_verb_conjugation($koine_verb["dictionary_stem"], $verb_genre);
+  } else {
+	  // 動詞が取得できない場合
+    // 動詞を生成
+	  $verb_koine = new Koine_Verb($word, $verb_genre);
+	  // 活用表生成、配列に格納
+	  $conjugations[$verb_koine->get_dic_stem()] = $verb_koine->get_chart();
+	  // メモリを解放
+	  unset($verb_data);
+  }
   // 結果を返す。
 	return $conjugations;
 }
@@ -144,10 +170,16 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && $search_lang == "ja
 	$conjugations = get_conjugation_by_noun($input_verb);
 } else if($input_verb != "" && $janome_result[0][1] == "形容詞" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
-	$conjugations = get_conjugation_by_adjective($input_verb);  
-} else if($input_verb != ""){
-  // 処理を実行
-  $conjugations = get_conjugation($input_verb);
+	$conjugations = get_conjugation_by_adjective($input_verb); 
+} else if($input_verb != "" && $search_lang == "koine" && Koine_Common::is_alphabet_or_not($input_verb)){
+  // 対象が入力されていればラテン語処理を実行
+	$conjugations = get_verb_conjugation_chart_by_koine($input_verb, $input_verb_type);
+} else if($input_verb != "" && $search_lang == "english" && !Koine_Common::is_alphabet_or_not($input_verb) && Koine_Common::is_latin_alphabet_or_not($input_verb)){
+  // 対象が入力されていれば英語で処理を実行
+	$conjugations = get_verb_conjugation_chart_by_english($input_verb, $input_verb_type);
+} else if($input_verb != "" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_verb) && !Koine_Common::is_latin_alphabet_or_not($input_verb)){
+  // 対象が入力されていれば日本語で処理を実行
+	$conjugations = get_verb_conjugation_chart($input_verb, $input_verb_type);
 }
 
 ?>
