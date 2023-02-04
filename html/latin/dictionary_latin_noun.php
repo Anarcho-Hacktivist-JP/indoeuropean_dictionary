@@ -127,19 +127,19 @@ $janome_result = Commons::convert_compound_array($janome_result);
 $declensions = array();
 
 // 条件ごとに判定して単語を検索して取得する
-if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
+if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 造語対応
 	$declensions = Latin_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender);
-} else if($input_noun != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
+} else if($input_noun != "" && $search_lang == Commons::NIHONGO && $janome_result[0][1] == "動詞"){
   // 動詞の場合は動詞で名詞を取得(日本語のみ)
 	$declensions = get_noun_declension_chart_by_verb($input_noun);
-} else if($input_noun != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::LATIN && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_latin($input_noun, $gender);
-} else if($input_noun != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::EIGO && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
-} else if($input_noun != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::NIHONGO && !Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart($input_noun, $gender);
 }

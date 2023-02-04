@@ -75,14 +75,6 @@ function get_noun_declension_chart_by_greek($word){
 	return $declensions;
 }
 
-//造語対応
-function get_compound_noun_word($janome_result, $input_noun){
-  // データを取得(男性)
-	$declensions = Koine_Common::make_compound_chart($janome_result, "noun", $input_noun);
-	// 結果を返す。
-	return $declensions;
-}
-
 // 挿入データ－対象－
 $input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
 // 挿入データ－言語－
@@ -96,16 +88,16 @@ $janome_result = Commons::convert_compound_array($janome_result);
 $declensions = array();
 
 // 条件ごとに判定して単語を検索して取得する
-if(count($janome_result) > 1 && !ctype_alnum($input_noun) && $search_lang == "japanese" && !strpos($input_noun, Commons::$LIKE_MARK)){
+if(count($janome_result) > 1 && !ctype_alnum($input_noun) && $search_lang == Commons::NIHONGO && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 複合語の場合
-  $declensions = get_compound_noun_word($janome_result, $input_noun);
-} else if($input_noun != "" && $search_lang == "greek" && Koine_Common::is_alphabet_or_not($input_noun)){
+  $declensions = Koine_Common::make_compound_chart($janome_result, "noun", $input_noun);
+} else if($input_noun != "" && $search_lang == Commons::GREEK && Koine_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_greek($input_noun);
-} else if($input_noun != "" && $search_lang == "english" && Koine_Common::is_latin_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::EIGO && Koine_Common::is_latin_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_english($input_noun);
-} else if($input_noun != "" && $search_lang == "japanese" && !Koine_Common::is_latin_alphabet_or_not($input_noun) && !Koine_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::NIHONGO && !Koine_Common::is_latin_alphabet_or_not($input_noun) && !Koine_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
   $declensions = get_noun_declension_chart($input_noun);
 }

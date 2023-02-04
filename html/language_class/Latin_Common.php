@@ -1138,9 +1138,26 @@ class Latin_Common extends Common_IE{
 		// 初期化する。
 		$compund_words = array();
 		// 新しい配列に詰め替え
-		foreach ($latin_words[0] as $latin_word ) {			
-			// 3語以上の場合は
-			if(count($latin_words) == 2){
+		foreach ($latin_words[0] as $latin_word ) {
+			// 複合対象の単語数によって分ける。
+			if(count($latin_words) == 3){
+				// 4語の場合は
+				// 新しい配列に詰め替え
+				foreach ($latin_words[1] as $latin_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($latin_words[2] as $latin_word_3 ) {
+						// 新しい配列に詰め替え
+						foreach ($last_words as $last_word ) {
+							// 弱語幹と最後の要素を入れる。
+							$compund_words["word_info"][] = $latin_word." + ".$latin_word_2." + ".$latin_word_3." + ".$last_word;	// 単語の情報	
+							$compund_words["last_word"][] = $last_word;											// 要素の最後
+							// 強語幹を入れる。
+							$compund_words["compund"][] = $latin_word.$latin_word_2.$latin_word_3;						
+						}
+					}
+				}	
+			} else if(count($latin_words) == 2){
+				// 3語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1565,9 +1582,9 @@ class Latin_Common extends Common_IE{
 		// ボタンを生成
 		$button_html_code = '
         <select class="form-select" name="input_search_lang"> 
-          <option value="japanese">日本語(Japanese)</option>
-          <option value="english">英語(English)</option>
-          <option value="latin">ラテン語(Latin)</option>     
+          <option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
+          <option value="'.Commons::EIGO.'">英語(English)</option>
+          <option value="'.Commons::LATIN.'">ラテン語(Latin)</option>     
         </select> ';
 
 		// 結果を返す。

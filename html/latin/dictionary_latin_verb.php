@@ -160,22 +160,22 @@ $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 条件ごとに判定して単語を検索して取得する
-if($input_verb != "" && count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+if($input_verb != "" && count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 複合語の場合(日本語のみ)
 	$conjugations = Latin_Common::make_compound_chart($janome_result, "verb", $input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+} else if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == Commons::NIHONGO && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得(日本語のみ)
 	$conjugations = get_conjugation_by_noun($input_verb, $input_verb_type);
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && $search_lang == Commons::NIHONGO && !Latin_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得(日本語のみ)
 	$conjugations = get_conjugation_by_adjective($input_verb, $input_verb_type);
-} else if($input_verb != "" && $search_lang == "latin" && Latin_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::LATIN && Latin_Common::is_alphabet_or_not($input_verb)){
   // 対象が入力されていればラテン語処理を実行
 	$conjugations = get_verb_conjugation_chart_by_latin($input_verb, $input_verb_type);
-} else if($input_verb != "" && $search_lang == "english" && Latin_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::EIGO && Latin_Common::is_alphabet_or_not($input_verb)){
   // 対象が入力されていれば英語で処理を実行
 	$conjugations = get_verb_conjugation_chart_by_english($input_verb, $input_verb_type);
-} else if($input_verb != "" && $search_lang == "japanese" && !Latin_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::NIHONGO && !Latin_Common::is_alphabet_or_not($input_verb)){
   // 対象が入力されていれば日本語で処理を実行
 	$conjugations = get_verb_conjugation_chart($input_verb, $input_verb_type);
 }

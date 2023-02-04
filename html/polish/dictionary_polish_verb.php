@@ -132,19 +132,19 @@ $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 条件分岐
-if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result) == 1 && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result) == 1 && $search_lang == Commons::NIHONGO && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得
 	$conjugations = get_conjugation_by_noun($input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && count($janome_result) == 1 && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && count($janome_result) == 1 && $search_lang == Commons::NIHONGO && !Polish_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
 	$conjugations = get_conjugation_by_adjective($input_verb);
-} else if($input_verb != "" && $search_lang == "polish" && Polish_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::POLISH && Polish_Common::is_alphabet_or_not($input_verb)){
   // 処理を実行
   $conjugations = get_verb_conjugation_chart_by_polish($input_verb);
-} else if($input_verb != "" && $search_lang == "english" && Polish_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::EIGO && Polish_Common::is_alphabet_or_not($input_verb)){
   // 処理を実行
   $conjugations = get_verb_conjugation_chart_by_english($input_verb);
-} else if($input_verb != "" && $search_lang == "japanese" && !Polish_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::NIHONGO && !Polish_Common::is_alphabet_or_not($input_verb)){
   // 処理を実行
   $conjugations = get_verb_conjugation_chart($input_verb);
 }

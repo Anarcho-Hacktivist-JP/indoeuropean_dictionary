@@ -76,14 +76,6 @@ function get_adjective_declension_chart_by_greek($word){
 	return $declensions;
 }
 
-//造語対応
-function get_compound_noun_word($janome_result, $input_noun){
-  // データを取得(男性)
-	$declensions = Koine_Common::make_compound_chart($janome_result, "adjective", $input_noun);
-	// 結果を返す。
-	return $declensions;
-}
-
 // 挿入データ－対象－
 $input_adjective = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_adjective')), 128);
 // 挿入データ－言語－
@@ -97,16 +89,16 @@ $janome_result = Commons::get_multiple_words_detail($input_adjective);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 条件ごとに判定して単語を検索して取得する
-if(count($janome_result) > 1 && $search_lang == "japanese" && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
+if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum($input_adjective) && !strpos($input_adjective, Commons::$LIKE_MARK)){
   // 複合語の場合(日本語のみ)
-  $declensions = get_compound_adjective_word($janome_result, $input_adjective);
-} else if($input_adjective != "" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_adjective)){
+  $declensions = Koine_Common::make_compound_chart($janome_result, "adjective", $input_adjective);
+} else if($input_adjective != "" && $search_lang == Commons::NIHONGO && !Koine_Common::is_alphabet_or_not($input_adjective)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart($input_adjective);
-} else if($input_adjective != "" && $search_lang == "english" && Koine_Common::is_alphabet_or_not($input_adjective)){
+} else if($input_adjective != "" && $search_lang == Commons::EIGO && Koine_Common::is_alphabet_or_not($input_adjective)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart_by_english($input_adjective);
-} else if($input_adjective != "" && $search_lang == "greek" && Koine_Common::is_alphabet_or_not($input_adjective)){
+} else if($input_adjective != "" && $search_lang == Commons::GREEK && Koine_Common::is_alphabet_or_not($input_adjective)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_adjective_declension_chart_by_latin($input_adjective);
 }

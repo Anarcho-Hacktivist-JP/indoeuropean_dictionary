@@ -1591,9 +1591,9 @@ class Koine_Common extends Common_IE{
 		// ボタンを生成
 		$button_html_code = '
         <select class="form-select" name="input_search_lang"> 
-          <option value="japanese">日本語(Japanese)</option>
-          <option value="english">英語(English)</option>
-          <option value="koine">ギリシア語(Greek)</option>     
+			<option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
+			<option value="'.Commons::EIGO.'">英語(English)</option>
+        	<option value="'.Commons::GREEK.'">ギリシア語(Greek)</option>     
         </select> ';
 
 		// 結果を返す。

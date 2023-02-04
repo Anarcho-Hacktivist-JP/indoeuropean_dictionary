@@ -114,14 +114,6 @@ function set_noun_table_data($noun_words, $adjective_words, $gender = ""){
    return $declensions;
 }
 
-//造語対応
-function get_compound_noun_word($janome_result, $input_noun, $gender){
-  // データを取得(男性)
-	$declensions = Sanskrit_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender);
-	// 結果を返す。
-	return $declensions;
-}
-
 // 挿入データ－対象－
 $input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
 // 挿入データ－言語－
@@ -137,21 +129,21 @@ $janome_result = Commons::convert_compound_array($janome_result);
 $declensions = array();
 
 // 条件ごとに判定して単語を検索して取得する
-if($search_lang == "japanese" && count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
+if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 複合語の場合(日本語のみ)
-  $declensions = get_compound_noun_word($janome_result, $input_noun, $gender);
-} else if($input_noun != "" && $search_lang == "japanese" && $janome_result[0][1] == "動詞"){
+  $declensions = Sanskrit_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender);
+} else if($input_noun != "" && $search_lang == Commons::NIHONGO && $janome_result[0][1] == "動詞"){
   // 動詞の場合の場合(日本語のみ)
   $declensions = Sanskrit_Common::get_noun_from_verb($input_noun);
-} else if($input_noun != "" && $search_lang == "sanskrit" && Sanskrit_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::BONGO && Sanskrit_Common::is_alphabet_or_not($input_noun)){
   // 梵語
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_sanskrit($input_noun, $gender);
-} else if($input_noun != "" && $search_lang == "english" && Sanskrit_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::EIGO && Sanskrit_Common::is_alphabet_or_not($input_noun)){
   // 英語
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
-} else if($input_noun != "" && $search_lang == "japanese" && !Sanskrit_Common::is_alphabet_or_not($input_noun)){
+} else if($input_noun != "" && $search_lang == Commons::NIHONGO && !Sanskrit_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart($input_noun, $gender);
 }

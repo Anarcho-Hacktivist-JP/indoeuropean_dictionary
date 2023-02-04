@@ -906,9 +906,9 @@ class Polish_Common extends Common_IE{
 		// ボタンを生成
 		$button_html_code = '
         <select class="form-select" name="input_search_lang"> 
-          <option value="japanese">日本語(Japanese)</option>
-          <option value="english">英語(English)</option>
-          <option value="polish">ポーランド語(Polish)</option>     
+			<option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
+			<option value="'.Commons::EIGO.'">英語(English)</option>
+          	<option value="'.Commons::POLISH.'">ポーランド語(Polish)</option>     
         </select> ';
 
 		// 結果を返す。

@@ -72,6 +72,13 @@ class Commons {
 	public const ADJ_GRADE_COMPERATIVE = "comp";			// 形容詞比較級 - 比較級
 	public const ADJ_GRADE_SUPERATIVE = "super";			// 形容詞比較級 - 最上級
 
+	public const NIHONGO = "japanese";						// 言語名 - 日本語
+	public const EIGO = "english";							// 言語名 - 英語
+	public const LATIN = "latin";							// 言語名 - ラテン語
+	public const BONGO = "sanskrit";						// 言語名 - 梵語
+	public const POLISH = "polish";							// 言語名 - ポーランド語
+	public const GREEK = "koine";							// 言語名 - 古代ギリシア語
+
 	// 長音変換
 	public static function vowel_short_to_long($sound){
 
@@ -351,6 +358,20 @@ class Commons {
 				return "";
 				break;
 		}
+	}
+
+	// 反転ボタン
+	public static function change_flag($flag){
+		
+		// trueの場合はfalse
+		if($flag == Commons::$TRUE){
+			return Commons::$FALSE;
+		} else if($flag == Commons::$FALSE){
+			return Commons::$TRUE;
+		}
+
+		// それ以外の場合はそのまま
+		return $flag;
 	}
 
 }

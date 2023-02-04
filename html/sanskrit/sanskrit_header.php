@@ -10,6 +10,9 @@
       <div class="col-md-1">
         <a class="btn btn-primary" href="dictionary_sanskrit_verb.php">動詞</a>
       </div>
+      <div class="col-md-1">
+        <a class="btn btn-primary" href="dictionary_classical_sanskrit_verb.php">動詞<br>(古典期)</a>
+      </div>
     </section>
 </div>
 <div class="container item">

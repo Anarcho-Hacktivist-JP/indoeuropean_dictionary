@@ -864,7 +864,7 @@ class Sanskrit_Common extends Common_IE{
 		 			// 読み込み
 		 			$sanskrit_verb = new Vedic_Verb($verb_word["dictionary_stem"]);
 		  			// 活用表生成、配列に格納
-		  			$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart();
+		  			$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart(false);
 					// メモリを解放
 					unset($sanskrit_verb);
 		  		}
@@ -905,7 +905,7 @@ class Sanskrit_Common extends Common_IE{
 						// 読み込み
 						$sanskrit_verb = new Vedic_Verb($compund_words["last_word"][$i], $compund_words["stem"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
 						// 活用表生成
-						$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart();
+						$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart(false);
 						// メモリを解放
 						unset($sanskrit_verb);
 					} 
@@ -1389,32 +1389,49 @@ class Sanskrit_Common extends Common_IE{
 		// 新しい配列に詰め替え
 		foreach ($sanskrit_word_list[0] as $sanskrit_word ) {
 			// 3語以上の場合は
-			if(count($sanskrit_word_list) == 2){
+			if(count($sanskrit_word_list) == 5){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
-					// 4語以上の場合は
-					if(count($sanskrit_word_list) == 3){
+					// 新しい配列に詰め替え
+					foreach ($sanskrit_word_list[2] as $sanskrit_word_3 ) {
 						// 新しい配列に詰め替え
-						foreach ($sanskrit_word_list[2] as $sanskrit_word_3 ) {
+						foreach ($sanskrit_word_list[2] as $sanskrit_word_4) {
 							// 新しい配列に詰め替え
 							foreach ($list_last_word as $last_word ) {
 								// 弱語幹と最後の要素を入れる。
-								$list_compund_word["stem"][] = Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine($sanskrit_word, $sanskrit_word_2, false, false), $sanskrit_word_3, false, false);
-								$list_compund_word["word_info"][] = $sanskrit_word." + ".$sanskrit_word_2." + ".$sanskrit_word_3." + ".$last_word;	// 単語の情報							
+								$list_compund_word["stem"][] = Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine($sanskrit_word, $sanskrit_word_2, false, false), $sanskrit_word_3, false, false), $sanskrit_word_4, false, false);
+								$list_compund_word["word_info"][] = $sanskrit_word." + ".$sanskrit_word_2." + ".$sanskrit_word_3." + ".$sanskrit_word_4." + ".$last_word;	// 単語の情報							
 								$list_compund_word["last_word"][] = $last_word;
-							}						
-						}
-					} else {
+							}
+						}			
+					}
+				}
+			} else if(count($sanskrit_word_list) == 4){
+				// 新しい配列に詰め替え
+				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($sanskrit_word_list[2] as $sanskrit_word_3 ) {
 						// 新しい配列に詰め替え
 						foreach ($list_last_word as $last_word ) {
 							// 弱語幹と最後の要素を入れる。
-							$list_compund_word["stem"][] = Sanskrit_Common::sandhi_engine($sanskrit_word, $sanskrit_word_2, false, false);
-							$list_compund_word["word_info"][] = $sanskrit_word." + ".$sanskrit_word_2." + ".$last_word;	// 単語の情報							
+							$list_compund_word["stem"][] = Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine($sanskrit_word, $sanskrit_word_2, false, false), $sanskrit_word_3, false, false);
+							$list_compund_word["word_info"][] = $sanskrit_word." + ".$sanskrit_word_2." + ".$sanskrit_word_3." + ".$last_word;	// 単語の情報							
 							$list_compund_word["last_word"][] = $last_word;
-						}
+						}						
 					}
 				}
-			} else {
+			} else if(count($sanskrit_word_list) == 3){
+				// 新しい配列に詰め替え
+				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($list_last_word as $last_word ) {
+						// 弱語幹と最後の要素を入れる。
+						$list_compund_word["stem"][] = Sanskrit_Common::sandhi_engine($sanskrit_word, $sanskrit_word_2, false, false);
+						$list_compund_word["word_info"][] = $sanskrit_word." + ".$sanskrit_word_2." + ".$last_word;	// 単語の情報							
+						$list_compund_word["last_word"][] = $last_word;
+					}
+				}
+			} else if(count($sanskrit_word_list) == 2){
 				// 新しい配列に詰め替え
 				foreach ($list_last_word as $last_word ) {
 					// 弱語幹と最後の要素を入れる。
@@ -1427,7 +1444,63 @@ class Sanskrit_Common extends Common_IE{
 
 		// 結果を返す。
 		return $list_compund_word;
-	}	
+	}
+
+	// 体言起源動詞を作成
+	public static function make_denomitive_verb($sanskrit_verbs, $word, $classic_flag){
+		// 配列を宣言
+		$conjugations = array();   
+		// 新しい配列に詰め替え
+		foreach ($sanskrit_verbs as $sanskrit_verb) {
+			// 読み込み
+			$vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB1, $sanskrit_verb, $word."(動詞化)");
+			// 活用表生成、配列に格納
+			$conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart($classic_flag);
+			// メモリを解放
+			unset($vedic_verb);
+			// 読み込み
+			$vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB2, $sanskrit_verb, $word."(動詞化)");
+			// 活用表生成、配列に格納
+			$conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart($classic_flag);
+			// メモリを解放
+			unset($vedic_verb);
+			// 読み込み
+			$vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB3, $sanskrit_verb, $word."(動詞化)");
+			// 活用表生成、配列に格納
+			$conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart($classic_flag);
+			// メモリを解放
+			unset($vedic_verb);
+			// 読み込み
+			$vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB4, $sanskrit_verb, $word."(動詞化)");
+			// 活用表生成、配列に格納
+			$conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart($classic_flag);
+			// メモリを解放
+			unset($vedic_verb);
+			// 読み込み
+			$vedic_verb = new Vedic_Verb(Sanskrit_Common::DENOMITIVE_VERB5, $sanskrit_verb, $word."(動詞化)");
+			// 活用表生成、配列に格納
+			$conjugations[$vedic_verb->get_root()] = $vedic_verb->get_chart($classic_flag);
+			// メモリを解放
+			unset($vedic_verb);
+		}
+	  
+		// 結果を返す。
+		return $conjugations;
+	}
+
+	// 動詞の活用を取得
+	public static function get_verb_chart($word, $classic_flag){
+		// 読み込み
+		$vedic_verb = new Vedic_Verb($word);
+		// 新しい配列を作成
+		$new_array = array();
+		// 活用表生成、配列に格納
+		$new_array[$vedic_verb->get_root()] = $vedic_verb->get_chart($classic_flag);
+		// メモリを解放
+		unset($vedic_verb);
+		// 結果を返す。
+		return $new_array;
+	}
 	
 	// 音階変更
 	public static function change_vowel_grade($script, $sound_grade){	
@@ -1542,7 +1615,14 @@ class Sanskrit_Common extends Common_IE{
 				$script = $scripts[0].$scripts[1];			
 			}
 		} else {
-			$script = $word1.$word2;
+			// 母音同化の対応
+			if(preg_match("/a$/", $word1) && preg_match("/^i/", $word2)){
+				$script = mb_substr($word1, 0, -1)."e".mb_substr($word2, 1);
+			} else if(preg_match("/a$/", $word1) && preg_match("/^u/", $word2)){
+				$script = mb_substr($word1, 0, -1)."o".mb_substr($word2, 1);
+			} else {
+				$script = $word1.$word2;
+			}
 		}	
 
 		// 連音を適用
@@ -1646,8 +1726,8 @@ class Sanskrit_Common extends Common_IE{
 			$script = preg_replace("/o/u", "au", $script);		//o	
 			$script = preg_replace("/aa/u", "ā", $script);				
 		} else {
-			$script = preg_replace("/([ā])([ī])/u", "e", $script);
-			$script = preg_replace("/([ā])([ū])/u", "o", $script);
+			$script = preg_replace("/([ā])([ī|i])/u", "e", $script);
+			$script = preg_replace("/([ā])([ū|u])/u", "o", $script);
 			$script = preg_replace("/([a])([ī])/u", "e", $script);
 			$script = preg_replace("/([a])([ū])/u", "o", $script);			
 		}
@@ -1934,6 +2014,87 @@ class Sanskrit_Common extends Common_IE{
           <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row" colspan="12">仮定法/祈願法</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>        
+          <tr><th class="text-center" scope="row" colspan="12">命令法</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>';
+	}
+
+	// 古典期動詞の活用表を作る
+	public static function make_classical_verbal_chart($title = ""){
+		// タイトルを入れて表を返す。
+		return '
+        <thead>
+          <tr>
+            <th class="text-center" scope="row" style="width:15%">'.$title.'</th>
+            <th class="text-center" scope="col" colspan="3" style="width:24%">進行相</th>				
+            <th class="text-center" scope="col" colspan="3" style="width:24%">完結相</th>
+            <th class="text-center" scope="col" colspan="2" style="width:16%">完了相</th>
+            <th class="text-center" scope="col" colspan="3" style="width:24%">未来形</th>              
+          </tr>
+          <tr>
+            <th class="text-center" scope="row" style="width:10%">態</th>
+            <th class="text-center" scope="col" style="width:8%">能動</th>
+            <th class="text-center" scope="col" style="width:8%">中動</th>
+            <th class="text-center" scope="col" style="width:8%">受動</th>
+            <th class="text-center" scope="col" style="width:8%">能動</th>
+            <th class="text-center" scope="col" style="width:8%">中動</th>               
+            <th class="text-center" scope="col" style="width:8%">受動</th>
+            <th class="text-center" scope="col" style="width:8%">能動</th>
+            <th class="text-center" scope="col" style="width:8%">中受動</th>
+            <th class="text-center" scope="col" style="width:8%">能動</th>
+            <th class="text-center" scope="col" style="width:8%">中動</th>            
+            <th class="text-center" scope="col" style="width:8%">受動</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th class="text-center" scope="row" colspan="12">現在時制</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row" colspan="12">過去時制</th></tr>
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row" colspan="12">指令法</th></tr
+          <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称双数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">1人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">2人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row">3人称複数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th class="text-center" scope="row" colspan="12">仮定法</th></tr>
           <tr><th class="text-center" scope="row">1人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">2人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           <tr><th class="text-center" scope="row">3人称単数</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -2481,10 +2642,9 @@ class Sanskrit_Common extends Common_IE{
 		// ボタンを生成
 		$button_html_code = '
         <select class="form-select" name="input_search_lang"> 
-          <option value="japanese">日本語(Japanese)</option>
-          <option value="english">英語(English)</option>
-          <option value="sanskrit">梵語(Sanskrit)</option>
-          <option value="latin">ラテン語(Latin)</option>    
+			<option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
+			<option value="'.Commons::EIGO.'">英語(English)</option>
+         	<option value="'.Commons::BONGO.'">梵語(Sanskrit)</option>
         </select> ';
 
 		// 結果を返す。

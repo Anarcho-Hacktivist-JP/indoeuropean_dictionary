@@ -141,17 +141,6 @@ function get_conjugation_by_adjective($word){
 	return $conjugations;
 }
 
-//造語対応
-function get_compound_verb_word($janome_result, $input_verb)
-{ 
-  // 配列を宣言
-	$conjugations = array();
-  // データを取得(男性)
-	$conjugations = Koine_Common::make_compound_chart($janome_result, "verb", $input_verb);
-	// 結果を返す。
-	return $conjugations;
-}
-
 // 挿入データ－対象－
 $input_verb = trim(filter_input(INPUT_POST, 'input_verb'));
 // 挿入データ－言語－
@@ -162,22 +151,22 @@ $janome_result = Commons::get_multiple_words_detail($input_verb);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 条件ごとに判定して単語を検索して取得する
-if(count($janome_result) > 1 && !ctype_alnum($input_verb) && $search_lang == "japanese" && !strpos($input_verb, Commons::$LIKE_MARK)){
+if(count($janome_result) > 1 && !ctype_alnum($input_verb) && $search_lang == Commons::NIHONGO && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 複合語の場合
-  $conjugations = get_compound_verb_word($janome_result, $input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
+  $conjugations = Koine_Common::make_compound_chart($janome_result, "verb", $input_verb);
+} else if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == Commons::NIHONGO && !Koine_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK)){
   // 名詞の場合は名詞で動詞を取得
 	$conjugations = get_conjugation_by_noun($input_verb);
-} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
+} else if($input_verb != "" && $janome_result[0][1] == "形容詞" && $search_lang == Commons::NIHONGO && !Koine_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得
 	$conjugations = get_conjugation_by_adjective($input_verb); 
-} else if($input_verb != "" && $search_lang == "koine" && Koine_Common::is_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::GREEK && Koine_Common::is_alphabet_or_not($input_verb)){
   // 対象が入力されていればラテン語処理を実行
 	$conjugations = get_verb_conjugation_chart_by_koine($input_verb, $input_verb_type);
-} else if($input_verb != "" && $search_lang == "english" && !Koine_Common::is_alphabet_or_not($input_verb) && Koine_Common::is_latin_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::EIGO && !Koine_Common::is_alphabet_or_not($input_verb) && Koine_Common::is_latin_alphabet_or_not($input_verb)){
   // 対象が入力されていれば英語で処理を実行
 	$conjugations = get_verb_conjugation_chart_by_english($input_verb, $input_verb_type);
-} else if($input_verb != "" && $search_lang == "japanese" && !Koine_Common::is_alphabet_or_not($input_verb) && !Koine_Common::is_latin_alphabet_or_not($input_verb)){
+} else if($input_verb != "" && $search_lang == Commons::NIHONGO && !Koine_Common::is_alphabet_or_not($input_verb) && !Koine_Common::is_latin_alphabet_or_not($input_verb)){
   // 対象が入力されていれば日本語で処理を実行
 	$conjugations = get_verb_conjugation_chart($input_verb, $input_verb_type);
 }

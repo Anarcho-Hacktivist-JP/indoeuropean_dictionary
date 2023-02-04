@@ -141,16 +141,16 @@ $janome_result = Commons::get_multiple_words_detail($input_adjective);
 $janome_result = Commons::convert_compound_array($janome_result);
 
 // 対象が入力されていれば処理を実行
-if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] == "名詞" && !Polish_Common::is_alphabet_or_not($input_adjective)){
+if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] == "名詞" && $search_lang == Commons::NIHONGO && !Polish_Common::is_alphabet_or_not($input_adjective)){
   // 名詞の場合は名詞で形容詞を取得
 	$declensions = get_noun_declension_chart($input_adjective);
-} else if($input_adjective != "" && $search_lang == "polish" && Polish_Common::is_alphabet_or_not($input_adjective)){
+} else if($input_adjective != "" && $search_lang == Commons::POLISH && Polish_Common::is_alphabet_or_not($input_adjective)){
   // ポーランド語で取得
 	$declensions = get_adjective_declension_chart($input_adjective);
-} else if($input_adjective != "" && $search_lang == "english" && Polish_Common::is_alphabet_or_not($input_adjective)){
+} else if($input_adjective != "" && $search_lang == Commons::EIGO && Polish_Common::is_alphabet_or_not($input_adjective)){
   // 英語で取得
 	$declensions = get_adjective_declension_chart($input_adjective);
-} else if($input_adjective != "" && $search_lang == "japanese" && !Polish_Common::is_alphabet_or_not($input_adjective)){
+} else if($input_adjective != "" && $search_lang == Commons::NIHONGO && !Polish_Common::is_alphabet_or_not($input_adjective)){
   // 日本語で取得
 	$declensions = get_adjective_declension_chart($input_adjective);
 }
