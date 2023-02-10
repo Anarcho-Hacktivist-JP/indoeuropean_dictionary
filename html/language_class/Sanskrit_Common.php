@@ -1389,7 +1389,7 @@ class Sanskrit_Common extends Common_IE{
 		// 新しい配列に詰め替え
 		foreach ($sanskrit_word_list[0] as $sanskrit_word ) {
 			// 3語以上の場合は
-			if(count($sanskrit_word_list) == 5){
+			if(count($sanskrit_word_list) == 4){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1406,7 +1406,7 @@ class Sanskrit_Common extends Common_IE{
 						}			
 					}
 				}
-			} else if(count($sanskrit_word_list) == 4){
+			} else if(count($sanskrit_word_list) == 3){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1420,7 +1420,7 @@ class Sanskrit_Common extends Common_IE{
 						}						
 					}
 				}
-			} else if(count($sanskrit_word_list) == 3){
+			} else if(count($sanskrit_word_list) == 2){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1431,7 +1431,7 @@ class Sanskrit_Common extends Common_IE{
 						$list_compund_word["last_word"][] = $last_word;
 					}
 				}
-			} else if(count($sanskrit_word_list) == 2){
+			} else if(count($sanskrit_word_list) == 1){
 				// 新しい配列に詰め替え
 				foreach ($list_last_word as $last_word ) {
 					// 弱語幹と最後の要素を入れる。

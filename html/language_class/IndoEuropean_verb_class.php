@@ -4455,10 +4455,10 @@ class Vedic_Verb extends Verb_Common_IE{
 			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_stem, "i");
 		} else if(preg_match('/(2sg|3sg)/', $person) && $voice == Commons::ACTIVE_VOICE){
 			// 単数2・3人称
-			$verb_conjugation = $this->get_secondary_suffix($verb_stem."ī", $voice, $person);
+			$verb_conjugation = $this->get_secondary_suffix(Sanskrit_Common::sandhi_engine($verb_stem, "ī"), $voice, $person);
 		} else if(preg_match('/(2du|3du)/', $person) && $voice == Commons::MEDIOPASSIVE_VOICE){
 			// 中動態単数2・3人称
-			$verb_conjugation = $this->get_secondary_suffix($verb_stem."ā", $voice, $person);							
+			$verb_conjugation = $this->get_secondary_suffix(Sanskrit_Common::sandhi_engine($verb_stem, "ā"), $voice, $person);							
 		} else if(preg_match('/(3pl)/', $person) && $voice == Commons::ACTIVE_VOICE){
 			// 複数3人称
 			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_stem, "us");
@@ -4486,10 +4486,10 @@ class Vedic_Verb extends Verb_Common_IE{
 			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_stem, "i");					
 		} else if(preg_match('/(2sg|3sg)/', $person) && $voice == Commons::ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
 			// 単数2・3人称
-			$verb_conjugation = $this->get_secondary_suffix($verb_root."ī", $voice, $person);
+			$verb_conjugation = $this->get_secondary_suffix(Sanskrit_Common::sandhi_engine($verb_root, "ī"), $voice, $person);
 		} else if(preg_match('/(2du|3du)/', $person) && $voice == Commons::MEDIOPASSIVE_VOICE && $this->deponent_mediopassive != Commons::$TRUE){
 			// 中動態単数2・3人称
-			$verb_conjugation = $this->get_secondary_suffix($verb_stem."ā", $voice, $person);						
+			$verb_conjugation = $this->get_secondary_suffix(Sanskrit_Common::sandhi_engine($verb_stem, "ā"), $voice, $person);						
 		} else if(preg_match('/(3pl)/', $person) && $voice == Commons::ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
 			// 単数2・3人称
 			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_stem, "us");					
@@ -5412,7 +5412,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			}  			
 		} else if($tense_mood == Commons::SUBJUNCTIVE){
 			// 接続法
-			$verb_conjugation = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
+			$verb_stem = Sanskrit_Common::sandhi_engine($verb_stem, $this->subj);
 			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
 		} else if($tense_mood == Commons::OPTATIVE){
 			// 希求法

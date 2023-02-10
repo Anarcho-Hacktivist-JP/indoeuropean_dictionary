@@ -24,6 +24,16 @@ header("Content-type: text/html; charset=utf-8");
         <table border="1" align="center" class="table table-success table-bordered table-striped table-hover">
             <tbody>
                 <tr>
+                    <th style="width:10%" class="text-center">2023/2/4</th>
+                    <th style="width:10%" class="text-center">Ver 1.29</th>
+                    <td>・古典梵語の活用表を追加、動詞出力の処理を修正<br>・言語選択の処理を修正<br>・造語機能を修正・改良(4→5単語まで対応)</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/2</th>
+                    <th style="width:10%" class="text-center">Ver 1.28</th>
+                    <td>・ギリシア語の動詞を追加<br>・ラテン語の処理を修正</td>
+                </tr>
+                <tr>
                     <th style="width:10%" class="text-center">2023/1/27</th>
                     <th style="width:10%" class="text-center">Ver 1.27</th>
                     <td>・梵語の名詞を修正<br>・ラテン語、梵語、ポーランド語の名詞に名詞種別の選択を追加</td>
