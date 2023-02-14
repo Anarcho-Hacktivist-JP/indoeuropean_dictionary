@@ -780,7 +780,7 @@ class Latin_Common extends Common_IE{
 						unset($latin_adjective);
 					} else if($word_category == "verb"){
 						// 読み込み
-						$latin_verb = new Latin_Verb($compund_words["compund"][$i], $result_data["japanese_translation"], $compund_words["last_word"][$i]);
+						$latin_verb = new Latin_Verb($compund_words["compund"][$i], $input_word, $compund_words["last_word"][$i]);
 						// 活用表生成、配列に格納
 						$charts[$latin_verb->get_infinitive()] = $latin_verb->get_chart();
 						// メモリを解放
@@ -956,24 +956,19 @@ class Latin_Common extends Common_IE{
 						$last_words[] = "tiō";
 						$last_words[] = "ns";
 						$last_words[] = "ndum";
-					} else if(preg_match('/^化$/u', $target_word)){
-						// ~化という単語の場合は
-						$last_words[] = "zatiō";
-					} else if(preg_match('/^学$/u', $target_word)){
-						// ~学という単語の場合は
-						$last_words[] = "logia";
-					} else if(preg_match('/^心$/u', $target_word)){
-						// ~心という単語の場合は
-						$last_words[] = "mentum";
-					} else if(preg_match('/^的$/u', $target_word)){
-						// ~心という単語の場合は
-						$last_words[] = "alis";
-					} else if(preg_match('/^主義$/u', $target_word)){
-						// ~心という単語の場合は
-						$last_words[] = "smus";
 					} else {
-						// データベースから訳語の単語を取得する。
-						$last_words = Latin_Common::get_dictionary_stem_by_japanese($target_word, $table);						
+						// データベースから接頭辞を取得する。
+						$suffix_datas = Latin_Common::get_noun_adjective_suffix($target_word, $word_category);
+						// 最初の単語以外で、データベースが取得できた場合は
+						if($suffix_datas && $i != 0){
+							// 新しい配列に詰め替え
+							foreach ($suffix_datas as $suffix_data){	
+								$last_words[] = $suffix_data["suffix"];	
+							}
+						} else {
+							// データベースから訳語の単語を取得する。
+							$last_words = Latin_Common::get_dictionary_stem_by_japanese($target_word, $table);
+						}		
 					}				
 				} else if($table == Latin_Common::DB_ADJECTIVE){					
 					// 形容詞
@@ -1139,8 +1134,49 @@ class Latin_Common extends Common_IE{
 		$compund_words = array();
 		// 新しい配列に詰め替え
 		foreach ($latin_words[0] as $latin_word ) {
-			// 複合対象の単語数によって分ける。
-			if(count($latin_words) == 3){
+			// 複合対象の単語数によって分ける。		
+			if(count($latin_words) == 6){
+				// 6語の場合は
+				// 新しい配列に詰め替え
+				foreach ($latin_words[1] as $latin_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($latin_words[2] as $latin_word_3 ) {
+						// 新しい配列に詰め替え
+						foreach ($latin_words[3] as $latin_word_4 ) {
+							// 新しい配列に詰め替え
+							foreach ($latin_words[3] as $latin_word_5){
+								// 新しい配列に詰め替え
+								foreach ($last_words as $last_word){
+									// 弱語幹と最後の要素を入れる。
+									$compund_words["word_info"][] = $latin_word." + ".$latin_word_2." + ".$latin_word_3." + ".$latin_word_4." + ".$latin_word_5." + ".$last_word;	// 単語の情報	
+									$compund_words["last_word"][] = $last_word;																					// 要素の最後
+									// 強語幹を入れる。
+									$compund_words["compund"][] = $latin_word.$latin_word_2.$latin_word_3.$latin_word_4.$latin_word_5;						
+								}
+							}
+						}
+					}
+				}	
+			} else if(count($latin_words) == 5){
+				// 5語の場合は
+				// 新しい配列に詰め替え
+				foreach ($latin_words[1] as $latin_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($latin_words[2] as $latin_word_3 ) {
+						// 新しい配列に詰め替え
+						foreach ($latin_words[3] as $latin_word_4 ) {
+							// 新しい配列に詰め替え
+							foreach ($last_words as $last_word ) {
+								// 弱語幹と最後の要素を入れる。
+								$compund_words["word_info"][] = $latin_word." + ".$latin_word_2." + ".$latin_word_3." + ".$latin_word_4." + ".$last_word;	// 単語の情報	
+								$compund_words["last_word"][] = $last_word;																					// 要素の最後
+								// 強語幹を入れる。
+								$compund_words["compund"][] = $latin_word.$latin_word_2.$latin_word_3.$latin_word_4;						
+							}
+						}
+					}
+				}	
+			} else if(count($latin_words) == 4){
 				// 4語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
@@ -1156,7 +1192,7 @@ class Latin_Common extends Common_IE{
 						}
 					}
 				}	
-			} else if(count($latin_words) == 2){
+			} else if(count($latin_words) == 3){
 				// 3語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
@@ -1169,14 +1205,14 @@ class Latin_Common extends Common_IE{
 						$compund_words["compund"][] = $latin_word.$latin_word_2;						
 					}
 				}
-			} else if(count($latin_words) == 1){			
+			} else if(count($latin_words) == 2){			
 				// 新しい配列に詰め替え
 				foreach ($last_words as $last_word ) {
 					// 弱語幹と最後の要素を入れる。
 					$compund_words["word_info"][] = $latin_word." + ".$last_word;	// 単語の情報					
 					$compund_words["last_word"][] = $last_word;						// 要素の最後
 					// 強語幹を入れる。
-					$compund_words["compund"][] = $latin_word;		// 強語幹を入れる。					
+					$compund_words["compund"][] = $latin_word;						// 強語幹を入れる。					
 				}
 			} 
 		}

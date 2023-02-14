@@ -3598,6 +3598,9 @@ class Vedic_Verb extends Verb_Common_IE{
 			    case "7t":
 					$this->present_stem = mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1m\\2", $root);
 			        break;
+			    case "7t2":
+					$this->present_stem = mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1n\\2", $root);
+			        break;
 			    case 7:
 					$this->present_stem = mb_ereg_replace("^(.+)([bpkgcjlrtdḍṭmnṅñṇśṣsyv]|[bpkghcjlrtdḍṭ]h)$", "\\1na\\2", mb_ereg_replace("^(.+)(n|ñ|ṅ)", "\\1", $root));
 			        break;

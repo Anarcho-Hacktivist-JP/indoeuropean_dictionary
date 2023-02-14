@@ -903,7 +903,7 @@ class Sanskrit_Common extends Common_IE{
 						unset($sanskrit_adjective);
 					} else if($word_category == "verb"){
 						// 読み込み
-						$sanskrit_verb = new Vedic_Verb($compund_words["last_word"][$i], $compund_words["stem"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						$sanskrit_verb = new Vedic_Verb($compund_words["last_word"][$i], $compund_words["stem"][$i], $input_word." (".$compund_words["word_info"][$i].")");
 						// 活用表生成
 						$charts[$sanskrit_verb->get_root()] = $sanskrit_verb->get_chart(false);
 						// メモリを解放
@@ -1006,7 +1006,7 @@ class Sanskrit_Common extends Common_IE{
 					if($word_datas){
 						// 挿入する。
 						$sanskrit_words[] = $word_datas;
-					}					
+					}
 				}
 				// 次に移動
 				continue;	
@@ -1374,7 +1374,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// 必要なデータを格納する。
 		$result_data = array();
-		$result_data["last_words"] = $last_words;						// 最後の単語(単語生成用)
+		$result_data["last_words"] = $last_words;								// 最後の単語(単語生成用)
 		$result_data["sanskrit_words"] = $sanskrit_words;						// 単語リスト
 		$result_data["japanese_translation"] = $japanese_translation;			// 日本語訳
 
@@ -1388,14 +1388,34 @@ class Sanskrit_Common extends Common_IE{
 		$list_compund_word = array();
 		// 新しい配列に詰め替え
 		foreach ($sanskrit_word_list[0] as $sanskrit_word ) {
-			// 3語以上の場合は
-			if(count($sanskrit_word_list) == 4){
+			// 複合対象の単語数によって分ける。
+			if(count($sanskrit_word_list) == 6){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
 					foreach ($sanskrit_word_list[2] as $sanskrit_word_3 ) {
 						// 新しい配列に詰め替え
-						foreach ($sanskrit_word_list[2] as $sanskrit_word_4) {
+						foreach ($sanskrit_word_list[3] as $sanskrit_word_4) {
+							// 新しい配列に詰め替え
+							foreach ($sanskrit_word_list[4] as $sanskrit_word_5) {
+								// 新しい配列に詰め替え
+								foreach ($list_last_word as $last_word ) {
+									// 弱語幹と最後の要素を入れる。
+									$list_compund_word["stem"][] = Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine(Sanskrit_Common::sandhi_engine($sanskrit_word, $sanskrit_word_2, false, false), $sanskrit_word_3, false, false), $sanskrit_word_4, false, false), $sanskrit_word_5, false, false);
+									$list_compund_word["word_info"][] = $sanskrit_word." + ".$sanskrit_word_2." + ".$sanskrit_word_3." + ".$sanskrit_word_4." + ".$sanskrit_word_5." + ".$last_word;	// 単語の情報							
+									$list_compund_word["last_word"][] = $last_word;
+								}
+							}
+						}			
+					}
+				}
+			} else if(count($sanskrit_word_list) == 5){
+				// 新しい配列に詰め替え
+				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($sanskrit_word_list[2] as $sanskrit_word_3 ) {
+						// 新しい配列に詰め替え
+						foreach ($sanskrit_word_list[3] as $sanskrit_word_4) {
 							// 新しい配列に詰め替え
 							foreach ($list_last_word as $last_word ) {
 								// 弱語幹と最後の要素を入れる。
@@ -1406,7 +1426,7 @@ class Sanskrit_Common extends Common_IE{
 						}			
 					}
 				}
-			} else if(count($sanskrit_word_list) == 3){
+			} else if(count($sanskrit_word_list) == 4){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1420,7 +1440,7 @@ class Sanskrit_Common extends Common_IE{
 						}						
 					}
 				}
-			} else if(count($sanskrit_word_list) == 2){
+			} else if(count($sanskrit_word_list) == 3){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1431,7 +1451,7 @@ class Sanskrit_Common extends Common_IE{
 						$list_compund_word["last_word"][] = $last_word;
 					}
 				}
-			} else if(count($sanskrit_word_list) == 1){
+			} else if(count($sanskrit_word_list) == 2){
 				// 新しい配列に詰め替え
 				foreach ($list_last_word as $last_word ) {
 					// 弱語幹と最後の要素を入れる。

@@ -1012,8 +1012,66 @@ class Koine_Common extends Common_IE{
 		$compund_words = array();
 		// 新しい配列に詰め替え
 		foreach ($koine_words[0] as $koine_word ) {			
-			// 3語以上の場合は
-			if(count($koine_words) == 2){
+			// 複合対象の単語数によって分ける。
+			if(count($koine_words) == 6){
+				// 5語の場合は
+				// 新しい配列に詰め替え
+				foreach ($koine_words[1] as $koine_word_2){
+					// 新しい配列に詰め替え
+					foreach ($koine_words[2] as $koine_word_3){
+						// 新しい配列に詰め替え
+						foreach ($koine_words[3] as $koine_word_4) {
+							// 新しい配列に詰め替え
+							foreach ($koine_words[4] as $koine_word_5) {
+								// 新しい配列に詰め替え
+								foreach ($last_words as $last_word ) {
+									// 弱語幹と最後の要素を入れる。
+									$compund_words["word_info"][] = $koine_word." + ".$koine_word_2." + ".$koine_word_3." + ".$koine_word_4." + ".$koine_word_5." + ".$last_word;	// 単語の情報	
+									$compund_words["last_word"][] = $last_word;																					// 要素の最後
+									// 強語幹を入れる。
+									$compund_words["compund"][] = $koine_word.$koine_word_2.$koine_word_3.$koine_word_4.$koine_word_5;						
+								}
+							}
+						}
+					}
+				}
+			} else if(count($koine_words) == 5){
+				// 5語の場合は
+				// 新しい配列に詰め替え
+				foreach ($koine_words[1] as $koine_word_2){
+					// 新しい配列に詰め替え
+					foreach ($koine_words[2] as $koine_word_3){
+						// 新しい配列に詰め替え
+						foreach ($koine_words[3] as $koine_word_4) {
+							// 新しい配列に詰め替え
+							foreach ($last_words as $last_word ) {
+								// 弱語幹と最後の要素を入れる。
+								$compund_words["word_info"][] = $koine_word." + ".$koine_word_2." + ".$koine_word_3." + ".$koine_word_4." + ".$last_word;	// 単語の情報	
+								$compund_words["last_word"][] = $last_word;																					// 要素の最後
+								// 強語幹を入れる。
+								$compund_words["compund"][] = $koine_word.$koine_word_2.$koine_word_3.$koine_word_4;						
+							}
+						}
+					}
+				}
+			} else if(count($koine_words) == 4){
+				// 4語の場合は
+				// 新しい配列に詰め替え
+				foreach ($koine_words[1] as $koine_word_2 ) {
+					// 新しい配列に詰め替え
+					foreach ($koine_words[2] as $koine_word_3 ) {
+						// 新しい配列に詰め替え
+						foreach ($last_words as $last_word ) {
+							// 弱語幹と最後の要素を入れる。
+							$compund_words["word_info"][] = $koine_word." + ".$koine_word_2." + ".$koine_word_3." + ".$last_word;	// 単語の情報	
+							$compund_words["last_word"][] = $last_word;																// 要素の最後
+							// 強語幹を入れる。
+							$compund_words["compund"][] = $koine_word.$koine_word_2.$koine_word_3;						
+						}
+					}
+				}
+			} else if(count($koine_words) == 3){
+				// 3語の場合は
 				// 新しい配列に詰め替え
 				foreach ($koine_words[1] as $koine_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1025,14 +1083,15 @@ class Koine_Common extends Common_IE{
 						$compund_words["compund"][] = $koine_word.$koine_word_2;						
 					}
 				}
-			} else if(count($koine_words) == 1){			
+			} else if(count($koine_words) == 2){
+				// 2語の場合は
 				// 新しい配列に詰め替え
 				foreach ($last_words as $last_word ) {
 					// 弱語幹と最後の要素を入れる。
 					$compund_words["word_info"][] = $koine_word." + ".$last_word;	// 単語の情報					
 					$compund_words["last_word"][] = $last_word;						// 要素の最後
 					// 強語幹を入れる。
-					$compund_words["compund"][] = $koine_word;		// 強語幹を入れる。					
+					$compund_words["compund"][] = $koine_word;						// 強語幹を入れる。					
 				}
 			} 
 		}
