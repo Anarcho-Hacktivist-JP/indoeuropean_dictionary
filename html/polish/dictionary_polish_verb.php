@@ -317,22 +317,8 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       <details>
         <summary>動名詞 ※(薄文字の部分は現在は使わない)</summary>      
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="verbal-noun-table">
-          <thead>
-            <tr><th scope="row" style="width:10%">格</th>
-              <th scope="col" class="text-center" style="width:30%">単数</th>
-              <th scope="col" class="table-archaic text-center" style="width:30%">双数</th>
-              <th scope="col" class="text-center" style="width:30%">複数</th>
-            </tr>
-          </thead>
-            <tbody>
-              <tr><th class="text-center" scope="row">主格</th><td></td><td class="table-archaic"></td><td></td></tr>
-              <tr><th class="text-center" scope="row">属格</th><td></td><td class="table-archaic"></td><td></td></tr>
-              <tr><th class="text-center" scope="row">与格</th><td></td><td class="table-archaic"></td><td></td></tr>
-              <tr><th class="text-center" scope="row">対格</th><td></td><td class="table-archaic"></td><td></td></tr>
-              <tr><th class="text-center" scope="row">具格</th><td></td><td class="table-archaic"></td><td></td></tr>          
-              <tr><th class="text-center" scope="row">地格</th><td></td><td class="table-archaic"></td><td></td></tr>          
-              <tr><th class="text-center" scope="row">呼格</th><td></td><td class="table-archaic"></td><td></td></tr>                 
-            </tbody>
+          <?php echo Polish_Common::make_noun_column_chart(); ?>
+          <?php echo Polish_Common::make_noun_chart(); ?>
         </table>
       </details><br>  
     </div>

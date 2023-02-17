@@ -61,7 +61,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
         <?php echo Polish_Common::number_selection_button(); ?> 
         <?php echo Polish_Common::case_selection_button(); ?>      
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-answer">Button</button>
+          <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button>
         </div>       
       </div>     
     </div>

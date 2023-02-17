@@ -585,31 +585,60 @@ class Polish_Common extends Common_IE{
 		// 表を返す。
 		return '
 			<tr><th class="text-center" scope="row" colspan="10">原級</th></tr>		
-			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row" colspan="10">比較級</th></tr>
-			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row" colspan="10">最上級</th></tr>
-			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>								
+			<tr><th class="text-center" scope="row">主格(Mianownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格(Dopełniacz)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格(Celownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格(Biernik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格(Narzędnik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格(Miejscownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格(Wołacz)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row" colspan="10">比較級(Stopień Wyższy)</th></tr>
+			<tr><th class="text-center" scope="row">主格(Mianownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格(Dopełniacz)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格(Celownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格(Biernik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格(Narzędnik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格(Miejscownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格(Wołacz)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row" colspan="10">最上級(Najwyższy Stopień)</th></tr>
+			<tr><th class="text-center" scope="row">主格(Mianownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格(Dopełniacz)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格(Celownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格(Biernik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格(Narzędnik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格(Miejscownik)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格(Wołacz)</th><td></td><td></td><td></td><td class="table-archaic"></td><td class="table-archaic"></td><td class="table-archaic"></td><td></td><td></td><td></td></tr>					
 			';
-	}	
+	}
+
+	// 名詞の活用表(タイトル)を作る。
+	public static function make_noun_column_chart(){
+		// タイトルを入れて表を返す。
+		return '
+		<thead>
+			<tr><th scope="row" class="text-center" style="width:10%">格</th>
+		  		<th scope="col" class="text-center" style="width:30%">単数</th>
+		  		<th scope="col" class="table-archaic text-center" style="width:30%">双数</th>
+		  		<th scope="col" class="text-center" style="width:30%">複数</th>
+			</tr>
+	  	</thead>';
+	}
+
+	// 名詞の活用表を作る。
+	public static function make_noun_chart(){
+
+		// 表を返す。
+		return '
+		<tbody>
+			<tr><th class="text-center" scope="row">主格(Mianownik)</th><td></td><td class="table-archaic"></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格(Dopełniacz)</th><td></td><td class="table-archaic"></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格(Celownik)</th><td></td><td class="table-archaic"></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格(Biernik)</th><td></td><td class="table-archaic"></td><td></td></tr>
+			<tr><th class="text-center" scope="row">具格(Narzędnik)</th><td></td><td class="table-archaic"></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格(Miejscownik)</th><td></td><td class="table-archaic"></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格(Wołacz)</th><td></td><td class="table-archaic"></td><td></td></tr>
+	  	</tbody>';
+	}
 
 	// 特殊文字入力ボタンを配置する。
 	public static function input_special_button(){
@@ -753,31 +782,31 @@ class Polish_Common extends Common_IE{
 		<section class="row">
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="'.Commons::GENETIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格('.Commons::GENETIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="'.Commons::DATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格('.Commons::DATIVE.')</label>
 		  </div>         
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="'.Commons::ACCUSATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格('.Commons::ACCUSATIVE.')</label>
 		  </div>         
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-ins" autocomplete="off" value="'.Commons::INSTRUMENTAL.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ins">具格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ins">具格('.Commons::INSTRUMENTAL.')</label>
 		  </div>		  
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="'.Commons::LOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格('.Commons::LOCATIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="'.Commons::VOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格('.Commons::VOCATIVE.')</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
