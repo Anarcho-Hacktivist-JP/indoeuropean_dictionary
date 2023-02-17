@@ -72,7 +72,7 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
       <div class="input-group mb-3">
         <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-answer">Button</button>
+          <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button>
         </div>       
       </div>      
       <?php echo Sanskrit_Common::input_special_button(); ?>   

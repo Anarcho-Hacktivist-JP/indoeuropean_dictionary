@@ -60,7 +60,7 @@ $question_data = $adjective_vedic->get_form_by_number_case_gender_grade("", "", 
         <?php echo Sanskrit_Common::number_selection_button(); ?> 
         <?php echo Sanskrit_Common::case_selection_button(); ?>  
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-answer">Button</button>
+          <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button>
         </div>       
       </div>
     </div>

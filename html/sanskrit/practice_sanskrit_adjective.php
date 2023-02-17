@@ -61,7 +61,7 @@ $question_data = $adjective_vedic->get_form_by_number_case_gender_grade($case, $
       <div class="input-group mb-3">
         <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-answer">Button</button>
+          <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button>
         </div>       
       </div>      
       <?php echo Sanskrit_Common::input_special_button(); ?>   
