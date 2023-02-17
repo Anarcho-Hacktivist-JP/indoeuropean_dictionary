@@ -1420,31 +1420,31 @@ class Latin_Common extends Common_IE{
 		<section class="row">
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="'.Commons::GENETIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格('.Commons::GENETIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="'.Commons::DATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格('.Commons::DATIVE.')</label>
 		  </div>         
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="'.Commons::ACCUSATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格('.Commons::ACCUSATIVE.')</label>
 		  </div>         
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-abl" autocomplete="off" value="'.Commons::ABLATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-abl">奪格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-abl">奪格('.Commons::ABLATIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="'.Commons::LOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格('.Commons::LOCATIVE.')</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="'.Commons::VOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格('.Commons::VOCATIVE.')</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -1500,11 +1500,11 @@ class Latin_Common extends Common_IE{
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="'.Commons::ACTIVE_VOICE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態(active)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="'.Commons::MEDIOPASSIVE_VOICE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">受動態</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">受動態(passive)</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加

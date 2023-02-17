@@ -689,10 +689,6 @@ class Polish_Common extends Common_IE{
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
