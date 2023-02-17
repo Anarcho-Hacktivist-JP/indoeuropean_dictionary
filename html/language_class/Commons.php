@@ -390,55 +390,31 @@ class Common_IE {
 		$button_html_code = '
 		<h3>性別</h3>
 		<section class="row">
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">男性(Masculine)</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性(Feminine)</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">中性(Neuter)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-3">
+			'<div class="col-md-2">
 				<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-gender">すべて(All)</label>
 		  	 </div>';
 		}
 
 		// 結果を返す。
 		return $button_html_code.'</section>';
 	}
-
-	// 性別選択ボタンの生成(検索用)
-	public static function search_gender_selection_button(){
-		// ボタンを生成
-		return '
-		<section class="row">
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
-		  </div>
-		  <div class="col-md-3">
-			<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
-		 </div>';
-	}
-
 
 	// 性別選択ボタンの生成
 	public static function adjective_gender_selection_button($all_flag = false){
@@ -447,25 +423,25 @@ class Common_IE {
 		$button_html_code = '
 		<h3>性別</h3>
 		<section class="row">
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::ANIMATE_GENDER.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine">男性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">男性(Masculine)</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::ACTION_GENDER.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-femine">女性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性(Feminine)</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::INANIMATE_GENDER.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-neuter">中性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">中性(Neuter)</label>
 		  </div>';
 		
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-3">
+			'<div class="col-md-2">
 				<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-gender">すべて</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-gender">すべて</label>
 		  	 </div>';
 		}
 
@@ -480,21 +456,21 @@ class Common_IE {
 		$button_html_code = '
 		<h3>数</h3>
 		<section class="row">
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::PLURAL.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-3">
+			'<div class="col-md-2">
 				<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて</label>
 		  	 </div>';
 		}
 
@@ -508,37 +484,37 @@ class Common_IE {
 		$button_html_code = '
         <h3>人称</h3>
         <section class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg" onclick="click_person_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1sg">1人称単数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1sg">1人称単数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-2sg" autocomplete="off" value="2sg" onclick="click_person_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2sg">2人称単数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-2sg">2人称単数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg" onclick="click_person_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3sg">3人称単数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3sg">3人称単数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl" onclick="click_person_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1pl">1人称複数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1pl">1人称複数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-2pl" autocomplete="off" value="2pl" onclick="click_person_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2pl">2人称複数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-2pl">2人称複数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl" onclick="click_person_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3pl">3人称複数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3pl">3人称複数</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-3">
+			'<div class="col-md-2">
             	<input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked" onclick="click_person_button()">
-            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
+            	<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-person">すべて</label>
          	 </div>';
 		}
 

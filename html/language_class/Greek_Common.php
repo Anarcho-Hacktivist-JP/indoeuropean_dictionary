@@ -1013,7 +1013,7 @@ class Koine_Common extends Common_IE{
 		// 新しい配列に詰め替え
 		foreach ($koine_words[0] as $koine_word ) {			
 			// 複合対象の単語数によって分ける。
-			if(count($koine_words) == 6){
+			if(count($koine_words) == 5 && $last_words){
 				// 5語の場合は
 				// 新しい配列に詰め替え
 				foreach ($koine_words[1] as $koine_word_2){
@@ -1035,7 +1035,7 @@ class Koine_Common extends Common_IE{
 						}
 					}
 				}
-			} else if(count($koine_words) == 5){
+			} else if(count($koine_words) == 4 && $last_words){
 				// 5語の場合は
 				// 新しい配列に詰め替え
 				foreach ($koine_words[1] as $koine_word_2){
@@ -1054,7 +1054,7 @@ class Koine_Common extends Common_IE{
 						}
 					}
 				}
-			} else if(count($koine_words) == 4){
+			} else if(count($koine_words) == 3 && $last_words){
 				// 4語の場合は
 				// 新しい配列に詰め替え
 				foreach ($koine_words[1] as $koine_word_2 ) {
@@ -1070,7 +1070,7 @@ class Koine_Common extends Common_IE{
 						}
 					}
 				}
-			} else if(count($koine_words) == 3){
+			} else if(count($koine_words) == 2 && $last_words){
 				// 3語の場合は
 				// 新しい配列に詰め替え
 				foreach ($koine_words[1] as $koine_word_2 ) {
@@ -1083,7 +1083,7 @@ class Koine_Common extends Common_IE{
 						$compund_words["compund"][] = $koine_word.$koine_word_2;						
 					}
 				}
-			} else if(count($koine_words) == 2){
+			} else if(count($koine_words) == 1 && $last_words){
 				// 2語の場合は
 				// 新しい配列に詰め替え
 				foreach ($last_words as $last_word ) {

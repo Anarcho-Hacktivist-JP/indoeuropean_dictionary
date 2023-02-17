@@ -168,7 +168,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">
         <?php echo Latin_Common::input_special_button(); ?>
         <?php echo Latin_Common::language_select_box(); ?>
-        <?php echo Latin_Common::search_gender_selection_button(); ?>   
+        <?php echo Latin_Common::noun_gender_selection_button(true); ?>   
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
@@ -185,13 +185,13 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row" class="text-center">主格</th><td></td><td></td></tr>
-          <tr><th scope="row" class="text-center">属格</th><td></td><td></td></tr>
-          <tr><th scope="row" class="text-center">与格</th><td></td><td></td></tr>
-          <tr><th scope="row" class="text-center">対格</th><td></td><td></td></tr>
-          <tr><th scope="row" class="text-center">奪格</th><td></td><td></td></tr>
-          <tr><th scope="row" class="text-center">地格</th><td></td><td></td></tr>
-          <tr><th scope="row" class="text-center">呼格</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">主格(Nominativus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">属格(Genetivus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">与格(Dativus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">対格(Accusativus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">奪格(Ablativus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">地格(Locativus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center">呼格(Vocativus)</th><td></td><td></td></tr>
         </tbody>
       </table>
     </div>

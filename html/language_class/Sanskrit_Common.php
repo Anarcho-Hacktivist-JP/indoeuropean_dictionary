@@ -1389,7 +1389,7 @@ class Sanskrit_Common extends Common_IE{
 		// 新しい配列に詰め替え
 		foreach ($sanskrit_word_list[0] as $sanskrit_word ) {
 			// 複合対象の単語数によって分ける。
-			if(count($sanskrit_word_list) == 6){
+			if(count($sanskrit_word_list) == 5 && $list_last_word){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1409,7 +1409,7 @@ class Sanskrit_Common extends Common_IE{
 						}			
 					}
 				}
-			} else if(count($sanskrit_word_list) == 5){
+			} else if(count($sanskrit_word_list) == 4 && $list_last_word){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1426,7 +1426,7 @@ class Sanskrit_Common extends Common_IE{
 						}			
 					}
 				}
-			} else if(count($sanskrit_word_list) == 4){
+			} else if(count($sanskrit_word_list) == 3 && $list_last_word){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1440,7 +1440,7 @@ class Sanskrit_Common extends Common_IE{
 						}						
 					}
 				}
-			} else if(count($sanskrit_word_list) == 3){
+			} else if(count($sanskrit_word_list) == 2 && $list_last_word){
 				// 新しい配列に詰め替え
 				foreach ($sanskrit_word_list[1] as $sanskrit_word_2 ) {
 					// 新しい配列に詰め替え
@@ -1451,7 +1451,7 @@ class Sanskrit_Common extends Common_IE{
 						$list_compund_word["last_word"][] = $last_word;
 					}
 				}
-			} else if(count($sanskrit_word_list) == 2){
+			} else if(count($sanskrit_word_list) == 1 && $list_last_word){
 				// 新しい配列に詰め替え
 				foreach ($list_last_word as $last_word ) {
 					// 弱語幹と最後の要素を入れる。
@@ -2342,45 +2342,45 @@ class Sanskrit_Common extends Common_IE{
 		$button_html_code = '
 		<h3>格</h3>
 		<section class="row">
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="'.Commons::GENETIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格('.Commons::GENETIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-gen">属格('.Commons::GENETIVE.')</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="'.Commons::DATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格('.Commons::DATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-dat">与格('.Commons::DATIVE.')</label>
 		  </div>         
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="'.Commons::ACCUSATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格('.Commons::ACCUSATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-acc">対格('.Commons::ACCUSATIVE.')</label>
 		  </div>         
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-abl" autocomplete="off" value="'.Commons::ABLATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-abl">奪格('.Commons::ABLATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-abl">奪格('.Commons::ABLATIVE.')</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-ins" autocomplete="off" value="'.Commons::INSTRUMENTAL.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ins">具格('.Commons::INSTRUMENTAL.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-ins">具格('.Commons::INSTRUMENTAL.')</label>
 		  </div>		  
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="'.Commons::LOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格('.Commons::LOCATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-loc">地格('.Commons::LOCATIVE.')</label>
 		  </div>
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="'.Commons::VOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格('.Commons::VOCATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-voc">呼格('.Commons::VOCATIVE.')</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-3">
+			'<div class="col-md-2">
 				<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-case">すべて</label>
 		  	</div>';
 		}
 
@@ -2487,49 +2487,49 @@ class Sanskrit_Common extends Common_IE{
 		$button_html_code = '
         <h3>人称</h3>
         <section class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1sg">1人称単数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1sg">1人称単数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-2sg" autocomplete="off" value="2sg">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2sg">2人称単数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-2sg">2人称単数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-3sg" autocomplete="off" value="3sg">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3sg">3人称単数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3sg">3人称単数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1du" autocomplete="off" value="1du">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1du">1人称双数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1du">1人称双数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-2du" autocomplete="off" value="2du">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2du">2人称双数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-2du">2人称双数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-3du" autocomplete="off" value="3du">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3du">3人称双数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3du">3人称双数</label>
           </div> 		  
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1pl" autocomplete="off" value="1pl">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1pl">1人称複数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1pl">1人称複数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-2pl" autocomplete="off" value="2pl">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-2pl">2人称複数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-2pl">2人称複数</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-3pl" autocomplete="off" value="3pl">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-3pl">3人称複数</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3pl">3人称複数</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-3">
+			'<div class="col-md-2">
             	<input type="radio" name="person" class="btn-check" id="btn-all-person" autocomplete="off" value="" checked="checked">
-            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-person">すべて</label>
+            	<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-person">すべて</label>
           	 </div>';
 		}
 

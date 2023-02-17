@@ -169,7 +169,7 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
         <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
         <?php echo Polish_Common::input_special_button(); ?>
         <?php echo Polish_Common::language_select_box(); ?>
-        <?php echo Polish_Common::search_gender_selection_button(); ?>      
+        <?php echo Polish_Common::noun_gender_selection_button(true); ?>      
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">

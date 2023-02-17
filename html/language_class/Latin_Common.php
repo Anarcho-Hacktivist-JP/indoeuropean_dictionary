@@ -1135,7 +1135,7 @@ class Latin_Common extends Common_IE{
 		// 新しい配列に詰め替え
 		foreach ($latin_words[0] as $latin_word ) {
 			// 複合対象の単語数によって分ける。		
-			if(count($latin_words) == 6){
+			if(count($latin_words) == 5 && $last_words){
 				// 6語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
@@ -1157,7 +1157,7 @@ class Latin_Common extends Common_IE{
 						}
 					}
 				}	
-			} else if(count($latin_words) == 5){
+			} else if(count($latin_words) == 4 && $last_words){
 				// 5語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
@@ -1176,7 +1176,7 @@ class Latin_Common extends Common_IE{
 						}
 					}
 				}	
-			} else if(count($latin_words) == 4){
+			} else if(count($latin_words) == 3 && $last_words){
 				// 4語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
@@ -1192,7 +1192,7 @@ class Latin_Common extends Common_IE{
 						}
 					}
 				}	
-			} else if(count($latin_words) == 3){
+			} else if(count($latin_words) == 2 && $last_words){
 				// 3語の場合は
 				// 新しい配列に詰め替え
 				foreach ($latin_words[1] as $latin_word_2 ) {
@@ -1205,7 +1205,7 @@ class Latin_Common extends Common_IE{
 						$compund_words["compund"][] = $latin_word.$latin_word_2;						
 					}
 				}
-			} else if(count($latin_words) == 2){			
+			} else if(count($latin_words) == 1 && $last_words){			
 				// 新しい配列に詰め替え
 				foreach ($last_words as $last_word ) {
 					// 弱語幹と最後の要素を入れる。
@@ -1249,13 +1249,13 @@ class Latin_Common extends Common_IE{
 
 		// 表を返す。
 		return '
-			<tr><th class="text-center" scope="row">主格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">属格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">与格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">対格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">奪格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">主格(Nominativus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">属格(Genetivus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">与格(Dativus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">対格(Accusativus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">奪格(Ablativus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">地格(Locativus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><th class="text-center" scope="row">呼格(Vocativus)</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			';
 	}	
 
@@ -1465,29 +1465,29 @@ class Latin_Common extends Common_IE{
 		return '
         <h3>変化種別</h3>
         <section class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb1">第一変化</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb1">第一変化</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb2" autocomplete="off" value="2">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb2">第二変化</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb2">第二変化</label>
           </div>       
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb3a" autocomplete="off" value="3a">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb3a">第三変化i型</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb3a">第三変化i型</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb3" autocomplete="off" value="3">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb3">第三変化</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb3">第三変化</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb4" autocomplete="off" value="4">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb4">第四変化</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb4">第四変化</label>
           </div>		  
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-all-conjugation" autocomplete="off" value="" checked="checked">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-conjugation">すべて</label>
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-conjugation">すべて</label>
           </div>
         </section>';
 	}
@@ -1557,15 +1557,15 @@ class Latin_Common extends Common_IE{
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="tense" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'" onclick="click_tense_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形(Present)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="tense" class="btn-check" id="btn-tense-past" autocomplete="off" value="'.Commons::PAST_TENSE.'" onclick="click_tense_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形(Past)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="tense" class="btn-check" id="btn-tense-future" autocomplete="off" value="'.Commons::FUTURE_TENSE.'" onclick="click_tense_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-future">未来形</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-future">未来形(Future)</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -1590,15 +1590,15 @@ class Latin_Common extends Common_IE{
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-ind" autocomplete="off" value="'.Commons::INDICATIVE.'" onclick="click_mood_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ind">直接法</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ind">直接法(Indicative)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::SUBJUNCTIVE.'" onclick="click_mood_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">接続法</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">接続法(Subjunctive)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::IMPERATIVE.'" onclick="click_mood_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法(Imperative)</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加

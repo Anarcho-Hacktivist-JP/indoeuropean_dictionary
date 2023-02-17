@@ -173,7 +173,7 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
         <?php echo Sanskrit_Common::input_special_button(); ?>  
         <input type="submit" class="btn-check" id="btn-search">
         <?php echo Sanskrit_Common::language_select_box(); ?>
-        <?php echo Sanskrit_Common::search_gender_selection_button(); ?>   
+        <?php echo Sanskrit_Common::noun_gender_selection_button(true); ?>   
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
