@@ -2215,15 +2215,15 @@ class Sanskrit_Common extends Common_IE{
 		<section class="row">
 		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数(Singular)</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-du" autocomplete="off" value="'.Commons::DUAL.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-du">双数</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-du">双数(Dual)</label>
 		  </div>		  
 		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::PLURAL.'">
-			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-pl">複数(Plural)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -2231,7 +2231,7 @@ class Sanskrit_Common extends Common_IE{
 			$button_html_code = $button_html_code.
 			'<div class="col-md-3">
 				<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて</label>
+				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-number">すべて(All)</label>
 		  	 </div>';
 		}
 

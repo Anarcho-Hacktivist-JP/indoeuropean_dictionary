@@ -354,6 +354,39 @@ class Commons {
 			case self::ADJ_GRADE_SUPERATIVE:
 				return "最上級";
 				break;
+			// 態を変換する。
+			case self::ACTIVE_VOICE:
+				return "能動態";
+				break;
+			case self::MIDDLE_VOICE:
+				return "中動態";
+				break;
+			case self::MEDIOPASSIVE_VOICE:
+				return "中受動態";
+				break;	
+			case self::PASSIVE_VOICE:
+				return "受動態";
+				break;
+			// 相を変換する。
+			case self::PRESENT_ASPECT:
+				return "進行相";
+				break;
+			case self::AORIST_ASPECT:
+				return "完結相";
+				break;
+			case self::PERFECT_ASPECT:
+				return "完了相";
+				break;
+			// 時制を変換する。
+			case self::PRESENT_TENSE:
+				return "現在形";
+				break;
+			case self::PAST_TENSE:
+				return "過去形";
+				break;
+			case self::FUTURE_TENSE:
+				return "未来形";
+				break;
 			default:
 				return "";
 				break;
@@ -458,11 +491,11 @@ class Common_IE {
 		<section class="row">
 		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数(Singular)</label>
 		  </div>
 		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::PLURAL.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数(Plural)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -470,7 +503,7 @@ class Common_IE {
 			$button_html_code = $button_html_code.
 			'<div class="col-md-2">
 				<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて(All)</label>
 		  	 </div>';
 		}
 

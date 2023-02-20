@@ -818,6 +818,58 @@ class Polish_Common extends Common_IE{
 		return $button_html_code.'</section>';
 
 	}
+
+	// 動詞の活用種別ボタンの生成
+	public static function verb_type_selection_button(){
+		return '
+        <h3>変化種別</h3>
+        <section class="row">
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb1">ać動詞</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb2" autocomplete="off" value="2">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb2">eć動詞</label>
+          </div>       
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb3" autocomplete="off" value="3">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb3">ąć動詞</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-3root" autocomplete="off" value="3root">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3root">語根動詞1</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-3root2" autocomplete="off" value="3root2">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3root2">語根動詞2</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-3root3" autocomplete="off" value="3root3">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-3root3">語根動詞3</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb4" autocomplete="off" value="4">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb4">ić動詞</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb4y" autocomplete="off" value="4y">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb4y">yć動詞</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb-denomitive" autocomplete="off" value="denomitive">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb-denomitive">ować動詞</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-verb-denomitive2" autocomplete="off" value="denomitive2">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb-denomitive2">uć動詞</label>
+          </div>
+          <div class="col-md-2">
+            <input type="radio" name="verb-type" class="btn-check" id="btn-all-conjugation" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-conjugation">すべて</label>
+          </div>
+        </section>';
+	}
 	
 	// 相ボタンの生成
 	public static function aspect_selection_button(){
@@ -938,6 +990,6 @@ class Polish_Common extends Common_IE{
 
 		// 結果を返す。
 		return $button_html_code;
-	}	
+	}
 
 }

@@ -1461,7 +1461,7 @@ class Latin_Common extends Common_IE{
 	}
 
 	// 動詞の活用種別ボタンの生成
-	public static function verb_type_type_selection_button(){
+	public static function verb_type_selection_button(){
 		return '
         <h3>変化種別</h3>
         <section class="row">

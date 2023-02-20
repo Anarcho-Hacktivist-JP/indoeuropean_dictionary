@@ -15,9 +15,11 @@ $verb_type = trim(filter_input(INPUT_POST, 'verb-type'));
 $person = trim(filter_input(INPUT_POST, 'person'));
 // 挿入データ－法－
 $mood = trim(filter_input(INPUT_POST, 'mood'));
+// 挿入データ－相－
+$aspect = trim(filter_input(INPUT_POST, 'aspect'));
 
 // 単語取得
-$question_word = Polish_Common::get_random_verb($verb_type);
+$question_word = Polish_Common::get_random_verb($verb_type, $aspect);
 // 読み込み
 $polish_verb = new Polish_Verb($question_word["dictionary_stem"]);
 // 問題集生成
@@ -40,7 +42,7 @@ $question_data = $polish_verb->get_conjugation_form_by_each_condition($person, $
   <body>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php //echo Polish_Common::verb_type_selection_button(); ?>
+        <?php echo Polish_Common::verb_type_selection_button(); ?>
         <?php //echo Polish_Common::adjective_gender_selection_button(); ?>
         <?php echo Polish_Common::aspect_selection_button(); ?>        
         <input class="input js-persist" type="checkbox" name="save" /><span class="label-title">送信時に条件を保存する</span>

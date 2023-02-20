@@ -46,7 +46,7 @@ $question_data = $latin_verb->get_conjugation_form_by_each_condition($person, $v
   <body>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
-        <?php echo Latin_Common::verb_type_type_selection_button(); ?>
+        <?php echo Latin_Common::verb_type_selection_button(); ?>
         <?php echo Latin_Common::voice_selection_button(true); ?>
         <?php echo Latin_Common::aspect_selection_button(true); ?>       
         <?php echo Latin_Common::tense_selection_button(true); ?>       

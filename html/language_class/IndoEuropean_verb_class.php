@@ -7217,7 +7217,7 @@ class Polish_Verb extends Verb_Common_IE {
 		        $this->opt = "ej";				// 命令法←希求法
 				$this->class_name = "第二変化";	 // 活用名				
 		        break;
-		    case "3an":
+		    case "3":
 				$this->ind = "i";				// 直接法
 				$this->opt = "ij";				// 命令法←希求法
 				$this->class_name = "第三変化";	 // 活用名				
