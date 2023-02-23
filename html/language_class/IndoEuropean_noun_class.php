@@ -3574,7 +3574,6 @@ class Koine_Noun extends Noun_Common_IE {
 			"sg_gen" => "ᾱς",
 			"sg_dat" => "ᾳ",
 			"sg_acc" => "ᾱν",
-			"sg_loc" => "ᾳ",
 			"sg_voc" => "ᾱ",
 			"du_nom" => "ᾱ",
 			"du_gen" => "αιν",

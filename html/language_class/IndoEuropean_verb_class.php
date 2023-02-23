@@ -2943,6 +2943,784 @@ class Latin_Verb_Eo extends Latin_Verb {
 
 }
 
+// ロマンス語共通クラス
+class Common_Romance_Verb extends Verb_Common_IE {
+	
+	// 一次人称接尾辞(現在、未来)
+	protected $primary_number = 
+	[		
+		"active" => 
+		[
+			"1sg" => "ō",
+			"2sg" => "s", 
+			"3sg" => "t",
+			"1pl" => "mus",
+			"2pl" => "tis", 
+			"3pl" => "unt",	
+		],
+	];
+	
+	// 二次人称接尾辞(過去、接続)
+	protected $secondary_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "m",
+			"2sg" => "s", 
+			"3sg" => "t",
+			"1pl" => "mus",
+			"2pl" => "tis", 
+			"3pl" => "nt",	
+		],
+	];
+
+	// 命令人称接尾辞
+	protected $imperative_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "",
+			"2sg" => "", 
+			"3sg" => "",
+			"1pl" => "",
+			"2pl" => "te", 
+			"3pl" => "",	
+		],
+	];
+	
+	// 完了人称接尾辞
+	protected $perfect_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "i",
+			"2sg" => "istī", 
+			"3sg" => "it",
+			"1pl" => "imus",
+			"2pl" => "istis", 
+			"3pl" => "ērent",	
+		]
+	];
+	
+	// 直接法
+	protected $ind = "";
+	// 命令法
+	protected $imper = "";
+	// 希求法→接続法
+	protected $opt = "";
+	// 接続法→未来形
+	protected $subj = "";
+	
+	// 不定形
+	protected $infinitive = "";
+	// 受動不定形
+	protected $passive_infinitive = "";
+	// 完了不定形
+	protected $perfect_infinitive = "";
+	// 完了受動不定形
+	protected $perfect_passive_infinitive = "";
+	// 未来不定形
+	protected $future_infinitive = "";
+	// 未来受動不定形
+	protected $future_passive_infinitive = "";
+
+
+	// 未来能動分詞
+	protected $future_participle_active = "";
+	// 未来受動分詞
+	protected $future_participle_passive = "";
+	// 目的分詞
+	protected $supine = "";
+
+	// 非人称のみ
+	protected $deponent_personal = "";
+
+	// 直接法過去接尾辞
+	protected const past_ind_infix = "ba";
+	// 直接法未来語尾
+	protected const ind_future_suffix = "bi";
+	// 直接法過去完了語尾
+	protected const ind_perf_past_suffix = "era";	
+	// 直接法未来完了語尾
+	protected const ind_perf_future_suffix = "eri";
+
+	// sum補助動詞
+	protected const auxiliary_sum = "esse";
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+ 	function __construct_lat1($dic_stem) {
+		// 親の呼び出し
+    	parent::__construct($dic_stem);
+    	// 動詞情報を取得
+		$word_info = $this->get_verb_from_DB($dic_stem, Latin_Common::DB_VERB);
+		// データの取得確認
+		if($word_info){
+			// データを挿入
+			$this->present_stem = $word_info["present_stem"];						// 現在形
+			$this->infinitive = $word_info["infinitive_stem"];						// 不定形
+			$this->perfect_stem = $word_info["perfect_stem"];						// 完了形
+			$this->perfect_participle_passive = $word_info["perfect_participle"];	// 完了分詞
+
+			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語訳
+			$this->english_translation = $word_info["english_translation"];			// 英語訳
+
+			$this->deponent_personal = $word_info["deponent_personal"];				// 非人称のみ
+			$this->verb_type = $word_info["verb_type"];								// 活用種別
+		} else if(preg_match('/(ar)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -3));
+		} else if(preg_match('/er$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb3(mb_substr($dic_stem, 0, -3));			
+		} else if(preg_match('/ir$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb4(mb_substr($dic_stem, 0, -3));										
+		} else {
+			// 不明動詞の対応
+			$this->generate_uknown_verb($dic_stem);
+		}
+
+		// 動詞の種別を決定
+		$this->decide_verb_class();
+		// 動詞の語幹を作成
+		$this->get_verb_stem($this->infinitive, $this->perfect_participle_passive);
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    function __construct_lat3($stem, $japanese_word, $last_word) {
+		// 親の呼び出し
+    	parent::__construct($last_word);		
+		// 種別により分ける。
+		if(mb_strpos('する', $japanese_word) && preg_match('/āre$/', $last_word)){
+			// 不明動詞の対応
+			$this->generate_uknown_verb(mb_substr($stem, 0, -1));																			
+		} else {
+			// それ以外は最後の語尾から動詞の活用を生成
+			$this->__construct_lat1($last_word);
+			// 後ろに付け加える。
+			$this->present_stem = $stem.$this->present_stem ;								// 現在形
+			$this->infinitive = $stem.$this->infinitive;									// 不定形
+			$this->perfect_stem = $stem.$this->perfect_stem;								// 完了形
+			$this->perfect_participle_passive = $stem.$this->perfect_participle_passive;	// 完了分詞														
+		}
+		// 動詞の種別を決定
+		$this->decide_verb_class();
+		// 訳を入れる。
+		$this->japanese_translation = $japanese_word;									// 日本語訳
+		$this->english_translation = "";												// 英語訳				
+		// 動詞の語幹を作成
+		$this->get_verb_stem($this->infinitive, $this->perfect_participle_passive);		
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct() {
+        $a = func_get_args();
+        $i = func_num_args();
+        //引数に応じて別々のコンストラクタを似非的に呼び出す
+        if (method_exists($this,$f='__construct_lat'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+
+	// 追加情報を取得
+	protected function get_add_info($dic_stem){
+    	// 動詞情報を取得
+		$word_info = $this->get_verb_from_DB($dic_stem, Latin_Common::DB_VERB);
+		// データの取得確認
+		if($word_info){
+			$this->deponent_personal = $word_info["deponent_personal"];				// 非人称のみ
+			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語訳
+			$this->english_translation = $word_info["english_translation"];			// 英語訳
+			$this->verb_type= $word_info["verb_type"];								// 活用種別
+		}
+	}
+
+	// 不定詞を取得
+	public function get_infinitive(){
+		return $this->infinitive;
+	}
+
+	// 動詞種別の判定
+	private function decide_verb_class(){
+    	// 活用種別から動詞種別判定
+		switch ($this->verb_type) {
+		    case "1":
+		        $this->ind = "a";		// 直接法
+		        $this->opt = "e";			// 接続法←希求法
+		        $this->imper = "ā";		// 命令法
+				$this->class_name = "第一変化";	 // 活用名
+		        break;
+		    case "2":
+				$this->ind = "e";		// 直接法
+		        $this->opt = "a";			// 接続法←希求法
+		        $this->imper = "ē";		// 命令法
+				$this->class_name = "第二変化";	 // 活用名				
+		        break;
+		    case "3":
+   				// 直説法語尾
+				$this->ind = "i";		// 直接法
+		        $this->opt = "a";			// 接続法←希求法
+		        $this->subj = "e";		// 未来形←接続法
+				$this->imper = "e";		// 命令法
+				$this->class_name = "第三変化";	 // 活用名				
+		        break;
+			case "3a":
+				// 直説法語尾
+			 	$this->ind = "";				// 直接法
+			 	$this->opt = "a";				// 接続法←希求法
+				$this->imper = "i";			// 未来形←接続法
+			 	$this->subj = "e";			// 命令法
+				$this->class_name = "第三変化i型";	 // 活用名
+				break;
+		    case "4":
+   				// 直説法語尾
+				$this->ind = "";				// 直接法
+		        $this->opt = "a";				// 接続法←希求法
+		        $this->subj = "e";			// 未来形←接続法
+		        $this->imper = "ī";			// 命令法
+				$this->class_name = "第四変化型";	 // 活用名				
+		        break;
+		    case "5fio":
+   				// 直説法語尾
+				$this->ind = "";				// 直接法
+		        $this->opt = "a";				// 接続法←希求法
+		        $this->subj = "e";			// 未来形←接続法
+				$this->imper = "i";			// 命令法
+				$this->class_name = "不規則動詞";	 // 活用名				
+		        break;				
+		    case "5volo":
+   				// 直説法語尾
+				$this->ind = "";				// 直接法
+		        $this->opt = "";				// 接続法←希求法
+		        $this->subj = "e";			// 未来形←接続法
+				$this->imper = "i";			// 命令法
+				$this->class_name = "不規則動詞";	 // 活用名					
+		        break;
+		    case "5fer":
+   				// 直説法語尾
+				$this->ind = "";				// 直接法
+		        $this->opt = "a";				// 接続法←希求法
+		        $this->subj = "e";			// 未来形←接続法
+				$this->imper = "";				// 命令法
+				$this->class_name = "不規則動詞";	 // 活用名					
+		        break;
+		    case "5eo":
+   				// 直説法語尾
+				$this->ind = "";				// 直接法
+		        $this->opt = "a";				// 接続法←希求法
+		        $this->subj = "";			// 未来形←接続法
+				$this->imper = "";				// 命令法
+				$this->class_name = "不規則動詞";	 // 活用名					
+		        break;					
+			default:
+				break;
+		}
+	}
+
+	// 不明動詞の対応
+	private function generate_uknown_verb($dic_stem){
+		// 共通語幹を取得
+		$common_stem = $dic_stem."a";
+		// 訳を入れる。
+		$this->japanese_translation = "借用";
+		$this->english_translation = "loanword";	
+		$this->verb_type= "1";					// 活用種別					
+		$this->present_stem = mb_substr($common_stem, 0, -1);			// 現在形
+		$this->infinitive = $common_stem ."re";							// 不定形
+		$this->aorist_stem = $common_stem."v";							// 完了形
+		$this->perfect_stem = $common_stem."v";							// 完了形
+		$this->perfect_participle_passive = $common_stem."tus";			// 完了分詞
+	}
+
+	// 不明動詞の対応3
+	private function generate_uknown_verb3($dic_stem){
+		// 共通語幹を取得
+		$common_stem = $dic_stem."e";
+		// 訳を入れる。
+		$this->japanese_translation = "借用";
+		$this->english_translation = "loanword";	
+		$this->verb_type= "3";						// 活用種別					
+		$this->present_stem = mb_substr($common_stem, 0, -1);			// 現在形
+		$this->infinitive = $common_stem ."re";							// 不定形
+		$this->aorist_stem = $common_stem;								// 完了形
+		$this->perfect_stem = $common_stem;								// 完了形
+		$this->perfect_participle_passive = $dic_stem."tus";			// 完了分詞
+	}
+
+	// 不明動詞の対応4
+	private function generate_uknown_verb4($dic_stem){
+		// 共通語幹を取得
+		$common_stem = $dic_stem."i";
+		// 訳を入れる。
+		$this->japanese_translation = "借用";
+		$this->english_translation = "loanword";	
+		$this->verb_type= "4";											// 活用種別					
+		$this->present_stem = mb_substr($common_stem, 0, -1)."i";		// 現在形
+		$this->infinitive = $common_stem ."re";							// 不定形
+		$this->aorist_stem = $common_stem."v";							// 完了形
+		$this->perfect_stem = $common_stem."v";							// 完了形
+		$this->perfect_participle_passive = $dic_stem."ītus";			// 完了分詞
+	}
+
+	// 動詞の語幹を作成
+	private function get_verb_stem($infinitive, $perfect_paticiple){	
+		// 分詞語尾を取得
+		$common_stem = mb_substr($infinitive, 0, -2);
+
+		// 分詞を挿入
+		$this->present_participle_active = $common_stem."ns";		// 不完了体能動分詞
+		$this->perfect_participle_passive = $perfect_paticiple;		// 状態動詞受動分詞
+		
+		// 不定詞を挿入
+		$this->infinitive = $infinitive;						// 不定形
+	}
+	
+	// 動詞作成
+	public function get_latin_verb($person, $voice, $mood, $aspect, $tense){
+
+		// 非人称チェック
+		if($this->deponent_personal == "1" && $person != "3sg"){
+			// ハイフンを返す。
+			return "-";			
+		}
+
+		// 不適切な組み合わせのチェック
+		if(!$this->deponent_check($voice, $aspect)){
+			// ハイフンを返す。
+			return "-";		
+		}
+
+		//動詞の語幹を取得
+		$verb_conjugation = "";
+		if($aspect == Commons::PRESENT_ASPECT && $this->deponent_present != Commons::$TRUE){
+			// 不完了形
+			$verb_conjugation = $this->present_stem;
+		} else if($aspect == Commons::PERFECT_ASPECT && $this->deponent_perfect != Commons::$TRUE){
+			// 状態動詞
+			$verb_conjugation = $this->perfect_stem;
+		} else {
+			// ハイフンを返す。
+			return "-";
+		} 
+		
+		//法を取得
+		if($mood == Commons::INDICATIVE){
+			// 相で分ける
+			if($aspect == Commons::PRESENT_ASPECT && $this->deponent_present != Commons::$TRUE){
+				// 進行相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					//現在形
+					$verb_conjugation = $this->get_primary_infix($verb_conjugation, $aspect, $tense, $voice, $person, $this->ind);
+				} else if($tense == Commons::PAST_TENSE){
+					//過去形
+					$verb_conjugation = $this->get_ind_past($voice, $person);
+				} else if($tense == Commons::FUTURE_TENSE){
+					//未来形
+					$verb_conjugation = $this->get_ind_future($this->present_stem, $voice, $person);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else if($aspect == Commons::PERFECT_ASPECT && $voice == Commons::ACTIVE_VOICE && $this->deponent_perfect != Commons::$TRUE && $this->deponent_active != Commons::$TRUE){
+				// 完了相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					// 現在形					
+					$verb_conjugation = $this->get_perfect_suffix($verb_conjugation, $voice, $person, "");
+				} else if($tense == Commons::PAST_TENSE){
+					// 過去形
+					// コピュラの呼び出し
+					$verb_sum = new Latin_Verb_Sum();
+					// 生成					
+					$verb_conjugation = $verb_conjugation.$verb_sum->get_latin_verb($person, Commons::ACTIVE_VOICE, $mood, Commons::PRESENT_ASPECT, $tense);
+				} else if($tense == Commons::FUTURE_TENSE){
+					// 未来形
+					$verb_conjugation = $this->get_primary_infix($verb_conjugation, $aspect, $tense, $voice, $person, self::ind_perf_future_suffix);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else if($mood == Commons::SUBJUNCTIVE){
+			// 接続法
+			// 相で分ける
+			if($aspect == Commons::PRESENT_ASPECT && $this->deponent_present != Commons::$TRUE){
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					//現在形
+					$verb_conjugation = $this->get_secondary_infix($verb_conjugation, $voice, $person, $this->opt);
+				} else if($tense == Commons::PAST_TENSE){
+					//過去形
+					$verb_conjugation = $this->make_subj_past($voice, $person);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else if($aspect == Commons::PERFECT_ASPECT && $voice == Commons::ACTIVE_VOICE && $this->deponent_perfect != Commons::$TRUE && $this->deponent_active != Commons::$TRUE){
+				// 完了相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {			
+					// 現在形
+					// コピュラの呼び出し
+					$verb_sum = new Latin_Verb_Sum();
+					// 生成						
+					$verb_conjugation = $verb_conjugation."er".mb_substr($verb_sum->get_latin_verb($person, Commons::ACTIVE_VOICE, $mood, Commons::PRESENT_ASPECT, $tense), 1);
+				} else if($tense == Commons::PAST_TENSE){
+					// 過去形
+					// コピュラの呼び出し
+					$verb_sum = new Latin_Verb_Sum();
+					// 生成										
+					$verb_conjugation = $verb_conjugation."i".mb_substr($verb_sum->get_latin_verb($person, Commons::ACTIVE_VOICE, $mood, Commons::PRESENT_ASPECT, $tense), 1);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				} 
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else if($mood == Commons::IMPERATIVE){
+			// 命令形語幹を作成
+			$verb_conjugation = mb_substr($this->infinitive, 0, -3).$this->imper;
+			// 時制を分ける。
+			if($tense == Commons::PRESENT_TENSE) {
+				// 現在形
+				$verb_conjugation = $this->get_imperative_suffix($verb_conjugation, $voice, $person);
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
+		
+		// 文字を変換
+		$verb_conjugation = str_replace("cs", "x", $verb_conjugation);
+		// 結果を返す。
+		return $verb_conjugation;
+	}
+	
+	// 一次語尾
+	protected function get_primary_infix($verb_stem, $aspect, $tense, $voice, $person, $infix){
+
+		// 接尾辞を追加
+		$verb_stem = $verb_stem.$infix;
+		// 文字列を切除
+		if($this->verb_type == "1" && $tense == Commons::PRESENT_TENSE){
+			// 第一活用現在形の場合
+			// 人称によっては最後の文字を削除
+			if($person == "1sg"){
+				// 一人称単数、三人称複数
+				// 最後の母音を切除
+				$verb_stem  = mb_substr($verb_stem, 0, -1);
+			} 
+		} else if($this->verb_type == "3" || $tense != Commons::PRESENT_TENSE){
+			// 第三、第四活用または現在形以外
+			// 人称によっては最後の文字を削除
+			if(preg_match('(1sg|3pl)', $person)){
+				// 一人称単数、三人称複数
+				// 最後の母音を切除
+				$verb_stem  = mb_substr($verb_stem, 0, -1);
+			}
+		} else if($this->verb_type == "2" && $aspect == Commons::PRESENT_ASPECT){
+			// 第二活用現在形の場合
+			// 最後の母音を切除
+			$verb_stem  = mb_substr($verb_stem, 0, -1);	
+		}
+
+		// 語尾を追加
+		$verb_conjugation = $this->get_primary_suffix_latin($verb_stem, $aspect, $tense, $voice, $person);
+		// 結果を返す。
+		return $verb_conjugation;
+	}
+	
+	// 一次語尾
+	protected function get_primary_suffix_latin($verb_stem, $aspect, $tense, $voice, $person){
+		// 対象は三人称複数のみ
+		if($person == "3pl") {
+			// 時制と動詞クラスで分ける。
+			// 現在形と未来形の1・2活用
+			if($aspect == Commons::PRESENT_ASPECT && $tense == Commons::PRESENT_TENSE && $this->verb_type== 1 && $this->deponent_present != Commons::$TRUE){
+				// 態で分ける。
+				if($voice == Commons::ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
+					// 能動態
+					$verb_conjugation = $verb_stem.$this->secondary_number[$voice][$person];
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else {
+				// それ以外は親クラスを呼び出す
+				$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);			
+			}
+		} else {
+			// それ以外は親クラスを呼び出す
+			$verb_conjugation = $this->get_primary_suffix($verb_stem, $voice, $person);
+		}
+		// 結果を返す。
+		return $verb_conjugation;
+	}
+	
+	// 二次語尾
+	protected function get_secondary_infix($verb_stem, $voice, $person, $infix){	
+		// 接尾辞を追加
+		$verb_conjugation = $verb_stem.$infix;
+		// 語尾を追加
+		$verb_conjugation = $this->get_secondary_suffix($verb_conjugation, $voice, $person);
+		// 結果を返す。
+		return $verb_conjugation;
+	}
+
+	// 直接法過去を作成
+	protected function get_ind_past($voice, $person){
+		// 結果を返す。
+		return $this->get_secondary_infix(mb_substr($this->infinitive, 0, -2), $voice, $person, self::past_ind_infix);
+	}
+
+	// 接続法過去を作成
+	protected function make_subj_past($voice, $person){			
+		// 過去形を生成
+		$past_tense = $this->get_secondary_infix($this->infinitive, $voice, $person, "");
+		// 結果を返す。
+		return $past_tense;
+	}	
+	
+	// 未来形
+	protected function get_ind_future($verb_stem, $voice, $person){
+		// 動詞の活用種別で分ける
+		if(preg_match('/(1|2|5eo)$/', $this->verb_type)){
+			// 語幹を生成
+			$verb_stem = mb_substr($this->infinitive, 0, -2);
+			// 未来形を生成			
+			$verb_stem = $this->get_primary_infix($verb_stem, Commons::PRESENT_ASPECT, Commons::FUTURE_TENSE, $voice, $person, self::ind_future_suffix);
+		} else if(preg_match('/(3|3a|4|5fio|5volo|5fer)$/', $this->verb_type)){			
+			// 第三・第四活用
+			// 接中辞
+			$future_infix = "";			
+			// 人称によって分ける
+			if($person == "1sg"){
+				// 1人称単数
+				$future_infix = "a";
+			} else {
+				// それ以外
+				$future_infix = $this->subj;
+			}
+			// 語尾を追加
+			$verb_stem = $this->get_secondary_infix($verb_stem, $voice, $person, $future_infix);	
+		} else if($this->verb_type == "5sum"){
+			// 処理を実行する
+			$verb_stem = $this->get_primary_infix($verb_stem, Commons::PRESENT_ASPECT, Commons::FUTURE_TENSE, $voice, $person, self::ind_perf_future_suffix);
+		}  
+
+		// 結果を返す。
+		return $verb_stem;
+	}
+
+
+	// 分詞の曲用表を返す。	
+	protected function get_participle($participle_stem){
+		// 読み込み
+		$adj_latin = new Latin_Adjective($participle_stem);
+		// 結果を返す。
+		return $adj_latin->get_chart();
+	}
+
+	// 通常変化部分の動詞の活用を作成する。
+	protected function make_common_standard_verb_conjugation($conjugation){
+
+		// 配列を作成
+		$voice_array = array(Commons::ACTIVE_VOICE);													//態
+		$tense_array = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::FUTURE_TENSE);		//時制
+		$mood_array = array(Commons::INDICATIVE, Commons::SUBJUNCTIVE, Commons::IMPERATIVE);			//法
+		$person_array = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl");								//人称
+
+		// 活用表を挿入(現在相)
+		// 全ての態
+		foreach ($voice_array as $voice){
+			// 全ての時制			
+			foreach ($tense_array as $tense){
+				// 全ての法			
+				foreach ($mood_array as $mood){
+					// 全ての人称			
+					foreach ($person_array as $person){
+						// 態・時制・法・人称に応じて多次元配列を作成		
+						$conjugation[$voice][$tense][$mood][$person] = $this->get_latin_verb($person, $voice, $mood, Commons::PRESENT_ASPECT, $tense);						
+					}
+				}
+			}
+		}
+
+		// 活用表を挿入(完了相)
+		// 全ての態
+		foreach ($voice_array as $voice){
+			// 全ての完了時制			
+			foreach ($tense_array as $tense){
+				// 全ての法			
+				foreach ($mood_array as $mood){
+					// 全ての人称			
+					foreach ($person_array as $person){
+						// 態・時制・法・人称に応じて多次元配列を作成		
+						$conjugation[$voice][$tense."_".Commons::PERFECT_ASPECT][$mood][$person] = $this->get_latin_verb($person, $voice, $mood, Commons::PERFECT_ASPECT, $tense);						
+					}
+				}
+			}
+		}
+
+		// 結果を返す。
+		return $conjugation;
+	}
+
+	// 活用表を取得する。
+	public function get_chart(){
+
+		// 初期化
+		$conjugation = array();
+		// タイトル情報を挿入
+		$conjugation["title"] = $this->get_title($this->infinitive);
+		// 辞書見出しを入れる。
+		$conjugation["dic_title"] = $this->infinitive;
+		// 種別を入れる。
+		$conjugation["category"] = "動詞";
+		// 活用種別
+		$conjugation["type"] = $this->class_name;
+		// 共通変化部分の動詞の活用を取得
+		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
+
+		// 分詞を挿入
+		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
+		$conjugation["perfect_passive"] = $this->get_participle($this->perfect_participle_passive);	// 状態動詞受動分詞
+		$conjugation["future_active"] = $this->get_participle($this->future_participle_active);		// 未来能動分詞
+		$conjugation["future_passive"] = $this->get_participle($this->future_participle_passive);	// 未来受動分詞
+		$conjugation["supine"] = $this->get_participle($this->supine);								// 目的分詞
+		
+		// 不定詞を挿入
+		$conjugation["infinitive"]["present_active"] = $this->infinitive;						// 不定形
+		
+		// 結果を返す。
+		return $conjugation;
+	}
+
+	// 特定の活用を取得する(ない場合はランダム)。
+	public function get_conjugation_form_by_each_condition($person = "", $voice = "", $mood = "", $aspect = "", $tense = ""){
+
+		// 態がない場合
+		if($voice == ""){
+			// 欠如動詞対応
+			if($this->deponent_active != Commons::$TRUE){
+				// 能動態なし
+				$ary = array(Commons::MEDIOPASSIVE_VOICE);
+			} else if($this->deponent_mediopassive != Commons::$TRUE){
+				// 受動態なし
+				$ary = array(Commons::ACTIVE_VOICE);
+			} else {
+				// それ以外
+				$ary = array(Commons::ACTIVE_VOICE, Commons::MEDIOPASSIVE_VOICE);	// 初期化
+			}	
+			// 能動態・受動態の中からランダムで選択	
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$voice = $ary[$key];			
+		}
+
+		// 法がない場合
+		if($mood == ""){
+			// 全ての性別の中からランダムで選択
+			$ary = array(Commons::INDICATIVE, Commons::SUBJUNCTIVE, Commons::IMPERATIVE);	// 初期化
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$mood = $ary[$key];			
+		}	
+
+		// 相がない場合
+		if($aspect == ""){
+			// 命令形とそれ以外で分ける。
+			if($mood == Commons::IMPERATIVE){
+				// 命令法
+				$ary = array(Commons::PRESENT_ASPECT);	
+			} else {
+				// それ以外
+				// 欠如動詞対応
+				if($this->deponent_present != Commons::$TRUE){
+					// 現在形なし
+					$ary = array(Commons::PERFECT_ASPECT);	
+				} else if($this->deponent_perfect != Commons::$TRUE){
+					// 完了形なし
+					$ary = array(Commons::PRESENT_ASPECT);	
+				} else {
+					// それ以外
+					$ary = array(Commons::PRESENT_ASPECT, Commons::PERFECT_ASPECT);	
+				}
+			}
+			// 全ての相の中からランダムで選択
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$aspect = $ary[$key];			
+		}
+
+		// 時制がない場合
+		if($tense == ""){
+			// 直接法・接続法・命令法で分ける。
+			if($mood == Commons::IMPERATIVE){
+				// 命令法
+				$ary = array(Commons::PRESENT_TENSE);							// 初期化
+			} else if($mood == Commons::SUBJUNCTIVE){
+				// 接続法
+				$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE);		// 初期化
+			} else {
+				// それ以外(直接法)
+				$ary = array(Commons::PRESENT_TENSE, Commons::PAST_TENSE, Commons::FUTURE_TENSE);	// 初期化
+			}		
+			// 全ての時制の中からランダムで選択
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$tense = $ary[$key];			
+		}	
+		
+		// 人称と数がない場合は
+		if($person == ""){
+			// 命令形とそれ以外で分ける。
+			if($mood == Commons::IMPERATIVE && $tense == Commons::PRESENT_TENSE){
+				// 現在命令
+				$ary = array("2sg", "2pl"); // 初期化
+			} else {
+				// それ以外
+				$ary = array("1sg", "2sg", "3sg", "1pl", "2pl", "3pl"); // 初期化
+			}
+			// 全ての人称からランダムで選択
+			$key = array_rand($ary, 1);
+			// 選択したものを入れる。
+			$person = $ary[$key];			
+		}
+
+
+		// 配列に格納
+		$question_data = array();
+		$question_data['question_sentence'] = $this->get_title($this->infinitive)."の".$aspect." ".$tense." ".$mood." ".$voice." ".$person."を答えよ";				
+		$question_data['answer'] = $this->get_latin_verb($person, $voice, $mood, $aspect, $tense);
+		$question_data['question_sentence2'] = $question_data['answer']."の時制、法、態と人称を答えよ。";
+		$question_data['aspect'] = $aspect;
+		$question_data['tense'] = $tense;	
+		$question_data['mood'] = $mood;
+		$question_data['voice'] = $voice;
+		$question_data['person'] = $person;			
+
+		// 結果を返す。
+		return $question_data;
+	}
+
+}
+
 // 梵語クラス
 class Vedic_Verb extends Verb_Common_IE{
 
