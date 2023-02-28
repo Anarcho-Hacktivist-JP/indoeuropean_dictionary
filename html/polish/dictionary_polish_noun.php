@@ -166,17 +166,25 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
     <div class="container item table-striped">
       <p>あいまい検索は+<br>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
+        <?php echo Polish_Common::noun_gender_selection_button(true); ?>
+        <section class="row">
+          <div class="col-md-8 mb-0">
+            <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
+          </div>
+          <div class="col-md-2 mb-0">
+            <?php echo Polish_Common::language_select_box(); ?>
+          </div>
+          <div class="col-md-2 mb-0">
+            <input type="submit" class="btn-check" id="btn-search">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
+          </div>
+        </section>
         <?php echo Polish_Common::input_special_button(); ?>
-        <?php echo Polish_Common::language_select_box(); ?>
-        <?php echo Polish_Common::noun_gender_selection_button(true); ?>      
-        <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
-        <select class="form-select" id="noun-selection">
-          <option selected>単語を選んでください</option>
-          <?php echo Commons::select_option($declensions); ?>
-        </select>
       </form>
+      <select class="form-select" id="noun-selection">
+        <option selected>単語を選んでください</option>
+        <?php echo Commons::select_option($declensions); ?>
+      </select>
       <?php echo Commons::archaic_button(); ?>
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="noun-table" style="overflow: auto;">
         <?php echo Polish_Common::make_noun_column_chart(); ?>

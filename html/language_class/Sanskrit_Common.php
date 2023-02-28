@@ -2542,17 +2542,17 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-        <h3>態</h3>
+        <h3>態(Vācya)</h3>
         <section class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="'.Commons::ACTIVE_VOICE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態(active)</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態(Parasmaipada)</label>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <input type="radio" name="voice" class="btn-check" id="btn-mediopassive" autocomplete="off" value="'.Commons::MEDIOPASSIVE_VOICE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">中動態(middle)</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-mediopassive">中動態(Atmanepada)</label>
           </div>  		  
-          <div class="col-md-3">
+          <div class="col-md-4">
             <input type="radio" name="voice" class="btn-check" id="btn-passive" autocomplete="off" value="'.Commons::PASSIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-passive">受動態(passive)</label>
           </div>';
@@ -2575,23 +2575,23 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-        <h3>相</h3>
+        <h3>相(ākāra)</h3>
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">現在相</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">現在相(Laṭ)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="'.Commons::AORIST_ASPECT.'" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完結相</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完結相(Luṅ)</label>
           </div>		  
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-perfect" autocomplete="off" value="'.Commons::PERFECT_ASPECT.'" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-perfect">完了相</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-perfect">完了相(Liṭ)</label>
           </div> 
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-future" autocomplete="off" value="'.Commons::FUTURE_TENSE.'" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-future">未然相</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-future">未然相(Lṛṭ)</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加

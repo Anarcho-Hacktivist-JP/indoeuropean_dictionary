@@ -559,22 +559,22 @@ class Polish_Common extends Common_IE{
 		return '
         <thead>
           <tr>
-            <th scope="row" class="text-center" style="width:19%">'.$title.'</th>
-            <th scope="col" class="text-center" colspan="3" style="width:27%">単数</th>
-            <th scope="col" class="table-archaic text-center" colspan="3" style="width:27%">双数</th>            
-            <th scope="col" class="text-center" colspan="3" style="width:27%">複数</th>
+            <th scope="row" class="text-center" style="width:10%">'.$title.'</th>
+            <th scope="col" class="text-center" colspan="3" style="width:30%">単数(Pojedyncza)</th>
+            <th scope="col" class="table-archaic text-center" colspan="3" style="width:30%">双数(Podwójna)</th>            
+            <th scope="col" class="text-center" colspan="3" style="width:30%">複数(Mnoga)</th>
           </tr>
           <tr>
-            <th scope="row" class="text-center" style="width:19%">格</th>
-            <th scope="col" class="text-center" style="width:9%">男性</th>
-            <th scope="col" class="text-center" style="width:9%">女性</th>
-            <th scope="col" class="text-center" style="width:9%">中性</th>
-            <th scope="col" class="table-archaic text-center" style="width:9%">男性</th>
-            <th scope="col" class="table-archaic text-center" style="width:9%">女性</th>
-            <th scope="col" class="table-archaic text-center" style="width:9%">中性</th>            
-            <th scope="col" class="text-center" style="width:9%">男性</th>
-            <th scope="col" class="text-center" style="width:9%">女性</th>
-            <th scope="col" class="text-center" style="width:9%">中性</th>
+            <th scope="row" class="text-center" style="width:10%">格(Przypadek)</th>
+            <th scope="col" class="text-center" style="width:10%">男性(Męski)</th>
+            <th scope="col" class="text-center" style="width:10%">女性(Żeński)</th>
+            <th scope="col" class="text-center" style="width:10%">中性(Nijaki)</th>
+            <th scope="col" class="table-archaic text-center" style="width:10%">男性(Męski)</th>
+            <th scope="col" class="table-archaic text-center" style="width:10%">女性(Żeński)</th>
+            <th scope="col" class="table-archaic text-center" style="width:10%">中性(Nijaki)</th>
+            <th scope="col" class="text-center" style="width:10%">男性(Męski)</th>
+            <th scope="col" class="text-center" style="width:10%">女性(Żeński)</th>
+            <th scope="col" class="text-center" style="width:10%">中性(Nijaki)</th>
           </tr>
         </thead>';
 	}
@@ -616,10 +616,10 @@ class Polish_Common extends Common_IE{
 		// タイトルを入れて表を返す。
 		return '
 		<thead>
-			<tr><th scope="row" class="text-center" style="width:10%">格</th>
-		  		<th scope="col" class="text-center" style="width:30%">単数</th>
-		  		<th scope="col" class="table-archaic text-center" style="width:30%">双数</th>
-		  		<th scope="col" class="text-center" style="width:30%">複数</th>
+			<tr><th scope="row" class="text-center" style="width:10%">格(Przypadek)</th>
+		  		<th scope="col" class="text-center" style="width:30%">単数(Pojedyncza)</th>
+		  		<th scope="col" class="table-archaic text-center" style="width:30%">双数(Podwójna)</th>
+		  		<th scope="col" class="text-center" style="width:30%">複数(Mnoga)</th>
 			</tr>
 	  	</thead>';
 	}
@@ -644,7 +644,7 @@ class Polish_Common extends Common_IE{
 	public static function input_special_button(){
 
 		return '      
-		<div class="d-grid gap-2 d-md-block">
+		<div class="d-grid gap-2 d-md-block mb-2">
         	<button class="btn btn-primary" type="button" id="button-a" value="ą">ą</button>
         	<button class="btn btn-primary" type="button" id="button-c" value="ć">ć</button>			
         	<button class="btn btn-primary" type="button" id="button-e" value="ę">ę</button>
@@ -674,21 +674,21 @@ class Polish_Common extends Common_IE{
 		$button_html_code = '
 		<h3>性別</h3>
 		<section class="row">
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine-animate" autocomplete="off" value="Masculine-Animate">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine-animate">男性(生物)</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine-animate">男性生物<br>(Męskoosobowe)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine-inanimate" autocomplete="off" value="Masculine-Inanimate">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine-inanimate">男性(非生物)</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine-inanimate">男性無生物<br>(Męskonieżywotne)</label>
 		  </div>
 		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性<br>(Żeński)</label>
 		  </div>
 		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">中性</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">中性<br>(Nijaki)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -696,7 +696,7 @@ class Polish_Common extends Common_IE{
 			$button_html_code = $button_html_code.
 			'<div class="col-md-2">
 				<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-gender">すべて</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-gender">すべて<br>(Wszystko)</label>
 		  	 </div>';
 		}
 
@@ -774,43 +774,43 @@ class Polish_Common extends Common_IE{
 	public static function case_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<h3>格</h3>
+		<h3>格(Przypadek)</h3>
 		<section class="row">
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格(Mianownik)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-gen" autocomplete="off" value="'.Commons::GENETIVE.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-gen">属格('.Commons::GENETIVE.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-gen">属格(Dopełniacz)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-dat" autocomplete="off" value="'.Commons::DATIVE.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-dat">与格('.Commons::DATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-dat">与格(Celownik)</label>
 		  </div>         
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-acc" autocomplete="off" value="'.Commons::ACCUSATIVE.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-acc">対格('.Commons::ACCUSATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-acc">対格(Biernik)</label>
 		  </div>         
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-ins" autocomplete="off" value="'.Commons::INSTRUMENTAL.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-ins">具格('.Commons::INSTRUMENTAL.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ins">具格(Narzędnik)</label>
 		  </div>		  
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-loc" autocomplete="off" value="'.Commons::LOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-loc">地格('.Commons::LOCATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-loc">地格(Miejscownik)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-voc" autocomplete="off" value="'.Commons::VOCATIVE.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-voc">呼格('.Commons::VOCATIVE.')</label>
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-voc">呼格(Wołacz)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-2">
+			'<div class="col-md-3">
 				<input type="radio" name="case" class="btn-check" id="btn-all-case" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-case">すべて</label>
+				<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-case">すべて(Wszystko)</label>
 		 	 </div>';
 		}
 
@@ -874,19 +874,19 @@ class Polish_Common extends Common_IE{
 	// 相ボタンの生成
 	public static function aspect_selection_button(){
 		return '
-        <h3>相</h3>
+        <h3>相(Aspekt)</h3>
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">不完了体</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">不完了体(Niedokonane)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-aorist" autocomplete="off" value="'.Commons::AORIST_ASPECT.'" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完了体</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-aorist">完了体(Dokonane)</label>
           </div>		     	  
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-all-aspect" autocomplete="off" value="" checked="checked" onclick="click_aspect_button()">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-aspect">すべて(Wszystko)</label>
           </div>
         </section>';
 	}
@@ -895,31 +895,31 @@ class Polish_Common extends Common_IE{
 	public static function mood_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-        <h3>法</h3>
+        <h3>時制・法(Czasy i Tryby)</h3>
         <section class="row">
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形(Teraźniejszy)</label>
           </div>
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-tense-past" autocomplete="off" value="'.Commons::PERFECT_ASPECT.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-past">過去形(Przeszły)</label>
           </div>		
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-future" autocomplete="off" value="'.Commons::FUTURE_TENSE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future">未来形1</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future">未来形1(Przyszły-1)</label>
           </div> 
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-future2" autocomplete="off" value="future_perfect">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future2">未来形2</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-future2">未来形2(Przyszły-2)</label>
           </div> 
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-subj" autocomplete="off" value="'.Commons::SUBJUNCTIVE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">仮定法</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-subj">仮定法(Przypuszczający)</label>
           </div>	  
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-imper" autocomplete="off" value="'.Commons::IMPERATIVE.'">
-            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法</label>
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-imper">命令法(Rozkazujący)</label>
           </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -927,7 +927,7 @@ class Polish_Common extends Common_IE{
 			$button_html_code = $button_html_code.
 			'<div class="col-md-3">
             	<input type="radio" name="mood" class="btn-check" id="btn-all-mood" autocomplete="off" value="" checked="checked">
-            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて</label>
+            	<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-mood">すべて(Wszystko)</label>
          	 </div>';
 		}
 
