@@ -10,6 +10,9 @@
       <div class="col-md-1">
         <a class="btn btn-primary" href="dictionary_latin_verb.php">動詞</a>
       </div>
+      <div class="col-md-1">
+        <a class="btn btn-primary" href="dictionary_latin_verb_vulgar.php">動詞(俗ラテン語)</a>
+      </div>
     </section>
 </div>
 <div class="container item">
