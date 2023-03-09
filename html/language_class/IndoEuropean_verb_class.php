@@ -827,7 +827,7 @@ class Latin_Verb extends Verb_Common_IE {
 			$this->deponent_personal = $word_info["deponent_personal"];				// 非人称のみ
 			$this->japanese_translation = $word_info["japanese_translation"];		// 日本語訳
 			$this->english_translation = $word_info["english_translation"];			// 英語訳
-			$this->verb_type= $word_info["verb_type"];								// 活用種別
+			$this->verb_type = $word_info["verb_type"];								// 活用種別
 		}
 	}
 
@@ -965,7 +965,7 @@ class Latin_Verb extends Verb_Common_IE {
 		$this->deponent_mediopassive = Commons::$FALSE;			// 欠如-受動形
 		$this->deponent_present = Commons::$FALSE;				// 欠如-現在形
 		$this->deponent_perfect = Commons::$FALSE;				// 欠如-完了形
-		$this->verb_type= "3";						// 活用種別					
+		$this->verb_type = "3";						// 活用種別					
 		$this->present_stem = mb_substr($common_stem, 0, -1);			// 現在形
 		$this->infinitive = $common_stem ."re";							// 不定形
 		$this->aorist_stem = $common_stem;								// 完了形
@@ -992,11 +992,26 @@ class Latin_Verb extends Verb_Common_IE {
 		$this->perfect_stem = $common_stem."v";							// 完了形
 		$this->perfect_participle_passive = $dic_stem."ītus";			// 完了分詞
 	}
+	
+	// 動詞の語根を取得
+    private function get_verb_root($infinitive){
+        // 能動態欠如動詞・第三変化の場合は
+        if($this->verb_type === 3 && $this->deponent_active == Commons::$TRUE){
+            // 一文字削って返す。
+            return mb_substr($infinitive, 0, -1)."ē";
+        } else if($this->verb_type === "3a" && $this->deponent_active == Commons::$TRUE){
+            // 一文字削って返す。
+            return mb_substr($infinitive, 0, -2)."ē";
+        } else {
+            // それ以外は二文字削って返す。
+            return mb_substr($infinitive, 0, -2);
+        }    
+    }
 
 	// 動詞の語幹を作成
 	private function get_verb_stem($infinitive, $perfect_stem, $perfect_paticiple){	
 		// 分詞語尾を取得
-		$common_stem = mb_substr($infinitive, 0, -2);
+		$common_stem = $this->get_verb_root($infinitive);
 
 		// 分詞を挿入
 		// 現在形が存在する場合は
@@ -1183,7 +1198,17 @@ class Latin_Verb extends Verb_Common_IE {
 			}
 		} else if($mood == Commons::IMPERATIVE){
 			// 命令形語幹を作成
-			$verb_conjugation = mb_substr($this->infinitive, 0, -3).$this->imper;
+			// 初期化
+			$verb_conjugation = "";
+            // 能動態欠如動詞・第三変化の場合は
+            if(($this->verb_type == 3) && $this->deponent_present != Commons::$TRUE){
+                // 一文字削って接尾辞を追加
+                $verb_conjugation = mb_substr($this->infinitive, 0, -1).$this->imper;
+            } else {
+                // それ以外の場合は
+                // 三文字削って接尾辞を追加
+                $verb_conjugation = mb_substr($this->infinitive, 0, -3).$this->imper;
+            }
 			// 時制を分ける。
 			if($tense == Commons::PRESENT_TENSE) {
 				// 現在形
@@ -1312,7 +1337,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// 第三、第四活用以外の過去形
 		if(preg_match('/(1|2|5eo)/', $this->verb_type)){
 			// 接尾辞を追加
-			$verb_conjugation = mb_substr($this->infinitive, 0, -2);
+			$verb_conjugation = $this->get_verb_root($this->infinitive);
 		} else if(preg_match('/(3|3a|4|5fio|5volo|5fer)/', $this->verb_type)){
 			// 第三・第四活用
 			// 接尾辞を追加
@@ -1354,7 +1379,7 @@ class Latin_Verb extends Verb_Common_IE {
 		// 動詞の活用種別で分ける
 		if(preg_match('/(1|2|5eo)$/', $this->verb_type)){
 			// 語幹を生成
-			$verb_stem = mb_substr($this->infinitive, 0, -2);
+			$verb_stem = $this->get_verb_root($this->infinitive);
 			// 未来形を生成			
 			$verb_stem = $this->get_primary_infix($verb_stem, Commons::PRESENT_ASPECT, Commons::FUTURE_TENSE, $voice, $person, self::ind_future_suffix);
 		} else if(preg_match('/(3|3a|4|5fio|5volo|5fer)$/', $this->verb_type)){			
