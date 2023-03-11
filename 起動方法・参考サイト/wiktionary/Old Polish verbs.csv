@@ -33,7 +33,7 @@
 "117","stajać",staj,staj,stajać,とまる、たしなむ、現ず,"to remain, to stay, to endure, to last, to cease, to stop, to appear, to become",1,present,0,0
 "118","stradać",strad,strad,stradać,奪わる,"to be bereft, to be deprived, to get impoverished ",1,present,0,0
 "120","sukać",suk,suk,sukać,ねづ、もぢる,"to twist, to strand thread",1,present,0,0
-"122","szczwać",szczw,szczw,szczwać,,"to sic",1,present,0,0
+"122","szczwać",szczw,szczw,szczwać,遣らふ,"to sic",1,present,0,0
 "123","szepiotać",szepiot,szepiot,szepiotać,ひひらく,"to lisp",1,present,0,0
 "126","słuszać",słusz,słusz,słuszać,聞く、伏す,"to hearken, to listen, to obey",1,present,0,0
 "129","tarchać",tarch,tarch,tarchać,打ち戦慄く、戦慄く、語ふ、ささめく、つつめく,"to clatter, to rattle, to talk, to whisper",1,present,0,0
@@ -41,12 +41,12 @@
 "138","umirać",umir,umir,umirać,失す,"to die",1,present,0,0
 "140","upwać",upw,upw,upwać,打ち頼む,"to trust",1,present,0,0
 "144","więzać",więz,więz,więzać,絡ぐ、括る,"to bind, to tie",1,present,0,0
-"145","wnimać",wnim,wnim,wnimać,,"to deem, to think, to cogitate, to consider, to expect, to anticipate",1,present,0,0
+"145","wnimać",wnim,wnim,wnimać,案ず、計らふ、思し定む、見伏す,"to deem, to think, to cogitate, to consider, to expect, to anticipate",1,present,0,0
 "152","włodać",włod,włod,włodać,治む,"to reign, to rule",1,present,0,0
 "157","zgibać",zgib,zgib,zgibać,撓む、搔い綰む,"to bend, to curve",1,present,0,0
 "158","zobać",zob,zob,zobać,突き食う,"to eat by pecking",1,present,0,0
-"163","łaskać",łask,łask,łaskać,,"to stroke, to caress",1,present,0,0
-"164","łokać",łok,łok,łokać,,"to lap, to guzzle",1,present,0,0
+"163","łaskać",łask,łask,łaskać,撫づ,"to stroke, to caress",1,present,0,0
+"164","łokać",łok,łok,łokać,食らう,"to lap, to guzzle",1,present,0,0
 "168","śpiać",śpi,śpi,śpiać,,"to have time, to keep up with",1,present,0,0
 "172","żdać",żd,żd,żdać,待つ、まほす,"to wait, to await, to expect",1,aorist,0,0
 "175","żwać",żw,żw,żwać,,"to chew, to masticate",1,present,0,0
