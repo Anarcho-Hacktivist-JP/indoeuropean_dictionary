@@ -33,7 +33,7 @@ function get_noun_declension_chart($word, $gender){
 function get_noun_declension_chart_by_sanskrit($word, $gender){
 
   // 単語から直接取得する
-  $noun_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_NOUN, $gender);
+  $noun_words = Sanskrit_Common::get_wordstem_from_DB($word, Sanskrit_Common::DB_NOUN);
   // 取得できない場合は
   if(!$noun_words && Sanskrit_Common::is_alphabet_or_not($word)){
     // アルファベットの場合は単語を入れる。
