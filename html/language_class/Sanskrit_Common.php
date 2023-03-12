@@ -2408,6 +2408,34 @@ class Sanskrit_Common extends Common_IE{
         </section>';
 	}
 
+	// 動詞の形態ボタンの生成
+	public static function verb_genre_selection_button(){
+		return '
+        <h3>動詞形態</h3>
+        <section class="row">
+	      <div class="col-md-3">
+			<input type="radio" name="verb-genre" class="btn-check" id="btn-primary" autocomplete="off" value="primary">
+			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-primary">一次動詞</label>
+	      </div>		
+          <div class="col-md-3">
+            <input type="radio" name="verb-genre" class="btn-check" id="btn-causative" autocomplete="off" value="'.Commons::MAKE_VERB.'">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-causative">使役動詞</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-genre" class="btn-check" id="btn-desiderative" autocomplete="off" value="'.Commons::WANT_VERB.'">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-desiderative">願望動詞</label>
+          </div>
+          <div class="col-md-3">
+            <input type="radio" name="verb-genre" class="btn-check" id="btn-intensive" autocomplete="off" value="'.Commons::INTENSE_VERB.'">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-intensive">強意動詞</label>
+          </div>	  
+          <div class="col-md-3">
+            <input type="radio" name="verb-genre" class="btn-check" id="btn-all-verb-genre" autocomplete="off" value="" checked="checked">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-all-verb-genre">すべて</label>
+          </div>
+        </section>';
+	}
+
 	// 語根の種別ボタンの生成2
 	public static function laryngeal_type_selection_button(){
 		return '

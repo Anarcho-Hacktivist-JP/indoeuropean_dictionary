@@ -3328,7 +3328,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 		// 非人称チェック
 		if($this->deponent_personal == "1" && $person != "3sg"){
 			// ハイフンを返す。
-			return "-";			
+			return "-";
 		}
 
 		//動詞の語幹を取得
@@ -6037,7 +6037,7 @@ class Vedic_Verb extends Verb_Common_IE{
 				// 過去形はここで追加する。
 				if($tense_mood == Commons::PAST_TENSE){
 					// 過去形の場合
-					return "a".Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, $vedic_flag, true);
+					return self::and_then_prefix.Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, $vedic_flag, true);
 				} else {
 					// それ以外の場合
 					return Sanskrit_Common::sandhi_engine($this->add_stem, $verb_conjugation, $vedic_flag, true);
@@ -7559,24 +7559,27 @@ class Vedic_Verb extends Verb_Common_IE{
 
 		// 配列に格納
 		$question_data = array();
-		$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(第".$this->conjugation_present_type."類動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";
 		// 動詞の形態によって分ける。
 		if($verb_genre == Commons::MAKE_VERB){
 			// 使役動詞
-			$question_data['answer'] = $this->get_causative_sanskrit_verb($person, $voice, $mood, $aspect, true);										// 解答
-			$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。 "."√".$this->root."活用種別：使役動詞";	// 説明文
+			$question_data['answer'] = $this->get_causative_sanskrit_verb($person, $voice, $mood, $aspect, true);									 // 解答
+			$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(使役動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";
+			$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。 "."√".$this->root."活用種別：使役動詞";		// 説明文
 		} else if($verb_genre == Commons::WANT_VERB){
 			// 願望動詞
-			$question_data['answer'] = $this->get_desiderative_sanskrit_verb($person, $voice, $mood, $aspect, true);									// 解答
+			$question_data['answer'] = $this->get_desiderative_sanskrit_verb($person, $voice, $mood, $aspect, true);							// 解答
+			$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(願望動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";
 			$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。 "."√".$this->root."活用種別：願望動詞";	// 説明文
 		} else if($verb_genre == Commons::INTENSE_VERB){
 			// 強意動詞
 			$question_data['answer'] = $this->get_intensive_sanskrit_verb($person, $voice, $mood, $aspect, true);										// 解答
+			$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(強意動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";
 			$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。 "."√".$this->root."活用種別：強意動詞";	// 説明文
 		} else {
 			// 通常の動詞
-			$question_data['answer'] = $this->get_sanskrit_verb($person, $voice, $mood, $aspect, true);																		// 解答
-			$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。 "."√".$this->root."活用種別：".$this->conjugation_present_type;	// 説明文
+			$question_data['answer'] = $this->get_sanskrit_verb($person, $voice, $mood, $aspect, true);																		 // 解答
+			$question_data['question_sentence'] = $this->get_title($this->add_stem."√".$this->root)."(第".$this->conjugation_present_type."類動詞) の".$aspect." ".$mood." ".$voice." ".$person."を答えよ";
+			$question_data['question_sentence2'] = $question_data['answer']."の相、法、態と人称を答えよ。 "."√".$this->root."活用種別：".$this->conjugation_present_type;		// 説明文
 		}
 		$question_data['aspect'] = $aspect;
 		$question_data['mood'] = $mood;

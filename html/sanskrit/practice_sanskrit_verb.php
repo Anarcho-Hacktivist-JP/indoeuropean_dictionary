@@ -24,7 +24,7 @@ $aspect = trim(filter_input(INPUT_POST, 'aspect'));
 // 挿入データ－法－
 $mood = trim(filter_input(INPUT_POST, 'mood'));
 // 挿入データ－動詞の形態－
-$mood = trim(filter_input(INPUT_POST, 'verb_genre'));
+$verb_genre = trim(filter_input(INPUT_POST, 'verb-genre'));
 
 // 単語取得
 $question_word = Sanskrit_Common::get_random_verb($verb_type, $root_type, $laryngeal_type);
@@ -53,6 +53,7 @@ $question_data = $sanskrit_verb->get_conjugation_form_by_each_condition($person,
         <?php echo Sanskrit_Common::root_type_selection_button(); ?>
         <?php echo Sanskrit_Common::laryngeal_type_selection_button(); ?>       
         <?php echo Sanskrit_Common::verb_type_selection_button(); ?>
+        <?php echo Sanskrit_Common::verb_genre_selection_button(true); ?>
         <?php echo Sanskrit_Common::voice_selection_button(true); ?>
         <?php echo Sanskrit_Common::aspect_selection_button(true); ?>
         <?php echo Sanskrit_Common::mood_selection_button(true); ?>
