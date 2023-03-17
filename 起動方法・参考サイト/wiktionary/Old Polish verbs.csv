@@ -1,139 +1,139 @@
-"6","barkać",bark,bark,barkać,騒動く,"to frolic, to rollick",1,present,0,0
-"10","blochać",bloch,bloch,blochać,咽す,"to vomit",1,present,0,0
-"11","blwać",blw,blw,blwać,咽す,"to vomit",1,present,0,0
-"19","czakać",czak,czak,czakać,待つ、まほす,"to wait, to await, to expect",1,present,0,0
-"20","czosać",czos,czos,czosać,梳く、掻く,"to comb, to scratch",1,present,0,0
-"21","czyrpać",czyrp,czyrp,czyrpać,描く、掬ふ,"to draw, to scoop",1,present,0,0
-"24","dajać",daj,daj,dajać,与ふ,"to give",1,present,0,0
-"27","drać",dr,dr,drać,引き裂く,"to tear, to rend",1,present,0,0
-"32","gabać",gab,gab,gabać,奏する,"to accost, to beset, to accuse, to indict, to sue ",1,present,0,0
-"34","gatać",gat,gat,gatać,言ふ、語らふ,"to say, to talk",1,present,0,0
-"35","ględać",ględ,ględ,ględać,見る、探る、あなぐる、心を付く、目に留む,"to look, to look at, to look for, to search, to seek, to regard, to be mindful of",1,present,0,0
-"42","kasać",kas,kas,kasać,巻く,"to roll up, to tug up",1,present,0,0
-"46","klwać",klw,klw,klwać,食む,"to peck",1,present,0,0
-"47","kować",kow,kow,kować,焠ぐ、淬ぐ,"to forge, to manacle, to shackle",1,present,0,0
-"51","ktać",kt,kt,ktać,咲く,"to bloom, to blossom",1,present,0,0
-"55","kęsać",kęs,kęs,kęsać,噛む,"to bite",1,present,0,0
-"56","kłtać",kłt,kłt,kłtać,飲み込む,"to swallow",1,present,0,0
-"71","odrać",odr,odr,odrać,脱ぐ,"to strip, to unsheath, to steal, to sack ",1,aorist,0,0
-"78","pachać",pach,pach,pachać,鋤く、犂く,"to plow, to till ",1,present,0,0
-"81","plwać",plw,plw,plwać,息を放つ、つはく,"to spit",1,present,0,0
-"82","plęsać",plęs,plęs,plęsać,撥ぬ、跳ぬ、踊る,"to bounce, to dance",1,present,0,0
-"84","poczywać",poczyw,poczyw,poczywać,怠る、憩ふ、息ふ,"to rest, to take rest",1,present,0,0
-"85","pognać",pogn,pogn,pognać,追ひ棄つ,"to make someone leave",1,aorist,0,0
-"86","pogłytać",pogłyt,pogłyt,pogłytać,食らふ,"to devour, to swallow",1,aorist,0,0
-"93","przekażać",przekaż,przekaż,przekażać,さはる、さやる,"to hinder, to impede, to interrupt, to disgrace, to dishonour, to put to shame, to infringe, to contravene, to thwart",1,aorist,0,0
-"94","pwać",pw,pw,pwać,打ち頼む,"to trust",1,present,0,0
-"95","pławać",pław,pław,pławać,泳ぐ,"to swim, to sail",1,present,0,0
-"98","płókać",płók,płók,płókać,濯ぐ、滌ぐ、漱ぐ,"to rinse",1,present,0,0
-"100","reptać",rept,rept,reptać,独りごつ,"to murmur, to grumble",1,present,0,0
-"102","rzazać",rzaz,rzaz,rzazać,切る,"to cut, to slice",1,present,0,0
-"111","skrżytać",skrżyt,skrżyt,skrżytać,磨る、摩る、擦る、擂る,"to gnash, to grate, to rasp, to neigh, to grunt, to hiss,  to fume, to rage",1,present,0,0
-"113","snować",snow,snow,snować,績む,"to warp yarn, to spin",1,present,0,0
-"117","stajać",staj,staj,stajać,とまる、たしなむ、現ず,"to remain, to stay, to endure, to last, to cease, to stop, to appear, to become",1,present,0,0
-"118","stradać",strad,strad,stradać,奪わる,"to be bereft, to be deprived, to get impoverished ",1,present,0,0
-"120","sukać",suk,suk,sukać,ねづ、もぢる,"to twist, to strand thread",1,present,0,0
-"122","szczwać",szczw,szczw,szczwać,遣らふ,"to sic",1,present,0,0
-"123","szepiotać",szepiot,szepiot,szepiotać,ひひらく,"to lisp",1,present,0,0
-"126","słuszać",słusz,słusz,słuszać,聞く、伏す,"to hearken, to listen, to obey",1,present,0,0
-"129","tarchać",tarch,tarch,tarchać,打ち戦慄く、戦慄く、語ふ、ささめく、つつめく,"to clatter, to rattle, to talk, to whisper",1,present,0,0
-"130","tarkać",tark,tark,tarkać,打ち戦慄く、戦慄く、語ふ、ささめく、つつめく,"to clatter, to rattle, to talk, to whisper",1,present,0,0
-"138","umirać",umir,umir,umirać,失す,"to die",1,present,0,0
-"140","upwać",upw,upw,upwać,打ち頼む,"to trust",1,present,0,0
-"144","więzać",więz,więz,więzać,絡ぐ、括る,"to bind, to tie",1,present,0,0
-"145","wnimać",wnim,wnim,wnimać,案ず、計らふ、思し定む、見伏す,"to deem, to think, to cogitate, to consider, to expect, to anticipate",1,present,0,0
-"152","włodać",włod,włod,włodać,治む,"to reign, to rule",1,present,0,0
-"157","zgibać",zgib,zgib,zgibać,撓む、搔い綰む,"to bend, to curve",1,present,0,0
-"158","zobać",zob,zob,zobać,突き食う,"to eat by pecking",1,present,0,0
-"163","łaskać",łask,łask,łaskać,撫づ,"to stroke, to caress",1,present,0,0
-"164","łokać",łok,łok,łokać,食らう,"to lap, to guzzle",1,present,0,0
-"168","śpiać",śpi,śpi,śpiać,,"to have time, to keep up with",1,present,0,0
-"172","żdać",żd,żd,żdać,待つ、まほす,"to wait, to await, to expect",1,aorist,0,0
-"175","żwać",żw,żw,żwać,,"to chew, to masticate",1,present,0,0
-"176","żędać",żęd,żęd,żędać,まほす,"to crave, to long for, to implore, to wish",1,present,0,0
-"12","bojeć",bojej,bojej,bojeć,,"to be afraid, to fear, to worry, to fret",2,present,0,0
-"18","cirzpieć",cirzpiej,cirzpiej,cirzpieć,悶ゆ、燃え焦がる、胸焦がる、苦しぶ、窘む、打ち悩む,"to suffer, to bear, to endure",2,present,0,0
-"30","dzierżeć",dzierżej,dzierżej,dzierżeć,,"to hold, to keep",2,present,0,0
-"36","ględzieć",ględziej,ględziej,ględzieć,守る、見る、見ゆ,"to look, to look at",2,present,0,0
-"60","lpieć",lpiej,lpiej,lpieć,,"to adhere, to cling",2,present,0,0
-"61","mirzieć",mirziej,mirziej,mirzieć,,"to disgust",2,present,0,0
-"63","mnieć",mniej,mniej,mnieć,,"to think, to suppose",2,present,0,0
-"67","naczrzeć",naczrzej,naczrzej,naczrzeć,,"to draw, to scoop",2,aorist,0,0
-"76","otewrzeć",otewrzej,otewrzej,otewrzeć,開く,"to open, to reveal",2,aorist,0,0
-"90","postrzeć",postrzej,postrzej,postrzeć,広ごる、しく、領く、敷く,"to spread",2,aorist,0,0
-"99","rdzieć",rdziej,rdziej,rdzieć,,"to rust",2,,0,0
-"103","rzwieć",rzwiej,rzwiej,rzwieć,,"to roar, to bellow, to scream",2,,0,0
-"124","sąmnieć",sąmniej,sąmniej,sąmnieć,,"to have doubts, to resist, to be afraid, to fear, to be ashamed, to regret",2,,0,0
-"127","słuszeć",słuszej,słuszej,słuszeć,,"to be equitable, to befit, to behove, to serve some purpose, to suit",2,,0,0
-"143","wiercieć",wierciej,wierciej,wiercieć,,"to bore, to drill, to perforate, to wriggle",2,,0,0
-"151","wznieć",wzniej,wzniej,wznieć,聞こゆ,"to sound",2,,0,0
-"170","świrbieć",świrbiej,świrbiej,świrbieć,,"to itch",2,,0,0
-"171","źrzeć",źrzej,źrzej,źrzeć,,"to look, to look at, to ripen",2,,0,0
-"173","żeleć",żelej,żelej,żeleć,,"to grieve, to regret",2,,0,0
-"25","darznąć",darznie,darzn,darznąć,,"to dare, to encroach",3,,0,0
-"45","kinąć",kinie,kin,kinąć,,"to fling, to throw",3,,0,0
-"59","lnąć",lnie,ln,lnąć,,"to adhere, to cling",3,,0,0
-"68","nacząć",naczie,nacz,nacząć,始む、起こる,"to begin, to commence, to start",3,,0,0
-"72","okchnąć",okchnie,okchn,okchnąć,,"to become mute, to become speechless",3,,0,0
-"109","skiwnąć",skiwnie,skiwn,skiwnąć,,"to beckon",3,,0,0
-"119","stydnąć",stydnie,stydn,stydnąć,,"to cool, to cool down",3,,0,0
-"148","wyknąć",wyknie,wykn,wyknąć,,"to learn, to get used to",3,,0,0
-"14","bucić",buc,bucz,bucić,,"to be arrogant, to vaunt",4,,0,0
-"15","bydlić",bydl,bydl,bydlić,佇む,"to dwell, to live, to reside",4,,0,0
-"17","celić",cel,cel,celić,継ぐ、続ぐ,"to fix, to mend, to repair",4,,0,0
-"22","czyrślić",czyrśl,czyrśl,czyrślić,,"to peel strip of white bark around trunk so that tree withers",4,,0,0
-"26","dawić",daw,dawi,dawić,,"to choke, to strangle, to strangulate, to suffocate",4,,0,0
-"29","dziedzić",dziedz,dziedz,dziedzić,継がふ,"to inherit",4,,0,0
-"33","galić",gal,gal,galić,,"to favour",4,,0,0
-"39","głobić",głob,głobi,głobić,,"to bond, to rack, to torment, to vex, to care, to worry",4,,0,0
-"43","kazić",kaz,każ,kazić,こほつ、くづす,"to destroy, to devastate, to wreck, to spoil",4,,0,0
-"44","kaźnić",kaźn,kaźni,kaźnić,,"to punish, to penalize, to castigate, to chastise, to rebuke, to reprimand",4,,0,0
-"49","krzcić",krzc,krzce,krzcić,,"to baptize, to cross",4,,0,0
-"53","kusić",kus,kusz,kusić,,"to examine, to prove, to incite, to induce, to tempt, to taste, to check, to investigate, to train, to practice",4,,0,0
-"58","lić",l,l,lić,,"to pour",4,,0,0
-"64","mołwić",mołw,mołwi,mołwić,語ふ,"to say, to speak",4,,0,0
-"65","mudzić",mudz,mudz,mudzić,,"to linger, to loiter, to procrastinate",4,,0,0
-"74","opóździć",opóźdz,opóźdz,opóździć,,"to be late, to not make it in time",4,,0,0
-"77","oździć",oźdz,oźdz,oździć,,"to dry malt",4,,0,0
-"83","pochopić",pochop,pochopi,pochopić,,"to catch, to seize, to succeed, to work out",4,aorist,0,0
-"89","postrobić",postrob,postrobi,postrobić,,"to strengthen, to fix, to affix, to fasten",4,aorist,0,0
-"107","siedlić",siedl,siedl,siedlić,,"to settle",4,,0,0
-"110","skromić",skrom,skromi,skromić,,"to curb, to tame",4,,0,0
-"114","snębić",snęb,snębi,snębić,預く、あはむ,"to marry off",4,,0,0
-"125","sędzić",sędz,sędz,sędzić,,"to judge, to try, to litigate, to presume, to suppose",4,,0,0
-"131","tesknić",teskn,teskni,tesknić,,"to be sad, to despair",4,,0,0
-"132","tolić",tol,tol,tolić,,"to cuddle, to nestle",4,,0,0
-"133","uchapić",uchap,uchapi,uchapić,持つ、掴む,"to grasp, to seize",4,,0,0
-"134","uchopić",uchop,uchopi,uchopić,持つ、掴む,"to grasp, to seize",4,,0,0
-"135","uchwacić",uchwac,uchwac,uchwacić,持つ、掴む,"to grasp, to seize",4,,0,0
-"136","ufacić",ufac,ufac,ufacić,持つ、掴む,"to grasp, to seize",4,,0,0
-"142","wielić",wiel,wiel,wielić,仰す,"to command, to order",4,,0,0
-"146","wolić",wol,wol,wolić,好む,"to prefer",4,,0,0
-"161","zwonić",zwon,zwoni,zwonić,,"to clink, to jingle, to ring, to toll",4,,0,0
-"162","ćwirdzić",ćwirdz,ćwirdz,ćwirdzić,,"to firm, to harden, to strengthen, to fortify, to confirm, to affirm, to state, to decide, to order",4,,0,0
-"165","łomić",łom,łomi,łomić,,"to break, to shatter, to stir up, to shake up, to wrestle",4,,0,0
-"23","czyść",czycie,czyt,czyść,読む,"to read",3root,,0,0
-"38","gąść",gądzie,gąd,gąść,,"to play string instrument ",3root,,0,0
-"54","kwiść",kwicie,kwit,kwiść,咲く,"to bloom, to blossom",3root,,0,0
-"92","pośrześć",pośrzecie,pośrzot,pośrześć,あふ,"to encounter, to meet",3root,aorist,0,0
-"108","sieść",siodzie,siod,sieść,居る,"to sit down",3root,,0,0
-"150","wytłuc",wytłucze,wytłuk,wytłuc,,"to pound out, to stamp out, to knock out, to kill each other off",3root,,0,0
-"156","zażec",zażecz,zażek,zażec,点す、灯す,"to light, to ignite",3root,,0,0
-"169","śrześć",śrzecie,śrzot,śrześć,あふ,"to encounter, to meet",3root,,0,0
-"8","bańturzyć",bańturzy,bańturz,bańturzyć,いつはる,"to blather, to lie",4y,,0,0
-"13","borzyć",borzy,borz,borzyć,こほつ、くづす、弓引く,"to destroy, to down, to ruin, to battle, to fight, to oppose, to overthrow",4y,,0,0
-"37","goworzyć",goworzy,goworz,goworzyć,,"to talk, to discuss",4y,,0,0
-"48","krszczyć",krszczy,krszcz,krszczyć,,"to behead, to decapitate",4y,,0,0
-"62","mirzyć",mirzy,mirz,mirzyć,,"to reconcile",4y,,0,0
-"69","norzyć",norzy,norz,norzyć,,"to immerse, to submerge",4y,,0,0
-"75","osoczyć",osoczy,osocz,osoczyć,,"to accuse, to slander",4y,,0,0
-"97","płyć",pły,pł,płyć,,"to flow",4y,,0,0
-"101","rozdrzeszyć",rozdrzeszy,rozdrzesz,rozdrzeszyć,,"to absolve, to give absolution, to remit sins, to separate, to split",4y,aorist,0,0
-"115","soczyć",soczy,socz,soczyć,,"to accuse, to slander",4y,,0,0
-"160","zwarzyć",zwarzy,zwarz,zwarzyć,,"to weld togethe, to cook",4y,,0,0
-"166","łuczyć",łuczy,łucz,łuczyć,,"to hit, to smite, to strike",4y,,0,0
-"40","ić",idzie,id,ić,差し歩む,"to go, to walk",5isc,present,0,0
-"121","suć",suje,suj,suć,鏤む,"to heap, to strew, to encrust, to inlay",denomitive2,present,0,0
-"128","słuć",słuje,słuj,słuć,,"to call, to name, to mean",denomitive2,present,0,0
-"159","zuć",zuje,zuj,zuć,,"to unshoe, to unshoe oneself",denomitive2,present,0,0
-"112","skuść",skudnie,skudn,skuść,,"to pluck",3root3,present,0,0
+"13000","barkać",bark,bark,barkać,騒動く,"to frolic, to rollick",1,present,0,0
+"13001","bańturzyć",bańturzy,bańturz,bańturzyć,いつはる,"to blather, to lie",4y,present,0,0
+"13002","blochać",bloch,bloch,blochać,咽す,"to vomit",1,present,0,0
+"13003","blwać",blw,blw,blwać,咽す,"to vomit",1,present,0,0
+"13004","bojeć",bojej,bojej,bojeć,怖づ,"to be afraid, to fear, to worry, to fret",2,present,0,0
+"13005","borzyć",borzy,borz,borzyć,こほつ、くづす、弓引く,"to destroy, to down, to ruin, to battle, to fight, to oppose, to overthrow",4y,present,0,0
+"13006","bucić",buc,bucz,bucić,いばる,"to be arrogant, to vaunt",4,,0,0
+"13007","bydlić",bydl,bydl,bydlić,佇む,"to dwell, to live, to reside",4,,0,0
+"13008","celić",cel,cel,celić,継ぐ、続ぐ,"to fix, to mend, to repair",4,,0,0
+"13009","cirzpieć",cirzpiej,cirzpiej,cirzpieć,悶ゆ、燃え焦がる、胸焦がる、苦しぶ、窘む、打ち悩む,"to suffer, to bear, to endure",2,present,0,0
+"13010","czakać",czak,czak,czakać,待つ、まほす,"to wait, to await, to expect",1,present,0,0
+"13011","czosać",czos,czos,czosać,梳く、掻く,"to comb, to scratch",1,present,0,0
+"13012","czyrpać",czyrp,czyrp,czyrpać,描く、掬ふ,"to draw, to scoop",1,present,0,0
+"13013","czyrślić",czyrśl,czyrśl,czyrślić,木が枯れるように、幹の周りの白い樹皮の帯を剥がす,"to peel strip of white bark around trunk so that tree withers",4,,0,0
+"13014","czyść",czycie,czyt,czyść,読む,"to read",3root,present,0,0
+"13015","dajać",daj,daj,dajać,与ふ,"to give",1,present,0,0
+"13016","darznąć",darznie,darzn,darznąć,侵す,"to dare, to encroach",3,,0,0
+"13017","dawić",daw,dawi,dawić,縊る,"to choke, to strangle, to strangulate, to suffocate",4,,0,0
+"13018","drać",dr,dr,drać,引き裂く,"to tear, to rend",1,present,0,0
+"13019","dziedzić",dziedz,dziedz,dziedzić,継がふ,"to inherit",4,,0,0
+"13020","dzierżeć",dzierżej,dzierżej,dzierżeć,抱ふ,"to hold, to keep",2,present,0,0
+"13021","gabać",gab,gab,gabać,奏する,"to accost, to beset, to accuse, to indict, to sue ",1,present,0,0
+"13022","galić",gal,gal,galić,好く、好む,"to favour",4,,0,0
+"13023","gatać",gat,gat,gatać,言ふ、語らふ,"to say, to talk",1,present,0,0
+"13024","ględać",ględ,ględ,ględać,見る、探る、あなぐる、心を付く、目に留む,"to look, to look at, to look for, to search, to seek, to regard, to be mindful of",1,present,0,0
+"13025","ględzieć",ględziej,ględziej,ględzieć,守る、見る、見ゆ,"to look, to look at",2,present,0,0
+"13026","goworzyć",goworzy,goworz,goworzyć,語らふ,"to talk, to discuss",4y,present,0,0
+"13027","gąść",gądzie,gąd,gąść,奏ず,"to play string instrument ",3root,present,0,0
+"13028","głobić",głob,głobi,głobić,煩はす、窘む,"to bond, to rack, to torment, to vex, to care, to worry",4,,0,0
+"13029","ić",idzie,id,ić,差し歩む,"to go, to walk",5isc,present,0,0
+"13030","kasać",kas,kas,kasać,巻く,"to roll up, to tug up",1,present,0,0
+"13031","kazić",kaz,każ,kazić,こほつ、くづす,"to destroy, to devastate, to wreck, to spoil",4,,0,0
+"13032","kaźnić",kaźn,kaźni,kaźnić,打ず、凌ず,"to punish, to penalize, to castigate, to chastise, to rebuke, to reprimand",4,,0,0
+"13033","kinąć",kinie,kin,kinąć,投ぐ,"to fling, to throw",3,,0,0
+"13034","klwać",klw,klw,klwać,食む,"to peck",1,present,0,0
+"13035","kować",kow,kow,kować,焠ぐ、淬ぐ,"to forge, to manacle, to shackle",1,present,0,0
+"13036","krszczyć",krszczy,krszcz,krszczyć,刈る,"to behead, to decapitate",4y,present,0,0
+"13037","krzcić",krzc,krzce,krzcić,油注ぐ、清む,"to baptize, to cross",4,,0,0
+"13038","ktać",kt,kt,ktać,咲く,"to bloom, to blossom",1,present,0,0
+"13039","kusić",kus,kusz,kusić,閲す、誘ふ,"to examine, to prove, to incite, to induce, to tempt, to taste, to check, to investigate, to train, to practice",4,,0,0
+"13040","kwiść",kwicie,kwit,kwiść,咲く,"to bloom, to blossom",3root,present,0,0
+"13041","kęsać",kęs,kęs,kęsać,噛む,"to bite",1,present,0,0
+"13042","kłtać",kłt,kłt,kłtać,飲み込む,"to swallow",1,present,0,0
+"13043","lić",l,l,lić,沃懸く、注ぐ,"to pour",4,,0,0
+"13044","lnąć",lnie,ln,lnąć,掻い着く,"to adhere, to cling",3,,0,0
+"13045","lpieć",lpiej,lpiej,lpieć,掻い着く,"to adhere, to cling",2,present,0,0
+"13046","mirzieć",mirziej,mirziej,mirzieć,憎み捨つ,"to disgust",2,present,0,0
+"13047","mirzyć",mirzy,mirz,mirzyć,取り支ふ、扱ふ,"to reconcile",4y,present,0,0
+"13048","mnieć",mniej,mniej,mnieć,思ふ,"to think, to suppose",2,present,0,0
+"13049","mołwić",mołw,mołwi,mołwić,語ふ,"to say, to speak",4,,0,0
+"13050","mudzić",mudz,mudz,mudzić,長座す,"to linger, to loiter, to procrastinate",4,,0,0
+"13051","naczrzeć",naczrzej,naczrzej,naczrzeć,描く、差し汲む,"to draw, to scoop",2,aorist,0,0
+"13052","nacząć",naczie,nacz,nacząć,始む、起こる,"to begin, to commence, to start",3,,0,0
+"13053","norzyć",norzy,norz,norzyć,執りす,"to immerse, to submerge",4y,present,0,0
+"13054","odrać",odr,odr,odrać,脱ぐ,"to strip, to unsheath, to steal, to sack ",1,aorist,0,0
+"13055","okchnąć",okchnie,okchn,okchnąć,口つむぐ,"to become mute, to become speechless",3,,0,0
+"13056","opóździć",opóźdz,opóźdz,opóździć,遅る,"to be late, to not make it in time",4,,0,0
+"13057","osoczyć",osoczy,osocz,osoczyć,訴ふ,"to accuse, to slander",4y,present,0,0
+"13058","otewrzeć",otewrzej,otewrzej,otewrzeć,開く,"to open, to reveal",2,aorist,0,0
+"13059","oździć",oźdz,oźdz,oździć,溶け乾く,"to dry malt",4,,0,0
+"13060","pachać",pach,pach,pachać,鋤く、犂く,"to plow, to till ",1,present,0,0
+"13061","plwać",plw,plw,plwać,息を放つ、つはく,"to spit",1,present,0,0
+"13062","plęsać",plęs,plęs,plęsać,撥ぬ、跳ぬ、踊る,"to bounce, to dance",1,present,0,0
+"13063","pochopić",pochop,pochopi,pochopić,つかむ,"to catch, to seize, to succeed, to work out",4,aorist,0,0
+"13064","poczywać",poczyw,poczyw,poczywać,怠る、憩ふ、息ふ,"to rest, to take rest",1,present,0,0
+"13065","pognać",pogn,pogn,pognać,追ひ棄つ,"to make someone leave",1,aorist,0,0
+"13066","pogłytać",pogłyt,pogłyt,pogłytać,食らふ,"to devour, to swallow",1,aorist,0,0
+"13067","postrobić",postrob,postrobi,postrobić,強ふ,"to strengthen, to fix, to affix, to fasten",4,aorist,0,0
+"13068","postrzeć",postrzej,postrzej,postrzeć,広ごる、しく、領く、敷く,"to spread",2,aorist,0,0
+"13069","pośrześć",pośrzecie,pośrzot,pośrześć,あふ,"to encounter, to meet",3root,aorist,0,0
+"13070","przekażać",przekaż,przekaż,przekażać,さはる、さやる,"to hinder, to impede, to interrupt, to disgrace, to dishonour, to put to shame, to infringe, to contravene, to thwart",1,aorist,0,0
+"13071","pwać",pw,pw,pwać,打ち頼む,"to trust",1,present,0,0
+"13072","pławać",pław,pław,pławać,泳ぐ,"to swim, to sail",1,present,0,0
+"13073","płyć",pły,pł,płyć,流るる,"to flow",4y,present,0,0
+"13074","płókać",płók,płók,płókać,濯ぐ、滌ぐ、漱ぐ,"to rinse",1,present,0,0
+"13075","rdzieć",rdziej,rdziej,rdzieć,錆ぶ,"to rust",2,present,0,0
+"13076","reptać",rept,rept,reptać,独りごつ,"to murmur, to grumble",1,present,0,0
+"13077","rozdrzeszyć",rozdrzeszy,rozdrzesz,rozdrzeszyć,免ず,"to absolve, to give absolution, to remit sins, to separate, to split",4y,aorist,0,0
+"13078","rzazać",rzaz,rzaz,rzazać,切る,"to cut, to slice",1,present,0,0
+"13079","rzwieć",rzwiej,rzwiej,rzwieć,叫ぶ,"to roar, to bellow, to scream",2,present,0,0
+"13080","siedlić",siedl,siedl,siedlić,佇む、住まふ,"to settle",4,present,0,0
+"13081","sieść",siodzie,siod,sieść,居る,"to sit down",3root,present,0,0
+"13082","skiwnąć",skiwnie,skiwn,skiwnąć,招く,"to beckon",3,,0,0
+"13083","skromić",skrom,skromi,skromić,手慣る、飼ふ,"to curb, to tame",4,present,0,0
+"13084","skrżytać",skrżyt,skrżyt,skrżytać,磨る、摩る、擦る、擂る,"to gnash, to grate, to rasp, to neigh, to grunt, to hiss,  to fume, to rage",1,present,0,0
+"13085","skuść",skudnie,skudn,skuść,引き張る,"to pluck",3root3,present,0,0
+"13086","snować",snow,snow,snować,績む,"to warp yarn, to spin",1,present,0,0
+"13087","snębić",snęb,snębi,snębić,預く、あはむ,"to marry off",4,present,0,0
+"13088","soczyć",soczy,socz,soczyć,訴ふ,"to accuse, to slander",4y,present,0,0
+"13089","stajać",staj,staj,stajać,とまる、たしなむ、現ず,"to remain, to stay, to endure, to last, to cease, to stop, to appear, to become",1,present,0,0
+"13090","stradać",strad,strad,stradać,奪わる,"to be bereft, to be deprived, to get impoverished ",1,present,0,0
+"13091","stydnąć",stydnie,stydn,stydnąć,冴え凍る、冷える,"to cool, to cool down",3,,0,0
+"13092","sukać",suk,suk,sukać,ねづ、もぢる,"to twist, to strand thread",1,present,0,0
+"13093","suć",suje,suj,suć,鏤む,"to heap, to strew, to encrust, to inlay",denomitive2,present,0,0
+"13094","szczwać",szczw,szczw,szczwać,遣らふ,"to sic",1,present,0,0
+"13095","szepiotać",szepiot,szepiot,szepiotać,ひひらく,"to lisp",1,present,0,0
+"13096","sąmnieć",sąmniej,sąmniej,sąmnieć,疑ふ、逆ふ、怖づ、恥づかしむ,"to have doubts, to resist, to be afraid, to fear, to be ashamed, to regret",2,present,0,0
+"13097","sędzić",sędz,sędz,sędzić,裁く、断ずる,"to judge, to try, to litigate, to presume, to suppose",4,present,0,0
+"13098","słuszać",słusz,słusz,słuszać,聞く、伏す,"to hearken, to listen, to obey",1,present,0,0
+"13099","słuszeć",słuszej,słuszej,słuszeć,合ふ,"to be equitable, to befit, to behove, to serve some purpose, to suit",2,present,0,0
+"13100","słuć",słuje,słuj,słuć,呼ぶ、名づく,"to call, to name, to mean",denomitive2,present,0,0
+"13101","tarchać",tarch,tarch,tarchać,打ち戦慄く、戦慄く、語ふ、ささめく、つつめく,"to clatter, to rattle, to talk, to whisper",1,present,0,0
+"13102","tarkać",tark,tark,tarkać,打ち戦慄く、戦慄く、語ふ、ささめく、つつめく,"to clatter, to rattle, to talk, to whisper",1,present,0,0
+"13103","tesknić",teskn,teskni,tesknić,嘆かふ,"to be sad, to despair",4,present,0,0
+"13104","tolić",tol,tol,tolić,抱ふ,"to cuddle, to nestle",4,present,0,0
+"13105","uchapić",uchap,uchapi,uchapić,持つ、掴む,"to grasp, to seize",4,present,0,0
+"13106","uchopić",uchop,uchopi,uchopić,持つ、掴む,"to grasp, to seize",4,present,0,0
+"13107","uchwacić",uchwac,uchwac,uchwacić,持つ、掴む,"to grasp, to seize",4,present,0,0
+"13108","ufacić",ufac,ufac,ufacić,持つ、掴む,"to grasp, to seize",4,present,0,0
+"13109","umirać",umir,umir,umirać,失す,"to die",1,present,0,0
+"13110","upwać",upw,upw,upwać,打ち頼む,"to trust",1,present,0,0
+"13111","wielić",wiel,wiel,wielić,仰す,"to command, to order",4,present,0,0
+"13112","wiercieć",wierciej,wierciej,wiercieć,徒然る,"to bore, to drill, to perforate, to wriggle",2,present,0,0
+"13113","więzać",więz,więz,więzać,絡ぐ、括る,"to bind, to tie",1,present,0,0
+"13114","wnimać",wnim,wnim,wnimać,案ず、計らふ、思し定む、見伏す,"to deem, to think, to cogitate, to consider, to expect, to anticipate",1,present,0,0
+"13115","wolić",wol,wol,wolić,好む,"to prefer",4,present,0,0
+"13116","wyknąć",wyknie,wykn,wyknąć,学ぶ、馴る,"to learn, to get used to",3,aorist,0,0
+"13117","wytłuc",wytłucze,wytłuk,wytłuc,金打つ,"to pound out, to stamp out, to knock out, to kill each other off",3root,present,0,0
+"13118","wznieć",wzniej,wzniej,wznieć,聞こゆ,"to sound",2,present,0,0
+"13119","włodać",włod,włod,włodać,治む,"to reign, to rule",1,present,0,0
+"13120","zażec",zażecz,zażek,zażec,点す、灯す,"to light, to ignite",3root,present,0,0
+"13121","zgibać",zgib,zgib,zgibać,撓む、搔い綰む,"to bend, to curve",1,present,0,0
+"13122","zobać",zob,zob,zobać,突き食う,"to eat by pecking",1,present,0,0
+"13123","zuć",zuje,zuj,zuć,蹄鉄を外す,"to unshoe, to unshoe oneself",denomitive2,present,0,0
+"13124","zwarzyć",zwarzy,zwarz,zwarzyć,仕出す,"to weld togethe, to cook",4y,present,0,0
+"13125","zwonić",zwon,zwoni,zwonić,鳴る,"to clink, to jingle, to ring, to toll",4,present,0,0
+"13126","ćwirdzić",ćwirdz,ćwirdz,ćwirdzić,固す,"to firm, to harden, to strengthen, to fortify, to confirm, to affirm, to state, to decide, to order",4,present,0,0
+"13127","łaskać",łask,łask,łaskać,撫づ,"to stroke, to caress",1,present,0,0
+"13128","łokać",łok,łok,łokać,食らふ,"to lap, to guzzle",1,present,0,0
+"13129","łomić",łom,łomi,łomić,破る,"to break, to shatter, to stir up, to shake up, to wrestle",4,present,0,0
+"13130","łuczyć",łuczy,łucz,łuczyć,当たる,"to hit, to smite, to strike",4y,present,0,0
+"13131","śpiać",śpi,śpi,śpiać,連れ行く,"to have time, to keep up with",1,present,0,0
+"13132","śrześć",śrzecie,śrzot,śrześć,あふ,"to encounter, to meet",3root,present,0,0
+"13133","świrbieć",świrbiej,świrbiej,świrbieć,痒む,"to itch",2,present,0,0
+"13134","źrzeć",źrzej,źrzej,źrzeć,見る、打ち見る,"to look, to look at, to ripen",2,aorist,0,0
+"13135","żdać",żd,żd,żdać,待つ、まほす,"to wait, to await, to expect",1,aorist,0,0
+"13136","żeleć",żelej,żelej,żeleć,肝砕く、潮どく、思し嘆く,"to grieve, to regret",2,,0,0
+"13137","żwać",żw,żw,żwać,食らふ,"to chew, to masticate",1,present,0,0
+"13138","żędać",żęd,żęd,żędać,まほす,"to crave, to long for, to implore, to wish",1,present,0,0

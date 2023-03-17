@@ -1,529 +1,526 @@
-"1","abiungo"
-"2","abjungo"
-"3","ablūdere",ablūd,ablūdere,ablūs,ablūsus,,,"3","0","0","0","0","0"
-"4","abrado"
-"5","abrodo"
-"6","abscēdere",abscēd,abscēdere,abscēss,abscēssus,,,"3","0","0","0","0","0"
-"7","abstraho"
-"8","abstrudo"
-"9","absumo"
-"10","accēdere",accēd,accēdere,accēss,accēssus,,,"3","0","0","0","0","0"
-"11","accingo"
-"13","adcēdere",adcēd,adcēdere,adcēss,adcēssus,,,"3","0","0","0","0","0"
-"14","adfigo"
-"15","adfingo"
-"16","adflecto"
-"17","adfligo"
-"18","adfluo"
-"19","adgero"
-"20","adhaeresco"
-"21","adheresco"
-"22","adiungo"
-"23","adjungo"
-"24","adlicio"
-"25","adlīdere",adlīd,adlīdere,adlīs,adlīsus,,,"3","0","0","0","0","0"
-"26","adlūdere",adlūd,adlūdere,adlūs,adlūsus,,,"3","0","0","0","0","0"
-"27","admitto"
-"28","adplaudo"
-"29","adprimo"
-"30","adrado"
-"31","adrepo"
-"32","adrigo"
-"33","adscribo"
-"34","adspergo"
-"35","adspicio"
-"36","adstringo"
-"37","adsumo"
-"38","adsurgo"
-"39","adtraho"
-"40","aduro"
-"41","adveho"
-"42","advivo"
-"43","affigo"
-"44","affingo"
-"45","afflecto"
-"46","affligo"
-"47","affluo"
-"48","aggero"
-"49","algesco"
-"50","allicio"
-"51","allīdere",allīd,allīdere,allīs,allīsus,,,"3","0","0","0","0","0"
-"52","allūdere",allūd,allūdere,allūs,allūsus,,,"3","0","0","0","0","0"
-"53","amburo"
-"54","amitto"
-"55","ango"
-"56","antecēdere",antecēd,antecēdere,antecēss,antecēssus,,,"3","0","0","0","0","0"
-"57","antemitto"
-"58","applaudo"
-"59","apprimo"
-"60","appromitto"
-"61","ardesco"
-"62","arrepo"
-"63","arrigo"
-"64","ascribo"
-"65","aspargo"
-"66","aspergo"
-"67","aspicio"
-"68","assumo"
-"69","assurgo"
-"70","astringo"
-"71","astruo"
-"72","attraho"
-"73","autumnescit"
-"74","aveho"
-"75","avello"
-"76","carpo"
-"77","cedo"
-"78","cingo"
-"79","circumaspicio"
-"80","circumcingo"
-"81","circumclūdere",circumclūd,circumclūdere,circumclūs,circumclūsus,,,"3","0","0","0","0","0"
-"82","circumflecto"
-"83","circumfluo"
-"84","circummitto"
-"85","circumplecto"
-"86","circumpungo"
-"87","circumrado"
-"88","circumrodo"
-"89","circumscribo"
-"90","circumspargo"
-"91","circumspicio"
-"92","circumstringo"
-"93","circumtego"
-"94","circumtraho"
-"95","circumvado"
-"96","claudo"
-"97","clepo"
-"98","clūdere",clūd,clūdere,clūs,clūsus,,,"3","0","0","0","0","0"
-"99","cohaeresco"
-"100","collīdere",collīd,collīdere,collīs,collīsus,,,"3","0","0","0","0","0"
-"101","collūdere",collūd,collūdere,collūs,collūsus,,,"3","0","0","0","0","0"
-"102","comburo"
-"103","commingo"
-"104","committo"
-"105","como"
-"106","comparco"
-"107","comperco"
-"108","compingo"
-"109","complodo"
-"110","comprimo"
-"111","compromitto"
-"112","compungo"
-"113","conburo"
-"114","concēdere",concēd,concēdere,concēss,concēssus,,,"3","0","0","0","0","0"
-"115","concerpo"
-"116","conclūdere",conclūd,conclūdere,conclūs,conclūsus,,,"3","0","0","0","0","0"
-"117","concoquo"
-"118","concutio"
-"119","configo"
-"120","confingo"
-"121","confligo"
-"122","confluo"
-"123","congero"
-"124","coniungo"
-"125","conjungo"
-"126","conlīdere",conlīd,conlīdere,conlīs,conlīsus,,,"3","0","0","0","0","0"
-"127","conlūdere",conlūd,conlūdere,conlūs,conlūsus,,,"3","0","0","0","0","0"
-"128","conplodo"
-"129","conprimo"
-"130","conpungo"
-"131","conquinisco"
-"132","conrodo"
-"133","conscribo"
-"134","conspargo"
-"135","conspergo"
-"136","conspicio"
-"137","constringo"
-"138","construo"
-"139","consumo"
-"140","consurgo"
-"141","contego"
-"142","contemno"
-"143","contraho"
-"144","contrascribo"
-"145","contrudo"
-"146","conveho"
-"147","convivo"
-"148","coquo"
-"149","corrado"
-"150","correpo"
-"151","corrigo"
-"152","corrodo"
-"153","crucifigo"
-"154","decēdere",decēd,decēdere,decēss,decēssus,,,"3","0","0","0","0","0"
-"155","decerpo"
-"156","decoco"
-"157","decoquo"
-"158","decutio"
-"159","defigo"
-"160","defingo"
-"161","deflecto"
-"162","defluo"
-"163","degero"
-"164","deglubo"
-"165","deiungo"
-"166","dejungo"
-"167","delingo"
-"168","delūdere",delūd,delūdere,delūs,delūsus,,,"3","0","0","0","0","0"
-"169","demergo"
-"170","demitto"
-"171","demo"
-"172","depingo"
-"173","deplango"
-"174","deprimo"
-"175","depromo"
-"176","depungo"
-"177","derado"
-"178","derepo"
-"179","derigo"
-"180","describo"
-"181","despicio"
-"182","destringo"
-"183","destruo"
-"184","desumo"
-"185","detego"
-"186","detraho"
-"187","detrudo"
-"188","deuro"
-"189","deveho"
-"190","diffluo"
-"191","digero"
-"192","diiungo"
-"193","diligo"
-"194","dilucesco"
-"195","dimitto"
-"196","dirigo"
-"197","discēdere",discēd,discēdere,discēss,discēssus,,,"3","0","0","0","0","0"
-"198","discerpo"
-"199","discingo"
-"200","disclūdere",disclūd,disclūdere,disclūs,disclūsus,,,"3","0","0","0","0","0"
-"201","discoquo"
-"202","discribo"
-"203","discutio"
-"204","disiungo"
-"205","disjungo"
-"206","dispergo"
-"207","dispicio"
-"208","dispungo"
-"209","distinguo"
-"210","distraho"
-"211","distringo"
-"212","divido"
-"213","effingo"
-"214","effligo"
-"215","effluo"
-"216","egero"
-"217","elīdere",elīd,elīdere,elīs,elīsus,,,"3","0","0","0","0","0"
-"218","elingo"
-"219","elucesco"
-"220","elūdere",elūd,elūdere,elūs,elūsus,,,"3","0","0","0","0","0"
-"221","emergo"
-"222","emitto"
-"223","emungo"
-"224","enubo"
-"225","erado"
-"226","erepo"
-"227","erigo"
-"228","erodo"
-"229","erugo"
-"230","evado"
-"231","eveho"
-"232","exardesco"
-"233","excēdere",excēd,excēdere,excēss,excēssus,,,"3","0","0","0","0","0"
-"234","excerpo"
-"235","exclūdere",exclūd,exclūdere,exclūs,exclūsus,,,"3","0","0","0","0","0"
-"236","excoquo"
-"237","excribo"
-"238","exculpo"
-"239","excutio"
-"240","expingo"
-"241","explodo"
-"242","exporrigo"
-"243","exprimo"
-"244","expromo"
-"245","expungo"
-"246","exscribo"
-"247","exsculpo"
-"248","exstinguo"
-"249","exstruo"
-"250","exsugo"
-"251","exsurgo"
-"252","extergo"
-"253","extinguo"
-"254","extraho"
-"255","extrudo"
-"256","extruo"
-"257","exurgo"
-"258","exuro"
-"259","figo"
-"260","fingo"
-"261","flecto"
-"262","fligo"
-"263","fluo"
-"264","frigesco"
-"265","frigo"
-"266","fulgo"
-"267","genuflecto"
-"268","gero"
-"269","glubo"
-"270","illicio"
-"271","illīdere",illīd,illīdere,illīs,illīsus,,,"3","0","0","0","0","0"
-"272","illucesco"
-"273","illūdere",illūd,illūdere,illūs,illūsus,,,"3","0","0","0","0","0"
-"274","immergo"
-"275","immitto"
-"276","imprimo"
-"277","inardesco"
-"278","incēdere",incēd,incēdere,incēss,incēssus,,,"3","0","0","0","0","0"
-"279","incingo"
-"280","inclūdere",inclūd,inclūdere,inclūs,inclūsus,,,"3","0","0","0","0","0"
-"281","incoquo"
-"282","incutio"
-"283","infigo"
-"284","inflecto"
-"285","infligo"
-"286","influo"
-"287","ingero"
-"288","iniungo"
-"289","injungo"
-"290","inlicio"
-"291","inlīdere",inlīd,inlīdere,inlīs,inlīsus,,,"3","0","0","0","0","0"
-"292","inlucesco"
-"293","inlūdere",inlūd,inlūdere,inlūs,inlūsus,,,"3","0","0","0","0","0"
-"294","inmitto"
-"295","innubo"
-"296","inprimo"
-"297","inrepo"
-"298","inscribo"
-"299","insculpo"
-"300","inserpo"
-"301","inspergo"
-"302","inspicio"
-"303","instinguo"
-"304","instringo"
-"305","instruo"
-"306","insumo"
-"307","insurgo"
-"308","intego"
-"309","intellego"
-"310","intelligo"
-"311","intercēdere",intercēd,intercēdere,intercēss,intercēssus,,,"3","0","0","0","0","0"
-"312","interclūdere",interclūd,interclūdere,interclūs,interclūsus,,,"3","0","0","0","0","0"
-"313","interfluo"
-"314","intergero"
-"315","interiungo"
-"316","interjungo"
-"317","intermitto"
-"318","interpungo"
-"319","interscribo"
-"320","interstinguo"
-"321","interstringo"
-"322","intertraho"
-"323","intingo"
-"324","intinguo"
-"325","intraho"
-"326","intromitto"
-"327","introspicio"
-"328","intrudo"
-"329","inungo"
-"330","inunguo"
-"331","inuro"
-"332","invado"
-"333","inveho"
-"334","irrepo"
-"335","iungo"
-"336","jungo"
-"337","laedo"
-"338","lingo"
-"339","lucesco"
-"340","ludo"
-"341","manumitto"
-"342","meio"
-"343","mergo"
-"344","mingo"
-"345","mitto"
-"346","morem_gero"
-"347","necto"
-"348","neglego"
-"349","negligo"
-"350","ningit"
-"351","ningo"
-"352","ninguit"
-"353","ninguo"
-"354","nubo"
-"355","obgero"
-"356","oblīdere",oblīd,oblīdere,oblīs,oblīsus,,,"3","0","0","0","0","0"
-"357","obnubo"
-"358","obrepo"
-"359","obstringo"
-"360","obstrudo"
-"361","obstruo"
-"362","obtego"
-"363","obtraho"
-"364","obtrudo"
-"365","occlūdere",occlūd,occlūdere,occlūs,occlūsus,,,"3","0","0","0","0","0"
-"366","oggero"
-"367","omitto"
-"368","opprimo"
-"369","pango"
-"370","parco"
-"371","pecto"
-"372","pellicio"
-"373","percutio"
-"374","perfigo"
-"375","perfingo"
-"376","perfluo"
-"377","pergo"
-"378","permitto"
-"379","perpungo"
-"380","perscribo"
-"381","perserpo"
-"382","perspicio"
-"383","perstringo"
-"384","pertraho"
-"385","perungo"
-"386","peruro"
-"387","pervado"
-"388","perveho"
-"389","pingo"
-"390","plango"
-"391","plaudo"
-"392","plecto"
-"393","plodo"
-"394","pollingo"
-"395","porrigo"
-"396","postscribo"
-"397","praecēdere",praecēd,praecēdere,praecēss,praecēssus,,,"3","0","0","0","0","0"
-"398","praecerpo"
-"399","praecingo"
-"400","praeclūdere",praeclūd,praeclūdere,praeclūs,praeclūsus,,,"3","0","0","0","0","0"
-"401","praefigo"
-"402","praegero"
-"403","praeintelligo"
-"404","praelūdere",praelūd,praelūdere,praelūs,praelūsus,,,"3","0","0","0","0","0"
-"405","praemitto"
-"406","praescribo"
-"407","praestringo"
-"408","praestruo"
-"409","praesumo"
-"410","praetego"
-"411","praetermitto"
-"412","praeuro"
-"413","premo"
-"414","procēdere",procēd,procēdere,procēss,procēssus,,,"3","0","0","0","0","0"
-"415","profluo"
-"416","progero"
-"417","promitto"
-"418","promo"
-"419","propungo"
-"420","prorepo"
-"421","proscribo"
-"422","prospicio"
-"423","protego"
-"424","protraho"
-"425","protrudo"
-"426","proveho"
-"427","rado"
-"428","recēdere",recēd,recēdere,recēss,recēssus,,,"3","0","0","0","0","0"
-"429","recingo"
-"430","reclūdere",reclūd,reclūdere,reclūs,reclūsus,,,"3","0","0","0","0","0"
-"431","recoquo"
-"432","recutio"
-"433","reflecto"
-"434","refluo"
-"435","refrigesco"
-"436","regero"
-"437","rego"
-"438","remitto"
-"439","repercutio"
-"440","repo"
-"441","reprimo"
-"442","repromitto"
-"443","repungo"
-"444","rescribo"
-"445","respergo"
-"446","respicio"
-"447","restinguo"
-"448","restringo"
-"449","restruo"
-"450","resumo"
-"451","resurgo"
-"452","retego"
-"453","retraho"
-"454","retrocēdere",retrocēd,retrocēdere,retrocēss,retrocēssus,,,"3","0","0","0","0","0"
-"455","retrospicio"
-"456","retrudo"
-"457","reveho"
-"458","revivesco"
-"459","revivisco"
-"460","rodo"
-"461","sarpo"
-"462","scalpo"
-"463","scribo"
-"464","sculpo"
-"465","secēdere",secēd,secēdere,secēss,secēssus,,,"3","0","0","0","0","0"
-"466","seclūdere",seclūd,seclūdere,seclūs,seclūsus,,,"3","0","0","0","0","0"
-"467","seiungo"
-"468","sejungo"
-"469","serpo"
-"470","spargo"
-"471","specio"
-"472","spicio"
-"473","stringo"
-"474","struo"
-"475","subdivido"
-"476","subintellego"
-"477","subiungo"
-"478","subjungo"
-"479","submergo"
-"480","submitto"
-"481","subrepo"
-"482","subrigo"
-"483","subscribo"
-"484","substruo"
-"485","subtraho"
-"486","suburo"
-"487","subveho"
-"488","succēdere",succēd,succēdere,succēss,succēssus,,,"3","0","0","0","0","0"
-"489","succingo"
-"490","succutio"
-"491","suffigo"
-"492","suggero"
-"493","sugo"
-"494","summergo"
-"495","summitto"
-"496","sumo"
-"497","superextruo"
-"498","superfluo"
-"499","superscribo"
-"500","superstruo"
-"501","supervivo"
-"502","suppingo"
-"503","supprimo"
-"504","surgo"
-"505","surrepo"
-"506","suspicio"
-"507","tego"
-"508","tergo"
-"509","tingo"
-"510","tinguo"
-"511","traho"
-"512","tramitto"
-"513","transcribo"
-"514","transfigo"
-"515","transfluo"
-"516","transmitto"
-"517","transnubo"
-"518","transpungo"
-"519","transscribo"
-"520","transvado"
-"521","transveho"
-"522","traveho"
-"523","trudo"
-"524","ungo"
-"525","unguo"
-"526","uro"
-"527","vado"
-"528","veho"
-"529","vello"
-"530","vivo"
+"3800","abiungere",abiung,abiungere,abiūnx,abiūnctus,くびきから緩める、くびきを外す、ハーネスを外す、取り除く、分離する、分割する、引き離す,"to loose from a yoke, to unyoke, to unharness, to remove, to separate, to split, to detach",3,0,0,0,0,0
+"3801","abjungere",abjung,abjungere,abjūnx,abjūnctus,くびきから緩める、くびきを外す、ハーネスを外す、取り除く、分離する、分割する、引き離す,"to loose from a yoke, to unyoke, to unharness, to remove, to separate, to split, to detach",3,0,0,0,0,0
+"3802","ablūdere",ablūd,ablūdere,ablūs,ablūsus,洗い流す,"to wash away",3,0,0,0,0,0
+"3803","abradere",abrad,abradere,abras,abrasus,こする,"to scrape",3,0,0,0,0,0
+"3804","abrodere",abrod,abrodere,abros,abrosus,離脱する,"to break away",3,0,0,0,0,0
+"3805","abscēdere",abscēd,abscēdere,abscēss,abscēssus,退位する,"to abdicate",3,0,0,0,0,0
+"3806","abstrahere",abstrah,abstrahere,abstrax,abstractus,抽象化する,"to abstract",3,0,0,0,0,0
+"3807","abstrudere",abstrud,abstrudere,abstrus,abstrusus,封鎖する,"to block",3,0,0,0,0,0
+"3808","absūmere",absūm,absūmere,absūmps,absūmptus,取り除く,"to take away",3,0,0,0,0,0
+"3809","accingere",accing,accingere,accinx,accinxus,締める,"to tighten",3,0,0,0,0,0
+"3810","accēdere",accēd,accēdere,accēss,accēssus,向かう、近づく、接近する、到達する、前進する、攻撃する、追加される、参加する、同意する、同意する、同意する、同意する、同意する、似ている 、似る、類似する、入る、着手する、起こる、降りかかる,"to go toward, to come toward, to approach, to reach, to advance, to attack, to be added, to join, to give assent to, to accede to, to assent to, to agree with, to approve of, to resemble, to enter upon, to undertake, to happen, to befall",3,0,0,0,0,0
+"3811","adcēdere",adcēd,adcēdere,adcēss,adcēssus,向かう、近づく、接近する、到達する、前進する、攻撃する、追加される、参加する、同意する、同意する、同意する、同意する、同意する、似ている 、似る、類似する、入る、着手する、起こる、降りかかる,"to go toward, to come toward, to approach, to reach, to advance, to attack, to be added, to join, to give assent to, to accede to, to assent to, to agree with, to approve of, to resemble, to enter upon, to undertake, to happen, to befall",3,0,0,0,0,0
+"3812","adfigere",adfig,adfigere,adfix,adfixus,添付する,"to attach",3,0,0,0,0,0
+"3813","adfingere",adfing,adfingere,adfinx,adfinxus,想像する,"to imagine",3,0,0,0,0,0
+"3814","adflectere",adflect,adflectere,adflex,adflexus,そらす,"to deflect",3,0,0,0,0,0
+"3815","adfligere",adflig,adfligere,adflix,adflixus,攻撃する,"to strike",3,0,0,0,0,0
+"3816","adfluere",adflu,adfluere,adflūx,adflūxus,流れる,"to flow",3,0,0,0,0,0
+"3817","adgerere",adger,adgerere,adgess,adgestum,加える、足す,"to add",3,0,0,0,0,0
+"3818","adhaerescere",adhaeresc,adhaerescere,adhaes,adhaesus,しっかりくっつく、しっかりくっつく,"to adhere tightly, to stick fast",3,0,1,0,0,0
+"3819","adherescere",adheresc,adherescere,adhes,adhesus,しっかりくっつく、しっかりくっつく,"to adhere tightly, to stick fast",3,0,1,0,0,0
+"3820","adiungere",adiung,adiungere,adiūnx,adiūnctus,追加する、結合する、取り付ける、加える、添付する、添える、束ねる、適用する、指示する、括り付ける、繋ぐ,"to add, to join, to attach, to append, to annex, to bind to, to apply to, to direct to, to harness, to yoke",3,0,0,0,0,0
+"3821","adjungere",adjung,adjungere,adjūnx,adjūnctus,追加する、結合する、取り付ける、加える、添付する、添える、束ねる、適用する、指示する、括り付ける、繋ぐ,"to add, to join, to attach, to append, to annex, to bind to, to apply to, to direct to, to harness, to yoke",3,0,0,0,0,0
+"3822","adlicere",adlic,adlicere,adlex,adlectus,誘惑する、おびき寄せる、惹きつける、引き付ける、獲得する、獲る、得る、捕らえる,"to entice, to lure, to attract, to win over, to obtain, to gain, to capture",,,,,,
+"3823","adlīdere",adlīd,adlīdere,adlīs,adlīsus,たす,"to add",3,0,0,0,0,0
+"3824","adlūdere",adlūd,adlūdere,adlūs,adlūsus,侮辱する,"to insult",3,0,0,0,0,0
+"3825","admittere",admitt,admittere,admīs,admissus,認める,"to admit",3,0,0,0,0,0
+"3826","adplaudere",adplaud,adplaudere,adplaus,adplausus,拍手する,"to applaud",3,0,0,0,0,0
+"3827","adprimere",adprim,adprimere,adpress,adpressus,押す,"to press",3,0,0,0,0,0
+"3828","adradere",adrad,adradere,adras,adrasus,たす,"to add",3,0,0,0,0,0
+"3829","adrepere",adrep,adrepere,adreps,adreptus,這う,"to creep",3,0,0,0,0,0
+"3830","adrigere",adrig,adrigere,adrix,adrixus,運転する,"to drive",3,0,0,0,0,0
+"3831","adscribere",adscrib,adscribere,adscrips,adscriptus,入学する,"to enroll",3,0,0,0,0,0
+"3832","adspergere",adsperg,adspergere,adsperx,adsperxus,振りかける,"to sprinkle",3,0,0,0,0,0
+"3833","adspicere",adspici,adspicere,adspex,adspectus,を見て,"to look at",3a,0,0,0,0,0
+"3834","adstringere",adstring,adstringere,adstrinx,adstrinxus,締める,"to fasten",3,0,0,0,0,0
+"3835","adsurgere",adsurg,adsurgere,adsurx,adsurxus,上る、昇る,"to rise",3,0,0,0,0,0
+"3836","adsūmere",adsūm,adsūmere,adsūmps,adsūmptus,取る,"to take",3,0,0,0,0,0
+"3837","adtrahere",adtrah,adtrahere,adtrax,adtractus,引きつける,"attract",3,0,0,0,0,0
+"3838","advehere",adveh,advehere,advex,advectus,運転する,"to drive",3,0,0,0,0,0
+"3839","advīvere",advīv,advīvere,advīx,advīctus,会う,"to meet",3,0,0,0,0,0
+"3840","adūrere",adūr,adūrere,aduss,adustus,着火する、火を起こす、火をつける、焦がす、燃やす,"to kindle, to set fire to, to singe, to scorch, to burn",3,0,0,0,0,0
+"3841","affigere",affig,affigere,affix,affixus,添付する,"to attach",3,0,0,0,0,0
+"3842","affingere",affing,affingere,affinx,affinxus,捕まえる,"to catch",3,0,0,0,0,0
+"3843","afflectere",afflect,afflectere,afflex,afflexus,影響する,"to affect",3,0,0,0,0,0
+"3844","affligere",afflig,affligere,afflix,afflixus,苦しめる,"to afflict",3,0,0,0,0,0
+"3845","affluere",afflu,affluere,afflūx,afflūxus,流れる,"to flow",3,0,0,0,0,0
+"3846","aggerere",agger,aggerere,aggess,aggestum,構築する、築く,"to build up",3,0,0,0,0,0
+"3847","algēscere",algēsc,algēscere,als,-,寒くなる、凍る,"to become cold, to become chilly",3,0,1,0,0,1
+"3848","allicere",allici,allicere,allēx,allectus,誘惑する、おびき寄せる、惹きつける、引き付ける、獲得する、獲る、得る、捕らえる,"to entice, to lure, to attract, to win over, to obtain, to gain, to capture",3,0,0,0,0,0
+"3849","allīdere",allīd,allīdere,allīs,allīsus,突進する、押しつぶす、あざをする、損害を与える、損害を被る,"to dash against, to crush against, to bruise, to damage, to suffer damage",3,0,0,0,0,0
+"3850","allūdere",allūd,allūdere,allūs,allūsus,ほのめかす,"to allude",3,0,0,0,0,0
+"3851","ambūrere",ambū,ambūrere,ambuss,ambustus,さまよう,"to wander",3,0,0,0,0,0
+"3852","amittere",amitt,amittere,amīs,amissus,失う,"to lose",3,0,0,0,0,0
+"3853","angere",ang,angere,anx,anxus,イライラする,"to be angry",3,0,0,0,0,0
+"3854","antecēdere",antecēd,antecēdere,antecēss,antecēssus,先行する,"to precede",3,0,0,0,0,0
+"3855","antemittere",antemitt,antemittere,antemīs,antemissus,予想する,"to anticipate",3,0,0,0,0,0
+"3856","applaudere",applaud,applaudere,applaus,applausus,拍手する,"to applaud",3,0,0,0,0,0
+"3857","apprimere",apprim,apprimere,appress,appressus,押す,"to press",3,0,0,0,0,0
+"3858","appromittere",appromitt,appromittere,appromīs,appromissus,同意する,"to agree",3,0,0,0,0,0
+"3859","arrepere",arrep,arrepere,arreps,arreptus,つかむ,"to seize",3,0,0,0,0,0
+"3860","arrigere",arrig,arrigere,arrix,arrixus,上げる,"to raise",3,0,0,0,0,0
+"3861","ascribere",ascrib,ascribere,ascrips,ascriptus,入学する,"to enroll",3,0,0,0,0,0
+"3862","aspargere",asparg,aspargere,asparx,asparxus,振りかける,"to sprinkle",3,0,0,0,0,0
+"3863","aspergere",asperg,aspergere,asperx,asperxus,振りかける,"to sprinkle",3,0,0,0,0,0
+"3864","aspicere",aspici,aspicere,aspex,aspectus,見る,"to look",3a,0,0,0,0,0
+"3865","assurgere",assurg,assurgere,assurx,assurxus,起きる,"to get up",3,0,0,0,0,0
+"3866","assūmere",assūm,assūmere,assūmps,assūmptus,推定する,"to assume",3,0,0,0,0,0
+"3867","astringere",astring,astringere,astrinx,astrinxus,締める,"to fasten",3,0,0,0,0,0
+"3868","astruere",astru,astruere,astrūx,astrūxus,構築する,"to build",3,0,0,0,0,0
+"3869","attrahere",attrah,attrahere,attrax,attractus,引きつける,"to attract",3,0,0,0,0,0
+"3870","autumnescere",autumnesci,autumnescere,autumnes,-,秋に近づく、秋が来る,"autumn approaches, autumn comes on",3,0,1,0,0,1
+"3871","avehere",aveh,avehere,avex,avectus,運び去る、去る、出発する、馬に乗る,"to carry away, to go away, to depart, to ride on horseback",3,0,0,0,0,0
+"3872","carpere",carp,carpere,carps,carptus,拾う,"to pick up",3,0,0,0,0,0
+"3873","cedere",ced,cedere,ces,cesus,得る,"to yield",3,0,0,0,0,0
+"3874","cingere",cing,cingere,cinx,cinxus,囲む,"surround",3,0,0,0,0,0
+"3875","circumaspicere",circumaspici,circumaspicere,circumaspex,circumaspectus,周りを見回す,"to look around",3a,0,0,0,0,0
+"3876","circumcingere",circumcing,circumcingere,circumcinx,circumcinxus,取り囲む,"to surround",3,0,0,0,0,0
+"3877","circumclūdere",circumclūd,circumclūdere,circumclūs,circumclūsus,同封する,"to enclose",3,0,0,0,0,0
+"3878","circumflectere",circumflect,circumflectere,circumflex,circumflexus,曲がる,"to bend around",3,0,0,0,0,0
+"3879","circumfluere",circumflu,circumfluere,circumflūx,circumflūxus,流れる,"flow around",3,0,0,0,0,0
+"3880","circummittere",circummitt,circummittere,circummīs,circummissus,通り過ぎる,"to pass around",3,0,0,0,0,0
+"3881","circumplectere",circumplect,circumplectere,circumplex,circumplexus,包み込む,"wrap around",3,0,0,0,0,0
+"3882","circumpungere",circumpung,circumpungere,circumpupug,circumpūnctus,突き刺す,"to pierce around",3,0,0,0,0,0
+"3883","circumradere",circumrad,circumradere,circumras,circumrasus,乗り回す,"to ride around",3,0,0,0,0,0
+"3884","circumrodere",circumrod,circumrodere,circumros,circumrosus,行き渡る,"go around",3,0,0,0,0,0
+"3885","circumscribere",circumscrib,circumscribere,circumscrips,circumscriptus,制限する,"to limit",3,0,0,0,0,0
+"3886","circumspargere",circumsparg,circumspargere,circumsparx,circumsparxus,散らばる,"to scatter around",3,0,0,0,0,0
+"3887","circumspicere",circumspici,circumspicere,circumspex,circumspectus,周りを見回す,"to look around",3a,0,0,0,0,0
+"3888","circumstringere",circumstring,circumstringere,circumstrinx,circumstrinxus,取り囲む,"to surround",3,0,0,0,0,0
+"3889","circumtegere",circumteg,circumtegere,circumtex,circumtexus,覆う,"to cover",3,0,0,0,0,0
+"3890","circumtrahere",circumtrah,circumtrahere,circumtrax,circumtractus,ドラッグする,"to drag around",3,0,0,0,0,0
+"3891","circumvadere",circumvad,circumvadere,circumvas,circumvasus,取り囲む,"to surround",3,0,0,0,0,0
+"3892","claudere",claud,claudere,claus,clausus,近い,"close",3,0,0,0,0,0
+"3893","clepere",clep,clepere,cleps,cleptus,拍手する,"to clap",3,0,0,0,0,0
+"3894","clūdere",clūd,clūdere,clūs,clūsus,閉じる,"to close",3,0,0,0,0,0
+"3895","cohaerescere",cohaeresc,cohaerescere,cohaes,-,くっつく,"to stick together, to hang together, to cohere",3,0,1,0,0,0
+"3896","collīdere",collīd,collīdere,collīs,collīsus,衝突する,"to collide",3,0,0,0,0,0
+"3897","collūdere",collūd,collūdere,collūs,collūsus,共謀する,"collude",3,0,0,0,0,0
+"3898","combūrere",combū,combūrere,combuss,combustus,燃やす,"to burn",3,0,0,0,0,0
+"3899","commingere",comming,commingere,comminx,comminxus,閉じる,"to close",3,0,0,0,0,0
+"3900","committere",committ,committere,commīs,commissus,コミットする,"to commit",3,0,0,0,0,0
+"3901","comparcere",comparc,comparcere,compars,comparsus,集める,"to gather",3,0,0,0,0,0
+"3902","compercere",comperc,compercere,compers,compersus,チェックする,"to check",3,0,0,0,0,0
+"3903","compingere",comping,compingere,compinx,compinxus,完了する,"to complete",3,0,0,0,0,0
+"3904","complodere",complod,complodere,complos,complosus,爆発する,"to explode",3,0,0,0,0,0
+"3905","comprimere",comprim,comprimere,compress,compressus,圧縮する,"to compress",3,0,0,0,0,0
+"3906","compromittere",compromitt,compromittere,compromīs,compromissus,妥協する,"compromise",3,0,0,0,0,0
+"3907","compungere",compung,compungere,compupug,compūnctus,叱責する,"to rebuke",3,0,0,0,0,0
+"3908","conbūrere",conbū,conbūrere,conbuss,conbustus,燃やす,"to burn",3,0,0,0,0,0
+"3909","concerpere",concerp,concerpere,concerps,concerptus,集める,"to gather",3,0,0,0,0,0
+"3910","conclūdere",conclūd,conclūdere,conclūs,conclūsus,結論を出す,"to conclude",3,0,0,0,0,0
+"3911","concoquere",concoqu,concoquere,concox,concoctus,要約する、まとめる,"digest",3,0,0,0,0,0
+"3912","concutere",concuti,concutere,concuss,concussus,振る,"to shake",3a,0,0,0,0,0
+"3913","concēdere",concēd,concēdere,concēss,concēssus,付与する,"to grant",3,0,0,0,0,0
+"3914","configere",config,configere,confix,confixus,固定する,"to pin",3,0,0,0,0,0
+"3915","confingere",confing,confingere,confinx,confinxus,閉じ込める,"to confine",3,0,0,0,0,0
+"3916","confligere",conflig,confligere,conflix,conflixus,従事する,"engage",3,0,0,0,0,0
+"3917","confluere",conflu,confluere,conflūx,conflūxus,一緒に流れる,"to flow together",3,0,0,0,0,0
+"3918","congerere",conger,congerere,congess,congestum,集める,"to gather",3,0,0,0,0,0
+"3919","coniungere",coniung,coniungere,coniūnx,coniūnctus,接続する,"to connect",3,0,0,0,0,0
+"3920","conjungere",conjung,conjungere,conjūnx,conjūnctus,結びつける、結びつける、結合する、団結する、くびきでつなぐ、並置する、結びつける、結婚する、縁の絆でつながる、友情の絆でつながる、縁の絆で団結する、友情の絆でつながる,"to bind together, to connect, to join, to unite, to yoke together, to juxtapose, to associate, to marry, to connect by ties of relationship, to connect by ties of friendship, to unite by ties of relationship, to connect by ties of friendship",3,0,0,0,0,0
+"3921","conlīdere",conlīd,conlīdere,conlīs,conlīsus,信頼する,"trust",3,0,0,0,0,0
+"3922","conlūdere",conlūd,conlūdere,conlūs,conlūsus,崩壊する,"to collapse",3,0,0,0,0,0
+"3923","conplodere",conplod,conplodere,conplos,conplosus,爆発する,"explode",3,0,0,0,0,0
+"3924","conprimere",conprim,conprimere,conpress,conpressus,押しつぶす,"to crush",3,0,0,0,0,0
+"3925","conpungere",conpung,conpungere,conpupug,conpūnctus,叱責する,"to rebuke",3,0,0,0,0,0
+"3926","conquiniscere",conquinisc,conquiniscere,conquēx,-,しゃがむ,"to crouch down, to squat",3,0,1,0,0,0
+"3927","conrodere",conrod,conrodere,conros,conrosus,燃やす,"to burn",3,0,0,0,0,0
+"3928","conscribere",conscrib,conscribere,conscrips,conscriptus,募集する,"to recruit",3,0,0,0,0,0
+"3929","conspargere",consparg,conspargere,consparx,consparxus,散布する,"to scatter",3,0,0,0,0,0
+"3930","conspergere",consperg,conspergere,consperx,consperxus,集める,"to gather",3,0,0,0,0,0
+"3931","conspicere",conspici,conspicere,conspex,conspectus,見る,"to look at",3a,0,0,0,0,0
+"3932","constringere",constring,constringere,constrinx,constrinxus,締める,"to tighten",3,0,0,0,0,0
+"3933","construere",constru,construere,constrūx,constrūxus,構築する,"to construct",3,0,0,0,0,0
+"3934","consurgere",consurg,consurgere,consurx,consurxus,起きる,"get up",3,0,0,0,0,0
+"3935","consūmere",consūm,consūmere,consūmps,consūmptus,消費する,"to consume",3,0,0,0,0,0
+"3936","contegere",conteg,contegere,contex,contexus,覆う,"to cover",3,0,0,0,0,0
+"3937","contemnere",contemn,contemnere,contemps,contemptus,軽蔑する、蔑む、無視する、軽視する、謙虚にする,"to scorn, to despise, to disparage, to disregard, to think little of, to humble",3,0,0,0,0,0
+"3938","contrahere",contrah,contrahere,contrax,contractus,契約する,"to contract",3,0,0,0,0,0
+"3939","contrascribere",contrascrib,contrascribere,contrascrips,contrascriptus,書き留める,"to write down",3,0,0,0,0,0
+"3940","contrudere",contrud,contrudere,contrus,contrusus,構築する,"to build",3,0,0,0,0,0
+"3941","convehere",conveh,convehere,convex,convectus,集まる,"to get together",3,0,0,0,0,0
+"3942","convīvere",convīv,convīvere,convīx,convīctus,一緒に住む,"to live together",3,0,0,0,0,0
+"3943","coquere",coqu,coquere,coqūx,coqūxus,料理する,"to cook",3,0,0,0,0,0
+"3944","corradere",corrad,corradere,corras,corrasus,腐食する,"to corrode",3,0,0,0,0,0
+"3945","correpere",correp,correpere,correps,correptus,直す、訂正する,"to correct",3,0,0,0,0,0
+"3946","corrigere",corrig,corrigere,corrix,corrixus,直す、訂正する,"to correct",3,0,0,0,0,0
+"3947","corrodere",corrod,corrodere,corros,corrosus,腐食する,"to corrode",3,0,0,0,0,0
+"3948","crucifigere",crucifig,crucifigere,crucifix,crucifixus,十字架につける,"to crucify",3,0,0,0,0,0
+"3949","cōmere",cōm,cōmere,cōmps,cōmptus,まとめる、形成する、組み立てる、構成する、配置する、世話をする、世話をする、櫛でとかす、着る、編む、飾る、甲板にする、着飾る、飾る,"to bring together, to form, to frame, to construct, to arrange, to take care of, to care for, to comb, to dress, to braid, to adorn, to deck, to dress, to ornament",,,,,,
+"3950","decerpere",decerp,decerpere,decerps,decerptus,選ぶ,"to pick",3,0,0,0,0,0
+"3951","decutere",decuti,decutere,decuss,decussus,磨く,"to brush",3a,0,0,0,0,0
+"3952","decēdere",decēd,decēdere,decēss,decēssus,死ぬ,"to die",3,0,0,0,0,0
+"3953","defigere",defig,defigere,defix,defixus,修正する,"to fix",3,0,0,0,0,0
+"3954","defingere",defing,defingere,definx,definxus,守る,"to defend",3,0,0,0,0,0
+"3955","deflectere",deflect,deflectere,deflex,deflexus,そらす,"to deflect",3,0,0,0,0,0
+"3956","defluere",deflu,defluere,deflūx,deflūxus,流れ落ちる,"to flow down",3,0,0,0,0,0
+"3957","degerere",deger,degerere,degess,degestum,生きる,"to live",3,0,0,0,0,0
+"3958","deglubere",deglub,deglubere,deglups,degluptus,飲み込む,"to swallow",3,0,0,0,0,0
+"3959","deiungere",deiung,deiungere,deiūnx,deiūnctus,切断する,"to disconnect",3,0,0,0,0,0
+"3960","dejungere",dejung,dejungere,dejūnx,dejūnctus,外す、切り離す,"to unyoke",3,0,0,0,0,0
+"3961","delingere",deling,delingere,delinx,delinxus,削除する,"to delete",3,0,0,0,0,0
+"3962","delūdere",delūd,delūdere,delūs,delūsus,欺く,"to deceive",3,0,0,0,0,0
+"3963","demergere",demerg,demergere,demerx,demerxus,沈む,"to sink",3,0,0,0,0,0
+"3964","demittere",demitt,demittere,demīs,demissus,失望させる,"let down",3,0,0,0,0,0
+"3965","depingere",deping,depingere,depinx,depinxus,塗る,"to paint",3,0,0,0,0,0
+"3966","deplangere",deplang,deplangere,deplanx,deplanxus,嘆く,"to lament",3,0,0,0,0,0
+"3967","deprimere",deprim,deprimere,depress,depressus,憂鬱にする,"to depress",3,0,0,0,0,0
+"3968","deprōmere",deprōm,deprōmere,deprōmps,deprōmptus,減価する,"to depreciate",3,0,0,0,0,0
+"3969","depungere",depung,depungere,depupug,depūnctus,却下する,"to dismiss",3,0,0,0,0,0
+"3970","deradere",derad,deradere,deras,derasus,破壊する,"to destroy",3,0,0,0,0,0
+"3971","derepere",derep,derepere,dereps,dereptus,忍び寄る、這い降りる,"to creep down, to crawl down",3,0,0,0,0,0
+"3972","derigere",derig,derigere,derix,derixus,指示する,"to direct",3,0,0,0,0,0
+"3973","describere",describ,describere,descrips,descriptus,記述する,"to describe",3,0,0,0,0,0
+"3974","despicere",despici,despicere,despex,despectus,見下す,"to look down",3a,0,0,0,0,0
+"3975","destringere",destring,destringere,destrinx,destrinxus,断ち切る,"to cut off",3,0,0,0,0,0
+"3976","destruere",destru,destruere,destrūx,destrūxus,破壊する,"to destroy",3,0,0,0,0,0
+"3977","desūmere",desūm,desūmere,desūmps,desūmptus,取る,"to take",3,0,0,0,0,0
+"3978","detegere",deteg,detegere,detex,detexus,発見する,"to discover",3,0,0,0,0,0
+"3979","detrahere",detrah,detrahere,detrax,detractus,引き下げる,"pull down",3,0,0,0,0,0
+"3980","detrudere",detrud,detrudere,detrus,detrusus,押し出す,"push out",3,0,0,0,0,0
+"3981","devehere",deveh,devehere,devex,devectus,倒す,"to bring down",3,0,0,0,0,0
+"3982","deūrere",deū,deūrere,deuss,deustus,負担する,"to bear",3,0,0,0,0,0
+"3983","diffluere",difflu,diffluere,difflūx,difflūxus,流れるように,"to flow",3,0,0,0,0,0
+"3984","digerere",diger,digerere,digess,digestum,ダイジェスト,"digest",3,0,0,0,0,0
+"3985","diiungere",diiung,diiungere,diiūnx,diiūnctus,外す、切り離す,"to unyoke",3,0,0,0,0,0
+"3986","diligere",dilig,diligere,dilix,dilixus,愛する,"to love",3,0,0,0,0,0
+"3987","dilucescere",dilucesc,dilucescere,dīlūx,-,夜が明ける、明るくなる,"to dawn, to begin to grow light",3,0,1,0,0,0
+"3988","dimittere",dimitt,dimittere,dimīs,dimissus,解放する,"to release",3,0,0,0,0,0
+"3989","dirigere",dirig,dirigere,dirix,dirixus,指示する,"to direct",3,0,0,0,0,0
+"3990","discerpere",discerp,discerpere,discerps,discerptus,引き裂く,"to tear",3,0,0,0,0,0
+"3991","discingere",discing,discingere,discinx,discinxus,引き裂く,"to tear",3,0,0,0,0,0
+"3992","disclūdere",disclūd,disclūdere,disclūs,disclūsus,開く,"to open",3,0,0,0,0,0
+"3993","discoquere",discoqu,discoquere,discox,discoctus,学び,"learn",3,0,0,0,0,0
+"3994","discribere",discrib,discribere,discrips,discriptus,割り当てる、分配する、配分する、共有する、分割する,"to assign, to distribute, to apportion, to share, to divide",3,0,0,0,0,0
+"3995","discutere",discuti,discutere,discuss,discussus,議論する,"to discuss",3a,0,0,0,0,0
+"3996","discēdere",discēd,discēdere,discēss,discēssus,去る,"to leave",3,0,0,0,0,0
+"3997","disiungere",disiung,disiungere,disiūnx,disiūnctus,切断する,"disconnect",3,0,0,0,0,0
+"3998","disjungere",disjung,disjungere,disjūnx,disjūnctus,切断する,"disconnect",3,0,0,0,0,0
+"3999","dispergere",disperg,dispergere,disperx,disperxus,分散する,"to disperse",3,0,0,0,0,0
+"4000","dispicere",dispici,dispicere,dispex,dispectus,外を見る,"to look out",3a,0,0,0,0,0
+"4001","dispungere",dispung,dispungere,dispupug,dispūnctus,処分する,"dispose of",3,0,0,0,0,0
+"4002","distinguere",distingu,distinguere,distingūx,distingūxus,区別する,"to distinguish",3,0,0,0,0,0
+"4003","distrahere",distrah,distrahere,distrax,distractus,気を散らす,"to distract",3,0,0,0,0,0
+"4004","distringere",distring,distringere,distrinx,distrinxus,ほぐす,"to disentangle",3,0,0,0,0,0
+"4005","dividere",divid,dividere,divis,divisus,分割する,"to divide",3,0,0,0,0,0
+"4006","dēcocere",dēcoc,dēcocere,dēcox,dēcoctus,煮詰める、煮込む、煮る、縮小する、抑圧する、消費する、浪費する、刺激する、捏造する、発明する、倒産する,"to boil away, to boil down, to boil, to diminish, to repress, to consume, to waste, to oncoct, to fabricate, to invent, to become bankrupt",3,0,0,0,0,0
+"4007","dēcoquere",dēcoqu,dēcoquere,dēcox,dēcoctus,煮詰める、煮込む、煮る、縮小する、抑圧する、消費する、浪費する、刺激する、捏造する、発明する、倒産する,"to boil away, to boil down, to boil, to diminish, to repress, to consume, to waste, to oncoct, to fabricate, to invent, to become bankrupt",3,0,0,0,0,0
+"4008","dēmere",dēm,dēmere,dēmps,dēmptus,除く、除去する、取り除く、差し引く,"to remove, to take away, to subtract",3,0,0,0,0,0
+"4009","effingere",effing,effingere,effinx,effinxus,形成する、形作る、表す、描写する、表現する、描く、模倣する、複写する、写す、模写する、拭く、きれいに拭く、優しくこする、撫でる,"to form, to fashion, to represent, to portray, to express, to depict, to imitate, to copy, to wipe out, to wipe clean, to rub gently, to stroke",3,0,0,0,0,0
+"4010","effligere",efflig,effligere,efflix,efflixus,見せる,"to show",3,0,0,0,0,0
+"4011","effluere",efflu,effluere,efflūx,efflūxus,流出する,"to flow out",3,0,0,0,0,0
+"4012","egerere",eger,egerere,egess,egestum,必要とする,"to need",3,0,0,0,0,0
+"4013","elingere",eling,elingere,elinx,elinxus,除去する,"to eliminate",3,0,0,0,0,0
+"4014","elīdere",elīd,elīdere,elīs,elīsus,除去する,"to eliminate",3,0,0,0,0,0
+"4015","elūdere",elūd,elūdere,elūs,elūsus,逃れる,"to elude",3,0,0,0,0,0
+"4016","emergere",emerg,emergere,emerx,emerxus,出現する,"to emerge",3,0,0,0,0,0
+"4017","emittere",emitt,emittere,emīs,emissus,発送する,"to send out",3,0,0,0,0,0
+"4018","emungere",emung,emungere,emunx,emunxus,削除する,"to remove",3,0,0,0,0,0
+"4019","enubere",enub,enubere,enups,enuptus,曇る,"to cloud",3,0,0,0,0,0
+"4020","eradere",erad,eradere,eras,erasus,根絶する,"to eradicate",3,0,0,0,0,0
+"4021","erepere",erep,erepere,ereps,ereptus,救助する,"to rescue",3,0,0,0,0,0
+"4022","erigere",erig,erigere,erix,erixus,立てる,"to erect",3,0,0,0,0,0
+"4023","erodere",erod,erodere,eros,erosus,侵食する,"to erode",3,0,0,0,0,0
+"4024","erugere",erug,erugere,erux,eruxus,上げる,"to raise",3,0,0,0,0,0
+"4025","evadere",evad,evadere,evas,evasus,脱出する,"to escape",3,0,0,0,0,0
+"4026","evehere",eveh,evehere,evex,evectus,興す,"raise up",3,0,0,0,0,0
+"4027","exardescere",exardesc,exardescere,exars,exarsus,燃え上がる、炎上する、燃え盛る、輝く、激る、挑発される、激怒する,"to flare up, to blaze up, to glow, to rage, to be provoked, to be exasperated",3,0,1,0,0,0
+"4028","excerpere",excerp,excerpere,excerps,excerptus,選ぶ,"to pick out",3,0,0,0,0,0
+"4029","exclūdere",exclūd,exclūdere,exclūs,exclūsus,除外する,"to exclude",3,0,0,0,0,0
+"4030","excoquere",excoqu,excoquere,excox,excoctus,料理する,"to cook",3,0,0,0,0,0
+"4031","excribere",excrib,excribere,excrips,excriptus,書き出す、消し去る、写す、複写する、模写する、書き留める、書き留める、引き継ぐ、似せる,"to write out to write off, to copy, to write down, to note down, to take after, to resemble",3,0,0,0,0,0
+"4032","exculpere",exculp,exculpere,exculps,exculptus,弁解する,"to exculpate",3,0,0,0,0,0
+"4033","excutere",excuti,excutere,excuss,excussus,振り払う,"to shake off",3a,0,0,0,0,0
+"4034","excēdere",excēd,excēdere,excēss,excēssus,超える,"to exceed",3,0,0,0,0,0
+"4035","expingere",exping,expingere,expinx,expinxus,表現する,"to express",3,0,0,0,0,0
+"4036","explodere",explod,explodere,explos,explosus,爆発する,"to explode",3,0,0,0,0,0
+"4037","exporrigere",exporrig,exporrigere,exporrix,exporrixus,怒らせる,"to exasperate",3,0,0,0,0,0
+"4038","exprimere",exprim,exprimere,express,expressus,表現する,"to express",3,0,0,0,0,0
+"4039","exprōmere",exprōm,exprōmere,exprōmps,exprōmptus,探検する,"to exprome",3,0,0,0,0,0
+"4040","expungere",expung,expungere,expupug,expūnctus,抹消する,"to expunge",3,0,0,0,0,0
+"4041","exscribere",exscrib,exscribere,exscrips,exscriptus,書き出す、消し去る、写す、複写する、模写する、書き留める、書き留める、引き継ぐ、似せる,"to write out to write off, to copy, to write down, to note down, to take after, to resemble",3,0,0,0,0,0
+"4042","exsculpere",exsculp,exsculpere,exsculps,exsculptus,切り出す,"to carve out",3,0,0,0,0,0
+"4043","exstinguere",exstingu,exstinguere,exstingūx,exstingūxus,消す,"to extinguish",3,0,0,0,0,0
+"4044","exstruere",exstru,exstruere,exstrūx,exstrūxus,構築する,"to build",3,0,0,0,0,0
+"4045","exsugere",exsug,exsugere,exsux,exsuxus,払拭する,"to wipe out",3,0,0,0,0,0
+"4046","exsurgere",exsurg,exsurgere,exsurx,exsurxus,立ち上がる,"to rise up",3,0,0,0,0,0
+"4047","extergere",exterg,extergere,exterx,exterxus,ふく,"to wipe",3,0,0,0,0,0
+"4048","extinguere",extingu,extinguere,extingūx,extingūxus,消す,"to extinguish",3,0,0,0,0,0
+"4049","extrahere",extrah,extrahere,extrax,extractus,抽出する,"to extract",3,0,0,0,0,0
+"4050","extrudere",extrud,extrudere,extrus,extrusus,押し出す,"to extrude",3,0,0,0,0,0
+"4051","extruere",extru,extruere,extrūx,extrūxus,構築する,"to build",3,0,0,0,0,0
+"4052","exurgere",exurg,exurgere,exurx,exurxus,上る、昇る,"to rise",3,0,0,0,0,0
+"4053","exūrere",exū,exūrere,exuss,exustus,燃え尽きる,"to burn out",3,0,0,0,0,0
+"4054","figere",fig,figere,fix,fixus,修正する,"to fix",3,0,0,0,0,0
+"4055","fingere",fing,fingere,finx,finxus,想像する,"to imagine",3,0,0,0,0,0
+"4056","flectere",flect,flectere,flex,flexus,曲がる,"to bend",3,0,0,0,0,0
+"4057","fligere",flig,fligere,flix,flixus,飛ぶ,"to fly",3,0,0,0,0,0
+"4058","fluere",flu,fluere,flūx,flūxus,流れる,"to flow",3,0,0,0,0,0
+"4059","frigere",frig,frigere,frix,frixus,冷やす,"to cool",3,0,0,0,0,0
+"4060","frīgēscere",frīgēsc,frīgēscere,frīx,-,寒くなる、寒くなる、不活発になる、寒くなる、遠ざかる,"to grow cold, to be chilled, to become inactive, to become cold to become distant",3,0,1,0,0,0
+"4061","fulgere",fulg,fulgere,fulx,fulxus,輝く,"to shine",3,0,0,0,0,0
+"4062","genuflectere",genuflect,genuflectere,genuflex,genuflexus,ひざまずく,"to kneel down",3,0,0,0,0,0
+"4063","gerere",ger,gerere,gess,gestus,運ぶ、負う、負担する、管理する、実施する、支配する、支配する、身に着ける、持つ、所有する、実行する、達成する、展示する、表示する、明らかにする、実行する、実行する、 支払う、振る舞う、ふるまう,"to carry, to bear, to manage, to conduct, to rule, to govern, to wear, to have, to possess, to perform, to accomplish, to exhibit, to display, to reveal, to carry on, to carry out, to wage, to behave, to comport",3,0,0,0,0,0
+"4064","glubere",glub,glubere,glups,gluptus,皮をむく、シャックする、マスターベーションする,"to peel, to shuck, to masturbate",3,0,0,0,0,0
+"4065","illicere",illic,illicere,illex,illectus,誘惑する、惑わす,"to entice, to seduce",3a,0,0,0,0,0
+"4066","illīdere",illīd,illīdere,illīs,illīsus,突く、突進する、ぶつかる,"to strike upon, to strike against, to dash upon, to dash against, to thump against, to bump against",3,0,0,0,0,0
+"4067","illūcēscere",illūcēsc,illūcēscere,illūx,-,夜明けになる、明るくなり始める,"to begin to dawn, to begin to light up",3,0,1,0,0,0
+"4068","illūdere",illūd,illūdere,illūs,illūsus,欺く,"to deceive",3,0,0,0,0,0
+"4069","immergere",immerg,immergere,immerx,immerxus,浸る,"to immerse",3,0,0,0,0,0
+"4070","immittere",immitt,immittere,immīs,immissus,打ち上げる,"to launch",3,0,0,0,0,0
+"4071","imprimere",imprim,imprimere,impress,impressus,感動させる,"to impress",3,0,0,0,0,0
+"4072","incingere",incing,incingere,incinx,incinxus,取り囲む,"to encircle",3,0,0,0,0,0
+"4073","inclūdere",inclūd,inclūdere,inclūs,inclūsus,含める,"to include",3,0,0,0,0,0
+"4074","incoquere",incoqu,incoquere,incox,incoctus,料理する,"to cook",3,0,0,0,0,0
+"4075","incutere",incuti,incutere,incuss,incussus,攻撃する,"to strike",3a,0,0,0,0,0
+"4076","incēdere",incēd,incēdere,incēss,incēssus,踏む,"to step",3,0,0,0,0,0
+"4077","infigere",infig,infigere,infix,infixus,感動させる,"to impress",3,0,0,0,0,0
+"4078","inflectere",inflect,inflectere,inflex,inflexus,曲がる,"to bend",3,0,0,0,0,0
+"4079","infligere",inflig,infligere,inflix,inflixus,負わせる,"to inflict",3,0,0,0,0,0
+"4080","influere",influ,influere,inflūx,inflūxus,影響を与える,"to influence",3,0,0,0,0,0
+"4081","ingerere",inger,ingerere,ingess,ingestum,入る,"to enter",3,0,0,0,0,0
+"4082","iniungere",iniung,iniungere,iniūnx,iniūnctus,繋ぐ、締める、団結する、請求する、課す、禁止する,"to join, to fasten, to unite, to charge, to impose, to enjoin",3,0,0,0,0,0
+"4083","injungere",injung,injungere,injūnx,injūnctus,繋ぐ、締める、団結する、請求する、課す、禁止する,"to join, to fasten, to unite, to charge, to impose, to enjoin",3,0,0,0,0,0
+"4084","inlicere",inlici,inlicere,inlex,inlectus,誘惑する、惑わす,"to entice, to seduce",3a,0,0,0,0,0
+"4085","inlīdere",inlīd,inlīdere,inlīs,inlīsus,突く、突進する、ぶつかる,"to strike upon, to strike against, to dash upon, to dash against, to thump against, to bump against",3,0,0,0,0,0
+"4086","inlūcēscere",inlūcēsc,inlūcēscere,inlūx,-,夜明けになる、明るくなり始める,"to begin to dawn, to begin to light up",3,0,1,0,0,0
+"4087","inlūdere",inlūd,inlūdere,inlūs,inlūsus,侵入する,"intrude",3,0,0,0,0,0
+"4088","inmittere",inmitt,inmittere,inmīs,inmissus,打ち上げる,"to launch",3,0,0,0,0,0
+"4089","innubere",innub,innubere,innups,innuptus,曇る,"to cloud",3,0,0,0,0,0
+"4090","inprimere",inprim,inprimere,inpress,inpressus,印刷する,"to print",3,0,0,0,0,0
+"4091","inrepere",inrep,inrepere,inreps,inreptus,忍び込む、ほのめかす,"to creep into, to insinuate",3,0,0,0,0,0
+"4092","inscribere",inscrib,inscribere,inscrips,inscriptus,何かに書き込む、何かに書き込む、刻む、刻字を付ける、本にタイトルを付ける、帰属させる、譲渡する、帰属させる、印を付ける、周知させる、印を付ける、印を付ける,"to write in something, to write upon something, to inscribe, to furnish with inscription, to give title to book, to ascribe, to assign, to attribute, to mark, to make known, to brand, to place brand upon",3,0,0,0,0,0
+"4093","insculpere",insculp,insculpere,insculps,insculptus,刻む,"to engrave",3,0,0,0,0,0
+"4094","inserpere",inserp,inserpere,inserps,inserptus,挿入する,"to insert",3,0,0,0,0,0
+"4095","inspergere",insperg,inspergere,insperx,insperxus,振りかける,"sprinkle",3,0,0,0,0,0
+"4096","inspicere",inspici,inspicere,inspex,inspectus,検査する,"to inspect",3a,0,0,0,0,0
+"4097","instinguere",instingu,instinguere,instingūx,instingūxus,促す,"to urge",3,0,0,0,0,0
+"4098","instringere",instring,instringere,instrinx,instrinxus,描く,"to draw",3,0,0,0,0,0
+"4099","instruere",instru,instruere,instrūx,instrūxus,指示します,"to instruct",3,0,0,0,0,0
+"4100","insurgere",insurg,insurgere,insurx,insurxus,立ち上がる,"rise up",3,0,0,0,0,0
+"4101","insūmere",insūm,insūmere,insūmps,insūmptus,取る,"to take",3,0,0,0,0,0
+"4102","integere",integ,integere,intex,intexus,完全に,"completely",3,0,0,0,0,0
+"4103","intellegere",intelleg,intellegere,intellex,intellexus,理解する,"to understand",3,0,0,0,0,0
+"4104","intelligere",intellig,intelligere,intellix,intellixus,理解する,"to understand",3,0,0,0,0,0
+"4105","interclūdere",interclūd,interclūdere,interclūs,interclūsus,封鎖する,"to block",3,0,0,0,0,0
+"4106","intercēdere",intercēd,intercēdere,intercēss,intercēssus,仲裁する,"to intercede",3,0,0,0,0,0
+"4107","interfluere",interflu,interfluere,interflūx,interflūxus,流れ込む,"flow in",3,0,0,0,0,0
+"4108","intergerere",interger,intergerere,intergess,intergestum,破壊する,"to destroy",3,0,0,0,0,0
+"4109","interiungere",interiung,interiungere,interiūnx,interiūnctus,繋ぐ、団結する、結合する、くっつける,"to join, to unite, to yoke",3,0,0,0,0,0
+"4110","interjungere",interjung,interjungere,interjūnx,interjūnctus,繋ぐ、団結する、結合する、くっつける,"to join, to unite, to yoke",3,0,0,0,0,0
+"4111","intermittere",intermitt,intermittere,intermīs,intermissus,邪魔する、邪魔をする,"to interrupt",3,0,0,0,0,0
+"4112","interpungere",interpung,interpungere,interpupug,interpūnctus,邪魔する、邪魔をする,"to interrupt",3,0,0,0,0,0
+"4113","interscribere",interscrib,interscribere,interscrips,interscriptus,間に書く,"to write between",3,0,0,0,0,0
+"4114","interstinguere",interstingu,interstinguere,interstingūx,interstingūxus,消す,"to extinguish",3,0,0,0,0,0
+"4115","interstringere",interstring,interstringere,interstrinx,interstrinxus,首を絞める,"to strangle",3,0,0,0,0,0
+"4116","intertrahere",intertrah,intertrahere,intertrax,intertractus,一緒に引っ張る,"pull together",3,0,0,0,0,0
+"4117","intingere",inting,intingere,intinx,intinxus,浸漬,"dip",3,0,0,0,0,0
+"4118","intinguere",intingu,intinguere,intingūx,intingūxus,浸けます,"to dip",3,0,0,0,0,0
+"4119","intrahere",intrah,intrahere,intrax,intractus,入る,"to enter",3,0,0,0,0,0
+"4120","intromittere",intromitt,intromittere,intromīs,intromissus,入る,"to enter",3,0,0,0,0,0
+"4121","introspicere",introspici,introspicere,introspex,introspectus,内側を見る,"to look inward",3a,0,0,0,0,0
+"4122","intrudere",intrud,intrudere,intrus,intrusus,侵入する,"to intrude",3,0,0,0,0,0
+"4123","inungere",inung,inungere,inunx,inunxus,浸水する,"to inundate",3,0,0,0,0,0
+"4124","inunguere",inungu,inunguere,inungūx,inungūxus,メッキをする,"to coat",3,0,0,0,0,0
+"4125","invadere",invad,invadere,invas,invasus,侵入する,"to invade",3,0,0,0,0,0
+"4126","invehere",inveh,invehere,invex,invectus,持ち込む,"to bring in",3,0,0,0,0,0
+"4127","inārdēscere",inārdēsc,inārdēscere,inārs,-,燃える、火をつける、着火する、燃焼する、光る,"to kindle, to catch fire, to burn, to glow",3,0,1,0,0,0
+"4128","inūrere",inū,inūrere,inuss,inustus,注入する,"to inject",3,0,0,0,0,0
+"4129","irrepere",irrep,irrepere,irreps,irreptus,忍び込む、ほのめかす,"to creep into, to insinuate",3,0,0,0,0,0
+"4130","iungo",iung,iungere,iūnx,iūnctus,繋げる、合わせる、統合する、参加する、結合する、団結する、取る、事件を統治する,"to join, to unite, to take, to govern case",3,0,0,0,0,0
+"4131","jungo",jung,jungere,jūnx,jūnctus,繋げる、合わせる、統合する、参加する、結合する、団結する、取る、事件を統治する,"to join, to unite, to take, to govern case",3,0,0,0,0,0
+"4132","laedere",laed,laedere,laes,laesus,傷つける,"to hurt",3,0,0,0,0,0
+"4133","lingere",ling,lingere,linx,linxus,舐める,"to lick",3,0,0,0,0,0
+"4134","ludere",lud,ludere,lus,lusus,遊ぶ、はしゃぐ、ふざけて振る舞う、練習する、楽しむ、スポーツをする、好色に遊ぶ、嘲笑する、模倣する、からかう、嘲笑する、だます、騙す,"to play, to frolic, to behave playfully, to practice, to amuse myself with, to sport, to play amorously, to mock, to mimic, to tease, to ridicule, to deceive, to trick",3,0,0,0,0,0
+"4135","lūcēscere",lūcēsc,lūcēscere,-,-,輝き始める、夜明けする,"to begin to shine, to dawn",3,0,1,0,1,0
+"4136","manumittere",manumitt,manumittere,manumīs,manumissus,引き渡す,"to hand over",3,0,0,0,0,0
+"4137","mergere",merg,mergere,merx,merxus,融合する,"to merge",3,0,0,0,0,0
+"4138","mingere",ming,mingere,minx,minxus,溶ける,"to melt",3,0,0,0,0,0
+"4139","mittere",mitt,mittere,mīs,missus,送る、派遣する、行かせる、手放す、手放す、放出する、出す、伸ばす、手を差し伸べる、発表する、伝える、報告する、言葉を送る、忠告する、譲渡する 、提供する、生産する、輸出する、終わらせる、出す、出す、出す、出す、出す、出す、放出する、血を流す、出血する、音を発する、 話す、言う、投げる、投げる、投げる、発射する、送る、投げる、振りかける、付き添う、案内する、護衛する、献身する、却下する、無視する、見過ごす、控える、やめる,"to send, to dispatch, to cause to go, to let go, to release, to discharge, to put out, to extend, to reach out, to announce, to tell, to report, to send word, to advise, to yield, to furnish, to produce, to export, to put end to, to let out, to bring out, to put forth, to send forth, to send out, to emit, to let blood, to bleed, to utter sound, to speak, to say, to throw, to hurl, to cast, to launch, to send, to throw down, to sprinkle, to attend, to guide, to escort, to dedicate, to dismiss, to disregard, to pass over, to forbear, to cease",3,0,0,0,0,0
+"4140","mēiere",mēi,mēiere,mix,mictus,排尿する、小便する,"to urinate, to piss",3,0,1,0,0,0
+"4141","nectere",nect,nectere,nex,nexus,接続する,"to connect",3,0,0,0,0,0
+"4142","neglegere",negleg,neglegere,neglex,neglexus,無視する,"to ignore",3,0,0,0,0,0
+"4143","negligere",neglig,negligere,neglix,neglixus,無視する,"to neglect",3,0,0,0,0,0
+"4144","ningere",ning,ningere,ninx,ninxus,雪が降る、雪が積もる,"to snow",3,0,0,0,0,0
+"4145","ninguere",ningu,ninguere,ningūx,ningūxus,雪が降る、雪が積もる,"to snow",3,0,0,0,0,0
+"4146","nubere",nub,nubere,nups,nuptus,結婚する,"to marry",3,0,0,0,0,0
+"4147","obgerere",obger,obgerere,obgess,obgestum,覆う,"to cover",3,0,0,0,0,0
+"4148","oblīdere",oblīd,oblīdere,oblīs,oblīsus,忘れる,"to forget",3,0,0,0,0,0
+"4149","obnubere",obnub,obnubere,obnups,obnuptus,曇る,"to cloud",3,0,0,0,0,0
+"4150","obrepere",obrep,obrepere,obreps,obreptus,抜け出す,"to sneak",3,0,0,0,0,0
+"4151","obstringere",obstring,obstringere,obstrinx,obstrinxus,締める,"to tighten",3,0,0,0,0,0
+"4152","obstrudere",obstrud,obstrudere,obstrus,obstrusus,封鎖する,"to block",3,0,0,0,0,0
+"4153","obstruere",obstru,obstruere,obstrūx,obstrūxus,封鎖する,"to block",3,0,0,0,0,0
+"4154","obtegere",obteg,obtegere,obtex,obtexus,覆う,"to cover",3,0,0,0,0,0
+"4155","obtrahere",obtrah,obtrahere,obtrax,obtractus,描く,"to draw",3,0,0,0,0,0
+"4156","obtrudere",obtrud,obtrudere,obtrus,obtrusus,押しつぶす,"to crush",3,0,0,0,0,0
+"4157","occlūdere",occlūd,occlūdere,occlūs,occlūsus,閉じる,"to close",3,0,0,0,0,0
+"4158","oggerere",ogger,oggerere,oggess,oggestum,提供する、持ってくる、与える,"to proffer, to bring, to give",3,0,0,0,0,0
+"4159","omittere",omitt,omittere,omīs,omissus,省略します,"to omit",3,0,0,0,0,0
+"4160","opprimere",opprim,opprimere,oppress,oppressus,圧倒する,"to overwhelm",3,0,0,0,0,0
+"4161","pangere",pang,pangere,panx,panxus,支払う,"to pay",3,0,0,0,0,0
+"4162","parcere",parc,parcere,pars,parsus,惜しむ、節約する、倹約する、誰かを許す、憐れむ、寛容である、放っておいく、省略する、省く、慎む、控える、避ける,"to spare, to save up, to economise, to forgive someone, to have mercy for, to be lenient to, to let alone, to omit, to refrain, to abstain, to avoid",3,0,0,0,0,0
+"4163","pectere",pect,pectere,pex,pexus,櫛,"comb",3,0,0,0,0,0
+"4164","pellicere",pellici,pellicere,pellex,pellectus,誘惑する、誘う、惑わす、詮索する、おとりにする、なだめる、だます、誘う、引き付ける,"to allure, to entice, to inveigle, to decoy, to coax, to wheedle, to attract, to win over",3a,0,0,0,0,0
+"4165","percutere",percuti,percutere,percuss,percussus,打つ、殴る、心に印象を与える、触れる、喜ばせる、喜ばせる、驚かせる、衝撃を与える、殺す、突き刺す、突き破る、突き破る、条約を締結する,"to strike, to beat, to make impression on mind, to touch, to please, to delight, to astonish, to shock, to kill, to pierce, to thrust through, to punch through, to conclude treaty",3a,0,0,0,0,0
+"4166","perfigere",perfig,perfigere,perfix,perfixus,終わる,"to finish",3,0,0,0,0,0
+"4167","perfingere",perfing,perfingere,perfinx,perfinxus,塗る,"to paint",3,0,0,0,0,0
+"4168","perfluere",perflu,perfluere,perflūx,perflūxus,流れる,"flow through",3,0,0,0,0,0
+"4169","pergere",perg,pergere,perx,perxus,続ける,"to continue",3,0,0,0,0,0
+"4170","permittere",permitt,permittere,permīs,permissus,許可する,"to allow",3,0,0,0,0,0
+"4171","perpungere",perpung,perpungere,perpupug,perpūnctus,突き刺す,"to pierce",3,0,0,0,0,0
+"4172","perscribere",perscrib,perscribere,perscrips,perscriptus,書き出す、詳しく書く、詳細に書く,"to write out, to write in full, to write in detail",3,0,0,0,0,0
+"4173","perserpere",perserp,perserpere,perserps,perserptus,浸透する,"pervade",3,0,0,0,0,0
+"4174","perspicere",perspici,perspicere,perspex,perspectus,見抜く,"to see through",3a,0,0,0,0,0
+"4175","perstringere",perstring,perstringere,perstrinx,perstrinxus,締める,"to tighten",3,0,0,0,0,0
+"4176","pertrahere",pertrah,pertrahere,pertrax,pertractus,ドラッグする,"to drag on",3,0,0,0,0,0
+"4177","perungere",perung,perungere,perunx,perunxus,浸透する,"to penetrate",3,0,0,0,0,0
+"4178","pervadere",pervad,pervadere,pervas,pervasus,浸透する,"to penetrate",3,0,0,0,0,0
+"4179","pervehere",perveh,pervehere,pervex,pervectus,乗り切る,"ride through",3,0,0,0,0,0
+"4180","perūrere",perū,perūrere,peruss,perustus,辛抱する,"to persevere",3,0,0,0,0,0
+"4181","pingere",ping,pingere,pinx,pinxus,飾る、装飾する、塗る、着色する、彩る、描写する、描く,"to decorate, to embellish, to paint, to tint, to colour, to portray",3,0,0,0,0,0
+"4182","plangere",plang,plangere,planx,planxus,嘆く,"to mourn",3,0,0,0,0,0
+"4183","plaudere",plaud,plaudere,plaus,plausus,拍手する,"to applaud",3,0,0,0,0,0
+"4184","plectere",plect,plectere,plex,plexus,編む,"to braid",3,0,0,0,0,0
+"4185","plodere",plod,plodere,plos,plosus,突進する,"to plode",3,0,0,0,0,0
+"4186","pollingere",polling,pollingere,pollinx,pollinxus,受粉する,"to pollinate",3,0,0,0,0,0
+"4187","porrigere",porrig,porrigere,porrix,porrixus,手を差し伸べる,"to reach out",3,0,0,0,0,0
+"4188","postscribere",postscrib,postscribere,postscrips,postscriptus,投稿します,"to post",3,0,0,0,0,0
+"4189","praecerpere",praecerp,praecerpere,praecerps,praecerptus,選ぶ,"to pick out",3,0,0,0,0,0
+"4190","praecingere",praecing,praecingere,praecinx,praecinxus,制限する,"to circumscribe",3,0,0,0,0,0
+"4191","praeclūdere",praeclūd,praeclūdere,praeclūs,praeclūsus,防ぐ,"to prevent",3,0,0,0,0,0
+"4192","praecēdere",praecēd,praecēdere,praecēss,praecēssus,先行する,"to precede",3,0,0,0,0,0
+"4193","praefigere",praefig,praefigere,praefix,praefixus,予言する,"to prefigure",3,0,0,0,0,0
+"4194","praegerere",praeger,praegerere,praegess,praegestum,導く、船頭する,"to lead",3,0,0,0,0,0
+"4195","praeintelligere",praeintellig,praeintelligere,praeintellix,praeintellixus,前もって理解する,"preunderstand",3,0,0,0,0,0
+"4196","praelūdere",praelūd,praelūdere,praelūs,praelūsus,前戯,"foreplay",3,0,0,0,0,0
+"4197","praemittere",praemitt,praemittere,praemīs,praemissus,進む,"to advance",3,0,0,0,0,0
+"4198","praescribere",praescrib,praescribere,praescrips,praescriptus,処方する,"to prescribe",3,0,0,0,0,0
+"4199","praestringere",praestring,praestringere,praestrinx,praestrinxus,締める,"to tighten",3,0,0,0,0,0
+"4200","praestruere",praestru,praestruere,praestrūx,praestrūxus,準備する,"prepare",3,0,0,0,0,0
+"4201","praesūmere",praesūm,praesūmere,praesūmps,praesūmptus,準備する,"assume",3,0,0,0,0,0
+"4202","praetegere",praeteg,praetegere,praetex,praetexus,守る,"to protect",3,0,0,0,0,0
+"4203","praetermittere",praetermitt,praetermittere,praetermīs,praetermissus,通り過ぎる,"to pass over",3,0,0,0,0,0
+"4204","praeūrere",praeū,praeūrere,praeuss,praeustus,主宰する,"to preside",3,0,0,0,0,0
+"4205","premere",prem,premere,press,pressus,押す、押す、閉じる、強く押す、圧迫する、圧倒する、引き締める、圧縮する、短くする、ぎゅっと押す、絞る、作る、押すことで物を形作る、押すことで物を形作る 、隠す、覆う、一撃を与える、倒す、抑圧する、地面に打ち付ける、勝つ、倒す、克服する、超える、追求する、中傷する、軽蔑する、信用を傷つける、閉じる、閉鎖する、阻止する、逮捕する、確認する、拘束する、窒息させる、抑圧する、低下させる、減少させる、縮小する、停止する、差し控える、犯す、強姦する、特定の単語を強調する、脅迫的に近づく、凝縮する 、要約する、要約する、沈める、掘る,"to press, to push, to press close, to press hard, to oppress, to overwhelm, to tighten, to compress, to shorten, to press closely, to squeeze, to make, to form thing by pressing, to shape thing by pressing, to conceal, to cover, to knock down, to topple, to suppress, to strike to ground, to win, to defeat, to overcome, to exceed, to pursue , to denigrate, to disparage, to discredit, to close, to block, to arrest, to check, to restrain, to uffocate, to repress, to lower, to decrease, to diminish, to stop, to withhold, to rape, to ravish, to emphasize particular word, to approach threateningly to, to condense, to abridge, to summarize, to cause to sink, to dig",3,0,0,0,0,0
+"4206","procēdere",procēd,procēdere,procēss,procēssus,続ける,"to proceed",3,0,0,0,0,0
+"4207","profluere",proflu,profluere,proflūx,proflūxus,流れ出る,"to flow out",3,0,0,0,0,0
+"4208","progerere",proger,progerere,progess,progestum,続ける,"to proceed",3,0,0,0,0,0
+"4209","promittere",promitt,promittere,promīs,promissus,約束する,"to promise",3,0,0,0,0,0
+"4210","propungere",propung,propungere,propupug,propūnctus,押し出す,"to push out",3,0,0,0,0,0
+"4211","prorepere",prorep,prorepere,proreps,proreptus,這い出す,"crawl out",3,0,0,0,0,0
+"4212","proscribere",proscrib,proscribere,proscrips,proscriptus,禁止する,"to proscribe",3,0,0,0,0,0
+"4213","prospicere",prospici,prospicere,prospex,prospectus,楽しむ,"to look forward",3a,0,0,0,0,0
+"4214","protegere",proteg,protegere,protex,protexus,守る,"to protect",3,0,0,0,0,0
+"4215","protrahere",protrah,protrahere,protrax,protractus,ドラッグする,"to drag on",3,0,0,0,0,0
+"4216","protrudere",protrud,protrudere,protrus,protrusus,押し出す,"to push out",3,0,0,0,0,0
+"4217","provehere",proveh,provehere,provex,provectus,進む,"to advance",3,0,0,0,0,0
+"4218","prōmere",prōm,prōmere,prōmps,prōmptus,取り出す、出す、生み出す、明るみに出す,"to take out, to take forth, to bring out, to bring forth, to produce, to bring to light",3,0,0,0,0,0
+"4219","radere",rad,radere,ras,rasus,剃る,"shave",3,0,0,0,0,0
+"4220","recingere",recing,recingere,recinx,recinxus,ほどく、緩める、元に戻す、再び締める、締め直す,"to ungird, to loosen, to undo, to gird again, to refasten",3,0,0,0,0,0
+"4221","reclūdere",reclūd,reclūdere,reclūs,reclūsus,閉じる,"to close",3,0,0,0,0,0
+"4222","recoquere",recoqu,recoquere,recox,recoctus,再加熱,"reheat",3,0,0,0,0,0
+"4223","recutere",recuti,recutere,recuss,recussus,取り戻す,"to take back",3a,0,0,0,0,0
+"4224","recēdere",recēd,recēdere,recēss,recēssus,撤退する,"to withdraw",3,0,0,0,0,0
+"4225","reflectere",reflect,reflectere,reflex,reflexus,反射する,"to reflect",3,0,0,0,0,0
+"4226","refluere",reflu,refluere,reflūx,reflūxus,流れ戻る,"to flow back",3,0,0,0,0,0
+"4227","refrīgēscere",refrīgēsc,refrīgēscere,refrīx,-,冷やす、寒くなる、弱まる、弱体化する、弱化する,"to cool, to grow cold, to abate, to flag",3,0,1,0,0,0
+"4228","regere",reg,regere,rex,rexus,治める、統治する、支配する、指示する、導く、操縦する、監督する、管理する、支援する,"to rule, to govern, to direct, to guide, to steer, to oversee, to manage, to support",3,0,0,0,0,0
+"4229","regerere",reger,regerere,regess,regestum,支配する,"to rule",3,0,0,0,0,0
+"4230","remittere",remitt,remittere,remīs,remissus,手放す,"to let go",3,0,0,0,0,0
+"4231","repercutere",repercuti,repercutere,repercuss,repercussus,跳ね返る,"bounce back",3a,0,0,0,0,0
+"4232","repere",rep,repere,reps,reptus,探し出す,"find out",3,0,0,0,0,0
+"4233","reprimere",reprim,reprimere,repress,repressus,チェックする,"to check",3,0,0,0,0,0
+"4234","repromittere",repromitt,repromittere,repromīs,repromissus,約束する,"to promise",3,0,0,0,0,0
+"4235","repungere",repung,repungere,repupug,repūnctus,撃退する,"to repel",3,0,0,0,0,0
+"4236","rescribere",rescrib,rescribere,rescrips,rescriptus,書き直す,"to rewrite",3,0,0,0,0,0
+"4237","respergere",resperg,respergere,resperx,resperxus,散布へ,"to scatter",3,0,0,0,0,0
+"4238","respicere",respici,respicere,respex,respectus,振り返る,"to look back",3a,0,0,0,0,0
+"4239","restinguere",restingu,restinguere,restingūx,restingūxus,止まる,"to stop",3,0,0,0,0,0
+"4240","restringere",restring,restringere,restrinx,restrinxus,制限,"restrict",3,0,0,0,0,0
+"4241","restruere",restru,restruere,restrūx,restrūxus,再建する,"to rebuild",3,0,0,0,0,0
+"4242","resurgere",resurg,resurgere,resurx,resurxus,再び立ち上がる,"to rise again",3,0,0,0,0,0
+"4243","resūmere",resūm,resūmere,resūmps,resūmptus,履歴書,"resume",3,0,0,0,0,0
+"4244","retegere",reteg,retegere,retex,retexus,明らかにする,"to uncover",3,0,0,0,0,0
+"4245","retrahere",retrah,retrahere,retrax,retractus,撤退する,"withdraw",3,0,0,0,0,0
+"4246","retrocēdere",retrocēd,retrocēdere,retrocēss,retrocēssus,戻る,"to go back",3,0,0,0,0,0
+"4247","retrospicere",retrospici,retrospicere,retrospex,retrospectus,振り返る,"look back",3a,0,0,0,0,0
+"4248","retrudere",retrud,retrudere,retrus,retrusus,押し返す,"push back",3,0,0,0,0,0
+"4249","revehere",reveh,revehere,revex,revectus,敬う,"revere",3,0,0,0,0,0
+"4250","revīvēscere",revivesc,revīvēscere,revīx,-,生き返る、復活する、蘇る、甦る,"to revive",3,0,1,0,0,0
+"4251","revīvīscere",revivisc,revīvīscere,revīx,-,生き返る、復活する、蘇る、甦る,"to revive",3,0,1,0,0,0
+"4252","rodere",rod,rodere,ros,rosus,かじる,"to gnaw",3,0,0,0,0,0
+"4253","sarpere",sarp,sarpere,sarps,sarptus,収穫するため,"to harvest",3,0,0,0,0,0
+"4254","scalpere",scalp,scalpere,scalps,scalptus,引っ掻く、刻む、彫る,"to scratch, to carve, to engrave",3,0,0,0,0,0
+"4255","scribere",scrib,scribere,scrips,scriptus,書く,"to write",3,0,0,0,0,0
+"4256","sculpere",sculp,sculpere,sculps,sculptus,彫る,"to carve",3,0,0,0,0,0
+"4257","seclūdere",seclūd,seclūdere,seclūs,seclūsus,黙る,"to shut up",3,0,0,0,0,0
+"4258","secēdere",secēd,secēdere,secēss,secēssus,断ち切る,"to cut off",3,0,0,0,0,0
+"4259","seiungere",seiung,seiungere,seiūnx,seiūnctus,分離する,"to separate",3,0,0,0,0,0
+"4260","sejungere",sejung,sejungere,sejūnx,sejūnctus,参加する,"to join",3,0,0,0,0,0
+"4261","serpere",serp,serpere,serps,serptus,這う、ゆっくり動く,"to creep, to crawl, to move slowly",3,0,0,0,0,0
+"4262","spargere",sparg,spargere,sparx,sparxus,散布する,"to scatter",3,0,0,0,0,0
+"4263","specere",speci,specere,spexī,spectus,観察する、見る、見つめる,"to observe, to watch, to look at",3a,0,0,0,0,0
+"4264","spicere",spici,spicere,spexī,spectus,観察する、見る、見つめる,"to observe, to watch, to look at",3a,0,0,0,0,0
+"4265","stringere",string,stringere,strinx,strinxus,切る,"to cut",3,0,0,0,0,0
+"4266","struere",stru,struere,strūx,strūxus,構築する,"to build",3,0,0,0,0,0
+"4267","subdividere",subdivid,subdividere,subdivis,subdivisus,分割する,"to subdivide",3,0,0,0,0,0
+"4268","subintellegere",subintelleg,subintellegere,subintellex,subintellexus,理解する,"to understand",3,0,0,0,0,0
+"4269","subiungere",subiung,subiungere,subiūnx,subiūnctus,従属する、属する、結合する、繋ぐ、追加する、加える、添付する、添える,"to subjoin, to subordinate, to join to, to add to, to affix, to annex",3,0,0,0,0,0
+"4270","subjungere",subjung,subjungere,subjūnx,subjūnctus,従属する、属する、結合する、繋ぐ、追加する、加える、添付する、添える,"to subjoin, to subordinate, to join to, to add to, to affix, to annex",3,0,0,0,0,0
+"4271","submergere",submerg,submergere,submerx,submerxus,沈む,"to sink",3,0,0,0,0,0
+"4272","submittere",submitt,submittere,submīs,submissus,提出する,"to submit",3,0,0,0,0,0
+"4273","subrepere",subrep,subrepere,subreps,subreptus,忍び寄る,"to sneak up",3,0,0,0,0,0
+"4274","subrigere",subrig,subrigere,subrix,subrixus,征服する,"to subdue",3,0,0,0,0,0
+"4275","subscribere",subscrib,subscribere,subscrips,subscriptus,署名する,"to sign",3,0,0,0,0,0
+"4276","substruere",substru,substruere,substrūx,substrūxus,構築する,"to build",3,0,0,0,0,0
+"4277","subtrahere",subtrah,subtrahere,subtrax,subtractus,撤退する,"withdraw",3,0,0,0,0,0
+"4278","subvehere",subveh,subvehere,subvex,subvectus,下に乗る,"ride under",3,0,0,0,0,0
+"4279","subūrere",subū,subūrere,subuss,subustus,征服する,"to subdue",3,0,0,0,0,0
+"4280","succingere",succing,succingere,succinx,succinxus,吸う,"to suck",3,0,0,0,0,0
+"4281","succutere",succuti,succutere,succuss,succussus,下から振る、下から舞い上がる、舞い上がる、投げ上げる,"to shake from below, to fling up from below, to fling aloft, to toss up",3a,0,0,0,0,0
+"4282","succēdere",succēd,succēdere,succēss,succēssus,成功する,"to succeed",3,0,0,0,0,0
+"4283","suffigere",suffig,suffigere,suffix,suffixus,固定する,"to fasten onto, to fix onto",3,0,0,0,0,0
+"4284","sugere",sug,sugere,sux,suxus,吸う、吸い込む、排出する,"to suck, to take in, to exhaust",3,0,0,0,0,0
+"4285","suggerere",sugger,suggerere,suggess,suggestum,運ぶ、運搬する、運送する、下に置く、下に置く、提供する、供する、差し出す、提案する、助言する、促す、供給する,"to carry, to bring, to put under, to lay under, to afford, to furnish, to supply, to suggest, to advise, to prompt, to offer ",3,0,0,0,0,0
+"4286","summergere",summerg,summergere,summerx,summerxus,水没する,"to submerge",3,0,0,0,0,0
+"4287","summittere",summitt,summittere,summīs,summissus,提出する,"to submit",3,0,0,0,0,0
+"4288","superextruere",superextru,superextruere,superextrūx,superextrūxus,積み上げる,"to build on top of, to build onto, to pile on top of, to pile onto",3,0,0,0,0,0
+"4289","superfluere",superflu,superfluere,superflūx,superflūxus,行き過ぎる、溢れ出る、過剰になる、流れ去る,"to run over, to overflow,  to be superabundant, to be superabound, to be superfluous, to flow by, to flow past",3,0,0,0,0,0
+"4290","superscribere",superscrib,superscribere,superscrips,superscriptus,上書きする,"to overwrite, to write over, to write upon",3,0,0,0,0,0
+"4291","superstruere",superstru,superstruere,superstrūx,superstrūxus,上に構築する,"to build over, to build upon",3,0,0,0,0,0
+"4292","supervīvere",supervīv,supervīvere,supervīx,supervīctus,生き残る,"to survive",3,0,0,0,0,0
+"4293","suppingere",supping,suppingere,suppinx,suppinxus,仮に,"supposing",3,0,0,0,0,0
+"4294","supprimere",supprim,supprimere,suppress,suppressus,抑える,"suppress",3,0,0,0,0,0
+"4295","surgere",surg,surgere,surx,surxus,起きる,"get up",3,0,0,0,0,0
+"4296","surrepere",surrep,surrepere,surreps,surreptus,盗む,"to steal",3,0,0,0,0,0
+"4297","suspicere",suspici,suspicere,suspex,suspectus,見上げる,"to look up",3a,0,0,0,0,0
+"4298","sūmere",sūmere,sūm,sūmps,sūmptus,取る、取り上げる、捕まえる、想定する、つかむ、主張する、傲慢にする、引き受ける、開始する、開始する、完全に満足する、罰を与える、選択する、選択する、取得する、得る、受け取る、取得する、使用する、適用する、採用する、使う、消費する、採用する、借りる、購入する、購入する、受け入れる、仮定する、原理として確立する、魅了する、惑わす、身につける、心を奪う,"to take, to take up, to catch, to assume, to seize, to claim, to arrogate, to undertake, to begin, to enter upon, to exact satisfaction, to inflict punishment, to choose, to select, to obtain, to acquire, to receive, to get, to use, to apply, to employ, to spend, to consume, to adopt, to borrow, to buy, to purchase, to accept, to presuppose, to establish as principle, to fascinate, to charm, to put on, to take heart",3,0,0,0,0,0
+"4299","tegere",teg,tegere,tex,texus,覆う,"to cover",3,0,0,0,0,0
+"4300","tergere",terg,tergere,terx,terxus,ふく,"to wipe",3,0,0,0,0,0
+"4301","tingere",ting,tingere,tinx,tinxus,染める,"to dye",3,0,0,0,0,0
+"4302","tinguere",tingu,tinguere,tingūx,tingūxus,染める,"to dye",3,0,0,0,0,0
+"4303","trahere",trah,trahere,trax,tractus,描く,"to draw",3,0,0,0,0,0
+"4304","tramittere",tramitt,tramittere,tramīs,tramissus,送信する,"to transmit",3,0,0,0,0,0
+"4305","transcribere",transcrib,transcribere,transcrips,transcriptus,転記する,"to transcribe",3,0,0,0,0,0
+"4306","transfigere",transfig,transfigere,transfix,transfixus,突き刺す,"to pierce",3,0,0,0,0,0
+"4307","transfluere",transflu,transfluere,transflūx,transflūxus,流れる、流れる、横切る、駆け抜ける、染み込む,"to flow across, to flow through, to run across, to run through, to seep through",3,0,0,0,0,0
+"4308","transmittere",transmitt,transmittere,transmīs,transmissus,送信する,"to transmit",3,0,0,0,0,0
+"4309","transnubere",transnub,transnubere,transnups,transnuptus,別の結婚を契約する,"to contract for another marriage",3,0,0,0,0,0
+"4310","transpungere",transpung,transpungere,transpupug,transpūnctus,突き刺す,"to pierce",3,0,0,0,0,0
+"4311","transscribere",transscrib,transscribere,transscrips,transscriptus,転記する,"to transcribe",3,0,0,0,0,0
+"4312","transvadere",transvad,transvadere,transvas,transvasus,横切る,"to cross",3,0,0,0,0,0
+"4313","transvehere",transveh,transvehere,transvex,transvectus,横切る,"to cross",3,0,0,0,0,0
+"4314","travehere",traveh,travehere,travex,travectus,横切る,"to cross",3,0,0,0,0,0
+"4315","trudere",trud,trudere,trus,trusus,押す,"to push",3,0,0,0,0,0
+"4316","ungere",ung,ungere,unx,unxus,油を注ぐ,"to anoint",3,0,0,0,0,0
+"4317","unguere",ungu,unguere,ungūx,ungūxus,汚す,"to smear",3,0,0,0,0,0
+"4318","vadere",vad,vadere,vas,vasus,歩く,"to wade",3,0,0,0,0,0
+"4319","vehere",veh,vehere,vex,vectus,乗る,"to ride",3,0,0,0,0,0
+"4320","vellere",vell,vellere,vulsī,vulsus,引き抜く、脱毛する、引っ張る、引き裂く,"to pluck out, to depilate, to pull, to tear down",3,0,0,0,0,0
+"4321","vīvere",vīv,vīvere,vīxī,vīctus,生きる,"to live",3,0,0,0,0,0
+"4322","ārdēscere",ārdēsc,ārdēscere,ārsī,-,燃える、発火する、炎症を起こす、噴火する,"to kindle, to catch fire, to become inflamed, to erupt",3,0,0,0,0,0
+"4323","āvellere",āvell,āvellere,āvuls,āvulsus,引き裂く、引き裂く、引き裂く、引き抜く、引きちぎる,"to tear off, to tear away, to wrest, to pluck off, to rend off",3,0,0,0,0,0
+"4324","ēlūcēscere",ēlūcēsc,ēlūcēscere,ēlūx,-,光る、明ける,"to shine forth, to dawn",3,0,1,0,0,0
+"4325","ūrere",ūr,ūrere,ussī,ustus,燃やす、消費する、炎症を起こす、苛立たせる、怒る、激怒させる、荒廃させる,"to burn, to consume, to inflame, to annoy, to gall, to vex, to rage, to ravage",3,0,0,0,0,0
