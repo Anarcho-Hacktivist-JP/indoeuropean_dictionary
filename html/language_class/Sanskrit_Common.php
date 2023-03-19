@@ -1728,7 +1728,6 @@ class Sanskrit_Common extends Common_IE{
 
 		// 母音の統合
 		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);
-		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);
 		$script = preg_replace("/(i|ī)(i|ī)/u", "ī", $script);
 		$script = preg_replace("/(u|ū)(u|ū)/u", "ū", $script);
 
