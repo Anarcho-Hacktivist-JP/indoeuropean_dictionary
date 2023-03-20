@@ -123,6 +123,21 @@ class Commons {
 		return $sound;
 	}
 
+	// 文字から特殊記号を取り除く
+	public static function remove_extended_charactor($str){
+
+		// 変換後の文字列を宣言
+		$new_str = "";
+
+		// 変換開始
+		$new_str = preg_replace("/[āáàâ]/u", "a", $str);
+		$new_str = preg_replace("/[īíìî]/u", "i", $new_str);
+		$new_str = preg_replace("/[ūúùû]/u", "u", $new_str);
+
+		// 結果を返す
+		return $new_str;
+	}
+
 	// 母音チェック
 	public static function is_vowel_or_not($sound){	
 
@@ -302,94 +317,66 @@ class Commons {
 			// 名詞・形容詞の格変化を日本語名に変換する。
 			case self::NOMINATIVE:
 				return "主格";
-				break;
 			case self::GENETIVE:
 				return "属格";
-				break;
 			case self::DATIVE:
-				return "与格";
-				break;		
+				return "与格";		
 			case self::ACCUSATIVE:
 				return "対格";
-				break;
 			case self::ABLATIVE:
 				return "奪格";
-				break;
 			case self::INSTRUMENTAL:
 				return "具格";
-				break;
 			case self::LOCATIVE:
-				return "地格";
-				break;	
+				return "地格";	
 			case self::VOCATIVE:
 				return "呼格";
-				break;
 			// 名詞・形容詞・動詞の数を変換する。
 			case self::SINGULAR:
 				return "単数";
-				break;
 			case self::DUAL:
 				return "双数";
-				break;	
 			case self::PLURAL:
 				return "複数";
-				break;
 			// 形容詞・動詞の性別を変換する。
 			case self::ANIMATE_GENDER:
 				return "男性";
-				break;
 			case self::ACTION_GENDER:
-				return "女性";
-				break;	
+				return "女性";	
 			case self::INANIMATE_GENDER:
 				return "中性";
-				break;
 			// 形容詞比較級を変換する。
 			case self::ADJ_GRADE_POSITIVE:
 				return "原級";
-				break;
 			case self::ADJ_GRADE_COMPERATIVE:
 				return "比較級";
-				break;	
 			case self::ADJ_GRADE_SUPERATIVE:
 				return "最上級";
-				break;
 			// 態を変換する。
 			case self::ACTIVE_VOICE:
 				return "能動態";
-				break;
 			case self::MIDDLE_VOICE:
 				return "中動態";
-				break;
 			case self::MEDIOPASSIVE_VOICE:
 				return "中受動態";
-				break;	
 			case self::PASSIVE_VOICE:
 				return "受動態";
-				break;
 			// 相を変換する。
 			case self::PRESENT_ASPECT:
 				return "進行相";
-				break;
 			case self::AORIST_ASPECT:
 				return "完結相";
-				break;
 			case self::PERFECT_ASPECT:
 				return "完了相";
-				break;
 			// 時制を変換する。
 			case self::PRESENT_TENSE:
 				return "現在形";
-				break;
 			case self::PAST_TENSE:
 				return "過去形";
-				break;
 			case self::FUTURE_TENSE:
 				return "未来形";
-				break;
 			default:
 				return "";
-				break;
 		}
 	}
 

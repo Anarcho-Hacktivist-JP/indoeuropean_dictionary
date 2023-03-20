@@ -67,8 +67,16 @@ function get_verb_conjugation_chart_by_latin($word){
 	$latin_verb = Latin_Common::get_verb_from_DB($word);
   // 動詞が取得できたか確認する。
   if($latin_verb){
-    // 動詞を生成
-	  $verb_latin = new Common_Romance_Verb($latin_verb["infinitive_stem"]);
+    // 活用種別で分ける
+    if($latin_verb[0]["verb_type"] == "5sum"){
+      // 不規則動詞(esse)
+	    $verb_latin = new Common_Romance_Sum();
+      $verb_latin->add_stem($latin_verb[0]["infinitive_stem"]);
+    } else {
+      // 動詞を生成
+	    $verb_latin = new Common_Romance_Verb($latin_verb[0]["infinitive_stem"]);
+    }
+
 	  // 活用表生成、配列に格納
 	  $conjugations[$verb_latin->get_infinitive()] = $verb_latin->get_chart();
 	  // メモリを解放

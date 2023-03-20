@@ -2976,7 +2976,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 	[		
 		"active" => 
 		[
-			"1sg" => "ō",
+			"1sg" => "o",
 			"2sg" => "s", 
 			"3sg" => "t",
 			"1pl" => "mus",
@@ -2996,20 +2996,6 @@ class Common_Romance_Verb extends Verb_Common_IE {
 			"1pl" => "mos",
 			"2pl" => "tes", 
 			"3pl" => "nt",	
-		],
-	];
-
-	// 三次人称接尾辞(未来)
-	protected $third_number = 
-	[
-		"active" => 
-		[
-			"1sg" => "ai",
-			"2sg" => "as", 
-			"3sg" => "a",
-			"1pl" => "emos",
-			"2pl" => "eis", 
-			"3pl" => "an",	
 		],
 	];
 
@@ -3036,7 +3022,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 			"2sg" => "isti", 
 			"3sg" => "ut",
 			"1pl" => "mus",
-			"2pl" => "tes", 
+			"2pl" => "stes", 
 			"3pl" => "ront",	
 		]
 	];
@@ -3085,6 +3071,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 
 	// 直接法未来完了語尾
 	protected const ind_perf_future_suffix = "re";
+	
 
 	// sum補助動詞
 	protected const auxiliary_sum = "esse";
@@ -3092,7 +3079,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
- 	function __construct_lat1($dic_stem) {
+ 	function __construct_romance1($dic_stem) {
 		// 親の呼び出し
     	parent::__construct($dic_stem);
     	// 動詞情報を取得
@@ -3133,7 +3120,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
     /*=====================================
     コンストラクタ
     ======================================*/
-    function __construct_lat3($stem, $japanese_word, $last_word) {
+    function __construct_romance3($stem, $japanese_word, $last_word) {
 		// 親の呼び出し
     	parent::__construct($last_word);		
 		// 種別により分ける。
@@ -3142,7 +3129,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 			$this->generate_uknown_verb(mb_substr($stem, 0, -1));																			
 		} else {
 			// それ以外は最後の語尾から動詞の活用を生成
-			$this->__construct_lat1($last_word);
+			$this->__construct_romance1($last_word);
 			// 後ろに付け加える。
 			$this->present_stem = $stem.$this->present_stem ;								// 現在形
 			$this->infinitive = $stem.$this->infinitive;									// 不定形
@@ -3165,7 +3152,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
         $a = func_get_args();
         $i = func_num_args();
         //引数に応じて別々のコンストラクタを似非的に呼び出す
-        if (method_exists($this,$f='__construct_lat'.$i)) {
+        if (method_exists($this,$f='__construct_romance'.$i)) {
             call_user_func_array(array($this,$f),$a);
         }
     }
@@ -3301,7 +3288,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 		// 訳を入れる。
 		$this->japanese_translation = "借用";
 		$this->english_translation = "loanword";	
-		$this->verb_type= "4";											// 活用種別					
+		$this->verb_type = "4";											// 活用種別					
 		$this->present_stem = mb_substr($common_stem, 0, -1)."i";		// 現在形
 		$this->infinitive = $common_stem."re";							// 不定形
 		$this->perfect_stem = $common_stem;								// 完了形
@@ -3323,7 +3310,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 	}
 	
 	// 動詞作成
-	public function get_latin_verb($person, $mood, $aspect, $tense){
+	public function get_romance_verb($person, $mood, $aspect, $tense){
 
 		// 非人称チェック
 		if($this->deponent_personal == "1" && $person != "3sg"){
@@ -3338,7 +3325,13 @@ class Common_Romance_Verb extends Verb_Common_IE {
 			$verb_conjugation = $this->present_stem;
 		} else if($aspect == Commons::PERFECT_ASPECT){
 			// 状態動詞
-			$verb_conjugation = $this->perfect_stem;
+			if($this->verb_type == 1){
+				// 第一活用の場合
+				$verb_conjugation = mb_substr($this->infinitive, 0, -2);
+			} else {
+				// その他の場合
+				$verb_conjugation = $this->perfect_stem;
+			}
 		} else {
 			// ハイフンを返す。
 			return "-";
@@ -3357,8 +3350,11 @@ class Common_Romance_Verb extends Verb_Common_IE {
 					//過去形
 					$verb_conjugation = $this->get_ind_past($person);
 				} else if($tense == Commons::FUTURE_TENSE){
-					//未来形
-					$verb_conjugation = $this->get_ind_future($person);
+					// 未来形
+					// 補助動詞の呼び出し
+					$verb_habere = new Common_Romance_Avere();
+					// 動詞と結合
+					$verb_conjugation = mb_substr($this->infinitive, 0, -1).$verb_habere->get_romance_verb($person, $mood, $aspect, Commons::PRESENT_TENSE);
 				} else {
 					// ハイフンを返す。
 					return "-";
@@ -3368,7 +3364,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 				// 時制を分ける。
 				if($tense == Commons::PRESENT_TENSE) {
 					// 現在形					
-					$verb_conjugation = $this->get_perfect_suffix($verb_conjugation, $person, "");
+					$verb_conjugation = $this->get_perfect_suffix($verb_conjugation, Commons::ACTIVE_VOICE, $person);
 				} else if($tense == Commons::PAST_TENSE){
 					// 過去形				
 					$verb_conjugation = $this->get_secondary_infix($verb_conjugation, $person, self::ind_perf_past_suffix);
@@ -3430,6 +3426,8 @@ class Common_Romance_Verb extends Verb_Common_IE {
 		
 		// 文字を変換
 		$verb_conjugation = str_replace("cs", "x", $verb_conjugation);
+		// 特殊文字を取り除く
+		$verb_conjugation = Commons::remove_extended_charactor($verb_conjugation);
 		// 結果を返す。
 		return $verb_conjugation;
 	}
@@ -3511,12 +3509,6 @@ class Common_Romance_Verb extends Verb_Common_IE {
 		// 結果を返す。
 		return $past_tense;
 	}	
-	
-	// 未来形
-	protected function get_ind_future($person){
-		// 結果を返す。
-		return mb_substr($this->infinitive, 0, -1).$this->third_number[Commons::ACTIVE_VOICE][$person];
-	}
 
 	// 分詞の曲用表を返す。	
 	protected function get_participle($participle_stem){
@@ -3545,7 +3537,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 					// 全ての人称			
 					foreach ($person_array as $person){
 						// 態・時制・法・人称に応じて多次元配列を作成		
-						$conjugation[$voice][$tense][$mood][$person] = $this->get_latin_verb($person, $mood, Commons::PRESENT_ASPECT, $tense);						
+						$conjugation[$voice][$tense][$mood][$person] = $this->get_romance_verb($person, $mood, Commons::PRESENT_ASPECT, $tense);						
 					}
 				}
 			}
@@ -3561,7 +3553,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 					// 全ての人称			
 					foreach ($person_array as $person){
 						// 態・時制・法・人称に応じて多次元配列を作成		
-						$conjugation[$voice][$tense."_".Commons::PERFECT_ASPECT][$mood][$person] = $this->get_latin_verb($person, $mood, Commons::PERFECT_ASPECT, $tense);						
+						$conjugation[$voice][$tense."_".Commons::PERFECT_ASPECT][$mood][$person] = $this->get_romance_verb($person, $mood, Commons::PERFECT_ASPECT, $tense);						
 					}
 				}
 			}
@@ -3676,7 +3668,7 @@ class Common_Romance_Verb extends Verb_Common_IE {
 		// 配列に格納
 		$question_data = array();
 		$question_data['question_sentence'] = $this->get_title($this->infinitive)."の".$aspect." ".$tense." ".$mood." ".$person."を答えよ";				
-		$question_data['answer'] = $this->get_latin_verb($person, $mood, $aspect, $tense);
+		$question_data['answer'] = $this->get_romance_verb($person, $mood, $aspect, $tense);
 		$question_data['question_sentence2'] = $question_data['answer']."の時制、法、態と人称を答えよ。";
 		$question_data['aspect'] = $aspect;
 		$question_data['tense'] = $tense;	
@@ -3710,6 +3702,34 @@ class Common_Romance_Sum extends Common_Romance_Verb {
 			"3pl" => "sont",	
 		],
 	];
+
+	// 完了人称接尾辞
+	protected $perfect_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "fui",
+			"2sg" => "fuesti", 
+			"3sg" => "fut",
+			"1pl" => "fuemos",
+			"2pl" => "fuestes", 
+			"3pl" => "furont",	
+		]
+	];
+
+	// 命令人称接尾辞
+	protected $imperative_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "",
+			"2sg" => "au", 
+			"3sg" => "",
+			"1pl" => "",
+			"2pl" => "avate", 
+			"3pl" => "",	
+		],
+	];
 	
 	// 活用種別
 	protected $class = "5sum";
@@ -3719,7 +3739,7 @@ class Common_Romance_Sum extends Common_Romance_Verb {
 	// 不完了体能動分詞
 	protected $present_participle_active = "sonto";
 	// 未来能動分詞			
-	protected $future_participle_active = "futuro";		
+	protected $future_participle_active = "stando";		
 	// 追加語幹
 	protected $added_stem = "";
 
@@ -3728,13 +3748,13 @@ class Common_Romance_Sum extends Common_Romance_Verb {
     ======================================*/
     public function __construct() {
 		// 親の呼び出し
-    	parent::__construct("es", $this->infinitive, "fu", "futus");
+    	parent::__construct("esse");
     }
 
 	// esseの派生動詞に対応
 	public function add_stem($verb){
 		// 派生部分を取得
-		$this->added_stem = mb_substr($verb, 0, -4);
+		$this->added_stem = mb_substr($verb, 0, -6);
 		// 変更がなければ、ここで処理を中断する。
 		if($this->added_stem == ""){
 			return;
@@ -3746,6 +3766,110 @@ class Common_Romance_Sum extends Common_Romance_Verb {
 
 		// 情報を更新
 		$this->get_add_info($this->infinitive);		
+	}
+
+	// 動詞作成
+	public function get_romance_verb($person, $mood, $aspect, $tense){
+
+		// 非人称チェック
+		if($this->deponent_personal == "1" && $person != "3sg"){
+			// ハイフンを返す。
+			return "-";
+		}
+		
+		//法を取得
+		if($mood == Commons::INDICATIVE){
+			// 相で分ける
+			if($aspect == Commons::PRESENT_ASPECT){
+				// 進行相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					//現在形
+					$verb_conjugation = $this->added_stem.$this->present_number[Commons::ACTIVE_VOICE][$person];
+				} else if($tense == Commons::PAST_TENSE){
+					//過去形
+					$verb_conjugation = $this->get_ind_past($person);
+				} else if($tense == Commons::FUTURE_TENSE){
+					//未来形
+					// 補助動詞の呼び出し
+					$verb_habere = new Common_Romance_Avere();
+					// 動詞と結合
+					$verb_conjugation = "ser".$verb_habere->get_romance_verb($person, $mood, $aspect, Commons::PRESENT_TENSE);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else if($aspect == Commons::PERFECT_ASPECT){
+				// 完了相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					// 現在形					
+					$verb_conjugation = $this->added_stem.$this->perfect_number[Commons::ACTIVE_VOICE][$person];
+				} else if($tense == Commons::PAST_TENSE){
+					// 過去形				
+					$verb_conjugation = $this->get_secondary_infix("fue", $person, self::ind_perf_past_suffix);
+				} else if($tense == Commons::FUTURE_TENSE){
+					// 未来形
+					$verb_conjugation = $this->get_primary_infix("fue", $aspect, $tense, $person, self::ind_perf_future_suffix);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else if($mood == Commons::SUBJUNCTIVE){
+			// 接続法
+			// 相で分ける
+			if($aspect == Commons::PRESENT_ASPECT){
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					//現在形
+					$verb_conjugation = $this->get_secondary_infix("ai", $person, $this->opt);
+				} else if($tense == Commons::PAST_TENSE){
+					//過去形
+					$verb_conjugation = $this->make_subj_past($person);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else if($aspect == Commons::PERFECT_ASPECT){
+				// 完了相
+				// 時制を分ける。
+				if($tense == Commons::PAST_TENSE){
+					// 過去形						
+					$verb_conjugation = $this->get_secondary_infix("fu", $person, self::subj_perf_past_suffix);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				} 
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else if($mood == Commons::IMPERATIVE){
+			// 命令形語幹を作成
+			$verb_conjugation = mb_substr($this->infinitive, 0, -3).$this->imper;
+			// 時制を分ける。
+			if($tense == Commons::PRESENT_TENSE) {
+				// 現在形
+				$verb_conjugation = $this->added_stem.$this->imperative_number[Commons::ACTIVE_VOICE][$person];
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
+		
+		// 文字を変換
+		$verb_conjugation = str_replace("cs", "x", $verb_conjugation);
+		// 特殊文字を取り除く
+		$verb_conjugation = Commons::remove_extended_charactor($verb_conjugation);
+		// 結果を返す。
+		return $verb_conjugation;
 	}
 	
 	// 活用表を取得する。
@@ -3785,6 +3909,230 @@ class Common_Romance_Sum extends Common_Romance_Verb {
 	}
 
 }
+
+class Common_Romance_Avere extends Common_Romance_Verb {
+
+	// 現在形人称
+	protected $present_number = 
+	[		
+		"active" => 
+		[
+			"1sg" => "aio",
+			"2sg" => "aus", 
+			"3sg" => "aut",
+			"1pl" => "avemos",
+			"2pl" => "avetes", 
+			"3pl" => "aunt",	
+		],
+	];
+
+	// 完了人称接尾辞
+	protected $perfect_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "aui",
+			"2sg" => "avesti", 
+			"3sg" => "aut",
+			"1pl" => "avemos",
+			"2pl" => "avestes", 
+			"3pl" => "auront",	
+		]
+	];
+
+	// 命令人称接尾辞
+	protected $imperative_number = 
+	[
+		"active" => 
+		[
+			"1sg" => "",
+			"2sg" => "au", 
+			"3sg" => "",
+			"1pl" => "",
+			"2pl" => "avate", 
+			"3pl" => "",	
+		],
+	];
+	
+	// 活用種別
+	protected $class = "2avere";
+	
+	// 不定形
+	protected $infinitive = "habere";
+	// 不完了体能動分詞
+	protected $present_participle_active = "habente";
+	// 未来能動分詞			
+	protected $future_participle_active = "habendo";		
+	// 追加語幹
+	protected $added_stem = "";
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct() {
+		// 親の呼び出し
+    	parent::__construct("habe", $this->infinitive, "habe", "habito");
+    }
+
+	// habereの派生動詞に対応
+	public function add_stem($verb){
+		// 派生部分を取得
+		$this->added_stem = mb_substr($verb, 0, -5);
+		// 変更がなければ、ここで処理を中断する。
+		if($this->added_stem == ""){
+			return;
+		}
+		// 語幹を変更
+		$this->present_stem = $this->added_stem.$this->present_stem;								// 現在形
+		$this->aorist_stem = $this->added_stem.$this->aorist_stem;									// 完了形
+		$this->perfect_stem = $this->added_stem.$this->perfect_stem;								// 完了形
+
+		// 情報を更新
+		$this->get_add_info($this->infinitive);		
+	}
+
+	// 動詞作成
+	public function get_romance_verb($person, $mood, $aspect, $tense){
+
+		// 非人称チェック
+		if($this->deponent_personal == "1" && $person != "3sg"){
+			// ハイフンを返す。
+			return "-";
+		}
+		
+		//法を取得
+		if($mood == Commons::INDICATIVE){
+			// 相で分ける
+			if($aspect == Commons::PRESENT_ASPECT){
+				// 進行相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					//現在形
+					$verb_conjugation = $this->added_stem.$this->present_number[Commons::ACTIVE_VOICE][$person];
+				} else if($tense == Commons::PAST_TENSE){
+					//過去形
+					$verb_conjugation = $this->get_ind_past($person);
+				} else if($tense == Commons::FUTURE_TENSE){
+					// 未来形
+					// 補助動詞の呼び出し
+					$verb_habere = new Common_Romance_Avere();
+					// 動詞と結合
+					$verb_conjugation = mb_substr($this->infinitive, 0, -1).$verb_habere->get_romance_verb($person, $mood, $aspect, Commons::PRESENT_TENSE);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else if($aspect == Commons::PERFECT_ASPECT){
+				// 完了相
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					// 現在形					
+					$verb_conjugation = $this->added_stem.$this->perfect_number[Commons::ACTIVE_VOICE][$person];
+				} else if($tense == Commons::PAST_TENSE){
+					// 過去形				
+					$verb_conjugation = $this->get_secondary_infix($this->present_stem, $person, self::ind_perf_past_suffix);
+				} else if($tense == Commons::FUTURE_TENSE){
+					// 未来形
+					$verb_conjugation = $this->get_primary_infix($this->present_stem, $aspect, $tense, $person, self::ind_perf_future_suffix);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else if($mood == Commons::SUBJUNCTIVE){
+			// 接続法
+			// 相で分ける
+			if($aspect == Commons::PRESENT_ASPECT){
+				// 時制を分ける。
+				if($tense == Commons::PRESENT_TENSE) {
+					//現在形
+					$verb_conjugation = $this->get_secondary_infix("ai", $person, $this->opt);
+				} else if($tense == Commons::PAST_TENSE){
+					//過去形
+					$verb_conjugation = $this->make_subj_past($person);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				}
+			} else if($aspect == Commons::PERFECT_ASPECT){
+				// 完了相
+				// 時制を分ける。
+				if($tense == Commons::PAST_TENSE){
+					// 過去形						
+					$verb_conjugation = $this->get_secondary_infix($this->present_stem, $person, self::subj_perf_past_suffix);
+				} else {
+					// ハイフンを返す。
+					return "-";
+				} 
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else if($mood == Commons::IMPERATIVE){
+			// 命令形語幹を作成
+			$verb_conjugation = mb_substr($this->infinitive, 0, -3).$this->imper;
+			// 時制を分ける。
+			if($tense == Commons::PRESENT_TENSE) {
+				// 現在形
+				$verb_conjugation = $this->added_stem.$this->imperative_number[Commons::ACTIVE_VOICE][$person];
+			} else {
+				// ハイフンを返す。
+				return "-";
+			}
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
+		
+		// 文字を変換
+		$verb_conjugation = str_replace("cs", "x", $verb_conjugation);
+		// 特殊文字を取り除く
+		$verb_conjugation = Commons::remove_extended_charactor($verb_conjugation);
+		// 結果を返す。
+		return $verb_conjugation;
+	}
+	
+	// 活用表を取得する。
+	public function get_chart(){
+		// 初期化
+		$conjugation = array();
+		// タイトル情報を挿入
+		$conjugation["title"] = $this->get_title($this->infinitive);
+		// 辞書見出しを入れる。
+		$conjugation["dic_title"] = $this->infinitive;
+		// 種別を入れる。
+		$conjugation["category"] = "動詞";
+		// 活用種別
+		$conjugation["type"] = $this->class_name;
+		
+		// 共通変化部分の動詞の活用を取得
+		$conjugation = $this->make_common_standard_verb_conjugation($conjugation);
+
+		// 分詞を挿入
+		$conjugation["present_active"] = $this->get_participle($this->present_participle_active);	// 不完了体能動分詞
+		$conjugation["perfect_passive"] = $this->get_participle($this->perfect_participle_passive);	// 状態動詞受動分詞
+		$conjugation["future_active"] = $this->get_participle($this->future_participle_active);		// 未来能動分詞
+		$conjugation["future_passive"] = $this->get_participle($this->future_participle_passive);	// 未来受動分詞
+		$conjugation["supine"] = $this->get_participle($this->supine);								// 目的分詞
+		
+		// 不定詞を挿入
+		$conjugation["infinitive"]["present_active"] = $this->infinitive;					// 不定形
+		$conjugation["infinitive"]["present_passive"] = "-";								// 受動不定形
+		$conjugation["infinitive"]["perfect_active"] = $this->perfect_infinitive;			// 完了不定形
+		$conjugation["infinitive"]["perfect_passive"] = "-";								// 完了受動不定形
+
+		$conjugation["infinitive"]["future_active"] = $this->future_infinitive;				// 未来不定形
+		$conjugation["infinitive"]["future_passive"] = "-";									// 未来受動不定形
+
+		// 結果を返す。
+		return $conjugation;
+	}
+
+}
+
 
 // 梵語クラス
 class Vedic_Verb extends Verb_Common_IE{

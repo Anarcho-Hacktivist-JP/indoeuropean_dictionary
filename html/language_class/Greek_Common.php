@@ -667,7 +667,7 @@ class Koine_Common extends Common_IE{
   			if($koine_words){
 				// 新しい配列に詰め替え
 				foreach ($koine_words as $koine_verb) {
-					$charts = array_merge(Koine_Common::get_verb_conjugation($koine_verb, ""), $charts);
+					$charts = array_merge(Koine_Common::get_verb_conjugation($koine_verb), $charts);
 				}
   			} 
 		}

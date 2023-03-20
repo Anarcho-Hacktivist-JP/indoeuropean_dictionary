@@ -592,7 +592,7 @@ class Adjective_Common_IE {
     private function set_adj_data($adjective){
 
     	// 形容詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, "adjective_pie", false);
+		$word_info = $this->get_adjective_from_DB($adjective, "adjective_pie");
 		if($word_info){
 			// データを挿入
 			$this->first_stem = $word_info["weak_stem"];						// 弱語幹
@@ -2592,7 +2592,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
     // 形容詞情報を取得
     private function set_adj_data($adjective){
     	// 名詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, Sanskrit_Common::DB_ADJECTIVE, false);
+		$word_info = $this->get_adjective_from_DB($adjective, Sanskrit_Common::DB_ADJECTIVE);
 		// データがある場合は
 		if($word_info){
 			// データを挿入
@@ -4418,7 +4418,7 @@ class Koine_Adjective extends Adjective_Common_IE {
     // 形容詞情報を取得
     private function set_adj_data($adjective){
     	// 名詞情報を取得
-		$word_info = $this->get_adjective_from_DB($adjective, Koine_Common::DB_ADJECTIVE, false);
+		$word_info = $this->get_adjective_from_DB($adjective, Koine_Common::DB_ADJECTIVE);
 		// データがある場合は
 		if($word_info){
 			// データを挿入

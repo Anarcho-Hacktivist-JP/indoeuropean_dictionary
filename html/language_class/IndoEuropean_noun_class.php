@@ -182,7 +182,7 @@ class Noun_Common_IE {
     // 名詞情報を取得
     private function set_data($noun){
     	// 名詞情報を取得
-		$database_info = $this->get_noun_from_DB($noun, "noun_pie", false);
+		$database_info = $this->get_noun_from_DB($noun, "noun_pie");
 		// データがある場合は
 		if($database_info){
 			// データを挿入
@@ -1130,7 +1130,7 @@ class Latin_Noun extends Noun_Common_IE {
     	// 親クラス初期化
 		parent::__construct();
 		// 名詞情報をセット
-		$this->set_data(htmlspecialchars($last_word), false);
+		$this->set_data(htmlspecialchars($last_word));
 		// 語幹を変更
 		$this->first_stem = htmlspecialchars($compound).$this->first_stem;		// 第一語幹
 		$this->third_stem = htmlspecialchars($compound).$this->third_stem;		// 第三語幹
@@ -2218,7 +2218,7 @@ class Vedic_Noun extends Noun_Common_IE {
     // 名詞情報を取得
     private function set_data($noun, $noun_genre){
     	// 名詞情報を取得
-		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::DB_NOUN, false);
+		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::DB_NOUN);
 		// データがある場合は
 		if($word_info){
 			// データを挿入
@@ -4098,7 +4098,7 @@ class Koine_Noun extends Noun_Common_IE {
     	// 親クラス初期化
 		parent::__construct();
 		// 情報をセット
-		$this->set_data($last_word, "");
+		$this->set_data($last_word);
 		// 残りの語幹を作成
 		$this->make_other_stem();
 		// 語幹を変更
@@ -4212,7 +4212,7 @@ class Koine_Noun extends Noun_Common_IE {
     // 名詞情報を取得
     private function set_data($noun){
     	// 名詞情報を取得
-		$word_info = $this->get_noun_from_DB($noun, Koine_Common::DB_NOUN, false);
+		$word_info = $this->get_noun_from_DB($noun, Koine_Common::DB_NOUN);
 		// データがある場合は
 		if($word_info){
 			// データを挿入

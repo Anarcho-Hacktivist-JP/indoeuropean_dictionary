@@ -64,7 +64,7 @@ function get_verb_conjugation_chart_by_polish($word){
   // 動詞が取得できたか確認する。
   if($polish_verb){
     // 動詞が取得できた場合
-    $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb), $conjugations);
+    $conjugations = array_merge(Polish_Common::get_verb_conjugation($polish_verb[0]), $conjugations);
   } else {
 	  // 動詞が取得できない場合
     // 動詞を生成

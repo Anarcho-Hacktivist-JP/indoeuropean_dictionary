@@ -268,8 +268,7 @@ class Polish_Common extends Common_IE{
 	}
 
 	// 動詞の情報を取得する。
-	public static function get_verb_from_DB($dictionary_stem){
-		return null;	
+	public static function get_verb_from_DB($dictionary_stem){	
 		//DBに接続
 		$db_host = set_DB_session();
 		// SQLを作成 
