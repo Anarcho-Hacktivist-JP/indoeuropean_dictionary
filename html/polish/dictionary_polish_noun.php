@@ -12,7 +12,7 @@ include(dirname(__FILE__) . "/../language_class/Polish_Common.php");
 // 活用表を取得する。
 function get_noun_declension_chart($word, $gender){
 	// 名詞の情報を取得
-	$noun_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::DB_NOUN, "", $gender);
+	$noun_words = Polish_Common::get_dictionary_stem_by_japanese($word, Polish_Common::DB_NOUN, $gender);
   // 取得できない場合は
   if(!$noun_words){
     // 空を返す。
@@ -59,7 +59,7 @@ function get_noun_declension_chart_by_english($word, $gender){
 function get_noun_declension_chart_by_polish($word, $gender){
 	// 名詞の情報を取得
   // 単語から直接取得する
-  $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::DB_NOUN, $gender);
+  $noun_words = Polish_Common::get_wordstem_from_DB($word, Polish_Common::DB_NOUN);
   // 取得できない場合は
   if(!$noun_words){
     $noun_words[] = $word;

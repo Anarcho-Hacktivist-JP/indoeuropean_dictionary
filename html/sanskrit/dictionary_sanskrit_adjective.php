@@ -163,6 +163,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
+      <?php echo Commons::extension_button(); ?>
       <table class="table table-success table-bordered table-striped table-hover" id="adjective-table">
         <?php echo Sanskrit_Common::make_adjective_column_chart("形容詞"); ?>
         <tbody>
@@ -334,7 +335,11 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
             output_table_data();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.SanskritBotton('#input_adjective'); 
+          Input_Botton.SanskritBotton('#input_adjective');
+          // 拡張表示ボタン
+          Input_Botton.HiddenExtensionBotton();
+          // 初期状態は拡張形式の表示を隠す。
+          $(".table-extension").css("display", "none");
         }
 
     </script>

@@ -179,7 +179,8 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>
         </select>
-      </form>      
+      </form>
+      <?php echo Commons::extension_button(); ?>
       <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
           <tr>
@@ -198,16 +199,16 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
           <tr><th class="text-center" scope="row">具格</th><td></td><td></td><td></td></tr>          
           <tr><th class="text-center" scope="row">地格</th><td></td><td></td><td></td></tr>          
           <tr><th class="text-center" scope="row">呼格</th><td></td><td></td><td></td></tr>
-          <tr><th class="text-center" scope="row">起点の副詞</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">場所の副詞1</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">場所の副詞2</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">状態や方法の副詞</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">種類や回数の副詞</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">様態の副詞</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">性質や付加状況の副詞</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">時の副詞</th><td colspan="3"></td></tr>
-          <tr><th class="text-center" scope="row">方向の副詞</th><td colspan="3"></td></tr> 
-          <tr><th class="text-center" scope="row">配分や量や方法の副詞</th><td colspan="3"></td></tr>                    
+          <tr><th class="text-center table-extension" scope="row">起点の副詞</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">場所の副詞1</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">場所の副詞2</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">状態や方法の副詞</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">種類や回数の副詞</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">様態の副詞</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">性質や付加状況の副詞</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">時の副詞</th><td colspan="3" class="table-extension"></td></tr>
+          <tr><th class="text-center table-extension" scope="row">方向の副詞</th><td colspan="3" class="table-extension"></td></tr> 
+          <tr><th class="text-center table-extension" scope="row">配分や量や方法の副詞</th><td colspan="3" class="table-extension"></td></tr>                    
         </tbody>
       </table>
     </div>
@@ -292,7 +293,11 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
             output_table_data();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.SanskritBotton('#input_noun'); 
+          Input_Botton.SanskritBotton('#input_noun');
+          // 拡張表示ボタン
+          Input_Botton.HiddenExtensionBotton();
+          // 初期状態は拡張形式の表示を隠す。
+          $(".table-extension").css("display", "none");
         }
 
     </script>

@@ -355,7 +355,7 @@ class Input_Botton {
         return res;
     };
 
-    // 隠しボタンのイベントを作る。
+    // 古形表示ボタンのイベントを作る。
     static HiddenArchaicBotton(){
 
         // 古形表示を隠すボタン
@@ -372,6 +372,26 @@ class Input_Botton {
             $(".table-archaic").css("display", "table-row");
             // セルとタイトルを出す
             $(".table-archaic").css("display", "table-cell");
+        });
+    };
+
+    // 拡張表示ボタンのイベントを作る。
+    static HiddenExtensionBotton(){
+
+        // 拡張表示を隠すボタン
+        $("#btn-extension-off").click(function() {
+            // 表示を隠す。
+            $(".table-extension").css("display", "none");
+        });
+
+        // 拡張表示を出すボタン
+        $("#btn-extension-on").click(function() {
+            // 表示を出す。
+            $(".table-extension").css("display", "block");
+            // 行を出す
+            $(".table-extension").css("display", "table-row");
+            // セルとタイトルを出す
+            $(".table-extension").css("display", "table-cell");
         });
     };
 

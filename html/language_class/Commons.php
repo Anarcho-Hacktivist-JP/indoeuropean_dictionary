@@ -309,6 +309,22 @@ class Commons {
 		return $button_html_code;
 	}
 
+	// 拡張ボタンの生成
+	public static function extension_button(){
+
+		// ボタンを生成
+		$button_html_code = '
+		<div class="d-grid gap-2 d-md-block">
+			<input type="button" name="extension" class="btn-check" id="btn-extension-off" autocomplete="off" value="true">
+			<label class="btn btn-primary" for="btn-extension-off">他の形式を非表示</label>
+			<input type="button" name="extension" class="btn-check" id="btn-extension-on" autocomplete="off" value="false">
+			<label class="btn btn-primary" for="btn-extension-on">他の形式を表示</label>
+		</div>';
+
+		// 結果を返す。
+		return $button_html_code;
+	}
+
 	// 文法用語の変換関数
 	public static function change_gramatical_words($word){
 

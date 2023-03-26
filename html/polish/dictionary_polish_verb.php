@@ -180,7 +180,6 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
-
       <?php echo Commons::archaic_button(); ?>
       <details>
         <summary>動詞の活用</summary>      

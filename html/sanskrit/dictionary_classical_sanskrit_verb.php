@@ -175,6 +175,7 @@ if($input_verb != "" && $search_lang == Commons::NIHONGO && count($janome_result
           <?php echo Commons::select_option($conjugations); ?>
         </select>
       </form>
+      <?php echo Commons::extension_button(); ?>
       <details>
         <summary>一次動詞</summary>
         <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="primary-conjugation-table">
@@ -1121,7 +1122,11 @@ if($input_verb != "" && $search_lang == Commons::NIHONGO && count($janome_result
             output_table_data();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.SanskritBotton('#input_verb'); 
+          Input_Botton.SanskritBotton('#input_verb');
+          // 拡張表示ボタン
+          Input_Botton.HiddenExtensionBotton();
+          // 初期状態は拡張形式の表示を隠す。
+          $(".table-extension").css("display", "none");
         }
         
     </script>
