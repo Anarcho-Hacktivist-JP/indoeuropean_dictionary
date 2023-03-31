@@ -236,8 +236,7 @@ header("Content-type: text/html; charset=utf-8");
                 <tr>
                     <th style="width:10%" class="text-center">2022/12/03</th>
                     <th style="width:10%" class="text-center">Ver 1.00</th>
-                    <td>・初版リリース<br>・サーバー環境に合わせて一部処理を修正<br>
-                        ・ポーランド語のデータベースを更新<br>・更新履歴を作成
+                    <td>・初版リリース<br>・サーバー環境に合わせて一部処理を修正<br>・ポーランド語のデータベースを更新<br>・更新履歴を作成
                     </td>
                 </tr>
             </tbody>
