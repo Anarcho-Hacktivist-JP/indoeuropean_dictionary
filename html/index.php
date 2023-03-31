@@ -24,9 +24,74 @@ header("Content-type: text/html; charset=utf-8");
         <table border="1" align="center" class="table table-success table-bordered table-striped table-hover">
             <tbody>
                 <tr>
+                    <th style="width:10%" class="text-center">2023/3/27</th>
+                    <th style="width:10%" class="text-center">Ver 1.40</th>
+                    <td>・ラテン語の動詞を追加(第三活用)<br>・梵語の動詞と形容詞の比較級出力処理を修正<br>・ギリシア語と梵語の動詞を追加、修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/3/27</th>
+                    <th style="width:10%" class="text-center">Ver 1.40</th>
+                    <td>・梵語の名詞とポーランド語の動詞を修正<br>・梵語のすべての辞書にボタンを追加</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/3/17</th>
+                    <th style="width:10%" class="text-center">Ver 1.39</th>
+                    <td>・ポーランド語、ラテン語、ギリシア語の動詞を大幅に修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/3/11</th>
+                    <th style="width:10%" class="text-center">Ver 1.38</th>
+                    <td>・梵語の名詞、ラテン語の動詞を大幅に修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/3/2</th>
+                    <th style="width:10%" class="text-center">Ver 1.37</th>
+                    <td>・ポーランド語の動詞と名詞、ラテン語の名詞を修正<br>・俗ラテン語の表を追加</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/27</th>
+                    <th style="width:10%" class="text-center">Ver 1.36</th>
+                    <td>・ポーランド語の動詞と形容詞を修正<br>・梵語の問題集を修正<br>・ポーランド語の表を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/23</th>
+                    <th style="width:10%" class="text-center">Ver 1.36</th>
+                    <td>・ポーランド語の動詞と形容詞を修正<br>・ラテン語の動詞を修正<br>・梵語の接尾辞を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/20</th>
+                    <th style="width:10%" class="text-center">Ver 1.35</th>
+                    <td>・ポーランド語の動詞の練習問題を修正<br>・ポーランド、ラテン語の活用表や選択ボタンの表示を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/17</th>
+                    <th style="width:10%" class="text-center">Ver 1.34</th>
+                    <td>・ポーランド語の動詞を修正<br>・ポーランド、ラテン語の活用表や選択ボタンの表示を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/15</th>
+                    <th style="width:10%" class="text-center">Ver 1.33</th>
+                    <td>・ポーランド語の名詞、動詞を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/15</th>
+                    <th style="width:10%" class="text-center">Ver 1.32</th>
+                    <td>・ポーランド語の名詞、形容詞、動詞を大きく修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/14</th>
+                    <th style="width:10%" class="text-center">Ver 1.31</th>
+                    <td>・造語機能を修正・改良(5→6単語まで対応)<br>・ラテン語の名詞、ラテン語と梵語の動詞修正<br>・動詞の処理を修正</td>
+                </tr>
+                <tr>
+                    <th style="width:10%" class="text-center">2023/2/12</th>
+                    <th style="width:10%" class="text-center">Ver 1.30</th>
+                    <td>・梵語の動詞出力の処理を修正<br>・ポーランド語、ラテン語の名詞を修正</td>
+                </tr>
+                <tr>
                     <th style="width:10%" class="text-center">2023/2/4</th>
                     <th style="width:10%" class="text-center">Ver 1.29</th>
-                    <td>・古典梵語の活用表を追加、動詞出力の処理を修正<br>・言語選択の処理を修正<br>・造語機能を修正・改良(4→5単語まで対応)</td>
+                    <td>・古典梵語の活用表を追加、動詞出力の処理を修正<br>・言語選択の処理を修正<br>・造語機能を修正、改良(4→5単語まで対応)</td>
                 </tr>
                 <tr>
                     <th style="width:10%" class="text-center">2023/2/2</th>

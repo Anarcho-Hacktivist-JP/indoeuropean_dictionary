@@ -2775,20 +2775,125 @@ class Vedic_Adjective extends Adjective_Common_IE {
 
 	// 比較級形容詞作成
 	protected function generate_comp($case, $number, $gender){
-		// 格語尾を取得
+
+		// 性・数・格に応じて語幹を生成
+		// 男性および女性
+		if($gender == Commons::ANIMATE_GENDER || $gender == Commons::ACTION_GENDER){
+			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE){
+				$stem = $this->comparative_third_stem;
+			} else if($case == Commons::ACCUSATIVE && ($number == Commons::SINGULAR || $number == Commons::DUAL)){
+				$stem = $this->comparative_third_stem;
+			} else if($case == Commons::INSTRUMENTAL && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->comparative_second_stem;
+			} else if($case == Commons::DATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->comparative_second_stem;
+			} else if($case == Commons::ABLATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->comparative_second_stem;	
+			} else if($case == Commons::LOCATIVE && $number == Commons::PLURAL){
+				$stem = $this->comparative_second_stem;							
+			} else {
+				$stem = $this->comparative_first_stem;
+			}
+		} else if($gender == Commons::INANIMATE_GENDER){
+			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE || $case == Commons::ACCUSATIVE){
+				switch($number){
+					case Commons::SINGULAR:
+						$stem = $this->comparative_second_stem;							
+						break;
+					case Commons::DUAL:
+						$stem = $this->comparative_first_stem;							
+						break;
+					case Commons::PLURAL:
+						$stem = $this->comparative_third_stem;							
+						break;
+					default:
+						$stem = $this->comparative_third_stem;
+						break;			
+				}
+
+			} else if($case == Commons::INSTRUMENTAL && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->comparative_second_stem;
+			} else if($case == Commons::DATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->comparative_second_stem;
+			} else if($case == Commons::ABLATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->comparative_second_stem;	
+			} else if($case == Commons::LOCATIVE && $number == Commons::PLURAL){
+				$stem = $this->comparative_second_stem;							
+			} else {
+				$stem = $this->comparative_first_stem;
+			}
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
+
+
+		// 格語尾を取得	
 		$case_suffix = $this->comparative_case_suffix[$gender][$number][$case];
 		// 形容詞と結合		
-		$adjective = Sanskrit_Common::sandhi_engine($this->comparative_third_stem, $case_suffix, true, true);
+		$adjective = Sanskrit_Common::sandhi_engine($stem, $case_suffix, true, true);
 		// 結果を返す
 		return $adjective;
 	}
 
 	// 最上級形容詞作成
 	protected function generate_super($case, $number, $gender){
+
+		// 性・数・格に応じて語幹を生成
+		// 男性および女性
+		if($gender == Commons::ANIMATE_GENDER || $gender == Commons::ACTION_GENDER){
+			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE){
+				$stem = $this->superlative_third_stem;
+			} else if($case == Commons::ACCUSATIVE && ($number == Commons::SINGULAR || $number == Commons::DUAL)){
+				$stem = $this->superlative_third_stem;
+			} else if($case == Commons::INSTRUMENTAL && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->superlative_second_stem;
+			} else if($case == Commons::DATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->superlative_second_stem;
+			} else if($case == Commons::ABLATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->superlative_second_stem;	
+			} else if($case == Commons::LOCATIVE && $number == Commons::PLURAL){
+				$stem = $this->superlative_second_stem;							
+			} else {
+				$stem = $this->superlative_first_stem;
+			}
+		} else if($gender == Commons::INANIMATE_GENDER){
+			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE || $case == Commons::ACCUSATIVE){
+				switch($number){
+					case Commons::SINGULAR:
+						$stem = $this->superlative_second_stem;							
+						break;
+					case Commons::DUAL:
+						$stem = $this->superlative_first_stem;							
+						break;
+					case Commons::PLURAL:
+						$stem = $this->superlative_third_stem;							
+						break;
+					default:
+						$stem = $this->superlative_third_stem;
+						break;			
+				}
+
+			} else if($case == Commons::INSTRUMENTAL && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->superlative_second_stem;
+			} else if($case == Commons::DATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->superlative_second_stem;
+			} else if($case == Commons::ABLATIVE && ($number == Commons::DUAL || $number == Commons::PLURAL)){
+				$stem = $this->superlative_second_stem;	
+			} else if($case == Commons::LOCATIVE && $number == Commons::PLURAL){
+				$stem = $this->superlative_second_stem;							
+			} else {
+				$stem = $this->superlative_first_stem;
+			}
+		} else {
+			// ハイフンを返す。
+			return "-";
+		}
+
 		// 格語尾を取得
 		$case_suffix = $this->superlative_case_suffix[$gender][$number][$case];
 		// 形容詞と結合
-		$adjective = Sanskrit_Common::sandhi_engine($this->superlative_third_stem, $case_suffix, true, true);	
+		$adjective = Sanskrit_Common::sandhi_engine($stem, $case_suffix, true, true);	
 		// 結果を返す
 		return $adjective;
 	}
@@ -2818,7 +2923,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
 
 			// 副詞(拡張格)
 			$word_chart = $this->make_adverb_form($word_chart, $masc_stem, $grade, Commons::ANIMATE_GENDER);
-			$word_chart = $this->make_adverb_form($word_chart, $masc_stem, $grade, Commons::ACTION_GENDER);
+			$word_chart = $this->make_adverb_form($word_chart, $fem_stem, $grade, Commons::ACTION_GENDER);
 			$word_chart[$grade][Commons::INANIMATE_GENDER][Commons::SINGULAR]["elative"] = $word_chart[$grade][Commons::ANIMATE_GENDER][Commons::SINGULAR]["elative"];
 			$word_chart[$grade][Commons::INANIMATE_GENDER][Commons::SINGULAR]["inessive1"] = $word_chart[$grade][Commons::ANIMATE_GENDER][Commons::SINGULAR]["inessive1"];
 			$word_chart[$grade][Commons::INANIMATE_GENDER][Commons::SINGULAR]["inessive2"] = $word_chart[$grade][Commons::ANIMATE_GENDER][Commons::SINGULAR]["inessive2"];		

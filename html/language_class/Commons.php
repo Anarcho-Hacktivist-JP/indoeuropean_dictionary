@@ -494,11 +494,11 @@ class Common_IE {
 		<section class="row">
 		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数(Singular)</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数<br>(Singular)</label>
 		  </div>
 		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::PLURAL.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数(Plural)</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数<br>(Plural)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
@@ -506,7 +506,7 @@ class Common_IE {
 			$button_html_code = $button_html_code.
 			'<div class="col-md-2">
 				<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて(All)</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて<br>(All)</label>
 		  	 </div>';
 		}
 
