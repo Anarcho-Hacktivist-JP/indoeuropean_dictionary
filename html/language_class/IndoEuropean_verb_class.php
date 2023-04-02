@@ -1201,7 +1201,7 @@ class Latin_Verb extends Verb_Common_IE {
 			// 初期化
 			$verb_conjugation = "";
             // 能動態欠如動詞・第三変化の場合は
-            if(($this->verb_type == 3) && $this->deponent_present != Commons::$TRUE){
+            if(($this->verb_type == 3) && $this->deponent_active == Commons::$TRUE){
                 // 一文字削って接尾辞を追加
                 $verb_conjugation = mb_substr($this->infinitive, 0, -1).$this->imper;
             } else {

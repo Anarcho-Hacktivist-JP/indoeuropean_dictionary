@@ -61,7 +61,7 @@ function get_verb_conjugation_chart_by_english($word){
   // 配列を宣言
 	$conjugations = array();
   // 動詞の情報を語根から取得
-  $vedic_verbs = Sanskrit_Common::get_root_from_root($word);
+  $vedic_verbs = Sanskrit_Common::get_verb_by_english($word);
   // 取得できなかった場合は
   if(!$vedic_verbs){
     // 活用表生成、配列に格納
@@ -133,12 +133,12 @@ if($input_verb != "" && $search_lang == Commons::NIHONGO && count($janome_result
 } else if($input_verb != "" && $search_lang == Commons::NIHONGO && $janome_result[0][1] == "形容詞" && !Sanskrit_Common::is_alphabet_or_not($input_verb) && !strpos($input_verb, Commons::$LIKE_MARK) ){
   // 形容詞の場合は形容詞で動詞を取得(日本語のみ)
 	$conjugations = get_verb_conjugation_chart_by_adjective($input_verb);
-} else if($input_verb != "" && $search_lang == Commons::EIGO && Sanskrit_Common::is_alphabet_or_not($input_verb)){
-  // 梵語で処理を実行
-  $conjugations = get_verb_conjugation_chart_by_english($input_verb);
 } else if($input_verb != "" && $search_lang == Commons::BONGO && Sanskrit_Common::is_alphabet_or_not($input_verb)){
-  // 英語で処理を実行
+  // 梵語で処理を実行
   $conjugations = get_verb_conjugation_chart_by_sanskrit($input_verb);
+} else if($input_verb != "" && $search_lang == Commons::EIGO && Sanskrit_Common::is_alphabet_or_not($input_verb)){
+  // 英語で処理を実行
+  $conjugations = get_verb_conjugation_chart_by_english($input_verb);
 } else if($input_verb != "" && $search_lang == Commons::NIHONGO && !Sanskrit_Common::is_alphabet_or_not($input_verb)){
   // 日本語で処理を実行
   $conjugations = get_verb_conjugation_chart($input_verb);

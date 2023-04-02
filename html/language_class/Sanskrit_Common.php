@@ -469,9 +469,9 @@ class Sanskrit_Common extends Common_IE{
 			$query = $query." `english_translation` LIKE '%".str_replace(Commons::$LIKE_MARK, "", $english_translation)."%'";
 		} else {
 			// それ以外は
-			$query = $query." ( `english_translation` LIKE '%,".$english_translation.",%' OR 
+			$query = $query." ( `english_translation` LIKE '%, ".$english_translation.",%' OR 
 			`english_translation` LIKE '".$english_translation.",%' OR 
-			`english_translation` LIKE '%,".$english_translation."' OR 
+			`english_translation` LIKE '%, ".$english_translation."' OR 
 			`english_translation` = '".$english_translation."')";
 		}
 		// SQLを実行
