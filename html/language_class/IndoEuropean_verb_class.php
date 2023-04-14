@@ -10523,10 +10523,23 @@ class Koine_Verb extends Verb_Common_IE {
 		// 時制を分ける。
 		if ($tense_mood == Commons::PRESENT_TENSE && ($aspect == Commons::PRESENT_ASPECT || $aspect == Commons::START_VERB || $aspect == Commons::FUTURE_TENSE)) {
 			// 人称によって分ける
-			if($person == "1sg" || $person == "1pl" || $person == "3pl"){
+			if($person == "1sg") {
+				// 一人称単数
+				if(preg_match("/(α|ε)ω$/u", $this->dictionary_stem) && $verb_type == "primary"){
+					// 第10活用1
+					$verb_stem = $verb_stem.$this->ind;
+				} else if(preg_match("/(ο|ό)ω$/u", $this->dictionary_stem) && $verb_type == "primary"){
+					// 第10活用2
+					$verb_stem = $verb_stem.$this->ind;
+				} else {
+					// それ以外
+					$verb_stem = $verb_stem.$this->ind2;
+				}
+			} else if($person == "1pl" || $person == "3pl"){
+				// 一人称・三人称複数の場合
 				$verb_stem = $verb_stem.$this->ind2;
 			} else {
-				// 母音幹動詞以外
+				// それ以外
 				$verb_stem = $verb_stem.$this->ind;
 			} 
 			// 人称を付ける
