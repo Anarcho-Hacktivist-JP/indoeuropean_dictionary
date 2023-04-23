@@ -8326,6 +8326,42 @@ class Polish_Verb extends Verb_Common_IE {
     }
 
     /*=====================================
+    コンストラクタ(名詞起源動詞・形容詞起源動詞)
+    ======================================*/
+	function __construct_polish2($dic_stem, $japanese_translation) {
+		// 親の呼び出し
+    	parent::__construct($dic_stem);
+		// データの取得確認	
+		if(preg_match('/(ować|owac)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb5(mb_substr($dic_stem, 0, -4));			
+		} else if(preg_match('/(ać|ac)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb(mb_substr($dic_stem, 0, -2));
+		} else if(preg_match('/(eć|ec)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb2(mb_substr($dic_stem, 0, -2));
+		} else if(preg_match('/ąć$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb3(mb_substr($dic_stem, 0, -2));			
+		} else if(preg_match('/(ić|ic)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb4(mb_substr($dic_stem, 0, -2));										
+		} else {
+			// 不明動詞の対応
+			$this->generate_uknown_verb($dic_stem);
+		}
+
+		// 動詞の種別を決定
+		$this->decide_verb_class();
+		// 動詞の語幹を作成
+		$this->get_verb_stem($this->infinitive);
+		// 日本語訳を追加
+		$this->japanese_translation = $japanese_translation."する";
+    }
+
+
+    /*=====================================
     コンストラクタ
     ======================================*/
     public function __construct() {
@@ -8593,14 +8629,20 @@ class Polish_Verb extends Verb_Common_IE {
 			// 語幹を作成
 			if($this->verb_type == "2"){
 				// 第二活用の場合
-				$verb_stem  = $this->present_stem2;	
+				$verb_stem  = $this->present_stem2;				
 			} else {
 				// それ以外
 				$verb_stem  = $this->present_stem2.$this->ind;
 			}
 		} else {
 			// 語幹を作成
-			$verb_stem  = $this->present_stem.$this->ind;
+			if($this->verb_type == "3"){
+				// 第三活用の場合
+				$verb_stem  = $this->present_stem;				
+			} else {
+				// それ以外
+				$verb_stem  = $this->present_stem.$this->ind;
+			}
 		}
 
 		// 初期化
@@ -8626,32 +8668,32 @@ class Polish_Verb extends Verb_Common_IE {
 			return $this->past_stem;
 		} else if($gender == Commons::ACTION_GENDER && preg_match("/sg$/", $person)){
 			// ąc動詞は語幹を変更して返す。
-			if($this->verb_type == "3an"){
-				return $this->present_stem."ęła";
+			if($this->verb_type == "3"){
+				return $this->present_stem2."ęła";
 			}
 			return $this->past_stem."a";
 		} else if($gender == Commons::INANIMATE_GENDER && preg_match("/sg$/", $person)){
 			// ąc動詞は語幹を変更して返す。
-			if($this->verb_type == "3an"){
-				return $this->present_stem."ęło";
+			if($this->verb_type == "3"){
+				return $this->present_stem2."ęło";
 			}			
 			return $this->past_stem."o";
 		} else if($gender == Commons::ANIMATE_GENDER && preg_match("/(du|pl)$/", $person)){
 			// ąc動詞は語幹を変更して返す。
-			if($this->verb_type == "3an"){
-				return $this->present_stem."ęły";
+			if($this->verb_type == "3"){
+				return $this->present_stem2."ęły";
 			}			
 			return $this->past_stem."y";		
 		} else if($gender == Commons::ACTION_GENDER && preg_match("/(du|pl)$/", $person)){
 			// ąc動詞は語幹を変更して返す。
-			if($this->verb_type == "3an"){
-				return $this->present_stem."ęłi";
+			if($this->verb_type == "3"){
+				return $this->present_stem2."ęłi";
 			}
 			return $this->past_stem."i";
 		} else if($gender == Commons::INANIMATE_GENDER && preg_match("/(du|pl)$/", $person)){
 			// ąc動詞は語幹を変更して返す。
-			if($this->verb_type == "3an"){
-				return $this->present_stem."ęłi";
+			if($this->verb_type == "3"){
+				return $this->present_stem2."ęłi";
 			}			
 			return $this->past_stem."i";			
 		} else {

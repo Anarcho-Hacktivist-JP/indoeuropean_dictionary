@@ -325,7 +325,73 @@ class Polish_Common extends Common_IE{
 							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
 							`".$table."`.`japanese_translation` = '".$japanese_translation."')
    						  AND 
-							 `".Polish_Common::DB_VERB."`.`dictionary_stem` is not null;";
+							 `".Polish_Common::DB_VERB."`.`dictionary_stem` is not null";
+
+		// SQLを作成 
+		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'ać') as `strong_stem`  FROM `".$table."` WHERE (
+				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
+				 `japanese_translation` = '".$japanese_translation."')";
+
+		// 名詞の場合で性別の指定がある場合は追加する。
+		if($table == Polish_Common::DB_NOUN && $gender != ""){
+			$query = $query."AND `gender` LIKE '%".$gender."%'";
+		}
+
+		// 動詞の条件と被らないようにする。
+		$query = $query." AND NOT EXISTS(
+							SELECT * FROM `".Polish_Common::DB_VERB."`
+							WHERE `".Polish_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'ać') 
+						  )";
+
+		// SQLを作成 
+		$query = $query." UNION SELECT
+							`".Polish_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
+   						  FROM `".$table."`
+   						  LEFT JOIN  `".Polish_Common::DB_VERB."`
+   					      ON `".Polish_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'ać')
+   						  WHERE ( 
+							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`".$table."`.`japanese_translation` = '".$japanese_translation."')
+   						  AND 
+							 `".Polish_Common::DB_VERB."`.`dictionary_stem` is not null";
+							 
+		// SQLを作成 
+		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'nąć') as `strong_stem`  FROM `".$table."` WHERE (
+				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
+				 `japanese_translation` = '".$japanese_translation."')";
+
+		// 名詞の場合で性別の指定がある場合は追加する。
+		if($table == Polish_Common::DB_NOUN && $gender != ""){
+			$query = $query."AND `gender` LIKE '%".$gender."%'";
+		}
+
+		// 動詞の条件と被らないようにする。
+		$query = $query." AND NOT EXISTS(
+							SELECT * FROM `".Polish_Common::DB_VERB."`
+							WHERE `".Polish_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".$table."`.`strong_stem`,'-',''), 'nąć') 
+						  )";
+
+		// SQLを作成 
+		$query = $query." UNION SELECT
+							`".Polish_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 
+   						  FROM `".$table."`
+   						  LEFT JOIN  `".Polish_Common::DB_VERB."`
+   					      ON `".Polish_Common::DB_VERB."`.`dictionary_stem` = concat(REPLACE( `".$table."`.`strong_stem`,'-',''), 'nąć')
+   						  WHERE ( 
+							`".$table."`. `japanese_translation` LIKE '%、".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '".$japanese_translation."、%' OR
+							`".$table."`.`japanese_translation` LIKE '%、".$japanese_translation."' OR
+							`".$table."`.`japanese_translation` = '".$japanese_translation."')
+   						  AND 
+							 `".Polish_Common::DB_VERB."`.`dictionary_stem` is not null;";	
+
+
 		// SQLを実行
 		$stmt = $db_host->query($query);
 		// 連想配列に整形
@@ -392,6 +458,14 @@ class Polish_Common extends Common_IE{
 		if($table_data){
 			// 新しい配列に詰め替え
 			foreach ($table_data as $row_data ) {
+				// 動詞を宣言
+				$verb_stem = $row_data["strong_stem"];
+				// 置換処理を実行
+				$verb_stem = preg_replace("/oweć$/", "owieć", $verb_stem);
+				$verb_stem = preg_replace("/neć$/", "nieć", $verb_stem);
+				$verb_stem = preg_replace("/deć$/", "dzieć", $verb_stem);
+				$verb_stem = preg_replace("/skeć$/", "szczeć", $verb_stem);
+				// 動詞語幹を配列に入れる。
 				array_push($new_table_data, $row_data["strong_stem"]);
 			}
 		} else {

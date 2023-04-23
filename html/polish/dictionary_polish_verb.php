@@ -90,7 +90,7 @@ function get_conjugation_by_noun($word){
 	// 新しい配列に詰め替え
 	foreach ($polish_verbs as $polish_verb) {
 	  // 読み込み
-	  $verb_data = new Polish_Verb($polish_verb);
+	  $verb_data = new Polish_Verb($polish_verb, $word);
 	  // 活用表生成、配列に格納
 	  $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
 	}
@@ -114,7 +114,7 @@ function get_conjugation_by_adjective($word){
 	// 新しい配列に詰め替え
 	foreach ($polish_verbs as $polish_verb) {         
 	  // 読み込み
-	  $verb_data = new Polish_Verb($polish_verb);
+	  $verb_data = new Polish_Verb($polish_verb, $word);
 	  // 活用表生成、配列に格納
 	  $conjugations[$verb_data->get_infinitive()] = $verb_data->get_chart();
 	}

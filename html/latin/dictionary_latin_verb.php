@@ -18,7 +18,7 @@ function get_verb_conjugation_chart($word, $verb_genre){
 	// 動詞の情報を取得
 	$latin_verbs = Latin_Common::get_verb_by_japanese($word);
   // 動詞の情報が取得できない場合は
-  if(!$latin_verbs && Latin_Common::is_alphabet_or_not($word)){
+  if(!$latin_verbs){
     // 空を返す。
     return array();   
   }
