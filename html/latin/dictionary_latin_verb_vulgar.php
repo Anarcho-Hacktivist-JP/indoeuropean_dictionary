@@ -193,8 +193,10 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && $search_lang == Comm
       <h1>ラテン語辞書（俗ラテン語動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可">
-        <?php echo Latin_Common::input_special_button(); ?>    
+        <section class="row textBox1 mb-3">
+          <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可">
+          <?php echo Latin_Common::input_special_button(); ?>
+        </section> 
         <?php echo Latin_Common::language_select_box(); ?> 
         <input type="submit" class="btn-check" id="btn-generate">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>

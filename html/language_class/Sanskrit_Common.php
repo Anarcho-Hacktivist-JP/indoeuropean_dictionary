@@ -2700,3 +2700,230 @@ class Sanskrit_Common extends Common_IE{
 	}	
 
 }
+
+class Avestan_Common extends Sanskrit_Common{
+
+	public const DB_NOUN_AVESTAN = "noun_avestan";				// 名詞データベース名
+	public const DB_ADJECTIVE_AVESTAN = "adjective_avestan";	// 形容詞データベース名
+	public const DB_VERB_AVESTAN = "verb_avestan";				// 動詞データベース名
+	public const DB_ADVERB_AVESTAN = "adverb_avestan";			// 副詞データベース名	
+
+	public const DENOMITIVE_VERB1 = "ati";		// 名詞起源動詞1
+	public const DENOMITIVE_VERB2 = "ayati";	// 名詞起源動詞2
+	public const DENOMITIVE_VERB3 = "asyati";	// 名詞起源動詞3
+	public const DENOMITIVE_VERB4 = "yati";		// 名詞起源動詞4
+	public const DENOMITIVE_VERB5 = "āyati";	// 名詞起源動詞5
+
+	// 音階変更
+	public static function change_vowel_grade($script, $sound_grade){	
+
+		switch($sound_grade){
+			case Sanskrit_Common::ZERO_GRADE:
+				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
+				$script = preg_replace("/([aā])([nṅṇmṃ])/u", "\\1\\2", $script);		//an, aṅ, añ, am	
+				$script = preg_replace("/y([aā])/u", "i", $script);		// ya	
+				$script = preg_replace("/v([aā])/u", "u", $script);		// va
+
+				// 文字を変換(ai, au)
+				$script = str_replace("aē", "i", $script);		//ai
+				$script = str_replace("ao", "u", $script);		//au
+				$script = str_replace("āi", "i", $script);		//ai
+				$script = str_replace("āu", "u", $script);		//au		
+
+				// 文字を変換(ay, av)
+				$script = preg_replace("/([aā])y/u", "i", $script);		// ay
+				$script = preg_replace("/([aā])v/u", "u", $script);		// av
+				$script = str_replace("ā", "a", $script);		//al									
+				break;
+			case Sanskrit_Common::GUNA:
+				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
+				$script = preg_replace("/([bcdghjklmnpst])([nṅṇmṃ])/u", "\\1a\\2", $script);		//an, aṅ, añ, am				
+
+				// 文字を変換(ai, au)
+				$script = str_replace("i", "aē", $script);		//ai
+				$script = str_replace("u", "ao", $script);		//au
+				$script = str_replace("ī", "aē", $script);		//ai
+				$script = str_replace("ū", "ao", $script);		//au				
+				$script = str_replace("āi", "aē", $script);		//ai
+				$script = str_replace("āu", "ao", $script);		//au		
+
+				$script = str_replace("ā", "a", $script);		//ā
+
+				break;
+			case Sanskrit_Common::VRIDDHI:
+				// 文字を変換(na, ṅa, ña, ṇa, ma, ra, ya, va)
+				$script = preg_replace("/([bcdghjklmnpst])([nṅṇmṃ])/u", "\\1ā\\2", $script);		//an, aṅ, añ, am				
+
+				// 文字を変換(ai, au)
+				$script = str_replace("i", "āi", $script);		//ai
+				$script = str_replace("u", "āu", $script);		//au
+				$script = str_replace("ī", "āi", $script);		//ai
+				$script = str_replace("ū", "āu", $script);		//au					
+				$script = str_replace("aē", "āi", $script);		//ai
+				$script = str_replace("ao", "āu", $script);		//au			
+
+				$script = preg_replace("/a([vy])/u", "ā\\1", $script);		// av, ay
+				$script = str_replace("a", "ā", $script);		//ā
+				break;	
+			default:
+				break;				
+		}
+		// 結果を返す。
+		return $script;
+	}
+
+	// 連音対応
+	public static function sandhi_engine($word1, $word2, $vedic_flag = false, $word_flag = false){
+
+		// 結合先なし、母音 + 子音の組み合わせ以外は
+		if($word2 != "" && 1 != 1 &&
+		   !(preg_match("/[aiueoṛāīūṝ]$/", $word1) && preg_match("/^[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]/", $word2)) &&
+		   !(preg_match("/[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]$/", $word1) && preg_match("/^[aiueoṛḷāīūṝḹ]/", $word2)) &&
+		   !(preg_match("/[bpkghcjlrtdḍṭśṣs]$/", $word1) && preg_match("/^[yv]/", $word2)) &&
+		   !(preg_match("/[aā]$/", $word1) && preg_match("/^[aā]/", $word2)) &&
+		   !(preg_match("/[iī]$/", $word1) && preg_match("/^[iī]/", $word2)) &&
+		   !(preg_match("/[uū]$/", $word1) && preg_match("/^[uū]/", $word2)) &&
+		   !(preg_match("/[aā]$/", $word1) && preg_match("/^[iī]/", $word2)) &&
+		   !(preg_match("/[aā]$/", $word1) && preg_match("/^[uū]/", $word2)) &&
+		   !(preg_match("/[iī]$/", $word1) && preg_match("/^[aāuūeoṛṝḷḹ]/", $word2)) &&
+		   !(preg_match("/[uū]$/", $word1) && preg_match("/^[aāiīeoṛṝḷḹ]/", $word2)) &&
+		   !(preg_match("/[ṛṝ]$/", $word1) && preg_match("/^[aāiīuūeo]/", $word2))){
+			//echo "done"."</br>";
+			// 実行先を指定
+			$command = "python3 /var/www/html/python/sandhi-engine-master/sandhi_engine.py $word1 $word2";
+			// 実行し、その結果を取得する。
+			exec($command , $result);
+			// 結果を文字列で取得、余計な文字を除く
+			$script = str_replace(",", "", $result[0]);
+			$script = str_replace("[", "", $script);
+			$script = str_replace("]", "", $script);
+			$script = str_replace("'", "", $script);
+			//echo $script."<br>";		
+			// 一度配列に戻して、余分なデータを削除する。
+			$scripts = explode(" ", $script);
+			if(count($scripts) > 3){
+				// 連音が起きた場合
+				if($scripts[1] == $word2){
+					// 単語が分離している場合
+					$script = $scripts[2];
+				} else {
+					// 単語が分離していない場合
+					$script = $scripts[0];
+				}
+			} else {
+				// 連音が起きない場合
+				$script = $scripts[0].$scripts[1];			
+			}
+		} else {
+			// 母音同化の対応
+			if(preg_match("/a$/", $word1) && preg_match("/^i/", $word2)){
+				$script = mb_substr($word1, 0, -1)."e".mb_substr($word2, 1);
+			} else if(preg_match("/a$/", $word1) && preg_match("/^u/", $word2)){
+				$script = mb_substr($word1, 0, -1)."o".mb_substr($word2, 1);
+			} else {
+				$script = $word1.$word2;
+			}
+		}	
+
+		// 連音を適用
+		$script = Sanskrit_Common::apply_sandhi($script, $word_flag);
+
+		// ヴェーダ語に変換
+		$script = Sanskrit_Common::change_sound_to_vedic($script, $vedic_flag);
+
+		// 結果を返す。
+		return $script;
+	}
+
+	// 連音変換
+	public static function apply_sandhi($script, $word_flag){
+
+		// 内連声対応
+		$script = preg_replace("/śt/u", "št", $script);	
+		$script = preg_replace("/ś(d|dh)/u", "zd", $script);	
+	
+		$script = preg_replace("/([śṣs])s/u", "š", $script);
+		$script = preg_replace("/([śṣsjkgc])s/u", "xš", $script);
+		$script = preg_replace("/([iīuūeoṛṝ])s([bpkghcjlrtdḍṭmnṅñṃṇśṣsyvaāiīuūeo])/u", "\\1š\\2", $script);
+
+		// バルトロマエの法則
+		$script = preg_replace("/([ṭtpkc]|[dḍbgj])h([ṭtpkc]|[dḍbgj])/u", "\\1\\2h", $script);
+		$script = preg_replace("/hh/u", "h", $script);
+
+		// 子音同化
+		$script = preg_replace("/t([ḍdgbj])/u", "d\\1", $script);
+		$script = preg_replace("/ṭ([ḍdgbj])/u", "ḍ\\1", $script);
+		$script = preg_replace("/p([ḍdgbj])/u", "b\\1", $script);
+		$script = preg_replace("/c([ḍdgbj])/u", "g\\1", $script);		
+		$script = preg_replace("/k([ḍdgbj])/u", "g\\1", $script);
+
+		$script = preg_replace("/d([pck])/u", "t\\1", $script);
+		$script = preg_replace("/ḍ([pck])/u", "ṭ\\1", $script);
+		$script = preg_replace("/b([ṭtpck])/u", "p\\1", $script);
+		$script = preg_replace("/j([ṭtpck])/u", "k\\1", $script);		
+		$script = preg_replace("/g([ṭtpck])/u", "k\\1", $script);
+
+		// m対応
+		$script = preg_replace("/([ñṅnṇ])([pb])/u", "m\\2", $script);				
+		$script = preg_replace("/([ñnṇ])([kg])/u", "ṅ\\2", $script);
+		$script = preg_replace("/([ṅnṇ])([j])/u", "ñ\\2", $script);
+		$script = preg_replace("/([ṅñṇ])([ṭt])/u", "ṃs", $script);
+		$script = preg_replace("/([ṅñṇ])([dḍ])/u", "ṇ\\2", $script);
+		$script = preg_replace("/([ṅñṇ])([j])/u", "ñ\\2", $script);
+		$script = preg_replace("/([m])([bpkghcjtdḍṭ])/u", "ṃ\\2", $script);
+
+		// 最後の子音が連続する場合は
+		if($word_flag){		
+			$script = preg_replace("/([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b/u", '\\1', $script);
+			$script = preg_replace("/([bpkghcjtdḍṭmnṅñṃṇśṣs])([bpkghcjtdḍṭmnṅñṃṇśṣs])\b/u", '\\1', $script);			
+		}
+		
+		// n対応
+		$script = preg_replace("/([cjkg])n/u", "\\1ṅ", $script);
+		$script = preg_replace("/([cjkg])hn/u", "\\1ṅ", $script);
+		$script = preg_replace("/([śpb])m/u", "\\1n", $script);
+		$script = preg_replace("/([pb])hm/u", "\\1n", $script);
+		$script = preg_replace("/([ṣḍṭ])[nm]/u", "\\1ṇ", $script);
+		$script = preg_replace("/([śṣs])([mn])/u", "\\1n", $script);
+
+		// r対応
+		$script = preg_replace("/([kghcjlrtdḍṭśṣsy])ṝ([a-z])/u", "\\1īr\\2", $script);
+		$script = preg_replace("/([bpmnṅñṃṇv])ṝ([a-z])/u", "\\1ūr\\2", $script);
+
+		// rl対応
+		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])r([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ṛ\\2", $script);
+		$script = preg_replace("/([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])l([[bpkghcjlrtdḍṭmnṅñṃṇśṣsyv]])/u", "\\1ḷ\\2", $script);	
+
+		// 母音の子音化
+		$script = preg_replace("/([iī])([aāuūeoṛṝ])/u", "y\\2", $script);
+		$script = preg_replace("/([uū])([aāiīeoṛṝ])/u", "v\\2", $script);
+		$script = preg_replace("/([ṛṝ])([aāiīuūeo])/u", "r\\2", $script);
+		$script = preg_replace("/([e])([aāiīuūeoṛṝ])/u", "ay\\2", $script);
+		$script = preg_replace("/([o])([aāiīuūeoṛṝ])/u", "av\\2", $script);
+		$script = preg_replace("/(ai)([aāiīuūeoṛṝ])/u", "āy\\2", $script);
+		$script = preg_replace("/(au)([aāiīuūeoṛṝ])/u", "āv\\2", $script);
+
+		// 母音の統合
+		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);
+		$script = preg_replace("/(i|ī)(i|ī)/u", "ī", $script);
+		$script = preg_replace("/(u|ū)(u|ū)/u", "ū", $script);
+
+		// 結果を返す。
+		return $script;
+	}
+
+	// アヴェスター語変換
+	public static function convert_to_avestan($script){
+		// アヴェスター語対応
+		$script = preg_replace("/sr/u", "r", $script);
+		$script = preg_replace("/tv/u", "θβ", $script);	
+		$script = preg_replace("/śv/u", "sp", $script);	
+		$script = preg_replace("/sv/u", "xuu", $script);	
+		$script = preg_replace("/ḍ|ḍh/u", "zd", $script);
+
+		// 結果を返す。
+		return $script;
+	}
+
+
+}

@@ -57,7 +57,7 @@ function get_noun_declension_chart_by_english($word, $gender){
 // 活用表を取得する。
 function get_noun_declension_chart_by_latin($word, $gender){
   // 単語から直接取得する
-  $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN, $gender);
+  $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN);
   // 取得できない場合は
   if(!$noun_words){
     // その単語を入れる        
@@ -165,8 +165,10 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
     <div class="container item table-striped">
       <p>あいまい検索は<br>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4 form-search" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">
-        <?php echo Latin_Common::input_special_button(); ?>
+        <section class="row textBox1 mb-3">
+          <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">
+          <?php echo Latin_Common::input_special_button(); ?>
+        </section>        
         <?php echo Latin_Common::language_select_box(); ?>
         <?php echo Latin_Common::noun_gender_selection_button(true); ?>   
         <input type="submit" class="btn-check" id="btn-search">

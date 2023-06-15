@@ -1392,7 +1392,7 @@ class Latin_Noun extends Noun_Common_IE {
 	}
 }
 
-// 梵語共通クラス
+// 梵語名詞クラス
 class Vedic_Noun extends Noun_Common_IE {
 
 	// 格語尾リスト
@@ -2120,7 +2120,7 @@ class Vedic_Noun extends Noun_Common_IE {
     }
     
     // 活用表セット
-    private function get_noun_declension(){
+    protected function get_noun_declension(){
 
 		// 全ての接尾辞リストを参照
 		$declension = $this->get_noun_case_suffix($this->noun_type, $this->gender);
@@ -2161,7 +2161,7 @@ class Vedic_Noun extends Noun_Common_IE {
     }
 
 	// 語幹を作成
-	private function make_other_stem(){
+	protected function make_other_stem(){
 		// 活用種別に合わせて語幹を作る。
 		if(preg_match('/^(1|2)$/',$this->noun_type)){
 			// a-変化活用の場合
@@ -2216,7 +2216,7 @@ class Vedic_Noun extends Noun_Common_IE {
 	}
     
     // 名詞情報を取得
-    private function set_data($noun, $noun_genre){
+    protected function set_data($noun, $noun_genre){
     	// 名詞情報を取得
 		$word_info = $this->get_noun_from_DB($noun, Sanskrit_Common::DB_NOUN);
 		// データがある場合は
@@ -2234,7 +2234,7 @@ class Vedic_Noun extends Noun_Common_IE {
     }
 
 	// 語幹を手動作成
-	private function set_data_manual($noun, $noun_genre){
+	protected function set_data_manual($noun, $noun_genre){
 		// 第一語幹・第三語幹生成
 		$this->second_stem = $noun;												// 第二語幹
 		// 日本語訳
@@ -2417,6 +2417,38 @@ class Vedic_Noun extends Noun_Common_IE {
 		$stem = "";
 
 		// 性・数・格に応じて語幹を生成
+		$stem = $this->get_stem_by_gender_case_number($case, $number);
+		// 語幹の取得に失敗した場合は
+		if($stem == "-"){
+			// ハイフンを返す
+			return "-";
+		}
+		
+		// 語幹修正
+		if($this->noun_type == 1 || $this->noun_type == 2 || $this->noun_type == "3i" || $this->noun_type == 4){
+			// 第一・第二・第三・第四変化の場合
+			// 格変化の語尾が母音で始まる場合は
+			if(Commons::is_vowel_or_not(mb_substr($case_suffix, 0, 1))){
+				// 最後の母音を削る
+				$stem = mb_substr($stem, 0, -1);			 	
+			} 
+		}
+
+		// rで始まる場合は
+		if($this->noun_type == "3r" && preg_match('/ṛ$/', mb_substr($stem, -1))){
+			//常に語幹の最後の母音を削る
+			$stem = mb_substr($stem, 0, -1);				
+		}	
+
+		// 結果を生成
+		$noun = Sanskrit_Common::sandhi_engine($stem, $case_suffix, true, true);
+
+		// 結果を返す
+		return htmlspecialchars($noun);
+	}
+
+	// 性・格・数に応じて語幹を取得
+	protected function get_stem_by_gender_case_number($case, $number){
 		// 男性および女性
 		if($this->gender == self::PIE_ANIMATE || $this->gender == self::PIE_ACTION){
 			if($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE){
@@ -2465,28 +2497,9 @@ class Vedic_Noun extends Noun_Common_IE {
 			// ハイフンを返す。
 			return "-";
 		}
-		
-		// 語幹修正
-		if($this->noun_type == 1 || $this->noun_type == 2 || $this->noun_type == "3i" || $this->noun_type == 4){
-			// 第一・第二・第三・第四変化の場合
-			// 格変化の語尾が母音で始まる場合は
-			if(Commons::is_vowel_or_not(mb_substr($case_suffix, 0, 1))){
-				// 最後の母音を削る
-				$stem = mb_substr($stem, 0, -1);			 	
-			} 
-		}
-
-		// rで始まる場合は
-		if($this->noun_type == "3r" && preg_match('/ṛ$/', mb_substr($stem, -1))){
-			//常に語幹の最後の母音を削る
-			$stem = mb_substr($stem, 0, -1);				
-		}	
-
-		// 結果を生成
-		$noun = Sanskrit_Common::sandhi_engine($stem, $case_suffix, true, true);
 
 		// 結果を返す
-		return htmlspecialchars($noun);
+		return $stem;
 	}
 
 	// 語幹を取得
@@ -2612,7 +2625,838 @@ class Vedic_Noun extends Noun_Common_IE {
 	}
 }
 
-// ポーランド語共通クラス
+// アヴェスター語名詞クラス
+class Avestan_Noun extends Vedic_Noun {
+
+	// 格語尾リスト
+	protected $case_suffix_list =  [
+		[
+			"noun_type" => "1",
+			"noun_type_name" => "ā-変化名詞",				
+			"gender" => "Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "ayo̊",
+			"sg_dat" => "ayāi",
+			"sg_acc" => "ąm",
+			"sg_abl" => "ayo̊",
+			"sg_ins" => "ayā",
+			"sg_loc" => "ayā",
+			"sg_voc" => "e",
+			"du_nom" => "e",
+			"du_gen" => "ayå",
+			"du_dat" => "bya",
+			"du_acc" => "e",
+			"du_abl" => "bya",
+			"du_ins" => "bhiām",
+			"du_loc" => "ayå",
+			"du_voc" => "e",
+			"pl_nom" => "å",
+			"pl_gen" => "anąm",
+			"pl_dat" => "byō",
+			"pl_acc" => "",
+			"pl_abl" => "byō",
+			"pl_ins" => "bhis",			
+			"pl_loc" => "hva",
+			"pl_voc" => "å"
+		],
+		[
+			"noun_type" => "2",
+			"noun_type_name" => "a-変化名詞",			
+			"gender" => "Masculine/Feminine",
+			"sg_nom" => "ō",
+			"sg_gen" => "hya",
+			"sg_dat" => "āi",
+			"sg_acc" => "am",
+			"sg_abl" => "āt",
+			"sg_ins" => "ā",
+			"sg_loc" => "ai",
+			"sg_voc" => "ā",
+			"du_nom" => "ā",
+			"du_gen" => "yāh",
+			"du_dat" => "aebya",
+			"du_acc" => "ā",
+			"du_abl" => "aebya",
+			"du_ins" => "aebya",
+			"du_loc" => "yāh",
+			"du_voc" => "ā",
+			"pl_nom" => "å",
+			"pl_gen" => "nąm",
+			"pl_dat" => "aebyō",
+			"pl_acc" => "āng",
+			"pl_abl" => "aebyō",
+			"pl_ins" => "āiš",
+			"pl_loc" => "aešu",
+			"pl_voc" => "å"
+		],
+		[
+			"noun_type" => "2",
+			"noun_type_name" => "a-変化名詞",			
+			"gender" => "Neuter",
+			"sg_nom" => "am",
+			"sg_gen" => "hya",
+			"sg_dat" => "āi",
+			"sg_acc" => "am",
+			"sg_abl" => "āt",
+			"sg_ins" => "ā",
+			"sg_loc" => "ai",
+			"sg_voc" => "a",
+			"du_nom" => "e",
+			"du_gen" => "āh",
+			"du_dat" => "aebya",
+			"du_acc" => "e",
+			"du_abl" => "aebya",
+			"du_ins" => "aebya",
+			"du_loc" => "āh",
+			"du_voc" => "e",
+			"pl_nom" => "ā",
+			"pl_gen" => "nąm",
+			"pl_dat" => "aebyō",
+			"pl_acc" => "ā",
+			"pl_abl" => "aebyō",
+			"pl_ins" => "āiš",
+			"pl_loc" => "aešu",
+			"pl_voc" => "ā"
+		],
+		[
+			"noun_type" => "3s",
+			"noun_type_name" => "語根名詞",	
+			"gender" => "Feminine",
+			"sg_nom" => "s",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "am",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "au",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "au",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "au",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "3s",
+			"noun_type_name" => "語根名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "s",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "am",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "u",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "u",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "u",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "3n",
+			"noun_type_name" => "n-変化名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "s",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "am",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "au",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "au",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "au",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "3n",
+			"noun_type_name" => "n-変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "s",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "s",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "ī",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "ī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "ī",
+			"pl_nom" => "āni",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "āni",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "āni"
+		],
+		[
+			"noun_type" => "3con",
+			"noun_type_name" => "子音変化名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "am",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "au",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "au",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "au",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "3con",
+			"noun_type_name" => "子音変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "am",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "au",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "au",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "au",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "3con",
+			"noun_type_name" => "子音変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "",
+			"du_nom" => "ī",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "ī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "ī",
+			"pl_nom" => "i",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "i",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "i"
+		],
+		[
+			"noun_type" => "double",
+			"noun_type_name" => "二重母音名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "s",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "am",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "au",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "au",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "au",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "double",
+			"noun_type_name" => "二重母音名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "s",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "s",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "i",
+			"sg_voc" => "s",
+			"du_nom" => "au",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "au",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "au",
+			"pl_nom" => "as",
+			"pl_gen" => "ām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "as",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "as"
+		],
+		[
+			"noun_type" => "3r",
+			"noun_type_name" => "r-変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "ā",
+			"sg_gen" => "ur",
+			"sg_dat" => "re",
+			"sg_acc" => "āram",
+			"sg_abl" => "ur",
+			"sg_ins" => "rā",
+			"sg_loc" => "ari",
+			"sg_voc" => "ar",
+			"du_nom" => "ṛṇī",
+			"du_gen" => "ros",
+			"du_dat" => "ṛbhiām",
+			"du_acc" => "ṛṇī",
+			"du_abl" => "ṛbhiām",
+			"du_ins" => "ṛbhiām",
+			"du_loc" => "ros",
+			"du_voc" => "ṛṇī",
+			"pl_nom" => "ṛṇī",
+			"pl_gen" => "ṝṇām",
+			"pl_dat" => "ṛbhyas",
+			"pl_acc" => "ṛṇī",
+			"pl_abl" => "ṛbhyas",
+			"pl_ins" => "ṛbhis",	
+			"pl_loc" => "ṛsu",
+			"pl_voc" => "ṛṇī"
+		],
+		[
+			"noun_type" => "3r",
+			"noun_type_name" => "r-変化名詞",
+			"gender" => "Masculine/Feminine",
+			"sg_nom" => "ā",
+			"sg_gen" => "ur",
+			"sg_dat" => "re",
+			"sg_acc" => "āram",
+			"sg_abl" => "ur",
+			"sg_ins" => "rā",
+			"sg_loc" => "ari",
+			"sg_voc" => "ar",
+			"du_nom" => "arā",
+			"du_gen" => "ros",
+			"du_dat" => "ṛbhiām",
+			"du_acc" => "arā",
+			"du_abl" => "ṛbhiām",
+			"du_ins" => "ṛbhiām",
+			"du_loc" => "ros",
+			"du_voc" => "arā",
+			"pl_nom" => "āras",
+			"pl_gen" => "ṛṇām",
+			"pl_dat" => "ṛbhyas",
+			"pl_acc" => "ṝn",
+			"pl_abl" => "ṛbhyas",
+			"pl_ins" => "ṛbhis",	
+			"pl_loc" => "ṛsu",
+			"pl_voc" => "āras"
+		],
+		[
+			"noun_type" => "3i",
+			"noun_type_name" => "i-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "s",
+			"sg_gen" => "yes",
+			"sg_dat" => "aye",
+			"sg_acc" => "m",
+			"sg_abl" => "yes",
+			"sg_ins" => "ā",
+			"sg_loc" => "āu",
+			"sg_voc" => "ai",
+			"du_nom" => "ī",
+			"du_gen" => "yos",
+			"du_dat" => "bhiām",
+			"du_acc" => "ī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "yos",
+			"du_voc" => "ī",
+			"pl_nom" => "ayas",
+			"pl_gen" => "īnām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "īn",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "ayas"
+		],
+		[
+			"noun_type" => "3i",
+			"noun_type_name" => "i-変化名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "s",
+			"sg_gen" => "yes",
+			"sg_dat" => "aye",
+			"sg_acc" => "m",
+			"sg_abl" => "yes",
+			"sg_ins" => "ā",
+			"sg_loc" => "āu",
+			"sg_voc" => "ai",
+			"du_nom" => "ī",
+			"du_gen" => "yos",
+			"du_dat" => "bhiām",
+			"du_acc" => "ī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "yos",
+			"du_voc" => "ī",
+			"pl_nom" => "ayas",
+			"pl_gen" => "īnām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "īn",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "ayas"
+		],
+		[
+			"noun_type" => "3i",
+			"noun_type_name" => "i-変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "as",
+			"sg_dat" => "e",
+			"sg_acc" => "",
+			"sg_abl" => "as",
+			"sg_ins" => "ā",
+			"sg_loc" => "ni",
+			"sg_voc" => "ai",
+			"du_nom" => "nī",
+			"du_gen" => "nos",
+			"du_dat" => "bhiām",
+			"du_acc" => "nī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "nos",
+			"du_voc" => "nī",
+			"pl_nom" => "ī",
+			"pl_gen" => "īnām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "ī",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "ī"
+		],
+		[
+			"noun_type" => "4u",
+			"noun_type_name" => "u-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "s",
+			"sg_gen" => "os",
+			"sg_dat" => "avai",
+			"sg_acc" => "m",
+			"sg_abl" => "os",
+			"sg_ins" => "ā",
+			"sg_loc" => "au",
+			"sg_voc" => "o",
+			"du_nom" => "ū",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "ū",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "ū",
+			"pl_nom" => "avas",
+			"pl_gen" => "ūnām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "ūs",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "avas"
+		],
+		[
+			"noun_type" => "4u",
+			"noun_type_name" => "u-変化名詞",
+			"gender" => "Masculine",
+			"sg_nom" => "s",
+			"sg_gen" => "os",
+			"sg_dat" => "avai",
+			"sg_acc" => "m",
+			"sg_abl" => "os",
+			"sg_ins" => "ā",
+			"sg_loc" => "au",
+			"sg_voc" => "o",
+			"du_nom" => "ū",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "ū",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "ū",
+			"pl_nom" => "avas",
+			"pl_gen" => "ūnām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "ūṅs",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "avas"
+		],
+		[
+			"noun_type" => "4u",
+			"noun_type_name" => "u-変化名詞",
+			"gender" => "Neuter",
+			"sg_nom" => "",
+			"sg_gen" => "os",
+			"sg_dat" => "e",
+			"sg_acc" => "",
+			"sg_abl" => "os",
+			"sg_ins" => "ā",
+			"sg_loc" => "ni",
+			"sg_voc" => "au",
+			"du_nom" => "nī",
+			"du_gen" => "nos",
+			"du_dat" => "bhiām",
+			"du_acc" => "nī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "nos",
+			"du_voc" => "nī",
+			"pl_nom" => "ū",
+			"pl_gen" => "īnām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "ū",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "ū"
+		],
+		[
+			"noun_type" => "3ilong",
+			"noun_type_name" => "ī-変化名詞",
+			"gender" => "Feminine/Masculine",
+			"sg_nom" => "",
+			"sg_gen" => "ās",
+			"sg_dat" => "ai",
+			"sg_acc" => "īm",
+			"sg_abl" => "ās",
+			"sg_ins" => "ā",
+			"sg_loc" => "ām",
+			"sg_voc" => "",
+			"du_nom" => "ī",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "ī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "ī",
+			"pl_nom" => "s",
+			"pl_gen" => "nām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "s",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "s"
+		],
+		[
+			"noun_type" => "4ulong",
+			"noun_type_name" => "ū-変化名詞",
+			"gender" => "Feminine",
+			"sg_nom" => "",
+			"sg_gen" => "ās",
+			"sg_dat" => "ai",
+			"sg_acc" => "ūm",
+			"sg_abl" => "ās",
+			"sg_ins" => "ā",
+			"sg_loc" => "ām",
+			"sg_voc" => "",
+			"du_nom" => "ī",
+			"du_gen" => "os",
+			"du_dat" => "bhiām",
+			"du_acc" => "ī",
+			"du_abl" => "bhiām",
+			"du_ins" => "bhiām",
+			"du_loc" => "os",
+			"du_voc" => "ī",
+			"pl_nom" => "s",
+			"pl_gen" => "nām",
+			"pl_dat" => "bhyas",
+			"pl_acc" => "s",
+			"pl_abl" => "bhyas",
+			"pl_ins" => "bhis",	
+			"pl_loc" => "su",
+			"pl_voc" => "s"
+		],		
+	];
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_avestan2($noun, $noun_genre) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 手動で情報をセット
+		$this->set_data_manual(htmlspecialchars($noun), $noun_genre);
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 活用表を挿入
+		$this->get_noun_declension();
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_avestan5($root, $suffix, $verb_translation, $suffix_translation, $noun_genre) {
+     	// 親クラス初期化
+		parent::__construct();
+		// 単語を作成
+		$word = Avestan_Common::sandhi_engine($root, $suffix);
+		// 手動で情報をセット
+		$this->set_data_manual(htmlspecialchars($word), $noun_genre);
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 日本語訳を書き換え
+		$this->japanese_translation = $verb_translation.$suffix_translation;		// 日本語訳
+		$this->english_translation = "";											// 英語訳
+		
+		// 活用表を挿入
+		$this->get_noun_declension();
+    }
+    
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_avestan3($compound, $last_word, $translation) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 情報をセット
+		$this->set_data($last_word, "");
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 語幹を変更
+		$this->first_stem = Avestan_Common::sandhi_engine($compound, $this->first_stem);		// 第一語幹
+		$this->second_stem = Avestan_Common::sandhi_engine($compound, $this->second_stem);		// 第二語幹		
+		$this->third_stem = Avestan_Common::sandhi_engine($compound, $this->third_stem);		// 第三語幹
+		// 日本語訳を書き換え
+		$this->japanese_translation = $translation;			// 日本語訳
+		$this->english_translation = "";					// 英語訳
+		
+		// 活用表を挿入
+		$this->get_noun_declension();
+    }
+
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct_avestan1($noun) {
+    	// 親クラス初期化
+		parent::__construct();
+		// 名詞情報をセット
+		$this->set_data(htmlspecialchars($noun), "animate");
+		// 残りの語幹を作成
+		$this->make_other_stem();
+		// 活用表を挿入
+		$this->get_noun_declension();
+    }
+    
+    /*=====================================
+    コンストラクタ
+    ======================================*/
+    public function __construct() {
+        $a = func_get_args();
+        $i = func_num_args();
+        //引数に応じて別々のコンストラクタを似非的に呼び出す
+        if (method_exists($this,$f='__construct_avestan'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+
+	// 語幹を作成
+	protected function make_other_stem(){
+		// 活用種別に合わせて語幹を作る。
+		if(preg_match('/^(1|2)$/',$this->noun_type)){
+			// a-変化活用の場合
+			$this->first_stem = $this->second_stem;		// 弱語幹
+			$this->third_stem = $this->second_stem;		// 強語幹
+		} else if($this->noun_type == "3s"){
+			// 語根活用の場合		
+			$this->first_stem = Avestan_Common::change_vowel_grade($this->second_stem, Avestan_Common::ZERO_GRADE);		// 弱語幹
+			$this->third_stem = Avestan_Common::change_vowel_grade($this->second_stem, Avestan_Common::VRIDDHI);	// 強語幹
+		} else if($this->noun_type == "3n"){
+			// n活用の場合
+			if(preg_match('/(an)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -2)."n";		// 弱語幹
+				$this->third_stem = mb_substr($this->second_stem, 0, -2)."ān";		// 強語幹
+			} else if(preg_match('/(in)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -2)."in";		// 弱語幹
+				$this->third_stem = mb_substr($this->second_stem, 0, -2)."īn";		// 強語幹
+			} else {
+				$this->first_stem = mb_substr($this->second_stem, 0, -2).Avestan_Common::change_vowel_grade(mb_substr($this->second_stem, -2), Sanskrit_Common::ZERO_GRADE);		// 弱語幹
+				$this->third_stem = mb_substr($this->second_stem, 0, -2).Avestan_Common::change_vowel_grade(mb_substr($this->second_stem, -2), Sanskrit_Common::VRIDDHI);	// 強語幹
+			}
+		} else if($this->noun_type == "3con"){
+			// 子音活用の場合			
+			if(preg_match('/(at|āt)$/',$this->second_stem)){				
+				$this->first_stem = mb_substr($this->second_stem, 0, -2)."at";
+				$this->second_stem = mb_substr($this->second_stem, 0, -2)."at";				
+				$this->third_stem = mb_substr($this->second_stem, 0, -2)."ānt";
+			} else if(preg_match('/(yac)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -3)."īc";
+				$this->second_stem = mb_substr($this->second_stem, 0, -3)."āc";
+				$this->third_stem = mb_substr($this->second_stem, 0, -3)."ānc";
+			} else if(preg_match('/(vas)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -3)."uṣ";
+				$this->second_stem = mb_substr($this->second_stem, 0, -3)."vat";
+				$this->third_stem = mb_substr($this->second_stem, 0, -3)."vāṃs";
+			} else if(preg_match('/(ac)$/',$this->second_stem)){
+				$this->first_stem = mb_substr($this->second_stem, 0, -2)."āc";
+				$this->second_stem = mb_substr($this->second_stem, 0, -2)."āc";
+				$this->third_stem = mb_substr($this->second_stem, 0, -2)."ānc";						
+			} else {
+				$this->first_stem = $this->second_stem;		// 弱語幹
+				$this->third_stem = $this->second_stem;		// 強語幹
+				if($this->gender ==  self::PIE_INANIMATE){
+					$this->third_stem = mb_substr($this->second_stem, 0, -2)."āṃs";
+				}	
+			}			
+		} else {
+			// それ以外の活用の場合				
+			$this->first_stem = $this->second_stem;			// 弱語幹
+			$this->third_stem = $this->second_stem;			// 強語幹
+		}
+	}
+
+	// 名詞作成
+	public function get_declensioned_noun($case, $number){
+
+		// 語幹が存在しない場合は返さない。
+		if($this->third_stem == ""){
+			return "-";
+		}
+
+		// 格語尾を取得
+		$case_suffix = "";
+		// 曲用語尾を取得
+		$case_suffix = $this->case_suffix[$number][$case];
+
+		// 語幹を取得
+		$stem = "";
+
+		// 性・数・格に応じて語幹を生成
+		$stem = $this->get_stem_by_gender_case_number($case, $number);
+		// 語幹の取得に失敗した場合は
+		if($stem == "-"){
+			// ハイフンを返す
+			return "-";
+		}
+		
+		// 語幹修正
+		if($this->noun_type == 1 || $this->noun_type == 2 || $this->noun_type == "3i" || $this->noun_type == 4){
+			// 第一・第二・第三・第四変化の場合
+			// 格変化の語尾が母音で始まる場合は
+			if(Commons::is_vowel_or_not(mb_substr($case_suffix, 0, 1))){
+				// 最後の母音を削る
+				$stem = mb_substr($stem, 0, -1);			 	
+			} 
+		}
+
+		// rで始まる場合は
+		if($this->noun_type == "3r" && preg_match('/ṛ$/', mb_substr($stem, -1))){
+			//常に語幹の最後の母音を削る
+			$stem = mb_substr($stem, 0, -1);				
+		}	
+
+		// 結果を生成
+		$noun = Avestan_Common::sandhi_engine($stem, $case_suffix, true, true);
+
+		// 結果を返す
+		return htmlspecialchars($noun);
+	}
+
+}
+
+// ポーランド語名詞クラス
 class Polish_Noun extends Noun_Common_IE{
 
 	// 格語尾リスト
@@ -3561,7 +4405,7 @@ class Polish_Noun extends Noun_Common_IE{
 
 }
 
-// ギリシア語共通クラス
+// ギリシア語名詞クラス
 class Koine_Noun extends Noun_Common_IE {
 
 	// 格語尾リスト
@@ -4433,6 +5277,7 @@ class Koine_Noun extends Noun_Common_IE {
 		return $question_data;
 	}
 }
+
 
 
 ?>

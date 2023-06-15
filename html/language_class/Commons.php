@@ -424,13 +424,12 @@ class Common_IE {
 
 		// ボタンを生成
 		$button_html_code = '
-		<h3>性別</h3>
-		<section class="row">
-		  <div class="col-md-2">
+		<section class="row textBox3 mb-3">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">男性(Masculine)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性(Feminine)</label>
 		  </div>
@@ -457,8 +456,7 @@ class Common_IE {
 
 		// ボタンを生成
 		$button_html_code = '
-		<h3>性別</h3>
-		<section class="row">
+		<section class="row textBox3 mb-3">
 		  <div class="col-md-2">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::ANIMATE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">男性(Masculine)</label>
@@ -490,8 +488,7 @@ class Common_IE {
 
 		// ボタンを生成
 		$button_html_code = '
-		<h3>数</h3>
-		<section class="row">
+		<section class="row textBox4 mb-3">
 		  <div class="col-md-2">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数<br>(Singular)</label>

@@ -1617,11 +1617,13 @@ class Latin_Common extends Common_IE{
 	public static function language_select_box(){
 		// ボタンを生成
 		$button_html_code = '
-        <select class="form-select" name="input_search_lang"> 
-          <option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
-          <option value="'.Commons::EIGO.'">英語(English)</option>
-          <option value="'.Commons::LATIN.'">ラテン語(Latin)</option>     
-        </select> ';
+		<section class="row textBox2 mb-3">
+        	<select class="form-select" name="input_search_lang"> 
+        	  <option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
+        	  <option value="'.Commons::EIGO.'">英語(English)</option>
+        	  <option value="'.Commons::LATIN.'">ラテン語(Latin)</option>     
+        	</select>
+		</section>';
 
 		// 結果を返す。
 		return $button_html_code;

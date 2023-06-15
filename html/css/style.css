@@ -121,7 +121,7 @@ h5 {
 .textBox1::before {
   background-color: #fff;
   color: #2b5199;
-  content: "単語種別";
+  content: "単語入力";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;
@@ -138,7 +138,7 @@ h5 {
 .textBox2::before {
   background-color: #fff;
   color: #009999;
-  content: "品詞";
+  content: "言語選択";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;
@@ -155,7 +155,7 @@ h5 {
 .textBox3::before {
   background-color: #fff;
   color: #2b5199;
-  content: "性別（人名または形容詞の場合に選択）";
+  content: "性別（名詞種別）";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;
@@ -172,7 +172,7 @@ h5 {
 .textBox4::before {
   background-color: #fff;
   color: #009999;
-  content: "数（地名、借用語は単数推奨）";
+  content: "数";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;

@@ -160,8 +160,10 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
     <div class="container item table-striped">   
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・ラテン語)">
-        <?php echo Latin_Common::input_special_button(); ?>
+        <section class="row textBox1 mb-3">
+          <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・ラテン語)">
+          <?php echo Latin_Common::input_special_button(); ?>
+        </section>
         <?php echo Latin_Common::language_select_box(); ?> 
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
