@@ -199,22 +199,29 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == Commons::NI
   <body>
     <div class="container item table-striped">
       <h1>ラテン語辞書（動詞）</h1>
-      <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <section class="row textBox1 mb-3">
-          <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可">
-          <?php echo Latin_Common::input_special_button(); ?>
-        </section>  
-        <?php echo Latin_Common::language_select_box(); ?> 
-        <select class="form-select" name="input_verb_type">
-          <option value="">動詞の種別 - 通常</option>          
-          <option value="inchorative">始動動詞</option>
-          <option value="causative">使役動詞</option>
-          <option value="desiderative">願望動詞</option>
-          <option value="frequentive">強意動詞</option>          
-        </select> 
-        <input type="submit" class="btn-check" id="btn-generate">
-        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+        <section class="row mb-3">
+          <div class="col-md-5 mb-0 textBox1">
+            <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ラテン語)、名詞や形容詞も可 あいまい検索は+">
+            <?php echo Latin_Common::input_special_button(); ?>
+          </div>
+          <div class="col-md-3 mb-0">
+            <?php echo Latin_Common::language_select_box(); ?> 
+          </div>
+          <div class="col-md-2 mb-0 textBox9">
+            <select class="form-select" name="input_verb_type">
+              <option value="">通常</option>          
+              <option value="inchorative">始動動詞</option>
+              <option value="causative">使役動詞</option>
+              <option value="desiderative">願望動詞</option>
+              <option value="frequentive">強意動詞</option>          
+            </select>
+          </div>
+          <div class="col-md-2 mb-0">
+            <input type="submit" class="btn-check" id="btn-generate">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+          </div>
+        </section>
         <select class="form-select" id="verb-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($conjugations); ?>

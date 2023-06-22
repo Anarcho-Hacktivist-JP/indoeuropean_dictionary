@@ -35,6 +35,7 @@ $question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド語形容詞練習</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <link href="/../css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
@@ -58,13 +59,15 @@ $question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, 
         });
       </script>     
       <p><?php echo $question_data['question_sentence']; ?></p>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
-        <div class="input-group-append">
+      <section class="row mb-3 textBox"> 
+        <div class="input-group col-md-3 mb-0">
+          <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
           <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button>
-        </div>       
-      </div>      
-      <?php echo Polish_Common::input_special_button(); ?>   
+        </div>
+        <div class="input-group-append col-md-4 mb-0">
+          <?php echo Polish_Common::input_special_button(); ?>
+        </div>
+      </section>
     </div>
   <footer class="">
   </footer>

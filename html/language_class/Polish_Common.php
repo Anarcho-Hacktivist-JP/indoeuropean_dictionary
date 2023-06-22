@@ -745,8 +745,7 @@ class Polish_Common extends Common_IE{
 	public static function noun_gender_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<h3>性別</h3>
-		<section class="row">
+		<section class="row textBox3 mb-3">
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine-animate" autocomplete="off" value="Masculine-Animate">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine-animate">男性生物<br>(Męskoosobowe)</label>
@@ -782,8 +781,7 @@ class Polish_Common extends Common_IE{
 	// 名詞活用種別ボタンの生成
 	public static function noun_declension_type_selection_button(){
 		return '
-        <h3>変化種別</h3>
-        <section class="row">
+		<section class="row textBox7 mb-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
@@ -826,8 +824,7 @@ class Polish_Common extends Common_IE{
 	// 形容詞活用種別ボタンの生成
 	public static function adjective_declension_type_selection_button(){
 		return '
-        <h3>変化種別</h3>
-        <section class="row">
+		<section class="row textBox7 mb-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1-2" autocomplete="off" value="1-2">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2">第一・第二活用</label>
@@ -847,8 +844,7 @@ class Polish_Common extends Common_IE{
 	public static function case_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<h3>格(Przypadek)</h3>
-		<section class="row">
+		<section class="row textBox5 mb-3">
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格(Mianownik)</label>
@@ -895,8 +891,7 @@ class Polish_Common extends Common_IE{
 	// 動詞の活用種別ボタンの生成
 	public static function verb_type_selection_button(){
 		return '
-        <h3>変化種別</h3>
-        <section class="row">
+		<section class="row textBox9 mb-3">
           <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb1">ać動詞</label>
@@ -947,8 +942,7 @@ class Polish_Common extends Common_IE{
 	// 相ボタンの生成
 	public static function aspect_selection_button(){
 		return '
-        <h3>相(Aspekt)</h3>
-        <section class="row">
+		<section class="row textBox11 mb-3">
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">不完了体(Niedokonane)</label>
@@ -968,8 +962,7 @@ class Polish_Common extends Common_IE{
 	public static function mood_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-        <h3>時制・法(Czasy i Tryby)</h3>
-        <section class="row">
+		<section class="row textBox13 mb-3">
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形(Teraźniejszy)</label>
@@ -1055,11 +1048,13 @@ class Polish_Common extends Common_IE{
 	public static function language_select_box(){
 		// ボタンを生成
 		$button_html_code = '
-        <select class="form-select" name="input_search_lang"> 
-			<option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
-			<option value="'.Commons::EIGO.'">英語(English)</option>
-          	<option value="'.Commons::POLISH.'">ポーランド語(Polish)</option>     
-        </select> ';
+		<section class="row textBox2 mb-3">
+        	<select class="form-select" name="input_search_lang"> 
+				<option value="'.Commons::NIHONGO.'">日本語(Japanese)</option>
+				<option value="'.Commons::EIGO.'">英語(English)</option>
+          		<option value="'.Commons::POLISH.'">ポーランド語(Polish)</option>     
+			</select>
+		</section>';
 
 		// 結果を返す。
 		return $button_html_code;

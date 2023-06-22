@@ -65,13 +65,15 @@ $question_data = $latin_verb->get_conjugation_form_by_each_condition($person, $v
         });
       </script>       
       <p><?php echo $question_data['question_sentence']; ?></p>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button>
-        </div>       
-      </div>      
-      <?php echo Latin_Common::input_special_button(); ?>   
+      <section class="row mb-3 textBox"> 
+        <div class="input-group col-md-3 mb-0">
+          <input type="text" class="form-control" aria-describedby="basic-addon2" id="input-answer" placeholder="答えを入れる">
+          <button class="btn btn-outline-secondary" type="button" id="button-answer">答え合わせ</button> 
+        </div>
+        <div class="input-group-append col-md-3 mb-0">
+          <?php echo Latin_Common::input_special_button(); ?>
+        </div>
+      </section> 
     </div>
   <footer class="">
   </footer>

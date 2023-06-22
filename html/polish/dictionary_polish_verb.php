@@ -170,16 +170,24 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
       <h1>ポーランド語辞書（動詞）</h1>
       <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ポーランド語)、名詞や形容詞も可">
-        <?php echo Polish_Common::input_special_button(); ?>
-        <?php echo Polish_Common::language_select_box(); ?>  
-        <input type="submit" class="btn-check" id="btn-generate">
-        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
-        <select class="form-select" id="verb-selection" aria-label="Default select example">
-          <option selected>単語を選んでください</option>
-          <?php echo Commons::select_option($conjugations); ?>
-        </select>
+        <section class="row">
+          <div class="col-md-6 mb-2 textBox1">
+            <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ポーランド語)、名詞や形容詞も可">
+            <?php echo Polish_Common::input_special_button(); ?>
+          </div>
+          <div class="col-md-4 mb-2">
+            <?php echo Polish_Common::language_select_box(); ?>
+          </div>
+          <div class="col-md-2 mb-2">
+            <input type="submit" class="btn-check" id="btn-generate">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+          </div>
+        <section class="row">
       </form>
+      <select class="form-select" id="verb-selection" aria-label="Default select example">
+        <option selected>単語を選んでください</option>
+        <?php echo Commons::select_option($conjugations); ?>
+      </select>
       <?php echo Commons::archaic_button(); ?>
       <details>
         <summary>動詞の活用</summary>      

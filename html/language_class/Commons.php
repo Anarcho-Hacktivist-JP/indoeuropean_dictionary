@@ -515,8 +515,7 @@ class Common_IE {
 	public static function person_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-        <h3>人称</h3>
-        <section class="row">
+		<section class="row textBox8 mb-3">
           <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1sg">1人称単数</label>

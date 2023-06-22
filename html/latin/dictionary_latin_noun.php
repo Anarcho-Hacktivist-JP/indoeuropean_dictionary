@@ -163,14 +163,18 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
   <?php require_once("latin_header.php"); ?>
   <body>
     <div class="container item table-striped">
-      <p>あいまい検索は<br>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4 form-search" id="form-search">
-        <section class="row textBox1 mb-3">
-          <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語)">
-          <?php echo Latin_Common::input_special_button(); ?>
-        </section>        
-        <?php echo Latin_Common::language_select_box(); ?>
-        <?php echo Latin_Common::noun_gender_selection_button(true); ?>   
+        <section class="row mb-3">
+          <div class="col-md-6 mb-0 textBox1">
+            <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ラテン語) あいまい検索は+">
+            <?php echo Latin_Common::input_special_button(); ?>
+          </div>
+          <div class="col-md-6 mb-0">
+            <?php echo Latin_Common::language_select_box(); ?>
+          </div>
+        </section>
+        <p>性別選択は名詞で入力の場合のみ可</p>
+        <?php echo Latin_Common::noun_gender_selection_button(true); ?>       
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">

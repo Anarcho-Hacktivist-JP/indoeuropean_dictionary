@@ -104,7 +104,7 @@ h5 {
 .textBox::before {
   background-color: #fff;
   color: #ff6666;
-  content: "学名提案";
+  content: "回答欄";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;
@@ -207,6 +207,125 @@ h5 {
   background-color: #fff;
   color: #ff6666;
   content: "入力項目";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox7 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #a1b49e;
+}
+.textBox7::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "変化種別";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox8 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #a1b49e;
+}
+.textBox8::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "人称";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox9 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #9cee90;
+}
+.textBox9::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "動詞種別";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox10 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #406b3a;
+}
+.textBox10::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "態";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox11 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #3aae95;
+}
+.textBox11::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "相";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox12 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #40818d;
+}
+.textBox12::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "時制";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox13 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #e864ef;
+}
+.textBox13::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "法";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;

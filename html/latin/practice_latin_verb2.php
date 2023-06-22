@@ -50,7 +50,7 @@ $question_data = $latin_verb->get_conjugation_form_by_each_condition();
         });
       </script>       
       <p><?php echo $question_data['question_sentence2']; ?></p>
-      <div class="mt-2 js-form-storage">
+      <div class="mt-2 js-form-storage textBox">
         <?php echo Latin_Common::voice_selection_button(); ?>
         <?php echo Latin_Common::aspect_selection_button(); ?>       
         <?php echo Latin_Common::tense_selection_button(); ?>       

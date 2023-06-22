@@ -158,15 +158,20 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
   <?php require_once("latin_header.php"); ?>
   <body>
     <div class="container item table-striped">   
-      <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <section class="row textBox1 mb-3">
-          <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・ラテン語)">
-          <?php echo Latin_Common::input_special_button(); ?>
+        <section class="row mb-3">
+          <div class="col-md-4 mb-0 textBox1">
+            <input type="text" name="input_adjective" class="form-control" id="input_adjective" placeholder="検索語句(日本語・英語・ラテン語) あいまい検索は+">
+            <?php echo Latin_Common::input_special_button(); ?>
+          </div>
+          <div class="col-md-4 mb-0">
+            <?php echo Latin_Common::language_select_box(); ?> 
+          </div>
+          <div class="col-md-4 mb-0">
+            <input type="submit" class="btn-check" id="btn-search">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
+          </div>
         </section>
-        <?php echo Latin_Common::language_select_box(); ?> 
-        <input type="submit" class="btn-check" id="btn-search">
-        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="adjective-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($declensions); ?>

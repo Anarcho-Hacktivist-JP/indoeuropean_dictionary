@@ -50,7 +50,7 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade("", "", 
         });
       </script>     
       <p><?php echo $question_data['question_sentence2']; ?></p>
-      <div class="mt-2 js-form-storage">
+      <div class="mt-2 js-form-storage textBox">
         <?php echo Latin_Common::adjective_gender_selection_button(); ?>
         <?php echo Latin_Common::number_selection_button(); ?> 
         <?php echo Latin_Common::case_selection_button(); ?>        

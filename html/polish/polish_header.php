@@ -31,7 +31,7 @@
       <a class="btn btn-primary" href="practice_polish_adjective2.php">練習問題<br>(選択・形容詞)</a>
     </div>
     <div class="col-md-1">
-      <a class="btn btn-primary" href="practice_polish_verb2.php">問題集<br>(動詞)2</a>
+      <a class="btn btn-primary" href="practice_polish_verb2.php">練習問題<br>>(選択・動詞)</a>
     </div>
   </section>
 </div>
