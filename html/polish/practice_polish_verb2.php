@@ -58,7 +58,7 @@ $question_data = $polish_verb->get_conjugation_form_by_each_condition($person, $
         });
       </script>       
       <p><?php echo $question_data['question_sentence2']; ?></p>
-      <div class="mt-2 js-form-storage">
+      <div class="mt-2 js-form-storage textBox">
         <?php echo Polish_Common::mood_selection_button(); ?>
         <?php echo Polish_Common::person_selection_button(); ?>         
         <div class="input-group-append">

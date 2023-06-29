@@ -58,7 +58,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
         });
       </script>      
       <p><?php echo $question_data['question_sentence2']; ?></p>
-      <div class="mt-2 js-form-storage">
+      <div class="mt-2 js-form-storage textBox">
         <?php echo Polish_Common::number_selection_button(); ?> 
         <?php echo Polish_Common::case_selection_button(); ?>      
         <div class="input-group-append">

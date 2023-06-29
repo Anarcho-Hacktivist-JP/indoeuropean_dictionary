@@ -148,28 +148,27 @@ if($input_verb != "" && $search_lang == Commons::NIHONGO && count($janome_result
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/../css/style.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <?php require_once("sanskrit_including.php"); ?>
     <title>印欧語活用辞典：梵語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
-    <?php require_once("sanskrit_header.php"); ?>
   <body>
+    <?php require_once("sanskrit_header.php"); ?>
     <div class="container item table-striped">
       <h1>梵語辞書（動詞）</h1>
-      <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・サンスクリット)、名詞や形容詞も可">
-        <?php echo Sanskrit_Common::input_special_button(); ?> 
-        <input type="submit" class="btn-check" id="btn-generate">
-        <?php echo Sanskrit_Common::language_select_box(); ?>
-        <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+        <section class="row mb-3">
+          <div class="col-md-7 mb-0 textBox1">
+            <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・サンスクリット)、名詞や形容詞も可 あいまい検索は+">
+            <?php echo Sanskrit_Common::input_special_button(); ?>
+          </div>
+          <div class="col-md-3 mb-0">
+            <?php echo Sanskrit_Common::language_select_box(); ?>
+          </div>
+          <div class="col-md-2 mb-0">
+            <input type="submit" class="btn-check" id="btn-generate">
+            <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
+          </div>
+        </section>
         <select class="form-select" id="verb-selection" aria-label="Default select example">
           <option selected>単語を選んでください</option>
           <?php echo Commons::select_option($conjugations); ?>
@@ -834,7 +833,6 @@ if($input_verb != "" && $search_lang == Commons::NIHONGO && count($janome_result
     <script>
         var verb_table_data = '<?php echo json_encode($conjugations, JSON_UNESCAPED_UNICODE); ?>';
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
     <script>
 
         $(function(){
@@ -1495,6 +1493,5 @@ if($input_verb != "" && $search_lang == Commons::NIHONGO && count($janome_result
     </script>
   <footer class="">
   </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

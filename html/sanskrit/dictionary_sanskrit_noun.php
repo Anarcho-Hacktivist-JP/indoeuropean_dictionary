@@ -153,27 +153,25 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <link href="/../css/style.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <?php require_once("sanskrit_including.php"); ?>
     <title>印欧語活用辞典：梵語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
-    <?php require_once("sanskrit_header.php"); ?>
   <body>
+    <?php require_once("sanskrit_header.php"); ?>
     <div class="container item table-striped">
-      <p>あいまい検索は+<br>性別選択は名詞で入力の場合のみ可</p>
+      <p>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・サンスクリット)">
-        <?php echo Sanskrit_Common::input_special_button(); ?>  
+        <section class="row mb-3">
+          <div class="col-md-7 mb-0 textBox1">
+            <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・サンスクリット) あいまい検索は+">
+            <?php echo Sanskrit_Common::input_special_button(); ?>
+          </div>      
+          <div class="col-md-3 mb-0">
+            <?php echo Sanskrit_Common::language_select_box(); ?>
+          </div>   
+        </section>
+        <?php echo Sanskrit_Common::noun_gender_selection_button(true); ?>
         <input type="submit" class="btn-check" id="btn-search">
-        <?php echo Sanskrit_Common::language_select_box(); ?>
-        <?php echo Sanskrit_Common::noun_gender_selection_button(true); ?>   
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
           <option selected>単語を選んでください</option>
@@ -218,7 +216,6 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
     <script>
         var noun_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';    
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
@@ -301,5 +298,7 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
         }
 
     </script>
+  <footer class="">
+  </footer>
   </body>
 </html>

@@ -162,6 +162,23 @@ h5 {
   position: absolute;
   top: -15px;
 }
+.textBox3n {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #99ccff;
+}
+.textBox3n::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "性別（名詞種別）<br>性別選択は名詞で入力の場合のみ可";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
 .textBox4 {
   border: 2px solid #ccffff;
   border-radius: 5px;
@@ -264,6 +281,40 @@ h5 {
   position: absolute;
   top: -15px;
 }
+.textBox9h {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #d1d890;
+}
+.textBox9h::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "語根種別";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox9r {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #eccc86;
+}
+.textBox9r::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "語根種別";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
 .textBox10 {
   border: 2px solid #99ccff;
   border-radius: 5px;
@@ -326,6 +377,23 @@ h5 {
   background-color: #fff;
   color: #2b5199;
   content: "法";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox14 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #e7bfc1;
+}
+.textBox14::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "動詞形態";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;

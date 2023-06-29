@@ -5,21 +5,11 @@ header("Content-type: text/html; charset=utf-8");
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/../css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="/../js/input_button.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+    <?php require_once("sanskrit_including.php"); ?>
     <title>印欧語活用辞典 - ヴェーダ語・梵語</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
-    <?php require_once("sanskrit_header.php"); ?>
   </head>
   <body>
+    <?php require_once("sanskrit_header.php"); ?>
     <div class="container item table-striped">
         <h1 align="center">概要</h1>
         <p class="text-center">このページはヴェーダ語・梵語の辞書および学習ができるサイトです。</p>
@@ -36,12 +26,12 @@ header("Content-type: text/html; charset=utf-8");
         <p class="text-center">Janāsaḥ, yāyāvarāsaḥ, uttiṣṭhāma!</p>
         <p class="text-center">Lauka tadīyam ādhāram vikāriṣyātāi</p>
         <p class="text-center">Asmadiyāyāvarātmanā vinā nipuṇaina</p>
-        <p class="text-center"></p>
+        <p class="text-center">　</p>
         <p class="text-center">Antimaḥ saṅgharṣaḥ asati</p>
         <p class="text-center">Bandhāma, Āryāsaḥ!</p>
         <p class="text-center">Sahakārī samāja vinā nipuṇaina</p>
         <p class="text-center">Vāibhavaina pūrṇa bhūyāt</p>
-        <p class="text-center"></p>
+        <p class="text-center">　</p>
         <p class="text-center">Rāṣṭrīyaḥ śūraḥ rājyam</p>
         <p class="text-center">Rāṣṭrapatiḥ ca rājānaḥ nāsānti</p>
         <p class="text-center">Janāsaḥ rājāmahāi</p>
@@ -50,12 +40,12 @@ header("Content-type: text/html; charset=utf-8");
         <p class="text-center">Kārāgṛhāsya ātman apajagāmāti iti</p>
         <p class="text-center">Asmadyantraśālām kārayiṣyāma</p>
         <p class="text-center">Ayam tudāma kadā uṣṇayāti</p>
-        <p class="text-center"></p>
+        <p class="text-center">　</p>
         <p class="text-center">Antimaḥ saṅgharṣaḥ asati</p>
         <p class="text-center">Bandhāma, Āryāsaḥ!</p>
         <p class="text-center">Sahakārī samāja vinā nipuṇaina</p>
         <p class="text-center">Vāibhavaina pūrṇa bhūyāt</p>
-        <p class="text-center"></p>
+        <p class="text-center">　</p>
         <p class="text-center">Rājyam haṭhīt, adhiniyama vañkīt</p>
         <p class="text-center">Karaina asmat caurayanti</p>
         <p class="text-center">kṣatriyaḥ ca dhanikaḥ ucitām asanti</p>
@@ -64,7 +54,49 @@ header("Content-type: text/html; charset=utf-8");
         <p class="text-center">navavidhim apaikṣiṣāmahāi</p>
         <p class="text-center">ucitā kartavyasya asatu</p>
         <p class="text-center">kartavyam ucitāyāḥ asatu</p>
-        <p class="text-center"></p>
+        <p class="text-center">　</p>
+        <p class="text-center">Antimaḥ saṅgharṣaḥ asati</p>
+        <p class="text-center">Bandhāma, Āryāsaḥ!</p>
+        <p class="text-center">Sahakārī samāja vinā nipuṇaina</p>
+        <p class="text-center">Vāibhavaina pūrṇa bhūyāt</p>
+        <p class="text-center">　</p>
+        <p class="text-center">Bahulaubhātmanaḥ</p>
+        <p class="text-center">śāsitāraḥ pradhānāsaḥ</p>
+        <p class="text-center">Kām cakruḥ vinā</p>
+        <p class="text-center">Asmadkāryam vidoghantam</p>
+        <p class="text-center">Sampattim dadhān iti</p>
+        <p class="text-center">Racanā vyadudruvat</p>
+        <p class="text-center">Samadiśādhikāram lūtvā</p>
+        <p class="text-center">Amūn vayam jaiṣāma</p>
+        <p class="text-center">　</p>
+        <p class="text-center">Antimaḥ saṅgharṣaḥ asati</p>
+        <p class="text-center">Bandhāma, Āryāsaḥ!</p>
+        <p class="text-center">Sahakārī samāja vinā nipuṇaina</p>
+        <p class="text-center">Vāibhavaina pūrṇa bhūyāt</p>
+        <p class="text-center">　</p>
+        <p class="text-center">Sandhyais asāma</p>
+        <p class="text-center">Yuddhasya asantu</p>
+        <p class="text-center">Yaudhitum nirākarāmahai</p>
+        <p class="text-center">Asmadkāryam vidoghantam</p>
+        <p class="text-center">Yadi attāraḥ kiñcit pṛcchān,</p>
+        <p class="text-center">Laukyai kṛṣṇadhvajaḥ viyamatai</p>
+        <p class="text-center">Tvadgṛhai aṇvastrā akṣipṣama iti</p>
+        <p class="text-center">Śīghram jajñān</p>
+        <p class="text-center">　</p>
+        <p class="text-center">Antimaḥ saṅgharṣaḥ asati</p>
+        <p class="text-center">Bandhāma, Āryāsaḥ!</p>
+        <p class="text-center">Sahakārī samāja vinā nipuṇaina</p>
+        <p class="text-center">Vāibhavaina pūrṇa bhūyāt</p>
+        <p class="text-center">　</p>
+        <p class="text-center">Yāyāvara, abhiyantā, cāitta,</p>
+        <p class="text-center">Vayam āryāsaḥ āṣima</p>
+        <p class="text-center">Bhūmi sīmāḥ nāastu</p>
+        <p class="text-center">Śāsana navdbhāviṣntām</p>
+        <p class="text-center">Yadi balínaḥ dadāma,</p>
+        <p class="text-center">Yadā lubdhasaḥ śāsanā</p>
+        <p class="text-center">Ca prabhavaḥ nirgamāti,</p>
+        <p class="text-center">Sūrya sarvadā asmān dīpyāti!</p>
+        <p class="text-center">　</p>
         <p class="text-center">Antimaḥ saṅgharṣaḥ asati</p>
         <p class="text-center">Bandhāma, Āryāsaḥ!</p>
         <p class="text-center">Sahakārī samāja vinā nipuṇaina</p>
