@@ -1,48 +1,63 @@
-<div class="container item">
-    <h1>辞書</h1>
-    <section class="row">
-      <div class="col-md-1 mb-0">
-        <a class="btn btn-primary" href="dictionary_polish_noun.php">名詞</a>
-      </div>
-      <div class="col-md-1">
-        <a class="btn btn-primary" href="dictionary_polish_adjective.php">形容詞</a>
-      </div>
-      <div class="col-md-1">
-        <a class="btn btn-primary" href="dictionary_polish_verb.php">動詞</a>
-      </div>
-    </section>
-</div>
-<div class="container item">
-  <h1>練習問題</h1>
-  <section class="row">
-    <div class="col-md-1 mb-0">
-      <a class="btn btn-primary" href="practice_polish_noun.php">練習問題<br>(入力・名詞)</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="polish_index.php">ポーランド語辞書</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            辞書
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="dictionary_polish_noun.php">名詞</a></li>
+            <li><a class="dropdown-item" href="dictionary_polish_adjective.php">形容詞</a></li>
+            <li><a class="dropdown-item" href="dictionary_polish_verb.php">動詞</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            練習問題・入力
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="practice_polish_noun.php">名詞</a></li>
+            <li><a class="dropdown-item" href="practice_polish_adjective.php">形容詞</a></li>
+            <li><a class="dropdown-item" href="practice_polish_verb.php">動詞</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            練習問題・選択
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="practice_polish_noun2.php">名詞</a></li>
+            <li><a class="dropdown-item" href="practice_polish_adjective2.php">形容詞</a></li>
+            <li><a class="dropdown-item" href="practice_polish_verb2.php">動詞</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            辞書一覧(古典語)
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/../latin/latin_index.php">ラテン語</a></li>
+            <li><a class="dropdown-item" href="/../sanskrit/sanskrit_index.php">梵語</a></li>
+            <li><a class="dropdown-item" href="/../koine/koine_index.php">ギリシア語</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            辞書一覧(現代語)
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="polish_index.php">ポーランド語</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/../index.php">メインページ</a>
+        </li>
+      </ul>
     </div>
-    <div class="col-md-1">
-      <a class="btn btn-primary" href="practice_polish_adjective.php">練習問題<br>(入力・形容詞)</a>
-    </div>
-    <div class="col-md-1">
-      <a class="btn btn-primary" href="practice_polish_verb.php">練習問題<br>(入力・動詞)</a>
-    </div>
-    <div class="col-md-1">
-      <a class="btn btn-primary" href="practice_polish_noun2.php">練習問題<br>(選択・名詞)</a>
-    </div>
-    <div class="col-md-1">
-      <a class="btn btn-primary" href="practice_polish_adjective2.php">練習問題<br>(選択・形容詞)</a>
-    </div>
-    <div class="col-md-1">
-      <a class="btn btn-primary" href="practice_polish_verb2.php">練習問題<br>>(選択・動詞)</a>
-    </div>
-  </section>
-</div>
-<div class="container item">
-    <h1>メインメニュー</h1>
-    <section class="row">
-      <div class="col-md-1 mb-0">
-        <a class="btn btn-primary" href="/../index.php">メインページ</a>
-      </div>
-      <div class="col-md-1 mb-0">
-        <a class="btn btn-primary" href="polish_index.php">メインページ(ポーランド語)</a>
-      </div>
-    </section>
-</div>
+  </div>
+</nav>

@@ -28,19 +28,11 @@ $question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, 
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド語形容詞練習</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <link href="/../css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <?php require_once("polish_including.php"); ?>
   </head>
-    <?php require_once("polish_header.php"); ?>
   <body>
+    <?php require_once("polish_header.php"); ?>
     <div class="container item">
       <form action="" method="post" class="mt-2 js-form-storage" id="practice-condition" name="practice_condition">
         <?php echo Polish_Common::adjective_declension_type_selection_button(); ?>   
@@ -71,7 +63,6 @@ $question_data = $adjective_polish->get_form_by_number_case_gender_grade($case, 
     <script>
         var question_data = '<?php echo json_encode($question_data, JSON_UNESCAPED_UNICODE); ?>';
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定

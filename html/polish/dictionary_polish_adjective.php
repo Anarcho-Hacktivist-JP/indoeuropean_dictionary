@@ -159,25 +159,17 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <link href="/../css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <?php require_once("polish_including.php"); ?>
   </head>
-    <?php require_once("polish_header.php"); ?>
   <body>
-    <div class="container item table-striped">   
-      <p>あいまい検索は+</p>
+    <?php require_once("polish_header.php"); ?>
+    <div class="container item table-striped">
+      <h1>ポーランド辞書（形容詞）</h1>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <section class="row">
           <div class="col-md-6 mb-2 textBox1">
-            <input type="text" name="input_adjective" id="input_adjective" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、名詞も可">
+            <input type="text" name="input_adjective" id="input_adjective" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、名詞も可 あいまい検索は+">
             <?php echo Polish_Common::input_special_button(); ?>
           </div>
           <div class="col-md-4 mb-2">
@@ -201,12 +193,9 @@ if($input_adjective != "" && count($janome_result) == 1 && $janome_result[0][1] 
         </tbody>
       </table>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         var adj_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
-	  <script type="text/javascript" src="/../js/background_attack.js"></script>
     <script>
         $(function(){
           // イベントを設定

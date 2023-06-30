@@ -150,25 +150,18 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>印欧語活用辞典：ポーランド辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <link href="/../css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <?php require_once("polish_including.php"); ?>
   </head>
-    <?php require_once("polish_header.php"); ?>
   <body>
+    <?php require_once("polish_header.php"); ?>
     <div class="container item table-striped">
-      <p>あいまい検索は+<br>性別選択は名詞で入力の場合のみ可</p>
+      <h1>ポーランド辞書（名詞）</h1>
+      <p>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <section class="row mb-3">
           <div class="col-md-6 mb-0 textBox1">
-            <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可">
+            <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ポーランド語)、形容詞も可 あいまい検索は+">
             <?php echo Polish_Common::input_special_button(); ?>
           </div>
           <div class="col-md-3 mb-0">
@@ -197,8 +190,6 @@ if($input_noun != "" && count($janome_result) == 1 && $janome_result[0][1] == "�
     <script>
         var noun_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
-	  <script type="text/javascript" src="/../js/background_attack.js"></script>
     <script>
         $(function(){
           // イベントを設定
