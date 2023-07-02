@@ -4337,9 +4337,7 @@ class Polish_Noun extends Noun_Common_IE{
 		}
 
 		// 連音処理
-		if($case_suffix == ""){
-			$noun = Polish_Common::polish_sandhi($noun);
-		}
+		$noun = Polish_Common::polish_sandhi($noun);
 
 		// 結果を返す
 		return $noun;

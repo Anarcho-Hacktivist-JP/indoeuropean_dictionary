@@ -1,3 +1,6 @@
+<header class="text-center p-5" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/38/1500-1200_BCE%2C_Rigveda_manuscript_page_sample_iv%2C_Sanskrit%2C_Devanagari.jpg);background-position: center center;background-size: cover;">
+  <h1 class="title">梵語辞書</h1>
+</header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="sanskrit_index.php">梵語辞書</a>

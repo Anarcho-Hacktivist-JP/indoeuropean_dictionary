@@ -159,6 +159,7 @@ if($search_lang == Commons::NIHONGO && count($janome_result) > 1 && !ctype_alnum
   <body>
     <?php require_once("sanskrit_header.php"); ?>
     <div class="container item table-striped">
+      <h1>梵語辞書（名詞）</h1>
       <p>性別選択は名詞で入力の場合のみ可</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <section class="row mb-3">

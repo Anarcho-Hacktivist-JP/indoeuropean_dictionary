@@ -184,19 +184,11 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == Commons::NI
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <?php require_once("latin_including.php"); ?>
     <title>印欧語活用辞典：ラテン語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <link href="/../css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
-    <?php require_once("latin_header.php"); ?>
   <body>
+    <?php require_once("latin_header.php"); ?>
     <div class="container item table-striped">
       <h1>ラテン語辞書（動詞）</h1>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
@@ -367,11 +359,9 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == Commons::NI
         </table>
       </details><br>   
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         var verb_table_data = '<?php echo json_encode($conjugations, JSON_UNESCAPED_UNICODE); ?>';
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定

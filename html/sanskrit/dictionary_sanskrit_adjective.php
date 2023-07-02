@@ -142,7 +142,8 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
   </head>
   <body>
     <?php require_once("sanskrit_header.php"); ?>
-    <div class="container item table-striped">   
+    <div class="container item table-striped">
+      <h1>梵語辞書（形容詞）</h1>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <section class="row mb-3">
           <div class="col-md-7 mb-0 textBox1">

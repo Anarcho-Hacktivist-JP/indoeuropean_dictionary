@@ -1599,13 +1599,16 @@ class Latin_Adjective extends Adjective_Common_IE {
 		}
 
 		// それ以外は単数の主格と呼格は弱語幹
-		if(($case == Commons::NOMINATIVE && $number == Commons::SINGULAR) || ($case == Commons::VOCATIVE && $number == Commons::SINGULAR)){
+		if(($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE) && $number == Commons::SINGULAR && $gender != Commons::INANIMATE_GENDER){
 			// ここで結果を返す。
-			return $this->comparative_first_stem;					
+			return $this->comparative_first_stem;
+		} else if(($case == Commons::NOMINATIVE || $case == Commons::VOCATIVE) && $gender == Commons::INANIMATE_GENDER && $number == Commons::SINGULAR){
+			// 中性の単数主格
+			return $this->third_stem.$case_suffix;		
 		} else if($case == Commons::ACCUSATIVE && $gender == Commons::INANIMATE_GENDER && $number == Commons::SINGULAR){
 			// 中性の単数対格は主格と同じ
 			// ここで結果を返す。
-			return $this->comparative_first_stem;
+			return $this->third_stem.$case_suffix;
 		} else {
 			// 結果を返す
 			return trim($this->comparative_third_stem.$case_suffix);

@@ -18,6 +18,12 @@ header("Content-type: text/html; charset=utf-8");
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
     <?php require_once("header.php"); ?>
   </head>
+  <style>
+    body {
+      background-image: url(https://upload.wikimedia.org/wikipedia/commons/4/4f/IndoEuropeanTree.svg);
+      background-size: cover;
+    }
+  </style>
   <body>
     <div class="container item table-striped">
         <h1 align="center">更新履歴 </h1>

@@ -11,12 +11,22 @@ header("Content-type: text/html; charset=utf-8");
   <body>
     <?php require_once("polish_header.php"); ?>
     <div class="container item table-striped">
-        <h1 align="center">概要</h1>
-        <p class="text-center">このページはポーランド語の辞書および学習ができるサイトです。</p>
-        <p class="text-center">日本人に論理的で正確なインドヨーロッパ語を手軽に学習できるように作りました。</p>
-        <p class="text-center">全てのコンテンツは無料です。ぜひご自由にお使いください。</p>
-        <h1 align="center">文章例</h1>
+    <div class="container-fluid highlight">
+      <section class="container">
+        <h2 align="align1 mb-5"><span>本辞書の目的</span></h2>
+          <p align="center"><br></p>
+          <p align="center">このページはポーランド語の辞書および学習ができるサイトです。</p>
+          <p align="center">この辞書は造語や借用語にも対応しています。</p>
+          <p align="center">日本人に論理的で正確なインドヨーロッパ語を手軽に学習できるように作りました。</p>
+          <p align="center">全てのコンテンツは無料です。ぜひご自由にお使いください。</p>
+        </div>
+      </section>
     </div>
+    <section class="container-md">
+      <section class="mb-5">
+        <h3 class="c-small_headline c-center">文章例</h3>
+      </section>
+    </section>
   </body>
   <footer class="">
   </footer>

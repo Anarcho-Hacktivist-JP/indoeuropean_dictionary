@@ -1016,6 +1016,8 @@ class Polish_Common extends Common_IE{
 		$word = preg_replace("/di$/", "dzi", $word);
 		$word = preg_replace("/ti$/", "ci", $word);
 		$word = preg_replace("/ri$/", "rzy", $word);
+		$word = preg_replace("/pi$/", "py", $word);
+		$word = preg_replace("/bi$/", "by", $word);
 		$word = preg_replace("/chi$/", "chy", $word);
 
 		$word = preg_replace("/be$/", "bie", $word);
@@ -1038,7 +1040,7 @@ class Polish_Common extends Common_IE{
 		$word = preg_replace("/gy$/", "dzy", $word);
 
 		// 最後の音節のoは短音になる。但し単音節の単語は除く
-		$word = mb_ereg_replace("(.{2})o([^aiueoąęó])\b", "\\1ó\\2", $word);
+		$word = mb_ereg_replace("(.{2})o([^aiueoąęóm])\b", "\\1ó\\2", $word);
 
 		// 結果を返す。
 		return $word;

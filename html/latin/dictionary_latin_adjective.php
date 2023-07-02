@@ -144,20 +144,13 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <?php require_once("latin_including.php"); ?>
     <title>印欧語活用辞典：ラテン語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <link href="/../css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
-  <?php require_once("latin_header.php"); ?>
   <body>
-    <div class="container item table-striped">   
+    <?php require_once("latin_header.php"); ?>
+    <div class="container item table-striped">
+      <h1>ラテン語辞書（形容詞）</h1>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
         <section class="row mb-3">
           <div class="col-md-4 mb-0 textBox1">
@@ -177,7 +170,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <table class="table table-success table-bordered table-striped table-hover" id="adjective-table">
+      <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="adjective-table">
         <?php echo Latin_Common::make_adjective_column_chart(); ?>
         <tbody>
           <tr><th class="text-center" scope="row" colspan="7">原級</th></tr>
@@ -189,11 +182,9 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
         </tbody>
       </table>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         var adj_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
     </script>
-	  <script type="text/javascript" src="/../js/input_button.js"></script>
     <script>
         $(function(){
           // イベントを設定
