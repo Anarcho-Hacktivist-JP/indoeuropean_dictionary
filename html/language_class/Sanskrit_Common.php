@@ -2211,7 +2211,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox4 mb-3">
+		<section class="row textBox4 my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sg">単数(Singular)</label>
@@ -2241,7 +2241,7 @@ class Sanskrit_Common extends Common_IE{
 	// 名詞活用種別ボタンの生成
 	public static function noun_declension_type_selection_button(){
 		return '
-		<section class="row textBox7 mb-3">
+		<section class="row textBox7 my-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">a活用(長音)</label>
@@ -2296,7 +2296,7 @@ class Sanskrit_Common extends Common_IE{
 	// 形容詞活用種別ボタンの生成
 	public static function adjective_declension_type_selection_button(){
 		return '
-		<section class="row textBox7 mb-3">
+		<section class="row textBox7 my-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1-2" autocomplete="off" value="1-2">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2">a活用</label>
@@ -2337,7 +2337,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox5 mb-3">
+		<section class="row textBox5 my-3">
 		  <div class="col-md-2">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
@@ -2387,7 +2387,7 @@ class Sanskrit_Common extends Common_IE{
 	// 語根の種別ボタンの生成
 	public static function root_type_selection_button(){
 		return '
-		<section class="row textBox9r mb-3">
+		<section class="row textBox9r my-3">
           <div class="col-md-3">
             <input type="radio" name="root-type" class="btn-check" id="btn-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_root_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-present">不完了体語根</label>
@@ -2406,7 +2406,7 @@ class Sanskrit_Common extends Common_IE{
 	// 動詞の形態ボタンの生成
 	public static function verb_genre_selection_button(){
 		return '
-		<section class="row textBox14 mb-3">
+		<section class="row textBox14 my-3">
 	      <div class="col-md-3">
 			<input type="radio" name="verb-genre" class="btn-check" id="btn-primary" autocomplete="off" value="primary">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-primary">一次動詞</label>
@@ -2433,7 +2433,7 @@ class Sanskrit_Common extends Common_IE{
 	// 語根の種別ボタンの生成2
 	public static function laryngeal_type_selection_button(){
 		return '
-		<section class="row textBox9h mb-3">
+		<section class="row textBox9h my-3">
           <div class="col-md-3">
             <input type="radio" name="laryngeal-type" class="btn-check" id="btn-sat" autocomplete="off" value="'.Commons::$TRUE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-sat">sat語根</label>
@@ -2452,7 +2452,7 @@ class Sanskrit_Common extends Common_IE{
 	// 動詞の活用種別ボタンの生成
 	public static function verb_type_selection_button(){
 		return '
-		<section class="row textBox9 mb-3">
+		<section class="row textBox9 my-3">
           <div class="col-md-3">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-verb1">第一活用</label>
@@ -2505,7 +2505,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox8 mb-3">
+		<section class="row textBox8 my-3">
           <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg">
             <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1sg">1人称単数</label>
@@ -2561,7 +2561,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox10 mb-3">
+		<section class="row textBox10 my-3">
           <div class="col-md-4">
             <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="'.Commons::ACTIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態(Parasmaipada)</label>
@@ -2593,7 +2593,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox11 mb-3">
+		<section class="row textBox11 my-3">
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">現在相(Laṭ)</label>
@@ -2630,7 +2630,7 @@ class Sanskrit_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox13 mb-3">
+		<section class="row textBox13 my-3">
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形</label>

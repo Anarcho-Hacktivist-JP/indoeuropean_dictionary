@@ -22,6 +22,15 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            語形変化検索
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="latin_noun_declension_checker.php">名詞</a></li>
+            <li><a class="dropdown-item" href="latin_adjective_declension_checker.php">形容詞</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             練習問題・入力
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

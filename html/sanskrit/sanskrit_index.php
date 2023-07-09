@@ -13,12 +13,11 @@ header("Content-type: text/html; charset=utf-8");
     <div class="container-fluid highlight">
       <section class="container">
         <h2 align="align1 mb-5"><span>本辞書の目的</span></h2>
-          <p align="center"><br></p>
-          <p align="center">このページはヴェーダ語・梵語の辞書および学習ができるサイトです。</p>
-          <p align="center">この辞書は造語や借用語にも対応しています。</p>
-          <p align="center">日本人に論理的で正確なインドヨーロッパ語を手軽に学習できるように作りました。</p>
-          <p align="center">全てのコンテンツは無料です。ぜひご自由にお使いください。</p>
-        </div>
+        <p align="center"><br></p>
+        <p align="center">このページはヴェーダ語・梵語の辞書および学習ができるサイトです。</p>
+        <p align="center">この辞書は造語や借用語にも対応しています。</p>
+        <p align="center">日本人に論理的で正確なインドヨーロッパ語を手軽に学習できるように作りました。</p>
+        <p align="center">全てのコンテンツは無料です。ぜひご自由にお使いください。</p>
       </section>
     </div>
     <section class="container-md">

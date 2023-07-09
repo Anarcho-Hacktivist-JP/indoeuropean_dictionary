@@ -745,7 +745,7 @@ class Polish_Common extends Common_IE{
 	public static function noun_gender_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox3 mb-3">
+		<section class="row textBox3 my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine-animate" autocomplete="off" value="Masculine-Animate">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-masculine-animate">男性生物<br>(Męskoosobowe)</label>
@@ -781,7 +781,7 @@ class Polish_Common extends Common_IE{
 	// 名詞活用種別ボタンの生成
 	public static function noun_declension_type_selection_button(){
 		return '
-		<section class="row textBox7 mb-3">
+		<section class="row textBox7 my-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
@@ -824,7 +824,7 @@ class Polish_Common extends Common_IE{
 	// 形容詞活用種別ボタンの生成
 	public static function adjective_declension_type_selection_button(){
 		return '
-		<section class="row textBox7 mb-3">
+		<section class="row textBox7 my-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1-2" autocomplete="off" value="1-2">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2">第一・第二活用</label>
@@ -844,7 +844,7 @@ class Polish_Common extends Common_IE{
 	public static function case_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox5 mb-3">
+		<section class="row textBox5 my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格(Mianownik)</label>
@@ -891,7 +891,7 @@ class Polish_Common extends Common_IE{
 	// 動詞の活用種別ボタンの生成
 	public static function verb_type_selection_button(){
 		return '
-		<section class="row textBox9 mb-3">
+		<section class="row textBox9 my-3">
           <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb1">ać動詞</label>
@@ -942,7 +942,7 @@ class Polish_Common extends Common_IE{
 	// 相ボタンの生成
 	public static function aspect_selection_button(){
 		return '
-		<section class="row textBox11 mb-3">
+		<section class="row textBox11 my-3">
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">不完了体(Niedokonane)</label>
@@ -962,7 +962,7 @@ class Polish_Common extends Common_IE{
 	public static function mood_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox13 mb-3">
+		<section class="row textBox13 my-3">
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形(Teraźniejszy)</label>
@@ -1010,7 +1010,9 @@ class Polish_Common extends Common_IE{
 		$word = mb_ereg_replace("([dgkt])k\b", "\\1iek", $word);
 
 		$word = mb_ereg_replace("([^y])ni\b", "\\1ń", $word);
-		$word = preg_replace("/si$/", "s", $word);		
+		$word = preg_replace("/szi$/", "szy", $word);
+		$word = preg_replace("/rzi$/", "rzy", $word);
+		$word = preg_replace("/si$/", "s", $word);
 		$word = preg_replace("/zi$/", "ź", $word);
 		$word = preg_replace("/l$/", "ł", $word);				
 		$word = preg_replace("/di$/", "dzi", $word);

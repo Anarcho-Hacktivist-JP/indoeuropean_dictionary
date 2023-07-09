@@ -399,6 +399,7 @@ class Input_Botton {
 
 class Language_Practice{
     // 答えを出す。
+
     static answer_the_question(){
         // 入力情報を受け取る。
         var answer = $('#input-answer').val();
@@ -539,4 +540,65 @@ class Language_Practice{
           alert("不正解");            
         }
     }
+}
+
+// 語形変化の検索
+class Word_Change_Search{
+
+    // 共通の名詞検索
+    static search_noun_declension(language){
+
+        var data =          
+        {
+            "language" : language,
+            "word" : $('input[name="word"]').val(),
+            "number" : $('input[name="number"]:checked').val(),
+            "case" : $('input[name="case"]:checked').val(),
+        };
+
+        // Ajax通信を行う。
+        $.ajax({
+          type: "POST",
+          url: "/../language_class/IndoEuropean_Noun_Declension.php",
+          data: data,
+          dataType : "json"
+        }).done(function(data){
+            console.log(data);
+          // 結果を入れる。
+          $("#result").val(data.result);
+        }).fail(function(XMLHttpRequest, status, e){
+          // 失敗時のメッセージ
+          alert(e);
+        });
+    }
+
+    // 共通の形容詞検索
+    static search_adjective_declension(language){
+
+        var data =          
+        {
+            "language" : language,
+            "word" : $('input[name="word"]').val(),
+            "gender" : $('input[name="gender"]:checked').val(),
+            "number" : $('input[name="number"]:checked').val(),
+            "case" : $('input[name="case"]:checked').val(),
+            "grade" : $('input[name="grade"]:checked').val(),
+        };
+
+        // Ajax通信を行う。
+        $.ajax({
+          type: "POST",
+          url: "/../language_class/IndoEuropean_Adjective_Declension.php",
+          data: data,
+          dataType : "json"
+        }).done(function(data){
+            console.log(data);
+            // 結果を入れる。
+            $("#result").val(data.result);
+        }).fail(function(XMLHttpRequest, status, e){
+          // 失敗時のメッセージ
+          alert(e);
+        });
+    }
+
 }

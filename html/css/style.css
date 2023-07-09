@@ -400,6 +400,23 @@ h5 {
   position: absolute;
   top: -15px;
 }
+.textBox15 {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #ee959a;
+}
+.textBox15::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "比較級・最上級";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
 #input_word::placeholder {
   font-size: 12px;
 }

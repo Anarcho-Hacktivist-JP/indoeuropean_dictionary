@@ -424,7 +424,7 @@ class Common_IE {
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox3 mb-3">
+		<section class="row textBox3 my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">男性(Masculine)</label>
@@ -433,7 +433,7 @@ class Common_IE {
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性(Feminine)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">中性(Neuter)</label>
 		  </div>';
@@ -456,16 +456,16 @@ class Common_IE {
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox3 mb-3">
-		  <div class="col-md-2">
+		<section class="row textBox3 my-3">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::ANIMATE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">男性(Masculine)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::ACTION_GENDER.'">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">女性(Feminine)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::INANIMATE_GENDER.'">
 			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">中性(Neuter)</label>
 		  </div>';
@@ -488,22 +488,22 @@ class Common_IE {
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox4 mb-3">
-		  <div class="col-md-2">
+		<section class="row textBox4 my-3">
+		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-sg" autocomplete="off" value="'.Commons::SINGULAR.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数<br>(Singular)</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-sg">単数(Singular)</label>
 		  </div>
-		  <div class="col-md-2">
+		  <div class="col-md-3">
 			<input type="radio" name="number" class="btn-check" id="btn-pl" autocomplete="off" value="'.Commons::PLURAL.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数<br>(Plural)</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-pl">複数(Plural)</label>
 		  </div>';
 
 		// 全ての選択肢を入れる場合は、ボタンを追加
 		if($all_flag){
 			$button_html_code = $button_html_code.
-			'<div class="col-md-2">
+			'<div class="col-md-3">
 				<input type="radio" name="number" class="btn-check" id="btn-all-number" autocomplete="off" value="" checked="checked">
-				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて<br>(All)</label>
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-number">すべて(All)</label>
 		  	 </div>';
 		}
 
@@ -515,7 +515,7 @@ class Common_IE {
 	public static function person_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox8 mb-3">
+		<section class="row textBox8 my-3">
           <div class="col-md-2">
             <input type="radio" name="person" class="btn-check" id="btn-1sg" autocomplete="off" value="1sg" onclick="click_person_button()">
             <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-1sg">1人称単数</label>
@@ -552,6 +552,48 @@ class Common_IE {
 
 		// 結果を返す。
 		return $button_html_code.'</section>';
+	}
+
+	// 比較級選択ボタンの生成
+	public static function adjective_grade_selection_button($all_flag = false){
+
+		// ボタンを生成
+		$button_html_code = '
+		<section class="row textBox15 my-3">
+		  <div class="col-md-3">
+			<input type="radio" name="grade" class="btn-check" id="btn-positive" autocomplete="off" value="'.Commons::ADJ_GRADE_POSITIVE.'">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-positive">原級(positive)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="grade" class="btn-check" id="btn-comp" autocomplete="off" value="'.Commons::ADJ_GRADE_COMPERATIVE.'">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-comp">比較級(Comperative)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="grade" class="btn-check" id="btn-super" autocomplete="off" value="'.Commons::ADJ_GRADE_SUPERATIVE.'">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-super">最上級(Superative)</label>
+		  </div>';
+		
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-2">
+				<input type="radio" name="grade" class="btn-check" id="btn-all-grade" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-grade">すべて</label>
+		  	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+	}
+
+	// 曲用生成ボタンとテキストボックス
+	public static function declension_button_and_text(){
+
+		// 結果を返す。
+		return '<div class="input-group col-md-3 mb-0">
+					<button type="button" class="btn btn-primary" id="btn-search">曲用生成(Make declension)</button>
+					<input type="text" class="form-control" aria-describedby="basic-addon2" id="result">
+	  			</div>';
 	}
 
 }

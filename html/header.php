@@ -33,6 +33,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="escape-simulator.html">バックルーム日本版<br>探索支援シミュレーター</a></li>
+            <li><a class="dropdown-item" href="jung_test.php">ユング8機能診断</a></li>
           </ul>
         </li>
       </ul>

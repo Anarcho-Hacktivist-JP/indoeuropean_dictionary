@@ -1,3 +1,6 @@
+<header class="text-center p-5" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/f/fc/A_historical_reconstruction_of_Winged_Hussars_%282018%29.jpg);background-position: center center;background-size: cover;">
+  <h1 class="title">ポーランド語辞書</h1>
+</header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="polish_index.php">ポーランド語辞書</a>
@@ -14,6 +17,15 @@
             <li><a class="dropdown-item" href="dictionary_polish_noun.php">名詞</a></li>
             <li><a class="dropdown-item" href="dictionary_polish_adjective.php">形容詞</a></li>
             <li><a class="dropdown-item" href="dictionary_polish_verb.php">動詞</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            語形変化検索
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="polish_noun_declension_checker.php">名詞</a></li>
+            <li><a class="dropdown-item" href="polish_adjective_declension_checker.php">形容詞</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

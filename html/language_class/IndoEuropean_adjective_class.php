@@ -4,7 +4,8 @@
 class Adjective_Common_IE {
 
 	// 格語尾リスト
-	protected $case_suffix_list =  [
+	protected $case_suffix_list =  
+	[
 		[
 			"adjective_type" => "vowel",
 			"adjective_type_name" => "母音活用",				
@@ -602,7 +603,7 @@ class Adjective_Common_IE {
     }
 	
 	//形容詞変化作成
-	protected function get_declensioned_adjective($case, $number, $gender, $grade){
+	public function get_declensioned_adjective($case, $number, $gender, $grade){
 		// 語幹が存在しない場合は返さない。
 		if($this->third_stem == ""){
 			return "-";
@@ -2692,7 +2693,7 @@ class Vedic_Adjective extends Adjective_Common_IE {
 	}
 	
 	// 形容詞作成
-	public function generate_positive($case, $number, $gender){
+	protected function generate_positive($case, $number, $gender){
 
 		// 語幹が存在しない場合は返さない。
 		if($this->second_stem == ""){
@@ -4620,7 +4621,7 @@ class Koine_Adjective extends Adjective_Common_IE {
 	}
 	
 	// 形容詞作成
-	public function generate_positive($case, $number, $gender){
+	protected function generate_positive($case, $number, $gender){
 
 		// 語幹が存在しない場合は返さない。
 		if($this->third_stem == ""){

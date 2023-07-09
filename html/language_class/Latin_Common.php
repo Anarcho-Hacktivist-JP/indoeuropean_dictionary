@@ -1286,7 +1286,7 @@ class Latin_Common extends Common_IE{
 	// 名詞活用種別ボタンの生成
 	public static function noun_declension_type_selection_button(){
 		return '
-		<section class="row textBox7 mb-3">
+		<section class="row textBox7 my-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1">第一活用</label>
@@ -1361,7 +1361,7 @@ class Latin_Common extends Common_IE{
 	// 形容詞活用種別ボタンの生成
 	public static function adjective_declension_type_selection_button(){
 		return '
-		<section class="row textBox7 mb-3">
+		<section class="row textBox7 my-3">
           <div class="col-md-3">
             <input type="radio" name="declension" class="btn-check" id="btn-1-2" autocomplete="off" value="1-2">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-1-2">第一・第二活用</label>
@@ -1414,7 +1414,7 @@ class Latin_Common extends Common_IE{
 
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox5 mb-3">
+		<section class="row textBox5 my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="case" class="btn-check" id="btn-nom" autocomplete="off" value="'.Commons::NOMINATIVE.'">
 			<label class="btn btn-primary w-100 mb-3 fs-3" for="btn-nom">主格('.Commons::NOMINATIVE.')</label>
@@ -1460,7 +1460,7 @@ class Latin_Common extends Common_IE{
 	// 動詞の活用種別ボタンの生成
 	public static function verb_type_selection_button(){
 		return '
-		<section class="row textBox9 mb-3">
+		<section class="row textBox9 my-3">
           <div class="col-md-2">
             <input type="radio" name="verb-type" class="btn-check" id="btn-verb1" autocomplete="off" value="1">
             <label class="btn btn-primary w-100 mb-2 fs-3" for="btn-verb1">第一変化</label>
@@ -1492,7 +1492,7 @@ class Latin_Common extends Common_IE{
 	public static function voice_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox10 mb-3">
+		<section class="row textBox10 my-3">
           <div class="col-md-3">
             <input type="radio" name="voice" class="btn-check" id="btn-active" autocomplete="off" value="'.Commons::ACTIVE_VOICE.'">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-active">能動態(active)</label>
@@ -1520,7 +1520,7 @@ class Latin_Common extends Common_IE{
 	public static function aspect_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox11 mb-3">
+		<section class="row textBox11 my-3">
           <div class="col-md-3">
             <input type="radio" name="aspect" class="btn-check" id="btn-aspect-present" autocomplete="off" value="'.Commons::PRESENT_ASPECT.'" onclick="click_aspect_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-aspect-present">現在相</label>
@@ -1547,7 +1547,7 @@ class Latin_Common extends Common_IE{
 	public static function tense_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox12 mb-3">
+		<section class="row textBox12 my-3">
           <div class="col-md-3">
             <input type="radio" name="tense" class="btn-check" id="btn-tense-present" autocomplete="off" value="'.Commons::PRESENT_TENSE.'" onclick="click_tense_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-tense-present">現在形(Present)</label>
@@ -1579,7 +1579,7 @@ class Latin_Common extends Common_IE{
 	public static function mood_selection_button($all_flag = false){
 		// ボタンを生成
 		$button_html_code = '
-		<section class="row textBox13 mb-3">
+		<section class="row textBox13 my-3">
           <div class="col-md-3">
             <input type="radio" name="mood" class="btn-check" id="btn-ind" autocomplete="off" value="'.Commons::INDICATIVE.'" onclick="click_mood_button()">
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-ind">直接法(Indicative)</label>
