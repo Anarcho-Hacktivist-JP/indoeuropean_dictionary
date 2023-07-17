@@ -162,6 +162,23 @@ h5 {
   position: absolute;
   top: -15px;
 }
+.textBox3s {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #99ccff;
+}
+.textBox3s::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "名詞種別 読み替え：生物→男性、無生物→中性、集合→女性";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
 .textBox3n {
   border: 2px solid #99ccff;
   border-radius: 5px;
@@ -172,7 +189,24 @@ h5 {
 .textBox3n::before {
   background-color: #fff;
   color: #2b5199;
-  content: "性別（名詞種別）<br>性別選択は名詞で入力の場合のみ可";
+  content: "性別（名詞種別）性別選択は名詞で入力の場合のみ可";
+  font-weight: bold;
+  left: 30px;
+  padding: 3px 10px;
+  position: absolute;
+  top: -15px;
+}
+.textBox3sn {
+  border: 2px solid #99ccff;
+  border-radius: 5px;
+  padding: 20px 20px 8px 20px;
+  position: relative;
+  background-color: #99ccff;
+}
+.textBox3sn::before {
+  background-color: #fff;
+  color: #2b5199;
+  content: "名詞種別 読み替え：生物→男性、無生物→中性、集合・不可算→女性";
   font-weight: bold;
   left: 30px;
   padding: 3px 10px;

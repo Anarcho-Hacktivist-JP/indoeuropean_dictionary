@@ -10,9 +10,9 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Greek_Common.php");
 
 // 活用表を取得する。
-function get_noun_declension_chart($word){
+function get_noun_declension_chart($word, $gender){
 	// 名詞の情報を取得
-	$noun_words = Koine_Common::get_dictionary_stem_by_japanese($word, Koine_Common::DB_NOUN, "");
+	$noun_words = Koine_Common::get_dictionary_stem_by_japanese($word, Koine_Common::DB_NOUN, $gender);
   // 取得できない場合は
   if(!$noun_words){
     // 空を返す。
@@ -32,9 +32,9 @@ function get_noun_declension_chart($word){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_english($word){
+function get_noun_declension_chart_by_english($word, $gender){
   // 英語で取得する。
-  $noun_words = Koine_Common::get_dictionary_stem_by_english($word, Koine_Common::DB_NOUN, "");    
+  $noun_words = Koine_Common::get_dictionary_stem_by_english($word, Koine_Common::DB_NOUN, $gender);    
   // 取得できない場合は
   if(!$noun_words){
     // その単語を入れる        
@@ -79,6 +79,8 @@ function get_noun_declension_chart_by_greek($word){
 $input_noun = trim(filter_input(INPUT_POST, 'input_noun'));
 // 挿入データ－言語－
 $search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
+// 挿入データ－性別－
+$gender = trim(filter_input(INPUT_POST, 'gender'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_noun);
@@ -96,34 +98,32 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && $search_lang == Com
 	$declensions = get_noun_declension_chart_by_greek($input_noun);
 } else if($input_noun != "" && $search_lang == Commons::EIGO && Koine_Common::is_latin_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_english($input_noun);
+	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
 } else if($input_noun != "" && $search_lang == Commons::NIHONGO && !Koine_Common::is_latin_alphabet_or_not($input_noun) && !Koine_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-  $declensions = get_noun_declension_chart($input_noun);
+  $declensions = get_noun_declension_chart($input_noun, $gender);
 }
 
 ?>
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>印欧語活用辞典：梵語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
-    <link href="/../css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <?php require_once("koine_including.php"); ?>
+    <title>印欧語活用辞典：ギリシア語辞書</title>
   </head>
-    <?php require_once("koine_header.php"); ?>
   <body>
+    <?php require_once("koine_header.php"); ?>
     <div class="container item table-striped">
-      <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-search">
-        <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ギリシア語)">
-        <?php echo Koine_Common::language_select_box(); ?>  
+        <section class="row mb-3 textBox1">
+          <input type="text" name="input_noun" id="input_noun" class="form-control" placeholder="検索語句(日本語・英語・ギリシア語) あいまい検索は+">
+          <?php echo Koine_Common::input_special_button(); ?>
+        </section>
+        <section class="row mb-3">
+          <?php echo Koine_Common::language_select_box(); ?>
+        </section>
+        <p>性別選択は名詞で入力の場合のみ可</p>
+        <?php echo Koine_Common::noun_gender_selection_button(true); ?>      
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
         <select class="form-select" id="noun-selection">
@@ -131,7 +131,6 @@ if(count($janome_result) > 1 && !ctype_alnum($input_noun) && $search_lang == Com
           <?php echo Commons::select_option($declensions); ?>
         </select>
       </form>
-      <?php echo Koine_Common::input_special_button(); ?>     
       <table class="table table-success table-bordered table-striped table-hover" id="noun-table">
         <thead>
           <tr><th scope="row" style="width:10%">格</th>

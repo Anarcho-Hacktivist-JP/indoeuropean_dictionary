@@ -31,10 +31,7 @@ include(dirname(__FILE__) . "/../language_class/Latin_Common.php");
         </section>
         <?php echo Latin_Common::number_selection_button(false); ?> 
         <?php echo Latin_Common::case_selection_button(false); ?>
-        <div class="input-group col-md-3 mb-0">
-          <button type="button" class="btn btn-primary" id="btn-search">曲用生成(Make declension)</button>
-          <input type="text" class="form-control" aria-describedby="basic-addon2" id="result">
-        </div>
+        <?php echo Latin_Common::declension_button_and_text(); ?>
       </div>
     </div>
   <footer class="">

@@ -1769,16 +1769,16 @@ class Sanskrit_Common extends Common_IE{
             <th class="text-center" scope="col" colspan="3" style="width:27%">複数</th>
           </tr>
           <tr>
-            <th class="text-center" scope="row" style="width:19%">格</th>
-            <th class="text-center" scope="col" style="width:9%">男性</th>
-            <th class="text-center" scope="col" style="width:9%">女性</th>
-            <th class="text-center" scope="col" style="width:9%">中性</th>
-            <th class="text-center" scope="col" style="width:9%">男性</th>
-            <th class="text-center" scope="col" style="width:9%">女性</th>
-            <th class="text-center" scope="col" style="width:9%">中性</th>            
-            <th class="text-center" scope="col" style="width:9%">男性</th>
-            <th class="text-center" scope="col" style="width:9%">女性</th>
-            <th class="text-center" scope="col" style="width:9%">中性</th>
+            <th class="text-center" scope="row" style="width:19%">↓格 性別→</th>
+            <th class="text-center" scope="col" style="width:9%">生物(男性)</th>
+            <th class="text-center" scope="col" style="width:9%">集合(女性)</th>
+            <th class="text-center" scope="col" style="width:9%">無生物(中性)</th>
+            <th class="text-center" scope="col" style="width:9%">生物(男性)</th>
+            <th class="text-center" scope="col" style="width:9%">集合(女性)</th>
+            <th class="text-center" scope="col" style="width:9%">無生物(中性)</th>          
+            <th class="text-center" scope="col" style="width:9%">生物(男性)</th>
+            <th class="text-center" scope="col" style="width:9%">集合(女性)</th>
+            <th class="text-center" scope="col" style="width:9%">無生物(中性)</th>
           </tr>
         </thead>';
 	}
@@ -2204,6 +2204,70 @@ class Sanskrit_Common extends Common_IE{
 		
 		// それ以外はfalse
 		return false;
+	}
+
+	// 性別選択ボタンの生成
+	public static function noun_gender_selection_button($all_flag = false){
+
+		// ボタンを生成
+		$button_html_code = '
+		<section class="row textBox3sn my-3">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">生物(Masculine)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">集合・不可算(Collective)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="Neuter">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">無生物(Inanimate)</label>
+		  </div>';
+
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-2">
+				<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-gender">すべて(All)</label>
+		  	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
+	}
+
+	// 性別選択ボタンの生成
+	public static function adjective_gender_selection_button($all_flag = false){
+
+		// ボタンを生成
+		$button_html_code = '
+		<section class="row textBox3s my-3">
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::ANIMATE_GENDER.'">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">生物(Masculine)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::ACTION_GENDER.'">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-femine">集合・不可算(Collective)</label>
+		  </div>
+		  <div class="col-md-3">
+			<input type="radio" name="gender" class="btn-check" id="btn-neuter" autocomplete="off" value="'.Commons::INANIMATE_GENDER.'">
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-neuter">無生物(Inanimate)</label>
+		  </div>';
+		
+		// 全ての選択肢を入れる場合は、ボタンを追加
+		if($all_flag){
+			$button_html_code = $button_html_code.
+			'<div class="col-md-2">
+				<input type="radio" name="gender" class="btn-check" id="btn-all-gender" autocomplete="off" value="" checked="checked">
+				<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-all-gender">すべて</label>
+		  	 </div>';
+		}
+
+		// 結果を返す。
+		return $button_html_code.'</section>';
 	}
 
 	// 数選択ボタンの生成

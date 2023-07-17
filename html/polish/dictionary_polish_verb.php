@@ -595,33 +595,51 @@ if($input_verb != "" && $janome_result[0][1] == "名詞" && count($janome_result
 
         // 単語選択後の処理
         function output_table_data(){
-          // 活用表を取得 
-          const conjugation_table = get_verb(verb_table_data, $('#verb-selection').val());
-          // 行オブジェクトの取得
-          var rows = $('#conjugation-table')[0].rows;
-          // 各行をループ処理
-          $.each(rows, function(i){
-            // タイトル行は除外する。
-            if(i <= 1){
-              return true;
-            } else if(i % 10 == 1){
-              // 説明行も除外
-              return true;
-            }
-            // 活用を挿入
-            rows[i].cells[1].innerText = conjugation_table[i - 1][0]; // 能動
-            rows[i].cells[2].innerText = conjugation_table[i - 1][1]; // 中動
-          });
 
-          // 分詞のデータを取得
-          const present_active = get_participle(verb_table_data, $('#verb-selection').val(), "present_active");       // 現在能動分詞
-          const present_passive = get_participle(verb_table_data, $('#verb-selection').val(), "present_passive");     // 現在受動分詞
-          const verbal_noun = get_verbal_noun(verb_table_data, $('#verb-selection').val(), "verbal_noun");            // 動名詞
-
-          // テーブルにセットする。
-          set_particple_to_table(present_active, '#active-participle-table');     // 現在能動分詞
-          set_particple_to_table(present_passive, '#passive-participle-table');   // 現在受動分詞
-          set_verbal_noun_to_table(verbal_noun, '#verbal-noun-table');            // 動名詞
+          // 並列処理をする。
+          $.when(
+            // 動詞
+            $.Deferred().resolve().then(function() {
+              // 活用表を取得 
+              const conjugation_table = get_verb(verb_table_data, $('#verb-selection').val());
+              // 行オブジェクトの取得
+              var rows = $('#conjugation-table')[0].rows;
+              // 各行をループ処理
+              $.each(rows, function(i){
+                // タイトル行は除外する。
+                if(i <= 1){
+                  return true;
+                } else if(i % 10 == 1){
+                  // 説明行も除外
+                  return true;
+                }
+                // 活用を挿入
+                rows[i].cells[1].innerText = conjugation_table[i - 1][0]; // 能動
+                rows[i].cells[2].innerText = conjugation_table[i - 1][1]; // 中動
+              });
+            }),
+            // 現在能動分詞
+            $.Deferred().resolve().then(function() {
+              // データを取得
+              const present_active = get_participle(verb_table_data, $('#verb-selection').val(), "present_active");
+              // テーブルにセットする。
+              set_particple_to_table(present_active, '#active-participle-table');
+            }),
+            // 現在受動分詞
+            $.Deferred().resolve().then(function() {
+              // データを取得
+              const present_passive = get_participle(verb_table_data, $('#verb-selection').val(), "present_passive");
+              // テーブルにセットする。
+              set_particple_to_table(present_passive, '#passive-participle-table');
+            }),
+            // 動名詞
+            $.Deferred().resolve().then(function() {
+              // データを取得
+              const verbal_noun = get_verbal_noun(verb_table_data, $('#verb-selection').val(), "verbal_noun");
+              // テーブルにセットする。
+              set_verbal_noun_to_table(verbal_noun, '#verbal-noun-table');
+            })
+          );
         }
 
         //イベントを設定

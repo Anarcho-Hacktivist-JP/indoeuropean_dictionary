@@ -625,14 +625,14 @@ class Koine_Common extends Common_IE{
 	}
 	
 	// 複合語の活用表を作成
-	public static function make_compound_chart($input_words, $word_category, $input_word){
+	public static function make_compound_chart($input_words, $word_category, $input_word, $gender = ""){
 		// 初期化
 		$charts = array();				
 		// 既存の辞書にあるかチェックする。
 		// 種別に応じて単語を生成
 		if($word_category == "noun"){		
 			// 名詞の情報を取得
-			$koine_words = Koine_Common::get_dictionary_stem_by_japanese($input_word, Koine_Common::DB_NOUN);		
+			$koine_words = Koine_Common::get_dictionary_stem_by_japanese($input_word, Koine_Common::DB_NOUN, $gender);		
   			// 名詞の情報が取得できた場合は
   			if($koine_words){
 				// 新しい配列に詰め替え

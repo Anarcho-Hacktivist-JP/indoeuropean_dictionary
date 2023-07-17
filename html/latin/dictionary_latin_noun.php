@@ -55,7 +55,7 @@ function get_noun_declension_chart_by_english($word, $gender){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_latin($word, $gender){
+function get_noun_declension_chart_by_latin($word){
   // 単語から直接取得する
   $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN);
   // 取得できない場合は
@@ -135,7 +135,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
 	$declensions = get_noun_declension_chart_by_verb($input_noun);
 } else if($input_noun != "" && $search_lang == Commons::LATIN && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_latin($input_noun, $gender);
+	$declensions = get_noun_declension_chart_by_latin($input_noun);
 } else if($input_noun != "" && $search_lang == Commons::EIGO && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
 	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);

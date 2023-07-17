@@ -17,7 +17,7 @@
             <li><a class="dropdown-item" href="dictionary_latin_noun.php">名詞</a></li>
             <li><a class="dropdown-item" href="dictionary_latin_adjective.php">形容詞</a></li>
             <li><a class="dropdown-item" href="dictionary_latin_verb.php">動詞</a></li>
-            <li><a class="dropdown-item" href="dictionary_latin_verb.php">俗ラテン語動詞</a></li>
+            <li><a class="dropdown-item" href="dictionary_latin_verb_vulgar.php">俗ラテン語動詞</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

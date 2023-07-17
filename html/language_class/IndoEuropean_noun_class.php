@@ -2100,7 +2100,7 @@ class Vedic_Noun extends Noun_Common_IE {
     	// 親クラス初期化
 		parent::__construct();
 		// 名詞情報をセット
-		$this->set_data(htmlspecialchars($noun), "animate");
+		$this->set_data(htmlspecialchars($noun), "");
 		// 残りの語幹を作成
 		$this->make_other_stem();
 		// 活用表を挿入

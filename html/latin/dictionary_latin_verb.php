@@ -547,57 +547,82 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == Commons::NI
 
         // 単語選択後の処理
         function output_table_data(){
-          // 活用表を取得 
-          const conjugation_table = get_verb(verb_table_data, $('#verb-selection').val());
-          // 行オブジェクトの取得
-          var rows = $('#conjugation-table')[0].rows;
-          // 各行をループ処理
-          $.each(rows, function(i){
-            // タイトル行は除外する。
-            if(i <= 3){
-              return true;
-            } else if(i % 7 == 3){
-              // 説明行も除外
-              return true;
-            }
-            // 活用を挿入
-            rows[i].cells[1].innerText = conjugation_table[i - 3][0]; // 進行相直説法能動
-            rows[i].cells[2].innerText = conjugation_table[i - 3][1]; // 進行相直説法受動
-            rows[i].cells[3].innerText = conjugation_table[i - 3][2]; // 進行相接続法能動
-            rows[i].cells[4].innerText = conjugation_table[i - 3][3]; // 進行相接続法受動
-            rows[i].cells[5].innerText = conjugation_table[i - 3][4]; // 進行相命令法能動
-            rows[i].cells[6].innerText = conjugation_table[i - 3][5]; // 進行相命令法受動
-            rows[i].cells[7].innerText = conjugation_table[i - 3][6]; // 完了相直説法能動
-            rows[i].cells[8].innerText = conjugation_table[i - 3][7]; // 完了相直説法受動
-            rows[i].cells[9].innerText = conjugation_table[i - 3][8]; // 完了相接続法能動
-            rows[i].cells[10].innerText = conjugation_table[i - 3][9]; // 完了相接続法受動
-          });
-
-          // 分詞・不定詞を取得 
-          const present_active = get_participle(verb_table_data, $('#verb-selection').val(), "present_active");
-          const perfect_passive = get_participle(verb_table_data, $('#verb-selection').val(), "perfect_passive");
-          const future_active = get_participle(verb_table_data, $('#verb-selection').val(), "future_active");
-          const future_passive = get_participle(verb_table_data, $('#verb-selection').val(), "future_passive");                             
-          const verb_infinitive = get_infinitive(verb_table_data, $('#verb-selection').val());
-
-          set_particple_to_table(present_active, '#present-participle-table');
-          set_particple_to_table(perfect_passive, '#perfect-participle-table');
-          set_particple_to_table(future_active, '#future-active-participle-table');
-          set_particple_to_table(future_passive, '#future-passive-participle-table');
-          
-          // 不定詞を取得
-          // 行オブジェクトの取得
-          var rows = $('#infinitive-table')[0].rows;
-          // 各行をループ処理
-          $.each(rows, function(i){
-            // タイトル行は除外する。
-            if(i == 0){
-              return true;
-            }
-            // 格変化を挿入
-            rows[i].cells[1].innerText = verb_infinitive[i - 1][0]; // 能動態(1行目)
-            rows[i].cells[2].innerText = verb_infinitive[i - 1][1]; // 受動態(2行目)
-          });
+          // 非同期並列処理を行う
+          $.when(
+            // 動詞処理
+            $.Deferred().resolve().then(function() {
+              // 活用表を取得 
+              const conjugation_table = get_verb(verb_table_data, $('#verb-selection').val());
+              // 行オブジェクトの取得
+              var rows = $('#conjugation-table')[0].rows;
+              // 各行をループ処理
+              $.each(rows, function(i){
+                // タイトル行は除外する。
+                if(i <= 3){
+                  return true;
+                } else if(i % 7 == 3){
+                  // 説明行も除外
+                  return true;
+                }
+                // 活用を挿入
+                rows[i].cells[1].innerText = conjugation_table[i - 3][0]; // 進行相直説法能動
+                rows[i].cells[2].innerText = conjugation_table[i - 3][1]; // 進行相直説法受動
+                rows[i].cells[3].innerText = conjugation_table[i - 3][2]; // 進行相接続法能動
+                rows[i].cells[4].innerText = conjugation_table[i - 3][3]; // 進行相接続法受動
+                rows[i].cells[5].innerText = conjugation_table[i - 3][4]; // 進行相命令法能動
+                rows[i].cells[6].innerText = conjugation_table[i - 3][5]; // 進行相命令法受動
+                rows[i].cells[7].innerText = conjugation_table[i - 3][6]; // 完了相直説法能動
+                rows[i].cells[8].innerText = conjugation_table[i - 3][7]; // 完了相直説法受動
+                rows[i].cells[9].innerText = conjugation_table[i - 3][8]; // 完了相接続法能動
+                rows[i].cells[10].innerText = conjugation_table[i - 3][9]; // 完了相接続法受動
+              });
+            }),
+            // 現在分詞
+            $.Deferred().resolve().then(function() {
+              // 分詞を取得 
+              const present_active = get_participle(verb_table_data, $('#verb-selection').val(), "present_active");
+              // テーブルにセット
+              set_particple_to_table(present_active, '#present-participle-table');
+            }),
+            // 完了分詞
+            $.Deferred().resolve().then(function() {
+              // 分詞を取得 
+              const perfect_passive = get_participle(verb_table_data, $('#verb-selection').val(), "perfect_passive");
+              // テーブルにセット
+              set_particple_to_table(perfect_passive, '#perfect-participle-table');
+            }),
+            // 未来能動分詞
+            $.Deferred().resolve().then(function() {
+              // 分詞を取得 
+              const future_active = get_participle(verb_table_data, $('#verb-selection').val(), "future_active");
+              // テーブルにセット
+              set_particple_to_table(future_active, '#future-active-participle-table');
+            }),
+            // 未来受動分詞
+            $.Deferred().resolve().then(function() {
+              // 分詞を取得 
+              const future_passive = get_participle(verb_table_data, $('#verb-selection').val(), "future_passive"); 
+              // テーブルにセット
+              set_particple_to_table(future_passive, '#future-passive-participle-table');
+            }),
+            // 不定詞
+            $.Deferred().resolve().then(function() {
+              // データを取得 
+              const verb_infinitive = get_infinitive(verb_table_data, $('#verb-selection').val());
+              // 行オブジェクトの取得
+              var rows = $('#infinitive-table')[0].rows;
+              // 各行をループ処理
+              $.each(rows, function(i){
+                // タイトル行は除外する。
+                if(i == 0){
+                  return true;
+                }
+                // 格変化を挿入
+                rows[i].cells[1].innerText = verb_infinitive[i - 1][0]; // 能動態(1行目)
+                rows[i].cells[2].innerText = verb_infinitive[i - 1][1]; // 受動態(2行目)
+              });
+            })
+          );
         }
 
         //イベントを設定

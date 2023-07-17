@@ -48,7 +48,7 @@ function get_verb_conjugation_chart_by_english($word, $verb_genre){
   } else {
     // 新しい配列に詰め替え
 	  foreach ($latin_verbs as $latin_verb) {
-      $conjugations = array_merge(Koine_Common::get_verb_conjugation($latin_verb, $verb_genre), $conjugations);
+      $conjugations = array_merge(Koine_Common::get_verb_conjugation($latin_verb), $conjugations);
 	  }
   }
   // 結果を返す。
@@ -64,7 +64,7 @@ function get_verb_conjugation_chart_by_koine($word, $verb_genre){
   // 動詞が取得できたか確認する。
   if($koine_verb){
     // 動詞が取得できた場合
-    $conjugations = Koine_Common::get_verb_conjugation($koine_verb["dictionary_stem"], $verb_genre);
+    $conjugations = Koine_Common::get_verb_conjugation($koine_verb["dictionary_stem"]);
   } else {
 	  // 動詞が取得できない場合
     // 動詞を生成
@@ -175,24 +175,15 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && $search_lang == Com
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/../css/style.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <?php require_once("koine_including.php"); ?>
     <title>印欧語活用辞典：ギリシア語辞書</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>    
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   </head>
-    <?php require_once("koine_header.php"); ?>
   <body>
+    <?php require_once("koine_header.php"); ?>
     <div class="container item table-striped">
       <h1>ギリシア語辞書（動詞）</h1>
-      <p>あいまい検索は+</p>
       <form action="" method="post" class="mt-4 mb-4" id="form-category">
-        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ギリシア語)、名詞や形容詞も可">
+        <input type="text" name="input_verb" class="form-control" id="input_verb" placeholder="検索語句(日本語・英語・ギリシア語)、名詞や形容詞も可 あいまい検索は+">
         <?php echo Koine_Common::language_select_box(); ?>  
         <input type="submit" class="btn-check" id="btn-generate">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
@@ -327,7 +318,6 @@ if(count($janome_result) > 1 && !ctype_alnum($input_verb) && $search_lang == Com
         </table>
       </details><br>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         var verb_table_data = '<?php echo json_encode($conjugations, JSON_UNESCAPED_UNICODE); ?>';
     </script>
