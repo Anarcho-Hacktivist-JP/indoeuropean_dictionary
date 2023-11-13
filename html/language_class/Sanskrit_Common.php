@@ -2214,7 +2214,7 @@ class Sanskrit_Common extends Common_IE{
 		<section class="row textBox3sn my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="Masculine">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">生物(Masculine)</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">生物(Animate)</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="Feminine">
@@ -2246,7 +2246,7 @@ class Sanskrit_Common extends Common_IE{
 		<section class="row textBox3s my-3">
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-masculine" autocomplete="off" value="'.Commons::ANIMATE_GENDER.'">
-			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">生物(Masculine)</label>
+			<label class="btn btn-primary w-100 mb-2 fs-3" for="btn-masculine">生物(Animate)</label>
 		  </div>
 		  <div class="col-md-3">
 			<input type="radio" name="gender" class="btn-check" id="btn-femine" autocomplete="off" value="'.Commons::ACTION_GENDER.'">
