@@ -46,3 +46,28 @@ WHERE
 ORDER BY
 	t1.`dictionary_stem`,
     t1.`noun_no`
+
+žŒê–¼ŽŒ
+
+SELECT
+	*
+FROM
+	noun_sanskrit t1
+WHERE 
+	t1.`stem` in (
+    SELECT
+        t2.`stem`
+    FROM
+        noun_sanskrit t2
+    GROUP BY
+        t2.`stem`,
+        t2.`noun_type`,
+        t2.`gender`
+    HAVING
+        COUNT(t2.`stem`) > 1
+    )
+ORDER BY
+	t1.`stem`,
+    t1.`noun_no`
+
+
