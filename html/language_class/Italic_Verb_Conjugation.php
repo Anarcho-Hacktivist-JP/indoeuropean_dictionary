@@ -11,10 +11,10 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Latin_Common.php");
 
 // ラテン語の検索
-function search_latin_declension($input_verb, $person, $voice, $mood, $aspect, $tense){
+function search_latin_conjugation($input_verb, $person, $voice, $mood, $aspect, $tense){
 
 	// 動詞の情報を取得
-	$latin_verb = Latin_Common::get_verb_by_japanese($input_verb)[0];
+	$latin_verb = Latin_Common::get_verb_from_DB($input_verb)[0];
 
 	// 活用種別で分ける。
 	if($latin_verb["verb_type"] == "5sum"){
@@ -60,7 +60,7 @@ $mood = Commons::cut_words(trim($_POST['mood']), 128);
 // 言語によって分ける。
 if($language == Commons::LATIN && $word != ""){
     // ラテン語
-    $result = search_latin_declension($input_verb, $person, $voice, $mood, $aspect, $tense);
+    $result = search_latin_conjugation($word, $person, $voice, $mood, $aspect, $tense);
 }
 
 // ヘッダーを作成

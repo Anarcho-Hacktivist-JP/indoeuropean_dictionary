@@ -601,4 +601,34 @@ class Word_Change_Search{
         });
     }
 
+    // 共通の形容詞検索
+    static search_latin_romance_conjugation(language){
+
+        var data =          
+        {
+            "language" : language,
+            "word" : $('input[name="word"]').val(),
+            "person" : $('input[name="person"]:checked').val(),
+            "voice" : $('input[name="voice"]:checked').val(),
+            "tense" : $('input[name="tense"]:checked').val(),
+            "mood" : $('input[name="mood"]:checked').val(),
+            "aspect" : $('input[name="aspect"]:checked').val(),
+        };
+
+        // Ajax通信を行う。
+        $.ajax({
+          type: "POST",
+          url: "/../language_class/Italic_Verb_Conjugation.php",
+          data: data,
+          dataType : "json"
+        }).done(function(data){
+            console.log(data);
+            // 結果を入れる。
+            $("#result").val(data.result);
+        }).fail(function(XMLHttpRequest, status, e){
+          // 失敗時のメッセージ
+          alert(e);
+        });
+    }
+
 }

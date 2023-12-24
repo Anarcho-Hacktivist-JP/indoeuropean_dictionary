@@ -84,7 +84,7 @@ $question_data = $adjective_latin->get_form_by_number_case_gender_grade($case, $
             Language_Practice.answer_the_question();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.SanskritBotton('#input-answer');
+          Input_Botton.LatinBotton('#input-answer');
         }
 
     </script>      

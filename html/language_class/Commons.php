@@ -596,6 +596,16 @@ class Common_IE {
 	  			</div>';
 	}
 
+	// 活用生成ボタンとテキストボックス
+	public static function conjugation_button_and_text(){
+
+		// 結果を返す。
+		return '<div class="input-group col-md-3 mb-0">
+					<button type="button" class="btn btn-primary" id="btn-search">活用生成(Make conjugation)</button>
+					<input type="text" class="form-control" aria-describedby="basic-addon2" id="result">
+	  			</div>';
+	}
+
 }
 
 

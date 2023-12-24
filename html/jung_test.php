@@ -262,7 +262,7 @@ function set_question($question, $id, $type){
         return self.good_person_calc() < other.good_person_calc()
 
       # 大なり
-      def __lt__(self, other):
+      def __gt__(self, other):
         # 値ではなく、メソッドの結果を返す。
         return self.good_person_calc() > other.good_person_calc()
 
@@ -285,6 +285,32 @@ function set_question($question, $id, $type){
           # 違うクラスの場合は
           kls = other.__class__.__name__
           raise NotImplementedError(f'comparison between Jung_Function and {kls} is not supported')
+
+      def __add__(self, other):
+        # 結果を返す。
+        return Jung_Function(self._ex_sensive + other._ex_sensive, 
+                             self._in_sensive + other._in_sensive,
+                             self._ex_intuition + other._ex_intuition,
+                             self._in_intuition + other._in_intuition,
+                             self._ex_feeling + other._ex_feeling,
+                             self._in_feeling + other._in_feeling,
+                             self._ex_thinking + other._ex_thinking,
+                             self._in_thinking + other._in_thinking,
+                             self._name,
+                             self.reg_time)
+
+      def __sub__(self, other):
+      # 結果を返す。
+        return Jung_Function(self._ex_sensive - other._ex_sensive, 
+                             self._in_sensive - other._in_sensive,
+                             self._ex_intuition - other._ex_intuition,
+                             self._in_intuition - other._in_intuition,
+                             self._ex_feeling - other._ex_feeling,
+                             self._in_feeling - other._in_feeling,
+                             self._ex_thinking - other._ex_thinking,
+                             self._in_thinking - other._in_thinking,
+                             self._name,
+                             self.reg_time)
 
       # 性格の良い(=会話可能な)人判定
       def good_person_calc(self):

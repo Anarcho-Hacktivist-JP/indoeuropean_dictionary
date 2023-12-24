@@ -55,7 +55,7 @@ include(dirname(__FILE__) . "/../language_class/Latin_Common.php");
 	      });
 
         // ボタンにイベントを設定
-        Input_Botton.SanskritBotton('#word');
+        Input_Botton.LatinBotton('#word');
       }
     </script>
   <footer class="">

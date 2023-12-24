@@ -277,7 +277,7 @@ $question_data = $latin_verb->get_conjugation_form_by_each_condition($person, $v
           Language_Practice.answer_the_question();
 	      });
         // ボタンにイベントを設定
-        Input_Botton.SanskritBotton('#input-answer');
+        Input_Botton.LatinBotton('#input-answer');
       }
     </script>      
     </script>

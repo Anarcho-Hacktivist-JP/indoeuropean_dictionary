@@ -27,6 +27,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="latin_noun_declension_checker.php">名詞</a></li>
             <li><a class="dropdown-item" href="latin_adjective_declension_checker.php">形容詞</a></li>
+            <li><a class="dropdown-item" href="latin_verb_conjugation_checker.php">動詞</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

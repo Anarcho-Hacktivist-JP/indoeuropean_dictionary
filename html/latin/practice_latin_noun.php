@@ -84,7 +84,7 @@ $question_data = $latin_noun->get_form_by_number_case($case, $number);
             Language_Practice.answer_the_question();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.SanskritBotton('#input-answer');
+          Input_Botton.LatinBotton('#input-answer');
         }
 
     </script>      
