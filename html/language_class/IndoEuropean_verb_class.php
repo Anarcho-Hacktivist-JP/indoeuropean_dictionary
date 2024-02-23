@@ -4850,11 +4850,11 @@ class Vedic_Verb extends Verb_Common_IE{
 		if($this->conjugation_present_type != Commons::NOUN_VERB){
 
 			// 完了形
-			if($this->deponent_present != Commons::$TRUE){
+			if($this->deponent_perfect != Commons::$TRUE){
 				// 重複語幹作成
 				$add_stem = $this->make_redumplicatation_addtion($root);
 				// 強語幹で重複する。
-				$add_stem = mb_substr($add_stem, 0, 1).Sanskrit_Common::change_vowel_grade(preg_replace("[ṛṝ]", "a", $this->get_vowel_in_root()), Sanskrit_Common::ZERO_GRADE);	
+				$add_stem = mb_substr($add_stem, 0, 1).Sanskrit_Common::change_vowel_grade(mb_ereg_replace("[ṛṝ]", "a", $this->get_vowel_in_root()), Sanskrit_Common::ZERO_GRADE);	
 				// 完了形を作る	
 				$this->perfect_stem = $add_stem.Sanskrit_Common::change_vowel_grade($root, Sanskrit_Common::GUNA);
 

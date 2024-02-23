@@ -11,10 +11,6 @@ include(dirname(__FILE__) . "/../language_class/Polish_Common.php");
 
 // 挿入データ－動詞の種別－
 $verb_type = trim(filter_input(INPUT_POST, 'verb-type'));
-// 挿入データ－人称－
-$person = trim(filter_input(INPUT_POST, 'person'));
-// 挿入データ－法－
-$mood = trim(filter_input(INPUT_POST, 'mood'));
 // 挿入データ－相－
 $aspect = trim(filter_input(INPUT_POST, 'aspect'));
 
@@ -23,7 +19,7 @@ $question_word = Polish_Common::get_random_verb($verb_type, $aspect);
 // 読み込み
 $polish_verb = new Polish_Verb($question_word["dictionary_stem"]);
 // 問題集生成
-$question_data = $polish_verb->get_conjugation_form_by_each_condition($person, $mood);
+$question_data = $polish_verb->get_conjugation_form_by_each_condition();
 ?>
 <!doctype html>
 <html lang="ja">

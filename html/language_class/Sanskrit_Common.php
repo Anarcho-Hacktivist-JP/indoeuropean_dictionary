@@ -539,6 +539,7 @@ class Sanskrit_Common extends Common_IE{
 				$verb_stem_array = array();
 				$verb_stem_array["root"] = $row_data["root"];
 				$verb_stem_array["dictionary_stem"] = $row_data["dictionary_stem"];
+				$verb_stem_array["conjugation_present_type"] = $row_data["conjugation_present_type"];
 				array_push($new_table_data, $verb_stem_array);
 				// メモリを解放
 				unset($verb_stem_array);

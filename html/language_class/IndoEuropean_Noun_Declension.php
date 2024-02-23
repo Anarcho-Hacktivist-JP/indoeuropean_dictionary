@@ -86,7 +86,7 @@ function search_greek_declension($input_noun, $case, $number){
 }
 
 // 挿入データ－言語－
-$language = Commons::cut_words(trim($_POST['language']), 128);
+$language = Commons::cut_words(trim($_POST['language']), 64);
 // 挿入データ－対象－
 $word = Commons::cut_words(trim($_POST['word']), 128);
 // 挿入データ－数－
@@ -107,12 +107,7 @@ if ($language == Commons::BONGO && $word != ""){
     $result = "指定なし";
 }
 
-header("Content-type: application/json; charset=UTF-8");
-// 送信データを作成
-$list = [
-    "result" => $result,
-];
-// 送信
-echo json_encode($list);
+// ヘッダーを入れて出力
+echo Commons::make_reply_header($result);
 
 exit;

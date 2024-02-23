@@ -601,7 +601,7 @@ class Word_Change_Search{
         });
     }
 
-    // 共通の形容詞検索
+    // イタリック語動詞検索
     static search_latin_romance_conjugation(language){
 
         var data =          
@@ -619,6 +619,63 @@ class Word_Change_Search{
         $.ajax({
           type: "POST",
           url: "/../language_class/Italic_Verb_Conjugation.php",
+          data: data,
+          dataType : "json"
+        }).done(function(data){
+            console.log(data);
+            // 結果を入れる。
+            $("#result").val(data.result);
+        }).fail(function(XMLHttpRequest, status, e){
+          // 失敗時のメッセージ
+          alert(e);
+        });
+    }
+
+    // スラブ語動詞検索
+    static search_slavic_conjugation(language){
+
+        var data =          
+        {
+            "language" : language,
+            "word" : $('input[name="word"]').val(),
+            "person" : $('input[name="person"]:checked').val(),
+            "mood" : $('input[name="mood"]:checked').val(),
+        };
+
+        // Ajax通信を行う。
+        $.ajax({
+          type: "POST",
+          url: "/../language_class/Slavic_Verb_Conjugation.php",
+          data: data,
+          dataType : "json"
+        }).done(function(data){
+            console.log(data);
+            // 結果を入れる。
+            $("#result").val(data.result);
+        }).fail(function(XMLHttpRequest, status, e){
+          // 失敗時のメッセージ
+          alert(e);
+        });
+    }
+
+    // 梵語、アヴェスター語、ギリシア語動詞検索
+    static search_aryan_conjugation(language){
+
+        var data =          
+        {
+            "language" : language,
+            "word" : $('input[name="word"]').val(),
+            "person" : $('input[name="person"]:checked').val(),
+            "voice" : $('input[name="voice"]:checked').val(),
+            "mood" : $('input[name="mood"]:checked').val(),
+            "aspect" : $('input[name="aspect"]:checked').val(),
+            "verb-type" : $('input[name="verb-type"]:checked').val(),
+        };
+
+        // Ajax通信を行う。
+        $.ajax({
+          type: "POST",
+          url: "/../language_class/Aryan_Verb_Conjugation.php",
           data: data,
           dataType : "json"
         }).done(function(data){

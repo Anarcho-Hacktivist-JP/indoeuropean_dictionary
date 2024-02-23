@@ -76,6 +76,8 @@ class Commons {
 	public const EIGO = "english";							// 言語名 - 英語
 	public const LATIN = "latin";							// 言語名 - ラテン語
 	public const BONGO = "sanskrit";						// 言語名 - 梵語
+	public const UPASTAVAKENA = "avestan";					// 言語名 - アヴェスター語
+
 	public const POLISH = "polish";							// 言語名 - ポーランド語
 	public const GREEK = "koine";							// 言語名 - 古代ギリシア語
 
@@ -410,6 +412,19 @@ class Commons {
 		return $flag;
 	}
 
+	// ajax返却用のヘッダーを作る関数
+	public static function make_reply_header($result){
+
+		// ヘッダーを作成
+		header("Content-type: application/json; charset=UTF-8");
+		// 送信データを作成
+		$list = [
+			"result" => $result,
+		];
+		// 送信
+		return json_encode($list);
+	}
+
 }
 
 class Common_IE {
@@ -605,6 +620,8 @@ class Common_IE {
 					<input type="text" class="form-control" aria-describedby="basic-addon2" id="result">
 	  			</div>';
 	}
+
+
 
 }
 

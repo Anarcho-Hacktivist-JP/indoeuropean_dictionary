@@ -63,12 +63,7 @@ if($language == Commons::LATIN && $word != ""){
     $result = search_latin_conjugation($word, $person, $voice, $mood, $aspect, $tense);
 }
 
-// ヘッダーを作成
-header("Content-type: application/json; charset=UTF-8");
-// 送信データを作成
-$list = [
-    "result" => $result,
-];
-// 送信
-echo json_encode($list);
+// ヘッダーを入れて出力
+echo Commons::make_reply_header($result);
+
 exit;
