@@ -10,7 +10,7 @@ include(dirname(__FILE__) . "/../language_class/Commons.php");
 include(dirname(__FILE__) . "/../language_class/Latin_Common.php");
 
 // 活用表を取得する。
-function get_noun_declension_chart($word, $gender){
+function get_noun_declension_chart($word, $gender, $input_old_latin){
 	// 名詞の情報を取得
 	$noun_words = Latin_Common::get_dictionary_stem_by_japanese($word, Latin_Common::DB_NOUN, $gender);
   // 取得できない場合は
@@ -22,8 +22,8 @@ function get_noun_declension_chart($word, $gender){
   $declensions = array(); 
 	// 新しい配列に詰め替え
 	foreach ($noun_words as $noun_word) {
-		// 読み込み
-		$latin_noun = new Latin_Noun($noun_word);
+    // 読み込み
+    $latin_noun = Latin_Common::check_old_or_classical_latin($input_old_latin, $noun_word);
 		// 配列に格納
 		$declensions[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
 	}
@@ -32,7 +32,7 @@ function get_noun_declension_chart($word, $gender){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_english($word, $gender){
+function get_noun_declension_chart_by_english($word, $gender, $input_old_latin){
 
   // 英語で取得する。
   $noun_words = Latin_Common::get_dictionary_stem_by_english($word, Latin_Common::DB_NOUN, $gender);    
@@ -45,8 +45,8 @@ function get_noun_declension_chart_by_english($word, $gender){
   $declensions = array(); 
 	// 新しい配列に詰め替え
 	foreach ($noun_words as $noun_word) {
-		// 読み込み
-		$latin_noun = new Latin_Noun($noun_word);
+    // 読み込み
+    $latin_noun = Latin_Common::check_old_or_classical_latin($input_old_latin, $noun_word);
 		// 配列に格納
 		$declensions[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
 	}
@@ -55,7 +55,7 @@ function get_noun_declension_chart_by_english($word, $gender){
 }
 
 // 活用表を取得する。
-function get_noun_declension_chart_by_latin($word){
+function get_noun_declension_chart_by_latin($word, $input_old_latin){
   // 単語から直接取得する
   $noun_words = Latin_Common::get_wordstem_from_DB($word, Latin_Common::DB_NOUN);
   // 取得できない場合は
@@ -68,7 +68,7 @@ function get_noun_declension_chart_by_latin($word){
 	// 新しい配列に詰め替え
 	foreach ($noun_words as $noun_word) {
 		// 読み込み
-		$latin_noun = new Latin_Noun($noun_word);
+		$latin_noun = Latin_Common::check_old_or_classical_latin($input_old_latin, $noun_word);
 		// 配列に格納
 		$declensions[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
 	}
@@ -78,7 +78,7 @@ function get_noun_declension_chart_by_latin($word){
 
 
 // 動詞から活用表を取得する。
-function get_noun_declension_chart_by_verb($word){
+function get_noun_declension_chart_by_verb($word, $input_old_latin){
 	// データベースから訳語の動詞を取得する。
 	$verb_words = Latin_Common::get_verb_by_japanese($word);
   // 取得できない場合は
@@ -103,8 +103,8 @@ function get_noun_declension_chart_by_verb($word){
   $declensions = array(); 
 	// 新しい配列に詰め替え
 	foreach ($noun_words as $noun_word) {
-		// 読み込み
-		$latin_noun = new Latin_Noun($noun_word);
+    // 読み込み
+    $latin_noun = Latin_Common::check_old_or_classical_latin($input_old_latin, $noun_word);
 		// 配列に格納
 		$declensions[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
 	}
@@ -118,6 +118,8 @@ $input_noun = Commons::cut_words(trim(filter_input(INPUT_POST, 'input_noun')), 1
 $search_lang = trim(filter_input(INPUT_POST, 'input_search_lang'));
 // 挿入データ－性別－
 $gender = trim(filter_input(INPUT_POST, 'gender'));
+// 挿入データ－古形フラグ－
+$input_old_latin = trim(filter_input(INPUT_POST, 'input_old_latin'));
 
 // AIによる造語対応
 $janome_result = Commons::get_multiple_words_detail($input_noun);
@@ -129,19 +131,19 @@ $declensions = array();
 // 条件ごとに判定して単語を検索して取得する
 if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum($input_noun) && !strpos($input_noun, Commons::$LIKE_MARK)){
   // 造語対応
-	$declensions = Latin_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender);
+	$declensions = Latin_Common::make_compound_chart($janome_result, "noun", $input_noun, $gender, $input_old_latin);
 } else if($input_noun != "" && $search_lang == Commons::NIHONGO && $janome_result[0][1] == "動詞"){
   // 動詞の場合は動詞で名詞を取得(日本語のみ)
-	$declensions = get_noun_declension_chart_by_verb($input_noun);
+	$declensions = get_noun_declension_chart_by_verb($input_noun, $input_old_latin);
 } else if($input_noun != "" && $search_lang == Commons::LATIN && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_latin($input_noun);
+	$declensions = get_noun_declension_chart_by_latin($input_noun, $input_old_latin);
 } else if($input_noun != "" && $search_lang == Commons::EIGO && Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart_by_english($input_noun, $gender);
+	$declensions = get_noun_declension_chart_by_english($input_noun, $gender, $input_old_latin);
 } else if($input_noun != "" && $search_lang == Commons::NIHONGO && !Latin_Common::is_alphabet_or_not($input_noun)){
   // 対象が入力されていれば処理を実行
-	$declensions = get_noun_declension_chart($input_noun, $gender);
+	$declensions = get_noun_declension_chart($input_noun, $gender, $input_old_latin);
 }
 
 ?>

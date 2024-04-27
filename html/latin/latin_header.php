@@ -1,9 +1,9 @@
 <header class="text-center p-5" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/18/Ancient_Rome_-_panoramio.jpg);background-position: center center;background-size: cover;">
   <h1 class="title">ラテン語辞書</h1>
 </header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="container-fluid navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="latin_index.php">ラテン語辞書</a>
+    <a class="navbar-brand fs-3 nav-title" href="latin_index.php">ラテン語辞書</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -135,6 +135,8 @@ class Commons {
 		$new_str = preg_replace("/[āáàâ]/u", "a", $str);
 		$new_str = preg_replace("/[īíìî]/u", "i", $new_str);
 		$new_str = preg_replace("/[ūúùû]/u", "u", $new_str);
+		$new_str = preg_replace("/[ēéèê]/u", "e", $new_str);
+		$new_str = preg_replace("/[ōóòô]/u", "o", $new_str);
 
 		// 結果を返す
 		return $new_str;
@@ -620,11 +622,5 @@ class Common_IE {
 					<input type="text" class="form-control" aria-describedby="basic-addon2" id="result">
 	  			</div>';
 	}
-
-
-
 }
-
-
-
 ?>

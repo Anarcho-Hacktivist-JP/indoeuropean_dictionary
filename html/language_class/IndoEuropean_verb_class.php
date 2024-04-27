@@ -6496,7 +6496,7 @@ class Vedic_Verb extends Verb_Common_IE{
 			// 受動態は専用の語幹を使用
 			if($voice == Commons::PASSIVE_VOICE){
 				$verb_stem = $this->present_intensive_stem."y".self::passive_suffix;
-			} else if($aspect == Commons::MEDIOPASSIVE_VOICE){
+			} else if($voice == Commons::MEDIOPASSIVE_VOICE){
 				$verb_stem = $this->present_intensive_stem.self::passive_suffix;
 			} else {
 				// そのまま入れる

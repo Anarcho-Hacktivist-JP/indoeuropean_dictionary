@@ -2881,10 +2881,10 @@ class Avestan_Common extends Sanskrit_Common{
 		}	
 
 		// 連音を適用
-		$script = Sanskrit_Common::apply_sandhi($script, $word_flag);
+		$script = Avestan_Common::apply_sandhi($script, $word_flag);
 
 		// ヴェーダ語に変換
-		$script = Sanskrit_Common::change_sound_to_vedic($script, $vedic_flag);
+		$script = Avestan_Common::convert_to_avestan($script);
 
 		// 結果を返す。
 		return $script;
@@ -2907,13 +2907,11 @@ class Avestan_Common extends Sanskrit_Common{
 
 		// 子音同化
 		$script = preg_replace("/t([ḍdgbj])/u", "d\\1", $script);
-		$script = preg_replace("/ṭ([ḍdgbj])/u", "ḍ\\1", $script);
 		$script = preg_replace("/p([ḍdgbj])/u", "b\\1", $script);
 		$script = preg_replace("/c([ḍdgbj])/u", "g\\1", $script);		
 		$script = preg_replace("/k([ḍdgbj])/u", "g\\1", $script);
 
 		$script = preg_replace("/d([pck])/u", "t\\1", $script);
-		$script = preg_replace("/ḍ([pck])/u", "ṭ\\1", $script);
 		$script = preg_replace("/b([ṭtpck])/u", "p\\1", $script);
 		$script = preg_replace("/j([ṭtpck])/u", "k\\1", $script);		
 		$script = preg_replace("/g([ṭtpck])/u", "k\\1", $script);
@@ -2953,10 +2951,10 @@ class Avestan_Common extends Sanskrit_Common{
 		$script = preg_replace("/([iī])([aāuūeoṛṝ])/u", "y\\2", $script);
 		$script = preg_replace("/([uū])([aāiīeoṛṝ])/u", "v\\2", $script);
 		$script = preg_replace("/([ṛṝ])([aāiīuūeo])/u", "r\\2", $script);
-		$script = preg_replace("/([e])([aāiīuūeoṛṝ])/u", "ay\\2", $script);
-		$script = preg_replace("/([o])([aāiīuūeoṛṝ])/u", "av\\2", $script);
-		$script = preg_replace("/(ai)([aāiīuūeoṛṝ])/u", "āy\\2", $script);
-		$script = preg_replace("/(au)([aāiīuūeoṛṝ])/u", "āv\\2", $script);
+		$script = preg_replace("/([e])([aāiīuūeēoōəə̄åā̊ąą̇])/u", "ay\\2", $script);
+		$script = preg_replace("/([o])([aāiīuūeēoōəə̄åā̊ąą̇])/u", "av\\2", $script);
+		$script = preg_replace("/(ai)([aāiīuūeēoōəə̄åā̊ąą̇])/u", "āy\\2", $script);
+		$script = preg_replace("/(au)([aāiīuūeēoōəə̄åā̊ąą̇])/u", "āv\\2", $script);
 
 		// 母音の統合
 		$script = preg_replace("/(a|ā)(a|ā)/u", "ā", $script);
@@ -2970,11 +2968,42 @@ class Avestan_Common extends Sanskrit_Common{
 	// アヴェスター語変換
 	public static function convert_to_avestan($script){
 		// アヴェスター語対応
+
+		$script = preg_replace("/tv/u", "þβ", $script);
+		$script = preg_replace("/tt/u", "st", $script);
+		$script = preg_replace("/tth/u", "sθ", $script);
+		$script = preg_replace("/(d|dh)v/u", "ðβ", $script);
+		$script = preg_replace("/dt/u", "tt", $script);
+		$script = preg_replace("/ddh/u", "zd", $script);
+		$script = preg_replace("/ḍ|ḍh|ḍḍ|ḍḍh/u", "zd", $script);
+		$script = preg_replace("/c|ch/u", "s", $script);
+		$script = preg_replace("/śc/u", "sk", $script);
+
 		$script = preg_replace("/sr/u", "r", $script);
-		$script = preg_replace("/tv/u", "θβ", $script);	
 		$script = preg_replace("/śv/u", "sp", $script);	
-		$script = preg_replace("/sv/u", "xuu", $script);	
-		$script = preg_replace("/ḍ|ḍh/u", "zd", $script);
+		$script = preg_replace("/sv/u", "xuu", $script);
+
+		// 帯気音は摩擦音または消滅に
+		$script = preg_replace("/th/u", "þ", $script);
+		$script = preg_replace("/ph/u", "f", $script);
+		$script = preg_replace("/kh/u", "x", $script);
+		$script = preg_replace("/(gdb)h/u", "\\1", $script);
+
+		// 子音の前の特定音も変化
+
+		// 接近音化
+		$script = preg_replace("/g([iīeē])/u", "j\\1", $script);
+
+
+		// 母音間の有声音は摩擦音に
+		$script = preg_replace("/([aāiīuūeēoōəə̄åā̊ąą̇])g([aāiīuūeēoōəə̄åā̊ąą̇])/u", "\\1γ\\2", $script);
+		$script = preg_replace("/([aāiīuūeēoōəə̄åā̊ąą̇])b([aāiīuūeēoōəə̄åā̊ąą̇])/u", "\\1β\\2", $script);
+		$script = preg_replace("/([aāiīuūeēoōəə̄åā̊ąą̇])d([aāiīuūeēoōəə̄åā̊ąą̇])/u", "\\1ð\\2", $script);
+
+
+
+		// hやsの変換
+
 
 		// 結果を返す。
 		return $script;

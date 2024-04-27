@@ -699,7 +699,7 @@ class Latin_Common extends Common_IE{
 	}
 	
 	// 複合語の活用表を作成
-	public static function make_compound_chart($input_words, $word_category, $input_word, $gender = ""){
+	public static function make_compound_chart($input_words, $word_category, $input_word, $gender = "", $input_old_latin = ""){
 		// 初期化
 		$charts = array();				
 		// 既存の辞書にあるかチェックする。
@@ -764,9 +764,16 @@ class Latin_Common extends Common_IE{
 				// 配列から単語を作成
 				for ($i = 0; $i < count($compund_words["compund"]); $i++) {
 					// 種別に応じて単語を生成
-					if($word_category == "noun"){
+					if($word_category == "noun" && $input_old_latin == Commons::$FALSE){
 						// 読み込み
 						$latin_noun = new Latin_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
+						// 活用表生成
+						$charts[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
+						// メモリを解放
+						unset($latin_noun);
+					} else if($word_category == "noun" && $input_old_latin == Commons::$TRUE){
+						// 読み込み
+						$latin_noun = new Old_Latin_Noun($compund_words["compund"][$i], $compund_words["last_word"][$i], $result_data["japanese_translation"]." (".$compund_words["word_info"][$i].")");
 						// 活用表生成
 						$charts[$latin_noun->get_first_stem()] = $latin_noun->get_chart();
 						// メモリを解放
@@ -1219,8 +1226,41 @@ class Latin_Common extends Common_IE{
 	  
 		// 結果を返す。
 		return $compund_words;
-	}	
-	
+	}
+
+	public static function check_old_or_classical_latin($input_old_latin, $noun_word){
+    	// 古ラテン語フラグで分ける。
+    	if($input_old_latin == Commons::$TRUE){
+			// 古ラテン語の場合
+			$latin_noun = new Old_Latin_Noun($noun_word);
+	  	} else if($input_old_latin == Commons::$FALSE){
+			// 古典ラテン語の場合
+			$latin_noun = new Latin_Noun($noun_word);
+	  	} else {
+			// 選択なしの場合
+			$latin_noun = new Latin_Noun($noun_word);
+	  	}
+
+		// 結果を返す。
+		return $latin_noun;
+	}
+
+	public static function check_old_or_classical_adj_latin($input_old_latin, $adjective_word){
+    	// 古ラテン語フラグで分ける。
+    	if($input_old_latin == Commons::$TRUE){
+			// 古ラテン語の場合
+			$latin_adjective = new Old_Latin_Adjective($adjective_word);
+	  	} else if($input_old_latin == Commons::$FALSE){
+			// 古典ラテン語の場合
+			$latin_adjective = new Latin_Adjective($adjective_word);
+	  	} else {
+			// 選択なしの場合
+			$latin_adjective = new Latin_Adjective($adjective_word);
+	  	}
+
+		// 結果を返す。
+		return $latin_adjective;
+	}
 	// 形容詞の活用表(タイトル)を作る。
 	public static function make_adjective_column_chart($title = ""){
 
@@ -1605,6 +1645,11 @@ class Latin_Common extends Common_IE{
 		return $button_html_code.'</section>';
 	}
 
+	// 古ラテン語チェックボックス
+	public static function archaic_latin_checkbox(){
+		
+	}
+
 	// 検索言語コンボボックスの精製
 	public static function language_select_box(){
 		// ボタンを生成
@@ -1615,6 +1660,12 @@ class Latin_Common extends Common_IE{
         	  <option value="'.Commons::EIGO.'">英語(English)</option>
         	  <option value="'.Commons::LATIN.'">ラテン語(Latin)</option>     
         	</select>
+			<div class="d-grid gap-2 d-md-block">
+				<input class="form-check-input" type="checkbox" value="'.Commons::$TRUE.'" name="input_old_latin" id="input_old_latin">
+				<label class="form-check-label" for="input_old_latin">
+					古ラテン語(対応済の場合)
+		  		</label>
+			</div>
 		</section>';
 
 		// 結果を返す。

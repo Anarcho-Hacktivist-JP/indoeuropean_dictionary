@@ -1,9 +1,75 @@
+.navbar-dark .navbar-nav .nav-link{
+  color:white !important;
+}
 p {
   font-family: "メイリオ", Meiryo, sans-serif !important;
 }
 a {
   color: #134D99;
   text-decoration: none !important;
+}
+.width800 {
+  width:800px !important;
+}
+@media only screen 
+  and (max-device-width: 799px) {
+.width800 {
+  width:100% !important;
+}
+}
+.btn-circle {
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  text-align: center;
+  padding-top: 65px !important;
+  border-radius: 50% !important;
+}
+
+.text-blue {
+  color: #2f5597 !important;
+}
+.btn-primary {
+  background: #deebf7;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#deebf7),
+    to(#aad0f5)
+  );
+  background: -webkit-linear-gradient(top, #ffffff 0%, #deebf7 100%);
+  background: linear-gradient(to bottom, #deebf7 0%, #aad0f5 100%);
+  color: #000000 !important;
+}
+.btn-secondary {
+  background: #ed7d31;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ed7d31),
+    to(#f3dda0)
+  );
+  background: -webkit-linear-gradient(top, #f3dda0 0%, #ed7d31 100%);
+  color: #ffffff !important;
+  border: solid #ed7d31 1px !important;
+}
+
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:hover,
+.show > .btn-primary.dropdown-toggle {
+  border: solid #337fed 1px;
+  background: #2f5597;
+  background-image: -webkit-linear-gradient(top, #2f5597, #3d94f6);
+  background-image: -moz-linear-gradient(top, #2f5597, #3d94f6);
+  background-image: -ms-linear-gradient(top, #2f5597, #3d94f6);
+  background-image: -o-linear-gradient(top, #2f5597, #3d94f6);
+  background-image: -webkit-gradient(to bottom, #2f5597, #3d94f6);
+  text-decoration: none;
+  color: #ffffff !important;
 }
 h2 {
   font-size: 30px;
@@ -88,11 +154,6 @@ h5 {
   padding: 1rem;
   margin-bottom: 1rem;
   background-color: #fffaf0;
-}
-.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
-  color: #000 !important;
-  background-color: #e6e6fa !important;
-  border-color: #e6e6fa !important;
 }
 .textBox {
   border: 2px solid #ff6666;
@@ -451,6 +512,7 @@ h5 {
   position: absolute;
   top: -15px;
 }
+
 #input_word::placeholder {
   font-size: 12px;
 }
