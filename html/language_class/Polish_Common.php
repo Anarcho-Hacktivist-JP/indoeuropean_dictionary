@@ -435,6 +435,18 @@ class Polish_Common extends Common_IE{
 							WHERE `".Polish_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Polish_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'eć') 
 						  )";
 
+		$query = $query." UNION SELECT concat(REPLACE(`strong_stem`,'-',''), 'yć') as `strong_stem`  FROM `".Polish_Common::DB_ADJECTIVE."` WHERE (
+				 `japanese_translation` LIKE '%、".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '".$japanese_translation."、%' OR 
+				 `japanese_translation` LIKE '%、".$japanese_translation."' OR 
+				 `japanese_translation` = '".$japanese_translation."')";
+
+		// 動詞の条件と被らないようにする。
+		$query = $query." AND NOT EXISTS(
+							SELECT * FROM `".Polish_Common::DB_VERB."`
+							WHERE `".Polish_Common::DB_VERB."`.`dictionary_stem`  = concat(REPLACE(`".Polish_Common::DB_ADJECTIVE."`.`strong_stem`,'-',''), 'yć') 
+						  )";
+
 		// SQLを作成 
 		$query = $query." UNION SELECT
 							`".Polish_Common::DB_VERB."`.`dictionary_stem` as `strong_stem` 

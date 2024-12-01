@@ -167,10 +167,13 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
           </div>
         </section>
-        <select class="form-select" id="adjective-selection" aria-label="Default select example">
-          <option selected>単語を選んでください</option>
-          <?php echo Commons::select_option($declensions); ?>
-        </select>
+        <div class="input-group input-group-lg">
+          <span class="input-group-text" id="inputGroup-sizing-lg">翻訳後</span>
+          <select class="form-select" id="adjective-selection" aria-label="Default select example">
+            <option selected>単語を選んでください</option>
+            <?php echo Commons::select_option($declensions); ?>
+          </select>
+        </div>
       </form>
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="adjective-table">
         <?php echo Latin_Common::make_adjective_column_chart(); ?>

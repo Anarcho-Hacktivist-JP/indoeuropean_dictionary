@@ -171,11 +171,15 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
         <?php echo Latin_Common::noun_gender_selection_button(true); ?>       
         <input type="submit" class="btn-check" id="btn-search">
         <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-search">検索</label>
-        <select class="form-select" id="noun-selection">
-          <option selected>単語を選んでください</option>
-          <?php echo Commons::select_option($declensions); ?>
-        </select>
+        <div class="input-group input-group-lg">
+          <span class="input-group-text" id="inputGroup-sizing-lg">翻訳後</span>
+          <select class="form-select" id="noun-selection">
+            <option selected>単語を選んでください</option>
+            <?php echo Commons::select_option($declensions); ?>
+          </select>
+        </div>
       </form>
+      <?php echo Commons::archaic_button(); ?>
       <table class="table table-success table-bordered table-striped table-hover text-nowrap" id="noun-table">
         <thead>
           <tr>
@@ -191,6 +195,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
           <tr><th scope="row" class="text-center">対格(Accusativus)</th><td></td><td></td></tr>
           <tr><th scope="row" class="text-center">奪格(Ablativus)</th><td></td><td></td></tr>
           <tr><th scope="row" class="text-center">地格(Locativus)</th><td></td><td></td></tr>
+          <tr><th scope="row" class="text-center table-archaic">具格(Instrumentalis)</th><td class="table-archaic"></td><td class="table-archaic"></td></tr>
           <tr><th scope="row" class="text-center">呼格(Vocativus)</th><td></td><td></td></tr>
         </tbody>
       </table>
@@ -200,6 +205,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
       var noun_table_data = '<?php echo json_encode($declensions, JSON_UNESCAPED_UNICODE); ?>';
+      var old_latin_flag = '<?php echo $input_old_latin; ?>';
     </script>
     <script>
         $(function(){
@@ -225,6 +231,7 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
             [declension_sg["acc"], declension_pl["acc"]],
             [declension_sg["abl"], declension_pl["abl"]],
             [declension_sg["loc"], declension_pl["loc"]],
+            [declension_sg["ins"], declension_pl["ins"]],
             [declension_sg["voc"], declension_pl["voc"]],
           ];
           
@@ -257,7 +264,11 @@ if(count($janome_result) > 1 && $search_lang == Commons::NIHONGO && !ctype_alnum
             output_table_data();
 	        });
           // ボタンにイベントを設定
-          Input_Botton.LatinBotton('#input_noun');                   
+          Input_Botton.LatinBotton('#input_noun');
+          // 古形隠しボタン
+          Input_Botton.HiddenArchaicBotton();
+          // 初期状態は古形の表示を隠す。
+          $(".table-archaic").css("display", "none");
         }
     </script>
   </body>

@@ -214,10 +214,13 @@ if($input_verb != "" && count($janome_result) > 1 && $search_lang == Commons::NI
             <label class="btn btn-primary w-100 mb-3 fs-3" for="btn-generate">検索</label>
           </div>
         </section>
-        <select class="form-select" id="verb-selection" aria-label="Default select example">
-          <option selected>単語を選んでください</option>
-          <?php echo Commons::select_option($conjugations); ?>
-        </select>
+        <div class="input-group input-group-lg">
+          <span class="input-group-text" id="inputGroup-sizing-lg">翻訳後</span>
+          <select class="form-select" id="verb-selection" aria-label="Default select example">
+            <option selected>単語を選んでください</option>
+            <?php echo Commons::select_option($conjugations); ?>
+          </select>
+        </div>
       </form>
       <?php echo Commons::archaic_button(); ?>
       <details>

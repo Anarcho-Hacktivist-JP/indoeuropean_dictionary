@@ -4209,6 +4209,24 @@ class Vedic_Verb extends Verb_Common_IE{
 	// 未然強意+使役動詞
 	protected $future_intensive_causative_stem = "";
 
+	// 不完了体強意+使役＋願望動詞
+	protected $present_intensive_causative_desiderative_stem = "";
+	// 完了体強意+使役＋願望動詞
+	protected $aorist_intensive_causative_desiderative_stem = "";
+	// 状態強意+使役＋願望動詞
+	protected $perfect_intensive_causative_desiderative_stem = "";	
+	// 未然強意+使役＋願望動詞
+	protected $future_intensive_causative_desiderative_stem = "";
+
+	// 不完了体強意+願望+使役動詞
+	protected $present_intensive_desiderative_causative_stem = "";
+	// 完了体強意+願望+使役動詞
+	protected $aorist_intensive_desiderative_causative_stem = "";
+	// 状態強意+願望+使役動詞
+	protected $perfect_intensive_desiderative_causative_stem = "";
+	// 未然強意+願望+使役動詞
+	protected $future_intensive_desiderative_causative_stem = "";
+
 	
 	// 一次人称接尾辞(現在、接続用)
 	protected $primary_number = 
@@ -4593,6 +4611,69 @@ class Vedic_Verb extends Verb_Common_IE{
 	protected $intensive_desiderative_verbal_adjectives = array();	
 	// 強意+願望動詞動不定詞
 	protected $intensive_desiderative_infinitives = array();
+
+
+	// 強意+使役＋願望動詞不完了体能動分詞
+	protected $present_intensive_causative_desiderative_participle_active = "";
+	// 強意+使役＋願望動詞不完了体受動分詞
+	protected $present_intensive_causative_desiderative_participle_passive = "";
+	// 強意+使役＋願望動詞不完了体中動分詞
+	protected $present_intensive_causative_desiderative_participle_middle = "";	
+	// 強意+使役＋願望動詞完了体能動分詞
+	protected $aorist_intensive_causative_desiderative_participle_active = "";
+	// 強意+使役＋願望動詞完了体受動分詞
+	protected $aorist_intensive_causative_desiderative_participle_passive = "";
+	// 強意+使役＋願望動詞完了体中動分詞
+	protected $aorist_intensive_causative_desiderative_participle_middle = "";	
+	// 強意+使役＋願望動詞状態動詞能動分詞
+	protected $perfect_intensive_causative_desiderative_participle_active = "";
+	// 強意+使役＋願望動詞状態動詞受動分詞
+	protected $perfect_intensive_causative_desiderative_participle_passive = "";
+	// 強意+使役＋願望動詞状態動詞中動分詞
+	protected $perfect_intensive_causative_desiderative_participle_middle = "";	
+	// 強意+使役＋願望動詞未来能動分詞
+	protected $future_intensive_causative_desiderative_participle_active = "";
+	// 強意+使役＋願望動詞未来受動分詞
+	protected $future_intensive_causative_desiderative_participle_passive = "";
+	// 強意+使役＋願望動詞未来中動分詞
+	protected $future_intensive_causative_desiderative_participle_middle = "";
+	// 強意+使役＋願望過去能動分詞
+	protected $past_intensive_causative_desiderative_ta_participle_active = "";
+	protected $past_intensive_causative_desiderative_na_participle_active = "";	
+	// 強意+使役＋願望過去受動分詞
+	protected $past_intensive_causative_desiderative_ta_participle_passive = "";
+	protected $past_intensive_causativedesiderative_na_participle_passive = "";
+	// 強意+使役＋願望動詞動形容詞
+	protected $intensive_causative_desiderative_verbal_adjectives = array();
+	// 強意+使役＋願望動詞動不定詞
+	protected $intensive_causative_desiderative_infinitives = array();
+
+	// 強意+願望+使役動詞不完了体能動分詞
+	protected $present_intensive_desiderative_causative_participle_active = "";
+	// 強意+願望+使役動詞不完了体受動分詞
+	protected $present_intensive_desiderative_causative_participle_passive = "";
+	// 強意+願望+使役動詞不完了体中動分詞
+	protected $present_intensive_desiderative_causative_participle_middle = "";	
+	// 強意+願望+使役動詞完了体能動分詞
+	protected $aorist_intensive_desiderative_causative_participle_active = "";
+	// 強意+願望+使役動詞完了体中動分詞
+	protected $aorist_intensive_desiderative_causative_participle_middle = "";		
+	// 強意+願望+使役動詞未来能動分詞
+	protected $future_intensive_desiderative_causative_participle_active = "";
+	// 強意+願望+使役動詞未来中動分詞
+	protected $future_intensive_desiderative_causative_participle_middle = "";
+	// 強意+願望+使役過去能動分詞
+	protected $past_intensive_desiderative_causative_ta_participle_active = "";
+	protected $past_intensive_desiderative_causative_na_participle_active = "";	
+	// 強意+願望+使役過去受動分詞
+	protected $past_intensive_desiderative_causative_ta_participle_passive = "";
+	protected $past_intensive_desiderative_causative_na_participle_passive = "";
+	// 強意+願望+使役動詞動形容詞
+	protected $intensive_desiderative_causative_verbal_adjectives = array();	
+	// 強意+願望+使役動詞動不定詞
+	protected $intensive_desiderative_causative_infinitives = array();
+
+
 
 	// 活用種別-不完了体
 	protected $conjugation_present_type = "";
@@ -5506,6 +5587,13 @@ class Vedic_Verb extends Verb_Common_IE{
 
     }
 
+	// 強意+使役+願望語幹を作る
+    private function make_each_intensive_causative_desiderative_stems($root){
+		// 初期化
+		$prefix = $this->add_stem;
+
+    }
+
 	// 語根の母音を返す。
 	private function get_vowel_in_root($sound_grade = ""){
 		// 母音抜き出し
@@ -5543,10 +5631,19 @@ class Vedic_Verb extends Verb_Common_IE{
 	// 完了形語幹を返す。
 	private function get_weak_perfect_stem($sound_grade){
 
-		// 完了形
-		$add_stem = $this->make_redumplicatation_addtion($this->root);
-		// 強語幹で重複する。
-		$add_stem = mb_substr($add_stem, 0, 1).Sanskrit_Common::change_vowel_grade(mb_ereg_replace("[ṛṝ]", "a", $this->get_vowel_in_root()), Sanskrit_Common::ZERO_GRADE);
+		// 畳音初期化
+		$add_stem = "";
+
+		// 語根が「aCC」の場合は
+		if (preg_match("/^a([bpkghcjtdḍṭṅñṇnmlrsśṣvy]{2}|[bpkghcjtdḍṭ]h)$/u", $this->root)){
+			// 完了形
+			$add_stem = "ān";
+		} else {
+			// 完了形
+			$add_stem = $this->make_redumplicatation_addtion($this->root);
+			// 強語幹で重複する。
+			$add_stem = mb_substr($add_stem, 0, 1).Sanskrit_Common::change_vowel_grade(mb_ereg_replace("[ṛṝ]", "a", $this->get_vowel_in_root()), Sanskrit_Common::ZERO_GRADE);
+		}
 
 		// 音階で分ける。
 		switch($sound_grade){
@@ -5560,8 +5657,14 @@ class Vedic_Verb extends Verb_Common_IE{
 					return Sanskrit_Common::sandhi_engine(mb_substr($add_stem, 0, 2), Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::ZERO_GRADE));	
 				}					
 			case Sanskrit_Common::GUNA:
-				// 中語幹
-				return $this->perfect_stem;			
+				// 語根が「aCC」の場合は
+				if (preg_match("/^a([bpkghcjtdḍṭṅñṇnmlrsśṣvy]{2}|[bpkghcjtdḍṭ]h)$/u", $this->root)){
+					// 中語幹
+					return $add_stem.$this->perfect_stem;		
+				} else {
+					// 中語幹
+					return $this->perfect_stem;		
+				}
 			case Sanskrit_Common::VRIDDHI:
 				// 強語幹
 				return Sanskrit_Common::sandhi_engine(mb_substr($add_stem, 0, 2), Sanskrit_Common::change_vowel_grade($this->root, Sanskrit_Common::VRIDDHI));					
@@ -7747,6 +7850,47 @@ class Vedic_Verb extends Verb_Common_IE{
 		return $conjugation;
 	}
 
+	// 動詞別活用表を作成
+	public function get_sanskrit_verb_by_verb_genre($person, $voice, $tense_mood, $aspect, $vedic_flag, $verb_genre = ""){
+		// 動詞の形態によって分ける。
+		if($verb_genre == "primary"){
+			// 通常の動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::MAKE_VERB){
+			// 使役動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_causative_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::WANT_VERB){
+			// 願望動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_desiderative_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::INTENSE_VERB){
+			// 強意動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_intensive_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::MAKE_VERB."-".Commons::WANT_VERB){
+			// 使役+願望動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_causative_desiderative_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::INTENSE_VERB."-".Commons::WANT_VERB){
+			// 強意+願望動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_intensive_desiderative_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::WANT_VERB."-".Commons::MAKE_VERB){
+			// 願望+使役動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_desiderative_causative_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		} else if($verb_genre == Commons::INTENSE_VERB."-".Commons::MAKE_VERB){
+			// 強意+使役動詞
+			// 動詞を取得する。
+			$verbal_form = $this->get_intensive_causative_sanskrit_verb($person, $voice, $tense_mood, $aspect, $vedic_flag);
+		}
+
+		// 結果を返す。
+		return $verbal_form;
+	}
+
 	// 特定の活用を取得する(ない場合はランダム)。
 	public function get_conjugation_form_by_each_condition($person = "", $voice = "", $mood = "", $aspect = "", $verb_genre = ""){
 
@@ -8346,7 +8490,10 @@ class Polish_Verb extends Verb_Common_IE {
 			$this->generate_uknown_verb3(mb_substr($dic_stem, 0, -2));			
 		} else if(preg_match('/(ić|ic)$/',$dic_stem)){	
 			// 不明動詞の対応
-			$this->generate_uknown_verb4(mb_substr($dic_stem, 0, -2));										
+			$this->generate_uknown_verb4(mb_substr($dic_stem, 0, -2));
+		} else if(preg_match('/(yć|yc)$/',$dic_stem)){	
+			// 不明動詞の対応
+			$this->generate_uknown_verb4y(mb_substr($dic_stem, 0, -2));							
 		} else {
 			// 不明動詞の対応
 			$this->generate_uknown_verb($dic_stem);
@@ -8535,6 +8682,23 @@ class Polish_Verb extends Verb_Common_IE {
 		$this->infinitive = $dic_stem ."ować";							// 不定形
 		$this->past_stem = $dic_stem."ował";							// 過去分詞				
 		$this->verbal_noun = $dic_stem."owanie";						// 動名詞
+	}
+
+	// 不明動詞の対応6
+	private function generate_uknown_verb4y($dic_stem){
+		// 共通語幹を取得
+		$common_stem = $dic_stem."y";
+		// 訳を入れる。
+		$this->japanese_translation = "借用";
+		$this->english_translation = "loanword";	
+		// データを挿入(借用語)
+		$this->verb_type= "4y";											// 活用種別					
+		$this->present_stem = $common_stem;								// 現在形
+		$this->present_stem2 = mb_substr($common_stem, 0, -1);			// 現在形2		
+		$this->aorist_stem = $common_stem;								// 完了形		
+		$this->infinitive = $dic_stem ."yć";							// 不定形
+		$this->past_stem = $common_stem."ł";							// 過去分詞	
+		$this->verbal_noun = $common_stem."nie";						// 動名詞	
 	}
 
 	// 動詞の語幹を作成
