@@ -5929,7 +5929,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		return $verb_conjugation;
 	}
 	
-	// 希求法能動態s三人称複数の動詞活用を作成
+	// 希求法能動態三人称複数の動詞活用を作成
 	private function make_optative_3pl_thematic($voice, $verb_stem){
 		// 語尾と結合
 		if($voice == Commons::ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
@@ -5944,7 +5944,7 @@ class Vedic_Verb extends Verb_Common_IE{
 		}
 	}
 
-	// 希求法能動態s三人称複数の動詞活用を作成
+	// 希求法能動態三人称複数の動詞活用を作成
 	private function make_optative_3pl_athematic($voice, $verb_stem){
 		// 語尾と結合
 		if($voice == Commons::ACTIVE_VOICE && $this->deponent_active != Commons::$TRUE){
